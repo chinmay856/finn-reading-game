@@ -1,5 +1,24 @@
 # Session handoff
 
+## WikiWhy interface track
+
+- Reviewed the complete merged prototype handoff, campaign flow, character
+  direction, player-facing copy deck, passage decks, passage authoring guide,
+  canonical architecture, and relevant concept boards.
+- Implemented the smallest supported visual slice: one bounded Internet
+  Recovery 98 remote desktop, one dominant WikiWhy browser window, one compact
+  independent Reading Companion, one progress-driven repair wipe, and quiet
+  result/comprehension windows.
+- Added stable implemented copy IDs in `apps/internet-recovery/copy.js`; no
+  wrapper copy or WikiWhy concepts entered the Reading Engine or speech files.
+- Added `?uiPreview=read` and `?uiPreview=review` as no-microphone visual QA
+  states. They are diagnostics, not player navigation.
+- Deliberately deferred the 80% reverse hack, ten-session campaign, Shield
+  Protocol, achievements, and generated character sprites until the core
+  one-passage experience is reviewed.
+- Next action: deploy and judge whether the compact reader holds attention at
+  250 WPM while the page repair remains legible without stealing focus.
+
 ## Moonshine latency track
 
 - PR #17 added an isolated Moonshine Base + Silero VAD browser comparison while

@@ -39,12 +39,12 @@ test("continuous reading has no sentence or line check controls", async () => {
     readFile(new URL("../index.html", import.meta.url), "utf8"),
   ]);
   assert.doesNotMatch(html, /Check line|Retry line|Check sentence/iu);
-  assert.match(html, /Read continuously/u);
+  assert.match(html, /CONTINUOUS READER/u);
   assert.match(html, /repairFill/u);
-  assert.match(html, /INDEPENDENT QUICK CHECK/u);
+  assert.match(html, /WHAT DID THE EVIDENCE SHOW\?/u);
   assert.match(html, /Copy timing report/u);
   assert.match(html, /Inspect this session’s local transcripts/u);
-  assert.match(html, /Begin continuous reading/u);
+  assert.match(html, /Prepare microphone/u);
   assert.match(app, /hasEndEvidence/u);
   assert.doesNotMatch(html, />Start reading</u);
   assert.match(html, /<option value="250" selected>250 WPM<\/option>/u);
@@ -53,6 +53,23 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(app, /hasEndEvidence\(state\.confirmedMatches/u);
   assert.match(html, /id="finalizationStatus"/u);
   assert.match(app, /finalAddedWords/u);
+  assert.match(html, /INTERNET RECOVERY 98/u);
+  assert.match(html, /BROWSER-BASED REMOTE RECOVERY DESKTOP/u);
+  assert.match(html, /id="repairEdge"/u);
+});
+
+test("implemented wrapper copy uses stable IDs outside the Reading Engine", async () => {
+  const [app, copy, engine, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(copy, /mission\.preparation\.title/u);
+  assert.match(copy, /privacy\.microphone\.truth/u);
+  assert.match(html, /data-copy-id="mission\.preparation\.title"/u);
+  assert.match(app, /hydrateInternetRecoveryCopy/u);
+  assert.doesNotMatch(engine, /mission\.preparation|privacy\.microphone|WikiWhy/u);
 });
 
 test("live checkpoints cannot fragment the final recording", async () => {

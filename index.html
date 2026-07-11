@@ -1,11 +1,104 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07100a"><title>WikiWhy Reading Spike</title><link rel="stylesheet" href="/styles.css"></head>
-<body><main>
-<header><div><small>INTERNET RECOVERY OS</small><h1>WikiWhy</h1></div><div class="meta"><b>Finn</b><span>Local reading test</span></div></header>
-<section id="setup" class="screen on panel setup-card"><small>FOCUSED MECHANICS SPIKE</small><h2>Repair a broken page by reading continuously.</h2><p>One click prepares the private speech model and starts listening. The reading guide keeps upcoming text visible while local transcription confirms progress behind it.</p><label class="guide-setting">Reading guide pace<select id="guideWpm"><option value="150">150 WPM</option><option value="200">200 WPM</option><option value="250" selected>250 WPM</option><option value="300">300 WPM</option></select></label><button id="begin" class="primary">Begin continuous reading</button><p id="modelProgress" class="model-progress" role="status">Nothing is uploaded or stored.</p><p class="fine"><a href="./moonshine-benchmark.html">Compare the experimental Moonshine speech engine</a></p></section>
-<section id="read" class="screen">
-  <div class="repair-stage panel" aria-label="WikiWhy repair visualization"><div class="broken-page"><small>WIKIWHY ARTICLE</small><h2>Why evidence matters</h2><p>ANY CLAIM BECOMES TRUE AFTER THREE REPOSTS.</p><div class="fake-lines"></div></div><div id="repairFill" class="repaired-page"><small>WIKIWHY ARTICLE — VERIFIED</small><h2>Why evidence matters</h2><p>Strong claims explain their evidence, limits, and uncertainty.</p><div class="source-card">Sources restored · context connected · confidence repaired</div></div><div class="repair-footer"><b id="repairPercent">0% repaired</b><span id="latency">Waiting for first checkpoint</span></div></div>
-  <div class="reader panel"><div class="row"><div><small>READING COMPANION</small><h2>Read continuously</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div><p id="readerState" class="reader-state" role="status">Ready</p><p id="guideStatus" class="guide-status">Reading guide: 250 WPM · 0%</p><div id="passage" class="passage continuous"></div><div class="reader-footer"><span id="progressText">0% confirmed by local transcript</span><button id="listen">Finish now</button></div></div>
-</section>
-<section id="review" class="screen review-grid"><article class="panel"><small>READING COMPLETE</small><h2>Local session result</h2><p id="finalizationStatus" class="finalization-status" role="status">Waiting for a reading.</p><div class="summary"><div><span>Accuracy estimate</span><b id="finalAccuracy">—</b></div><div><span>Words confirmed</span><b id="finalCorrect">—</b></div><div><span>Speed</span><b id="finalSpeed">—</b></div><div><span>Passage progress</span><b id="finalProgress">—</b></div></div><div class="actions"><button id="again" class="primary">Try again</button><button id="export">Copy timing report</button></div><p id="reportStatus" class="fine" role="status">The report contains timing and scores, never audio or transcript text.</p><details class="transcript-diagnostics"><summary>Inspect this session’s local transcripts</summary><p>Shown only in this tab for diagnosis. Reloading clears them; copied timing reports exclude them.</p><h3>Final transcript</h3><pre id="finalTranscript"></pre><h3>Live checkpoints</h3><pre id="checkpointTranscripts"></pre></details></article><aside class="panel quiz"><small>INDEPENDENT QUICK CHECK</small><h3>Why doesn’t the sleep example prove that extra sleep caused higher grades?</h3><button data-answer="0">Because correlations are always mistakes.</button><button data-answer="1">Other factors could explain both sleep and grades.</button><button data-answer="0">Because researchers cannot measure sleep.</button><p id="quizFeedback" role="status"></p><div id="payoff" class="payoff" hidden><b>WIKIWHY VERIFIED</b><span>Evidence restored. Confidence recalibrated.</span></div></aside></section>
-</main><script type="module" src="/app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#142b46">
+  <title>Internet Recovery 98 · WikiWhy</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-frame">
+    <p class="page-boundary">GAME PAGE · BROWSER-BASED REMOTE RECOVERY DESKTOP</p>
+    <main class="recovery-desktop">
+      <header class="desktop-banner">
+        <div class="brand-lockup"><span class="brand-orbit" aria-hidden="true">◎</span><div><small>AMY'S CLEAN-ROOM NETWORK</small><h1>INTERNET RECOVERY 98</h1></div></div>
+        <div class="connection-status"><span class="status-light" aria-hidden="true"></span><b>REMOTE SESSION ESTABLISHED</b><span>USER: FINN</span></div>
+      </header>
+
+      <section id="setup" class="screen on desktop-surface setup-surface" style="overflow:auto">
+        <nav class="desktop-icons" aria-label="Recovery desktop shortcuts">
+          <button class="desktop-icon active" type="button"><span aria-hidden="true">▣</span><b>Browser</b><small>Browse what remains</small></button>
+          <button class="desktop-icon" type="button" disabled><span aria-hidden="true">▤</span><b>Recovered Files</b><small>Definitely disorganized</small></button>
+          <button class="desktop-icon" type="button" disabled><span aria-hidden="true">_</span><b>Terminal</b><small>Type confidently and hope</small></button>
+        </nav>
+
+        <article class="os-window mission-window" style="margin-top:1vh;max-height:100%;overflow:auto">
+          <div class="window-titlebar"><span>RECOVERED_FILE_READY.txt</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="window-body mission-body">
+            <small data-copy-id="mission.preparation.eyebrow">RECOVERED FILE READY</small>
+            <h2 data-copy-id="mission.preparation.title">Read one recovered file to begin repairs.</h2>
+            <p data-copy-id="mission.preparation.body">Read continuously at a comfortable pace. Pause when you need to. Correct yourself whenever you want. The repair only moves forward.</p>
+            <div class="file-card">
+              <div class="file-icon" aria-hidden="true">TXT</div>
+              <div><b>Why evidence matters</b><span>220 words · science · original explanatory passage</span><span>Audio upload: none · Forced retries: absolutely not</span></div>
+            </div>
+            <label class="guide-setting">Reading guide pace<select id="guideWpm"><option value="150">150 WPM</option><option value="200">200 WPM</option><option value="250" selected>250 WPM</option><option value="300">300 WPM</option></select></label>
+            <p class="privacy-truth" data-copy-id="privacy.microphone.truth">Your voice is processed on this device. The game does not upload or save your audio or transcript.</p>
+            <button id="begin" class="os-button primary">Prepare microphone</button>
+            <p id="modelProgress" class="model-progress" role="status">Your browser will ask for microphone permission next.</p>
+            <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
+          </div>
+        </article>
+
+        <div class="techno-corner" role="img" aria-label="Techno's orange-and-blue ball waits beside the recovered-files folder.">
+          <span class="techno-ball" aria-hidden="true"></span><b>TECHNO</b><small>Ball temporarily under control.</small>
+        </div>
+      </section>
+
+      <section id="read" class="screen desktop-surface mission-surface">
+        <article class="os-window browser-window">
+          <div class="window-titlebar danger"><span>WIKIWHY — INTERNET ENCYCLOPEDIA</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span class="address">http://wikiwhy.recovered/evidence</span><span class="browser-security">CONNECTION: QUESTIONABLE</span></div>
+          <div class="repair-stage" aria-label="WikiWhy page repairing from corrupted to evidence-based as confirmed reading progress advances">
+            <div class="wiki-page broken-page">
+              <aside class="wiki-nav"><b>WIK<br>WHY?</b><a>Main page</a><a>Contents</a><a>Random article</a><a>About WikiWhy</a><a>Upload fact</a></aside>
+              <div class="wiki-article"><div class="wiki-tabs"><span>Article</span><span>Talk</span><span class="selected">Read</span><span>View source</span><span>History</span></div><small>FROM WIKIWHY, THE FREE ENCYCLOPEDIA</small><h2>USERS ARE ALWAYS RIGHT</h2><p>If someone submitted it, it counts as a fact. Sources are optional. Repeating a claim makes it more true.</p><ul><li>Toast always lands butter-side up. <i>[?]</i></li><li>The moon is made of cheese. <i>[?]</i></li><li>Humans only use 10% of their brains. <i>[?]</i></li></ul><section class="wiki-evidence"><b>What the evidence actually shows</b><p>XXXX XX XXXX XXXXX XXXXX. XXXXXXXX XXX XXXXXXXXX XXXXXXXX XXXX XXXXX.</p></section><h3>References</h3><p class="references">[?] ????<br>[?] ????<br>[?] ????</p></div>
+              <aside class="wiki-card corrupted"><div class="missing-image">IMAGE<br>UNAVAILABLE<br>XXXX</div><b>AT A GLANCE</b><span>Confidence: ???</span><span>Evidence: None</span><span>Sources: 0</span><span>Updated: ????</span></aside>
+            </div>
+            <div id="repairFill" class="wiki-page repaired-page">
+              <aside class="wiki-nav"><b>WIK<br>WHY?</b><a>Main page</a><a>Contents</a><a>Random article</a><a>About WikiWhy</a><a>Contact page</a></aside>
+              <div class="wiki-article"><div class="wiki-tabs"><span>Article</span><span>Talk</span><span class="selected">Read</span><span>View source</span><span>History</span></div><small>FROM WIKIWHY, THE FREE ENCYCLOPEDIA</small><h2>PEOPLE CAN CONTRIBUTE; EVIDENCE EARNS TRUST</h2><p>People share ideas and information every day, but not everything is accurate. Strong claims explain their evidence, limits, and uncertainty.</p><ul><li>Claims can be checked against observations. <i>[1]</i></li><li>Alternative explanations deserve attention. <i>[2]</i></li><li>Replication helps reveal dependable patterns. <i>[3]</i></li></ul><section class="wiki-evidence"><b>What the evidence actually shows</b><p>Good questions lead to better answers. Sources reconnect claims with the work underneath them.</p></section><h3>References</h3><p class="references">[1] Methods and measurements<br>[2] Limits and alternatives<br>[3] Replication record</p></div>
+              <aside class="wiki-card verified"><div class="evidence-image" aria-hidden="true"><span></span><span></span><span></span></div><b>AT A GLANCE</b><span>Confidence: Measured</span><span>Evidence: Verified</span><span>Sources: 12</span><span>Updated: Today</span></aside>
+            </div>
+            <div id="repairEdge" class="repair-edge" aria-hidden="true"></div>
+          </div>
+          <footer class="browser-status"><b id="siteStatus">STATUS: CORRUPTED</b><span id="repairPercent">0% repaired</span><span id="latency">Waiting for first checkpoint</span></footer>
+        </article>
+
+        <aside class="os-window reader-window">
+          <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
+          <div class="reader-head"><div><small>CONTINUOUS READER</small><h2>Why evidence matters</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div>
+          <p id="readerState" class="reader-state" role="status" data-copy-id="reading.ready.title">READY WHEN YOU ARE, FINN</p>
+          <p id="guideStatus" class="guide-status">Reading guide: 250 WPM · 0%</p>
+          <div id="passage" class="passage continuous"></div>
+          <div class="reader-footer"><span id="progressText">0% confirmed by local transcript</span><button id="listen" class="os-button">Finish now</button></div>
+          <details class="amy-note"><summary>AMY · ENGINEER NOTE</summary><p data-copy-id="amy.guide.note">Finn, the highlighted passage is your current place. The page repair follows confirmed progress, so the two may not move at exactly the same time.</p></details>
+        </aside>
+      </section>
+
+      <section id="review" class="screen desktop-surface review-surface">
+        <article class="os-window result-window">
+          <div class="window-titlebar success"><span>REPAIR_RESULT.log</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="window-body">
+            <small data-copy-id="result.complete.eyebrow">REPAIR COMPLETE</small>
+            <h2 data-copy-id="result.complete.title">The page changed because you read the recovered file.</h2>
+            <p id="finalizationStatus" class="finalization-status" role="status">Waiting for a reading.</p>
+            <div class="summary"><div><span>Accuracy estimate</span><b id="finalAccuracy">—</b></div><div><span>Words confirmed</span><b id="finalCorrect">—</b></div><div><span>Pace</span><b id="finalSpeed">—</b></div><div><span>Passage progress</span><b id="finalProgress">—</b></div></div>
+            <div class="actions"><button id="continueResult" class="os-button primary">Continue</button><button id="again" class="os-button">Try this passage again</button><button id="export" class="os-button">Copy timing report</button></div>
+            <p id="reportStatus" class="fine" role="status" data-copy-id="result.report.truth">The report contains timing and scores, never audio or transcript text.</p>
+            <details class="transcript-diagnostics"><summary>Inspect this session’s local transcripts</summary><p>Shown only in this tab for diagnosis. Reloading clears them; copied timing reports exclude them.</p><h3>Final transcript</h3><pre id="finalTranscript"></pre><h3>Live checkpoints</h3><pre id="checkpointTranscripts"></pre></details>
+          </div>
+        </article>
+        <aside class="os-window quiz">
+          <div class="window-titlebar"><span>CHECK_THE_FILE.exe</span><span class="window-controls" aria-hidden="true">— □</span></div>
+          <div class="window-body"><small>WHAT DID THE EVIDENCE SHOW?</small><h3>Why doesn’t the sleep example prove that extra sleep caused higher grades?</h3><button data-answer="0">Because correlations are always mistakes.</button><button data-answer="1">Other factors could explain both sleep and grades.</button><button data-answer="0">Because researchers cannot measure sleep.</button><p id="quizFeedback" role="status"></p><div id="payoff" class="payoff" hidden><b>WIKIWHY REPAIR ACCEPTED</b><span>That matches the file. Evidence logged.</span></div></div>
+        </aside>
+      </section>
+
+      <footer class="taskbar"><button class="start-button" type="button">START</button><div class="task-button">▣ WikiWhy — repair</div><div class="task-button">▤ Reading Companion</div><div class="task-spacer"></div><div class="tray"><span aria-hidden="true">▮▮▮</span><time id="desktopClock">12:00 AM</time></div></footer>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
