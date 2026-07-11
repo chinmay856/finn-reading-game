@@ -2,51 +2,54 @@
 
 ## Current state
 
-- Branch: `agent/wikiwhy-loop-hardening`
-- Base: synchronized `main` at merge commit `480b636` from PR #9
+- Branch: `agent/fix-fragmented-final-audio`
+- Base: synchronized `main` at merge commit `22706a7` from PR #10
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
 - Speech: local Transformers.js `3.7.1`,
   `onnx-community/whisper-base_timestamped`, WebAssembly/q8
-- Privacy: capture, voice activity, transcription, and alignment remain local;
-  reports contain neither audio nor transcript text
+- Privacy: all voice processing remains local and audio is discarded
 
-## Hardening implemented
+## User evidence
 
-- Reading Engine alignment now reports furthest confirmed position separately
-  from matched-word completion/accuracy.
-- Live progress is monotonic and follows actual reading position even when the
-  recognizer misses an earlier word.
-- Checkpoints transcribe bounded windows with three seconds of audio overlap and
-  twelve tokens of alignment overlap instead of repeatedly processing the full
-  growing recording.
-- The final full-session transcription remains the reconciliation and scoring
-  source after Finish Reading.
-- A diagnostics-only timing report can be copied or downloaded after the run.
-- An independent comprehension question completes the WikiWhy payoff without
-  mixing comprehension into speech scoring.
-- Final-transcription failure produces a reviewable zero-evidence result rather
-  than leaving the UI stuck.
+A complete reading produced 199 WPM but only 51/220 words, 23% accuracy, and
+23% passage progress. The user judged the reading closer to 80–90% accuracy and
+also found the Prepare/Start/Finish interaction inconsistent with continuous
+reading.
+
+## Root cause and fix
+
+- Live checkpoints previously called `requestData()` on the same MediaRecorder
+  later used for final scoring.
+- The final pass concatenated the resulting WebM fragments. The observed
+  51-word cutoff is consistent with browser decoding ending at the first
+  fragment, even though duration measurement covered the complete reading.
+- Capture now uses two recorders on the same local stream: an uninterrupted
+  final recorder and an independently restarted preview recorder.
+- Preview windows keep three seconds of decoded PCM overlap. Final scoring uses
+  only the uninterrupted recording.
+- Matched-token evidence is combined across live windows and final
+  reconciliation so confirmed work is not erased by one failed pass.
+- One Begin action now prepares the model and starts listening. The expected
+  finish is automatic after at least 94% position and a 1.8-second final pause;
+  `Finish now` remains a fallback.
 
 ## Validation
 
-- `npm run check` — passed
-- `npm test` — passed, 20 tests
-- `npm run build` — passed
-- Tests cover position-versus-completion progress, overlapping alignment
-  windows, architecture boundaries, local-only reporting, silence handling,
-  forgiving alignment, and punctuation-aware uncapped pace
+- `npm run check` — pending final rerun after documentation
+- `npm test` — pending final rerun; expanded to 22 tests
+- `npm run build` — pending final rerun
+- A real Chrome microphone reread is required before claiming the accuracy bug
+  is resolved
 
 ## Preserved state
 
-`tests/audio-capture.test.js` had a line-ending-only working-tree status before
-this branch began. It has no content diff and has not been staged, discarded,
-or rewritten.
+`tests/audio-capture.test.js` continues to show a pre-existing line-ending-only
+working-tree status with no content diff. It remains unstaged and undiscarded.
 
 ## Recommended next step
 
-Publish this branch and run a real Chrome microphone reading. Copy the timing
-report afterward. Keep the batching mechanic only if checkpoints normally land
-within roughly three seconds and the active paragraph stays no more than one
-paragraph behind. If it fails that bar, compare a faster proven local runtime
-instead of compensating with visual delay.
+Publish, reread the live passage once, and compare the result with the prior
+51/220 cutoff. Confirm that the session begins with one click and normally ends
+without using `Finish now`. Copy the timing report if accuracy or automatic
+completion is still unfair.

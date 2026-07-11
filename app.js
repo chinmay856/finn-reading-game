@@ -1,4 +1,4 @@
-import { alignTranscript, estimateReadingPace, tokenizeText } from "./reading-engine.js";
+import { alignTranscript, estimateReadingPace, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
@@ -16,13 +16,16 @@ const PAUSE_MS = 900;
 const SPEECH_LEVEL = 0.009;
 const AUDIO_OVERLAP_MS = 3_000;
 const TOKEN_OVERLAP = 12;
+const AUTO_FINISH_PROGRESS = 0.94;
+const FINAL_PAUSE_MS = 1_800;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
 
 const state = {
-  busy: false, confirmedProgress: 0, confirmedTokenIndex: 0, diagnostics: [], finalText: "",
-  lastCheckpointAt: 0, lastSpeechAt: 0, listening: false, modelDevice: null, monitor: null,
+  busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
+  diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
+  listening: false, modelDevice: null, monitor: null,
   processedThroughMs: 0, result: null, startedAt: 0,
 };
 
@@ -60,6 +63,7 @@ function renderPassage(progress = state.confirmedProgress) {
 }
 
 function updateProgress(alignment, latencyMs = null) {
+  alignment.matchedTokenIndexes.forEach((index) => state.confirmedMatches.add(index));
   state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
   state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
@@ -79,7 +83,7 @@ async function checkpoint(reason) {
   try {
     const capturedThroughMs = capture.durationMs;
     const windowStartMs = Math.max(0, state.processedThroughMs - AUDIO_OVERLAP_MS);
-    const audio = await capture.snapshot({ overlapMs: AUDIO_OVERLAP_MS, sinceMs: state.processedThroughMs });
+    const audio = await capture.snapshot({ overlapMs: AUDIO_OVERLAP_MS });
     const text = await recognizer.transcribe(audio);
     state.processedThroughMs = capturedThroughMs;
     if (!text || !state.listening) return;
@@ -108,6 +112,11 @@ function monitorSpeech() {
   const speaking = capture.level >= SPEECH_LEVEL;
   $("voicePulse").classList.toggle("speaking", speaking);
   if (speaking) state.lastSpeechAt = now;
+  if (!speaking && !state.busy && !state.finishing
+    && state.confirmedProgress >= AUTO_FINISH_PROGRESS && now - state.lastSpeechAt >= FINAL_PAUSE_MS) {
+    finishReading();
+    return;
+  }
   const sinceCheckpoint = now - state.lastCheckpointAt;
   const naturalPause = state.lastSpeechAt > state.lastCheckpointAt && now - state.lastSpeechAt >= PAUSE_MS;
   if (!state.busy && ((naturalPause && sinceCheckpoint >= MIN_CAPTURE_MS) || sinceCheckpoint >= MAX_CAPTURE_MS)) {
@@ -125,13 +134,15 @@ async function startReading() {
   state.lastCheckpointAt = state.startedAt;
   state.processedThroughMs = 0;
   state.monitor = setInterval(monitorSpeech, 100);
-  $("listen").textContent = "Finish reading";
+  $("listen").textContent = "Finish now";
   $("listen").disabled = false;
   $("readerState").textContent = "Listening — start when ready";
   diagnostic("capture-start");
 }
 
 async function finishReading() {
+  if (state.finishing) return;
+  state.finishing = true;
   state.listening = false;
   clearInterval(state.monitor);
   $("listen").disabled = true;
@@ -149,21 +160,22 @@ async function finishReading() {
   const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24 });
   const finalLatencyMs = Math.round(performance.now() - requestedAt);
   updateProgress(alignment, finalLatencyMs);
-  const pace = estimateReadingPace({ durationMs, expectedText: PASSAGE, wordCount: alignment.matchedCount });
+  const combined = summarizeTokenMatches(PASSAGE, state.confirmedMatches);
+  const pace = estimateReadingPace({ durationMs, expectedText: PASSAGE, wordCount: combined.matchedCount });
   state.result = {
-    accuracy: alignment.accuracy,
+    accuracy: combined.accuracy,
     durationMs,
     finalLatencyMs,
-    matchedWords: alignment.matchedCount,
-    progress: alignment.positionProgress,
+    matchedWords: combined.matchedCount,
+    progress: state.confirmedProgress,
     signal,
-    totalWords: alignment.expectedTokens.length,
+    totalWords: combined.totalCount,
     wpm: pace.wpm,
   };
-  $("finalAccuracy").textContent = `${alignment.accuracy}%`;
-  $("finalCorrect").textContent = `${alignment.matchedCount}/${alignment.expectedTokens.length}`;
+  $("finalAccuracy").textContent = `${combined.accuracy}%`;
+  $("finalCorrect").textContent = `${combined.matchedCount}/${combined.totalCount}`;
   $("finalSpeed").textContent = `${pace.wpm} WPM`;
-  $("finalProgress").textContent = `${Math.round(alignment.progress * 100)}%`;
+  $("finalProgress").textContent = `${Math.round(state.confirmedProgress * 100)}%`;
   diagnostic("session-finish", state.result);
   show("review");
 }
@@ -204,6 +216,7 @@ async function prepare() {
   state.modelDevice = await recognizer.load(requestedDevice);
   $("modelProgress").textContent = `Ready locally (${state.modelDevice}).`;
   show("read");
+  await startReading();
 }
 
 $("begin").onclick = () => prepare().catch((error) => {

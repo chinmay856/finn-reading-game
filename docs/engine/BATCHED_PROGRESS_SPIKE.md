@@ -26,7 +26,9 @@ Primary references:
 
 ## Spike design
 
-- One explicit Start Reading action and one Finish Reading action.
+- One Begin action prepares the model and starts capture. Completion is
+  automatic after the end is confirmed and a short final pause; `Finish now`
+  remains a recovery control.
 - Capture continues for the entire passage.
 - A likely natural pause after at least 8 seconds requests a bounded audio
   window. A 22-second maximum window prevents progress from remaining pending
@@ -41,7 +43,14 @@ Primary references:
   reader incorrectly lag behind later confirmed speech.
 - The compact reader scrolls by paragraph. A wrapper-owned WikiWhy repair wipe
   maps theme-neutral confirmed progress to visible left-to-right repair.
-- Final transcription reconciles the full attempt after Finish Reading.
+- Live checkpoints use a separate restartable preview recorder. The final
+  recorder remains uninterrupted, preventing `requestData()` fragments from
+  being concatenated into a final WebM file that some browser decoders only
+  decode through the first fragment.
+- Final transcription reconciles the uninterrupted full attempt after automatic
+  completion or `Finish now`. Matched-token evidence from live windows is
+  combined with the final pass so one failed reconciliation cannot erase
+  already confirmed reading.
 
 ## Acceptance evidence to collect
 
