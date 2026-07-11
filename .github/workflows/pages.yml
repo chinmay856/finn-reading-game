@@ -1,4 +1,4 @@
-name: Deploy StoryQuest to GitHub Pages
+name: Deploy Game for Finn to GitHub Pages
 
 on:
   push:

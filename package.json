@@ -1,0 +1,10 @@
+{
+  "name": "finn-reading-phone-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check app.js && node --check reading-engine.js && node --check scripts/serve.mjs",
+    "test": "node --test"
+  }
+}
