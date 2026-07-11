@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/apps/internet-recovery/visual-polish.css">
   <link rel="stylesheet" href="/apps/internet-recovery/repair-outcome.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/diagnostics.css">
 </head>
 <body>
   <div class="page-frame">
@@ -88,7 +89,13 @@
             <div id="repairEdge" class="repair-edge" aria-hidden="true"></div>
             <div id="technoRepairSprite" class="techno-repair-sprite" aria-hidden="true"><img id="technoRepairSpriteImage" src="/apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp" alt=""></div>
           </div>
-          <footer class="browser-status"><b id="siteStatus">STATUS: CORRUPTED</b><span id="repairPercent">0% repaired</span><span id="latency">Waiting for first checkpoint</span></footer>
+          <footer class="browser-status">
+            <b id="siteStatus">STATUS: CORRUPTED</b>
+            <div id="campaignMeter" class="campaign-meter" role="progressbar" aria-label="WikiWhy site stability" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="campaignMeterLabel">SITE STABILITY</span><i><em id="campaignMeterFill"></em></i><strong id="campaignMeterValue">0%</strong>
+            </div>
+            <span id="repairPercent">0% repaired</span><span id="latency">Waiting for first checkpoint</span>
+          </footer>
         </article>
 
         <aside class="os-window reader-window">
@@ -128,6 +135,31 @@
           <div class="window-body"><small>OPTIONAL EVIDENCE CHECK</small><h3 id="quizQuestion">Why does the passage say oxygen is not the plant's main goal?</h3><button data-choice="0"></button><button data-choice="1"></button><button data-choice="2"></button><p id="quizFeedback" role="status">Answer for a stronger repair, or continue without it.</p><div id="payoff" class="payoff" hidden><b>EVIDENCE CONFIRMED</b><span>That matches the file. The repair has more to work with.</span></div></div>
         </aside>
       </section>
+
+      <aside class="diagnostic-controls" aria-label="Prototype test controls">
+        <button id="diagnosticToggle" class="diagnostic-toggle" type="button" aria-expanded="false" aria-controls="diagnosticPanel">TEST</button>
+        <section id="diagnosticPanel" class="diagnostic-panel" hidden>
+          <div class="window-titlebar"><span>CAMPAIGN_TEST.exe</span><button id="diagnosticClose" type="button" aria-label="Close test controls">×</button></div>
+          <div class="diagnostic-body">
+            <small>WRAPPER-ONLY DIAGNOSTICS</small>
+            <b id="diagnosticPhase">ACT I · SITE STABILITY 0%</b>
+            <p id="diagnosticSummary">Simulate a strong passage result to inspect campaign progress and story transitions.</p>
+            <button id="diagnosticAdvance" class="os-button primary" type="button">Skip simulated passage →</button>
+            <button id="diagnosticReset" class="os-button" type="button">Reset test campaign</button>
+            <p class="diagnostic-truth">Test passes create no reading score and never save audio or transcript text. Diagnostic progress is stored separately from real repairs.</p>
+          </div>
+        </section>
+      </aside>
+
+      <div id="characterDialogLayer" class="character-dialog-layer" hidden>
+        <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogBody">
+          <div class="window-titlebar"><span id="dialogTitle">AMY // ENGINEER CHANNEL</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="character-dialog-body">
+            <img id="dialogPortrait" src="/apps/internet-recovery/art/characters/dialogue/amy-engineer.jpg" alt="">
+            <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
+          </div>
+        </article>
+      </div>
 
       <footer class="taskbar"><button class="start-button" type="button">START</button><div class="task-button">▣ WikiWhy — repair</div><div class="task-button">▤ Reading Companion</div><div class="task-spacer"></div><div class="tray"><span aria-hidden="true">▮▮▮</span><time id="desktopClock">12:00 AM</time></div></footer>
     </main>
