@@ -224,6 +224,24 @@ unique progress fiction and midpoint, and a researched reading-source lane.
 These are design proposals awaiting site-by-site review; they are not current
 prototype implementation scope.
 
+The proposed campaign spine now connects those ten independent site stories
+without imposing one global progress mechanic. WikiWhy is the onboarding case;
+later site order can vary. Global Chinmay/Amy story turns trigger from the
+number of secured sites and evidence files, while the hub shows at most three
+Incoming Cases. Ten secured sites produce a genuine apparent finish. An
+unexpected eleventh live evidence file then starts the separate, singular
+breach of Amy's previously trustworthy recovery desktop and leads to outside
+administrator revocation. This remains design-only and is not a request to
+implement campaign state in the current mechanics test.
+
+One review-only grades 10–12 sample is now drafted for each non-WikiWhy site.
+The sampler spans argumentative nonfiction, literary retelling, reflective
+prose, historical journalism, science fiction, paired-source digital literacy,
+consumer information, music history, and cartography. Each entry records its
+source, rights basis, adaptation, independent question, sensitivity notes, and
+speech risks. The texts still require factual/content review, frozen source
+records, jurisdiction review, and real-microphone testing before production use.
+
 ## Known limitations
 
 - One real Chrome microphone line passed locally at 95% estimated accuracy and

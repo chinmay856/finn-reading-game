@@ -8,6 +8,12 @@ humanities, science, evidence, inference, structure, purpose, and cross-text
 reasoning. Official SAT and ACT passages/questions should not be copied without
 permission. Select our own lawful source texts and write original questions.
 
+The first review-only application of this research is the
+[`nine-site sample passage sampler`](../../content/proposed-sites/SAMPLE_PASSAGES.md).
+It provides one adapted sample per proposed non-WikiWhy site so reading
+identity, rights metadata, question design, sensitivity, and speech risk can be
+reviewed before full decks are commissioned.
+
 ## Preferred source classes
 
 1. **Verified U.S. public-domain literature.** Project Gutenberg is a discovery

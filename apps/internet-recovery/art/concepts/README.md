@@ -13,6 +13,9 @@ are design references, not production UI or final sprite exports.
   principle story arcs.
 - `wikiwhy-reader-and-repair-wipe.png` — current preferred vertical-slice layout:
   independent continuous reader plus a reusable left-to-right page repair wipe.
+- `campaign-spine-and-hub-v3.png` — count-based ten-site campaign hub, Case
+  File mystery, genuine `10 OF 10` apparent finish, and the separate eleventh
+  live-evidence breach.
 
 The private Amy/Chinmay and Techno photo references used during exploration are
 intentionally excluded from the repository. Future production assets should be
@@ -32,6 +35,11 @@ only the apparent-problem, middle-change, site-specific-resolution rhythm.
 Nine additional proposed site boards are indexed under
 [`sites/`](sites/README.md). They remain review-only and deliberately use
 different progress metaphors and midpoint changes.
+
+The campaign-spine board accompanies
+[`CAMPAIGN_SPINE_AND_HUB.md`](../../../../docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md).
+It shows one visual proposal for the stable recovery desktop and global story
+counts; it does not replace any site's independent campaign mechanics.
 
 The next concept set explores the two-act WikiWhy campaign flow documented in
 [`docs/gameplay/SITE_CAMPAIGN_FLOW.md`](../../../../docs/gameplay/SITE_CAMPAIGN_FLOW.md):
