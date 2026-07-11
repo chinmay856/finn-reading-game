@@ -1,5 +1,21 @@
 # Session handoff
 
+## Local non-audio session state track
+
+- Added a versioned, theme-neutral Reading Platform session history stored only
+  in this browser. It saves passage/session IDs, completion time, duration,
+  accuracy, confirmed/total words, progress, WPM, and comprehension outcome.
+- The store explicitly discards raw audio, transcript text, checkpoint text,
+  browser identity, and wrapper terminology. It is capped at 20 sessions.
+- Added a separate Internet Recovery 98 WikiWhy repair record, written only
+  when the player chooses Continue. The wrapper state does not enter the Reading
+  Engine session format.
+- Browser storage is optional. Blocked access, malformed data, policy errors,
+  and quota failures fall back safely without interrupting reading or scoring.
+- Recommended next action: finish the first WikiWhy vertical slice by mapping a
+  saved, comprehended reading result to one visible but optional repair outcome;
+  keep the speech adapter swappable while Moonshine remains unproven.
+
 ## WikiWhy interface track
 
 - Reviewed the complete merged prototype handoff, campaign flow, character

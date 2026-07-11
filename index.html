@@ -37,6 +37,7 @@
             <p class="privacy-truth" data-copy-id="privacy.microphone.truth">Your voice is processed on this device. The game does not upload or save your audio or transcript.</p>
             <button id="begin" class="os-button primary">Prepare microphone</button>
             <p id="modelProgress" class="model-progress" role="status">Your browser will ask for microphone permission next.</p>
+            <p id="savedRepairStatus" class="model-progress" role="status" hidden></p>
             <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
           </div>
         </article>
@@ -87,6 +88,7 @@
             <div class="summary"><div><span>Accuracy estimate</span><b id="finalAccuracy">—</b></div><div><span>Words confirmed</span><b id="finalCorrect">—</b></div><div><span>Pace</span><b id="finalSpeed">—</b></div><div><span>Passage progress</span><b id="finalProgress">—</b></div></div>
             <div class="actions"><button id="continueResult" class="os-button primary">Continue</button><button id="again" class="os-button">Try this passage again</button><button id="export" class="os-button">Copy timing report</button></div>
             <p id="reportStatus" class="fine" role="status" data-copy-id="result.report.truth">The report contains timing and scores, never audio or transcript text.</p>
+            <p id="saveStatus" class="fine" role="status">No audio or transcript text is stored.</p>
             <details class="transcript-diagnostics"><summary>Inspect this session’s local transcripts</summary><p>Shown only in this tab for diagnosis. Reloading clears them; copied timing reports exclude them.</p><h3>Final transcript</h3><pre id="finalTranscript"></pre><h3>Live checkpoints</h3><pre id="checkpointTranscripts"></pre></details>
           </div>
         </article>
