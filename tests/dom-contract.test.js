@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 test("every app DOM reference exists in the prototype HTML", async () => {
@@ -78,6 +78,20 @@ test("implemented wrapper copy uses stable IDs outside the Reading Engine", asyn
   assert.match(html, /data-copy-id="mission\.preparation\.title"/u);
   assert.match(app, /hydrateInternetRecoveryCopy/u);
   assert.doesNotMatch(engine, /mission\.preparation|privacy\.microphone|WikiWhy/u);
+});
+
+test("WikiWhy production art stays in the wrapper and is wired into the page", async () => {
+  const [engine, html] = await Promise.all([
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/wikiwhy-globe.png", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/site-assets/wikiwhy-toast-evidence.png", import.meta.url)),
+  ]);
+  assert.match(html, /wikiwhy-globe\.png/u);
+  assert.match(html, /wikiwhy-toast-evidence\.png/u);
+  assert.match(html, /visual-polish\.css/u);
+  assert.match(html, /class="wiki-masthead"/u);
+  assert.doesNotMatch(engine, /site-assets|wikiwhy-globe|toast-evidence/iu);
 });
 
 test("live checkpoints cannot fragment the final recording", async () => {

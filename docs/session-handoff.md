@@ -1,5 +1,27 @@
 # Session handoff
 
+## WikiWhy visual-fidelity pass
+
+- Compared the live prototype directly with the reviewed WikiWhy reader/repair
+  board, parody-site states, Amy/Techno character board, and recovery-hub board.
+- Added an original production WikiWhy globe mark and buttered-toast evidence
+  image under the wrapper-owned `art/site-assets/` directory, with prompt and
+  provenance notes. They do not enter Content Platform, Reading Engine, or Game
+  Rules data.
+- Brought the live page closer to the approved boards with a real WikiWhy
+  masthead, search/account chrome, explicit corrupted/repaired integrity labels,
+  stronger Windows-style title bars and taskbar, a white encyclopedia page,
+  tighter typography, a clearer repair edge, and a subtle optional CRT texture.
+- Preserved the large-site / narrow-reader layout, continuous reading behavior,
+  progress wipe, optional comprehension, privacy boundary, and persistent
+  stability consequence unchanged.
+- Techno animation assets are intentionally not included in this branch. A
+  parallel thread owns those production sprites; integrate them after they are
+  published rather than generating a competing set here.
+- Recommended next visual action: load the reviewed Techno animation sheet into
+  the reserved wrapper areas, then judge the complete read/outcome screen at a
+  1536×960 desktop viewport before adding more art.
+
 ## Persistent WikiWhy repair consequence
 
 - The completed reading now produces one visible WikiWhy stability outcome
