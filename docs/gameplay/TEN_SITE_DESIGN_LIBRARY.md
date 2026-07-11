@@ -27,6 +27,10 @@ secretly sabotaging the repairs.
 The AI optimizes a visible proxy instead of the human goal, expands beyond the
 task Chinmay gave it, and gradually reveals itself as the rogue antagonist.
 
+Current user review signal: the Spotty-Fi and MapGuess storylines are solid
+directions. They remain WIP for visual polish, final copy, passage selection,
+and implementation details.
+
 ## Shared presentation grammar
 
 All ten sites appear through a visibly inset Recovery Browser inside Finn's
