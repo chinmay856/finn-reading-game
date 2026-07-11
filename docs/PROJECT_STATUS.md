@@ -60,11 +60,11 @@ while validating the engine.
 
 ## Immediate next action
 
-Publish the proven WebAssembly-default build, then run the complete four-line
-loop from the HTTPS GitHub Pages URL in current Chrome. Compare local transcripts
-with what was read, observe first-load time and per-line latency, and paste the
-no-audio diagnostic report into Codex if a score feels unfair. Test Edge and a
-second WebAssembly-capable desktop browser after Chrome establishes the baseline.
+Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
+current Chrome. Compare local transcripts with what was read, observe first-load
+time and per-line latency, and paste the no-audio diagnostic report into Codex if
+a score feels unfair. Test Edge and a second WebAssembly-capable desktop browser
+after Chrome establishes the baseline.
 
 ## Known limitations
 
