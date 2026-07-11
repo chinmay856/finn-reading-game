@@ -2,8 +2,8 @@
 
 ## Current state
 
-- Branch: `agent/speech-tool-research`
-- Authoritative base: GitHub `main` at `67824e7`
+- Branch: `main`
+- Authoritative state: merge commit `7c3ef5d` from PR #6
 - Target: desktop browser; the earlier mobile loop remains preserved in Git
 - Speech engine: local Transformers.js `3.7.1` with
   `onnx-community/whisper-base_timestamped`
@@ -12,6 +12,9 @@
   discarded; reports contain neither audio nor transcripts
 - Deployment remains GitHub Pages at
   <https://chinmay856.github.io/finn-reading-game/>
+- CI and Pages deployment both passed for `7c3ef5d`; the live HTTPS page was
+  opened in Chrome and verified to serve the new desktop build without console
+  warnings or errors
 
 ## Evidence gathered
 
@@ -61,6 +64,6 @@ punctuation-aware pace, and the WASM default.
 ## Remaining risk and next step
 
 The local one-line Chrome result is strong, but the complete four-line flow has
-not yet been repeated from the published HTTPS URL. Publish this branch, verify
-GitHub Actions and Pages, then run one full Chrome session. Do not optimize
-mobile or re-enable WebGPU by default without new evidence.
+not yet been repeated from the published HTTPS URL. Run one full Chrome session
+from the live URL next. Do not optimize mobile or re-enable WebGPU by default
+without new evidence.
