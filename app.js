@@ -1,49 +1,47 @@
-import { alignTranscript, tokenizeText } from "./reading-engine.js?v=phone-test-1";
+import { alignTranscript, estimateReadingPace, tokenizeText } from "./reading-engine.js";
+import { LocalAudioCapture } from "./speech/audio-capture.js";
+import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
 const LINES = [
-  "When Mary Lennox was sent to Misselthwaite Manor to live with her uncle, everybody said she was the most disagreeable-looking child ever seen.",
+  "When Mary Lennox was sent to live with her uncle in an old manor, everyone thought she looked unfriendly and unhappy.",
   "She had a little thin face and a little thin body, thin light hair and a sour expression.",
   "But the fresh air, the moor, and the mystery of the locked garden slowly began to change her.",
   "Before long, Mary discovered that caring for the garden also taught her how to care for other people.",
 ];
-const SpeechRecognitionApi = window.SpeechRecognition || window.webkitSpeechRecognition;
+const MODEL_ID = "onnx-community/whisper-base_timestamped";
 const $ = (id) => document.getElementById(id);
 const screens = ["setup", "read", "review"];
-const WORD_PART = /^[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*$/u;
-const ERROR_MESSAGES = {
-  "audio-capture": "No microphone input was available. Check that another app is not using the microphone, then try again.",
-  network: "The browser speech service could not be reached. Check the connection and try again; nothing was scored.",
-  "no-speech": "No speech was detected. Nothing was scored. Tap Start reading and try again.",
-  "not-allowed": "Microphone or speech recognition was blocked. Allow Microphone for this site, reload, and try again.",
-  "service-not-allowed": "The browser blocked its speech service. Check this site's Microphone permission or try the target browser again.",
-};
+const WORD_PART = /^[\p{L}\p{N}]+(?:[\u2019'][\p{L}\p{N}]+)*$/u;
+const requestedSpeechDevice = new URLSearchParams(window.location.search).get("speechDevice");
+const capture = new LocalAudioCapture();
 
 const S = {
-  activeDurationMs: 0,
   checking: false,
   diagnostics: [],
+  durationMs: 0,
   finalText: "",
   goal: 85,
-  interim: "",
   line: 0,
   listening: false,
-  max: 150,
-  min: 85,
+  min: 100,
+  modelDevice: null,
   pending: null,
   permission: "not-requested",
-  rec: null,
+  previewPromise: null,
+  previewTimer: null,
   results: [],
-  segmentFirstSpeechAt: 0,
-  segmentLastSpeechAt: 0,
-  segmentStartedAt: 0,
   sessionStartedAt: 0,
   starting: false,
-  stopResolver: null,
   tries: Array(LINES.length).fill(0),
 };
 
+function addDiagnostic(type, details = {}) {
+  S.diagnostics.push({ at: new Date().toISOString(), type, ...details });
+  if (S.diagnostics.length > 60) S.diagnostics.shift();
+}
+
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"]/g, (character) => ({
+  return String(value).replace(/[&<>"]/gu, (character) => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -51,13 +49,28 @@ function escapeHtml(value) {
   })[character]);
 }
 
-function transcript() {
-  return [S.finalText, S.interim].filter(Boolean).join(" ").trim();
+function formatModelProgress(data = {}) {
+  if (data.message) return data.message;
+  if (data.status === "progress" && Number.isFinite(data.progress)) {
+    return `Downloading local model: ${Math.round(data.progress)}%`;
+  }
+  if (data.status === "download") return "Downloading the local speech model...";
+  if (data.status === "initiate") return "Preparing model files...";
+  if (data.status === "done") return "Model file ready...";
+  if (data.status === "ready") return "Local speech runtime ready...";
+  return "Preparing the local speech engine...";
 }
 
-function addDiagnostic(type, details = {}) {
-  S.diagnostics.push({ at: new Date().toISOString(), type, ...details });
-  if (S.diagnostics.length > 60) S.diagnostics.shift();
+const recognizer = new LocalWhisperRecognizer({
+  onProgress(data) {
+    const message = formatModelProgress(data);
+    $("modelProgress").textContent = message;
+    $("modelProgress").hidden = false;
+  },
+});
+
+function transcript() {
+  return S.finalText.trim();
 }
 
 function notice(message = "") {
@@ -95,7 +108,7 @@ function alignmentStatuses(alignment, final = false) {
 function render(statuses = []) {
   $("passage").innerHTML = LINES.map((line, lineIndex) => {
     let tokenIndex = 0;
-    const text = line.split(/([\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*)/gu)
+    const text = line.split(/([\p{L}\p{N}]+(?:[\u2019'][\p{L}\p{N}]+)*)/gu)
       .map((part) => {
         if (lineIndex !== S.line || !WORD_PART.test(part)) return escapeHtml(part);
         const status = statuses[tokenIndex] ?? "";
@@ -108,36 +121,26 @@ function render(statuses = []) {
   }).join("");
 }
 
-function currentSegmentDuration() {
-  if (!S.segmentLastSpeechAt) return 0;
-  const liveDuration = S.segmentLastSpeechAt - S.segmentFirstSpeechAt;
-  const measuredStart = liveDuration >= 1_000 ? S.segmentFirstSpeechAt : S.segmentStartedAt;
-  return Math.max(2_000, S.segmentLastSpeechAt - measuredStart);
-}
-
-function finishSegment() {
-  S.activeDurationMs += currentSegmentDuration();
-  S.segmentFirstSpeechAt = 0;
-  S.segmentLastSpeechAt = 0;
-  S.segmentStartedAt = 0;
-}
-
 function metrics() {
   const alignment = alignTranscript(LINES[S.line], transcript());
-  const durationMs = S.activeDurationMs + currentSegmentDuration();
+  const durationMs = S.durationMs || capture.durationMs;
   const countedWords = Math.max(
     alignment.matchedCount,
     alignment.spokenWordCount - alignment.fillerWords - alignment.repeatedWords,
   );
-  const wpm = durationMs ? Math.round(countedWords / (durationMs / 60_000)) : 0;
-  return { alignment, durationMs, wpm };
+  const paceEstimate = estimateReadingPace({
+    durationMs,
+    expectedText: LINES[S.line],
+    wordCount: countedWords,
+  });
+  return { alignment, ...paceEstimate };
 }
 
 function pace(wpm) {
   if (!wpm) return ["--", ""];
-  if (wpm < S.min) return ["Below target", "warn"];
-  if (wpm > S.max) return ["Above target", "warn"];
-  return ["On target", "good"];
+  if (wpm < S.min) return ["Building speed", "warn"];
+  if (wpm >= S.min + 30) return ["Fast pace", "good"];
+  return ["Goal reached", "good"];
 }
 
 function aggregate(includeCurrent = true) {
@@ -162,7 +165,7 @@ function aggregate(includeCurrent = true) {
   };
 }
 
-function renderLive() {
+function renderLive(final = false) {
   const current = metrics();
   const session = aggregate(true);
   const paceResult = pace(current.wpm);
@@ -171,145 +174,105 @@ function renderLive() {
   $("pace").textContent = paceResult[0];
   $("pace").className = paceResult[1];
   $("correct").textContent = session.correct;
-  render(alignmentStatuses(current.alignment));
+  render(alignmentStatuses(current.alignment, final));
 }
 
-function errorMessage(code) {
-  return ERROR_MESSAGES[code] ?? `Speech recognition reported "${code}". Try again; nothing was automatically accepted.`;
+async function runPreview() {
+  if (!S.listening || S.previewPromise || capture.durationMs < 2_000) return;
+  const audio = await capture.snapshot();
+  if (!audio.length) return;
+  S.previewPromise = recognizer.transcribe(audio)
+    .then((text) => {
+      if (!S.listening || !text) return;
+      S.finalText = text;
+      $("heard").textContent = text;
+      renderLive();
+      addDiagnostic("local-preview", { line: S.line + 1 });
+    })
+    .catch((error) => {
+      addDiagnostic("local-preview-error", { message: error.message });
+    })
+    .finally(() => { S.previewPromise = null; });
+  await S.previewPromise;
 }
 
-function createRecognition() {
-  const recognition = new SpeechRecognitionApi();
-  const baseFinalText = S.finalText;
-  let hadError = false;
-  recognition.lang = "en-US";
-  recognition.continuous = false;
-  recognition.interimResults = true;
-  recognition.maxAlternatives = 1;
-
-  recognition.onstart = () => {
-    S.starting = false;
-    S.listening = true;
-    S.segmentStartedAt = Date.now();
-    setState("Listening", "live");
-    $("listen").disabled = false;
-    $("listen").textContent = "Stop listening";
-    notice("");
-    addDiagnostic("recognition-start", { line: S.line + 1 });
-  };
-
-  recognition.onresult = (event) => {
-    let finalText = "";
-    let interimText = "";
-    for (let index = 0; index < event.results.length; index += 1) {
-      const text = event.results[index][0]?.transcript?.trim() ?? "";
-      if (event.results[index].isFinal) finalText += `${text} `;
-      else interimText += `${text} `;
-    }
-    S.finalText = [baseFinalText, finalText.trim()].filter(Boolean).join(" ");
-    S.interim = interimText.trim();
-    const now = Date.now();
-    if (transcript() && !S.segmentFirstSpeechAt) S.segmentFirstSpeechAt = now;
-    if (transcript()) S.segmentLastSpeechAt = now;
-    $("heard").textContent = transcript() || "--";
-    $("check").disabled = !transcript();
-    renderLive();
-  };
-
-  recognition.onerror = (event) => {
-    hadError = event.error !== "aborted";
-    addDiagnostic("recognition-error", { code: event.error || "unknown", line: S.line + 1 });
-    if (event.error !== "aborted") notice(errorMessage(event.error || "unknown"));
-  };
-
-  recognition.onend = () => {
-    finishSegment();
-    S.starting = false;
-    S.listening = false;
-    S.rec = null;
-    $("listen").disabled = false;
-    $("listen").textContent = "Start reading";
-    $("check").disabled = !transcript();
-    if (!S.checking) {
-      if (hadError) setState("Needs attention", "warn");
-      else if (transcript()) {
-        setState("Paused", "warn");
-        notice("Speech stopped. Review what the browser heard, then tap Check line or Start reading to continue.");
-      } else setState("Ready");
-    }
-    addDiagnostic("recognition-end", { hadTranscript: Boolean(transcript()), line: S.line + 1 });
-    S.stopResolver?.();
-    S.stopResolver = null;
-  };
-  return recognition;
-}
-
-function startReading() {
-  if (!SpeechRecognitionApi || S.starting || S.listening || S.checking) return;
+async function startReading() {
+  if (!recognizer.ready || S.starting || S.listening || S.checking) return;
   notice("");
   S.starting = true;
   $("listen").disabled = true;
   $("listen").textContent = "Starting...";
   setState("Starting", "warn");
   try {
-    S.rec = createRecognition();
-    S.rec.start();
+    await capture.start();
+    S.starting = false;
+    S.listening = true;
+    S.durationMs = 0;
+    setState("Listening locally", "live");
+    $("listen").disabled = false;
+    $("listen").textContent = "Stop listening";
+    window.setTimeout(() => { if (S.listening) $("check").disabled = false; }, 800);
+    S.previewTimer = window.setInterval(runPreview, 3_500);
+    addDiagnostic("local-capture-start", { line: S.line + 1 });
   } catch (error) {
     S.starting = false;
-    S.rec = null;
+    S.listening = false;
     $("listen").disabled = false;
     $("listen").textContent = "Start reading";
-    setState("Ready");
-    addDiagnostic("recognition-start-error", { name: error?.name ?? "Error" });
-    notice("The browser could not start speech recognition. Wait a moment, then tap Start reading again.");
+    setState("Needs attention", "warn");
+    addDiagnostic("local-capture-error", { message: error.message });
+    notice(error?.name === "NotAllowedError"
+      ? "Microphone access was blocked. Allow Microphone for this site, reload, and try again."
+      : "The microphone could not start. Check that another app is not using it, then try again.");
   }
 }
 
-function stopListening() {
-  if (!S.rec || (!S.listening && !S.starting)) return Promise.resolve();
-  return new Promise((resolve) => {
-    const recognition = S.rec;
-    let settled = false;
-    let timeoutId;
-    const finish = () => {
-      if (settled) return;
-      settled = true;
-      window.clearTimeout(timeoutId);
-      resolve();
-    };
-    S.stopResolver = finish;
-    timeoutId = window.setTimeout(() => {
-      if (S.rec === recognition) {
-        recognition.onend = null;
-        recognition.onerror = null;
-        recognition.onresult = null;
-        finishSegment();
-        S.listening = false;
-        S.starting = false;
-        S.rec = null;
-        $("listen").disabled = false;
-        $("listen").textContent = "Start reading";
-        addDiagnostic("recognition-stop-timeout", { line: S.line + 1 });
-      }
-      finish();
-    }, 1_200);
-    try {
-      if (S.listening) recognition.stop();
-      else recognition.abort();
-    } catch {
-      finish();
+async function stopListening() {
+  if (!capture.active) return transcript();
+  S.listening = false;
+  S.starting = false;
+  window.clearInterval(S.previewTimer);
+  S.previewTimer = null;
+  $("listen").disabled = true;
+  $("check").disabled = true;
+  $("listen").textContent = "Transcribing...";
+  setState("Transcribing locally", "warn");
+
+  const { audio, durationMs, signal } = await capture.stop();
+  S.durationMs = durationMs;
+  $("signalCheck").textContent = `Last microphone signal: RMS ${signal.rms}, peak ${signal.peak}, active frames ${Math.round(signal.activeFrameRatio * 100)}%.`;
+  if (S.previewPromise) await S.previewPromise;
+  try {
+    const text = await recognizer.transcribe(audio);
+    S.finalText = text;
+    $("heard").textContent = text || "--";
+    renderLive(true);
+    addDiagnostic("local-transcription", {
+      durationMs,
+      hadTranscript: Boolean(text),
+      line: S.line + 1,
+      signal,
+    });
+    if (!text) notice("The local model did not detect speech. Nothing was scored; try the line again.");
+    else if (signal.rms < 0.01 || signal.peak < 0.04) {
+      notice("The microphone signal was very quiet. Move closer to the microphone or raise its input level, then retry.");
     }
-  });
+  } catch (error) {
+    addDiagnostic("local-transcription-error", { message: error.message });
+    notice("Local transcription failed. The recording was discarded; retry the line.");
+  } finally {
+    $("listen").disabled = false;
+    $("listen").textContent = "Start reading";
+    $("check").disabled = !transcript();
+    setState(transcript() ? "Ready to check" : "Ready", transcript() ? "good" : "");
+  }
+  return transcript();
 }
 
 function resetLine() {
-  S.activeDurationMs = 0;
+  S.durationMs = 0;
   S.finalText = "";
-  S.interim = "";
   S.pending = null;
-  S.segmentFirstSpeechAt = 0;
-  S.segmentLastSpeechAt = 0;
-  S.segmentStartedAt = 0;
   $("heard").textContent = "--";
   $("coach").hidden = true;
   $("controls").hidden = false;
@@ -323,19 +286,21 @@ function resetLine() {
 function lineResult(force = false) {
   const current = metrics();
   const accuracyPass = current.alignment.accuracy >= S.goal;
-  const pacePass = current.wpm >= S.min && current.wpm <= S.max;
+  const pacePass = current.wpm >= S.min;
   return {
     accuracy: current.alignment.accuracy,
     accuracyPass,
+    adjustedDurationMs: current.adjustedDurationMs,
     attempts: S.tries[S.line],
     correct: current.alignment.matchedCount,
-    durationMs: current.durationMs,
+    durationMs: current.rawDurationMs,
     fillerWords: current.alignment.fillerWords,
     forced: force,
     line: S.line,
     missedWords: current.alignment.missedWords,
     pacePass,
     passed: force || (accuracyPass && pacePass),
+    pauseAllowanceMs: current.pauseAllowanceMs,
     repeatedWords: current.alignment.repeatedWords,
     selfCorrections: current.alignment.selfCorrections,
     total: current.alignment.expectedTokens.length,
@@ -350,13 +315,14 @@ function coach(result) {
   $("coach").hidden = false;
   const details = [];
   if (!result.accuracyPass) details.push(`Estimated accuracy ${result.accuracy}% (goal ${S.goal}%).`);
-  if (!result.pacePass) details.push(`Estimated pace ${result.wpm || 0} WPM (target ${S.min}-${S.max}).`);
-  if (result.missedWords.length) details.push(`Browser may have missed: ${result.missedWords.slice(0, 6).join(", ")}.`);
-  details.push("This is an estimate. Retry the line, or accept it if the browser heard you wrong.");
-  $("coachTitle").textContent = result.accuracyPass ? "Good words -- adjust the pace." : "Try that line once more.";
+  if (!result.pacePass) details.push(`Estimated speed ${result.wpm || 0} WPM (goal ${S.min}+).`);
+  if (result.missedWords.length) details.push(`The model may have missed: ${result.missedWords.slice(0, 6).join(", ")}.`);
+  details.push("Punctuation pauses are forgiven. Retry, or accept if the local model heard you wrong.");
+  if (result.accuracyPass) $("coachTitle").textContent = "Clear enough -- try it faster.";
+  else if (result.pacePass) $("coachTitle").textContent = "Fast -- make the words clearer.";
+  else $("coachTitle").textContent = "Try that line once more.";
   $("coachText").textContent = details.join(" ");
-  const alignment = alignTranscript(LINES[S.line], transcript());
-  render(alignmentStatuses(alignment, true));
+  renderLive(true);
   setState("Retry or accept", "warn");
 }
 
@@ -373,13 +339,16 @@ function advance(result) {
 }
 
 async function checkLine(force = false) {
-  if (S.checking || (!transcript() && !force)) {
-    if (!transcript() && !force) notice("Read some of the highlighted line before checking it.");
-    return;
-  }
+  if (S.checking) return;
   S.checking = true;
   setState("Checking", "warn");
-  await stopListening();
+  if (S.listening) await stopListening();
+  if (!transcript() && !force) {
+    S.checking = false;
+    notice("Read the highlighted line before checking it.");
+    return;
+  }
+
   let result;
   if (force && S.pending) result = { ...S.pending, forced: true, passed: true };
   else {
@@ -389,7 +358,7 @@ async function checkLine(force = false) {
   }
   S.checking = false;
   addDiagnostic("line-check", {
-    acceptedBrowserEstimate: Boolean(result.forced),
+    acceptedEstimate: Boolean(result.forced),
     accuracy: result.accuracy,
     line: result.line + 1,
     wpm: result.wpm,
@@ -400,20 +369,25 @@ async function checkLine(force = false) {
 
 function sessionReport() {
   return {
-    appVersion: "phone-test-1",
+    appVersion: "desktop-local-1",
     capabilities: {
       microphoneApi: Boolean(navigator.mediaDevices?.getUserMedia),
       secureContext: window.isSecureContext,
-      speechRecognitionApi: Boolean(SpeechRecognitionApi),
+      webGpu: Boolean(navigator.gpu),
+      webWorker: Boolean(window.Worker),
     },
     completedAt: new Date().toISOString(),
     diagnostics: S.diagnostics,
-    noRawAudioStored: true,
     page: window.location.href,
-    permission: S.permission,
+    privacy: {
+      audioUploadedByApp: false,
+      rawAudioStored: false,
+      transcriptStored: false,
+    },
     results: S.results,
     sessionStartedAt: S.sessionStartedAt ? new Date(S.sessionStartedAt).toISOString() : null,
-    targets: { accuracy: S.goal, maximumWpm: S.max, minimumWpm: S.min },
+    speechEngine: { device: S.modelDevice, model: MODEL_ID, processing: "in-browser" },
+    targets: { accuracy: S.goal, minimumWpm: S.min },
     userAgent: navigator.userAgent,
   };
 }
@@ -423,7 +397,7 @@ function downloadReport(text) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `finn-reading-test-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+  link.download = `finn-reading-test-${new Date().toISOString().replace(/[:.]/gu, "-")}.json`;
   document.body.append(link);
   link.click();
   link.remove();
@@ -435,15 +409,15 @@ async function copyReport() {
   try {
     if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
     await navigator.clipboard.writeText(text);
-    notice("Phone test report copied. It contains scores and browser diagnostics, never audio.");
+    notice("Test report copied. It contains scores and browser diagnostics, never audio or transcripts.");
   } catch {
     downloadReport(text);
-    notice("The browser downloaded the phone test report. It contains scores and diagnostics, never audio.");
+    notice("The browser downloaded the test report. It contains scores and diagnostics, never audio or transcripts.");
   }
 }
 
 async function finish() {
-  await stopListening();
+  if (S.listening) await stopListening();
   const total = S.results.reduce((sum, item) => sum + item.total, 0);
   const weightedAccuracy = S.results.reduce((sum, item) => sum + (item.accuracy * item.total), 0);
   const correct = S.results.reduce((sum, item) => sum + item.correct, 0);
@@ -466,24 +440,19 @@ async function finish() {
 
 function begin() {
   S.min = Number($("minWpm").value);
-  S.max = Number($("maxWpm").value);
   S.goal = Number($("goal").value);
-  if (S.min >= S.max) {
-    notice("Minimum pace must be lower than maximum pace.");
-    return;
-  }
   S.line = 0;
   S.results = [];
   S.tries = Array(LINES.length).fill(0);
   S.sessionStartedAt = Date.now();
-  $("target").textContent = `Target: ${S.min}-${S.max} WPM - ${S.goal}% accuracy`;
+  $("target").textContent = `Goal: ${S.min}+ WPM with ${S.goal}% accuracy`;
   show("read");
   resetLine();
-  notice("Microphone permission is ready. Tap Start reading separately, then read the highlighted line.");
+  notice("The local model is ready. Start reading when you are ready; faster is better when the words stay clear.");
 }
 
 async function requestMicrophonePermission() {
-  if (!window.isSecureContext) throw new Error("This test needs the published HTTPS link.");
+  if (!window.isSecureContext) throw new Error("This test needs the published HTTPS link or localhost.");
   if (!navigator.mediaDevices?.getUserMedia) throw new Error("This browser cannot request microphone access.");
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   stream.getTracks().forEach((track) => track.stop());
@@ -494,30 +463,46 @@ $("begin").onclick = async () => {
   button.disabled = true;
   button.textContent = "Requesting microphone...";
   try {
-    if (!SpeechRecognitionApi) {
-      throw new Error("Speech recognition is unavailable here. Use Safari on iPhone/iPad or Chrome on Android.");
-    }
     await requestMicrophonePermission();
     S.permission = "granted";
     addDiagnostic("microphone-permission", { result: "granted" });
+    button.textContent = "Loading local model...";
+    $("speechCheck").textContent = "loading";
+    $("speechCheck").className = "warn";
+    S.modelDevice = await recognizer.load(requestedSpeechDevice);
+    $("speechCheck").textContent = `ready (${S.modelDevice})`;
+    $("speechCheck").className = "good";
+    $("modelProgress").textContent = "Model cached. Voice processing stays in this browser.";
+    addDiagnostic("local-model-ready", { device: S.modelDevice, model: MODEL_ID });
     begin();
   } catch (error) {
     S.permission = error?.name === "NotAllowedError" ? "denied" : "error";
-    addDiagnostic("microphone-permission", { name: error?.name ?? "Error", result: S.permission });
-    notice(error?.name === "NotAllowedError" ? ERROR_MESSAGES["not-allowed"] : error.message);
+    addDiagnostic("setup-error", { message: error.message, name: error?.name ?? "Error" });
+    $("speechCheck").textContent = "not ready";
+    $("speechCheck").className = "bad";
+    notice(error?.name === "NotAllowedError"
+      ? "Microphone access was blocked. Allow Microphone for this site, reload, and try again."
+      : `The local voice engine could not start: ${error.message}`);
   } finally {
     button.disabled = false;
-    button.textContent = "Enable microphone";
+    button.textContent = "Prepare local voice engine";
   }
 };
 
-$("listen").onclick = () => (S.listening || S.starting ? stopListening() : startReading());
+$("listen").onclick = () => (S.listening ? stopListening() : startReading());
 $("check").onclick = () => checkLine(false);
 $("finish").onclick = finish;
-$("retry").onclick = () => { resetLine(); startReading(); };
+$("retry").onclick = async () => { resetLine(); await startReading(); };
 $("accept").onclick = () => checkLine(true);
-$("again").onclick = () => { S.line = 0; S.results = []; S.tries = Array(LINES.length).fill(0); S.sessionStartedAt = Date.now(); show("read"); resetLine(); };
-$("settings").onclick = async () => { await stopListening(); show("setup"); };
+$("again").onclick = () => {
+  S.line = 0;
+  S.results = [];
+  S.tries = Array(LINES.length).fill(0);
+  S.sessionStartedAt = Date.now();
+  show("read");
+  resetLine();
+};
+$("settings").onclick = async () => { if (S.listening) await stopListening(); show("setup"); };
 $("export").onclick = copyReport;
 
 document.querySelectorAll(".quiz button").forEach((button) => {
@@ -538,9 +523,14 @@ function checkDevice(id, available) {
 
 checkDevice("httpsCheck", window.isSecureContext);
 checkDevice("micCheck", Boolean(navigator.mediaDevices?.getUserMedia));
-checkDevice("speechCheck", Boolean(SpeechRecognitionApi));
+$("speechCheck").textContent = window.Worker ? "not loaded" : "not available";
+$("speechCheck").className = window.Worker ? "warn" : "bad";
 $("browserCheck").textContent = navigator.userAgent;
-if (!window.isSecureContext) notice("This page must be published over HTTPS before a phone can use its microphone.");
-else if (!SpeechRecognitionApi) notice("Use Safari on iPhone/iPad or Chrome on Android for this prototype.");
-window.addEventListener("pagehide", () => { try { S.rec?.abort(); } catch { /* no-op */ } });
+if (!window.isSecureContext) notice("Use the published HTTPS page or localhost so the browser can access the microphone.");
+else if (!window.Worker) notice("This browser cannot run the local speech worker. Use a current desktop browser.");
+window.addEventListener("pagehide", () => {
+  window.clearInterval(S.previewTimer);
+  if (capture.active) capture.stop();
+  recognizer.close();
+});
 render();

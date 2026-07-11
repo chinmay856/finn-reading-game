@@ -23,7 +23,9 @@ The first wrapper is **Internet Recovery OS**.
 - Give every reading action an immediate and visible consequence.
 - Celebrate improvement rather than punishing mistakes.
 - Be forgiving enough to support real read-aloud behavior, including pauses, retries, and self-corrections.
-- Optimize the first prototype for testing whether the core mechanic is usable and fun on a phone.
+- Optimize the first prototype for testing whether the core mechanic is usable
+  and fun in a desktop browser. Preserve the mobile prototype as a side-test
+  reference without making mobile optimization the active priority.
 - Keep the reusable platform independent from the current theme.
 
 ---
@@ -416,15 +418,20 @@ Achievements should reward persistence and improvement, not embarrass Finn for m
 
 ## 8. Immediate prototype priority
 
-The first objective is not a complete game. It is a genuinely playable, mobile-friendly test of the central mechanic.
+The first objective is not a complete game. It is a genuinely playable,
+desktop-browser test of the central mechanic. The test UI is temporary because
+design work is proceeding separately.
 
 ### Prototype must prove
 
-- Microphone permission works on Finn's phone.
+- Microphone permission works in a current desktop browser.
+- Open-source speech recognition runs locally in the browser without the
+  application uploading or retaining audio or transcripts.
 - Spoken reading can advance highlighting in a believable way.
 - Finn understands where he is in the text.
 - Accuracy feedback is useful and not frustrating.
-- Pace feedback feels encouraging.
+- Speed feedback rewards faster reading when the words remain clear.
+- Natural pauses at punctuation do not unfairly reduce the speed score.
 - The reading result causes a visible, funny game reaction.
 - A full loop can be completed in a few minutes.
 
@@ -433,7 +440,7 @@ The first objective is not a complete game. It is a genuinely playable, mobile-f
 ```text
 Open app
 → choose test repair
-→ grant microphone permission
+→ load the cached local model and grant microphone permission
 → read passage aloud
 → see live word/line highlighting
 → finish passage
@@ -451,7 +458,10 @@ Open app
 - limited art
 - limited progression
 
-The prototype should still be deployable over HTTPS because browser microphone APIs commonly require a secure context on phones.
+The prototype should remain deployable over HTTPS because browser microphone
+APIs require a secure context outside localhost. The existing mobile loop and
+its Git history remain available for occasional side testing, but mobile-specific
+optimization is paused.
 
 ---
 
@@ -581,4 +591,8 @@ For every feature, ask:
 
 ## 13. Definition of success for the current stage
 
-The current stage succeeds when Finn can open a link on his phone, grant microphone access, read a passage aloud, follow responsive highlighting, receive forgiving feedback, and feel a satisfying game consequence—without the experience feeling like a school worksheet.
+The current stage succeeds when Finn can open the desktop site, grant microphone
+access, load the local model, read a passage aloud, follow responsive
+highlighting, receive forgiving accuracy and speed feedback, and complete an
+independent comprehension check—without the experience feeling like a school
+worksheet and without the application uploading or retaining his voice data.

@@ -153,3 +153,23 @@ export function estimateWordsPerMinute({ attemptStartedAt, firstSpeechAt, lastSp
   const durationMs = Math.max(2_000, lastSpeechAt - measuredStart);
   return Math.round(wordCount / (durationMs / 60_000));
 }
+
+export function estimateReadingPace({ durationMs, expectedText, wordCount }) {
+  if (!durationMs || !wordCount) {
+    return Object.freeze({ adjustedDurationMs: 0, pauseAllowanceMs: 0, rawDurationMs: 0, wpm: 0 });
+  }
+
+  const text = String(expectedText);
+  const sentenceBreaks = (text.match(/[.!?]+/gu) ?? []).length;
+  const clauseBreaks = (text.match(/[,;:]+|[\u2013\u2014]/gu) ?? []).length;
+  const requestedAllowanceMs = (sentenceBreaks * 650) + (clauseBreaks * 250);
+  const pauseAllowanceMs = Math.round(Math.min(requestedAllowanceMs, durationMs * 0.3));
+  const adjustedDurationMs = Math.max(2_000, durationMs - pauseAllowanceMs);
+
+  return Object.freeze({
+    adjustedDurationMs,
+    pauseAllowanceMs,
+    rawDurationMs: durationMs,
+    wpm: Math.round(wordCount / (adjustedDurationMs / 60_000)),
+  });
+}
