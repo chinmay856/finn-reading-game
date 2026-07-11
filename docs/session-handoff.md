@@ -1,5 +1,27 @@
 # Session handoff
 
+## WikiWhy visual-fidelity pass
+
+- Compared the live prototype directly with the reviewed WikiWhy reader/repair
+  board, parody-site states, Amy/Techno character board, and recovery-hub board.
+- Added an original production WikiWhy globe mark and buttered-toast evidence
+  image under the wrapper-owned `art/site-assets/` directory, with prompt and
+  provenance notes. They do not enter Content Platform, Reading Engine, or Game
+  Rules data.
+- Brought the live page closer to the approved boards with a real WikiWhy
+  masthead, search/account chrome, explicit corrupted/repaired integrity labels,
+  stronger Windows-style title bars and taskbar, a white encyclopedia page,
+  tighter typography, a clearer repair edge, and a subtle optional CRT texture.
+- Preserved the large-site / narrow-reader layout, continuous reading behavior,
+  progress wipe, optional comprehension, privacy boundary, and persistent
+  stability consequence unchanged.
+- The separately produced Techno library is now present. This branch will wire
+  only the documented progress-push proof; all other reaction states remain
+  unhooked until their placement is reviewed.
+- The progress-push proof now follows the confirmed repair boundary. It stays on
+  the still frame until confirmed progress advances, plays one approximately
+  two-second push reaction, then returns to still. Reduced-motion users always
+  receive the still; the other five animation states remain unloaded.
 ## Techno animation library
 
 - Added six approved, wrapper-owned animated WebP states under
@@ -14,9 +36,9 @@
 - Each loop was decoded and visually checked for duplicate characters,
   clipping, inconsistent scale, and missing limbs. Rejected experiments and
   internal review strips are not part of the published asset set.
-- Next action: integrate only the progress-push state into the WikiWhy repair
-  slice first, verify that it does not steal attention from the reader, and use
-  the matching still when reduced motion is requested.
+- The WikiWhy visual-fidelity branch integrates only the progress-push state;
+  the matching still is the default and reduced-motion presentation. The other
+  five reactions remain unreferenced and therefore absent from the live bundle.
 
 ## Persistent WikiWhy repair consequence
 

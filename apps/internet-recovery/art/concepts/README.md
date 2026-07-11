@@ -3,6 +3,10 @@
 These generated boards capture reviewed visual direction for the wrapper. They
 are design references, not production UI or final sprite exports.
 
+Production-ready wrapper images derived from this direction are kept separately
+under [`../site-assets/`](../site-assets/README.md). This prevents the live
+prototype from treating a dense concept board as a shippable screen or sprite.
+
 - `amy-techno-character-board.png` — Amy expressions/support poses and Techno's
   ball-obsessed sprite direction.
 - `dial-up-loading-interstitial.png` — honest, accessible, dial-up-inspired
