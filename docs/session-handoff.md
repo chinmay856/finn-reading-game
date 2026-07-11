@@ -1,5 +1,27 @@
 # Session handoff
 
+## Persistent WikiWhy repair consequence
+
+- The completed reading now produces one visible WikiWhy stability outcome
+  instead of ending at a generic Continue button. The result shows the previous
+  stability, new stability, advance, an in-world reaction, and explicit
+  `READING SAVED · EVIDENCE SAVED` confirmation.
+- A theme-neutral Game Rules function combines completion, accuracy,
+  comprehension, and pace. The WikiWhy-specific rule maps that strength to the
+  documented 10–20% Act I advance. Every accepted reading advances; optional
+  comprehension can strengthen the repair; faster reading has no upper-speed
+  penalty; and no answer can force a retry.
+- Wrapper state now persists stability, repair count, last reaction, and the
+  last applied session ID. Duplicate clicks cannot count a session twice, and
+  existing version 1 saves migrate at the minimum earned 10% per repair.
+- Reloading the prototype enables Recovered Files and displays the saved
+  WikiWhy stability receipt. Storage failure still leaves the current-tab
+  outcome playable and never affects speech scoring.
+- Added `?uiPreview=outcome` for no-microphone visual review of the consequence.
+- Deliberately did not implement the 80% reverse hack, Shield Protocol, hub, or
+  multi-site campaign. The next mechanics decision should come from testing
+  whether this single persistent reward feels connected and satisfying.
+
 ## Local non-audio session state track
 
 - Added a versioned, theme-neutral Reading Platform session history stored only

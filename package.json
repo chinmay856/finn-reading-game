@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "check": "node --check app.js && node --check moonshine-benchmark.js && node --check apps/internet-recovery/copy.js && node --check apps/internet-recovery/wikiwhy-state.js && node --check content/evidence-passage.js && node --check content/wikiwhy/photosynthesis-passage.js && node --check reading-engine.js && node --check reading-guide.js && node --check reading-session-store.js && node --check speech/audio-capture.js && node --check speech/local-whisper-recognizer.js && node --check speech/moonshine-benchmark-worker.js && node --check speech/moonshine-processor.js && node --check speech/whisper-worker.js && node --check vite.config.js",
+    "check": "node --check app.js && node --check moonshine-benchmark.js && node --check apps/internet-recovery/copy.js && node --check apps/internet-recovery/wikiwhy-rules.js && node --check apps/internet-recovery/wikiwhy-state.js && node --check content/evidence-passage.js && node --check content/wikiwhy/photosynthesis-passage.js && node --check game-rules/reading-session-strength.js && node --check reading-engine.js && node --check reading-guide.js && node --check reading-session-store.js && node --check speech/audio-capture.js && node --check speech/local-whisper-recognizer.js && node --check speech/moonshine-benchmark-worker.js && node --check speech/moonshine-processor.js && node --check speech/whisper-worker.js && node --check vite.config.js",
     "dev": "vite",
     "preview": "vite preview",
     "test": "node --test tests/*.test.js"
