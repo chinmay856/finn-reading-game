@@ -1,5 +1,23 @@
 # Session handoff
 
+## Techno animation library
+
+- Added six approved, wrapper-owned animated WebP states under
+  `apps/internet-recovery/art/characters/techno/`: progress push, ball-drop
+  idle, sleep idle, paw alert, bark alert, and tail-wag celebration.
+- Every state uses six transparent frames over approximately two to three
+  seconds and includes a matching still WebP for reduced-motion presentation.
+- The progress-push sprite is intended to move with the wrapper's confirmed
+  repair boundary. Other reactions should be lazy-loaded and remain optional
+  presentation; they do not affect reading, scoring, comprehension, or saved
+  progress.
+- Each loop was decoded and visually checked for duplicate characters,
+  clipping, inconsistent scale, and missing limbs. Rejected experiments and
+  internal review strips are not part of the published asset set.
+- Next action: integrate only the progress-push state into the WikiWhy repair
+  slice first, verify that it does not steal attention from the reader, and use
+  the matching still when reduced motion is requested.
+
 ## Persistent WikiWhy repair consequence
 
 - The completed reading now produces one visible WikiWhy stability outcome
