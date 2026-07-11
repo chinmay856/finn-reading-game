@@ -59,11 +59,14 @@ function mergeChannels(audioBuffer) {
 
 export class LocalAudioCapture {
   constructor() {
+    this.analyser = null;
+    this.audioContext = null;
     this.chunks = [];
     this.mimeType = "";
     this.recorder = null;
     this.startedAt = 0;
     this.stream = null;
+    this.timeDomain = null;
   }
 
   get active() {
@@ -74,11 +77,26 @@ export class LocalAudioCapture {
     return this.startedAt ? Math.round(performance.now() - this.startedAt) : 0;
   }
 
+  get level() {
+    if (!this.analyser || !this.timeDomain) return 0;
+    this.analyser.getFloatTimeDomainData(this.timeDomain);
+    let energy = 0;
+    for (const sample of this.timeDomain) energy += sample * sample;
+    return Math.sqrt(energy / this.timeDomain.length);
+  }
+
   async start() {
     if (this.active) throw new Error("Audio capture is already active.");
     if (!window.MediaRecorder) throw new Error("This browser does not support local microphone recording.");
     this.chunks = [];
     this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const AudioContextApi = window.AudioContext || window.webkitAudioContext;
+    this.audioContext = new AudioContextApi();
+    const source = this.audioContext.createMediaStreamSource(this.stream);
+    this.analyser = this.audioContext.createAnalyser();
+    this.analyser.fftSize = 1024;
+    this.timeDomain = new Float32Array(this.analyser.fftSize);
+    source.connect(this.analyser);
     this.recorder = new MediaRecorder(this.stream);
     this.mimeType = this.recorder.mimeType;
     this.recorder.addEventListener("dataavailable", (event) => {
@@ -132,11 +150,15 @@ export class LocalAudioCapture {
     const audio = trimSilence(decoded);
     const durationMs = Math.round((audio.length / TARGET_SAMPLE_RATE) * 1_000);
     this.stream?.getTracks().forEach((track) => track.stop());
+    await this.audioContext?.close();
+    this.analyser = null;
+    this.audioContext = null;
     this.chunks = [];
     this.mimeType = "";
     this.recorder = null;
     this.startedAt = 0;
     this.stream = null;
+    this.timeDomain = null;
     return { audio, durationMs, signal };
   }
 }

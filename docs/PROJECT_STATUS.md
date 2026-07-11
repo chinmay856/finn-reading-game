@@ -62,6 +62,20 @@ while validating the engine.
   adequate. There is no maximum-WPM penalty, and punctuation pauses receive a
   bounded timing allowance.
 
+## Current WikiWhy spike
+
+The `agent/batched-reading-spike` branch combines the reviewed wrapper design
+foundation with a focused continuous-reading experiment. It replaces four
+manual line checks with one approximately 220-word grades 10–12 passage,
+pause-triggered cumulative local transcription, paragraph-level reader motion,
+and the reusable left-to-right WikiWhy repair wipe. The page reports the last
+checkpoint latency so playtesting can judge naturalness directly.
+
+See [`engine/BATCHED_PROGRESS_SPIKE.md`](engine/BATCHED_PROGRESS_SPIKE.md) for
+the mechanism, research basis, and acceptance evidence. This is still a spike:
+do not generalize its timing constants or UI until a real microphone reading
+shows whether the WASM engine keeps up.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
@@ -70,12 +84,10 @@ time and per-line latency, and paste the no-audio diagnostic report into Codex i
 a score feels unfair. Test Edge and a second WebAssembly-capable desktop browser
 after Chrome establishes the baseline. In parallel, begin the wrapper step below.
 
-Build the first real Internet Recovery OS vertical slice around **WikiWhy**:
-retain the working speech/transcription loop, place one grades 10–12 passage in
-the compact continuous Reading Companion, and map normalized reading progress to
-the simple left-to-right corrupted-to-repaired page wipe. Start with one passage,
-one before/after webpage pair, compact diagnostics, and one satisfying completion
-payoff. Do not build the full multi-site campaign or Shield Protocol yet.
+Publish and read the WikiWhy batched-progress spike in current Chrome. Judge the
+pause-to-progress latency, whether the active paragraph remains easy to follow,
+and whether inference falls behind. Tune or reject the batching approach from
+that evidence before adding campaign progression or production wrapper art.
 
 After the WikiWhy slice is usable, test whether Finn can follow the scrolling
 reader while noticing the page repair without distraction. Use that evidence to
