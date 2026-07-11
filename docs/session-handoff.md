@@ -1,5 +1,42 @@
 # Session handoff
 
+## Copywriting track
+
+- Added `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`, a reviewable wrapper-only
+  deck covering first launch, navigation, mission framing, microphone/privacy,
+  reading states, quiet results, voluntary retries, character dialogue, pop-ups,
+  a clearly labeled fake-virus level, dial-up loading, sabotage, Shield Protocol,
+  achievements, settings, errors, old-Internet references, and final story beats.
+- Approved voice: edgy teen comedy without cruelty; mild profanity; direct use
+  of Finn's name; extensive fourth-wall breaks; and Chinmay as a brilliant,
+  theatrical inventor whose overlooked details defeat his plans.
+- Reading feedback stays minimal and nonjudgmental. Metrics remain visible,
+  recognition uncertainty is explicit, continuing is always available, and no
+  score can force a retry.
+- Canonical wrapper title is now `Internet Recovery 98`. Finn opens it as an
+  ordinary browser-based game, and the game page contains Amy's bounded remote
+  recovery desktop. Amy assembled the new recovery environment from old,
+  pre-generative-AI code that Chinmay's contaminated AI systems did not
+  understand or want to rewrite. The contained desktop uses original parody
+  start/taskbar/browser/terminal conventions and must not imitate Finn's actual
+  operating system or real browser chrome.
+- Techno is a knowing visual sprite who jumps through and helps inside the
+  recovery desktop without a formal introduction or dialogue-character role.
+- Internet Recovery 98 uses a normal `Start` label. The recovery desktop is a
+  stable, trusted shell: taskbar, terminal, Reading Companion, repair tools, Amy
+  tile, and Techno do not become corrupted during ordinary site missions. Only
+  websites nested inside the old browser are unstable. A single explicitly
+  fictional virus breach is reserved as a possible late-game escalation when
+  Chinmay makes a final attempt to regain control.
+- Campaign structure is ten sites and eleven evidence files. Each site supplies
+  one story artifact. Apparent completion at `10 of 10` is interrupted by
+  `EVIDENCE_11.LIVE`, which records Chinmay's AI attempting to breach the
+  recovery desktop. The resulting fake-virus boss arc is the only ordinary-story
+  exception to the desktop's stability and leads to a separate conclusion.
+- Parody-site body copy remains intentionally out of scope for this pass.
+- Implementation has not begun. Review the deck in its suggested section order,
+  then assign stable wrapper copy IDs before wiring approved lines into UI.
+
 ## Current state
 
 - Branch: `agent/predictive-reading-guide`

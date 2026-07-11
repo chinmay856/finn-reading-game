@@ -14,7 +14,7 @@ It should feel like a funny indie game rather than educational software. Reading
 
 The project is **not** one fixed game. It consists of a reusable reading platform plus interchangeable game wrappers.
 
-The first wrapper is **Internet Recovery OS**.
+The first wrapper is **Internet Recovery 98**.
 
 ### North-star principles
 
@@ -39,7 +39,7 @@ The retro-internet game is the first presentation of the system, not the foundat
 ```text
 +------------------------------------------------+
 | Game Wrapper                                   |
-| Internet Recovery OS, future themes, book mode |
+| Internet Recovery 98, future themes, book mode |
 +------------------------------------------------+
 | Game Rules                                     |
 | Missions, rewards, progression, achievements   |
@@ -211,7 +211,7 @@ It may define:
 
 Potential wrappers include:
 
-- Internet Recovery OS
+- Internet Recovery 98
 - Space Salvager
 - Monster Research Lab
 - Detective Agency
@@ -221,7 +221,7 @@ A new wrapper should not require rewriting microphone, alignment, scoring, progr
 
 ---
 
-# 7. Version 1 game: Internet Recovery OS
+# 7. Version 1 game: Internet Recovery 98
 
 ## Premise and canonical characters
 
@@ -239,21 +239,26 @@ Finn is the person who has to rebuild the Internet. Chinmay initially presents
 himself as a helpful adult guiding the recovery and minimizing his company's
 responsibility.
 
-**Aunt Amy** is Finn's engineer aunt and trusted background partner. She helps
-Finn understand systems, interpret evidence, and learn how game tools work
-without taking control or solving the problem for him. Her optional hints are
-concise, teen-appropriate, supportive, and willing to challenge Chinmay's
-misleading explanations.
+**Aunt Amy** is Finn's engineer aunt, trusted background partner, and the creator
+of Internet Recovery 98. She built the recovery environment from old,
+pre-generative-AI system code after newer infrastructure became contaminated by
+Chinmay's AI replacements. She helps Finn understand systems, interpret
+evidence, and learn how game tools work without taking control or solving the
+problem for him. Her optional hints are concise, teen-appropriate, supportive,
+and technically useful. She recognizes when Chinmay's explanation is nonsense,
+but she is Finn's partner rather than Chinmay's opponent; Finn owns the repair.
 
-**Techno** is the family's cream-colored, curly-haired dog and Finn's cartoon
-companion. Techno can react to suspicious activity, uncover files, flag an
-interruption, or provide a light comic beat. Techno is never required for
-reading, scoring, comprehension, or progression. Her recurring visual prop is
-an unbranded orange-and-blue grooved fetch ball; most poses should reflect her
-ball obsession without turning the toy into a required mechanic.
+**Techno** is the family's cream-colored, curly-haired dog and Finn's knowing
+desktop companion. She behaves primarily as a small animated sprite inside the
+remote-desktop interface, jumping among windows, reacting, and deliberately
+pointing Finn toward useful objects without dialogue or a formal character
+introduction. Techno is never required for reading, scoring, comprehension, or
+progression. Her recurring visual prop is an unbranded orange-and-blue grooved
+fetch ball; most poses should reflect her ball obsession without turning the toy
+into a required mechanic.
 
 Amy, Techno, their dialogue, visual treatment, and their presentation roles are
-owned entirely by the Internet Recovery OS wrapper. Lower layers may expose
+owned entirely by the Internet Recovery 98 wrapper. Lower layers may expose
 theme-neutral events such as `hintAvailable`, `newEvidence`, or
 `readingInterrupted`; they must not know these characters exist.
 
@@ -261,11 +266,15 @@ He restores corrupted information by reading recovered files aloud.
 
 ## Overarching story
 
-The original Internet collapse may begin as an accident caused by Chinmay's
-reckless AI replacements and misplaced confidence. It does not remain an
-accident. When Finn's repairs threaten to expose what happened and remove
-Chinmay's control, Chinmay begins deliberately introducing new failures,
-obstacles, misleading instructions, and live code changes.
+The original Internet collapse begins with Chinmay rushing powerful AI
+replacements into systems he has not taken time to understand. Chinmay openly
+blames "Chinmay's AI" while rhetorically treating its creator as an unrelated
+third party. He is 60 percent ridiculous and 40 percent formidable: his systems
+can be technically impressive, but his haste causes him to skip context,
+ordinary use cases, and small consequential details. When Finn's careful repairs
+threaten to expose what happened and remove Chinmay's control, Chinmay begins
+introducing new failures, obstacles, misleading instructions, and live code
+changes.
 
 The story follows Finn becoming progressively better at understanding both the
 Internet and Chinmay's interference:
@@ -278,12 +287,15 @@ Internet and Chinmay's interference:
    Chinmay is modifying the game while he plays.
 4. Chinmay abandons the helpful-CEO performance and actively tries to prevent
    Finn from completing the recovery.
-5. Finn understands the system well enough to overcome Chinmay's final hurdles,
-   revoke his administrator access, and take control of Internet Recovery OS.
+5. By spending time learning the system, Finn becomes genuinely better at work
+   Chinmay rushed through. Finn understands it well enough to overcome the final
+   hurdles, revoke Chinmay's administrator access, and take control of Internet
+   Recovery 98.
 
 The final resolution and capstone achievement are **Smarter Than the
-Developer**. Finn wins through increasing understanding, persistence, and the
-ability to recognize deception—not merely by accumulating a larger score.
+Developer**. Finn wins through attention, accumulated understanding,
+persistence, and the ability to recognize what haste overlooked—not merely by
+accumulating a larger score or because Chinmay is unintelligent.
 
 ## Tone
 
@@ -310,9 +322,26 @@ Finn should laugh because the graphics look hilariously bad on purpose, not beca
 
 The underlying interaction should still feel responsive and modern, even while the surface looks old and ridiculous.
 
-## The desktop is the game
+## The browser page contains the recovery desktop
 
-The primary navigation is a fake operating system desktop.
+Finn opens the game as a normal page in the browser on his modern computer. The
+page establishes a browser-based remote connection to **Internet Recovery 98**;
+the game does not recreate or impersonate Finn's real desktop, browser chrome,
+or operating system.
+
+Internet Recovery 98 is new recovery software Amy assembled from old,
+pre-generative-AI code. She went back to a Windows 98-era foundation because the
+newer network was contaminated by Chinmay's AI replacements and the antiquated
+systems were too obscure, complicated, and undesirable for the AI to rewrite.
+The old appearance therefore has a story and security purpose: it is a clean
+room made from code the infection left alone.
+
+Inside the clearly bounded game page, the primary navigation resembles a late
+1990s remote desktop with an original parody logo, a clearly labeled **Start**
+button, taskbar, desktop icons, and overlapping application windows. It may
+evoke familiar conventions but
+must not reproduce the Windows logo, Firefox branding, or another real product's
+trademark, exact chrome, icons, or trade dress.
 
 Possible applications:
 
@@ -325,7 +354,36 @@ Possible applications:
 - Terminal
 - File Explorer
 
-As Finn progresses, the desktop becomes increasingly cluttered and personalized with recovered memes, stickers, desktop pets, strange files, achievements, and fake viruses.
+The wrapper-owned old browser opens corrupted parody sites. A terminal, Reading
+Companion, recovered file, repair tool, Amy support tile, or Techno sprite may
+remain visible beside the browser so Finn appears to use the recovery desktop
+itself to repair the page. Use overlapping windows or taskbar items rather than
+modern browser tabs when that better supports the Windows 98-era fiction.
+
+The boundary is important: **Internet Recovery 98 is stable recovery
+infrastructure; the Internet viewed through its browser is corrupted.** During
+ordinary missions, site damage and repair must not corrupt, rename, rearrange,
+or make untrustworthy the Start button, taskbar, terminal, Reading Companion,
+repair utilities, Amy support, or other recovery controls. Progress may add
+evidence, history, achievements, and harmless personalization without implying
+that Amy's clean-room system is infected.
+
+A late endgame arc may deliberately breach the recovery desktop when Chinmay
+makes a final attempt to regain control, potentially presenting a clearly
+fictional virus inside the game. Treat this as a singular story escalation with
+explicit safety framing, not a recurring ambient condition. Its impact comes
+from violating an interface the player has learned to trust.
+
+The campaign has a clear apparent finish and a separate conclusion. Finn first
+recovers ten sites and ten evidence files. At `10 of 10`, before the game makes a
+permanent victory claim, an unexpected eleventh live evidence file reveals that
+Chinmay's AI is attempting to breach Internet Recovery 98. This attack is the
+boss-style final arc: the stable recovery desktop becomes corrupted for the
+first and only time, and Finn must apply what he learned across the site repairs
+to protect Amy's clean-room system. The eleventh evidence file is created by the
+attack itself, not by an additional website. Victory restores the desktop,
+records the attempted breach, revokes the outside access path, and leads to a
+distinct story conclusion.
 
 Amy may appear through an optional engineer-support channel, concise case notes,
 or story cutscenes. Techno may appear as a desktop pet, cutscene companion, or
