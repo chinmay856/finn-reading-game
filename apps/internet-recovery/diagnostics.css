@@ -1,0 +1,99 @@
+.campaign-meter {
+  display: grid;
+  grid-template-columns: auto minmax(90px, 180px) 34px;
+  align-items: center;
+  gap: 7px;
+  min-width: 250px;
+  color: #173968;
+  font-weight: 700;
+}
+
+.campaign-meter > span { font-size: 9px; letter-spacing: .06em; white-space: nowrap; }
+.campaign-meter > i { height: 12px; padding: 2px; border: 2px inset #d6d6ce; background: #fff; }
+.campaign-meter > i > em { display: block; width: 0; height: 100%; background: #3b9d56; transition: width .35s steps(8, end); }
+.campaign-meter > strong { color: #173968; font-size: 10px; }
+.campaign-meter[data-phase="reverse-hack"] > i > em { background: #c5302c; }
+.campaign-meter[data-phase="shield"] > i > em,
+.campaign-meter[data-phase="secured"] > i > em { background: #2878a9; }
+
+.diagnostic-controls {
+  position: absolute;
+  left: 12px;
+  bottom: 52px;
+  z-index: 36;
+}
+
+.diagnostic-toggle {
+  min-width: 62px;
+  height: 31px;
+  border: 2px outset #d6d6ce;
+  background: #171d25;
+  color: #8ee589;
+  font: 700 11px/1 "Courier New", monospace;
+  letter-spacing: .12em;
+  box-shadow: 2px 2px 0 #0b2530;
+}
+
+.diagnostic-panel {
+  width: min(360px, calc(100vw - 28px));
+  border: 2px outset #d6d6ce;
+  background: #d6d6ce;
+  box-shadow: 6px 7px 0 #07182088;
+}
+
+.diagnostic-panel .window-titlebar { height: 26px; font-size: 11px; }
+.diagnostic-panel .window-titlebar button { width: 21px; height: 19px; padding: 0; border: 2px outset #d6d6ce; background: #d6d6ce; color: #111; font-weight: 700; line-height: 1; }
+.diagnostic-body { display: grid; gap: 9px; padding: 12px; border: 1px inset #d6d6ce; background: #ecece5; }
+.diagnostic-body small { color: #173968; font-weight: 700; letter-spacing: .1em; }
+.diagnostic-body b { padding: 7px; border: 1px dotted #53646f; background: #fff; color: #246b3c; font-size: 12px; }
+.diagnostic-body p { margin: 0; font-size: 11px; line-height: 1.35; }
+.diagnostic-truth { color: #5d625f; }
+
+.character-dialog-layer {
+  position: absolute;
+  z-index: 50;
+  inset: 56px 0 42px;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #07152166;
+}
+
+.character-dialog-layer[hidden] { display: none; }
+.character-dialog { width: min(720px, 94vw); animation: dialog-arrive .22s steps(3, end) both; }
+.character-dialog .window-titlebar { background: linear-gradient(90deg, #174f66, #337f89); }
+.character-dialog[data-speaker="chinmay"] .window-titlebar { background: linear-gradient(90deg, #60100d, #a6231d); }
+.character-dialog-body { display: grid; grid-template-columns: 180px 1fr; gap: 18px; padding: 17px; border: 1px inset #d6d6ce; background: #ecece5; }
+.character-dialog-body img { width: 180px; aspect-ratio: 1; object-fit: cover; border: 3px inset #d6d6ce; background: #173968; }
+.character-dialog-body small { color: #246b3c; font-weight: 700; letter-spacing: .12em; }
+.character-dialog[data-speaker="chinmay"] .character-dialog-body small { color: #a6231d; }
+.character-dialog-body h2 { margin: 7px 0 10px; font: 700 clamp(22px, 3vw, 35px)/1.08 Georgia, serif; }
+.character-dialog-body p { font: 16px/1.55 Georgia, serif; }
+.character-dialog-body button { min-width: 200px; margin-top: 6px; }
+.dialog-meta { padding: 8px; border: 1px dotted #555; background: #fff; color: #555; font: 11px/1.35 "Courier New", monospace !important; }
+
+.repair-stage.live-corruption { animation: nested-page-breach .7s steps(4, end) 2; }
+.repair-stage.live-corruption::after { content: "CHINMAY WAS HERE"; position: absolute; z-index: 12; inset: 14px 14px auto auto; padding: 8px 12px; border: 2px solid #ff5b4e; background: #3b0505; color: #ffdf55; font-weight: 700; box-shadow: 4px 4px 0 #4d0000; }
+.repair-stage.shield-mode { outline: 4px solid #2d78a8; outline-offset: -6px; }
+.repair-stage.site-secured { outline: 5px solid #3b9d56; outline-offset: -7px; }
+
+@keyframes dialog-arrive { from { opacity: 0; transform: translate(14px, 10px); } to { opacity: 1; transform: none; } }
+@keyframes nested-page-breach { 0%, 100% { filter: none; } 30% { filter: contrast(1.5) sepia(1) hue-rotate(310deg); } 55% { transform: translateX(-4px); filter: invert(.14) contrast(1.8); } }
+
+@media (max-width: 900px) {
+  .campaign-meter { min-width: 180px; grid-template-columns: auto minmax(55px, 1fr) 30px; }
+  .browser-status #latency { display: none; }
+}
+
+@media (max-width: 680px) {
+  .campaign-meter { min-width: 145px; }
+  .campaign-meter > span { display: none; }
+  .diagnostic-controls { left: 7px; bottom: 49px; }
+  .character-dialog-body { grid-template-columns: 92px 1fr; gap: 11px; padding: 10px; }
+  .character-dialog-body img { width: 92px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-meter > i > em, .character-dialog { transition: none; animation: none; }
+  .repair-stage.live-corruption { animation: none; border-color: #a6231d; }
+}

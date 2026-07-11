@@ -109,6 +109,23 @@ test("Techno progress animation is optional wrapper presentation", async () => {
   assert.doesNotMatch(engine, /Techno|techno-progress|technoRepairSprite/iu);
 });
 
+test("campaign diagnostics stay in the wrapper and expose honest test controls", async () => {
+  const [app, diagnostics, engine, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/wikiwhy-diagnostics.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-engineer.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-ceo.jpg", import.meta.url)),
+  ]);
+  assert.match(html, /id="diagnosticToggle"/u);
+  assert.match(html, /id="campaignMeter"/u);
+  assert.match(html, /Test passes create no reading score/u);
+  assert.match(app, /advanceDiagnosticExperience/u);
+  assert.match(diagnostics, /internet-recovery-98\.wikiwhy\.diagnostics\.v1/u);
+  assert.doesNotMatch(engine, /diagnostic|Amy|Chinmay|Shield Protocol/iu);
+});
+
 test("live checkpoints cannot fragment the final recording", async () => {
   const capture = await readFile(new URL("../speech/audio-capture.js", import.meta.url), "utf8");
   assert.match(capture, /finalRecorder/u);

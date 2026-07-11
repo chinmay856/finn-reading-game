@@ -7,6 +7,14 @@ import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
 import { readWikiWhyState, recordWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-state.js";
 import { calculateWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-rules.js";
+import {
+  advanceWikiWhyDiagnostic,
+  beginWikiWhyShieldProtocol,
+  readWikiWhyDiagnosticState,
+  resetWikiWhyDiagnosticState,
+  saveWikiWhyDiagnosticState,
+} from "./apps/internet-recovery/wikiwhy-diagnostics.js";
+import { WIKIWHY_DIALOGUES } from "./apps/internet-recovery/wikiwhy-dialogues.js";
 
 const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
@@ -43,6 +51,7 @@ const state = {
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
   sessionId: null, startedAt: 0, technoTimer: null,
+  diagnosticMode: false, diagnosticState: null, dialogAction: null,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -71,6 +80,124 @@ function hydratePassage() {
 
 function show(name) {
   for (const id of ["setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+}
+
+function campaignView(campaignState) {
+  const phase = campaignState.phase ?? "act-one";
+  if (phase === "secured") return { label: "SITE SECURED", percent: 100, status: "STATUS: SECURED" };
+  if (phase === "shield") return {
+    label: "SHIELD STABILIZATION",
+    percent: campaignState.shieldProgress,
+    status: `SHIELD PROTOCOL · ${campaignState.shieldPass} OF 3`,
+  };
+  if (phase === "reverse-hack") return { label: "SITE STABILITY", percent: 80, status: "LIVE CORRUPTION DETECTED" };
+  const stability = campaignState.stability ?? 0;
+  return {
+    label: "SITE STABILITY",
+    percent: stability,
+    status: stability >= 70 ? "STATUS: VERIFYING CHANGES" : stability > 0 ? "STATUS: RECOVERING" : "STATUS: CORRUPTED",
+  };
+}
+
+function renderCampaignMeter(campaignState, { diagnosticMode = false } = {}) {
+  const view = campaignView(campaignState);
+  const phase = campaignState.phase ?? "act-one";
+  $("campaignMeterLabel").textContent = view.label;
+  $("campaignMeterValue").textContent = `${view.percent}%`;
+  $("campaignMeterFill").style.width = `${view.percent}%`;
+  $("campaignMeter").dataset.phase = phase;
+  $("campaignMeter").setAttribute("aria-label", view.label.toLowerCase());
+  $("campaignMeter").setAttribute("aria-valuenow", String(view.percent));
+  if (!diagnosticMode) return;
+
+  const repairStage = document.querySelector(".repair-stage");
+  repairStage.classList.toggle("live-corruption", phase === "reverse-hack");
+  repairStage.classList.toggle("shield-mode", phase === "shield");
+  repairStage.classList.toggle("site-secured", phase === "secured");
+  $("siteStatus").textContent = view.status;
+  $("siteStatus").style.color = phase === "reverse-hack" ? "#a6231d" : phase === "secured" ? "#246b3c" : "#173968";
+  $("repairFill").style.width = `${view.percent}%`;
+  $("repairEdge").style.left = `${view.percent}%`;
+  $("technoRepairSprite").style.left = `clamp(82px, ${view.percent}%, calc(100% - 84px))`;
+  $("repairPercent").textContent = `${view.percent}% campaign test`;
+  $("latency").textContent = "SIMULATED · no speech engine used";
+}
+
+function renderDiagnosticPanel(campaignState) {
+  const view = campaignView(campaignState);
+  const phase = campaignState.phase ?? "act-one";
+  $("diagnosticPhase").textContent = `${view.label} · ${view.percent}%`;
+  $("diagnosticSummary").textContent = phase === "secured"
+    ? `${campaignState.simulatedPassages} simulated passages · WikiWhy ending reached.`
+    : phase === "shield"
+      ? `${campaignState.simulatedPassages} simulated passages · ${3 - campaignState.shieldPass} shield repairs remain.`
+      : phase === "reverse-hack"
+        ? `${campaignState.simulatedPassages} simulated passages · apparent completion reached; live overwrite waiting.`
+        : `${campaignState.simulatedPassages} simulated passages · next strong test result advances 19%.`;
+  $("diagnosticAdvance").textContent = phase === "secured" ? "Ending reached" : phase === "shield" ? "Skip simulated shield passage →" : "Skip simulated passage →";
+  $("diagnosticAdvance").disabled = phase === "secured" || phase === "reverse-hack";
+}
+
+function hideCharacterDialog() {
+  $("characterDialogLayer").hidden = true;
+  state.dialogAction = null;
+}
+
+function showCharacterDialog(dialogId, action = hideCharacterDialog) {
+  const dialogue = WIKIWHY_DIALOGUES[dialogId];
+  if (!dialogue) return;
+  $("characterDialog").dataset.speaker = dialogue.speaker;
+  $("dialogTitle").textContent = dialogue.title;
+  $("dialogPortrait").src = dialogue.portrait;
+  $("dialogPortrait").alt = `${dialogue.speaker === "amy" ? "Amy" : "Chinmay"} portrait`;
+  $("dialogEyebrow").textContent = dialogue.eyebrow;
+  $("dialogHeading").textContent = dialogue.heading;
+  $("dialogBody").textContent = dialogue.body;
+  $("dialogMeta").hidden = !dialogue.meta;
+  $("dialogMeta").textContent = dialogue.meta ?? "";
+  $("dialogAction").textContent = dialogue.action;
+  state.dialogAction = action;
+  $("characterDialogLayer").hidden = false;
+  $("dialogAction").focus();
+}
+
+async function discardActiveReadingForDiagnostics() {
+  state.listening = false;
+  state.finishing = false;
+  clearInterval(state.monitor);
+  if (capture.active) await capture.stop();
+  $("voicePulse").classList.remove("speaking");
+}
+
+function applyDiagnosticState(nextState) {
+  const saved = saveWikiWhyDiagnosticState(localStateStorage, nextState);
+  state.diagnosticMode = true;
+  state.diagnosticState = saved.state;
+  renderCampaignMeter(saved.state, { diagnosticMode: true });
+  renderDiagnosticPanel(saved.state);
+  show("read");
+  $("readerState").textContent = `TEST PASS ${saved.state.simulatedPassages} COMPLETE · NEXT SIMULATED PASSAGE READY`;
+  $("progressText").textContent = "Diagnostic mode · no reading score created";
+  return saved.state;
+}
+
+function beginDiagnosticShield() {
+  hideCharacterDialog();
+  const transition = beginWikiWhyShieldProtocol(state.diagnosticState);
+  applyDiagnosticState(transition.state);
+  showCharacterDialog("shield-intro");
+}
+
+async function advanceDiagnosticExperience() {
+  await discardActiveReadingForDiagnostics();
+  const current = state.diagnosticState ?? readWikiWhyDiagnosticState(localStateStorage);
+  const transition = advanceWikiWhyDiagnostic(current);
+  const next = applyDiagnosticState(transition.state);
+  diagnostic("wrapper-diagnostic-advance", { event: transition.event, phase: next.phase, simulatedPassages: next.simulatedPassages });
+  if (transition.event === "amy-warning") showCharacterDialog("amy-warning");
+  if (transition.event === "reverse-hack-ready") showCharacterDialog("reverse-hack-ready", beginDiagnosticShield);
+  if (transition.event === "shield-pass-complete") showCharacterDialog(`shield-pass-${next.shieldPass}`);
+  if (transition.event === "site-secured") showCharacterDialog("site-secured");
 }
 
 function renderSavedRepair(savedState) {
@@ -418,12 +545,42 @@ $("continueResult").onclick = () => {
         sessionId: state.sessionId,
       });
   renderRepairOutcome(repair.state, repair.ok);
+  renderCampaignMeter(repair.state);
   diagnostic("wrapper-repair-persistence", { advance: outcome.advance, saved: repair.ok });
   $("continueResult").disabled = true;
   $("continueResult").textContent = "Repair applied";
   $("reportStatus").textContent = `${outcome.reaction} WikiWhy is ${outcome.stability}% stable for now.`;
 };
 $("export").onclick = exportReport;
+$("diagnosticToggle").onclick = () => {
+  const opening = $("diagnosticPanel").hidden;
+  $("diagnosticPanel").hidden = !opening;
+  $("diagnosticToggle").hidden = opening;
+  $("diagnosticToggle").setAttribute("aria-expanded", String(opening));
+  if (opening) $("diagnosticAdvance").focus();
+};
+$("diagnosticClose").onclick = () => {
+  $("diagnosticPanel").hidden = true;
+  $("diagnosticToggle").hidden = false;
+  $("diagnosticToggle").setAttribute("aria-expanded", "false");
+  $("diagnosticToggle").focus();
+};
+$("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((error) => {
+  $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
+});
+$("diagnosticReset").onclick = async () => {
+  await discardActiveReadingForDiagnostics();
+  hideCharacterDialog();
+  const reset = resetWikiWhyDiagnosticState(localStateStorage);
+  state.diagnosticMode = true;
+  state.diagnosticState = reset.state;
+  renderCampaignMeter(reset.state, { diagnosticMode: true });
+  renderDiagnosticPanel(reset.state);
+  show("read");
+  $("readerState").textContent = "TEST CAMPAIGN RESET · SIMULATED PASSAGE READY";
+  $("progressText").textContent = "Diagnostic mode · no reading score created";
+};
+$("dialogAction").onclick = () => (state.dialogAction ?? hideCharacterDialog)();
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
   $("passage").addEventListener(eventName, () => {
     state.guidePausedUntil = performance.now() + 5_000;
@@ -465,6 +622,9 @@ hydrateInternetRecoveryCopy();
 hydratePassage();
 const previousWikiWhyState = readWikiWhyState(localStateStorage);
 renderSavedRepair(previousWikiWhyState);
+renderCampaignMeter(previousWikiWhyState);
+state.diagnosticState = readWikiWhyDiagnosticState(localStateStorage);
+renderDiagnosticPanel(state.diagnosticState);
 $("recoveredFilesShortcut").onclick = () => $("savedRepairReceipt").scrollIntoView({ block: "center" });
 updateDesktopClock();
 setInterval(updateDesktopClock, 30_000);

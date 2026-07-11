@@ -1,5 +1,39 @@
 # Session handoff
 
+## WikiWhy campaign diagnostic and character dialogue pass
+
+- Added a small `TEST` control above the recovery taskbar. It can simulate a
+  strong passage result without requesting microphone access, running speech
+  recognition, creating a reading score, or changing saved real-repair state.
+- Diagnostic campaign state uses its own
+  `internet-recovery-98.wikiwhy.diagnostics.v1` browser-storage key. Its reset
+  button removes only diagnostic progress.
+- The deterministic Act I route advances `0 → 19 → 38 → 57 → 76 → 80%`, which
+  makes the documented Amy warning and 80% reverse-hack boundary reachable in
+  five clicks. The live overwrite explicitly changes the cumulative browser
+  meter from `SITE STABILITY 80%` to `SHIELD STABILIZATION 0%`.
+- Shield Protocol then advances in exactly three simulated passages at
+  `33 → 66 → 100%`, ending with the documented hidden-admin `ACCESS DENIED`
+  beat. The diagnostic panel always labels these as simulated passages because
+  the current executable prototype still contains one real Content Platform
+  passage.
+- Added lightweight Windows-style Amy and Chinmay dialogue overlays. The two
+  wrapper-owned static portraits follow the approved character/campaign boards;
+  Techno's separately produced progress-push sprite is unchanged and no other
+  Techno states are loaded.
+- Only the nested WikiWhy page receives the short reverse-hack effect. The
+  recovery desktop, taskbar, Reading Companion, Amy channel, and diagnostic
+  controls remain stable, preserving the wrapper's trusted-shell rule.
+- Architecture remains separated: the harness, campaign state, dialogue copy,
+  and portraits live under `apps/internet-recovery/`; Reading Engine, Content
+  Platform, theme-neutral Game Rules, speech, and real session history are
+  unchanged.
+- Validation: `npm run check`, `npm test` (53 passing), and `npm run build` all
+  pass. Recommended next step: publish this branch and click through the full
+  diagnostic route once to judge dialogue size, story timing, and whether the
+  80% reset is visually understandable before connecting additional real
+  passages.
+
 ## WikiWhy visual-fidelity pass
 
 - Compared the live prototype directly with the reviewed WikiWhy reader/repair

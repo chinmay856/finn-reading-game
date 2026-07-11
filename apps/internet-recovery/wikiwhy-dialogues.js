@@ -1,0 +1,61 @@
+const AMY_PORTRAIT_URL = new URL("./art/characters/dialogue/amy-engineer.jpg", import.meta.url).href;
+const CHINMAY_PORTRAIT_URL = new URL("./art/characters/dialogue/chinmay-ceo.jpg", import.meta.url).href;
+
+export const WIKIWHY_DIALOGUES = Object.freeze({
+  "amy-warning": Object.freeze({
+    action: "Keep going",
+    body: "Hold on. You are fixing it—but something is still writing corruption behind you. Keep going. I think I can trap the next change.",
+    eyebrow: "BACKGROUND WRITE DETECTED",
+    heading: "The repair is holding. Something else is still moving.",
+    portrait: AMY_PORTRAIT_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
+  "reverse-hack-ready": Object.freeze({
+    action: "Compare versions",
+    body: "I fixed your repair by replacing it with my version. No need to compare them.",
+    eyebrow: "AUTOMATIC IMPROVEMENT INSTALLED",
+    heading: "CHINMAY: Your success message needed an update.",
+    meta: "Patch owner: chinmay_admin · Created: 14 seconds ago",
+    portrait: CHINMAY_PORTRAIT_URL,
+    speaker: "chinmay",
+    title: "CEO BROADCAST // LIVE",
+  }),
+  "shield-intro": Object.freeze({
+    action: "Start repair 1 of 3",
+    body: "Okay. I caught the change. Give me three clean repair passes and I can seal this site around it. Three. No surprise fourth one.",
+    eyebrow: "NEW OBJECTIVE",
+    heading: "Shield Protocol is ready.",
+    portrait: AMY_PORTRAIT_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
+  "shield-pass-1": Object.freeze({
+    action: "Continue to repair 2",
+    body: "Content verified. Two repairs remain.",
+    eyebrow: "SHIELD PASS 1 OF 3",
+    heading: "The recovered facts are sealed in place.",
+    portrait: AMY_PORTRAIT_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
+  "shield-pass-2": Object.freeze({
+    action: "Continue to final repair",
+    body: "Connections verified. One repair remains. Chinmay has begun typing in all caps.",
+    eyebrow: "SHIELD PASS 2 OF 3",
+    heading: "His write access is almost boxed out.",
+    portrait: AMY_PORTRAIT_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
+  "site-secured": Object.freeze({
+    action: "Return to the secured site",
+    body: "That denial message is needlessly personal.",
+    eyebrow: "ACCESS DENIED",
+    heading: "chinmay_admin attempted to modify this site.",
+    meta: "Reason: Finn fixed the small detail you overlooked.",
+    portrait: CHINMAY_PORTRAIT_URL,
+    speaker: "chinmay",
+    title: "HIDDEN ADMIN WINDOW",
+  }),
+});
