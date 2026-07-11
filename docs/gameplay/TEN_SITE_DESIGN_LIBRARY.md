@@ -3,8 +3,9 @@
 ## Purpose
 
 This is the first broad design pass for ten Internet Recovery OS sites. WikiWhy
-is the reviewed worked example. The remaining nine are proposals for later
-one-by-one review, not implementation commitments.
+is the review-ready worked example. The remaining nine are explicitly WIP and
+under art-direction review: exploratory proposals for later one-by-one review,
+not implementation commitments or approval of production chrome/copy.
 
 Every site uses the same theme-neutral Reading Engine and a visually separate
 Reading Companion. Only the assigned passage is speech-scored. Decorative page
@@ -54,12 +55,19 @@ relieved, but never angry at Finn, threatening, or villain-coded. Site boards ma
 stage different jokes around him while selecting the art variant that matches
 the current global story beat.
 
-Preferred revised visual examples for this grammar are indexed in the
+Private photos guide likeness only; they must never be pasted into a board or
+turned into photoreal character panels. Amy, Chinmay, and Techno use one
+consistent illustrated editorial-cartoon treatment across the campaign.
+Techno's visual comedy remains ball-obsessed, and Chinmay follows the
+long-haired, increasingly frazzled arc above.
+
+Visual examples for this grammar are indexed in the
 [`site concept-board catalog`](../../apps/internet-recovery/art/concepts/sites/README.md),
-including the
-[`WikiWhy`](../../apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png),
+including the review-ready
+[`WikiWhy`](../../apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png)
+board and WIP/art-direction-under-review
 [`ThreadIt`](../../apps/internet-recovery/art/concepts/sites/threadit-rogue-ai-campaign.png),
-[`MyCorner`](../../apps/internet-recovery/art/concepts/sites/mycorner-rogue-ai-campaign.png),
+[`MyCorner`](../../apps/internet-recovery/art/concepts/sites/mycorner-rogue-ai-campaign-v2-wip.png),
 and [`Yahuh! Portal`](../../apps/internet-recovery/art/concepts/sites/yahuh-portal-rogue-ai-campaign.png)
 boards. Earlier unsuffixed boards are superseded composition references only.
 
@@ -332,6 +340,11 @@ original product-analysis essays.
 
 ## 9. Spotty-Fi — taste and manual choice
 
+**Board status:** `spotty-fi-rogue-ai-campaign-v2-wip.png` is the current WIP
+direction and remains under story/layout review. It replaces the rejected
+`spotty-fi-rogue-ai-campaign.png`, which pasted photo-real reference imagery
+into an otherwise cartoon board and rendered the characters inconsistently.
+
 **Recognizable direction:** Charcoal, acid green, magenta accent; an original
 offset cassette/signal-ring mark; playlists, queue, credits, and geometric album
 art. No audio while the microphone is active.
@@ -416,6 +429,10 @@ USGS maps, Library of Congress map collections, and original survival stories.
   deliberately plants evidence, impersonates users, or sabotages Finn's work.
 - Keep Chinmay's hair long in every appearance and show escalation through
   growing messiness and fluster, never anger or villain visual language.
+- Treat private photos as likeness reference only. Never paste them into a
+  board or create photoreal character panels; keep Amy, Chinmay, and Techno in
+  one consistent illustrated editorial-cartoon treatment, with Techno's humor
+  still centered on her obsession with the ball.
 - The AI is the intentional antagonist. Its site-specific proxy optimization
   should become visibly autonomous over time without making every site's
   corruption, midpoint, meter, or resolution identical.

@@ -137,9 +137,10 @@ wrapper-only explorations before selecting production art:
    chat-avatar crop plus waist-up engineer-support pose.
 2. **Amy cutscene poses:** annotating evidence, holding a cable, and reacting to
    a suspicious timestamp without taking over Finn's task.
-3. **Chinmay escalation sheet:** the same long-haired silhouette across polished
-   CEO confidence, anxious reassurance, messy/frazzled explanation, genuine
-   alarm, and humbled collaboration. Exclude angry and villainous poses.
+3. **Chinmay escalation sheet:** the same long-haired silhouette across neutral
+   focus, polished CEO confidence, three escalating fluster levels, and relieved
+   collaboration. Exclude angry and villainous poses. The current WIP reference
+   is [`chinmay-portrait-exploration-wip.png`](../../apps/internet-recovery/art/concepts/chinmay-portrait-exploration-wip.png).
 4. **Techno sprite sheet:** idle, alert, suspicious-file discovery, bark,
    CEO-broadcast nap, and proud USB delivery. Explore both orange-dominant and
    blue-dominant versions of her grooved fetch ball. The idle state should show
@@ -148,9 +149,31 @@ wrapper-only explorations before selecting production art:
 5. **Pair scale test:** Amy at support-window scale with Techno as desktop pet,
    checked at both phone and desktop widths.
 
-Private references must stay outside the public repository. Generated art must
-be reviewed by the user before it is committed. Exploration filenames should
-live under `apps/internet-recovery/art/characters/` only after approval.
+Private references must stay outside the public repository and guide likeness
+only; never paste them into boards or ship photo-real character panels. Clearly
+labeled WIP exploration boards may live under
+`apps/internet-recovery/art/concepts/` for review. Builder-ready individual
+exports should move under `apps/internet-recovery/art/characters/` only after
+the portrait set is approved.
+
+### Reusable Chinmay portrait states
+
+Builders should select from the canonical portrait states below instead of
+regenerating Chinmay for each message. State choice follows wrapper story mood,
+never reading accuracy or performance.
+
+| Asset ID | Intended message mood |
+| --- | --- |
+| `chinmay_neutral` | focused explanation or listening |
+| `chinmay_confident` | sincere “I can fix this faster” reassurance |
+| `chinmay_fluster_1` | first puzzling contradiction |
+| `chinmay_fluster_2` | visible frazzle while troubleshooting the AI |
+| `chinmay_fluster_3` | genuine alarm after the AI ignores him |
+| `chinmay_relieved` | humbled cooperation after Finn restores control |
+
+All six keep the same identity, glasses, shoulder-length black hair, outfit
+palette, line weight, and illustrated medium. Only expression, gesture, hair
+disorder, and collar/tie polish may change.
 
 ## Gameplay placements
 

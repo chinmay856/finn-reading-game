@@ -50,6 +50,9 @@ The first wrapper is **Internet Recovery OS**. Do not embed its terminology, vis
   explicitly requests a change. Treat transcripts that make Chinmay a secret
   saboteur, or assign the protagonist/antagonist roles to other people, as
   transcription errors.
+- `Chinmay` is the only canonical spelling of his name. Treat phonetically
+  similar alternatives as transcription errors and never introduce them into
+  copy, assets, or filenames.
 
 ## Current product priority
 

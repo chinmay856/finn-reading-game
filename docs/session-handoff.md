@@ -10,15 +10,32 @@
 - Chinmay is always long-haired. His visual state progresses from neat,
   overconfident polish to increasingly messy, frazzled, and flustered concern;
   he is never angry at Finn, threatening, or villain-coded.
-- The campaign hub, WikiWhy worked example, and all nine proposed site boards
-  now use the same presentation grammar: an inset site browser inside Finn's
-  fictional remote desktop tunnel, a visible stable desktop rim with restrained
-  old-computer Easter eggs, and a separate trustworthy Reading Companion.
-- Preferred boards carry the `rogue-ai` filename; the earlier unsuffixed boards
-  remain only as superseded layout-history references. Generation provenance
-  and the final shared prompt direction are recorded in
+- The campaign hub and WikiWhy worked example are review-ready. The nine
+  non-WikiWhy site directions are explicitly WIP/art-direction-under-review and
+  remain exploratory rather than approved production chrome, copy, or assets.
+  They explore the same presentation grammar: an inset site browser inside
+  Finn's fictional remote desktop tunnel, a visible stable desktop rim with
+  restrained old-computer Easter eggs, and a separate trustworthy Reading
+  Companion.
+- Version-two WIP boards now replace the rejected or inconsistent character
+  treatments for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess. The
+  version-one files remain comparison history only and are not builder inputs.
+- `chinmay-portrait-exploration-wip.png` defines six reusable illustrated
+  message states: neutral, confident, three escalating fluster levels, and
+  relieved/cooperative. Builders choose these by wrapper story mood instead of
+  regenerating Chinmay per message. `Chinmay` is the only canonical spelling;
+  alternate transcriptions never enter assets, copy, or filenames.
+- Current revised boards carry the `rogue-ai` filename; the earlier unsuffixed
+  boards remain only as superseded layout-history references. Generation
+  provenance and the final shared prompt direction are recorded in
   `apps/internet-recovery/art/concepts/ROGUE_AI_PROMPT_NOTES.md`.
-- These remain review-ready wrapper designs, not implementation specifications.
+- Private photos guide likeness only: never paste one into a board or use a
+  photoreal character panel. Amy, Chinmay, and Techno share one consistent
+  illustrated editorial-cartoon treatment. Techno remains ball-obsessed;
+  long-haired Chinmay becomes progressively messier and more frazzled without
+  angry or villain coding.
+- WIP site boards are exploratory wrapper designs, not implementation
+  specifications.
   Each site owns its own three-act story, middle change, progress fiction,
   reading lane, and resolution; the reusable Reading Engine does not know about
   Chinmay, the AI, the desktop shell, or any site mechanic.

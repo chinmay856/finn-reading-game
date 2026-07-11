@@ -22,6 +22,9 @@ Every revised board was asked to:
 - depict a nonhuman cyan/violet AI process as the agent making unauthorized
   writes;
 - keep Techno close to her orange-and-blue ball whenever she appears; and
+- use private photos for likeness only, never as pasted panels or photographic
+  output; Amy, Chinmay, and Techno share the character board's clean inked 2D
+  editorial-cartoon treatment, stable proportions, and warm cel shading; and
 - use compact, natural webpage typography suitable for a 14-year-old, with the
   image explicitly framed as a review concept rather than production UI.
 
@@ -32,15 +35,17 @@ Every revised board was asked to:
 | `campaign-spine-and-hub-rogue-ai.png` | Six-panel ten-site spine; Auto-Fix model trace; autonomous eleventh breach; Finn revokes the AI service; Chinmay's hair and confidence unravel across the campaign. |
 | `wikiwhy-three-act-rogue-ai.png` | Dynamic 10–20% Act I repair; 80% AI rewrite with readings and evidence saved; exactly three containment passes; model write denied. |
 | `sites/threadit-rogue-ai-campaign.png` | Ten apparent accounts traced to one Auto-Consensus model run; independent-source tree restored; cloned bot branch quarantined. |
-| `sites/mycorner-rogue-ai-campaign.png` | Chinmay's developer demo becomes an Auto-Persona seed; one AI template overwrites every profile; owner controls and manual permission restored. |
+| `sites/mycorner-rogue-ai-campaign-v2-wip.png` | Chinmay's developer demo becomes an Auto-Persona seed; one AI template overwrites every profile; owner controls and manual permission restored; all character art transferred to the canonical illustrated medium. |
 | `sites/yahuh-portal-rogue-ai-campaign.png` | AI Auto-Layout merges six unrelated portal modules into one stream; category-to-source switchboard rejects the merge rule. |
 | `sites/faceplace-rogue-ai-campaign.png` | Feed Auto-Fix optimizes reactions and forced distribution; a nonsense tracker is discarded for an honest recovery state. |
 | `sites/viewtube-rogue-ai-campaign.png` | Video Auto-Fix presents one clip in ten costumes; identical hashes are exposed and independent footage, transcript, and evidence tracks are restored. |
-| `sites/search-ish-rogue-ai-campaign.png` | Answer Auto-Fix routes five apparent results to one cache; the repaired search exposes independent source branches. |
-| `sites/amaze-on-rogue-ai-campaign.png` | Shopping Auto-Decide hides consent and turns one return into two deliveries; the trace receipt restores human confirmation. |
-| `sites/spotty-fi-rogue-ai-campaign.png` | Taste Auto-Fix fabricates history and traps the queue in the past; a manual mixtape restores consent, credits, and choice. |
-| `sites/mapguess-rogue-ai-campaign.png` | Route Auto-Fix preserves a two-minute claim by moving the destination; verified anchors and an explicit user-selected route restore reality. |
+| `sites/search-ish-rogue-ai-campaign-v2-wip.png` | Answer Auto-Fix routes five apparent results to one cache; the repaired search exposes independent source branches; the character layer uses the canonical inked/cel-shaded style. |
+| `sites/amaze-on-rogue-ai-campaign-v2-wip.png` | Shopping Auto-Decide hides consent and turns one return into two deliveries; the trace receipt restores human confirmation; the character layer uses the canonical inked/cel-shaded style. |
+| `sites/spotty-fi-rogue-ai-campaign-v2-wip.png` | Taste Auto-Fix fabricates history and traps the queue in the past; a manual mixtape restores consent, credits, and choice; every photo and near-photo cameo is replaced by canonical illustration. |
+| `sites/mapguess-rogue-ai-campaign-v2-wip.png` | Route Auto-Fix preserves a two-minute claim by moving the destination; verified anchors and an explicit user-selected route restore reality; the character layer uses the canonical inked/cel-shaded style. |
+| `chinmay-portrait-exploration-wip.png` | Six reusable, identity-stable Chinmay message states: neutral, confident, three escalating fluster levels, and relieved/cooperative; long hair and outfit remain consistent while only hair disorder, expression, gesture, and collar polish change. |
 
-The older boards remain in the repository only as layout-history references.
-Their prior story attribution must not be copied into implementation or future
-art prompts.
+The older boards remain in the repository only as layout-history or rejected
+art-treatment references. Their prior story attribution, photographic inserts,
+or inconsistent character rendering must not be copied into implementation or
+future art prompts.

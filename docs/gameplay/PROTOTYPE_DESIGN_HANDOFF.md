@@ -74,6 +74,15 @@ embarrassed, or exhausted, but never angry at Finn, threatening, or villain-code
 These are wrapper-owned art variants driven by campaign story state, not by
 reading performance.
 
+Do not generate a fresh Chinmay portrait for each message. Select one of the
+six reusable wrapper states documented in
+[`INTERNET_RECOVERY_CHARACTERS.md`](INTERNET_RECOVERY_CHARACTERS.md):
+`chinmay_neutral`, `chinmay_confident`, `chinmay_fluster_1`,
+`chinmay_fluster_2`, `chinmay_fluster_3`, or `chinmay_relieved`. Amy likewise
+uses her reviewed neutral, skeptical, dryly amused, and supportive portraits;
+Techno uses her small ball-centered sprite set. This keeps character identity
+stable and makes message mood a simple presentation choice.
+
 ## Ownership map — what comes from where
 
 The Reading Companion and the parody webpage are adjacent but independent. The

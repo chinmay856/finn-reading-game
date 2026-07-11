@@ -61,6 +61,11 @@ while validating the engine.
   the family's cream-colored, curly-haired dog and optional cartoon companion.
   Both characters, their dialogue, and their visuals belong only to the
   Internet Recovery OS wrapper and never affect reading or scoring.
+- Private character photos guide likeness only and remain outside the product
+  art. Never paste them into boards or use photoreal character panels. Amy,
+  Chinmay, and Techno share one illustrated editorial-cartoon treatment;
+  Techno remains ball-obsessed and Chinmay follows the long-haired, increasingly
+  frazzled arc above.
 - The reusable Reading Engine, Content Platform, Game Rules, and Game Wrapper
   concerns remain separate.
 - A future Chinmay voice add-on is optional wrapper presentation, requires
@@ -187,14 +192,25 @@ Paste the copied JSON report into Codex when a device-specific problem occurs.
 Use that evidence to choose the next smallest Reading Engine improvement.
 
 The private Amy/Chinmay and Techno references remain outside the repository.
-Reviewed generated concept boards are committed under
+Generated concept boards are cataloged under
 [`apps/internet-recovery/art/concepts`](../apps/internet-recovery/art/concepts/README.md).
-The current campaign hub, WikiWhy example, and all nine proposed non-WikiWhy
-site boards now use the rogue-AI visual canon: an inset browser within Finn's
-remote desktop, restrained retro desktop Easter eggs, a separate stable Reading
+The campaign hub and WikiWhy example are review-ready. All nine proposed
+non-WikiWhy site directions remain WIP/art-direction-under-review: they are
+exploratory and do not approve production chrome, copy, or character assets.
+Version-two WIP boards now replace the rejected or inconsistent character art
+for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess. The earlier files
+remain explicit comparison history and are not builder inputs. The current WIP
+boards explore the rogue-AI visual canon: an inset browser within Finn's remote
+desktop, restrained retro desktop Easter eggs, a separate stable Reading
 Companion, a visibly nonhuman AI process, and long-haired Chinmay becoming
 frazzled rather than villainous. Unsuffixed earlier boards are retained only as
 superseded composition history.
+
+The WIP Chinmay portrait sheet defines six reusable wrapper states—neutral,
+confident, fluster levels one through three, and relieved/cooperative—so builders
+select a stable illustrated expression by story mood instead of regenerating a
+new portrait for every message. `Chinmay` is the only canonical spelling; an
+alternate transcription must never enter copy, assets, or filenames.
 
 The wrapper design also includes original broken-web parody missions and a
 dial-up-inspired interstitial that masks genuine between-page loading without
