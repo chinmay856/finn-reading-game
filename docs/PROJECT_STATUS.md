@@ -48,6 +48,10 @@ while validating the engine.
 - Finn is the fixed protagonist and player character.
 - Chinmay is Finn's uncle, the AI-company CEO/developer, and the fixed main
   antagonist.
+- Aunt Amy is Finn's engineer aunt and optional background partner. Techno is
+  the family's cream-colored, curly-haired dog and optional cartoon companion.
+  Both characters, their dialogue, and their visuals belong only to the
+  Internet Recovery OS wrapper and never affect reading or scoring.
 - The reusable Reading Engine, Content Platform, Game Rules, and Game Wrapper
   concerns remain separate.
 - A future Chinmay voice add-on is optional wrapper presentation, requires
@@ -64,7 +68,62 @@ Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
 current Chrome. Compare local transcripts with what was read, observe first-load
 time and per-line latency, and paste the no-audio diagnostic report into Codex if
 a score feels unfair. Test Edge and a second WebAssembly-capable desktop browser
-after Chrome establishes the baseline.
+after Chrome establishes the baseline. In parallel, begin the wrapper step below.
+
+Build the first real Internet Recovery OS vertical slice around **WikiWhy**:
+retain the working speech/transcription loop, place one grades 10–12 passage in
+the compact continuous Reading Companion, and map normalized reading progress to
+the simple left-to-right corrupted-to-repaired page wipe. Start with one passage,
+one before/after webpage pair, compact diagnostics, and one satisfying completion
+payoff. Do not build the full multi-site campaign or Shield Protocol yet.
+
+After the WikiWhy slice is usable, test whether Finn can follow the scrolling
+reader while noticing the page repair without distraction. Use that evidence to
+choose the next wrapper component.
+
+The existing phone-test action remains useful for validating the underlying
+engine:
+
+Run [`PHONE_TEST.md`](PHONE_TEST.md) in Safari on iPhone and Chrome on Android.
+Test microphone permission, the separate Start reading tap, live highlighting,
+correct words, accuracy, pace, WPM, retry, Accept & continue, final review, and
+Copy test report.
+
+Paste the copied JSON report into Codex when a device-specific problem occurs.
+Use that evidence to choose the next smallest Reading Engine improvement.
+
+The private Amy/Chinmay and Techno references remain outside the repository.
+Reviewed generated concept boards are committed under
+[`apps/internet-recovery/art/concepts`](../apps/internet-recovery/art/concepts/README.md).
+
+The wrapper design also includes original broken-web parody missions and a
+dial-up-inspired interstitial that masks genuine between-page loading without
+adding fake delay. These are documented concepts only; the current desktop
+mechanics test has not implemented them.
+
+Each parody site is now designed as an approximately eight-to-ten-session
+sabotage campaign with distinct passages and failures. The early total is hidden
+for story tension; Amy later reveals an exact final three-step Shield Protocol,
+after which the site becomes permanently secured. This remains wrapper design,
+not current prototype implementation or Reading Engine behavior.
+
+Prototype passage authoring now explicitly avoids unnecessary
+transcription-hostile proper nouns, invented spellings, dense acronyms, and
+symbol strings. Future authentic texts should preserve original wording and use
+pronunciation hints, accepted transcript forms, or reduced scoring weight rather
+than counting recognizer uncertainty as a reading error.
+
+The current wrapper design deliberately separates Reading Companion content
+from parody-site copy. Finn may read any suitable, high-quality passage while a
+simple progress-driven left-to-right wipe changes the site from corrupted to
+repaired. This keeps comprehension grounded in the passage and avoids building
+bespoke word-level repair UI for every site.
+
+The proposed grades 10–12 content library blends verified reusable literary
+excerpts, explanatory essays (including scientific-reading structures), and
+human-reviewed original writing. Rights/provenance and transcription review are
+required content metadata; copying a protected work and merely renaming its
+characters is explicitly out of scope.
 
 ## Known limitations
 

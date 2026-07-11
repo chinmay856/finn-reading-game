@@ -103,6 +103,8 @@ Scoring must account for the reality of reading aloud. A useful engine cannot si
 - restarting a sentence
 - self-correction
 - minor recognition mistakes
+- uncommon proper nouns whose plausible transcript differs from the displayed
+  spelling
 - punctuation differences
 - contractions and equivalent spoken forms
 
@@ -125,6 +127,27 @@ The Content Platform stores what is read and what can be learned from it.
 - Wrapper-specific presentation metadata when appropriate
 
 The core content record should remain usable without a game wrapper.
+
+For the initial hand-authored prototype, passage selection should avoid
+transcription-hostile tokens such as long uncommon names, invented spellings,
+dense acronyms, and strings of symbols when they do not serve a strong learning
+purpose. This keeps evaluation focused on the read-aloud experience rather than
+speech-model vocabulary gaps. Passages should remain teen-appropriate and
+interesting; recognizer-friendly does not mean elementary.
+
+Future authentic books and source documents must preserve their original text.
+The content model should be able to attach pronunciation hints, plausible
+transcript aliases, and reduced scoring weight to intrinsically uncertain names
+without teaching the Reading Engine about a particular story or wrapper.
+
+The prototype library should blend verified reusable literary excerpts,
+high-quality explanatory/disciplinary essays, and carefully edited original
+writing at approximately grades 10–12. It should span literature,
+history/social studies, humanities, and science, including gradual practice with
+research questions, methods, results, uncertainty, figures, and citations.
+Every non-original passage needs durable provenance and rights metadata. AI may
+assist original drafting but cannot replace human review or turn a copyrighted
+work into a nominally new passage by swapping names.
 
 ### Content assumptions to avoid
 
@@ -216,6 +239,24 @@ Finn is the person who has to rebuild the Internet. Chinmay initially presents
 himself as a helpful adult guiding the recovery and minimizing his company's
 responsibility.
 
+**Aunt Amy** is Finn's engineer aunt and trusted background partner. She helps
+Finn understand systems, interpret evidence, and learn how game tools work
+without taking control or solving the problem for him. Her optional hints are
+concise, teen-appropriate, supportive, and willing to challenge Chinmay's
+misleading explanations.
+
+**Techno** is the family's cream-colored, curly-haired dog and Finn's cartoon
+companion. Techno can react to suspicious activity, uncover files, flag an
+interruption, or provide a light comic beat. Techno is never required for
+reading, scoring, comprehension, or progression. Her recurring visual prop is
+an unbranded orange-and-blue grooved fetch ball; most poses should reflect her
+ball obsession without turning the toy into a required mechanic.
+
+Amy, Techno, their dialogue, visual treatment, and their presentation roles are
+owned entirely by the Internet Recovery OS wrapper. Lower layers may expose
+theme-neutral events such as `hintAvailable`, `newEvidence`, or
+`readingInterrupted`; they must not know these characters exist.
+
 He restores corrupted information by reading recovered files aloud.
 
 ## Overarching story
@@ -286,6 +327,11 @@ Possible applications:
 
 As Finn progresses, the desktop becomes increasingly cluttered and personalized with recovered memes, stickers, desktop pets, strange files, achievements, and fake viruses.
 
+Amy may appear through an optional engineer-support channel, concise case notes,
+or story cutscenes. Techno may appear as a desktop pet, cutscene companion, or
+optional visual hint cue. Neither character should cover passage text, live
+highlighting, microphone state, or reading feedback.
+
 ## Core loop
 
 1. Finn selects a corrupted file, website, message, or system.
@@ -295,6 +341,35 @@ As Finn progresses, the desktop becomes increasingly cluttered and personalized 
 5. The Reading Engine estimates pace, accuracy, fluency, retries, and completion.
 6. Game Rules translate the result into an immediate repair or reward.
 7. The wrapper shows a funny payoff and moves the larger Internet restoration forward.
+
+During reading, Internet Recovery OS should make the broken page itself the
+primary progress visualization. A compact scrolling reader preserves current
+and surrounding text while selected wrapper-owned content progressively
+unscrambles, reconnects, realigns, or reappears. The Reading Engine emits
+theme-neutral progress; it does not know which visual repairs the wrapper
+chooses. Repairs move forward and are not revoked to punish retries or mistakes.
+
+Broken-site missions may also carry a wrapper-specific media-literacy arc: a
+corrupted page promotes a harmful internet habit, the passage reveals evidence
+and context, and the repaired page demonstrates a useful principle. The lesson
+should emerge through story, humor, and visible cause-and-effect rather than
+turning speech scoring into a knowledge judgment. Comprehension remains an
+independent content concern.
+
+The assigned reading passage does not need to supply the wrapper's site-repair
+story or lesson. A mission may pair any suitable theme-neutral passage with a
+parody webpage consequence. Comprehension is grounded only in the assigned
+passage. The wrapper may map normalized progress to a simple left-to-right
+before/after repair wipe, avoiding bespoke word-level site mutation while
+preserving visible cause and effect.
+
+Internet Recovery sites may contain wrapper-configured sabotage campaigns with
+multiple distinct passages and evolving page failures. Chinmay's repeated
+interference advances story and evidence rather than erasing learner progress.
+Near a site's finale, Amy reveals an exact three-repair Shield Protocol; the game
+must honor that finish line, permanently secure the site in canonical story
+state, and reject later sabotage. Campaign counts, character interruptions,
+shield state, and site security remain outside the Reading Engine.
 
 ## Content presentation
 
@@ -317,6 +392,11 @@ This varies the presentation while preserving the same core reading mechanic.
 ## Places and systems to restore
 
 Use parody or original versions rather than depending on real brand identities.
+The browser should visit original, transformed site archetypes from multiple web
+eras so Finn repairs the Internet page by page. A mission may evoke an older
+personal homepage, portal, social profile, encyclopedia, video site, forum, or
+modern feed, but it must use wrapper-owned names, art, copy, and layouts rather
+than reproducing a real service's branding or content.
 
 Examples:
 
@@ -448,6 +528,13 @@ Open app
 → watch broken website or file get repaired
 → choose replay or next repair
 ```
+
+Internet Recovery OS may turn genuine between-page loading into a
+dial-up-inspired connection interstitial. This presentation belongs entirely to
+the wrapper: it reflects real loading state, adds no artificial delay, preserves
+safe retry/cancel behavior, and exposes accessible status independent of jokes,
+sound, color, or animation. Any future modem-inspired audio must be original,
+optional, muted on demand, and started only after user interaction.
 
 ### What can remain simple
 
