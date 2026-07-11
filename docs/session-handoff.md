@@ -15,12 +15,26 @@
 - Preserved the large-site / narrow-reader layout, continuous reading behavior,
   progress wipe, optional comprehension, privacy boundary, and persistent
   stability consequence unchanged.
-- Techno animation assets are intentionally not included in this branch. A
-  parallel thread owns those production sprites; integrate them after they are
-  published rather than generating a competing set here.
-- Recommended next visual action: load the reviewed Techno animation sheet into
-  the reserved wrapper areas, then judge the complete read/outcome screen at a
-  1536×960 desktop viewport before adding more art.
+- The separately produced Techno library is now present. This branch will wire
+  only the documented progress-push proof; all other reaction states remain
+  unhooked until their placement is reviewed.
+## Techno animation library
+
+- Added six approved, wrapper-owned animated WebP states under
+  `apps/internet-recovery/art/characters/techno/`: progress push, ball-drop
+  idle, sleep idle, paw alert, bark alert, and tail-wag celebration.
+- Every state uses six transparent frames over approximately two to three
+  seconds and includes a matching still WebP for reduced-motion presentation.
+- The progress-push sprite is intended to move with the wrapper's confirmed
+  repair boundary. Other reactions should be lazy-loaded and remain optional
+  presentation; they do not affect reading, scoring, comprehension, or saved
+  progress.
+- Each loop was decoded and visually checked for duplicate characters,
+  clipping, inconsistent scale, and missing limbs. Rejected experiments and
+  internal review strips are not part of the published asset set.
+- Next action: integrate only the progress-push state into the WikiWhy repair
+  slice first, verify that it does not steal attention from the reader, and use
+  the matching still when reduced motion is requested.
 
 ## Persistent WikiWhy repair consequence
 
