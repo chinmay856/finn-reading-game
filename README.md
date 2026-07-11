@@ -6,8 +6,10 @@ The first game wrapper is **Internet Recovery OS**: adults broke the Internet, a
 
 ## Start here
 
+- Current Codex Desktop handoff: [`docs/CODEX_HANDOFF.md`](docs/CODEX_HANDOFF.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
+- Mobile prototype entry point: [`index.html`](index.html)
 
 ## Core rule
 
