@@ -66,6 +66,18 @@ The review can copy a diagnostics-only timing report. It contains checkpoint
 window sizes, inference latency, scores, browser information, and aggregate
 microphone signal data; it contains neither audio nor transcript text.
 
+For explicit debugging, the review also exposes final and checkpoint transcript
+text inside a collapsed panel. Transcript text remains only in the current tab,
+is cleared on reload, and is still excluded from copied timing reports.
+
+After the first corrected full reading scored 91% accuracy at 131 WPM but ended
+at 96% position, the fixed 94% automatic-completion threshold was removed.
+Automatic completion now requires evidence among the passage's final tokens and
+a profile-configured final pause. The expository-prose profile reduces the live
+pause trigger from 900 ms to 450 ms and the minimum checkpoint window from eight
+seconds to five, reducing orchestration delay while retaining one inference at
+a time.
+
 The mechanic is promising if most checkpoints appear within roughly three
 seconds of a pause and the confirmed paragraph does not lag more than one
 paragraph behind. This is a product threshold for the spike, not an established

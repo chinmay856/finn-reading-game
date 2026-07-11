@@ -91,6 +91,14 @@ also uses one Begin action and automatic end-of-passage completion, with a
 manual finish fallback. This fix still requires a real reread before the
 accuracy estimate is trusted.
 
+The next full run confirmed the capture repair: 200/220 words, 91% accuracy,
+131 WPM, and 96% furthest position. Remaining issues were consistent
+paragraph-end lag and premature automatic completion at the former 94%
+threshold. The current branch introduces content-owned reading profiles,
+shortens the expository checkpoint trigger/window, requires matched evidence
+from the actual passage ending, and exposes ephemeral transcript diagnostics so
+the next run can distinguish recognition omissions from inference latency.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
