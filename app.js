@@ -1,4 +1,5 @@
 import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
+import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
@@ -12,6 +13,7 @@ const SPEECH_LEVEL = 0.009;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
+const uiPreview = new URLSearchParams(location.search).get("uiPreview");
 
 const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
@@ -88,7 +90,11 @@ function updateProgress(alignment, latencyMs = null) {
   state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
   $("repairFill").style.width = `${percent}%`;
+  $("repairEdge").style.left = `${percent}%`;
   $("repairPercent").textContent = `${percent}% repaired`;
+  $("siteStatus").textContent = percent >= 100 ? "STATUS: REPAIR COMPLETE" : percent > 0 ? `STATUS: RECOVERING · ${percent}%` : "STATUS: CORRUPTED";
+  $("siteStatus").classList.toggle("complete", percent >= 100);
+  $("siteStatus").style.color = percent >= 100 ? "#246b3c" : "#a6231d";
   $("progressText").textContent = `${percent}% confirmed by local transcript`;
   $("latency").textContent = latencyMs == null ? "Waiting for first checkpoint" : `Last checkpoint: ${(latencyMs / 1000).toFixed(1)}s`;
   renderPassage();
@@ -124,7 +130,7 @@ async function checkpoint(reason) {
     diagnostic("checkpoint-error", { message: error.message, reason });
   } finally {
     state.busy = false;
-    if (state.listening) $("readerState").textContent = "Listening — keep reading";
+    if (state.listening) $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.active"];
   }
 }
 
@@ -168,7 +174,7 @@ async function startReading() {
   state.monitor = setInterval(monitorSpeech, 100);
   $("listen").textContent = "Finish now";
   $("listen").disabled = false;
-  $("readerState").textContent = "Listening — start when ready";
+  $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
   diagnostic("capture-start");
 }
 
@@ -197,6 +203,7 @@ async function finishReading() {
   $("finalizationStatus").className = "finalization-status working";
   $("finalTranscript").textContent = "Final transcript is still processing locally…";
   $("again").disabled = true;
+  $("continueResult").disabled = true;
   $("export").disabled = true;
   show("review");
   const requestedAt = performance.now();
@@ -237,6 +244,7 @@ async function finishReading() {
   $("finalizationStatus").textContent = `Final score ready in ${(finalLatencyMs / 1_000).toFixed(1)}s. The final pass added ${finalAddedWords} confirmed words.`;
   $("finalizationStatus").className = "finalization-status ready";
   $("again").disabled = false;
+  $("continueResult").disabled = false;
   $("export").disabled = false;
   $("finalTranscript").textContent = text || "No final transcript was returned.";
   $("checkpointTranscripts").textContent = state.transcriptDiagnostics.length
@@ -296,6 +304,11 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => location.reload();
+$("continueResult").onclick = () => {
+  $("continueResult").disabled = true;
+  $("continueResult").textContent = "Repair recorded";
+  $("reportStatus").textContent = "Repair complete. The connection is stable for now.";
+};
 $("export").onclick = exportReport;
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
   $("passage").addEventListener(eventName, () => {
@@ -321,4 +334,29 @@ window.addEventListener("pagehide", () => {
   if (capture.active) capture.stop();
   recognizer.close();
 });
+function updateDesktopClock() {
+  $("desktopClock").textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+}
+
+hydrateInternetRecoveryCopy();
+updateDesktopClock();
+setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
+if (uiPreview === "read") {
+  const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
+  updateProgress({
+    furthestMatchedTokenIndex: previewCount - 1,
+    matchedTokenIndexes: Array.from({ length: previewCount }, (_, index) => index),
+    positionProgress: 0.55,
+  }, 1_250);
+  $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.active"];
+  show("read");
+} else if (uiPreview === "review") {
+  $("finalAccuracy").textContent = "91%";
+  $("finalCorrect").textContent = "200/220";
+  $("finalSpeed").textContent = "243 WPM";
+  $("finalProgress").textContent = "96%";
+  $("finalizationStatus").textContent = "Final score ready. The page repair is recorded.";
+  $("finalizationStatus").className = "finalization-status ready";
+  show("review");
+}

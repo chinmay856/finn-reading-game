@@ -117,6 +117,20 @@ how much accuracy and word evidence that expensive final pass actually adds.
 
 ## Immediate next action
 
+The first reviewed Internet Recovery 98 interface slice now wraps the existing
+mechanics test in a clearly bounded remote recovery desktop. WikiWhy occupies
+the dominant browser canvas; the independent continuous Reading Companion is a
+compact side window; confirmed neutral progress drives the reusable left-to-
+right before/after repair wipe. Setup, privacy, reading, and result language use
+stable wrapper copy IDs under `apps/internet-recovery/copy.js`. This implements
+only the documented one-passage proof, not the reverse hack, Shield Protocol,
+campaign progression, or unreviewed character art.
+
+The next interface test is visual attention: verify that the reader remains easy
+to follow at 250 WPM while the WikiWhy repair is noticeable but not distracting.
+Then test the complete microphone loop once the preferred local speech adapter
+is stable enough to provide a fair transcript.
+
 An isolated Moonshine comparison is now available at
 `moonshine-benchmark.html`. It preserves the exact maintained Hugging Face model,
 Silero VAD, and streaming configuration while reporting same-passage accuracy
