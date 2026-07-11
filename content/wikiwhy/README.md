@@ -14,6 +14,10 @@ The adapted passages are distributed under the
 Changes from the source are indicated here and in every passage record. No
 Wikipedia images, logos, or other non-text media are included.
 
+`photosynthesis-passage.js` is the first executable Content Platform record. It
+implements Deck A passage A01 with its reading profile, comprehension choices,
+and provenance while remaining free of WikiWhy repair or wrapper outcomes.
+
 Article content changes over time. Before production publication, preserve a
 permanent revision link and review each passage for factual accuracy,
 transcription behavior, reading level, and additional source notices.

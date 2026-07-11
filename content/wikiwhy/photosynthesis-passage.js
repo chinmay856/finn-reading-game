@@ -1,0 +1,43 @@
+export const PHOTOSYNTHESIS_PASSAGE = Object.freeze({
+  id: "photosynthesis-a01",
+  title: "How Plants Store Sunlight",
+  paragraphs: Object.freeze([
+    "Plants do not eat sunlight, but they do use light to build the fuel that keeps them alive. During photosynthesis, pigments absorb light energy. That energy helps plants combine carbon dioxide from the air with water taken up by their roots. The process stores energy inside carbon-based compounds, including sugars. A plant can use those compounds immediately or save them for later.",
+    "Oxygen is released during the most common form of photosynthesis. This release is important, but oxygen is not the plant's main goal. The central task is turning light into chemical energy that cells can use. Plants, algae, and some bacteria perform versions of this process. Together, they capture an enormous amount of energy and support most food webs on Earth.",
+    "Photosynthesis and cellular respiration are related but distinct. Photosynthesis stores energy by building compounds. Respiration releases usable energy by breaking compounds down. A leaf is therefore not a tiny solar panel in a literal sense, yet the comparison captures something useful: both systems transform incoming energy into a form that can do work later.",
+  ]),
+  comprehension: Object.freeze({
+    prompt: "Why does the passage say oxygen is not the plant's main goal?",
+    choices: Object.freeze([
+      Object.freeze({ correct: false, text: "Because plants do not need oxygen." }),
+      Object.freeze({ correct: true, text: "Because the main function is storing light energy in chemical compounds." }),
+      Object.freeze({ correct: false, text: "Because oxygen is released only at night." }),
+    ]),
+    correctFeedback: "That matches the file. Oxygen is released, but storing chemical energy is the central task.",
+    incorrectFeedback: "That is not what the file supports. Check the middle paragraph and choose again, or continue.",
+  }),
+  profile: Object.freeze({
+    accuracyTarget: 85,
+    checkpoint: Object.freeze({
+      audioOverlapMs: 3_000,
+      maximumWindowMs: 16_000,
+      minimumWindowMs: 5_000,
+      pauseMs: 450,
+      tokenOverlap: 12,
+    }),
+    endDetection: Object.freeze({ finalPauseMs: 900, minimumTailMatches: 6, tailSize: 10 }),
+    form: "expository-prose",
+    guide: Object.freeze({ defaultWpm: 250, leadWords: 18, supportedWpm: Object.freeze([150, 200, 250, 300]) }),
+    segmentation: "short-paragraphs",
+    targetGrades: Object.freeze([10, 12]),
+    targetWpm: Object.freeze({ comfortable: 150, stretch: 250 }),
+  }),
+  source: Object.freeze({
+    attribution: "Adapted and modified from “Photosynthesis,” English Wikipedia contributors.",
+    basis: "cc-by-sa-4.0-adaptation",
+    domain: "science",
+    historyUrl: "https://en.wikipedia.org/w/index.php?title=Photosynthesis&action=history",
+    sourceType: "licensed-adaptation",
+    sourceUrl: "https://en.wikipedia.org/wiki/Photosynthesis",
+  }),
+});

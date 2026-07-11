@@ -1,13 +1,13 @@
-import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
+import { PHOTOSYNTHESIS_PASSAGE } from "./content/wikiwhy/photosynthesis-passage.js";
 import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
-const PARAGRAPHS = EVIDENCE_PASSAGE.paragraphs;
+const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
-const PROFILE = EVIDENCE_PASSAGE.profile;
+const PROFILE = PHOTOSYNTHESIS_PASSAGE.profile;
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
 const SPEECH_LEVEL = 0.009;
 const $ = (id) => document.getElementById(id);
@@ -32,6 +32,20 @@ const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
 function diagnostic(type, details = {}) {
   state.diagnostics.push({ at: new Date().toISOString(), type, ...details });
   if (state.diagnostics.length > 60) state.diagnostics.shift();
+}
+
+function hydratePassage() {
+  const wordCount = tokenizeText(PASSAGE).length;
+  $("fileTitle").textContent = PHOTOSYNTHESIS_PASSAGE.title;
+  $("fileMeta").textContent = `${wordCount} words · science · grades 10–12`;
+  $("fileSource").textContent = PHOTOSYNTHESIS_PASSAGE.source.attribution;
+  $("passageTitle").textContent = PHOTOSYNTHESIS_PASSAGE.title;
+  $("quizQuestion").textContent = PHOTOSYNTHESIS_PASSAGE.comprehension.prompt;
+  document.querySelectorAll(".quiz button[data-choice]").forEach((button) => {
+    const choice = PHOTOSYNTHESIS_PASSAGE.comprehension.choices[Number(button.dataset.choice)];
+    button.textContent = choice.text;
+    button.dataset.answer = choice.correct ? "1" : "0";
+  });
 }
 
 function show(name) {
@@ -324,8 +338,8 @@ document.querySelectorAll(".quiz button").forEach((button) => {
       choice.classList.toggle("wrong", choice === button && !correct);
     });
     $("quizFeedback").textContent = correct
-      ? "Right. Correlation alone cannot rule out other explanations."
-      : "Not quite. Look for another factor that could affect both observations.";
+      ? PHOTOSYNTHESIS_PASSAGE.comprehension.correctFeedback
+      : PHOTOSYNTHESIS_PASSAGE.comprehension.incorrectFeedback;
     $("payoff").hidden = !correct;
   };
 });
@@ -339,6 +353,7 @@ function updateDesktopClock() {
 }
 
 hydrateInternetRecoveryCopy();
+hydratePassage();
 updateDesktopClock();
 setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
@@ -352,8 +367,9 @@ if (uiPreview === "read") {
   $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.active"];
   show("read");
 } else if (uiPreview === "review") {
+  const previewTotal = tokenizeText(PASSAGE).length;
   $("finalAccuracy").textContent = "91%";
-  $("finalCorrect").textContent = "200/220";
+  $("finalCorrect").textContent = `${Math.round(previewTotal * 0.91)}/${previewTotal}`;
   $("finalSpeed").textContent = "243 WPM";
   $("finalProgress").textContent = "96%";
   $("finalizationStatus").textContent = "Final score ready. The page repair is recorded.";

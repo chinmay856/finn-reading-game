@@ -13,6 +13,10 @@
   wrapper copy or WikiWhy concepts entered the Reading Engine or speech files.
 - Added `?uiPreview=read` and `?uiPreview=review` as no-microphone visual QA
   states. They are diagnostics, not player navigation.
+- Wired Deck A passage A01, **How Plants Store Sunlight**, through a reusable
+  attributed Content Platform record. Title, paragraphs, word count,
+  provenance, profile, and comprehension now hydrate the interface from that
+  record instead of the former hard-coded evidence demo.
 - Deliberately deferred the 80% reverse hack, ten-session campaign, Shield
   Protocol, achievements, and generated character sprites until the core
   one-passage experience is reviewed.
