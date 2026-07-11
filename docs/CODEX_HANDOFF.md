@@ -51,7 +51,11 @@ The current site is a dependency-free static web app:
 
 - `index.html` — setup, live reading, and review screens
 - `styles.css` — mobile-first dark/green retro interface
-- `app.js` — microphone permission, Web Speech API recognition, transcript alignment, highlighting, speed/accuracy scoring, retries, and summary
+- `app.js` — phone/browser integration, UI state, retries, review, and the
+  privacy-safe test-report export
+- `reading-engine.js` — theme-neutral transcript normalization, forgiving word
+  alignment, and scoring data
+- `tests/` — zero-dependency Node tests for alignment and the UI/engine boundary
 - `.nojekyll` — keeps GitHub Pages from applying Jekyll processing
 - `.github/workflows/pages.yml` — GitHub Pages deployment through Actions
 
@@ -102,7 +106,15 @@ The prototype does not intentionally save audio recordings. It requests micropho
 
 ## Deployment state
 
-The GitHub repository is now **public**. Earlier in the conversation it was private, which prevented free GitHub Pages hosting. That specific blocker has been removed.
+The GitHub repository is **public**, GitHub Pages is enabled with **GitHub
+Actions** as its source, and HTTPS is enforced. The live phone URL is:
+
+<https://chinmay856.github.io/finn-reading-game/>
+
+The original deployment failures occurred because the Pages site had not been
+created. The workflow token could not create it and failed with `Resource not
+accessible by integration`. Codex enabled Pages through the authenticated
+repository API, after which the same workflow completed successfully.
 
 A Pages workflow exists at `.github/workflows/pages.yml`. It is configured to:
 
@@ -117,12 +129,13 @@ The expected site is:
 
 `https://chinmay856.github.io/finn-reading-game/`
 
-Do **not** assume the site is working merely because the workflow file exists. The previous user-facing link did not work. The first Codex task is to inspect the actual repository, GitHub Actions runs, and Pages configuration, then get a verifiably reachable HTTPS site online.
+Verify the site and its static assets after each deployment rather than assuming
+the workflow result alone proves the phone URL is serving the intended commit.
 
-Potential deployment checks:
+Deployment verification checklist:
 
 1. Confirm the repository is public.
-2. Inspect the most recent `Deploy StoryQuest to GitHub Pages` workflow run and logs.
+2. Inspect the most recent `Deploy Game for Finn to GitHub Pages` workflow run and logs.
 3. Confirm repository **Settings → Pages → Build and deployment** is using **GitHub Actions**.
 4. Confirm Actions are enabled for the repository.
 5. Confirm the `github-pages` environment was created and deployment succeeded.
@@ -153,13 +166,27 @@ The current implementation uses `window.SpeechRecognition || window.webkitSpeech
 
 Do not treat browser transcription as ground truth. Keep `Accept & continue` or an equivalent correction path during early testing.
 
+The current hardened prototype also:
+
+- creates a fresh recognition instance for each explicit **Start reading** tap;
+- never auto-restarts recognition and never auto-accepts a browser estimate;
+- explains common permission, no-speech, audio-capture, and network failures;
+- tolerates fillers, repeats, skipped words, near recognition matches, and
+  self-corrections in the theme-neutral `reading-engine.js` module;
+- excludes silence between recognition attempts from WPM timing;
+- can copy a session JSON report containing scores and diagnostics but no audio.
+
+Use [`PHONE_TEST.md`](PHONE_TEST.md) for the exact iPhone and Android checklist.
+
 ---
 
 ## Immediate priorities
 
-### P0 — Make the phone link work
+### P0 — Make the phone link work (completed)
 
-Get the GitHub Pages deployment live and verify the exact URL. This is the current blocker.
+GitHub Pages is enabled, the workflow deploys successfully, and the root page,
+stylesheet, and JavaScript respond over HTTPS. Re-verify after each main-branch
+deployment.
 
 ### P1 — Validate the smallest enjoyable loop
 
@@ -206,7 +233,7 @@ Keep interfaces between the Content Platform, Reading Engine, Game Rules, and Ga
 
 ---
 
-## Definition of done for the next Codex session
+## Definition of done for the next phone test
 
 A successful next session should end with:
 
@@ -218,23 +245,3 @@ A successful next session should end with:
 - graceful retry/accept behavior
 - deployment and local-run instructions updated in the repository
 - any remaining browser limitation stated precisely
-
----
-
-## Copy/paste prompt for Codex Desktop
-
-```text
-Open and work on the GitHub repository chinmay856/finn-reading-game.
-
-First read AGENTS.md, docs/ARCHITECTURE_AND_VISION.md, docs/CODEX_HANDOFF.md, and the current index.html, styles.css, app.js, and .github/workflows/pages.yml. Preserve the architecture rule that the reading engine remains separate from game-wrapper concepts.
-
-The immediate job is not a redesign. Get the existing bare-bones mobile read-aloud prototype deployed and genuinely usable on a phone.
-
-Start by inspecting GitHub Actions and GitHub Pages. The repo is public and the expected URL is https://chinmay856.github.io/finn-reading-game/, but the previous link did not work. Diagnose the actual deployment state, fix the workflow or Pages configuration as needed, and verify the final HTTPS URL responds with the prototype. Do not merely tell me how to configure it if you can make the repository change yourself. If one account-level setting is impossible for you to change, give me a single direct settings link and the exact control name.
-
-Then test and harden the current flow for Safari on iPhone and Chrome on Android: microphone permission, a separate user tap to start speech recognition, live line/word highlighting, correct-word count, accuracy %, pacing, WPM, retries, Accept & continue, and the final review. Keep the UI simple, teen-appropriate, and lightly retro. Do not add stars, badges, coins, login, a database, or elaborate game systems yet.
-
-Treat browser speech recognition as noisy rather than ground truth. Make errors understandable and forgiving. Preserve the current no-raw-audio-storage behavior. Add focused diagnostics or a session-result export if it materially helps phone testing.
-
-Run relevant checks, commit the changes, and finish by giving me: (1) the live phone URL, (2) exactly what changed, (3) the browser/device test steps, and (4) any limitation that still prevents a fair mechanics test.
-```

@@ -7,6 +7,8 @@ The first game wrapper is **Internet Recovery OS**: adults broke the Internet, a
 ## Start here
 
 - Current Codex Desktop handoff: [`docs/CODEX_HANDOFF.md`](docs/CODEX_HANDOFF.md)
+- Live phone prototype: <https://chinmay856.github.io/finn-reading-game/>
+- Phone test checklist: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
 - Mobile prototype entry point: [`index.html`](index.html)
@@ -36,3 +38,13 @@ Open app
 ```
 
 The repository documents are the durable source of truth across ChatGPT, Codex desktop, web, and mobile work. Update them when major decisions change.
+
+## Local checks
+
+The prototype has no third-party dependencies. With Node.js installed:
+
+```text
+npm run check
+npm test
+npm run dev
+```
