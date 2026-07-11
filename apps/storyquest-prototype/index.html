@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07100a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Finn Reading Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <div><small>READ-ALOUD PROTOTYPE</small><h1>StoryQuest</h1></div>
+    <div class="meta"><b>Finn</b><span>The Secret Garden</span></div>
+  </header>
+
+  <div class="steps"><span class="on" data-step="setup">1 Setup</span><span data-step="read">2 Read</span><span data-step="review">3 Review</span></div>
+  <p id="notice" class="notice" hidden></p>
+
+  <section id="setup" class="screen on panel">
+    <small>ONE-MINUTE MECHANICS TEST</small>
+    <h2>Read four lines aloud.</h2>
+    <p>The page follows the words, estimates accuracy and pace, and asks for a retry when a line misses the target.</p>
+    <div class="targets">
+      <label>Minimum pace<input id="minWpm" type="number" value="85" min="40" max="220"><em>WPM</em></label>
+      <label>Maximum pace<input id="maxWpm" type="number" value="150" min="60" max="260"><em>WPM</em></label>
+      <label>Accuracy goal<input id="goal" type="number" value="85" min="50" max="100"><em>%</em></label>
+    </div>
+    <div class="checks">
+      <span>HTTPS <b id="httpsCheck">checking</b></span>
+      <span>Microphone <b id="micCheck">checking</b></span>
+      <span>Speech recognition <b id="speechCheck">checking</b></span>
+    </div>
+    <button id="begin" class="primary">Enable microphone</button>
+    <p class="fine">No recording is stored by this prototype. Your browser may use its speech service to produce the transcript.</p>
+  </section>
+
+  <section id="read" class="screen">
+    <div class="read-grid">
+      <article class="panel">
+        <div class="row"><div><small>CURRENT LINE</small><h2 id="counter">Line 1 of 4</h2></div><b id="state" class="pill">Ready</b></div>
+        <div id="passage" class="passage"></div>
+        <div class="heard"><small>HEARD</small><p id="heard">—</p></div>
+        <div id="coach" class="coach" hidden>
+          <b id="coachTitle">Try that line again.</b>
+          <p id="coachText"></p>
+          <div class="actions"><button id="retry" class="primary">Retry line</button><button id="accept">Accept & continue</button></div>
+        </div>
+        <div id="controls" class="actions">
+          <button id="listen" class="primary">Start reading</button>
+          <button id="check" disabled>Check line</button>
+          <button id="finish">End test</button>
+        </div>
+      </article>
+      <aside class="panel stats">
+        <small>LIVE STATS</small>
+        <div><span>Accuracy</span><b id="accuracy">—</b></div>
+        <div><span>Speed</span><b id="speed">—</b></div>
+        <div><span>Pace</span><b id="pace">—</b></div>
+        <div><span>Correct words</span><b id="correct">0</b></div>
+        <p id="target"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="review" class="screen">
+    <div class="review-grid">
+      <article class="panel">
+        <small>TEST COMPLETE</small><h2>Session results</h2>
+        <div class="summary">
+          <div><span>Accuracy</span><b id="finalAccuracy">—</b></div>
+          <div><span>Average speed</span><b id="finalSpeed">—</b></div>
+          <div><span>First-try lines</span><b id="firstTry">—</b></div>
+          <div><span>Retries</span><b id="retries">—</b></div>
+        </div>
+        <div id="results"></div>
+        <div class="actions"><button id="again" class="primary">Run it again</button><button id="settings">Change targets</button></div>
+      </article>
+      <aside class="panel quiz"><small>QUICK CHECK</small><h3>What began to change Mary?</h3>
+        <button data-answer="0">She wanted to leave the manor.</button>
+        <button data-answer="1">The fresh air, the garden, and new friendships.</button>
+        <button data-answer="0">She found a hidden treasure.</button>
+        <p id="quizFeedback"></p>
+      </aside>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
