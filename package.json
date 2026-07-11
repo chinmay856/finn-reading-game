@@ -1,0 +1,10 @@
+{
+  "name": "game-for-finn",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check apps/internet-recovery/main.js && node --check packages/content-platform/index.js && node --check packages/reading-engine/index.js && node --check packages/game-rules/index.js && node --check packages/shared/local-session-store.js",
+    "test": "node --test"
+  }
+}
