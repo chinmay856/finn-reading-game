@@ -3,7 +3,19 @@
 Before making architectural, gameplay, content-model, speech, scoring, progression, or UI decisions, read:
 
 1. `docs/ARCHITECTURE_AND_VISION.md`
-2. `README.md`
+2. `docs/PROJECT_STATUS.md`
+3. `README.md`
+
+## Working model
+
+- All active work now happens through the Codex app and this GitHub repository.
+- Treat `main` as the only active source of truth; historical sync-era pull
+  requests and branches are reference material, not active work.
+- Use one scoped `agent/<description>` branch per task, keep checks and relevant
+  documentation with the implementation, and return local `main` to the merged
+  state after publication.
+- Do not create parallel chat-handoff systems unless the user explicitly changes
+  this working model.
 
 ## Non-negotiable project rule
 
@@ -17,6 +29,15 @@ Keep these concerns separate:
 - **Game Wrapper:** replaceable theme, navigation, terminology, art, animation, audio, characters, and story.
 
 The first wrapper is **Internet Recovery OS**. Do not embed its terminology, visuals, rewards, or mission assumptions inside the reusable engine.
+
+## Canonical Internet Recovery characters
+
+- **Finn** is always the player character and protagonist.
+- **Chinmay** is always Finn's uncle, the AI-company CEO, developer, and main
+  antagonist.
+- Do not rename, substitute, or ask to reconfirm these characters unless the
+  user explicitly requests a change. Treat other protagonist or antagonist
+  names in transcripts as transcription errors.
 
 ## Current product priority
 

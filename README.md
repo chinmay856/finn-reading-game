@@ -6,7 +6,7 @@ The first game wrapper is **Internet Recovery OS**: adults broke the Internet, a
 
 ## Start here
 
-- Current Codex Desktop handoff: [`docs/CODEX_HANDOFF.md`](docs/CODEX_HANDOFF.md)
+- Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
 - Live phone prototype: <https://chinmay856.github.io/finn-reading-game/>
 - Phone test checklist: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
