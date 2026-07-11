@@ -8,7 +8,7 @@ belongs in commits, pull requests, issues, and the decision log.
 
 - **Updated:** 2026-07-10
 - **Updated by:** Codex
-- **Branch/PR:** `agent/project-workflow` (draft pull request)
+- **Branch/PR:** `agent/project-workflow`; [draft PR #1](https://github.com/chinmay856/finn-reading-game/pull/1)
 - **Phase:** Project definition
 - **Overall status:** Documentation workflow created; product scope remains draft
 
@@ -16,6 +16,8 @@ belongs in commits, pull requests, issues, and the decision log.
 
 - Created repository-level guidance for coordinating ChatGPT web, mobile, Codex,
   and GitHub.
+- Created the private `chinmay856/finn-reading-game` GitHub repository with
+  `main` as its default branch.
 - Added draft product requirements, experience/technical design guidance, a
   roadmap, and an append-only decision log.
 - Added issue, pull request, and session-summary templates.
@@ -32,11 +34,12 @@ belongs in commits, pull requests, issues, and the decision log.
 
 - Confirmed all required scaffold files exist and contain content.
 - Confirmed all relative Markdown links resolve to files in the scaffold.
+- Confirmed `git diff --check` and a basic credential/private-key pattern scan
+  pass.
 - No application tests exist yet.
 
 ## Open questions
 
-- What existing or new GitHub repository should receive this scaffold?
 - What age range and reading level does the first release serve?
 - What is the first narrow reading skill and activity loop?
 - Which platforms and privacy constraints apply?
@@ -49,8 +52,8 @@ belongs in commits, pull requests, issues, and the decision log.
 
 ## Recommended next action
 
-Review the proposed requirements with the product owner, then accept or revise
-the first-release learner, skill, platform, and privacy constraints.
+Review and merge draft PR #1, then accept or revise the first-release learner,
+skill, platform, and privacy constraints with the product owner.
 
 ## Resume prompt
 
