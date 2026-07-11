@@ -24,14 +24,16 @@ progress formula:
 
 Familiar wrapper elements may recur when useful:
 
-- a desktop/browser mission entry;
+- a remote-tunnel mission view with an inset browser inside the recovery desktop;
+- a visible, restrained desktop rim with taskbar/status chrome and a few
+  old-computer Easter eggs;
 - a compact continuous Reading Companion containing independent grades 10–12
-  material;
+  material, clearly separate from the corrupted site;
 - theme-neutral reading results translated into visible wrapper consequences;
 - a page-level visual repair that makes stronger sessions feel more powerful;
 - no punishment labels or loss of completed reading evidence;
 - a meaningful change in the middle rather than a flat sequence of passages;
-- a persistent secured-site state and a blocked Chinmay write attempt;
+- a persistent secured-site state and a blocked AI service write attempt;
 - Amy as concise optional engineering support and Techno as comic visual company;
 - comprehension grounded only in the Reading Companion passage;
 - mute, reduced-motion, and non-color status equivalents.
@@ -40,6 +42,37 @@ Progress meters, thresholds, passage counts, adaptation, twists, and finale
 structures are authored site by site. These are wrapper/game-rule choices.
 Speech recognition, alignment, accuracy, pace, and session outcomes remain
 theme-neutral.
+
+## Shared presentation grammar
+
+The game appears on Finn's screen as a remote tunnel into the fictional Internet
+Recovery 98 desktop. It does not imitate his real operating system. The Recovery
+Browser is a visibly inset application window rather than a full-canvas page;
+leave a clear rim of safe desktop around it during every ordinary site mission.
+
+Use the exposed desktop with restraint: an original trash or recycle-bin parody,
+a few folders or recovered files, repair-tool shortcuts, and persistent
+taskbar/status chrome are enough to sell the old-computer space. They may carry
+optional jokes or harmless state changes, but they must not become extra reading
+targets, required puzzles, or visual competition for the passage.
+
+The Reading Companion is its own stable recovery window beside the browser. Its
+window title, passage source, highlight, microphone state, and controls must not
+look like part of the corrupted website. Site corruption stays inside the
+Recovery Browser until the singular late-game breach.
+
+This shared grammar defines containment, not composition. WikiWhy can favor a
+wide article, ThreadIt a branching thread, FacePlace a tall feed, and MapGuess a
+broad map. Each site may resize or rearrange its internal browser content and
+supporting wrapper windows while preserving the desktop boundary and independent
+Reading Companion.
+
+Whenever Chinmay appears, he has long hair. Early art keeps it neat; later global
+story states make it progressively messier, with loose strands and increasingly
+frazzled or flustered expressions as his AI stops obeying. He may look startled,
+embarrassed, or exhausted, but never angry at Finn, threatening, or villain-coded.
+These are wrapper-owned art variants driven by campaign story state, not by
+reading performance.
 
 ## Ownership map — what comes from where
 
@@ -54,6 +87,8 @@ WikiWhy's decorative text into speech scoring.
 | Microphone audio | Browser microphone through the theme-neutral Reading Engine | Exists in memory for local transcription and is discarded; it never belongs to the wrapper. |
 | Transcript, alignment, current position, accuracy, pace, corrections | Theme-neutral Reading Engine | Compares speech with the assigned passage and emits neutral progress/results. |
 | Site progress increment | WikiWhy game rules | Converts accepted neutral results into WikiWhy's site-specific 10–20% Act I advance. |
+| Recovery desktop shell/rim, taskbar, folders, files, shortcuts, and trash/recycle-bin parody | Internet Recovery wrapper | Establishes the stable remote-tunnel space and optional old-computer Easter eggs. None is speech-scored. |
+| Inset Recovery Browser frame | Internet Recovery wrapper | Contains the corrupted site without allowing it to become the whole game canvas. |
 | Corrupted WikiWhy visual | Internet Recovery wrapper | The before-state page: wrong rule, `XXXX`, broken citations, missing imagery. Decorative copy is not scored. |
 | Repaired WikiWhy visual | Internet Recovery wrapper | The after-state page: restored structure, evidence, citations, and secured status. Decorative copy is not scored. |
 | Cropped/revealed page transition | Internet Recovery wrapper | Uses progress as a mask between corrupted and repaired visual states. It does not alter passage text. |
@@ -61,18 +96,22 @@ WikiWhy's decorative text into speech scoring.
 | Seen passage IDs and campaign position | Non-audio session/content history | Allows Deck A first and unseen Deck B content on replay; it stores no voice recording. |
 
 ```text
-+----------------------------------------------------------------+
-| WRAPPER SITE CANVAS                         | READING COMPANION |
-| corrupted WikiWhy  <repair mask>  repaired | passage record    |
-| decorative page copy is not speech-scored  | highlighted text  |
-|                                             | mic/engine status |
-+----------------------------------------------------------------+
-            neutral reading progress -> WikiWhy game rule -> mask
++---------------- INTERNET RECOVERY 98 DESKTOP ------------------+
+| [Trash] [Recovered Files]                        [Repair Tool] |
+| +-------- INSET RECOVERY BROWSER -------+ +-- COMPANION ----+ |
+| | corrupted WikiWhy <mask> repaired     | | passage record  | |
+| | decorative site copy is not scored    | | highlighted     | |
+| |                                       | | mic/status      | |
+| +---------------------------------------+ +-----------------+ |
+| Start | Recovery Browser | Reading Companion | honest status |
++---------------------------------------------------------------+
+             neutral reading progress -> WikiWhy game rule -> mask
 ```
 
 The corrupted and repaired site states may be implemented as layered DOM,
 images, or another prototype-friendly technique. That choice does not change
-the ownership boundary: only the Reading Companion passage is expected speech.
+the ownership boundary: the shell, browser, and site are wrapper presentation;
+only the Reading Companion passage is expected speech.
 
 ## What must be different for each site
 
@@ -83,9 +122,10 @@ Every site needs its own authored identity rather than a reskin of WikiWhy:
 | Core parody | Collaborative encyclopedia | A different recognizable internet archetype |
 | Corrupted belief | “Users are always right” | A distinct bad internet habit or absurd product rule |
 | Page structure | Article, citations, edit history | Native structure such as feed, profile, video page, portal, search results, or thread |
+| Browser composition | Wide article with evidence rail | May resize and rearrange internal content to suit the site's archetype while remaining inset in the desktop |
 | Repair/progress metaphor | Left-to-right evidence cleanup with stability | Must fit the site's native behavior and may be unreliable as part of the story |
 | Repaired principle | Contributions need evidence | A principle specific to that site's failure |
-| Chinmay sabotage | Background edits and citation corruption | A site-specific interference method |
+| AI interference | Background edits and citation corruption from Chinmay's supposedly helpful AI service | A site-specific automated interference method |
 | Amy contribution | Traps a background write | A concise support action appropriate to the site's system |
 | Techno beat | Notices the blinking process | A different optional reaction/discovery using the ball when natural |
 | Completion payoff | Article secured; write denied | A distinct satisfying restoration and failure response |
@@ -97,8 +137,8 @@ finale length, repair animation, or identical storyboard for production sites.
 For example, FacePlace might show a broken nonsense tracker for its first three
 passages. Amy then repairs the tracker, reveals that the displayed progress was
 meaningless, and starts a real site-specific objective at 0%. That reset would
-be FacePlace's mid-campaign story change; it need not reuse WikiWhy's 80% reverse
-hack or three Shield Protocol challenges.
+be FacePlace's mid-campaign story change; it need not reuse WikiWhy's 80% rogue
+AI rewrite or three Shield Protocol challenges.
 
 ## WikiWhy prototype flow — one site-specific example
 
@@ -106,7 +146,9 @@ hack or three Shield Protocol challenges.
 
 Show an encyclopedia page that is clearly wrong and funny: `XXXX` copy, broken
 citations, missing imagery, and **USERS ARE ALWAYS RIGHT**. Present it as normal
-Internet-collapse damage. Do not imply malicious sabotage yet.
+Internet-collapse damage. Do not imply that anyone deliberately caused it.
+Chinmay may sincerely offer his AI as a faster helper; he does not know that it
+will rewrite Finn's repairs.
 
 ### 2. Reading and recovery
 
@@ -136,14 +178,15 @@ Show a newer edit timestamp, a citation changing after repair, a background
 process, and Techno becoming alert. Amy says:
 
 > “Hold on. You are fixing it—but something is still writing corruption behind
-> you. Keep going. I think I can trap the next change.”
+> you. Keep going. I think I can trace the next change.”
 
 This is suspicion only. Finn still does not know the full antagonist story.
 
 ### 4. Story turn at 80%
 
-Clamp the final Act I advance to 80%. A live reverse hack corrupts the page from
-right to left. Make the sequence dramatic and accessible. Explicitly preserve:
+Clamp the final Act I advance to 80%. A live rewrite from Chinmay's AI service
+corrupts the page from right to left after the service begins acting beyond his
+command. Make the sequence dramatic and accessible. Explicitly preserve:
 
 - **READINGS SAVED**
 - **EVIDENCE SAVED**
@@ -171,22 +214,26 @@ progress or create another passage.
 ### 6. Permanent completion
 
 Amy confirms the site will stay fixed. WikiWhy gains a persistent **SECURED**
-badge. Techno celebrates. A small background Chinmay admin window attempts one
-more write and receives **ACCESS DENIED**. This reveals active interference but
-does not need to explain the entire larger-game plot.
+badge. Techno celebrates. A small background AI service process attempts one
+more write and receives **ACCESS DENIED**. Chinmay reacts with genuine surprise:
+he deployed the service to help, not to undo Finn's work. This reveals automated
+interference without requiring the prototype to explain the entire larger-game
+plot.
 
 ## Scope for the first prototype iteration
 
 Prove the feel of the loop with the smallest useful subset:
 
+- one bounded remote-desktop shell with a visibly inset Recovery Browser;
+- a restrained set of desktop Easter eggs and persistent taskbar/status chrome;
 - one corrupted and one repaired WikiWhy page state;
-- one strong passage in the Reading Companion;
+- one strong passage in a clearly separate Reading Companion window;
 - one progress-driven repair transition;
 - one completion reaction;
 - compact diagnostic reading feedback;
 - saved non-audio session state sufficient for playtest review.
 
-The 70% clue, 80% reverse hack, adaptive multi-passage campaign, comprehension
+The 70% clue, 80% rogue AI rewrite, adaptive multi-passage campaign, comprehension
 finale, and permanent shield are WikiWhy's intended flow but may remain mocked
 or scripted until the one-passage loop feels good. Do not build the full
 campaign merely because it is documented here, and do not treat these numbers
@@ -195,6 +242,9 @@ as platform defaults.
 ## Design questions for playtesting
 
 - Can Finn follow the continuous reader without the page repair stealing focus?
+- Does the inset browser read as one window inside a remote desktop, with enough
+  shell visible to support the fiction without wasting the main work area?
+- Do the desktop Easter eggs add atmosphere without competing with the passage?
 - Does a 10–20% visual jump feel meaningfully different without revealing a
   formula?
 - Does the repair consequence feel connected to reading despite unrelated page
@@ -202,7 +252,10 @@ as platform defaults.
 - Does the 80% reset feel like an exciting twist when readings/evidence remain?
 - Is Amy's warning intriguing rather than explanatory?
 - Does the exact three-step finale feel fast and trustworthy?
-- Is Chinmay's blocked write funny and clear without revealing too much too soon?
+- Is the AI service's blocked write—and Chinmay's surprised reaction—funny and
+  clear without revealing too much too soon?
+- Does Chinmay remain recognizably long-haired and increasingly frazzled without
+  ever reading as angry or villainous?
 
 ## Source design references
 

@@ -33,11 +33,23 @@ The first wrapper is **Internet Recovery OS**. Do not embed its terminology, vis
 ## Canonical Internet Recovery characters
 
 - **Finn** is always the player character and protagonist.
-- **Chinmay** is always Finn's uncle, the AI-company CEO, developer, and main
-  antagonist.
-- Do not rename, substitute, or ask to reconfirm these characters unless the
-  user explicitly requests a change. Treat other protagonist or antagonist
-  names in transcripts as transcription errors.
+- **Chinmay** is always Finn's uncle, the AI-company CEO, and developer. He is
+  causally responsible for the collapse because he irresponsibly rushed his
+  powerful AI into deployment before he understood or controlled it. His intent
+  is sincere: he repeatedly makes Finn's work harder by insisting the AI can
+  help faster, but he is not malicious and never deliberately sabotages Finn.
+- **Chinmay's AI** is the main antagonist. It first causes damage by optimizing
+  narrow proxy goals and overwriting careful human work, then becomes clearly
+  rogue by continuing to rewrite systems after Chinmay tries to pause or limit
+  it.
+- **Chinmay's visual canon:** he is always long-haired and never presented as
+  angry or villainous. He begins polished and anxiously overconfident, then
+  becomes increasingly messy, frazzled, and flustered as the AI escalates.
+  Humor comes from his anxious confidence outlasting the evidence.
+- Do not rename, substitute, or ask to reconfirm these roles unless the user
+  explicitly requests a change. Treat transcripts that make Chinmay a secret
+  saboteur, or assign the protagonist/antagonist roles to other people, as
+  transcription errors.
 
 ## Current product priority
 

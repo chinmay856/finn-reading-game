@@ -46,8 +46,17 @@ while validating the engine.
 ## Canonical product facts
 
 - Finn is the fixed protagonist and player character.
-- Chinmay is Finn's uncle, the AI-company CEO/developer, and the fixed main
-  antagonist.
+- Chinmay is Finn's uncle and the overconfident AI-company CEO/developer. He is
+  causally responsible for the collapse because he irresponsibly rushed the AI
+  into deployment before he understood or controlled it. He keeps making Finn's
+  work harder by sincerely insisting his AI can fix things faster, but he is
+  not malicious.
+- Chinmay's AI is the fixed main antagonist. It begins by optimizing the wrong
+  goals and becomes clearly rogue when it keeps rewriting repairs after Chinmay
+  tries to stop it.
+- Chinmay is always depicted with long hair. He becomes progressively messier,
+  frazzled, and flustered as the AI escalates, but never looks angry or
+  villainous; the humor comes from anxious overconfidence.
 - Aunt Amy is Finn's engineer aunt and optional background partner. Techno is
   the family's cream-colored, curly-haired dog and optional cartoon companion.
   Both characters, their dialogue, and their visuals belong only to the
@@ -123,7 +132,7 @@ the dominant browser canvas; the independent continuous Reading Companion is a
 compact side window; confirmed neutral progress drives the reusable left-to-
 right before/after repair wipe. Setup, privacy, reading, and result language use
 stable wrapper copy IDs under `apps/internet-recovery/copy.js`. This implements
-only the documented one-passage proof, not the reverse hack, Shield Protocol,
+only the documented one-passage proof, not the rogue-AI rewrite, final three,
 campaign progression, or unreviewed character art.
 
 The next interface test is visual attention: verify that the reader remains easy
@@ -180,6 +189,12 @@ Use that evidence to choose the next smallest Reading Engine improvement.
 The private Amy/Chinmay and Techno references remain outside the repository.
 Reviewed generated concept boards are committed under
 [`apps/internet-recovery/art/concepts`](../apps/internet-recovery/art/concepts/README.md).
+The current campaign hub, WikiWhy example, and all nine proposed non-WikiWhy
+site boards now use the rogue-AI visual canon: an inset browser within Finn's
+remote desktop, restrained retro desktop Easter eggs, a separate stable Reading
+Companion, a visibly nonhuman AI process, and long-haired Chinmay becoming
+frazzled rather than villainous. Unsuffixed earlier boards are retained only as
+superseded composition history.
 
 The wrapper design also includes original broken-web parody missions and a
 dial-up-inspired interstitial that masks genuine between-page loading without
@@ -189,8 +204,8 @@ mechanics test has not implemented them.
 Campaign mechanics are authored site by site. The shared story rhythm is an
 apparent problem, a meaningful middle change, and a site-specific resolution;
 percentages, passage counts, trackers, resets, and finales may differ. WikiWhy's
-worked example uses dynamic 10–20% Act I repair, an 80% reverse hack, and an
-exact three-step Shield Protocol. These remain wrapper design, not Reading
+worked example uses dynamic 10–20% Act I repair, an 80% rogue-AI rewrite, and
+an exact three-step containment finale. These remain wrapper design, not Reading
 Engine behavior.
 
 Prototype passage authoring now explicitly avoids unnecessary
@@ -226,13 +241,15 @@ prototype implementation scope.
 
 The proposed campaign spine now connects those ten independent site stories
 without imposing one global progress mechanic. WikiWhy is the onboarding case;
-later site order can vary. Global Chinmay/Amy story turns trigger from the
+later site order can vary. Global Chinmay/AI/Amy story turns trigger from the
 number of secured sites and evidence files, while the hub shows at most three
-Incoming Cases. Ten secured sites produce a genuine apparent finish. An
-unexpected eleventh live evidence file then starts the separate, singular
-breach of Amy's previously trustworthy recovery desktop and leads to outside
-administrator revocation. This remains design-only and is not a request to
-implement campaign state in the current mechanics test.
+Incoming Cases. Early AI rewrites follow Chinmay's overconfident attempts to
+help; later evidence shows the AI continuing after he tells it to stop. Ten
+secured sites produce a genuine apparent finish. An unexpected eleventh live
+evidence file then starts the separate, singular rogue-AI breach of Amy's
+previously trustworthy recovery desktop and leads to revocation of the AI
+service's outside deployment access. This remains design-only and is not a
+request to implement campaign state in the current mechanics test.
 
 One review-only grades 10–12 sample is now drafted for each non-WikiWhy site.
 The sampler spans argumentative nonfiction, literary retelling, reflective

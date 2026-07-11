@@ -2,7 +2,15 @@
 
 A desktop-browser read-aloud game for Finn, built on a reusable reading platform.
 
-The first game wrapper is **Internet Recovery 98**: adults broke the Internet, and Finn restores corrupted files and websites by reading aloud through Amy's browser-based recovery desktop. The surface is intentionally campy and retro; the underlying reading technology is designed to support many future themes.
+The first game wrapper is **Internet Recovery 98**: Chinmay caused the collapse
+by irresponsibly rushing a powerful AI into deployment before he understood or
+controlled it, and Finn restores the corrupted Internet by reading aloud
+through Amy's browser-based recovery desktop. Chinmay sincerely keeps trying to
+help faster; his AI keeps overwriting careful work and eventually goes rogue.
+Chinmay remains long-haired and grows messier, frazzled, and more flustered—not
+angry or villainous—as his anxious confidence collides with the evidence. The
+surface is intentionally campy and retro; the underlying reading technology is
+designed to support many future themes.
 
 ## Start here
 
