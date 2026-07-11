@@ -73,7 +73,11 @@ test("the Moonshine comparison is isolated and theme-neutral", async () => {
   assert.deepEqual(missingIds, []);
   assert.match(worker, /onnx-community\/moonshine-base-ONNX/u);
   assert.match(worker, /onnx-community\/silero-vad/u);
+  assert.match(worker, /const device = "wasm"/u);
+  assert.match(worker, /summarizeSignal/u);
   assert.doesNotMatch(worker, /WikiWhy|Internet Recovery|Finn|stars|badges|coins|bandwidth/iu);
   assert.doesNotMatch(app, /fetch\(|XMLHttpRequest|WebSocket/u);
+  assert.match(app, /EVIDENCE_PASSAGE\.paragraphs\[0\]/u);
+  assert.match(html, /id="diagnostics"/u);
   assert.match(html, /Nothing is uploaded or retained/u);
 });

@@ -5,7 +5,7 @@
 This is a narrow Reading Engine experiment, not a replacement decision and not
 a game-wrapper feature. It compares whether a streaming-oriented local model
 can provide more natural progress evidence than the current final-pass Whisper
-flow during the same 220-word, fast read-aloud passage.
+flow during the first paragraph of the existing passage.
 
 The current Whisper path remains the default. Open
 `moonshine-benchmark.html` only when deliberately running the comparison.
@@ -48,12 +48,26 @@ Official references:
 
 ## Fair comparison procedure
 
+### First real run
+
+The first deployed run automatically selected WebGPU. Silero detected seven
+speech segments, but Moonshine returned an empty transcript for every segment.
+Consequently, the displayed 0% accuracy and position were not reading scores;
+there were no model words for the aligner to score. Timing still reported 19.6
+seconds to the first result, 1.6 seconds median segment lag, 6.1 seconds worst
+lag, and no final-flush delay.
+
+The follow-up benchmark forces WebAssembly/q8, reduces the test to the first
+paragraph, and reports sample count, duration, RMS, peak level, and the shape of
+each raw model response. This distinguishes an empty WebGPU inference result
+from malformed or silent microphone input without retaining audio.
+
 1. Use current desktop Chrome and the same microphone/environment.
 2. Open the deployed Moonshine comparison page and wait for `Ready`. The first
    visit may take around two minutes; later visits should reuse browser cache.
-3. Select **Start continuous reading**, then read the full displayed passage at
-   the user's natural fast pace, including ordinary breath pauses.
-4. Select **Finish reading** once at the end.
+3. Select **Start paragraph**, then read the one displayed paragraph at the
+   user's natural fast pace.
+4. Select **Finish paragraph** once at the end.
 5. Record accuracy, confirmed words, passage position, first transcript time,
    median and worst segment lag, and finish lag.
 6. Compare with the current Whisper evidence: the last final pass took 33.9

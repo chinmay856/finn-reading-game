@@ -11,15 +11,9 @@ const MAX_PREVIOUS_BUFFERS = Math.ceil(SPEECH_PAD_SAMPLES / 512);
 const MODEL_ID = "onnx-community/moonshine-base-ONNX";
 const VAD_MODEL_ID = "onnx-community/silero-vad";
 
-async function supportsWebGpu() {
-  try {
-    return Boolean(navigator.gpu && await navigator.gpu.requestAdapter());
-  } catch {
-    return false;
-  }
-}
-
-const device = await supportsWebGpu() ? "webgpu" : "wasm";
+// The first real microphone run selected WebGPU and emitted seven empty
+// transcript results, so this diagnostic comparison forces the proven CPU path.
+const device = "wasm";
 self.postMessage({ type: "loading", device, message: `Loading Moonshine Base and Silero VAD on ${device.toUpperCase()}...` });
 
 const progressCallback = (data) => self.postMessage({ type: "progress", device, data });
@@ -31,9 +25,7 @@ try {
   });
   const transcriber = await pipeline("automatic-speech-recognition", MODEL_ID, {
     device,
-    dtype: device === "webgpu"
-      ? { encoder_model: "fp32", decoder_model_merged: "q4" }
-      : { encoder_model: "fp32", decoder_model_merged: "q8" },
+    dtype: { encoder_model: "fp32", decoder_model_merged: "q8" },
     progress_callback: progressCallback,
   });
   await transcriber(new Float32Array(SAMPLE_RATE));
@@ -66,18 +58,42 @@ try {
     postSpeechSamples = 0;
   }
 
+  function summarizeSignal(buffer) {
+    let energy = 0;
+    let peak = 0;
+    for (const sample of buffer) {
+      energy += sample * sample;
+      peak = Math.max(peak, Math.abs(sample));
+    }
+    return {
+      durationMs: Math.round((buffer.length / SAMPLE_RATE) * 1_000),
+      peak: Number(peak.toFixed(4)),
+      rms: Number(Math.sqrt(energy / Math.max(1, buffer.length)).toFixed(4)),
+      sampleCount: buffer.length,
+    };
+  }
+
   function transcribe(buffer, timing) {
     const id = ++segmentNumber;
+    const signal = summarizeSignal(buffer);
     pendingSegments += 1;
-    self.postMessage({ type: "transcribing", id, pendingSegments });
+    self.postMessage({ type: "transcribing", id, pendingSegments, signal });
     inferenceChain = inferenceChain
       .then(() => transcriber(buffer))
-      .then(({ text = "" }) => {
+      .then((result) => {
+        const text = typeof result?.text === "string" ? result.text.trim() : "";
         pendingSegments -= 1;
         self.postMessage({
           type: "output",
           id,
-          text: text.trim(),
+          text,
+          signal,
+          response: {
+            keys: result && typeof result === "object" ? Object.keys(result) : [],
+            textLength: text.length,
+            textType: typeof result?.text,
+            valueType: Array.isArray(result) ? "array" : typeof result,
+          },
           ...timing,
           completedAt: Date.now(),
           pendingSegments,

@@ -2,7 +2,7 @@ import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
 import { alignTranscript, tokenizeText } from "./reading-engine.js";
 
 const $ = (id) => document.getElementById(id);
-const passageText = EVIDENCE_PASSAGE.paragraphs.join(" ");
+const passageText = EVIDENCE_PASSAGE.paragraphs[0];
 const totalWords = tokenizeText(passageText).length;
 const loadStartedAt = performance.now();
 const worker = new Worker(new URL("./speech/moonshine-benchmark-worker.js", import.meta.url), { type: "module" });
@@ -16,12 +16,11 @@ let stopRequestedAt = 0;
 let device = "detecting";
 let transcriptParts = [];
 let segmentLatencies = [];
+let segmentDiagnostics = [];
 
-for (const paragraph of EVIDENCE_PASSAGE.paragraphs) {
-  const element = document.createElement("p");
-  element.textContent = paragraph;
-  $("benchmarkPassage").append(element);
-}
+const passageElement = document.createElement("p");
+passageElement.textContent = passageText;
+$("benchmarkPassage").append(passageElement);
 $("wordTotal").textContent = `${totalWords} words`;
 
 function formatSeconds(milliseconds) {
@@ -53,9 +52,11 @@ async function startReading() {
   $("finishBenchmark").disabled = false;
   transcriptParts = [];
   segmentLatencies = [];
+  segmentDiagnostics = [];
   firstOutputAt = 0;
   stopRequestedAt = 0;
   updateTranscript();
+  $("diagnostics").textContent = "No segments yet.";
   try {
     stream = await navigator.mediaDevices.getUserMedia({
       audio: { channelCount: 1, echoCancellation: true, autoGainControl: true, noiseSuppression: true, sampleRate: 16_000 },
@@ -110,7 +111,17 @@ worker.addEventListener("message", ({ data }) => {
     if (data.text) transcriptParts.push(data.text);
     const latency = Math.max(0, data.completedAt - data.end);
     segmentLatencies.push(latency);
-    $("segmentStatus").textContent = `Segment ${data.id}: ${formatSeconds(latency)} after speech ended`;
+    segmentDiagnostics.push({
+      segment: data.id,
+      latencyMs: latency,
+      signal: data.signal,
+      modelResponse: data.response,
+      transcript: data.text || "[empty]",
+    });
+    $("diagnostics").textContent = JSON.stringify(segmentDiagnostics, null, 2);
+    $("segmentStatus").textContent = data.text
+      ? `Segment ${data.id}: ${formatSeconds(latency)} after speech ended`
+      : `Segment ${data.id}: model returned no text after ${formatSeconds(latency)}`;
     updateTranscript();
   } else if (data.type === "flushed") {
     const sorted = [...segmentLatencies].sort((a, b) => a - b);
@@ -120,8 +131,11 @@ worker.addEventListener("message", ({ data }) => {
     $("medianLatency").textContent = sorted.length ? formatSeconds(median) : "—";
     $("worstLatency").textContent = sorted.length ? formatSeconds(worst) : "—";
     $("finishLatency").textContent = stopRequestedAt ? formatSeconds(Date.now() - stopRequestedAt) : "—";
-    $("runStatus").textContent = "Moonshine comparison complete. These results stayed in this browser tab.";
-    $("runStatus").className = "benchmark-status ready";
+    const hasTranscript = transcriptParts.some(Boolean);
+    $("runStatus").textContent = hasTranscript
+      ? "Moonshine comparison complete. These results stayed in this browser tab."
+      : "Moonshine received audio but returned no transcript. Open diagnostics below; this is a failed engine result, not a 0% reading score.";
+    $("runStatus").className = hasTranscript ? "benchmark-status ready" : "benchmark-status error";
     $("startBenchmark").disabled = false;
   } else if (data.type === "error") {
     $("loadStatus").textContent = `Moonshine error on ${device}: ${data.message}`;
