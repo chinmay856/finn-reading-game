@@ -117,6 +117,14 @@ how much accuracy and word evidence that expensive final pass actually adds.
 
 ## Immediate next action
 
+An isolated Moonshine comparison is now available at
+`moonshine-benchmark.html`. It preserves the exact maintained Hugging Face model,
+Silero VAD, and streaming configuration while reporting same-passage accuracy
+and segment latency. The production Whisper route remains unchanged. Run the
+comparison once in Chrome, then use the recorded evidence—not model reputation—to
+decide whether Moonshine deserves adapter integration. See
+[`engine/MOONSHINE_BENCHMARK.md`](engine/MOONSHINE_BENCHMARK.md).
+
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
 current Chrome. Compare local transcripts with what was read, observe first-load
 time and per-line latency, and paste the no-audio diagnostic report into Codex if
