@@ -68,6 +68,19 @@ export function summarizeTokenMatches(expectedText, matchedIndexes) {
   });
 }
 
+export function hasEndEvidence(matchedIndexes, totalCount, options = {}) {
+  if (!totalCount) return false;
+  const tailSize = Math.max(1, Math.min(options.tailSize ?? 10, totalCount));
+  const required = Math.max(1, Math.min(options.minimumTailMatches ?? 6, tailSize));
+  const tailStart = totalCount - tailSize;
+  const matches = new Set(matchedIndexes);
+  let tailMatches = 0;
+  for (let index = tailStart; index < totalCount; index += 1) {
+    if (matches.has(index)) tailMatches += 1;
+  }
+  return tailMatches >= required;
+}
+
 export function alignTranscript(expectedText, spokenText, options = {}) {
   const expectedTokens = Array.isArray(expectedText) ? expectedText : tokenizeText(expectedText);
   const fillers = options.fillers ?? DEFAULT_FILLERS;

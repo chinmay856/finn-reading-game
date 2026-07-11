@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   alignTranscript,
   estimateReadingPace,
+  hasEndEvidence,
   normalizeWord,
   summarizeTokenMatches,
   tokenizeText,
@@ -102,4 +103,9 @@ test("combines matched evidence across independent transcription batches", () =>
   assert.equal(summary.matchedCount, 4);
   assert.equal(summary.totalCount, 5);
   assert.ok(summary.accuracy >= 75);
+});
+
+test("requires evidence from the actual passage ending", () => {
+  assert.equal(hasEndEvidence(new Set([0, 1, 2, 3, 4, 5]), 20), false);
+  assert.equal(hasEndEvidence(new Set([10, 12, 14, 16, 18, 19]), 20), true);
 });

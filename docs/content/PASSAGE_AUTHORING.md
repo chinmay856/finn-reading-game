@@ -181,3 +181,23 @@ Each passage should eventually record:
 
 This illustrative schema is future-facing; the prototype does not need a full
 content-management system before testing the core loop.
+
+## Reading profiles
+
+Pacing and presentation expectations belong to content metadata, not one
+universal game constant. A passage may carry a theme-neutral reading profile
+covering:
+
+- form, such as expository prose, narrative, poetry, or drama;
+- segmentation, such as short paragraphs, scenes, stanzas, or continuous prose;
+- comfortable and stretch WPM guidance;
+- accuracy target;
+- pause/checkpoint timing appropriate to the form;
+- end-of-passage evidence requirements.
+
+These values guide practice and UI behavior; they are not claims that one genre
+has a universally correct reading speed. Poetry may intentionally reward
+phrasing and pauses, Shakespearean drama may segment by speech or scene, and
+dense scientific prose may use slower targets than familiar narrative. The
+first implemented profile is the original evidence passage in
+`content/evidence-passage.js`.

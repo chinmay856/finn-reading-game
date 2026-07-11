@@ -2,54 +2,70 @@
 
 ## Current state
 
-- Branch: `agent/fix-fragmented-final-audio`
-- Base: synchronized `main` at merge commit `22706a7` from PR #10
+- Branch: `agent/reading-profile-and-end-detection`
+- Base: synchronized `main` at merge commit `c759d18` from PR #11
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
 - Speech: local Transformers.js `3.7.1`,
   `onnx-community/whisper-base_timestamped`, WebAssembly/q8
-- Privacy: all voice processing remains local and audio is discarded
+- Privacy: audio and transcripts stay local; transcript diagnostics are visible
+  only in the current tab and copied reports still exclude transcript text
 
 ## User evidence
 
-A complete reading produced 199 WPM but only 51/220 words, 23% accuracy, and
-23% passage progress. The user judged the reading closer to 80–90% accuracy and
-also found the Prepare/Start/Finish interaction inconsistent with continuous
-reading.
+The corrected uninterrupted recording produced 200/220 confirmed words, 91%
+accuracy, 131 WPM, and 96% furthest passage position. This validated the capture
+fix and the user's expected 80–90% accuracy range. The remaining experience had
+consistent paragraph-end visual lag and automatic completion before the true
+end.
 
-## Root cause and fix
+The completed session was inspected in the live browser, but its transcript
+could not be recovered because the deployed build intentionally neither exposed
+nor retained transcript text.
 
-- Live checkpoints previously called `requestData()` on the same MediaRecorder
-  later used for final scoring.
-- The final pass concatenated the resulting WebM fragments. The observed
-  51-word cutoff is consistent with browser decoding ending at the first
-  fragment, even though duration measurement covered the complete reading.
-- Capture now uses two recorders on the same local stream: an uninterrupted
-  final recorder and an independently restarted preview recorder.
-- Preview windows keep three seconds of decoded PCM overlap. Final scoring uses
-  only the uninterrupted recording.
-- Matched-token evidence is combined across live windows and final
-  reconciliation so confirmed work is not erased by one failed pass.
-- One Begin action now prepares the model and starts listening. The expected
-  finish is automatic after at least 94% position and a 1.8-second final pause;
-  `Finish now` remains a fallback.
+## Implemented response
+
+- Added a theme-neutral content record and reading profile under
+  `content/evidence-passage.js`.
+- The expository-science profile now supplies accuracy/WPM guidance,
+  segmentation, checkpoint timing, and end-detection evidence.
+- Reduced the natural-pause trigger from 900 ms to 450 ms.
+- Reduced the minimum checkpoint window from eight seconds to five and the
+  maximum fallback window from 22 seconds to 16.
+- Removed the fixed 94% auto-finish threshold.
+- Automatic completion now requires at least six matches among the last ten
+  passage tokens plus a 900 ms final pause.
+- Added a collapsed review panel containing the final transcript and each live
+  checkpoint transcript. It is ephemeral and excluded from reports.
+- Added reusable `hasEndEvidence` behavior and content-profile tests.
+
+## Runtime interpretation
+
+The default is the proven compatible WASM/q8 path, not the theoretically fastest
+path. WebGPU produced unusable output on this computer in both this project and
+the maintained upstream example. This change removes avoidable application
+delay without changing the model/runtime. Use the next timing/transcript evidence
+before benchmarking another local model.
 
 ## Validation
 
-- `npm run check` — pending final rerun after documentation
-- `npm test` — pending final rerun; expanded to 22 tests
-- `npm run build` — pending final rerun
-- A real Chrome microphone reread is required before claiming the accuracy bug
-  is resolved
+- `npm run check` — passed
+- `npm test` — passed, 25 tests
+- `npm run build` — passed
+- `git diff --check` — passed
+- Real microphone validation remains required
 
 ## Preserved state
 
-`tests/audio-capture.test.js` continues to show a pre-existing line-ending-only
-working-tree status with no content diff. It remains unstaged and undiscarded.
+`tests/audio-capture.test.js` retains a pre-existing line-ending-only status
+with no content diff. It remains unstaged and undiscarded.
 
 ## Recommended next step
 
-Publish, reread the live passage once, and compare the result with the prior
-51/220 cutoff. Confirm that the session begins with one click and normally ends
-without using `Finish now`. Copy the timing report if accuracy or automatic
-completion is still unfair.
+Publish and reread once. Inspect the transcript panel after completion. Compare
+paragraph-ending words across checkpoint transcripts and the final transcript,
+and note the visible checkpoint latency. If transcripts contain the words but
+the UI still lags, optimize scheduling/runtime; if the words are absent, adjust
+window overlap or recognition strategy. Then create additional reading-profile
+fixtures for narrative, poetry, and drama before treating any WPM target as
+universal.

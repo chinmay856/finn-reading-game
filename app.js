@@ -1,23 +1,13 @@
-import { alignTranscript, estimateReadingPace, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
+import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
+import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
-const PARAGRAPHS = [
-  "Most people encounter scientific results after they have been compressed into a headline. The headline may sound certain, even when the original researchers were careful to describe limits and unanswered questions. Reading the full account means slowing down long enough to notice what was actually measured, who participated, and what comparison was made.",
-  "Imagine a study reporting that students who sleep longer tend to earn higher grades. That pattern is a correlation: two things changed together. It does not prove that extra sleep caused the grades. Students with stable schedules might also have quieter homes, shorter commutes, or more time for homework. Each possibility offers another explanation for the same result.",
-  "Researchers can make a claim stronger by planning comparisons in advance and measuring other factors that might influence the outcome. Even then, a single study rarely settles a complicated question. A small sample may not represent everyone, and a result found in one school may change somewhere else. Replication helps reveal which patterns are dependable.",
-  "Good scientific reading is therefore less about accepting or rejecting a bold conclusion than asking useful questions. What evidence supports the claim? What remains uncertain? Would a different explanation fit the observations? Those questions do not weaken science. They are part of the process that turns an interesting result into knowledge people can trust.",
-];
+const PARAGRAPHS = EVIDENCE_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
+const PROFILE = EVIDENCE_PASSAGE.profile;
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
-const MIN_CAPTURE_MS = 8_000;
-const MAX_CAPTURE_MS = 22_000;
-const PAUSE_MS = 900;
 const SPEECH_LEVEL = 0.009;
-const AUDIO_OVERLAP_MS = 3_000;
-const TOKEN_OVERLAP = 12;
-const AUTO_FINISH_PROGRESS = 0.94;
-const FINAL_PAUSE_MS = 1_800;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
@@ -25,7 +15,7 @@ const requestedDevice = new URLSearchParams(location.search).get("speechDevice")
 const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
   diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
-  listening: false, modelDevice: null, monitor: null,
+  listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   processedThroughMs: 0, result: null, startedAt: 0,
 };
 
@@ -75,20 +65,21 @@ function updateProgress(alignment, latencyMs = null) {
 }
 
 async function checkpoint(reason) {
-  if (!state.listening || state.busy || capture.durationMs < MIN_CAPTURE_MS) return;
+  if (!state.listening || state.busy || capture.durationMs < PROFILE.checkpoint.minimumWindowMs) return;
   state.busy = true;
   state.lastCheckpointAt = performance.now();
   $("readerState").textContent = "Checking progress locally…";
   const requestedAt = performance.now();
   try {
     const capturedThroughMs = capture.durationMs;
-    const windowStartMs = Math.max(0, state.processedThroughMs - AUDIO_OVERLAP_MS);
-    const audio = await capture.snapshot({ overlapMs: AUDIO_OVERLAP_MS });
+    const windowStartMs = Math.max(0, state.processedThroughMs - PROFILE.checkpoint.audioOverlapMs);
+    const audio = await capture.snapshot({ overlapMs: PROFILE.checkpoint.audioOverlapMs });
     const text = await recognizer.transcribe(audio);
     state.processedThroughMs = capturedThroughMs;
     if (!text || !state.listening) return;
+    state.transcriptDiagnostics.push({ reason, text });
     state.finalText = text;
-    const startIndex = Math.max(0, state.confirmedTokenIndex - TOKEN_OVERLAP);
+    const startIndex = Math.max(0, state.confirmedTokenIndex - PROFILE.checkpoint.tokenOverlap);
     const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24, startIndex });
     const latencyMs = Math.round(performance.now() - requestedAt);
     updateProgress(alignment, latencyMs);
@@ -112,14 +103,18 @@ function monitorSpeech() {
   const speaking = capture.level >= SPEECH_LEVEL;
   $("voicePulse").classList.toggle("speaking", speaking);
   if (speaking) state.lastSpeechAt = now;
+  const totalWords = tokenizeText(PASSAGE).length;
   if (!speaking && !state.busy && !state.finishing
-    && state.confirmedProgress >= AUTO_FINISH_PROGRESS && now - state.lastSpeechAt >= FINAL_PAUSE_MS) {
-    finishReading();
+    && hasEndEvidence(state.confirmedMatches, totalWords, PROFILE.endDetection)
+    && now - state.lastSpeechAt >= PROFILE.endDetection.finalPauseMs) {
+    void finishReading();
     return;
   }
   const sinceCheckpoint = now - state.lastCheckpointAt;
-  const naturalPause = state.lastSpeechAt > state.lastCheckpointAt && now - state.lastSpeechAt >= PAUSE_MS;
-  if (!state.busy && ((naturalPause && sinceCheckpoint >= MIN_CAPTURE_MS) || sinceCheckpoint >= MAX_CAPTURE_MS)) {
+  const naturalPause = state.lastSpeechAt > state.lastCheckpointAt
+    && now - state.lastSpeechAt >= PROFILE.checkpoint.pauseMs;
+  if (!state.busy && ((naturalPause && sinceCheckpoint >= PROFILE.checkpoint.minimumWindowMs)
+    || sinceCheckpoint >= PROFILE.checkpoint.maximumWindowMs)) {
     checkpoint(naturalPause ? "natural-pause" : "maximum-window");
   }
 }
@@ -176,6 +171,12 @@ async function finishReading() {
   $("finalCorrect").textContent = `${combined.matchedCount}/${combined.totalCount}`;
   $("finalSpeed").textContent = `${pace.wpm} WPM`;
   $("finalProgress").textContent = `${Math.round(state.confirmedProgress * 100)}%`;
+  $("finalTranscript").textContent = text || "No final transcript was returned.";
+  $("checkpointTranscripts").textContent = state.transcriptDiagnostics.length
+    ? state.transcriptDiagnostics.map(({ reason, text: checkpointText }, index) => (
+      `Checkpoint ${index + 1} (${reason})\n${checkpointText}`
+    )).join("\n\n")
+    : "No live checkpoint transcript was returned.";
   diagnostic("session-finish", state.result);
   show("review");
 }
