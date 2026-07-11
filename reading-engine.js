@@ -62,7 +62,7 @@ export function alignTranscript(expectedText, spokenText, options = {}) {
   const spokenTokens = tokenizeText(spokenText);
   const matched = new Set();
   const uncertain = new Set();
-  let cursor = 0;
+  let cursor = Math.max(0, Math.min(options.startIndex ?? 0, expectedTokens.length));
   let fillerWords = 0;
   let repeatedWords = 0;
   let selfCorrections = 0;
@@ -126,16 +126,19 @@ export function alignTranscript(expectedText, spokenText, options = {}) {
     .map((token) => token.index)
     .filter((index) => !matched.has(index));
   const nextTokenIndex = missedTokenIndexes[0] ?? Math.max(0, expectedTokens.length - 1);
+  const furthestMatchedTokenIndex = matched.size ? Math.max(...matched) : -1;
 
   return Object.freeze({
     accuracy,
     expectedTokens: Object.freeze(expectedTokens),
     fillerWords,
+    furthestMatchedTokenIndex,
     matchedCount: matched.size,
     matchedTokenIndexes: Object.freeze([...matched].sort((a, b) => a - b)),
     missedTokenIndexes: Object.freeze(missedTokenIndexes),
     missedWords: Object.freeze(missedTokenIndexes.map((index) => expectedTokens[index].display)),
     nextTokenIndex,
+    positionProgress: expectedTokens.length ? (furthestMatchedTokenIndex + 1) / expectedTokens.length : 0,
     progress: expectedTokens.length ? matched.size / expectedTokens.length : 0,
     repeatedWords,
     selfCorrections,

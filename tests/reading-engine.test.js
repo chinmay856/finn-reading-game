@@ -75,3 +75,23 @@ test("does not impose a maximum reading speed", () => {
   });
   assert.ok(fast.wpm >= 240);
 });
+
+test("reports reading position separately from matched-word completion", () => {
+  const result = alignTranscript(
+    "One two three four five six seven eight nine ten.",
+    "One two three seven eight nine",
+    { lookAhead: 8 },
+  );
+  assert.ok(result.positionProgress > result.progress);
+  assert.equal(result.furthestMatchedTokenIndex, 8);
+});
+
+test("aligns an overlapping batch from a known reading position", () => {
+  const result = alignTranscript(
+    "One two three four five six seven eight nine ten.",
+    "five six seven eight",
+    { startIndex: 4 },
+  );
+  assert.deepEqual(result.matchedTokenIndexes, [4, 5, 6, 7]);
+  assert.equal(result.positionProgress, 0.8);
+});

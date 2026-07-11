@@ -38,4 +38,6 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.doesNotMatch(html, /Check line|Retry line|Check sentence/iu);
   assert.match(html, /Read continuously/u);
   assert.match(html, /repairFill/u);
+  assert.match(html, /INDEPENDENT QUICK CHECK/u);
+  assert.match(html, /Copy timing report/u);
 });

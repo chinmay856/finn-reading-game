@@ -89,21 +89,26 @@ export class LocalAudioCapture {
     if (this.active) throw new Error("Audio capture is already active.");
     if (!window.MediaRecorder) throw new Error("This browser does not support local microphone recording.");
     this.chunks = [];
-    this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const AudioContextApi = window.AudioContext || window.webkitAudioContext;
-    this.audioContext = new AudioContextApi();
-    const source = this.audioContext.createMediaStreamSource(this.stream);
-    this.analyser = this.audioContext.createAnalyser();
-    this.analyser.fftSize = 1024;
-    this.timeDomain = new Float32Array(this.analyser.fftSize);
-    source.connect(this.analyser);
-    this.recorder = new MediaRecorder(this.stream);
-    this.mimeType = this.recorder.mimeType;
-    this.recorder.addEventListener("dataavailable", (event) => {
-      if (event.data.size > 0) this.chunks.push(event.data);
-    });
-    this.recorder.start();
-    this.startedAt = performance.now();
+    try {
+      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const AudioContextApi = window.AudioContext || window.webkitAudioContext;
+      this.audioContext = new AudioContextApi();
+      const source = this.audioContext.createMediaStreamSource(this.stream);
+      this.analyser = this.audioContext.createAnalyser();
+      this.analyser.fftSize = 1024;
+      this.timeDomain = new Float32Array(this.analyser.fftSize);
+      source.connect(this.analyser);
+      this.recorder = new MediaRecorder(this.stream);
+      this.mimeType = this.recorder.mimeType;
+      this.recorder.addEventListener("dataavailable", (event) => {
+        if (event.data.size > 0) this.chunks.push(event.data);
+      });
+      this.recorder.start();
+      this.startedAt = performance.now();
+    } catch (error) {
+      await this.cleanup();
+      throw error;
+    }
   }
 
   async requestData() {
@@ -129,10 +134,13 @@ export class LocalAudioCapture {
     }
   }
 
-  async snapshot() {
+  async snapshot({ overlapMs = 0, sinceMs = 0 } = {}) {
     if (!this.active) return new Float32Array();
     await this.requestData();
-    return trimSilence(await this.decode());
+    const decoded = await this.decode();
+    const startMs = Math.max(0, sinceMs - overlapMs);
+    const startSample = Math.min(decoded.length, Math.round((startMs / 1_000) * TARGET_SAMPLE_RATE));
+    return trimSilence(decoded.slice(startSample));
   }
 
   async stop() {
@@ -145,12 +153,20 @@ export class LocalAudioCapture {
         this.recorder.stop();
       });
     }
-    const decoded = await this.decode();
-    const signal = summarizeSignal(decoded);
-    const audio = trimSilence(decoded);
-    const durationMs = Math.round((audio.length / TARGET_SAMPLE_RATE) * 1_000);
+    try {
+      const decoded = await this.decode();
+      const signal = summarizeSignal(decoded);
+      const audio = trimSilence(decoded);
+      const durationMs = Math.round((audio.length / TARGET_SAMPLE_RATE) * 1_000);
+      return { audio, durationMs, signal };
+    } finally {
+      await this.cleanup();
+    }
+  }
+
+  async cleanup() {
     this.stream?.getTracks().forEach((track) => track.stop());
-    await this.audioContext?.close();
+    if (this.audioContext && this.audioContext.state !== "closed") await this.audioContext.close();
     this.analyser = null;
     this.audioContext = null;
     this.chunks = [];
@@ -159,6 +175,5 @@ export class LocalAudioCapture {
     this.startedAt = 0;
     this.stream = null;
     this.timeDomain = null;
-    return { audio, durationMs, signal };
   }
 }
