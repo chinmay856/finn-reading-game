@@ -34,3 +34,11 @@ Open app
 ```
 
 The repository documents are the durable source of truth across ChatGPT, Codex desktop, web, and mobile work. Update them when major decisions change.
+
+## Playable prototypes
+
+- [Internet Recovery OS](./apps/internet-recovery/) — architecture-aligned read-aloud repair loop.
+- [StoryQuest mechanics test](./apps/storyquest-prototype/) — preserved web-app experiment for pacing, retries, and comprehension.
+- [Prototype architecture and device checklist](docs/PROTOTYPE.md)
+
+The static site deploys through GitHub Pages after changes merge to `main`.
