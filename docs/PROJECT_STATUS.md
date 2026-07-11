@@ -107,7 +107,23 @@ selected 150/200/250/300 WPM profile, defaults to 250 WPM, keeps look-ahead text
 visible, and yields temporarily to manual scrolling. Transcript evidence alone
 continues to control repair, scoring, and end detection.
 
+The first predictive-guide test moved too early and continued into artificial
+space below the final paragraph. The guide now waits until the first paragraph
+is complete, centers against actual rendered word geometry, eases rather than
+jumps, preserves scroll position across transcript updates, and clamps at the
+real document bottom. Review appears immediately with live-checkpoint results
+while a visible timer finalizes the full local transcript; the report records
+how much accuracy and word evidence that expensive final pass actually adds.
+
 ## Immediate next action
+
+An isolated Moonshine comparison is now available at
+`moonshine-benchmark.html`. It preserves the exact maintained Hugging Face model,
+Silero VAD, and streaming configuration while reporting same-passage accuracy
+and segment latency. The production Whisper route remains unchanged. Run the
+comparison once in Chrome, then use the recorded evidence—not model reputation—to
+decide whether Moonshine deserves adapter integration. See
+[`engine/MOONSHINE_BENCHMARK.md`](engine/MOONSHINE_BENCHMARK.md).
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
 current Chrome. Compare local transcripts with what was read, observe first-load

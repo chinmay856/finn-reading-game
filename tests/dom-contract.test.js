@@ -51,6 +51,8 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(html, /<option value="300">300 WPM<\/option>/u);
   assert.match(app, /updateReadingGuide/u);
   assert.match(app, /hasEndEvidence\(state\.confirmedMatches/u);
+  assert.match(html, /id="finalizationStatus"/u);
+  assert.match(app, /finalAddedWords/u);
 });
 
 test("live checkpoints cannot fragment the final recording", async () => {
@@ -58,4 +60,20 @@ test("live checkpoints cannot fragment the final recording", async () => {
   assert.match(capture, /finalRecorder/u);
   assert.match(capture, /previewRecorder/u);
   assert.doesNotMatch(capture, /finalRecorder\.requestData/u);
+});
+
+test("the Moonshine comparison is isolated and theme-neutral", async () => {
+  const [app, html, worker] = await Promise.all([
+    readFile(new URL("../moonshine-benchmark.js", import.meta.url), "utf8"),
+    readFile(new URL("../moonshine-benchmark.html", import.meta.url), "utf8"),
+    readFile(new URL("../speech/moonshine-benchmark-worker.js", import.meta.url), "utf8"),
+  ]);
+  const referencedIds = [...app.matchAll(/\$\("([^"]+)"\)/gu)].map((match) => match[1]);
+  const missingIds = [...new Set(referencedIds)].filter((id) => !html.includes(`id="${id}"`));
+  assert.deepEqual(missingIds, []);
+  assert.match(worker, /onnx-community\/moonshine-base-ONNX/u);
+  assert.match(worker, /onnx-community\/silero-vad/u);
+  assert.doesNotMatch(worker, /WikiWhy|Internet Recovery|Finn|stars|badges|coins|bandwidth/iu);
+  assert.doesNotMatch(app, /fetch\(|XMLHttpRequest|WebSocket/u);
+  assert.match(html, /Nothing is uploaded or retained/u);
 });
