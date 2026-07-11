@@ -1,4 +1,11 @@
-# Phone test checklist
+# Preserved phone side-test checklist
+
+> This document describes the earlier Web Speech mobile loop. It is retained as
+> a side-test reference only. Desktop local-Whisper work is the current priority;
+> do not spend further time optimizing this path unless the user asks. The
+> implementation remains in Git history at commit `40fc399` and the preserved
+> `agent/phone-pages` branch. The live root URL now follows `main` and may no
+> longer match every step below.
 
 Use the published HTTPS site for microphone and speech testing:
 

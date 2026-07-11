@@ -4,9 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07100a">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Finn Reading Test</title>
-  <link rel="stylesheet" href="styles.css?v=phone-test-1">
+  <title>Finn Reading Desktop Test</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <main>
@@ -19,22 +18,22 @@
   <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
 
   <section id="setup" class="screen on panel">
-    <small>ONE-MINUTE MECHANICS TEST</small>
+    <small>DESKTOP READING ENGINE TEST</small>
     <h2>Read four lines aloud.</h2>
-    <p>The page follows the words, estimates accuracy and pace, and asks for a retry when a line misses the target.</p>
+    <p>The page follows the words, estimates accuracy and speed, and asks for a retry when a line misses the target.</p>
     <div class="targets">
-      <label>Minimum pace<input id="minWpm" type="number" value="85" min="40" max="220"><em>WPM</em></label>
-      <label>Maximum pace<input id="maxWpm" type="number" value="150" min="60" max="260"><em>WPM</em></label>
+      <label>Speed goal<input id="minWpm" type="number" value="100" min="40" max="300"><em>WPM+</em></label>
       <label>Accuracy goal<input id="goal" type="number" value="85" min="50" max="100"><em>%</em></label>
     </div>
     <div class="checks">
       <span>HTTPS <b id="httpsCheck">checking</b></span>
       <span>Microphone <b id="micCheck">checking</b></span>
-      <span>Speech recognition <b id="speechCheck">checking</b></span>
+      <span>Local speech model <b id="speechCheck">checking</b></span>
     </div>
-    <details class="diagnostics"><summary>Phone test details</summary><p id="browserCheck"></p></details>
-    <button id="begin" class="primary">Enable microphone</button>
-    <p class="fine">No recording is stored by this prototype. Your browser may use its speech service to produce the transcript.</p>
+    <p id="modelProgress" class="model-progress" role="status" aria-live="polite" hidden></p>
+    <details class="diagnostics"><summary>Browser test details</summary><p id="browserCheck"></p><p id="signalCheck">No microphone signal measured yet.</p></details>
+    <button id="begin" class="primary">Prepare local voice engine</button>
+    <p class="fine">The open-source speech model downloads once and is cached by the browser. Voice is processed in this tab, then discarded; the app never uploads or stores audio or transcripts.</p>
   </section>
 
   <section id="read" class="screen">
@@ -42,7 +41,7 @@
       <article class="panel">
         <div class="row"><div><small>CURRENT LINE</small><h2 id="counter">Line 1 of 4</h2></div><b id="state" class="pill">Ready</b></div>
         <div id="passage" class="passage"></div>
-        <div class="heard"><small>HEARD</small><p id="heard" aria-live="polite">—</p></div>
+        <div class="heard"><small>LOCAL TRANSCRIPT</small><p id="heard" aria-live="polite">—</p></div>
         <div id="coach" class="coach" hidden>
           <b id="coachTitle">Try that line again.</b>
           <p id="coachText"></p>
@@ -78,7 +77,7 @@
         </div>
         <div id="results"></div>
         <div class="actions"><button id="again" class="primary">Run it again</button><button id="settings">Change targets</button><button id="export">Copy test report</button></div>
-        <p class="fine">The test report includes scores and browser diagnostics. It never includes audio.</p>
+        <p class="fine">The test report includes scores and browser diagnostics. It never includes audio or transcripts.</p>
       </article>
       <aside class="panel quiz"><small>QUICK CHECK</small><h3>What began to change Mary?</h3>
         <button data-answer="0">She wanted to leave the manor.</button>
@@ -89,6 +88,6 @@
     </div>
   </section>
 </main>
-<script type="module" src="app.js?v=phone-test-1"></script>
+<script type="module" src="/app.js"></script>
 </body>
 </html>

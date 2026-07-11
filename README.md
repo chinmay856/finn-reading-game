@@ -1,17 +1,18 @@
 # Game for Finn
 
-A mobile-friendly read-aloud game for Finn, built on a reusable reading platform.
+A desktop-browser read-aloud game for Finn, built on a reusable reading platform.
 
 The first game wrapper is **Internet Recovery OS**: adults broke the Internet, and Finn restores corrupted files and websites by reading aloud. The surface is intentionally campy and retro; the underlying reading technology is designed to support many future themes.
 
 ## Start here
 
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
-- Live phone prototype: <https://chinmay856.github.io/finn-reading-game/>
-- Phone test checklist: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
+- Live desktop prototype: <https://chinmay856.github.io/finn-reading-game/>
+- Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
+- Preserved mobile side-test notes: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
-- Mobile prototype entry point: [`index.html`](index.html)
+- Desktop prototype entry point: [`index.html`](index.html)
 
 ## Core rule
 
@@ -26,14 +27,14 @@ Keep these layers separate:
 
 ## Current goal
 
-Validate the smallest enjoyable mobile loop:
+Validate the smallest enjoyable desktop-browser loop:
 
 ```text
 Open app
-→ grant microphone access
+→ load the local Whisper model and grant microphone access
 → read a passage aloud
 → follow live highlighting
-→ receive forgiving accuracy and pacing feedback
+→ receive forgiving accuracy and speed feedback
 → repair something funny in Internet Recovery OS
 ```
 
@@ -41,10 +42,14 @@ The repository documents are the durable source of truth across ChatGPT, Codex d
 
 ## Local checks
 
-The prototype has no third-party dependencies. With Node.js installed:
+The prototype uses pinned open-source browser dependencies. With Node.js LTS installed:
 
 ```text
 npm run check
 npm test
+npm run build
 npm run dev
 ```
+
+The speech model runs in the browser. The application does not upload or store
+audio or transcripts. The first visit downloads and caches the model files.

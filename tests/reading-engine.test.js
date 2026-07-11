@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { alignTranscript, normalizeWord, tokenizeText } from "../reading-engine.js";
+import {
+  alignTranscript,
+  estimateReadingPace,
+  normalizeWord,
+  tokenizeText,
+} from "../reading-engine.js";
 
 test("normalizes punctuation and apostrophes", () => {
   assert.equal(normalizeWord("Mary's"), "marys");
@@ -45,4 +50,28 @@ test("returns theme-neutral reading data", () => {
   assert.equal("stars" in result, false);
   assert.equal("bandwidth" in result, false);
   assert.equal("reward" in result, false);
+});
+
+test("forgives natural punctuation pauses when estimating pace", () => {
+  const withPunctuation = estimateReadingPace({
+    durationMs: 10_000,
+    expectedText: "Read this clearly, then stop.",
+    wordCount: 10,
+  });
+  const withoutPunctuation = estimateReadingPace({
+    durationMs: 10_000,
+    expectedText: "Read this clearly then stop",
+    wordCount: 10,
+  });
+  assert.ok(withPunctuation.pauseAllowanceMs > 0);
+  assert.ok(withPunctuation.wpm > withoutPunctuation.wpm);
+});
+
+test("does not impose a maximum reading speed", () => {
+  const fast = estimateReadingPace({
+    durationMs: 2_000,
+    expectedText: "One two three four five six seven eight.",
+    wordCount: 8,
+  });
+  assert.ok(fast.wpm >= 240);
 });
