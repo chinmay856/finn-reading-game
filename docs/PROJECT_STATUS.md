@@ -217,6 +217,13 @@ the first-run pool and Deck B is reserved for unseen replay content. Only the
 Reading Companion passage is expected speech; corrupted/repaired WikiWhy page
 copy is wrapper-owned decorative visual content.
 
+The broader design library now proposes a ten-site roster: WikiWhy, ThreadIt,
+FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi,
+and MapGuess. The nine non-WikiWhy sites each have a review-only three-act board,
+unique progress fiction and midpoint, and a researched reading-source lane.
+These are design proposals awaiting site-by-site review; they are not current
+prototype implementation scope.
+
 ## Known limitations
 
 - One real Chrome microphone line passed locally at 95% estimated accuracy and

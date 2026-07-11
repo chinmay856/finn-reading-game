@@ -14,6 +14,8 @@ The first game wrapper is **Internet Recovery 98**: adults broke the Internet, a
 - Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
 - Internet Recovery player-facing copy deck: [`docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`](docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md)
 - Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
+- Ten-site design library: [`docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md`](docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md)
+- Non-WikiWhy source research: [`docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md`](docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md)
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
 - WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
