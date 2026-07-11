@@ -99,6 +99,14 @@ shortens the expository checkpoint trigger/window, requires matched evidence
 from the actual passage ending, and exposes ephemeral transcript diagnostics so
 the next run can distinguish recognition omissions from inference latency.
 
+Subsequent playtesting confirmed that transcription contained the words but the
+reader viewport still waited too long for confirmation, making the experience
+barely unusable at fast pace. A predictive navigation guide now decouples text
+visibility from speech inference: it advances only while voice is active at a
+selected 150/200/250/300 WPM profile, defaults to 250 WPM, keeps look-ahead text
+visible, and yields temporarily to manual scrolling. Transcript evidence alone
+continues to control repair, scoring, and end detection.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in

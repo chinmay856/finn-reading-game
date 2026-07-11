@@ -201,3 +201,9 @@ phrasing and pauses, Shakespearean drama may segment by speech or scene, and
 dense scientific prose may use slower targets than familiar narrative. The
 first implemented profile is the original evidence passage in
 `content/evidence-passage.js`.
+
+The viewport guide may use a selected WPM to keep upcoming text visible, but it
+must never use estimated pace or voice activity to declare completion. A reader
+may exceed the selected WPM. Profiles should therefore provide higher-speed
+headroom, look-ahead text, and manual-scroll recovery while reserving completion
+and scoring for transcript evidence.
