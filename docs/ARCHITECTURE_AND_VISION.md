@@ -198,15 +198,49 @@ A new wrapper should not require rewriting microphone, alignment, scoring, progr
 
 # 7. Version 1 game: Internet Recovery OS
 
-## Premise
+## Premise and canonical characters
 
 The adults broke the Internet because they do not actually understand technology.
 
 They replaced everything with AI, removed useful controls, optimized hyperlinks into "vibes," and turned the web into an unusable mess. Websites are corrupted, buttons lie, links go nowhere, the cloud may literally be on fire, and old files are disappearing.
 
-Finn is the person who has to rebuild the Internet.
+**Finn is the fixed protagonist and player character. Chinmay is Finn's uncle,
+the CEO of the AI company responsible for the collapse, the developer interfering
+with the game, and the fixed main antagonist.** These character names are
+canonical and should not be substituted or reconfirmed unless the user
+explicitly changes them.
+
+Finn is the person who has to rebuild the Internet. Chinmay initially presents
+himself as a helpful adult guiding the recovery and minimizing his company's
+responsibility.
 
 He restores corrupted information by reading recovered files aloud.
+
+## Overarching story
+
+The original Internet collapse may begin as an accident caused by Chinmay's
+reckless AI replacements and misplaced confidence. It does not remain an
+accident. When Finn's repairs threaten to expose what happened and remove
+Chinmay's control, Chinmay begins deliberately introducing new failures,
+obstacles, misleading instructions, and live code changes.
+
+The story follows Finn becoming progressively better at understanding both the
+Internet and Chinmay's interference:
+
+1. Finn believes he is repairing the adults' accidental mess with help from his
+   apparently supportive uncle.
+2. Repaired systems fail again in suspiciously convenient ways, and Chinmay's
+   explanations stop matching the evidence.
+3. Finn learns to distinguish old damage from new sabotage and recognizes that
+   Chinmay is modifying the game while he plays.
+4. Chinmay abandons the helpful-CEO performance and actively tries to prevent
+   Finn from completing the recovery.
+5. Finn understands the system well enough to overcome Chinmay's final hurdles,
+   revoke his administrator access, and take control of Internet Recovery OS.
+
+The final resolution and capstone achievement are **Smarter Than the
+Developer**. Finn wins through increasing understanding, persistence, and the
+ability to recognize deception—not merely by accumulating a larger score.
 
 ## Tone
 
@@ -448,6 +482,37 @@ Potential capabilities:
 - Do not hard-code "mission" as the universal content unit.
 
 This is a future project stage. Do not allow it to distract from validating the core read-aloud loop now.
+
+---
+
+## 9A. Future Chinmay voice add-on — optional, do not build yet
+
+A later Internet Recovery OS enhancement may use a voice model trained with
+Chinmay's permission to deliver the antagonist's CEO broadcasts, deceptive
+guidance, live interruptions, and other character dialogue in Chinmay's actual
+voice.
+
+This is a wrapper-specific presentation feature, not part of the Reading Engine
+and not part of the initial design or prototype milestone. The game must remain
+fully playable with ordinary recorded dialogue, synthetic speech, or text-only
+presentation when the custom voice is absent.
+
+Before this feature is implemented:
+
+- Chinmay must explicitly consent to the voice training and intended uses.
+- Generated dialogue must be clearly understood as fictional, AI-generated
+  character performance rather than a real recording of something Chinmay said.
+- Voice samples, trained artifacts, provider access, retention, and deletion
+  must be handled deliberately and kept out of the public game repository.
+- The feature must not process or imitate Finn's voice; learner microphone input
+  remains a separate Reading Engine concern.
+- Voice generation should consume wrapper-owned dialogue events so it can be
+  enabled, replaced, muted, or removed without changing gameplay or scoring.
+
+The creative opportunity is for the fictional Chinmay to sound increasingly
+reactive as Finn progresses—for example, confident CEO announcements early on,
+poorly concealed frustration during sabotage, and a panicked administrator
+broadcast near the finale.
 
 ---
 
