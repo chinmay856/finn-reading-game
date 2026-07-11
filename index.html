@@ -31,7 +31,7 @@
             <p data-copy-id="mission.preparation.body">Read continuously at a comfortable pace. Pause when you need to. Correct yourself whenever you want. The repair only moves forward.</p>
             <div class="file-card">
               <div class="file-icon" aria-hidden="true">TXT</div>
-              <div><b>Why evidence matters</b><span>220 words · science · original explanatory passage</span><span>Audio upload: none · Forced retries: absolutely not</span></div>
+              <div><b id="fileTitle">How Plants Store Sunlight</b><span id="fileMeta">About 170 words · science · grades 10–12</span><span id="fileSource">Adapted and modified from English Wikipedia contributors.</span><span>Audio upload: none · Forced retries: absolutely not</span></div>
             </div>
             <label class="guide-setting">Reading guide pace<select id="guideWpm"><option value="150">150 WPM</option><option value="200">200 WPM</option><option value="250" selected>250 WPM</option><option value="300">300 WPM</option></select></label>
             <p class="privacy-truth" data-copy-id="privacy.microphone.truth">Your voice is processed on this device. The game does not upload or save your audio or transcript.</p>
@@ -68,7 +68,7 @@
 
         <aside class="os-window reader-window">
           <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
-          <div class="reader-head"><div><small>CONTINUOUS READER</small><h2>Why evidence matters</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div>
+          <div class="reader-head"><div><small>CONTINUOUS READER</small><h2 id="passageTitle">How Plants Store Sunlight</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div>
           <p id="readerState" class="reader-state" role="status" data-copy-id="reading.ready.title">READY WHEN YOU ARE, FINN</p>
           <p id="guideStatus" class="guide-status">Reading guide: 250 WPM · 0%</p>
           <div id="passage" class="passage continuous"></div>
@@ -92,7 +92,7 @@
         </article>
         <aside class="os-window quiz">
           <div class="window-titlebar"><span>CHECK_THE_FILE.exe</span><span class="window-controls" aria-hidden="true">— □</span></div>
-          <div class="window-body"><small>WHAT DID THE EVIDENCE SHOW?</small><h3>Why doesn’t the sleep example prove that extra sleep caused higher grades?</h3><button data-answer="0">Because correlations are always mistakes.</button><button data-answer="1">Other factors could explain both sleep and grades.</button><button data-answer="0">Because researchers cannot measure sleep.</button><p id="quizFeedback" role="status"></p><div id="payoff" class="payoff" hidden><b>WIKIWHY REPAIR ACCEPTED</b><span>That matches the file. Evidence logged.</span></div></div>
+          <div class="window-body"><small>WHAT DID THE EVIDENCE SHOW?</small><h3 id="quizQuestion">Why does the passage say oxygen is not the plant's main goal?</h3><button data-choice="0"></button><button data-choice="1"></button><button data-choice="2"></button><p id="quizFeedback" role="status"></p><div id="payoff" class="payoff" hidden><b>WIKIWHY REPAIR ACCEPTED</b><span>That matches the file. Evidence logged.</span></div></div>
         </aside>
       </section>
 

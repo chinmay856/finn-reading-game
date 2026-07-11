@@ -131,6 +131,11 @@ to follow at 250 WPM while the WikiWhy repair is noticeable but not distracting.
 Then test the complete microphone loop once the preferred local speech adapter
 is stable enough to provide a fair transcript.
 
+The slice now reads Deck A passage A01, **How Plants Store Sunlight**, through an
+executable Content Platform record with CC BY-SA attribution, source/history
+URLs, content-owned reading profile, and an independent passage-grounded check.
+The record contains no WikiWhy repair or wrapper outcomes.
+
 An isolated Moonshine comparison is now available at
 `moonshine-benchmark.html`. It preserves the exact maintained Hugging Face model,
 Silero VAD, and streaming configuration while reporting same-passage accuracy
