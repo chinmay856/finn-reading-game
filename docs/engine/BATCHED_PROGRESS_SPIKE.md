@@ -78,6 +78,24 @@ pause trigger from 900 ms to 450 ms and the minimum checkpoint window from eight
 seconds to five, reducing orchestration delay while retaining one inference at
 a time.
 
+## Predictive guide geometry and finalization
+
+Fast-reading tests showed that a time-based look-ahead offset scrolled
+immediately and created the feeling of chasing the page. The guide now holds the
+viewport through the complete first content segment, then uses rendered word
+positions to ease the estimated current word toward the viewport center. Native
+scroll range is the hard lower bound: the large artificial bottom pad was
+removed, so the guide cannot continue past the document ending. Transcript
+re-renders preserve the current scroll position.
+
+Final scoring now separates responsiveness from reconciliation. Immediately
+after capture stops, the review shows a provisional score from live checkpoint
+evidence. A visible timer reports the full local transcription in progress; the
+same fields update when reconciliation completes. Diagnostics record live-only
+accuracy/word count/WPM, final-pass matched words, final words added, and final
+latency. This evidence determines whether the expensive full pass improves the
+score enough to justify its delay.
+
 The mechanic is promising if most checkpoints appear within roughly three
 seconds of a pause and the confirmed paragraph does not lag more than one
 paragraph behind. This is a product threshold for the spike, not an established

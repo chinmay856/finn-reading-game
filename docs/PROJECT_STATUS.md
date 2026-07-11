@@ -107,6 +107,14 @@ selected 150/200/250/300 WPM profile, defaults to 250 WPM, keeps look-ahead text
 visible, and yields temporarily to manual scrolling. Transcript evidence alone
 continues to control repair, scoring, and end detection.
 
+The first predictive-guide test moved too early and continued into artificial
+space below the final paragraph. The guide now waits until the first paragraph
+is complete, centers against actual rendered word geometry, eases rather than
+jumps, preserves scroll position across transcript updates, and clamps at the
+real document bottom. Review appears immediately with live-checkpoint results
+while a visible timer finalizes the full local transcript; the report records
+how much accuracy and word evidence that expensive final pass actually adds.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
