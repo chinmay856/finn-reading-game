@@ -78,6 +78,28 @@ Official documentation and samples:
 
 ## Useful components, not complete solutions
 
+### Moonshine Web comparison candidate
+
+Hugging Face maintains a real-time in-browser Moonshine example using the same
+pinned Transformers.js `3.7.1`. It combines `onnx-community/moonshine-base-ONNX`
+with `onnx-community/silero-vad`, runs through WebGPU when supported, and falls
+back to WASM. Moonshine is designed for live transcription and variable-length
+audio, so it is the strongest maintained local candidate for a future latency
+comparison.
+
+Do not replace the current engine without a narrow benchmark. The Moonshine
+base repository is substantially larger than the current model, the reference
+worker serializes VAD and transcription because Transformers.js does not support
+simultaneous inference, and its accuracy on fast read-aloud prose has not been
+tested on this computer. Benchmark exact reference versions, download/cache
+cost, first-load time, real-time factor, accuracy, and memory before integrating.
+
+Official references:
+
+- <https://github.com/huggingface/transformers.js-examples/tree/main/moonshine-web>
+- <https://huggingface.co/onnx-community/moonshine-base-ONNX>
+- <https://huggingface.co/docs/transformers/model_doc/moonshine_streaming>
+
 ### Browser Web Speech API
 
 Useful for the current zero-backend mechanics test and fast interim transcripts.

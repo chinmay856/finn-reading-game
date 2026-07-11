@@ -2,58 +2,57 @@
 
 ## Current state
 
-- Branch: `agent/reading-profile-and-end-detection`
-- Base: synchronized `main` at merge commit `c759d18` from PR #11
+- Branch: `agent/predictive-reading-guide`
+- Base: synchronized `main` at merge commit `996971e` from PR #12
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
-- Speech: local Transformers.js `3.7.1`,
-  `onnx-community/whisper-base_timestamped`, WebAssembly/q8
-- Privacy: audio and transcripts stay local; transcript diagnostics are visible
-  only in the current tab and copied reports still exclude transcript text
+- Current engine: Transformers.js `3.7.1`, timestamped Whisper base,
+  WebAssembly/q8
+- Privacy: all recognition remains local; transcript diagnostics are ephemeral
 
-## User evidence
+## Latest user evidence
 
-The corrected uninterrupted recording produced 200/220 confirmed words, 91%
-accuracy, 131 WPM, and 96% furthest passage position. This validated the capture
-fix and the user's expected 80–90% accuracy range. The remaining experience had
-consistent paragraph-end visual lag and automatic completion before the true
-end.
+The corrected engine appears to recognize the full reading, but confirmed
+progress arrives after the reader reaches the bottom of the viewport. Paragraph
+transitions force unnatural mid-sentence pauses. The required experience must
+support approximately 250 WPM and may need headroom for faster reading.
 
-The completed session was inspected in the live browser, but its transcript
-could not be recovered because the deployed build intentionally neither exposed
-nor retained transcript text.
+This establishes that confirmed transcription is too latent to serve as the
+navigation clock even when its final accuracy is acceptable. Current graphics
+are inexpensive and inference runs in a worker; the dominant problem is waiting
+for checkpoint transcription before scrolling, not site artwork.
 
 ## Implemented response
 
-- Added a theme-neutral content record and reading profile under
-  `content/evidence-passage.js`.
-- The expository-science profile now supplies accuracy/WPM guidance,
-  segmentation, checkpoint timing, and end-detection evidence.
-- Reduced the natural-pause trigger from 900 ms to 450 ms.
-- Reduced the minimum checkpoint window from eight seconds to five and the
-  maximum fallback window from 22 seconds to 16.
-- Removed the fixed 94% auto-finish threshold.
-- Automatic completion now requires at least six matches among the last ten
-  passage tokens plus a 900 ms final pause.
-- Added a collapsed review panel containing the final transcript and each live
-  checkpoint transcript. It is ephemeral and excluded from reports.
-- Added reusable `hasEndEvidence` behavior and content-profile tests.
+- Added a theme-neutral predictive guide under `reading-guide.js`.
+- The guide advances from active speaking time and a selectable 150, 200, 250,
+  or 300 WPM profile; 250 WPM is the default.
+- Eighteen words of look-ahead and a taller 56vh reading viewport keep current
+  and upcoming prose visible.
+- Voice pauses stop the guide clock.
+- Manual wheel, pointer, or touch scrolling pauses automatic guidance for five
+  seconds so the interface does not fight the reader.
+- Confirmed transcript progress remains separately labeled and continues to
+  drive WikiWhy repair.
+- Voice activity and guide position never participate in completion, accuracy,
+  scoring, or repair. End detection still requires actual final-token evidence.
 
-## Runtime interpretation
+## Research
 
-The default is the proven compatible WASM/q8 path, not the theoretically fastest
-path. WebGPU produced unusable output on this computer in both this project and
-the maintained upstream example. This change removes avoidable application
-delay without changing the model/runtime. Use the next timing/transcript evidence
-before benchmarking another local model.
+The maintained Hugging Face Moonshine Web example is the next engine candidate
+if UI decoupling is insufficient. It uses the same Transformers.js `3.7.1`,
+Moonshine Base, Silero VAD, WebGPU with WASM fallback, and serialized inference.
+It is designed for live recognition but has a substantially larger model and
+must be benchmarked before integration. See `docs/engine/SPEECH_TECH_RESEARCH.md`.
 
 ## Validation
 
 - `npm run check` — passed
-- `npm test` — passed, 25 tests
+- `npm test` — passed, 28 tests
 - `npm run build` — passed
-- `git diff --check` — passed
-- Real microphone validation remains required
+- Browser smoke: 250 WPM selected by default, 300 WPM available, taller reader
+  grid present, transcript panel present, no console warnings/errors
+- Real microphone naturalness test remains required
 
 ## Preserved state
 
@@ -62,10 +61,9 @@ with no content diff. It remains unstaged and undiscarded.
 
 ## Recommended next step
 
-Publish and reread once. Inspect the transcript panel after completion. Compare
-paragraph-ending words across checkpoint transcripts and the final transcript,
-and note the visible checkpoint latency. If transcripts contain the words but
-the UI still lags, optimize scheduling/runtime; if the words are absent, adjust
-window overlap or recognition strategy. Then create additional reading-profile
-fixtures for narrative, poetry, and drama before treating any WPM target as
-universal.
+Publish and test the 250 WPM guide once. Read without waiting for confirmed
+highlighting and judge only whether upcoming text remains comfortably visible.
+If the guide still lags, select 300 WPM or increase look-ahead. If navigation is
+comfortable but confirmed repair remains distractingly delayed, run the exact
+maintained Moonshine Web example as an isolated benchmark before changing the
+production speech adapter.

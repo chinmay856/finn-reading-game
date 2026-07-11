@@ -47,6 +47,10 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(html, /Begin continuous reading/u);
   assert.match(app, /hasEndEvidence/u);
   assert.doesNotMatch(html, />Start reading</u);
+  assert.match(html, /<option value="250" selected>250 WPM<\/option>/u);
+  assert.match(html, /<option value="300">300 WPM<\/option>/u);
+  assert.match(app, /updateReadingGuide/u);
+  assert.match(app, /hasEndEvidence\(state\.confirmedMatches/u);
 });
 
 test("live checkpoints cannot fragment the final recording", async () => {

@@ -8,6 +8,8 @@ test("passage carries a reusable reading profile", () => {
   assert.ok(EVIDENCE_PASSAGE.profile.targetWpm.stretch > EVIDENCE_PASSAGE.profile.targetWpm.comfortable);
   assert.ok(EVIDENCE_PASSAGE.profile.checkpoint.pauseMs < 900);
   assert.ok(EVIDENCE_PASSAGE.profile.endDetection.minimumTailMatches > 0);
+  assert.ok(EVIDENCE_PASSAGE.profile.guide.supportedWpm.includes(250));
+  assert.ok(EVIDENCE_PASSAGE.profile.guide.supportedWpm.includes(300));
 });
 
 test("theme-neutral content metadata contains no wrapper outcomes", () => {

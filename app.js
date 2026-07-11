@@ -1,5 +1,6 @@
 import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
+import { estimateGuideProgress, guideScrollTop } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
@@ -15,6 +16,8 @@ const requestedDevice = new URLSearchParams(location.search).get("speechDevice")
 const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
   diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
+  guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
+  guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   processedThroughMs: 0, result: null, startedAt: 0,
 };
@@ -48,8 +51,24 @@ function renderPassage(progress = state.confirmedProgress) {
     const active = confirmed >= paragraphStart && confirmed < cursor;
     return `<p class="reading-paragraph ${active ? "active" : ""}" data-paragraph="${paragraphIndex}">${words}</p>`;
   }).join("");
-  const active = $("passage").querySelector(".reading-paragraph.active");
-  active?.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+function updateReadingGuide() {
+  const progress = estimateGuideProgress({
+    activeSpeechMs: state.guideSpeechMs,
+    leadWords: PROFILE.guide.leadWords,
+    totalWords: tokenizeText(PASSAGE).length,
+    wordsPerMinute: state.guideWpm,
+  });
+  state.guideProgress = Math.max(state.guideProgress, progress);
+  if (performance.now() < state.guidePausedUntil) return;
+  const passage = $("passage");
+  passage.scrollTop = guideScrollTop({
+    progress: state.guideProgress,
+    scrollHeight: passage.scrollHeight,
+    viewportHeight: passage.clientHeight,
+  });
+  $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · ${Math.round(state.guideProgress * 100)}%`;
 }
 
 function updateProgress(alignment, latencyMs = null) {
@@ -59,7 +78,7 @@ function updateProgress(alignment, latencyMs = null) {
   const percent = Math.round(state.confirmedProgress * 100);
   $("repairFill").style.width = `${percent}%`;
   $("repairPercent").textContent = `${percent}% repaired`;
-  $("progressText").textContent = `${percent}% confirmed`;
+  $("progressText").textContent = `${percent}% confirmed by local transcript`;
   $("latency").textContent = latencyMs == null ? "Waiting for first checkpoint" : `Last checkpoint: ${(latencyMs / 1000).toFixed(1)}s`;
   renderPassage();
 }
@@ -100,9 +119,15 @@ async function checkpoint(reason) {
 
 function monitorSpeech() {
   const now = performance.now();
+  const elapsedMs = state.lastMonitorAt ? now - state.lastMonitorAt : 0;
+  state.lastMonitorAt = now;
   const speaking = capture.level >= SPEECH_LEVEL;
   $("voicePulse").classList.toggle("speaking", speaking);
-  if (speaking) state.lastSpeechAt = now;
+  if (speaking) {
+    state.lastSpeechAt = now;
+    state.guideSpeechMs += elapsedMs;
+    updateReadingGuide();
+  }
   const totalWords = tokenizeText(PASSAGE).length;
   if (!speaking && !state.busy && !state.finishing
     && hasEndEvidence(state.confirmedMatches, totalWords, PROFILE.endDetection)
@@ -127,6 +152,7 @@ async function startReading() {
   state.startedAt = performance.now();
   state.lastSpeechAt = state.startedAt;
   state.lastCheckpointAt = state.startedAt;
+  state.lastMonitorAt = state.startedAt;
   state.processedThroughMs = 0;
   state.monitor = setInterval(monitorSpeech, 100);
   $("listen").textContent = "Finish now";
@@ -215,6 +241,7 @@ async function prepare() {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   stream.getTracks().forEach((track) => track.stop());
   state.modelDevice = await recognizer.load(requestedDevice);
+  state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
   $("modelProgress").textContent = `Ready locally (${state.modelDevice}).`;
   show("read");
   await startReading();
@@ -230,6 +257,12 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
 });
 $("again").onclick = () => location.reload();
 $("export").onclick = exportReport;
+for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
+  $("passage").addEventListener(eventName, () => {
+    state.guidePausedUntil = performance.now() + 5_000;
+    $("guideStatus").textContent = `Manual scroll — guide resumes at ${state.guideWpm} WPM`;
+  }, { passive: true });
+}
 document.querySelectorAll(".quiz button").forEach((button) => {
   button.onclick = () => {
     const correct = button.dataset.answer === "1";
