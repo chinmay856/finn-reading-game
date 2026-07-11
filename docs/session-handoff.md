@@ -28,11 +28,12 @@
   and portraits live under `apps/internet-recovery/`; Reading Engine, Content
   Platform, theme-neutral Game Rules, speech, and real session history are
   unchanged.
-- Validation: `npm run check`, `npm test` (53 passing), and `npm run build` all
-  pass. Recommended next step: publish this branch and click through the full
-  diagnostic route once to judge dialogue size, story timing, and whether the
-  80% reset is visually understandable before connecting additional real
-  passages.
+- Published through merged PR #27 at
+  <https://chinmay856.github.io/finn-reading-game/>. Validation: `npm run check`,
+  `npm test` (53 passing), `npm run build`, and a live HTTPS smoke check all
+  pass. Recommended next step: click through the full diagnostic route once to
+  judge dialogue size, story timing, and whether the 80% reset is visually
+  understandable before connecting additional real passages.
 
 ## WikiWhy visual-fidelity pass
 
