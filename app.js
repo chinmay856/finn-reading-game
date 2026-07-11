@@ -4,6 +4,8 @@ import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMat
 import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
+import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
+import { readWikiWhyState, recordWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-state.js";
 
 const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
@@ -15,13 +17,28 @@ const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
 const uiPreview = new URLSearchParams(location.search).get("uiPreview");
 
+function availableLocalStorage() {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+function createSessionId() {
+  return globalThis.crypto?.randomUUID?.()
+    ?? `reading-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+const localStateStorage = availableLocalStorage();
+
 const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
   diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
   guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
   guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
-  processedThroughMs: 0, result: null, startedAt: 0,
+  processedThroughMs: 0, result: null, sessionId: null, startedAt: 0,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -180,6 +197,7 @@ async function startReading() {
   $("readerState").textContent = "Starting microphone…";
   await capture.start();
   state.listening = true;
+  state.sessionId = createSessionId();
   state.startedAt = performance.now();
   state.lastSpeechAt = state.startedAt;
   state.lastCheckpointAt = state.startedAt;
@@ -255,6 +273,17 @@ async function finishReading() {
     totalWords: combined.totalCount,
     wpm: pace.wpm,
   };
+  const completedAt = new Date().toISOString();
+  const storedSession = saveSessionSummary(localStateStorage, {
+    completedAt,
+    passageId: PHOTOSYNTHESIS_PASSAGE.id,
+    result: state.result,
+    sessionId: state.sessionId,
+  });
+  $("saveStatus").textContent = storedSession.ok
+    ? "Non-audio session summary saved on this device. Audio and transcript text were not saved."
+    : "Result is ready, but this browser did not save local history. Audio and transcript text were not saved.";
+  diagnostic("session-persistence", { saved: storedSession.ok });
   $("finalizationStatus").textContent = `Final score ready in ${(finalLatencyMs / 1_000).toFixed(1)}s. The final pass added ${finalAddedWords} confirmed words.`;
   $("finalizationStatus").className = "finalization-status ready";
   $("again").disabled = false;
@@ -319,6 +348,13 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
 });
 $("again").onclick = () => location.reload();
 $("continueResult").onclick = () => {
+  if (!uiPreview) {
+    const repair = recordWikiWhyRepair(localStateStorage, {
+      passageId: PHOTOSYNTHESIS_PASSAGE.id,
+      repairedAt: new Date().toISOString(),
+    });
+    diagnostic("wrapper-repair-persistence", { saved: repair.ok });
+  }
   $("continueResult").disabled = true;
   $("continueResult").textContent = "Repair recorded";
   $("reportStatus").textContent = "Repair complete. The connection is stable for now.";
@@ -341,6 +377,13 @@ document.querySelectorAll(".quiz button").forEach((button) => {
       ? PHOTOSYNTHESIS_PASSAGE.comprehension.correctFeedback
       : PHOTOSYNTHESIS_PASSAGE.comprehension.incorrectFeedback;
     $("payoff").hidden = !correct;
+    if (state.sessionId) {
+      updateSessionComprehension(
+        localStateStorage,
+        state.sessionId,
+        correct ? "supported" : "retry-offered",
+      );
+    }
   };
 });
 window.addEventListener("pagehide", () => {
@@ -354,6 +397,11 @@ function updateDesktopClock() {
 
 hydrateInternetRecoveryCopy();
 hydratePassage();
+const previousWikiWhyState = readWikiWhyState(localStateStorage);
+if (previousWikiWhyState.repairCount > 0) {
+  $("savedRepairStatus").hidden = false;
+  $("savedRepairStatus").textContent = `Repairs saved on this device: ${previousWikiWhyState.repairCount}. Last WikiWhy connection: stable for now.`;
+}
 updateDesktopClock();
 setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
