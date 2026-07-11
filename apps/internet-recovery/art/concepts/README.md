@@ -29,6 +29,10 @@ campaign example with dynamic Act I repair, the 80% reverse hack, and Shield
 Protocol. Its numbers and mechanics are not platform defaults. Other sites share
 only the apparent-problem, middle-change, site-specific-resolution rhythm.
 
+Nine additional proposed site boards are indexed under
+[`sites/`](sites/README.md). They remain review-only and deliberately use
+different progress metaphors and midpoint changes.
+
 The next concept set explores the two-act WikiWhy campaign flow documented in
 [`docs/gameplay/SITE_CAMPAIGN_FLOW.md`](../../../../docs/gameplay/SITE_CAMPAIGN_FLOW.md):
 innocent corruption, Amy's warning, reverse hack, three-pass Shield Protocol,
