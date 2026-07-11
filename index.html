@@ -1,93 +1,11 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#07100a">
-  <title>Finn Reading Desktop Test</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-<main>
-  <header>
-    <div><small>READ-ALOUD PROTOTYPE</small><h1>StoryQuest</h1></div>
-    <div class="meta"><b>Finn</b><span>The Secret Garden</span></div>
-  </header>
-
-  <div class="steps"><span class="on" data-step="setup">1 Setup</span><span data-step="read">2 Read</span><span data-step="review">3 Review</span></div>
-  <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
-
-  <section id="setup" class="screen on panel">
-    <small>DESKTOP READING ENGINE TEST</small>
-    <h2>Read four lines aloud.</h2>
-    <p>The page follows the words, estimates accuracy and speed, and asks for a retry when a line misses the target.</p>
-    <div class="targets">
-      <label>Speed goal<input id="minWpm" type="number" value="100" min="40" max="300"><em>WPM+</em></label>
-      <label>Accuracy goal<input id="goal" type="number" value="85" min="50" max="100"><em>%</em></label>
-    </div>
-    <div class="checks">
-      <span>HTTPS <b id="httpsCheck">checking</b></span>
-      <span>Microphone <b id="micCheck">checking</b></span>
-      <span>Local speech model <b id="speechCheck">checking</b></span>
-    </div>
-    <p id="modelProgress" class="model-progress" role="status" aria-live="polite" hidden></p>
-    <details class="diagnostics"><summary>Browser test details</summary><p id="browserCheck"></p><p id="signalCheck">No microphone signal measured yet.</p></details>
-    <button id="begin" class="primary">Prepare local voice engine</button>
-    <p class="fine">The open-source speech model downloads once and is cached by the browser. Voice is processed in this tab, then discarded; the app never uploads or stores audio or transcripts.</p>
-  </section>
-
-  <section id="read" class="screen">
-    <div class="read-grid">
-      <article class="panel">
-        <div class="row"><div><small>CURRENT LINE</small><h2 id="counter">Line 1 of 4</h2></div><b id="state" class="pill">Ready</b></div>
-        <div id="passage" class="passage"></div>
-        <div class="heard"><small>LOCAL TRANSCRIPT</small><p id="heard" aria-live="polite">—</p></div>
-        <div id="coach" class="coach" hidden>
-          <b id="coachTitle">Try that line again.</b>
-          <p id="coachText"></p>
-          <div class="actions"><button id="retry" class="primary">Retry line</button><button id="accept">Accept & continue</button></div>
-        </div>
-        <div id="controls" class="actions">
-          <button id="listen" class="primary">Start reading</button>
-          <button id="check" disabled>Check line</button>
-          <button id="finish">End test</button>
-        </div>
-      </article>
-      <aside class="panel stats">
-        <small>LIVE STATS</small>
-        <div><span>Accuracy</span><b id="accuracy">—</b></div>
-        <div><span>Speed</span><b id="speed">—</b></div>
-        <div><span>Pace</span><b id="pace">—</b></div>
-        <div><span>Correct words</span><b id="correct">0</b></div>
-        <p id="target"></p>
-      </aside>
-    </div>
-  </section>
-
-  <section id="review" class="screen">
-    <div class="review-grid">
-      <article class="panel">
-        <small>TEST COMPLETE</small><h2>Session results</h2>
-        <div class="summary">
-          <div><span>Accuracy</span><b id="finalAccuracy">—</b></div>
-          <div><span>Correct words</span><b id="finalCorrect">—</b></div>
-          <div><span>Average speed</span><b id="finalSpeed">—</b></div>
-          <div><span>First-try lines</span><b id="firstTry">—</b></div>
-          <div><span>Retries</span><b id="retries">—</b></div>
-        </div>
-        <div id="results"></div>
-        <div class="actions"><button id="again" class="primary">Run it again</button><button id="settings">Change targets</button><button id="export">Copy test report</button></div>
-        <p class="fine">The test report includes scores and browser diagnostics. It never includes audio or transcripts.</p>
-      </article>
-      <aside class="panel quiz"><small>QUICK CHECK</small><h3>What began to change Mary?</h3>
-        <button data-answer="0">She wanted to leave the manor.</button>
-        <button data-answer="1">The fresh air, the garden, and new friendships.</button>
-        <button data-answer="0">She found a hidden treasure.</button>
-        <p id="quizFeedback"></p>
-      </aside>
-    </div>
-  </section>
-</main>
-<script type="module" src="/app.js"></script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07100a"><title>WikiWhy Reading Spike</title><link rel="stylesheet" href="/styles.css"></head>
+<body><main>
+<header><div><small>INTERNET RECOVERY OS</small><h1>WikiWhy</h1></div><div class="meta"><b>Finn</b><span>Local reading test</span></div></header>
+<section id="setup" class="screen on panel setup-card"><small>FOCUSED MECHANICS SPIKE</small><h2>Repair a broken page by reading continuously.</h2><p>Read the full passage without stopping for sentence checks. Natural pauses create local progress checkpoints while the microphone keeps listening.</p><button id="begin" class="primary">Prepare microphone and local model</button><p id="modelProgress" class="model-progress" role="status">Nothing is uploaded or stored.</p></section>
+<section id="read" class="screen">
+  <div class="repair-stage panel" aria-label="WikiWhy repair visualization"><div class="broken-page"><small>WIKIWHY ARTICLE</small><h2>Why evidence matters</h2><p>ANY CLAIM BECOMES TRUE AFTER THREE REPOSTS.</p><div class="fake-lines"></div></div><div id="repairFill" class="repaired-page"><small>WIKIWHY ARTICLE — VERIFIED</small><h2>Why evidence matters</h2><p>Strong claims explain their evidence, limits, and uncertainty.</p><div class="source-card">Sources restored · context connected · confidence repaired</div></div><div class="repair-footer"><b id="repairPercent">0% repaired</b><span id="latency">Waiting for first checkpoint</span></div></div>
+  <div class="reader panel"><div class="row"><div><small>READING COMPANION</small><h2>Read continuously</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div><p id="readerState" class="reader-state" role="status">Ready</p><div id="passage" class="passage continuous"></div><div class="reader-footer"><span id="progressText">0 words confirmed</span><button id="listen" class="primary">Start reading</button></div></div>
+</section>
+<section id="review" class="screen panel"><small>READING COMPLETE</small><h2>Local session result</h2><div class="summary"><div><span>Accuracy estimate</span><b id="finalAccuracy">—</b></div><div><span>Words confirmed</span><b id="finalCorrect">—</b></div><div><span>Speed</span><b id="finalSpeed">—</b></div><div><span>Passage progress</span><b id="finalProgress">—</b></div></div><button id="again" class="primary">Try again</button><p class="fine">The prototype discards audio and transcript data after this tab closes.</p></section>
+</main><script type="module" src="/app.js"></script></body></html>

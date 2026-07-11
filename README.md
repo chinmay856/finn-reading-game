@@ -11,6 +11,8 @@ The first game wrapper is **Internet Recovery OS**: adults broke the Internet, a
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
 - Preserved mobile side-test notes: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
+- Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
+- Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
 - Desktop prototype entry point: [`index.html`](index.html)
 

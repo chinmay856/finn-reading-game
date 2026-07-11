@@ -29,8 +29,13 @@ test("the local speech adapter stays free of wrapper concepts", async () => {
 
 test("the diagnostic report declares local-only audio handling", async () => {
   const app = await readFile(new URL("../app.js", import.meta.url), "utf8");
-  assert.match(app, /audioUploadedByApp:\s*false/u);
-  assert.match(app, /rawAudioStored:\s*false/u);
-  assert.match(app, /transcriptStored:\s*false/u);
+  assert.doesNotMatch(app, /fetch\(|XMLHttpRequest|WebSocket/u);
   assert.doesNotMatch(app, /SpeechRecognition|webkitSpeechRecognition/u);
+});
+
+test("continuous reading has no sentence or line check controls", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+  assert.doesNotMatch(html, /Check line|Retry line|Check sentence/iu);
+  assert.match(html, /Read continuously/u);
+  assert.match(html, /repairFill/u);
 });
