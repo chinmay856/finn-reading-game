@@ -117,6 +117,14 @@ how much accuracy and word evidence that expensive final pass actually adds.
 
 ## Immediate next action
 
+An isolated Moonshine comparison is now available at
+`moonshine-benchmark.html`. It preserves the exact maintained Hugging Face model,
+Silero VAD, and streaming configuration while reporting same-passage accuracy
+and segment latency. The production Whisper route remains unchanged. Run the
+comparison once in Chrome, then use the recorded evidence—not model reputation—to
+decide whether Moonshine deserves adapter integration. See
+[`engine/MOONSHINE_BENCHMARK.md`](engine/MOONSHINE_BENCHMARK.md).
+
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
 current Chrome. Compare local transcripts with what was read, observe first-load
 time and per-line latency, and paste the no-audio diagnostic report into Codex if
@@ -152,11 +160,12 @@ dial-up-inspired interstitial that masks genuine between-page loading without
 adding fake delay. These are documented concepts only; the current desktop
 mechanics test has not implemented them.
 
-Each parody site is now designed as an approximately eight-to-ten-session
-sabotage campaign with distinct passages and failures. The early total is hidden
-for story tension; Amy later reveals an exact final three-step Shield Protocol,
-after which the site becomes permanently secured. This remains wrapper design,
-not current prototype implementation or Reading Engine behavior.
+Campaign mechanics are authored site by site. The shared story rhythm is an
+apparent problem, a meaningful middle change, and a site-specific resolution;
+percentages, passage counts, trackers, resets, and finales may differ. WikiWhy's
+worked example uses dynamic 10–20% Act I repair, an 80% reverse hack, and an
+exact three-step Shield Protocol. These remain wrapper design, not Reading
+Engine behavior.
 
 Prototype passage authoring now explicitly avoids unnecessary
 transcription-hostile proper nouns, invented spellings, dense acronyms, and
@@ -175,6 +184,12 @@ excerpts, explanatory essays (including scientific-reading structures), and
 human-reviewed original writing. Rights/provenance and transcription review are
 required content metadata; copying a protected work and merely renaming its
 characters is explicitly out of scope.
+
+The WikiWhy handoff now includes an explicit ownership map, an approved campaign
+storyboard, and two attributed ten-passage Wikipedia adaptation decks. Deck A is
+the first-run pool and Deck B is reserved for unseen replay content. Only the
+Reading Companion passage is expected speech; corrupted/repaired WikiWhy page
+copy is wrapper-owned decorative visual content.
 
 ## Known limitations
 

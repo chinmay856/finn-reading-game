@@ -13,7 +13,9 @@ The first game wrapper is **Internet Recovery 98**: adults broke the Internet, a
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
 - Internet Recovery player-facing copy deck: [`docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`](docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md)
+- Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
+- WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
 - Desktop prototype entry point: [`index.html`](index.html)
 
@@ -38,7 +40,7 @@ Open app
 → read a passage aloud
 → follow live highlighting
 → receive forgiving accuracy and speed feedback
-→ repair something funny in Internet Recovery OS
+→ repair something funny in Internet Recovery 98
 ```
 
 The repository documents are the durable source of truth across ChatGPT, Codex desktop, web, and mobile work. Update them when major decisions change.

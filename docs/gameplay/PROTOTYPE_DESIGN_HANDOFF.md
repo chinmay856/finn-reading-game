@@ -1,0 +1,217 @@
+# Internet Recovery OS prototype design handoff
+
+## Purpose
+
+This handoff gives a prototype agent enough reviewed design direction to build
+one playable Internet Recovery flow without treating the WikiWhy example as the
+final structure of every site.
+
+The first prototype target is **one WikiWhy campaign slice with one or a few
+passages**. It is a design proof, not the full eight-to-ten-session campaign and
+not a template whose page content should be copied into every future mission.
+
+## What is shared across sites
+
+The shared design pattern is a flexible three-act story rhythm, not a fixed
+progress formula:
+
+1. **Apparent problem:** Finn understands the visible site failure and begins a
+   repair without knowing the full situation.
+2. **Mid-campaign change:** something surprising changes the rules, meaning, or
+   reliability of the site's progress.
+3. **Site-specific resolution:** Finn completes a newly understood objective and
+   leaves the site in a persistent changed state.
+
+Familiar wrapper elements may recur when useful:
+
+- a desktop/browser mission entry;
+- a compact continuous Reading Companion containing independent grades 10–12
+  material;
+- theme-neutral reading results translated into visible wrapper consequences;
+- a page-level visual repair that makes stronger sessions feel more powerful;
+- no punishment labels or loss of completed reading evidence;
+- a meaningful change in the middle rather than a flat sequence of passages;
+- a persistent secured-site state and a blocked Chinmay write attempt;
+- Amy as concise optional engineering support and Techno as comic visual company;
+- comprehension grounded only in the Reading Companion passage;
+- mute, reduced-motion, and non-color status equivalents.
+
+Progress meters, thresholds, passage counts, adaptation, twists, and finale
+structures are authored site by site. These are wrapper/game-rule choices.
+Speech recognition, alignment, accuracy, pace, and session outcomes remain
+theme-neutral.
+
+## Ownership map — what comes from where
+
+The Reading Companion and the parody webpage are adjacent but independent. The
+prototype must not scrape its passage from the visible WikiWhy article or send
+WikiWhy's decorative text into speech scoring.
+
+| Player-facing element | Source/owner | What it does |
+| --- | --- | --- |
+| Scrolling passage text | WikiWhy records in `content/wikiwhy/` through the Content Platform boundary | Supplies the exact expected text Finn reads aloud. |
+| Passage title and comprehension check | The same passage record | Grounds comprehension only in the assigned passage. |
+| Microphone audio | Browser microphone through the theme-neutral Reading Engine | Exists in memory for local transcription and is discarded; it never belongs to the wrapper. |
+| Transcript, alignment, current position, accuracy, pace, corrections | Theme-neutral Reading Engine | Compares speech with the assigned passage and emits neutral progress/results. |
+| Site progress increment | WikiWhy game rules | Converts accepted neutral results into WikiWhy's site-specific 10–20% Act I advance. |
+| Corrupted WikiWhy visual | Internet Recovery wrapper | The before-state page: wrong rule, `XXXX`, broken citations, missing imagery. Decorative copy is not scored. |
+| Repaired WikiWhy visual | Internet Recovery wrapper | The after-state page: restored structure, evidence, citations, and secured status. Decorative copy is not scored. |
+| Cropped/revealed page transition | Internet Recovery wrapper | Uses progress as a mask between corrupted and repaired visual states. It does not alter passage text. |
+| Amy, Techno, Chinmay, warnings, reset, shield finale | Internet Recovery wrapper and WikiWhy campaign state | Presents story beats without changing speech interpretation. |
+| Seen passage IDs and campaign position | Non-audio session/content history | Allows Deck A first and unseen Deck B content on replay; it stores no voice recording. |
+
+```text
++----------------------------------------------------------------+
+| WRAPPER SITE CANVAS                         | READING COMPANION |
+| corrupted WikiWhy  <repair mask>  repaired | passage record    |
+| decorative page copy is not speech-scored  | highlighted text  |
+|                                             | mic/engine status |
++----------------------------------------------------------------+
+            neutral reading progress -> WikiWhy game rule -> mask
+```
+
+The corrupted and repaired site states may be implemented as layered DOM,
+images, or another prototype-friendly technique. That choice does not change
+the ownership boundary: only the Reading Companion passage is expected speech.
+
+## What must be different for each site
+
+Every site needs its own authored identity rather than a reskin of WikiWhy:
+
+| Design dimension | WikiWhy example | Future-site requirement |
+| --- | --- | --- |
+| Core parody | Collaborative encyclopedia | A different recognizable internet archetype |
+| Corrupted belief | “Users are always right” | A distinct bad internet habit or absurd product rule |
+| Page structure | Article, citations, edit history | Native structure such as feed, profile, video page, portal, search results, or thread |
+| Repair/progress metaphor | Left-to-right evidence cleanup with stability | Must fit the site's native behavior and may be unreliable as part of the story |
+| Repaired principle | Contributions need evidence | A principle specific to that site's failure |
+| Chinmay sabotage | Background edits and citation corruption | A site-specific interference method |
+| Amy contribution | Traps a background write | A concise support action appropriate to the site's system |
+| Techno beat | Notices the blinking process | A different optional reaction/discovery using the ball when natural |
+| Completion payoff | Article secured; write denied | A distinct satisfying restoration and failure response |
+
+The first prototype may use WikiWhy's simple repair wipe because it is
+economical. That does not establish a shared percentage model, threshold,
+finale length, repair animation, or identical storyboard for production sites.
+
+For example, FacePlace might show a broken nonsense tracker for its first three
+passages. Amy then repairs the tracker, reveals that the displayed progress was
+meaningless, and starts a real site-specific objective at 0%. That reset would
+be FacePlace's mid-campaign story change; it need not reuse WikiWhy's 80% reverse
+hack or three Shield Protocol challenges.
+
+## WikiWhy prototype flow — one site-specific example
+
+### 1. Mission entry — ordinary damage
+
+Show an encyclopedia page that is clearly wrong and funny: `XXXX` copy, broken
+citations, missing imagery, and **USERS ARE ALWAYS RIGHT**. Present it as normal
+Internet-collapse damage. Do not imply malicious sabotage yet.
+
+### 2. Reading and recovery
+
+Finn reads an independent, worthwhile grades 10–12 passage in the continuous
+Reading Companion. The passage does not need to discuss WikiWhy, toast, or media
+literacy. The page repair is the consequence, not the source text.
+
+After an accepted passage, site stability increases by approximately 10–20%.
+The exact increase reflects combined completion, accuracy, comprehension when
+available, pace as a secondary positive signal, and recognition confidence.
+Every accepted passage earns a meaningful advance. Recognition uncertainty does
+not reduce it.
+
+Use vague, in-world reaction copy:
+
+- “That held.”
+- “The page is clearing faster.”
+- “Nice. More of it stayed put.”
+- “Signal looks clean. Keep going.”
+
+Do not display “bonus,” “level skipped,” “poor performance,” or the scoring
+formula. The visual distance traveled by the repair is the reward.
+
+### 3. Suspicion near 70%
+
+Show a newer edit timestamp, a citation changing after repair, a background
+process, and Techno becoming alert. Amy says:
+
+> “Hold on. You are fixing it—but something is still writing corruption behind
+> you. Keep going. I think I can trap the next change.”
+
+This is suspicion only. Finn still does not know the full antagonist story.
+
+### 4. Story turn at 80%
+
+Clamp the final Act I advance to 80%. A live reverse hack corrupts the page from
+right to left. Make the sequence dramatic and accessible. Explicitly preserve:
+
+- **READINGS SAVED**
+- **EVIDENCE SAVED**
+
+The old **SITE STABILITY 80%** ends. A different objective begins at **SHIELD
+STABILIZATION 0%**. This is a plot transition, not loss of learner progress.
+
+### 5. Exact three-challenge finale
+
+Amy says:
+
+> “Okay. I caught the change. Give me three clean repair passes and I can seal
+> this site around it. Three. No surprise fourth one.”
+
+The finale is explicit:
+
+1. **Recover** — passage; shield reaches about 33%.
+2. **Verify** — passage plus an independent comprehension/evidence check; shield
+   reaches about 66%.
+3. **Seal** — final passage under visible system resistance; shield reaches 100%.
+
+A missed comprehension answer offers a retry or clue. It does not erase reading
+progress or create another passage.
+
+### 6. Permanent completion
+
+Amy confirms the site will stay fixed. WikiWhy gains a persistent **SECURED**
+badge. Techno celebrates. A small background Chinmay admin window attempts one
+more write and receives **ACCESS DENIED**. This reveals active interference but
+does not need to explain the entire larger-game plot.
+
+## Scope for the first prototype iteration
+
+Prove the feel of the loop with the smallest useful subset:
+
+- one corrupted and one repaired WikiWhy page state;
+- one strong passage in the Reading Companion;
+- one progress-driven repair transition;
+- one completion reaction;
+- compact diagnostic reading feedback;
+- saved non-audio session state sufficient for playtest review.
+
+The 70% clue, 80% reverse hack, adaptive multi-passage campaign, comprehension
+finale, and permanent shield are WikiWhy's intended flow but may remain mocked
+or scripted until the one-passage loop feels good. Do not build the full
+campaign merely because it is documented here, and do not treat these numbers
+as platform defaults.
+
+## Design questions for playtesting
+
+- Can Finn follow the continuous reader without the page repair stealing focus?
+- Does a 10–20% visual jump feel meaningfully different without revealing a
+  formula?
+- Does the repair consequence feel connected to reading despite unrelated page
+  and passage content?
+- Does the 80% reset feel like an exciting twist when readings/evidence remain?
+- Is Amy's warning intriguing rather than explanatory?
+- Does the exact three-step finale feel fast and trustworthy?
+- Is Chinmay's blocked write funny and clear without revealing too much too soon?
+
+## Source design references
+
+- [`SITE_CAMPAIGN_FLOW.md`](SITE_CAMPAIGN_FLOW.md)
+- [`INTERNET_RECOVERY_CHARACTERS.md`](INTERNET_RECOVERY_CHARACTERS.md)
+- [`../content/PASSAGE_AUTHORING.md`](../content/PASSAGE_AUTHORING.md)
+- [`../../apps/internet-recovery/art/concepts/README.md`](../../apps/internet-recovery/art/concepts/README.md)
+- [`../../content/wikiwhy/PASSAGE_DECKS.md`](../../content/wikiwhy/PASSAGE_DECKS.md)
+
+WikiWhy now has two attributed ten-passage decks. Deck A is the initial pool;
+Deck B is reserved for replay. Future session memory should prefer unseen IDs
+before recycling a completed deck.

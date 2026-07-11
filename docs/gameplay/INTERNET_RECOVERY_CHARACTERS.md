@@ -243,6 +243,10 @@ technology and diagnostics without a prominent conventional bar.
 
 ### Replayable sabotage campaign
 
+The refined two-act campaign flow, including the adaptive hidden opening,
+70–75% warning/reverse-hack turn, and exact three-pass finale, is documented in
+[`SITE_CAMPAIGN_FLOW.md`](SITE_CAMPAIGN_FLOW.md).
+
 Each parody site is a small replayable campaign rather than a single passage.
 Plan roughly eight to ten distinct repairs per site, tuned through wrapper
 configuration and playtesting rather than hard-coded into the Reading Engine.
