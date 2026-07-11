@@ -94,6 +94,21 @@ test("WikiWhy production art stays in the wrapper and is wired into the page", a
   assert.doesNotMatch(engine, /site-assets|wikiwhy-globe|toast-evidence/iu);
 });
 
+test("Techno progress animation is optional wrapper presentation", async () => {
+  const [app, engine, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/characters/techno/techno-progress-push-loop.webp", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp", import.meta.url)),
+  ]);
+  assert.match(html, /id="technoRepairSprite"/u);
+  assert.match(app, /animateTechnoProgress/u);
+  assert.match(app, /prefers-reduced-motion: reduce/u);
+  assert.match(app, /2_050/u);
+  assert.doesNotMatch(engine, /Techno|techno-progress|technoRepairSprite/iu);
+});
+
 test("live checkpoints cannot fragment the final recording", async () => {
   const capture = await readFile(new URL("../speech/audio-capture.js", import.meta.url), "utf8");
   assert.match(capture, /finalRecorder/u);

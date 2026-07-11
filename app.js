@@ -13,6 +13,8 @@ const PASSAGE = PARAGRAPHS.join(" ");
 const PROFILE = PHOTOSYNTHESIS_PASSAGE.profile;
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
 const SPEECH_LEVEL = 0.009;
+const TECHNO_PROGRESS_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-progress-push-loop.webp", import.meta.url).href;
+const TECHNO_PROGRESS_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp", import.meta.url).href;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
@@ -39,7 +41,8 @@ const state = {
   guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
   guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
-  comprehension: "not-attempted", processedThroughMs: 0, result: null, sessionId: null, startedAt: 0,
+  comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
+  sessionId: null, startedAt: 0, technoTimer: null,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -96,6 +99,18 @@ function renderRepairOutcome(repairState, persisted) {
     : "Repair applied for this tab. This browser did not save it for reload.";
 }
 
+function animateTechnoProgress() {
+  const image = $("technoRepairSpriteImage");
+  clearTimeout(state.technoTimer);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    image.src = TECHNO_PROGRESS_STILL_URL;
+    return;
+  }
+  image.src = TECHNO_PROGRESS_STILL_URL;
+  requestAnimationFrame(() => { image.src = TECHNO_PROGRESS_LOOP_URL; });
+  state.technoTimer = setTimeout(() => { image.src = TECHNO_PROGRESS_STILL_URL; }, 2_050);
+}
+
 function renderPassage(progress = state.confirmedProgress) {
   const passage = $("passage");
   const previousScrollTop = passage.scrollTop;
@@ -147,8 +162,12 @@ function updateProgress(alignment, latencyMs = null) {
   state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
   state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
+  const previousPercent = state.repairPercent;
+  state.repairPercent = Math.max(state.repairPercent, percent);
   $("repairFill").style.width = `${percent}%`;
   $("repairEdge").style.left = `${percent}%`;
+  $("technoRepairSprite").style.left = `clamp(82px, ${percent}%, calc(100% - 84px))`;
+  if (percent > previousPercent) animateTechnoProgress();
   $("repairPercent").textContent = `${percent}% repaired`;
   $("siteStatus").textContent = percent >= 100 ? "STATUS: REPAIR COMPLETE" : percent > 0 ? `STATUS: RECOVERING · ${percent}%` : "STATUS: CORRUPTED";
   $("siteStatus").classList.toggle("complete", percent >= 100);
@@ -434,6 +453,7 @@ document.querySelectorAll(".quiz button").forEach((button) => {
 });
 window.addEventListener("pagehide", () => {
   clearInterval(state.monitor);
+  clearTimeout(state.technoTimer);
   if (capture.active) capture.stop();
   recognizer.close();
 });

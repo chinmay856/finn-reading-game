@@ -249,6 +249,24 @@ body {
   box-shadow: 0 0 18px 4px #43cf7899;
 }
 
+.techno-repair-sprite {
+  position: absolute;
+  z-index: 5;
+  left: 82px;
+  bottom: 4px;
+  width: clamp(118px, 11vw, 166px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: left .45s steps(5, end);
+  filter: drop-shadow(2px 3px 1px #142b4666);
+}
+
+.techno-repair-sprite img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .reader-window {
   border-color: #eef6fb;
 }
@@ -298,4 +316,5 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .recovery-desktop::after { display: none; }
+  .techno-repair-sprite { transition: none; }
 }
