@@ -81,18 +81,63 @@ test("comprehension outcome can be added without transcript data", () => {
 test("WikiWhy repair state stays wrapper-specific and tolerates blocked storage", () => {
   const storage = new MemoryStorage();
   const first = recordWikiWhyRepair(storage, {
+    advance: 15,
     passageId: "wikiwhy.photosynthesis.a01",
+    reaction: "That held.",
     repairedAt: "2026-07-11T00:00:00Z",
+    sessionId: "session-1",
+    stability: 15,
   });
   const second = recordWikiWhyRepair(storage, {
+    advance: 17,
     passageId: "wikiwhy.photosynthesis.a01",
+    reaction: "The page is clearing faster.",
     repairedAt: "2026-07-11T00:01:00Z",
+    sessionId: "session-2",
+    stability: 32,
   });
   assert.equal(first.ok, true);
   assert.equal(second.state.repairCount, 2);
+  assert.equal(second.state.stability, 32);
   assert.equal(readWikiWhyState(storage).status, "stable-for-now");
   assert.equal(recordWikiWhyRepair(new MemoryStorage({ failWrites: true }), {
+    advance: 10,
     passageId: "passage",
+    reaction: "That held.",
     repairedAt: "now",
+    sessionId: "session",
+    stability: 10,
   }).ok, false);
+});
+
+test("WikiWhy repair state does not count the same session twice", () => {
+  const storage = new MemoryStorage();
+  const details = {
+    advance: 15,
+    passageId: "passage",
+    reaction: "That held.",
+    repairedAt: "now",
+    sessionId: "same-session",
+    stability: 15,
+  };
+  recordWikiWhyRepair(storage, details);
+  const duplicate = recordWikiWhyRepair(storage, details);
+  assert.equal(duplicate.duplicate, true);
+  assert.equal(duplicate.state.repairCount, 1);
+  assert.equal(duplicate.state.stability, 15);
+});
+
+test("legacy repair counts migrate to the minimum earned stability", () => {
+  const storage = new MemoryStorage();
+  storage.setItem("internet-recovery-98.wikiwhy.prototype.v1", JSON.stringify({
+    lastPassageId: "old-passage",
+    lastRepairAt: "yesterday",
+    repairCount: 2,
+    status: "stable-for-now",
+    version: 1,
+  }));
+  const migrated = readWikiWhyState(storage);
+  assert.equal(migrated.repairCount, 2);
+  assert.equal(migrated.stability, 20);
+  assert.equal(migrated.version, 2);
 });

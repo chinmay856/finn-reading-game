@@ -17,9 +17,18 @@ The reusable Reading Platform record contains only:
 It never contains raw audio, transcript text, checkpoint text, browser user
 agent, or Internet Recovery terminology. History is capped at 20 sessions.
 
-WikiWhy repair count and status use a separate wrapper-owned key under
-`apps/internet-recovery/`. This keeps game progression replaceable without
-changing the Reading Engine's session format.
+WikiWhy repair count, site stability, last reaction, and last applied session ID
+use a separate versioned wrapper-owned key under `apps/internet-recovery/`.
+Version 2 migrates the earlier repair count conservatively at the minimum 10%
+earned per repair. This keeps game progression replaceable without changing the
+Reading Engine's session format.
+
+The Game Rules layer converts theme-neutral completion, accuracy,
+comprehension, and pace signals into a session-strength value. WikiWhy's own
+rule converts that value into a 10–20% stability advance and clamps the current
+prototype at its documented 80% Act I story boundary. Comprehension is optional
+and can strengthen the repair; it never blocks continuation. Faster reading can
+help, but there is no maximum-WPM penalty.
 
 ## Browser behavior
 
@@ -43,3 +52,5 @@ Reference: <https://html.spec.whatwg.org/multipage/webstorage.html>
 - Malformed, unavailable, quota-blocked, or policy-blocked storage cannot stop
   the reading flow.
 - Wrapper repair state remains outside the reusable Reading Platform record.
+- A session ID can be applied to wrapper state only once.
+- Existing version 1 repair counts migrate without losing earned progress.

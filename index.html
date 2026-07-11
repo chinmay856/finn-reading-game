@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#142b46">
   <title>Internet Recovery 98 · WikiWhy</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/repair-outcome.css">
 </head>
 <body>
   <div class="page-frame">
@@ -19,7 +20,7 @@
       <section id="setup" class="screen on desktop-surface setup-surface" style="overflow:auto">
         <nav class="desktop-icons" aria-label="Recovery desktop shortcuts">
           <button class="desktop-icon active" type="button"><span aria-hidden="true">▣</span><b>Browser</b><small>Browse what remains</small></button>
-          <button class="desktop-icon" type="button" disabled><span aria-hidden="true">▤</span><b>Recovered Files</b><small>Definitely disorganized</small></button>
+          <button id="recoveredFilesShortcut" class="desktop-icon" type="button" disabled><span aria-hidden="true">▤</span><b>Recovered Files</b><small id="recoveredFilesCount">Nothing recovered yet</small></button>
           <button class="desktop-icon" type="button" disabled><span aria-hidden="true">_</span><b>Terminal</b><small>Type confidently and hope</small></button>
         </nav>
 
@@ -38,6 +39,12 @@
             <button id="begin" class="os-button primary">Prepare microphone</button>
             <p id="modelProgress" class="model-progress" role="status">Your browser will ask for microphone permission next.</p>
             <p id="savedRepairStatus" class="model-progress" role="status" hidden></p>
+            <section id="savedRepairReceipt" class="saved-repair-receipt" hidden>
+              <small>LASTING REPAIR FOUND</small>
+              <div><b>WikiWhy</b><strong id="savedStability">0%</strong></div>
+              <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span>SITE STABILITY</span></div>
+              <p id="savedReaction">That held.</p>
+            </section>
             <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
           </div>
         </article>
@@ -87,6 +94,13 @@
             <p id="finalizationStatus" class="finalization-status" role="status">Waiting for a reading.</p>
             <div class="summary"><div><span>Accuracy estimate</span><b id="finalAccuracy">—</b></div><div><span>Words confirmed</span><b id="finalCorrect">—</b></div><div><span>Pace</span><b id="finalSpeed">—</b></div><div><span>Passage progress</span><b id="finalProgress">—</b></div></div>
             <div class="actions"><button id="continueResult" class="os-button primary">Continue</button><button id="again" class="os-button">Try this passage again</button><button id="export" class="os-button">Copy timing report</button></div>
+            <section id="repairOutcome" class="repair-outcome" aria-live="polite" hidden>
+              <small>WIKIWHY CONNECTION UPDATE</small>
+              <div class="stability-numbers"><span id="stabilityBefore">0%</span><i aria-hidden="true">→</i><strong id="stabilityAfter">0%</strong><b id="stabilityGain">+0%</b></div>
+              <div id="stabilityMeter" class="stability-meter" role="progressbar" aria-label="WikiWhy site stability" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="stabilityFill"></span></div>
+              <p id="repairReaction">That held.</p>
+              <small id="repairPersistence">Reading saved · evidence saved</small>
+            </section>
             <p id="reportStatus" class="fine" role="status" data-copy-id="result.report.truth">The report contains timing and scores, never audio or transcript text.</p>
             <p id="saveStatus" class="fine" role="status">No audio or transcript text is stored.</p>
             <details class="transcript-diagnostics"><summary>Inspect this session’s local transcripts</summary><p>Shown only in this tab for diagnosis. Reloading clears them; copied timing reports exclude them.</p><h3>Final transcript</h3><pre id="finalTranscript"></pre><h3>Live checkpoints</h3><pre id="checkpointTranscripts"></pre></details>
@@ -94,7 +108,7 @@
         </article>
         <aside class="os-window quiz">
           <div class="window-titlebar"><span>CHECK_THE_FILE.exe</span><span class="window-controls" aria-hidden="true">— □</span></div>
-          <div class="window-body"><small>WHAT DID THE EVIDENCE SHOW?</small><h3 id="quizQuestion">Why does the passage say oxygen is not the plant's main goal?</h3><button data-choice="0"></button><button data-choice="1"></button><button data-choice="2"></button><p id="quizFeedback" role="status"></p><div id="payoff" class="payoff" hidden><b>WIKIWHY REPAIR ACCEPTED</b><span>That matches the file. Evidence logged.</span></div></div>
+          <div class="window-body"><small>OPTIONAL EVIDENCE CHECK</small><h3 id="quizQuestion">Why does the passage say oxygen is not the plant's main goal?</h3><button data-choice="0"></button><button data-choice="1"></button><button data-choice="2"></button><p id="quizFeedback" role="status">Answer for a stronger repair, or continue without it.</p><div id="payoff" class="payoff" hidden><b>EVIDENCE CONFIRMED</b><span>That matches the file. The repair has more to work with.</span></div></div>
         </aside>
       </section>
 

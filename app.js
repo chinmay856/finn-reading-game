@@ -6,6 +6,7 @@ import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
 import { readWikiWhyState, recordWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-state.js";
+import { calculateWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-rules.js";
 
 const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
@@ -38,7 +39,7 @@ const state = {
   guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
   guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
-  processedThroughMs: 0, result: null, sessionId: null, startedAt: 0,
+  comprehension: "not-attempted", processedThroughMs: 0, result: null, sessionId: null, startedAt: 0,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -67,6 +68,32 @@ function hydratePassage() {
 
 function show(name) {
   for (const id of ["setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+}
+
+function renderSavedRepair(savedState) {
+  if (savedState.repairCount < 1) return;
+  $("recoveredFilesShortcut").disabled = false;
+  $("recoveredFilesCount").textContent = `${savedState.repairCount} repair${savedState.repairCount === 1 ? "" : "s"} saved`;
+  $("savedRepairReceipt").hidden = false;
+  $("savedStability").textContent = `${savedState.stability}%`;
+  $("savedRepairCount").textContent = `${savedState.repairCount} saved repair${savedState.repairCount === 1 ? "" : "s"}`;
+  $("savedReaction").textContent = savedState.lastReaction || "That held.";
+  $("savedRepairStatus").hidden = false;
+  $("savedRepairStatus").textContent = `WikiWhy is ${savedState.stability}% stable on this device. Audio and transcript text were not saved.`;
+}
+
+function renderRepairOutcome(repairState, persisted) {
+  const previousStability = Math.max(0, repairState.stability - repairState.lastAdvance);
+  $("repairOutcome").hidden = false;
+  $("stabilityBefore").textContent = `${previousStability}%`;
+  $("stabilityAfter").textContent = `${repairState.stability}%`;
+  $("stabilityGain").textContent = `+${repairState.lastAdvance}%`;
+  $("stabilityFill").style.width = `${repairState.stability}%`;
+  $("stabilityMeter").setAttribute("aria-valuenow", String(repairState.stability));
+  $("repairReaction").textContent = repairState.lastReaction;
+  $("repairPersistence").textContent = persisted
+    ? "Reading saved · evidence saved · available after reload"
+    : "Repair applied for this tab. This browser did not save it for reload.";
 }
 
 function renderPassage(progress = state.confirmedProgress) {
@@ -348,16 +375,34 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
 });
 $("again").onclick = () => location.reload();
 $("continueResult").onclick = () => {
-  if (!uiPreview) {
-    const repair = recordWikiWhyRepair(localStateStorage, {
-      passageId: PHOTOSYNTHESIS_PASSAGE.id,
-      repairedAt: new Date().toISOString(),
-    });
-    diagnostic("wrapper-repair-persistence", { saved: repair.ok });
-  }
+  const current = readWikiWhyState(localStateStorage);
+  const outcome = calculateWikiWhyRepair({
+    comprehension: state.comprehension,
+    previousStability: current.stability,
+    readingResult: state.result,
+  });
+  const repair = uiPreview
+    ? {
+        ok: true,
+        state: {
+          ...current,
+          lastAdvance: outcome.advance,
+          lastReaction: outcome.reaction,
+          repairCount: current.repairCount + 1,
+          stability: outcome.stability,
+        },
+      }
+    : recordWikiWhyRepair(localStateStorage, {
+        ...outcome,
+        passageId: PHOTOSYNTHESIS_PASSAGE.id,
+        repairedAt: new Date().toISOString(),
+        sessionId: state.sessionId,
+      });
+  renderRepairOutcome(repair.state, repair.ok);
+  diagnostic("wrapper-repair-persistence", { advance: outcome.advance, saved: repair.ok });
   $("continueResult").disabled = true;
-  $("continueResult").textContent = "Repair recorded";
-  $("reportStatus").textContent = "Repair complete. The connection is stable for now.";
+  $("continueResult").textContent = "Repair applied";
+  $("reportStatus").textContent = `${outcome.reaction} WikiWhy is ${outcome.stability}% stable for now.`;
 };
 $("export").onclick = exportReport;
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
@@ -377,6 +422,7 @@ document.querySelectorAll(".quiz button").forEach((button) => {
       ? PHOTOSYNTHESIS_PASSAGE.comprehension.correctFeedback
       : PHOTOSYNTHESIS_PASSAGE.comprehension.incorrectFeedback;
     $("payoff").hidden = !correct;
+    state.comprehension = correct ? "supported" : "retry-offered";
     if (state.sessionId) {
       updateSessionComprehension(
         localStateStorage,
@@ -398,10 +444,8 @@ function updateDesktopClock() {
 hydrateInternetRecoveryCopy();
 hydratePassage();
 const previousWikiWhyState = readWikiWhyState(localStateStorage);
-if (previousWikiWhyState.repairCount > 0) {
-  $("savedRepairStatus").hidden = false;
-  $("savedRepairStatus").textContent = `Repairs saved on this device: ${previousWikiWhyState.repairCount}. Last WikiWhy connection: stable for now.`;
-}
+renderSavedRepair(previousWikiWhyState);
+$("recoveredFilesShortcut").onclick = () => $("savedRepairReceipt").scrollIntoView({ block: "center" });
 updateDesktopClock();
 setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
@@ -416,6 +460,8 @@ if (uiPreview === "read") {
   show("read");
 } else if (uiPreview === "review") {
   const previewTotal = tokenizeText(PASSAGE).length;
+  state.result = { accuracy: 91, matchedWords: Math.round(previewTotal * 0.91), progress: 0.96, totalWords: previewTotal, wpm: 243 };
+  state.sessionId = "visual-preview";
   $("finalAccuracy").textContent = "91%";
   $("finalCorrect").textContent = `${Math.round(previewTotal * 0.91)}/${previewTotal}`;
   $("finalSpeed").textContent = "243 WPM";
@@ -423,4 +469,16 @@ if (uiPreview === "read") {
   $("finalizationStatus").textContent = "Final score ready. The page repair is recorded.";
   $("finalizationStatus").className = "finalization-status ready";
   show("review");
+} else if (uiPreview === "outcome") {
+  const previewTotal = tokenizeText(PASSAGE).length;
+  state.comprehension = "supported";
+  state.result = { accuracy: 91, matchedWords: Math.round(previewTotal * 0.91), progress: 0.96, totalWords: previewTotal, wpm: 243 };
+  $("finalAccuracy").textContent = "91%";
+  $("finalCorrect").textContent = `${Math.round(previewTotal * 0.91)}/${previewTotal}`;
+  $("finalSpeed").textContent = "243 WPM";
+  $("finalProgress").textContent = "96%";
+  $("finalizationStatus").textContent = "Final score ready. The page repair is recorded.";
+  $("finalizationStatus").className = "finalization-status ready";
+  show("review");
+  $("continueResult").click();
 }

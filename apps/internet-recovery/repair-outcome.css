@@ -1,0 +1,117 @@
+.saved-repair-receipt {
+  margin-top: 12px;
+  padding: 12px;
+  border: 2px outset var(--chrome);
+  background: #e7f1e5;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.saved-repair-receipt > small {
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.saved-repair-receipt > div {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.saved-repair-receipt b {
+  font: 700 24px/1 Georgia, serif;
+}
+
+.saved-repair-receipt strong {
+  color: var(--green);
+  font-size: 28px;
+}
+
+.saved-repair-receipt .saved-repair-meta {
+  padding-top: 8px;
+  border-top: 1px solid #88a58d;
+  color: #47604c;
+  font-size: 10px;
+}
+
+.saved-repair-receipt p {
+  margin: 10px 0 0;
+  font-weight: 700;
+}
+
+.repair-outcome {
+  margin: 14px 0;
+  padding: 14px;
+  border: 3px double var(--green);
+  background: #e7f1e5;
+  animation: repair-land .35s steps(3, end);
+}
+
+.repair-outcome > small {
+  color: var(--green);
+}
+
+.stability-numbers {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 7px;
+}
+
+.stability-numbers span {
+  color: #59625b;
+  font-size: 18px;
+}
+
+.stability-numbers i {
+  font-style: normal;
+}
+
+.stability-numbers strong {
+  color: var(--green);
+  font-size: 30px;
+}
+
+.stability-numbers b {
+  margin-left: auto;
+  padding: 5px 8px;
+  border: 1px solid var(--green);
+  background: #fff;
+  color: var(--green);
+}
+
+.stability-meter {
+  height: 20px;
+  border: 2px inset var(--chrome);
+  background: #fff;
+}
+
+.stability-meter span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #2f8b4d 0 14px, #54ad6c 14px 18px);
+  transition: width .6s steps(8, end);
+}
+
+.repair-outcome p {
+  margin: 10px 0 6px;
+  font: 700 19px/1.2 Georgia, serif;
+}
+
+@keyframes repair-land {
+  0% { transform: translateY(8px); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+@media (max-width: 680px) {
+  .stability-numbers { flex-wrap: wrap; }
+  .stability-numbers b { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repair-outcome { animation: none; }
+  .stability-meter span { transition: none; }
+}
