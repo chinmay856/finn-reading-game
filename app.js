@@ -1,6 +1,6 @@
 import { EVIDENCE_PASSAGE } from "./content/evidence-passage.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
-import { estimateGuideProgress, guideScrollTop } from "./reading-guide.js";
+import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 
@@ -37,10 +37,12 @@ function show(name) {
 }
 
 function renderPassage(progress = state.confirmedProgress) {
+  const passage = $("passage");
+  const previousScrollTop = passage.scrollTop;
   const allTokens = tokenizeText(PASSAGE);
   const confirmed = Math.round(progress * allTokens.length);
   let cursor = 0;
-  $("passage").innerHTML = PARAGRAPHS.map((paragraph, paragraphIndex) => {
+  passage.innerHTML = PARAGRAPHS.map((paragraph, paragraphIndex) => {
     const words = paragraph.split(/([\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*)/gu).map((part) => {
       if (!/^[\p{L}\p{N}]/u.test(part)) return part;
       const className = cursor < confirmed ? "confirmed" : "";
@@ -51,23 +53,32 @@ function renderPassage(progress = state.confirmedProgress) {
     const active = confirmed >= paragraphStart && confirmed < cursor;
     return `<p class="reading-paragraph ${active ? "active" : ""}" data-paragraph="${paragraphIndex}">${words}</p>`;
   }).join("");
+  passage.scrollTop = previousScrollTop;
 }
 
 function updateReadingGuide() {
-  const progress = estimateGuideProgress({
+  const totalWords = tokenizeText(PASSAGE).length;
+  const wordIndex = estimateGuideWordIndex({
     activeSpeechMs: state.guideSpeechMs,
-    leadWords: PROFILE.guide.leadWords,
-    totalWords: tokenizeText(PASSAGE).length,
+    totalWords,
     wordsPerMinute: state.guideWpm,
   });
-  state.guideProgress = Math.max(state.guideProgress, progress);
+  state.guideProgress = Math.max(state.guideProgress, (wordIndex + 1) / totalWords);
   if (performance.now() < state.guidePausedUntil) return;
   const passage = $("passage");
-  passage.scrollTop = guideScrollTop({
-    progress: state.guideProgress,
-    scrollHeight: passage.scrollHeight,
-    viewportHeight: passage.clientHeight,
-  });
+  const firstSegmentWords = tokenizeText(PARAGRAPHS[0]).length;
+  if (wordIndex >= firstSegmentWords) {
+    const word = passage.querySelectorAll(".word")[wordIndex];
+    if (word) {
+      const target = centeredGuideScrollTop({
+        maximumScrollTop: passage.scrollHeight - passage.clientHeight,
+        viewportHeight: passage.clientHeight,
+        wordHeight: word.offsetHeight,
+        wordOffsetTop: word.offsetTop,
+      });
+      passage.scrollTop = approachScrollTop(passage.scrollTop, target);
+    }
+  }
   $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · ${Math.round(state.guideProgress * 100)}%`;
 }
 
@@ -161,42 +172,72 @@ async function startReading() {
   diagnostic("capture-start");
 }
 
+function renderReviewResult(summary, durationMs, progress) {
+  const pace = estimateReadingPace({ durationMs, expectedText: PASSAGE, wordCount: summary.matchedCount });
+  $("finalAccuracy").textContent = `${summary.accuracy}%`;
+  $("finalCorrect").textContent = `${summary.matchedCount}/${summary.totalCount}`;
+  $("finalSpeed").textContent = `${pace.wpm} WPM`;
+  $("finalProgress").textContent = `${Math.round(progress * 100)}%`;
+  return pace;
+}
+
 async function finishReading() {
   if (state.finishing) return;
   state.finishing = true;
   state.listening = false;
   clearInterval(state.monitor);
   $("listen").disabled = true;
-  $("readerState").textContent = "Finishing local transcription…";
+  $("readerState").textContent = "Capturing results…";
   while (state.busy) await new Promise((resolve) => setTimeout(resolve, 100));
   const { audio, durationMs, signal } = await capture.stop();
+  const liveMatches = new Set(state.confirmedMatches);
+  const liveSummary = summarizeTokenMatches(PASSAGE, liveMatches);
+  const livePace = renderReviewResult(liveSummary, durationMs, state.confirmedProgress);
+  $("finalizationStatus").textContent = "Reading captured. Finalizing the local transcript… 0.0s";
+  $("finalizationStatus").className = "finalization-status working";
+  $("finalTranscript").textContent = "Final transcript is still processing locally…";
+  $("again").disabled = true;
+  $("export").disabled = true;
+  show("review");
   const requestedAt = performance.now();
+  const finalizationTimer = setInterval(() => {
+    const elapsedSeconds = (performance.now() - requestedAt) / 1_000;
+    $("finalizationStatus").textContent = `Reading captured. Finalizing the local transcript… ${elapsedSeconds.toFixed(1)}s`;
+  }, 250);
   let text = "";
   try {
     text = await recognizer.transcribe(audio);
   } catch (error) {
     diagnostic("final-transcription-error", { message: error.message });
+  } finally {
+    clearInterval(finalizationTimer);
   }
   state.finalText = text;
   const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24 });
   const finalLatencyMs = Math.round(performance.now() - requestedAt);
   updateProgress(alignment, finalLatencyMs);
   const combined = summarizeTokenMatches(PASSAGE, state.confirmedMatches);
-  const pace = estimateReadingPace({ durationMs, expectedText: PASSAGE, wordCount: combined.matchedCount });
+  const pace = renderReviewResult(combined, durationMs, state.confirmedProgress);
+  const finalAddedWords = combined.matchedCount - liveSummary.matchedCount;
   state.result = {
     accuracy: combined.accuracy,
     durationMs,
+    finalAddedWords,
     finalLatencyMs,
+    finalPassMatchedWords: alignment.matchedCount,
+    liveAccuracy: liveSummary.accuracy,
+    liveMatchedWords: liveSummary.matchedCount,
+    liveWpm: livePace.wpm,
     matchedWords: combined.matchedCount,
     progress: state.confirmedProgress,
     signal,
     totalWords: combined.totalCount,
     wpm: pace.wpm,
   };
-  $("finalAccuracy").textContent = `${combined.accuracy}%`;
-  $("finalCorrect").textContent = `${combined.matchedCount}/${combined.totalCount}`;
-  $("finalSpeed").textContent = `${pace.wpm} WPM`;
-  $("finalProgress").textContent = `${Math.round(state.confirmedProgress * 100)}%`;
+  $("finalizationStatus").textContent = `Final score ready in ${(finalLatencyMs / 1_000).toFixed(1)}s. The final pass added ${finalAddedWords} confirmed words.`;
+  $("finalizationStatus").className = "finalization-status ready";
+  $("again").disabled = false;
+  $("export").disabled = false;
   $("finalTranscript").textContent = text || "No final transcript was returned.";
   $("checkpointTranscripts").textContent = state.transcriptDiagnostics.length
     ? state.transcriptDiagnostics.map(({ reason, text: checkpointText }, index) => (
@@ -204,7 +245,6 @@ async function finishReading() {
     )).join("\n\n")
     : "No live checkpoint transcript was returned.";
   diagnostic("session-finish", state.result);
-  show("review");
 }
 
 function sessionReport() {
