@@ -2,7 +2,7 @@
 
 A desktop-browser read-aloud game for Finn, built on a reusable reading platform.
 
-The first game wrapper is **Internet Recovery OS**: adults broke the Internet, and Finn restores corrupted files and websites by reading aloud. The surface is intentionally campy and retro; the underlying reading technology is designed to support many future themes.
+The first game wrapper is **Internet Recovery 98**: adults broke the Internet, and Finn restores corrupted files and websites by reading aloud through Amy's browser-based recovery desktop. The surface is intentionally campy and retro; the underlying reading technology is designed to support many future themes.
 
 ## Start here
 
@@ -12,6 +12,7 @@ The first game wrapper is **Internet Recovery OS**: adults broke the Internet, a
 - Preserved mobile side-test notes: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
+- Internet Recovery player-facing copy deck: [`docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`](docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md)
 - Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
 - WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)
@@ -39,7 +40,7 @@ Open app
 → read a passage aloud
 → follow live highlighting
 → receive forgiving accuracy and speed feedback
-→ repair something funny in Internet Recovery OS
+→ repair something funny in Internet Recovery 98
 ```
 
 The repository documents are the durable source of truth across ChatGPT, Codex desktop, web, and mobile work. Update them when major decisions change.
