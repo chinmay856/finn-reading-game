@@ -76,6 +76,12 @@ the mechanism, research basis, and acceptance evidence. This is still a spike:
 do not generalize its timing constants or UI until a real microphone reading
 shows whether the WASM engine keeps up.
 
+The follow-up hardening separates furthest confirmed reading position from
+matched-word accuracy, bounds checkpoint inference to overlapping audio
+windows, restores a privacy-safe timing-report export, and adds an independent
+passage comprehension check. These changes reduce guaranteed latency growth
+without changing the pinned speech model or wrapper/engine boundary.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in

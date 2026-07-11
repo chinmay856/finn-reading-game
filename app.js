@@ -14,13 +14,16 @@ const MIN_CAPTURE_MS = 8_000;
 const MAX_CAPTURE_MS = 22_000;
 const PAUSE_MS = 900;
 const SPEECH_LEVEL = 0.009;
+const AUDIO_OVERLAP_MS = 3_000;
+const TOKEN_OVERLAP = 12;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
 
 const state = {
-  busy: false, confirmedProgress: 0, diagnostics: [], finalText: "", lastCheckpointAt: 0,
-  lastSpeechAt: 0, listening: false, modelDevice: null, monitor: null, startedAt: 0,
+  busy: false, confirmedProgress: 0, confirmedTokenIndex: 0, diagnostics: [], finalText: "",
+  lastCheckpointAt: 0, lastSpeechAt: 0, listening: false, modelDevice: null, monitor: null,
+  processedThroughMs: 0, result: null, startedAt: 0,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -57,11 +60,12 @@ function renderPassage(progress = state.confirmedProgress) {
 }
 
 function updateProgress(alignment, latencyMs = null) {
-  state.confirmedProgress = Math.max(state.confirmedProgress, alignment.progress);
+  state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
+  state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
   $("repairFill").style.width = `${percent}%`;
   $("repairPercent").textContent = `${percent}% repaired`;
-  $("progressText").textContent = `${alignment.matchedCount} of ${alignment.expectedTokens.length} words confirmed`;
+  $("progressText").textContent = `${percent}% confirmed`;
   $("latency").textContent = latencyMs == null ? "Waiting for first checkpoint" : `Last checkpoint: ${(latencyMs / 1000).toFixed(1)}s`;
   renderPassage();
 }
@@ -73,14 +77,24 @@ async function checkpoint(reason) {
   $("readerState").textContent = "Checking progress locally…";
   const requestedAt = performance.now();
   try {
-    const audio = await capture.snapshot();
+    const capturedThroughMs = capture.durationMs;
+    const windowStartMs = Math.max(0, state.processedThroughMs - AUDIO_OVERLAP_MS);
+    const audio = await capture.snapshot({ overlapMs: AUDIO_OVERLAP_MS, sinceMs: state.processedThroughMs });
     const text = await recognizer.transcribe(audio);
+    state.processedThroughMs = capturedThroughMs;
     if (!text || !state.listening) return;
     state.finalText = text;
-    const alignment = alignTranscript(PASSAGE, text, { lookAhead: 18 });
+    const startIndex = Math.max(0, state.confirmedTokenIndex - TOKEN_OVERLAP);
+    const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24, startIndex });
     const latencyMs = Math.round(performance.now() - requestedAt);
     updateProgress(alignment, latencyMs);
-    diagnostic("checkpoint", { latencyMs, progress: alignment.progress, reason });
+    diagnostic("checkpoint", {
+      audioWindowMs: capturedThroughMs - windowStartMs,
+      latencyMs,
+      positionProgress: alignment.positionProgress,
+      reason,
+      startIndex,
+    });
   } catch (error) {
     diagnostic("checkpoint-error", { message: error.message, reason });
   } finally {
@@ -102,13 +116,17 @@ function monitorSpeech() {
 }
 
 async function startReading() {
+  $("listen").disabled = true;
+  $("readerState").textContent = "Starting microphone…";
   await capture.start();
   state.listening = true;
   state.startedAt = performance.now();
   state.lastSpeechAt = state.startedAt;
   state.lastCheckpointAt = state.startedAt;
+  state.processedThroughMs = 0;
   state.monitor = setInterval(monitorSpeech, 100);
   $("listen").textContent = "Finish reading";
+  $("listen").disabled = false;
   $("readerState").textContent = "Listening — start when ready";
   diagnostic("capture-start");
 }
@@ -121,17 +139,61 @@ async function finishReading() {
   while (state.busy) await new Promise((resolve) => setTimeout(resolve, 100));
   const { audio, durationMs, signal } = await capture.stop();
   const requestedAt = performance.now();
-  const text = await recognizer.transcribe(audio);
+  let text = "";
+  try {
+    text = await recognizer.transcribe(audio);
+  } catch (error) {
+    diagnostic("final-transcription-error", { message: error.message });
+  }
   state.finalText = text;
-  const alignment = alignTranscript(PASSAGE, text, { lookAhead: 18 });
-  updateProgress(alignment, Math.round(performance.now() - requestedAt));
+  const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24 });
+  const finalLatencyMs = Math.round(performance.now() - requestedAt);
+  updateProgress(alignment, finalLatencyMs);
   const pace = estimateReadingPace({ durationMs, expectedText: PASSAGE, wordCount: alignment.matchedCount });
+  state.result = {
+    accuracy: alignment.accuracy,
+    durationMs,
+    finalLatencyMs,
+    matchedWords: alignment.matchedCount,
+    progress: alignment.positionProgress,
+    signal,
+    totalWords: alignment.expectedTokens.length,
+    wpm: pace.wpm,
+  };
   $("finalAccuracy").textContent = `${alignment.accuracy}%`;
   $("finalCorrect").textContent = `${alignment.matchedCount}/${alignment.expectedTokens.length}`;
   $("finalSpeed").textContent = `${pace.wpm} WPM`;
   $("finalProgress").textContent = `${Math.round(alignment.progress * 100)}%`;
-  diagnostic("session-finish", { accuracy: alignment.accuracy, durationMs, progress: alignment.progress, signal, wpm: pace.wpm });
+  diagnostic("session-finish", state.result);
   show("review");
+}
+
+function sessionReport() {
+  return {
+    appVersion: "wikiwhy-batched-2",
+    browser: navigator.userAgent,
+    checkpoints: state.diagnostics.filter(({ type }) => type.startsWith("checkpoint")),
+    completedAt: new Date().toISOString(),
+    privacy: { audioUploadedByApp: false, rawAudioStored: false, transcriptIncluded: false, transcriptStored: false },
+    result: state.result,
+    speechEngine: { device: state.modelDevice, model: MODEL_ID, processing: "in-browser" },
+  };
+}
+
+async function exportReport() {
+  const report = JSON.stringify(sessionReport(), null, 2);
+  try {
+    await navigator.clipboard.writeText(report);
+    $("reportStatus").textContent = "Timing report copied. It contains no audio or transcript text.";
+  } catch {
+    const blob = new Blob([report], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `wikiwhy-reading-${new Date().toISOString().replace(/[:.]/gu, "-")}.json`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1_000);
+    $("reportStatus").textContent = "Timing report downloaded. It contains no audio or transcript text.";
+  }
 }
 
 async function prepare() {
@@ -153,5 +215,23 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => location.reload();
-window.addEventListener("pagehide", () => { clearInterval(state.monitor); recognizer.close(); });
+$("export").onclick = exportReport;
+document.querySelectorAll(".quiz button").forEach((button) => {
+  button.onclick = () => {
+    const correct = button.dataset.answer === "1";
+    document.querySelectorAll(".quiz button").forEach((choice) => {
+      choice.classList.toggle("right", choice === button && correct);
+      choice.classList.toggle("wrong", choice === button && !correct);
+    });
+    $("quizFeedback").textContent = correct
+      ? "Right. Correlation alone cannot rule out other explanations."
+      : "Not quite. Look for another factor that could affect both observations.";
+    $("payoff").hidden = !correct;
+  };
+});
+window.addEventListener("pagehide", () => {
+  clearInterval(state.monitor);
+  if (capture.active) capture.stop();
+  recognizer.close();
+});
 renderPassage(0);

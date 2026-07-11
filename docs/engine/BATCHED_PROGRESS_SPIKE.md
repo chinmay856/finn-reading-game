@@ -28,12 +28,17 @@ Primary references:
 
 - One explicit Start Reading action and one Finish Reading action.
 - Capture continues for the entire passage.
-- A likely natural pause after at least 8 seconds requests a cumulative audio
-  snapshot. A 22-second maximum window prevents progress from remaining pending
+- A likely natural pause after at least 8 seconds requests a bounded audio
+  window. A 22-second maximum window prevents progress from remaining pending
   indefinitely during uninterrupted reading.
 - Only one local inference runs at a time. Finn can keep reading while it runs.
-- Cumulative transcript alignment avoids losing words at artificial chunk
-  boundaries. Confirmed progress never moves backward.
+- Each window includes three seconds of prior audio and alignment begins twelve
+  tokens behind the last confirmed position. This overlap avoids losing words
+  at artificial chunk boundaries without making every inference reprocess the
+  entire growing recording. Confirmed progress never moves backward.
+- Reading position uses the furthest aligned token, while accuracy continues to
+  use matched-word evidence. A missed word therefore does not make the visual
+  reader incorrectly lag behind later confirmed speech.
 - The compact reader scrolls by paragraph. A wrapper-owned WikiWhy repair wipe
   maps theme-neutral confirmed progress to visible left-to-right repair.
 - Final transcription reconciles the full attempt after Finish Reading.
@@ -47,6 +52,10 @@ Run the deployed build in current Chrome and read naturally. Record:
 3. whether local inference falls progressively farther behind;
 4. whether ordinary sentence pauses create too many checkpoints;
 5. final accuracy, WPM, and confirmed passage percentage.
+
+The review can copy a diagnostics-only timing report. It contains checkpoint
+window sizes, inference latency, scores, browser information, and aggregate
+microphone signal data; it contains neither audio nor transcript text.
 
 The mechanic is promising if most checkpoints appear within roughly three
 seconds of a pause and the confirmed paragraph does not lag more than one
