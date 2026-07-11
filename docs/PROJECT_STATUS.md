@@ -125,6 +125,13 @@ comparison once in Chrome, then use the recorded evidence—not model reputation
 decide whether Moonshine deserves adapter integration. See
 [`engine/MOONSHINE_BENCHMARK.md`](engine/MOONSHINE_BENCHMARK.md).
 
+The first Moonshine run detected seven speech segments but returned seven empty
+transcripts on WebGPU. Its 0% display was therefore an engine failure, not a
+reading score. The benchmark now uses only the first paragraph, forces
+WebAssembly/q8, and exposes privacy-safe signal and response diagnostics. The
+next action is one short reread to decide whether Moonshine is more useful than
+the current Whisper path.
+
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
 current Chrome. Compare local transcripts with what was read, observe first-load
 time and per-line latency, and paste the no-audio diagnostic report into Codex if

@@ -1,5 +1,20 @@
 # Session handoff
 
+## Moonshine latency track
+
+- PR #17 added an isolated Moonshine Base + Silero VAD browser comparison while
+  leaving the production Whisper path unchanged.
+- The first real run detected seven speech segments but returned seven empty
+  transcripts on WebGPU. Timing was 19.6 seconds to first output, 1.6 seconds
+  median segment lag, 6.1 seconds worst lag, and no final-flush delay. The 0%
+  display was an engine failure, not a reading score.
+- The follow-up test uses only the first passage paragraph, forces
+  WebAssembly/q8, and displays privacy-safe sample count, duration, RMS, peak,
+  and model-response shape for every segment.
+- Next action: deploy and perform one short microphone reread. Continue with
+  Moonshine only if it returns a fair transcript with materially better latency
+  than the current Whisper final pass.
+
 ## Copywriting track
 
 - Added `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`, a reviewable wrapper-only
