@@ -4,6 +4,7 @@ import {
   alignTranscript,
   estimateReadingPace,
   normalizeWord,
+  summarizeTokenMatches,
   tokenizeText,
 } from "../reading-engine.js";
 
@@ -94,4 +95,11 @@ test("aligns an overlapping batch from a known reading position", () => {
   );
   assert.deepEqual(result.matchedTokenIndexes, [4, 5, 6, 7]);
   assert.equal(result.positionProgress, 0.8);
+});
+
+test("combines matched evidence across independent transcription batches", () => {
+  const summary = summarizeTokenMatches("One two three four five.", new Set([0, 1, 3, 4]));
+  assert.equal(summary.matchedCount, 4);
+  assert.equal(summary.totalCount, 5);
+  assert.ok(summary.accuracy >= 75);
 });

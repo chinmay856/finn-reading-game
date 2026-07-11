@@ -55,6 +55,19 @@ function wordWeight(token) {
   return LIGHT_WORDS.has(token.normalized) ? 0.5 : 1;
 }
 
+export function summarizeTokenMatches(expectedText, matchedIndexes) {
+  const expectedTokens = Array.isArray(expectedText) ? expectedText : tokenizeText(expectedText);
+  const matched = new Set([...matchedIndexes].filter((index) => index >= 0 && index < expectedTokens.length));
+  const matchedWeight = [...matched]
+    .reduce((total, index) => total + wordWeight(expectedTokens[index]), 0);
+  const totalWeight = expectedTokens.reduce((total, token) => total + wordWeight(token), 0);
+  return Object.freeze({
+    accuracy: totalWeight ? Math.round((matchedWeight / totalWeight) * 100) : 0,
+    matchedCount: matched.size,
+    totalCount: expectedTokens.length,
+  });
+}
+
 export function alignTranscript(expectedText, spokenText, options = {}) {
   const expectedTokens = Array.isArray(expectedText) ? expectedText : tokenizeText(expectedText);
   const fillers = options.fillers ?? DEFAULT_FILLERS;
@@ -118,10 +131,7 @@ export function alignTranscript(expectedText, spokenText, options = {}) {
     if (cursor < expectedTokens.length) uncertain.add(cursor);
   }
 
-  const matchedWeight = [...matched]
-    .reduce((total, index) => total + wordWeight(expectedTokens[index]), 0);
-  const totalWeight = expectedTokens.reduce((total, token) => total + wordWeight(token), 0);
-  const accuracy = totalWeight ? Math.round((matchedWeight / totalWeight) * 100) : 0;
+  const { accuracy } = summarizeTokenMatches(expectedTokens, matched);
   const missedTokenIndexes = expectedTokens
     .map((token) => token.index)
     .filter((index) => !matched.has(index));

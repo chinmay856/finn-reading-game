@@ -34,10 +34,23 @@ test("the diagnostic report declares local-only audio handling", async () => {
 });
 
 test("continuous reading has no sentence or line check controls", async () => {
-  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+  const [app, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
   assert.doesNotMatch(html, /Check line|Retry line|Check sentence/iu);
   assert.match(html, /Read continuously/u);
   assert.match(html, /repairFill/u);
   assert.match(html, /INDEPENDENT QUICK CHECK/u);
   assert.match(html, /Copy timing report/u);
+  assert.match(html, /Begin continuous reading/u);
+  assert.match(app, /AUTO_FINISH_PROGRESS/u);
+  assert.doesNotMatch(html, />Start reading</u);
+});
+
+test("live checkpoints cannot fragment the final recording", async () => {
+  const capture = await readFile(new URL("../speech/audio-capture.js", import.meta.url), "utf8");
+  assert.match(capture, /finalRecorder/u);
+  assert.match(capture, /previewRecorder/u);
+  assert.doesNotMatch(capture, /finalRecorder\.requestData/u);
 });

@@ -82,6 +82,15 @@ windows, restores a privacy-safe timing-report export, and adds an independent
 passage comprehension check. These changes reduce guaranteed latency growth
 without changing the pinned speech model or wrapper/engine boundary.
 
+A real 220-word run then displayed 51/220 words, 23% accuracy, and 199 WPM. The
+speed showed that elapsed capture covered the reading, while the 51-word result
+was consistent with final decoding stopping at the first live-checkpoint media
+fragment. The capture fix now gives live checkpoints their own restartable
+recorder and reserves an uninterrupted recorder for final scoring. The flow
+also uses one Begin action and automatic end-of-passage completion, with a
+manual finish fallback. This fix still requires a real reread before the
+accuracy estimate is trusted.
+
 ## Immediate next action
 
 Run the complete four-line loop from the deployed HTTPS GitHub Pages URL in
