@@ -131,6 +131,18 @@ test("Techno progress animation is optional wrapper presentation", async () => {
   assert.doesNotMatch(engine, /Techno|techno-progress|technoRepairSprite/iu);
 });
 
+test("Techno remains a lightweight animated desktop pet on every screen", async () => {
+  const [app, css, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/recovery-hub.css", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /id="technoPet"[\s\S]+techno-ball-drop-idle-still\.webp[\s\S]+techno-ball-drop-idle-loop\.webp/u);
+  assert.match(app, /\$\("technoPet"\)\.dataset\.screen = name/u);
+  assert.match(css, /@keyframes techno-pet-roam/u);
+  assert.match(css, /prefers-reduced-motion:reduce[\s\S]+\.techno-desktop-pet\{animation:none/u);
+});
+
 test("campaign diagnostics stay in the wrapper and expose honest test controls", async () => {
   const [app, diagnostics, engine, html] = await Promise.all([
     readFile(new URL("../app.js", import.meta.url), "utf8"),

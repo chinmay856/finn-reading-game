@@ -1,5 +1,12 @@
 # Session handoff
 
+## 2026-07-12 visual-fidelity and persistent-Techno pass
+
+- Recovery Map now uses all ten production marks, richer network-depth CSS, stronger card focus/hover treatment, a visual evidence-vault watermark, and the existing optimized concept-board crops.
+- Techno is a persistent animated desktop pet on every screen. Context changes her scale/status; reduced motion automatically swaps to the existing still asset and disables roaming.
+- Runtime cost is approximately 118.87 kB for the loop plus 20.06 kB for its still fallback; no large concept board became a runtime background.
+- Published a concrete compact-motion-pack request in `docs/design/DESIGN_REQUESTS.md` for the parallel designer.
+
 ## 2026-07-12 deployment runtime hygiene
 
 - Split the production bundle along the existing Content Platform and Internet Recovery wrapper boundaries. The former 506.59 kB main chunk is now approximately 190.75 kB, with separate 51.34 kB content and 268.58 kB wrapper chunks; the Vite oversize warning is gone.

@@ -1,5 +1,20 @@
 # Parallel design requests
 
+## Compact persistent-Techno motion pack — requested 2026-07-12
+
+Implementation now keeps Techno visible and animated on every game screen using the existing ball-drop idle loop. Please provide a compact behavior pack so her motion can vary by context.
+
+Acceptance criteria:
+
+- Three transparent WebP loops: walk/sniff, alert-point, and sit/tail-wag.
+- Matching still WebP fallback for every loop.
+- Shared canvas, anchor point, scale, and right-facing orientation so variants swap without layout movement.
+- Each loop at or below 150 kB and each still at or below 30 kB after optimization.
+- No text, UI chrome, screen-specific background, or baked-in status meaning.
+- Confirm whether horizontal mirroring is allowed; current canon keeps Techno facing and pushing right.
+
+Focused questions: Should Techno ever cross in front of a Reading Companion window, or stay on the desktop rim beside it? Which of the three behaviors should be the default during active read-aloud?
+
 ## Endgame visual request status — 2026-07-12
 
 Designer PR #46 is consumed. The runtime uses the approved `EVIDENCE_11.LIVE`, containment route, evidence vault, access-revoked badge, Amy/Chinmay states, and Techno mappings. No additional visual or art-direction request is outstanding. The remaining checkpoint gate is independent content, accessibility, transcription-profile, and real-microphone review rather than missing design collateral.
