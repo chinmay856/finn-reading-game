@@ -665,7 +665,7 @@ test("Yahuh switchboard runtime is semantic, six-module exact, content-gated, an
   assert.match(state, /eligibleForCanonicalCount: true/u);
   assert.match(copy, /modules = \[/u);
   assert.match(copy, /yahuh-mark\.svg/u);
-  assert.match(content, /structuredCandidateCount: 1/u);
+  assert.match(content, /structuredCandidateCount: 6/u);
   assert.match(catalog, /id: "yahuh"[\s\S]+markImage: MARKS\.yahuh[\s\S]+runtimeAvailable: true/u);
   assert.match(packageFile, /node --check apps\/internet-recovery\/yahuh-view\.js/u);
   assert.match(packageFile, /node --check content\/yahuh\/the-newspaper-that-found-people-on-the-moon\.js/u);

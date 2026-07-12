@@ -8,6 +8,7 @@ import {
   selectNextYahuhPassage,
 } from "../apps/internet-recovery/yahuh-content.js";
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "../content/yahuh/the-newspaper-that-found-people-on-the-moon.js";
+import { YAHUH_FIRST_RUN_PASSAGES } from "../content/yahuh/first-run-passages.js";
 import { isSelectablePassage } from "../content/passage-catalog.js";
 
 function assertDeepFrozen(value) {
@@ -65,10 +66,10 @@ test("Yahuh owns the frozen six-plus-four plan, selects Deck A only, and reports
   assert.deepEqual(YAHUH_CONTENT_READINESS, {
     deckACount: 6,
     deckBCount: 4,
-    firstRunShortfall: 6,
+    firstRunShortfall: 0,
     plannedCount: 10,
     requiredFirstRun: 6,
-    structuredCandidateCount: 1,
+    structuredCandidateCount: 6,
   });
 
   const gated = selectNextYahuhPassage({ completedPassageIds: [] });
@@ -77,7 +78,15 @@ test("Yahuh owns the frozen six-plus-four plan, selects Deck A only, and reports
   assert.equal(gated.selectableCount, 0);
   assert.equal(gated.plannedCount, 10);
   assert.equal(gated.requiredFirstRun, 6);
-  assert.equal(gated.firstRunShortfall, 6);
+  assert.equal(gated.firstRunShortfall, 0);
+  assert.deepEqual(YAHUH_FIRST_RUN_PASSAGES.map(({ id }) => id), YAHUH_DECK_A_IDS.slice(1));
+  for (const candidate of YAHUH_FIRST_RUN_PASSAGES) {
+    assert.equal(candidate.availability, "candidate");
+    assert.equal(candidate.paragraphs.length, 4);
+    assert.equal(candidate.comprehension.choices.length, 3);
+    assert.equal(candidate.rights.basis, "original");
+    assert.equal(isSelectablePassage(candidate), false);
+  }
 
   const approvedA = approvedRecord(YAHUH_DECK_A_IDS[1]);
   const approvedB = approvedRecord(YAHUH_DECK_B_IDS[0]);
