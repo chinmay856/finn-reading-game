@@ -14,6 +14,14 @@
   `AMAZEON_AUTO_DECIDE_PERMISSION.REC`. No real retailer, product, payment,
   address, account, or checkout data exists.
 
+## Complete manuscript inventory
+
+- Branch: `agent/content-readiness-index`.
+- Durable audit:
+  [`design/CONTENT_READINESS_INDEX_2026-07-12.md`](design/CONTENT_READINESS_INDEX_2026-07-12.md).
+- Every first-run site arc and the final breach has a complete manuscript roster.
+  Runtime encoding and independent review/microphone gates remain outstanding.
+
 ## Search-ish origin-proof foundation
 
 - Active branch: `agent/searchish-origin-proof-foundation`.
@@ -42,9 +50,9 @@
 - Canonical persisted evidence is reserved for Case File slot 6 as
   `VIEWTUBE_DUPLICATE_MEDIA_HASHES.REC`; diagnostic state is still labeled test.
 - `npm run check`, all 268 tests, and `npm run build` pass locally.
-- The only outstanding ViewTube art dependency is the dedicated
-  `techno_clue_point` pose. A focused request is published on designer PR #40;
-  the paw-alert still remains the explicit temporary fallback.
+- ViewTube's former `techno_clue_point` dependency is resolved by designer PR
+  #40: `viewtube.techno.secured-ball-pin` maps to the approved Techno
+  alert-ball-pin still.
 
 ## Yahuh channel-reconnect foundation
 
