@@ -626,6 +626,24 @@ pending language is superseded by PR #36 and deployed `65368e8`.
   MyCorner runtime response remains the canonical data source and does not
   require another art packet for this CSS-only pass.
 
+## Yahuh! Portal visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/yahuh-visual-fidelity`, based on deployed MyCorner PR
+  #77 / `main` at `5f81603`.
+- `yahuh.css` now brings the six-module runtime closer to the canonical portal
+  board through stronger purple chrome, a state-aware act ribbon, intentionally
+  tilted pasted modules, corruption flags, single-stream scan, and semantic
+  switchboard socket styling.
+- No new raster asset is loaded. The canonical fixture, exact three-sort plus
+  three-reconnect state machine, source labels, evidence boundary, content gate,
+  independent Reading Companion, and reduced-motion behavior remain intact.
+- Local corrupted-state QA found six pasted modules, the expected act ribbon,
+  fixed Techno, and no horizontal overflow. `npm test` (310 tests),
+  `npm run check`, `npm run build`, and `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The existing canonical Yahuh
+  runtime response remains sufficient; no new art request is needed for this
+  CSS-only milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:

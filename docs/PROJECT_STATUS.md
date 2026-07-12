@@ -338,6 +338,19 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
 - Desktop visual QA confirmed the act treatment, eleven semantic modules,
   persistent fixed Techno, and no horizontal page overflow.
 
+### Yahuh! Portal graphics fidelity (2026-07-12)
+
+- Yahuh now expresses its canonical retro portal/switchboard direction through
+  a stronger purple identity, state-aware act ribbon, deliberately mismatched
+  pasted modules, explicit `EVERYTHING PASTE` flags, channel sockets, and a
+  single-stream scan treatment.
+- Sorted and reconnected module states settle into the existing orderly layout;
+  live channel sockets pulse only when reconnected and stop under reduced
+  motion. No raster payload was added.
+- Desktop visual QA confirmed all six modules, the Act I ribbon, fixed Techno,
+  and no horizontal page overflow. The canonical fixture, six-unit contract,
+  content gate, and independent Reading Companion remain unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock
