@@ -92,9 +92,9 @@ No unanswered P0 design or art request is known at this synchronization point.
 - No new Yahuh P0 art request is outstanding. The existing mark, semantic DOM,
   CSS modules, shared Chinmay crop, and `techno_alert_ball_pin` satisfy PR #39.
 
-This is the durable implementation-to-design handoff for Internet Recovery 98.
-The parallel designer can answer the remaining decisions here or publish a
-focused follow-up on `agent/campaign-spine-content`.
+This is now the builder-owned design and implementation checklist for Internet
+Recovery 98. Resolve remaining decisions directly in scoped implementation PRs
+and record durable rationale here or in linked response documents.
 
 ## Current synchronization point
 
@@ -179,7 +179,7 @@ MapGuess has local 1440 and 1180 captures, but its branch is not yet published
 or deployed. Only `photosynthesis-a01` is speech-playable; review-only and
 candidate passage records remain fail-closed.
 
-## Current builder request — ThreadIt content review packet
+## Builder-owned follow-up — ThreadIt content review packet
 
 ThreadIt's complete seven-record first-run Deck A is now encoded as structured
 candidate data. The runtime contract has been corrected from the stale `5A +
@@ -206,7 +206,7 @@ Acceptance evidence should be a committed Markdown review under
 resolve design/editorial questions, but it must not claim a real-microphone run
 or promote `availability`; those gates remain independent.
 
-## Current builder request — FacePlace content review packet
+## Builder-owned follow-up — FacePlace content review packet
 
 FacePlace's complete six-record first-run Deck A is now encoded as structured
 candidate data. `why-this-appeared-a06` has been moved from the obsolete B04
@@ -227,7 +227,7 @@ revision-bound review under `docs/design/review/` that:
 This review must not claim a real-microphone run or change `availability`.
 Those independent evidence gates remain fail-closed.
 
-## Current builder request — MyCorner content review packet
+## Builder-owned follow-up — MyCorner content review packet
 
 MyCorner's complete seven-record first-run Deck A is now structured. Review
 `content/mycorner/first-run-passages.js` against the frozen A02–A07 manuscript
@@ -358,17 +358,14 @@ sensitivity, three-choice comprehension, reading profile, and real-microphone
 review. The builder will not score candidate text or silently repeat a passage
 to fill the sixth unit.
 
-## Next designer checkpoint
+## Next builder checkpoint
 
-ThreadIt and FacePlace are shipped and publicly verified; their provisional
-runtime fixtures still need the focused canonical responses already requested.
-MapGuess now runs end to end locally and is the active response priority. Answer
-[`MAPGUESS_RUNTIME_REQUEST.md`](MAPGUESS_RUNTIME_REQUEST.md) with stable data and
-explicit decisions. The builder can replace every provisional map record
-without changing the frozen five-plus-three state machine, all-four-goals rule,
-or semantic layout contract, while `PROVISIONAL_MAPGUESS_10.LOG` remains unable
-to count or unlock final progress. The MapGuess branch is not yet published or
-deployed, so no response should describe it as live.
+All ten structural runtimes and their visual-fidelity passes are merged and
+publicly deployed. ThreadIt, FacePlace, and MyCorner now have complete structured
+first-run candidate rosters. Continue encoding Yahuh, ViewTube, Search-ish,
+Amaze-On, Spotty-Fi, and MapGuess manuscripts, then resolve the remaining
+fixture/copy checklist items directly. Keep all candidates fail-closed until
+independent review and real-microphone evidence exist.
 
 ## Boundaries for design responses
 
