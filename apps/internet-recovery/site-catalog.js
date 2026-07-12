@@ -11,6 +11,10 @@ const PREVIEWS = Object.freeze({
   yahuh: new URL("./art/site-assets/previews/yahuh-act-one.jpg", import.meta.url).href,
 });
 
+const MARKS = Object.freeze({
+  faceplace: new URL("./art/site-assets/marks/faceplace-mark.svg", import.meta.url).href,
+});
+
 export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "wikiwhy", name: "WikiWhy", mark: "W", archetype: "Internet encyclopedia",
@@ -25,7 +29,7 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "faceplace", name: "FacePlace", mark: "F", archetype: "Ranked social feed",
     belief: "THE FEED IS WHAT HAPPENED", description: "A nonsense tracker rewards reactions instead of restoring real authors.",
-    accent: "#1862aa", playable: false, previewImage: PREVIEWS.faceplace,
+    accent: "#1862aa", markImage: MARKS.faceplace, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.faceplace,
   }),
   Object.freeze({
     id: "mycorner", name: "MyCorner", mark: "M", archetype: "Custom social profile",
@@ -68,8 +72,12 @@ export const INCOMING_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "mapguess
 const AFTER_WIKIWHY_INCOMING_SITE_IDS = Object.freeze(["threadit", "mapguess", "viewtube"]);
 const AFTER_THREADIT_ONLY_INCOMING_SITE_IDS = Object.freeze(["wikiwhy", "mapguess", "viewtube"]);
 const AFTER_THREADIT_INCOMING_SITE_IDS = Object.freeze(["faceplace", "spottyfi", "searchish"]);
+// The designer has not frozen the post-FacePlace order. Keep the two already
+// offered cases and add the next unbuilt site without presenting this as canon.
+export const AFTER_FACEPLACE_PROVISIONAL_INCOMING_SITE_IDS = Object.freeze(["spottyfi", "searchish", "mycorner"]);
 
-export function getIncomingSiteIds({ threadItSecured = false, wikiWhySecured = false } = {}) {
+export function getIncomingSiteIds({ facePlaceSecured = false, threadItSecured = false, wikiWhySecured = false } = {}) {
+  if (facePlaceSecured && wikiWhySecured && threadItSecured) return AFTER_FACEPLACE_PROVISIONAL_INCOMING_SITE_IDS;
   if (wikiWhySecured && threadItSecured) return AFTER_THREADIT_INCOMING_SITE_IDS;
   if (wikiWhySecured) return AFTER_WIKIWHY_INCOMING_SITE_IDS;
   if (threadItSecured) return AFTER_THREADIT_ONLY_INCOMING_SITE_IDS;

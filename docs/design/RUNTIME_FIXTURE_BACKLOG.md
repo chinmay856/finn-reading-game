@@ -25,6 +25,13 @@ records, so this fixture can replace data without changing state or layout.
 
 ### FacePlace feed fixture
 
+The executable branch now includes a fictional six-card fixture, three
+false-tracker units, Honest Zero acknowledgement, three honest-recovery units,
+feed-order and Why controls, an exact blocked target, and a slot-3 test receipt.
+Those records are deliberately provisional/test-only. They are excluded from
+canonical evidence counts and cannot unlock the final incident. Canonical data
+can replace them without changing the state machine or semantic layout.
+
 Provide:
 
 - one fictional profile identity;
@@ -34,7 +41,9 @@ Provide:
   `chronological` or `recommended` type, duplicate group, and source/origin;
 - the recommendation reason for each recommended card;
 - `People You May Sort Of Know` entries;
-- the exact card targeted by the final boost attempt.
+- the exact card targeted by the final boost attempt; and
+- a one-to-one assignment of fixture changes and source proofs to all six
+  campaign units.
 
 Also freeze the empty-state tracker text before the authored `12% -> 114% ->
 AVOCADO%` sequence; the relationship among `FEED AUTO-FIX AI`, `VIBESHIFT AI`,
@@ -45,7 +54,11 @@ the blocked actor/card IDs.
 Confirm whether the production mark, semantic DOM/CSS feed, and shared
 character crops are sufficient. No FacePlace-specific avatar, tracker,
 secured-badge, or evidence-icon pack currently exists, and none is required if
-DOM/CSS treatment is approved.
+DOM/CSS treatment is approved. Also freeze the exact three Incoming Cases and
+global dialogue boundary after the third site, resolve `Corrupted signals
+logged` versus exact-number copy, and confirm the browser-owned 1180 CSS-pixel
+left-rail drawer. The complete response schema is in
+[`FACEPLACE_RUNTIME_REQUEST.md`](FACEPLACE_RUNTIME_REQUEST.md).
 
 ### Shared evidence-route registry
 
@@ -196,7 +209,7 @@ real-microphone review. Candidate records are never silently scored or repeated.
 | Site | Required distinct first-run readings | Structured records now | Planned Deck A | Decision requested |
 | --- | ---: | ---: | ---: | --- |
 | ThreadIt | 7 | 1 candidate | 5 | Author, structure, and review two A06/A07 additions, or name two explicit reviewed B overflows. |
-| FacePlace | 6 | 0 | 5 | Convert the sampler to a candidate; plan `Why This Appeared` as A06, or name one reviewed B overflow. |
+| FacePlace | 6 | 1 candidate | 5 | Freeze `A Second Reading` ID/Deck position; plan `Why This Appeared` as A06, or name one reviewed B overflow. |
 | MyCorner | 7 | 0 | 5 | Author two additions; builder suggests planned titles `Autoplay Is Not Personality` and `The Template Problem`. |
 | Yahuh! Portal | 6 | 0 | 5 | Author one addition; builder suggests planned title `What Counts as News`. |
 | ViewTube | 7 | 0 | 5 | Author two additions; builder suggests planned titles `One Scene, Three Cuts` and `The Duplicate Frame`. |
@@ -205,10 +218,11 @@ real-microphone review. Candidate records are never silently scored or repeated.
 | Spotty-Fi | 8 | 0 | 5 | Author three A additions or explicit reviewed B overflows. |
 | MapGuess | 8 | 0 | 5 | Author three A additions or explicit reviewed B overflows. |
 
-Only ThreadIt A01 is currently a structured candidate record; the later-site
-A01 texts are Markdown samplers and all other titles are planning rows. Deck
-labels do not author or promote content. Each new or moved title must become a
-structured record and pass the full content and microphone gate independently.
+ThreadIt A01 and FacePlace `A Second Reading` are structured candidate records;
+the later-site A01 texts are Markdown samplers and all other titles are planning
+rows. Deck labels do not author or promote content. Each new or moved title must
+become a structured record and pass the full content and microphone gate
+independently.
 
 ## `EVIDENCE_11.LIVE` data and implementation gaps
 

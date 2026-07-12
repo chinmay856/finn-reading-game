@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/apps/internet-recovery/diagnostics.css">
   <link rel="stylesheet" href="/apps/internet-recovery/recovery-hub.css">
   <link rel="stylesheet" href="/apps/internet-recovery/threadit.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/faceplace.css">
 </head>
 <body>
   <div class="page-frame">
@@ -35,7 +36,7 @@
           <div class="window-titlebar"><span>RECOVERY BROWSER — MAP OF WHAT REMAINS</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="hub-browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span>recovery://map/incoming-cases</span><strong>REMOTE TUNNEL ACTIVE</strong></div>
           <div class="recovery-map-body">
-            <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 SECURED</span></div></header>
+            <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 CANONICAL</span></div></header>
             <div id="siteGrid" class="site-grid" aria-label="Recovery sites"></div>
             <section class="incoming-cases"><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div><div id="incomingCases" class="incoming-case-list"></div></section>
           </div>
@@ -43,7 +44,7 @@
         <div class="hub-side-windows">
           <aside class="os-window case-file-window">
             <div class="window-titlebar"><span>CASE FILE</span><span class="window-controls" aria-hidden="true">□ ×</span></div>
-            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10</span></div><ol id="evidenceSlots"></ol><small>Logs only. No audio or transcripts.</small></div>
+            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10 canonical</span></div><ol id="evidenceSlots"></ol><small>Logs only. No audio or transcripts.</small></div>
           </aside>
           <aside class="os-window amy-support-window">
             <div class="window-titlebar"><span>AMY // ENGINEER SUPPORT</span><span class="window-controls" aria-hidden="true">— □</span></div>
@@ -136,6 +137,65 @@
             <div><span>MIC: OFF</span><span>NO READING SCORE</span></div>
             <p id="threaditCandidateCount" class="threadit-candidate-count">10 planned records · 0 selectable</p>
             <button id="threaditReturn" class="os-button primary" type="button">Return to Recovery Map</button>
+          </div>
+        </aside>
+      </section>
+
+      <section id="faceplace" class="screen desktop-surface faceplace-surface" tabindex="-1">
+        <article class="os-window faceplace-browser-window">
+          <div class="window-titlebar"><span id="faceplaceBrowserTitle">FACEPLACE — FEED RECOVERY</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button id="faceplaceBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span class="address">http://faceplace.recovered/feed</span><span id="faceplaceSecurityStatus" class="browser-security">CONTENT REVIEW GATE</span></div>
+          <div id="faceplacePage" class="faceplace-page" data-state-id="faceplace_corrupted" data-profile-open="false" data-secured="false">
+            <header class="faceplace-header">
+              <img class="faceplace-mark" src="/apps/internet-recovery/art/site-assets/marks/faceplace-mark.svg" alt="FacePlace overlapping profile frames">
+              <div class="faceplace-identity"><small>RANKED SOCIAL FEED</small><h2>FacePlace</h2><p>A feed is a selection, not the whole world.</p></div>
+              <button id="faceplaceProfileToggle" class="faceplace-profile-toggle" type="button" aria-controls="faceplaceProfileRail" aria-expanded="false">PROFILE / RELATIONSHIPS</button>
+              <strong id="faceplaceHeaderStatus">RANKED FEED ACTIVE</strong>
+            </header>
+            <div class="faceplace-layout">
+              <aside id="faceplaceProfileRail" class="faceplace-profile-rail" aria-labelledby="faceplaceProfileHeading" aria-describedby="faceplaceProfileSummary">
+                <header><div><small>PROFILE / RELATIONSHIPS</small><h3 id="faceplaceProfileHeading" tabindex="-1">PROVISIONAL PROFILE</h3></div><button id="faceplaceProfileClose" type="button" aria-label="Close profile and relationships">CLOSE</button></header>
+                <article class="faceplace-profile-card"><span id="faceplaceProfileAvatar" class="faceplace-avatar" aria-hidden="true">JV</span><div><b id="faceplaceProfileName">Juniper Vale (fictional)</b><span id="faceplaceProfileHandle">@juniper-vale-provisional · FIXTURE</span></div></article>
+                <nav class="faceplace-profile-nav" aria-label="FacePlace profile sections"><span aria-current="page">Feed</span><span>Messages</span><span>Saved</span><span>Groups</span></nav>
+                <section aria-labelledby="faceplaceRelationshipHeading"><small>RELATIONSHIP CLUSTERS</small><h4 id="faceplaceRelationshipHeading">Origin labels missing</h4><ul id="faceplaceRelationshipList"></ul></section>
+                <p id="faceplaceProfileSummary" class="faceplace-visually-hidden">A provisional fictional profile with relationship clusters used only for the structural campaign test.</p>
+              </aside>
+
+              <section class="faceplace-feed-column" aria-labelledby="faceplaceRule">
+                <header><small id="faceplaceFixtureStatus">PROVISIONAL FEED FIXTURE · DESIGNER REPLACEMENT PENDING</small><h3 id="faceplaceRule">THE FEED IS WHAT HAPPENED</h3><p id="faceplaceRuleBody">If the feed repeats it, it must be important. If the feed hides it, it probably did not matter.</p></header>
+                <div class="faceplace-feed-controls" role="group" aria-label="Feed order"><button id="faceplaceRankedMode" type="button" aria-pressed="true">RANKED</button><button id="faceplaceChronologicalMode" type="button" aria-pressed="false" disabled>CHRONOLOGICAL</button></div>
+                <p id="faceplaceFeedInstructions" class="faceplace-visually-hidden">Scrollable feed. Use arrow keys or Page Up and Page Down while the feed is focused.</p>
+                <ol id="faceplaceFeedList" class="faceplace-feed-list" aria-label="FacePlace feed cards" aria-describedby="faceplaceFeedInstructions" tabindex="0"></ol>
+              </section>
+
+              <aside class="faceplace-context-rail" aria-label="Feed recovery controls">
+                <article id="faceplaceTracker" class="faceplace-tracker" data-tracker-kind="pending" tabindex="-1">
+                  <div id="faceplaceTrackerMeter" class="faceplace-tracker-meter" aria-labelledby="faceplaceTrackerLabel"><small id="faceplaceTrackerLabel">LYING TRACKER</small><strong id="faceplaceTrackerValue">—</strong><img id="faceplaceTrackerTechno" src="/apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp" alt="" hidden></div><p id="faceplaceTrackerTruth">INITIAL VALUE PENDING DESIGNER</p>
+                  <ul id="faceplaceSavedRepairs" aria-label="Saved FacePlace repairs"></ul>
+                </article>
+                <section id="faceplaceMidpointNotice" class="faceplace-midpoint-notice" aria-labelledby="faceplaceMidpointHeading" hidden>
+                  <small>HONEST ZERO · SAVED BEFORE ACKNOWLEDGEMENT</small><h3 id="faceplaceMidpointHeading">The old tracker measured reactions, not recovery.</h3><p>Recovered posts saved.<br>Corrupted signals logged.<br>Starting honest feed recovery at 0%.</p><blockquote>Amy: The counter was not broken. It was measuring the wrong thing very confidently.</blockquote><button id="faceplaceMidpointAction" type="button">Start honest feed recovery</button>
+                </section>
+                <section class="faceplace-people" aria-labelledby="faceplacePeopleHeading"><small>PEOPLE YOU MAY SORT OF KNOW</small><h3 id="faceplacePeopleHeading">Suggested connections</h3><ul id="faceplacePeopleList"></ul></section>
+                <section class="faceplace-why" aria-labelledby="faceplaceWhyHeading"><small>CONTEXT CONTROL</small><h3 id="faceplaceWhyHeading">Why this appeared</h3><button id="faceplaceWhyToggle" type="button" aria-controls="faceplaceWhyDetails" aria-expanded="false" disabled>Inspect recommendation</button><div id="faceplaceWhyDetails" tabindex="-1" hidden><b id="faceplaceWhyCard">No card selected</b><p id="faceplaceWhyReason">Recommendation reason pending verification.</p><span id="faceplaceWhyStatus">CONTROL NOT RESTORED</span></div></section>
+                <section id="faceplaceSecuredPayoff" class="faceplace-secured-payoff" aria-labelledby="faceplaceSecuredHeading" hidden>
+                  <div class="faceplace-secured-banner"><img id="faceplaceTechnoPin" src="/apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp" alt="Techno pins her ball beside the restored Why this appeared control."><div><small>FACEPLACE RECOVERY SAVED</small><h3 id="faceplaceSecuredHeading">FEED RECOVERY VERIFIED</h3><ul><li>Chronology restored.</li><li>Recommendations labeled.</li><li>Forced distribution disabled.</li></ul></div></div>
+                  <article class="faceplace-blocked-write"><small id="faceplaceBlockedActor">FEED AUTO-FIX AI · PROVISIONAL TARGET</small><h4 id="faceplaceBlockedTitle">FORCED DISTRIBUTION: OFF</h4><p id="faceplaceBlockedBody">FEED AUTO-FIX AI attempted to boost the same post again.</p><a id="faceplaceBlockedTarget" href="#faceplaceFeedList">Target card pending</a></article>
+                  <button id="faceplaceEvidenceToggle" type="button" aria-controls="faceplaceEvidenceReceipt" aria-expanded="false">Open provisional FacePlace test receipt</button>
+                  <article id="faceplaceEvidenceReceipt" class="faceplace-evidence-receipt" aria-labelledby="faceplaceEvidenceTitle" tabindex="-1" hidden><small>CASE FILE · SLOT 3 · PROVISIONAL TEST RECEIPT</small><h4 id="faceplaceEvidenceTitle">FACEPLACE / PROMOTED-FEED RECORD</h4><dl><div><dt>What changed</dt><dd id="faceplaceEvidenceWhatChanged">Feeds now label why posts appear and preserve chronological inspection.</dd></div><div><dt>AI service behavior</dt><dd id="faceplaceEvidenceBehavior">The feed optimizer boosted repeated posts because reaction count was easier to measure than importance.</dd></div><div><dt>Writer fingerprint</dt><dd id="faceplaceEvidenceWriter">PENDING DESIGNER ID</dd></div></dl><p id="faceplaceEvidenceTruth">TEST ONLY · NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK</p></article>
+                </section>
+              </aside>
+            </div>
+            <p id="faceplaceLiveStatus" class="faceplace-live-status" role="status" aria-live="polite">No accepted FacePlace repair is running.</p>
+          </div>
+          <footer class="faceplace-status-strip"><b id="faceplaceStatusStrip">ACTIVE SORT: REACTIONS DESCENDING</b><span id="faceplaceUnitStatus">0 OF 3 ACT I REPAIRS SAVED</span><span id="faceplaceDiagnosticTruth">CONTENT REVIEW GATE · MIC OFF</span></footer>
+        </article>
+        <aside class="os-window faceplace-companion-gate">
+          <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
+          <div class="faceplace-gate-body">
+            <small>STABLE RECOVERY WINDOW</small><h2 id="faceplaceCandidateTitle">A Second Reading</h2><p id="faceplaceContentReason">This review-only sampler is not a playable passage. It still needs structured review and a real-microphone check.</p>
+            <p class="faceplace-source-note"><a id="faceplaceCandidateSource" href="https://www.gutenberg.org/ebooks/1342" target="_blank" rel="noreferrer">Jane Austen, <i>Pride and Prejudice</i>, Chapters 35–36</a><span>Original retelling and analysis · public-domain source in the United States</span></p>
+            <div><span>MIC: OFF</span><span>NO READING SCORE</span></div><p id="faceplaceCandidateCount" class="faceplace-candidate-count">10 planned · 0 selectable · 6 required</p><button id="faceplaceReturn" class="os-button primary" type="button">Return to Recovery Map</button>
           </div>
         </aside>
       </section>
