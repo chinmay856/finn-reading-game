@@ -102,6 +102,13 @@ Companion remain visible. Focus moves inside; Escape/close restores focus;
 background is inert. Reduced motion uses static queue comparisons and silent
 equalizer blocks.
 
+Freeze wrapper asset ID `spottyfi.techno.manual-queue-guard` to
+`apps/internet-recovery/art/characters/techno/techno-bark-ball.webp`.
+Accessible meaning: “Techno guards her orange-and-blue ball beside Finn’s
+five-track manual queue while the predicted insert remains blocked.” Pair the
+midpoint with `chinmay_fluster_2` and the secured evidence beat with
+`amy_evidence`; no new character raster is required.
+
 First-run plan is 8A + 2B: `the-city-that-learned-to-improvise-a01`,
 `how-a-rhythm-changes-a02`, `the-credit-line-a03`,
 `what-listening-history-means-a04`, `the-manual-mixtape-a05`,
