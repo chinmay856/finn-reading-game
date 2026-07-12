@@ -1,5 +1,13 @@
 # Session handoff
 
+## Spotty-Fi design response
+
+- Branch: `agent/spottyfi-runtime-design-response`.
+- Builder packet:
+  [`design/SPOTTYFI_RUNTIME_RESPONSE_2026-07-12.md`](design/SPOTTYFI_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes the silent library, fake/real history proof, eight units, evidence,
+  content-ID plan, responsive behavior, and continuation without promoting content.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
