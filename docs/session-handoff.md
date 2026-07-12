@@ -1,5 +1,11 @@
 # Session handoff
 
+## 2026-07-12 final-incident Content Platform records
+
+- The three frozen PR #46 passages now exist as exact 218-, 236-, and 239-word Content Platform records with stable IDs, original-work rights metadata, comprehension choices, reading profiles, and transcription-risk tokens.
+- They are catalogued but remain `candidate` and unselectable. The endgame selector requests only the next one-to-one unseen checkpoint and never skips or repeats.
+- Approval still requires independent editorial, grade, sensitivity, comprehension, accessibility, rights-record, transcription-profile, and real-microphone review. No wrapper or Reading Engine exception was added.
+
 ## 2026-07-12 `EVIDENCE_11.LIVE` implementation
 
 - Imported the frozen endgame runtime contract from designer PR #46.
