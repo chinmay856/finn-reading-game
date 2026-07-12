@@ -1,5 +1,12 @@
 # Project status
 
+## FacePlace structured content — active 2026-07-12
+
+FacePlace's full six-record first-run roster is represented as theme-neutral
+Content Platform candidates. The frozen `why-this-appeared-a06` manuscript now
+fills Deck A's former shortfall, producing a `6A + 4B` plan. A02–A06 remain
+unselectable pending independent review and real-microphone evidence.
+
 ## ThreadIt structured content — active 2026-07-12
 
 ThreadIt's complete seven-record first-run manuscript roster is now represented

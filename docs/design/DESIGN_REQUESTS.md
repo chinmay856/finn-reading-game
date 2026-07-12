@@ -206,6 +206,27 @@ Acceptance evidence should be a committed Markdown review under
 resolve design/editorial questions, but it must not claim a real-microphone run
 or promote `availability`; those gates remain independent.
 
+## Current builder request — FacePlace content review packet
+
+FacePlace's complete six-record first-run Deck A is now encoded as structured
+candidate data. `why-this-appeared-a06` has been moved from the obsolete B04
+placeholder into its frozen first-run A06 position, eliminating the former
+one-passage shortfall while keeping every new record unselectable.
+
+Please review `content/faceplace/first-run-passages.js` against
+`content/faceplace/FIRST_RUN_MANUSCRIPTS_A02_A06.md` and return a committed
+revision-bound review under `docs/design/review/` that:
+
+1. confirms exact prose, prompt, and three-choice fidelity for A02–A06;
+2. approves the A06 Deck A placement and resulting `6A + 4B` plan;
+3. supplies exact passage-specific feedback replacements where the shared
+   feedback is too generic;
+4. names any accessibility, sensitivity, factual, or likely microphone-risk
+   token by passage ID.
+
+This review must not claim a real-microphone run or change `availability`.
+Those independent evidence gates remain fail-closed.
+
 ## Outstanding designer decisions
 
 ### P0 — Canonical MapGuess runtime fixture and eight-reading manifest

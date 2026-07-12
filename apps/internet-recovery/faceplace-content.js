@@ -6,20 +6,20 @@ export const FACEPLACE_DECK_A_IDS = Object.freeze([
   "a-letter-reread-later-a03",
   "what-the-feed-repeats-a04",
   "memory-with-edits-a05",
+  "why-this-appeared-a06",
 ]);
 
 export const FACEPLACE_DECK_B_IDS = Object.freeze([
   "the-public-self-b01",
   "a-rumor-travels-faster-b02",
   "the-hidden-chronology-b03",
-  "why-this-appeared-b04",
   "the-second-account-b05",
 ]);
 
 export const FACEPLACE_CONTENT_READINESS = Object.freeze({
   deckACount: FACEPLACE_DECK_A_IDS.length,
   deckBCount: FACEPLACE_DECK_B_IDS.length,
-  firstRunShortfall: 1,
+  firstRunShortfall: 0,
   plannedCount: FACEPLACE_DECK_A_IDS.length + FACEPLACE_DECK_B_IDS.length,
   requiredFirstRun: 6,
 });
