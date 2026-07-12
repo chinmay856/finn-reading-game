@@ -176,6 +176,10 @@ target. Keep all retailers, products, reviews, and people original.
 
 ### Spotty-Fi
 
+**Answered:** See
+[`SPOTTYFI_RUNTIME_RESPONSE_2026-07-12.md`](SPOTTYFI_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 Freeze five track records: IDs, titles, fictional creators, durations, credits,
 order, geometric cover IDs, and the `repeatedTrackId`. Freeze the fake-history
 entry/origin that produces the repeated queue, the real-history records and
