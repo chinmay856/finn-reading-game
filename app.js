@@ -993,7 +993,10 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
             }))
           : []),
       ];
-  $("faceplaceSavedRepairs").innerHTML = checklist.map(({ label, saved }) => `<li data-saved="${saved}"><span class="faceplace-repair-state">${saved ? "SAVED" : "PENDING"}</span><span>${escapeMarkup(label)}</span></li>`).join("");
+  $("faceplaceSavedRepairs").innerHTML = checklist.map(({ label, saved }) => {
+    const status = saved ? "SAVED" : "PENDING";
+    return `<li data-saved="${saved}" aria-label="${escapeMarkup(`${status}: ${label}`)}"><span class="faceplace-repair-state">${status}</span> <span>${escapeMarkup(label)}</span></li>`;
+  }).join("");
 
   $("faceplaceMidpointNotice").hidden = !view.midpoint.visible;
   $("faceplaceMidpointHeading").textContent = view.midpoint.body.split("\n")[0] || view.midpoint.title;
