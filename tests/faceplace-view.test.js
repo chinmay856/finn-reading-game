@@ -186,25 +186,25 @@ test("relationship rail and People You May Sort Of Know remain semantic provisio
   assert.match(view.fixture.notice, /NOT CANONICAL/u);
 });
 
-test("secured payoff exposes only provisional test evidence and the exact blocked target", () => {
+test("secured payoff exposes canonical evidence and the exact blocked target", () => {
   const view = getFacePlaceCampaignView(stateAt(6));
 
   assert.equal(view.secured, true);
   assert.equal(view.tracker.value, 100);
   assert.equal(view.evidence.id, FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.id);
-  assert.equal(view.evidence.canonical, false);
-  assert.equal(view.evidence.provisional, true);
-  assert.equal(view.evidence.testOnly, true);
+  assert.equal(view.evidence.canonical, true);
+  assert.equal(view.evidence.provisional, false);
+  assert.equal(view.evidence.testOnly, false);
   assert.equal(view.evidence.slot, 3);
   assert.equal(view.blockedWrite.id, FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD.id);
-  assert.equal(view.blockedWrite.canonical, false);
-  assert.equal(view.blockedWrite.targetId, null);
+  assert.equal(view.blockedWrite.canonical, true);
+  assert.equal(view.blockedWrite.targetId, "faceplace-card-crispmaster-01");
   assert.equal(
     view.blockedWrite.fixtureAttempt.targetCardId,
     FACEPLACE_PROVISIONAL_FEED_FIXTURE.boostedCardId,
   );
-  assert.equal(view.securedPayoff.canonical, false);
-  assert.equal(view.securedPayoff.testOnly, true);
+  assert.equal(view.securedPayoff.canonical, true);
+  assert.equal(view.securedPayoff.testOnly, false);
 });
 
 test("reduced motion changes only motion metadata", () => {

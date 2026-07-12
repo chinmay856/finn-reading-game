@@ -1,5 +1,9 @@
 # Project status
 
+## Canonical completion integrity — 2026-07-12
+
+FacePlace and MapGuess now use the approved designer evidence contracts. Hub completion fails closed unless each exact evidence ID and blocked-write ID is persisted; MapGuess also requires the player's route goal to be locked. Preview/diagnostic state never counts toward the ten-site completion predicate.
+
 This is the concise operational status for the next Codex task. The durable
 product and architecture source of truth is
 [`ARCHITECTURE_AND_VISION.md`](ARCHITECTURE_AND_VISION.md).
@@ -15,6 +19,24 @@ product and architecture source of truth is
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
 - **Current stage:** Reconcile designer PR #38 and publish MyCorner's seven-unit
   owner-control campaign while keeping all unreviewed passages unavailable
+
+The header above is retained as historical setup context. Current work is the
+post-ten-site canonical evidence audit on
+`agent/canonical-evidence-reconciliation`.
+
+## Canonical evidence audit
+
+- FacePlace slot 3 is frozen as `faceplace.evidence.promoted-feed-01` with
+  `FACEPLACE_PROMOTED_FEED.REC` and fingerprint
+  `fp-vibeshift-amplify-7c31`.
+- MapGuess slot 10 is frozen as
+  `mapguess.evidence.moved-destination-pin-01` with
+  `MAPGUESS_MOVED_DESTINATION_PIN.REC`, fingerprint `mg-movingpin-a104`, and a
+  required persisted route goal.
+- Their former provisional exclusions are removed. New v2 storage keys ensure
+  previous structural/test saves cannot silently become canonical.
+- This fixes the registry path only. The finale remains locked because nine
+  sites still have zero review-approved selectable first-run records.
 
 ## Deployed implementation
 

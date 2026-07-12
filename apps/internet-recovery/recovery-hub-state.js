@@ -18,11 +18,13 @@ function freezeSummary(summary) {
 }
 
 export function summarizeHubSiteEvidence({
+  canonicalBlockedWriteId = null,
   canonicalEvidenceId = null,
   diagnosticEvidenceRecord = null,
   diagnosticState = null,
   evidenceRecord = null,
   persisted = false,
+  requiresLockedRouteGoal = false,
   siteId,
   state = null,
 } = {}) {
@@ -34,11 +36,18 @@ export function summarizeHubSiteEvidence({
   const realEvidenceId = nonEmptyString(state?.evidenceId);
   const testEvidenceId = nonEmptyString(diagnosticState?.evidenceId);
   const expectedCanonicalId = nonEmptyString(canonicalEvidenceId);
+  const expectedBlockedWriteId = nonEmptyString(canonicalBlockedWriteId);
+  const blockedWriteMatches = !expectedBlockedWriteId
+    || nonEmptyString(state?.blockedWriteId) === expectedBlockedWriteId;
+  const routeGoalMatches = !requiresLockedRouteGoal
+    || (Boolean(state?.routeGoalLocked) && Boolean(nonEmptyString(state?.routeGoal)));
   const canonicalMatch = Boolean(
     realSecured
     && persisted
     && expectedCanonicalId
     && realEvidenceId === expectedCanonicalId
+    && blockedWriteMatches
+    && routeGoalMatches
     && canBeCanonical(evidenceRecord),
   );
   const tabOnly = realSecured && !persisted;
@@ -66,6 +75,7 @@ export function summarizeHubSiteEvidence({
           : "unsecured";
 
   return freezeSummary({
+    canonicalBlockedWriteId: expectedBlockedWriteId,
     canonicalEvidenceId: expectedCanonicalId,
     displayEvidenceId: displaySecured ? displayEvidenceId : null,
     displayEvidenceProvisional: displaySecured && displayEvidenceProvisional,
@@ -76,6 +86,8 @@ export function summarizeHubSiteEvidence({
     persistedNonCanonical,
     realEvidenceId,
     realSecured,
+    routeGoalMatches,
+    blockedWriteMatches,
     siteId: normalizedSiteId,
     tabOnly,
     testEvidenceId,

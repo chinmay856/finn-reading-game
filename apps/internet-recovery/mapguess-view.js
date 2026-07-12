@@ -461,11 +461,11 @@ function buildSecuredRecords(state, { directions, goals }) {
     evidence,
     securedPayoff: {
       bodyLines: copy(MAPGUESS_COPY_IDS.secureBody).split("\n").filter(Boolean),
-      canonical: false,
+      canonical: true,
       denial: copy(MAPGUESS_COPY_IDS.secureDenial),
-      provisional: true,
+      provisional: false,
       status: copy(MAPGUESS_COPY_IDS.secureStatus),
-      testOnly: true,
+      testOnly: false,
       title: copy(MAPGUESS_COPY_IDS.secureTitle),
     },
   };

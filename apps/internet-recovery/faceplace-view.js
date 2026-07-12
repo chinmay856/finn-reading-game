@@ -304,12 +304,12 @@ function buildSecuredRecords(state) {
     evidence,
     securedPayoff: {
       bodyLines: copy(FACEPLACE_COPY_IDS.secureBody).split("\n").filter(Boolean),
-      canonical: false,
+      canonical: true,
       denial: copy(FACEPLACE_COPY_IDS.secureDenial),
       evidenceTitle: copy(FACEPLACE_COPY_IDS.evidenceTitle),
-      provisional: true,
+      provisional: false,
       status: copy(FACEPLACE_COPY_IDS.secureStatus),
-      testOnly: true,
+      testOnly: false,
       title: copy(FACEPLACE_COPY_IDS.secureTitle),
     },
   };

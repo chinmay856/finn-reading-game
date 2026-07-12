@@ -556,7 +556,8 @@ function renderRecoveryHub() {
         state: realThreadIt,
       },
       {
-        canonicalEvidenceId: null,
+        canonicalBlockedWriteId: FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD.id,
+        canonicalEvidenceId: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.id,
         diagnosticEvidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
         diagnosticState: diagnosticFacePlace,
         evidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
@@ -565,11 +566,13 @@ function renderRecoveryHub() {
         state: realFacePlace,
       },
       {
-        canonicalEvidenceId: null,
+        canonicalBlockedWriteId: MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD.id,
+        canonicalEvidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.id,
         diagnosticEvidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
         diagnosticState: diagnosticMapGuess,
         evidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
         persisted: state.mapguessPersisted,
+        requiresLockedRouteGoal: true,
         siteId: "mapguess",
         state: realMapGuess,
       },
@@ -840,7 +843,7 @@ function renderRecoveryHub() {
         : facePlaceEvidence.tabOnly
           ? " · TAB ONLY"
           : " · PROVISIONAL";
-      return `<li class="evidence-slot-recovered" data-provisional="true"><img src="${site.markImage}" alt=""><div><b>FacePlace — ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint ?? "PENDING DESIGNER ID"}</span><span>TEST ONLY · not registered for the final evidence unlock</span></div></li>`;
+      return `<li class="evidence-slot-recovered"><img src="${site.markImage}" alt=""><div><b>FacePlace — ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: FORCED DISTRIBUTION: OFF</span></div></li>`;
     }
     if (site.id === "mycorner" && myCornerSecured) {
       const persistenceLabel = myCornerEvidence.testSecured
@@ -864,7 +867,7 @@ function renderRecoveryHub() {
         : mapGuessEvidence.tabOnly
           ? " · TAB ONLY"
           : " · PROVISIONAL";
-      return `<li class="evidence-slot-recovered" data-provisional="true"><img src="${site.markImage}" alt=""><div><b>MapGuess — ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint ?? "PENDING DESIGNER ID"}</span><span>TEST ONLY · slot 10 is excluded from the final evidence unlock</span></div></li>`;
+      return `<li class="evidence-slot-recovered"><img src="${site.markImage}" alt=""><div><b>MapGuess — ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: DESTINATION LOCKED — USER CHOICE REQUIRED</span></div></li>`;
     }
     return `<li>${site.name} — awaiting evidence</li>`;
   }).join("");

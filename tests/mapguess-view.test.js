@@ -182,7 +182,7 @@ test("all four route goals are valid semantic choices with one fixed destination
   assert.equal(estimates.size, 4);
 });
 
-test("secured payoff permanently exposes only provisional evidence and the denied pin move", () => {
+test("secured payoff permanently exposes canonical evidence and the denied pin move", () => {
   const securedState = stateAt(8, { routeGoal: "scenic" });
   const view = getMapGuessCampaignView(securedState);
 
@@ -196,15 +196,15 @@ test("secured payoff permanently exposes only provisional evidence and the denie
   assert.equal(view.sponsoredStop.blockedAsDestination, true);
 
   assert.equal(view.evidence.id, MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.id);
-  assert.equal(view.evidence.canonical, false);
-  assert.equal(view.evidence.provisional, true);
-  assert.equal(view.evidence.testOnly, true);
+  assert.equal(view.evidence.canonical, true);
+  assert.equal(view.evidence.provisional, false);
+  assert.equal(view.evidence.testOnly, false);
   assert.equal(view.evidence.slot, 10);
   assert.equal(view.evidence.routeGoal, "scenic");
   assert.equal(view.blockedWrite.id, MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD.id);
   assert.equal(view.blockedWrite.fixtureAttempt.targetDestinationId, MAPGUESS_PROVISIONAL_FIXTURE.destination.id);
-  assert.equal(view.securedPayoff.canonical, false);
-  assert.equal(view.securedPayoff.testOnly, true);
+  assert.equal(view.securedPayoff.canonical, true);
+  assert.equal(view.securedPayoff.testOnly, false);
 
   const normalizedAgain = normalizeMapGuessState({
     ...securedState,

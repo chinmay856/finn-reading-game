@@ -1,5 +1,23 @@
 # Session handoff
 
+## 2026-07-12 canonical receipt integrity follow-up
+
+- The Recovery Map now counts FacePlace slot 3 only when the exact canonical blocked-boost receipt is present in persisted v2 state.
+- MapGuess slot 10 additionally requires the exact blocked destination-write receipt plus a persisted, locked player route goal.
+- Diagnostic and tab-only states remain visible for testing but cannot satisfy canonical completion or unlock the finale.
+
+## Canonical evidence reconciliation
+
+- Active branch: `agent/canonical-evidence-reconciliation`.
+- Imported the frozen FacePlace registry response from PR #37 and MapGuess
+  response from PR #44.
+- FacePlace slot 3 and MapGuess slot 10 now use exact canonical IDs, filenames,
+  writer fingerprints, process routes, blocked actors, and blocked targets.
+- Both state stores move to v2 keys. Old v1 structural/test saves fail closed
+  and cannot be reclassified as canonical evidence.
+- Diagnostic secured views remain test mode; only exact persisted v2 secured
+  states can contribute to the ten-site canonical evidence predicate.
+
 ## Spotty-Fi listener-control foundation
 
 - Active branch: `agent/spottyfi-history-proof-foundation`.

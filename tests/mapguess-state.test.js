@@ -81,7 +81,7 @@ function reachFinalGoalGate(storage) {
 
 test("empty MapGuess state is versioned, wrapper-only, and contains no invented route choice", () => {
   const state = readMapGuessState(null);
-  assert.equal(state.version, 1);
+  assert.equal(state.version, 2);
   assert.equal(state.siteId, "mapguess");
   assert.equal(state.act, "rebuild");
   assert.equal(state.stateId, "mapguess_corrupted");
@@ -348,26 +348,25 @@ test("the route goal and secured state are permanent after anchor three", () => 
   assert.equal(stopped.state.stateId, "mapguess_secured");
 });
 
-test("provisional slot-ten records can never masquerade as canonical evidence", () => {
+test("canonical slot-ten records match the frozen registry response", () => {
   for (const record of [
     MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
     MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD,
   ]) {
     assert.equal(record.siteId, "mapguess");
     assert.equal(record.slot, 10);
-    assert.equal(record.canonical, false);
-    assert.equal(record.eligibleForCanonicalCount, false);
-    assert.equal(record.provisional, true);
-    assert.equal(record.testOnly, true);
-    assert.equal(record.registryStatus, "provisional-test-only");
-    assert.match(record.id, /provisional-test/u);
+    assert.equal(record.canonical, true);
+    assert.equal(record.eligibleForCanonicalCount, true);
+    assert.equal(record.provisional, false);
+    assert.equal(record.testOnly, false);
+    assert.equal(record.registryStatus, "canonical-secured-only");
   }
-  assert.match(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename, /PROVISIONAL/u);
-  assert.equal(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.routeFragment, null);
-  assert.equal(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.upstreamServiceId, null);
+  assert.equal(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename, "MAPGUESS_MOVED_DESTINATION_PIN.REC");
+  assert.equal(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.routeFragment.id, "mapguess.route.moved-pin-10");
+  assert.equal(MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.upstreamServiceId, "ai_repair_service");
   assert.equal(
     MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD.targetId,
-    "mapguess-provisional-destination-glasswater-archive-01",
+    "mapguess-destination-glasswater-archive-01",
   );
 });
 

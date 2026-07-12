@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID,
   FACEPLACE_PROVISIONAL_EVIDENCE_ID,
   FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
 } from "../apps/internet-recovery/faceplace-state.js";
 import {
+  MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
   MAPGUESS_PROVISIONAL_EVIDENCE_ID,
   MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
 } from "../apps/internet-recovery/mapguess-state.js";
@@ -64,7 +66,7 @@ test("diagnostic evidence can display but is always classified as test", () => {
   assert.equal(summary.displayMode, "test");
   assert.equal(summary.testSecured, true);
   assert.equal(summary.displayEvidenceId, FACEPLACE_PROVISIONAL_EVIDENCE_ID);
-  assert.equal(summary.displayEvidenceProvisional, true);
+  assert.equal(summary.displayEvidenceProvisional, false);
   assert.equal(summary.persistedCanonical, false);
   assert.equal(summary.tabOnly, false);
 });
@@ -111,24 +113,81 @@ test("a mismatched persisted evidence ID remains visibly secured but noncanonica
   assert.equal(summary.persistedNonCanonical, true);
 });
 
-test("FacePlace provisional evidence never counts canonical even if mispassed as the expected ID", () => {
+test("FacePlace canonical evidence counts only when persisted and exactly matched", () => {
   const summary = summarizeHubSiteEvidence({
+    canonicalBlockedWriteId: FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID,
     canonicalEvidenceId: FACEPLACE_PROVISIONAL_EVIDENCE_ID,
     evidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
     persisted: true,
     siteId: "faceplace",
     state: {
+      blockedWriteId: FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID,
       evidenceId: FACEPLACE_PROVISIONAL_EVIDENCE_ID,
       secured: true,
     },
   });
-  assert.equal(summary.displayEvidenceProvisional, true);
-  assert.equal(summary.persistedCanonical, false);
-  assert.equal(summary.persistedNonCanonical, true);
-  assert.equal(summary.displayMode, "persisted-noncanonical");
+  assert.equal(summary.displayEvidenceProvisional, false);
+  assert.equal(summary.persistedCanonical, true);
+  assert.equal(summary.persistedNonCanonical, false);
+  assert.equal(summary.displayMode, "persisted-canonical");
 });
 
-test("MapGuess provisional slot-10 evidence never counts canonical even if persisted as the expected ID", () => {
+test("FacePlace evidence without the exact persisted blocked write stays noncanonical", () => {
+  const summary = summarizeHubSiteEvidence({
+    canonicalBlockedWriteId: FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID,
+    canonicalEvidenceId: FACEPLACE_PROVISIONAL_EVIDENCE_ID,
+    evidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
+    persisted: true,
+    siteId: "faceplace",
+    state: {
+      blockedWriteId: "faceplace.blocked-wrong",
+      evidenceId: FACEPLACE_PROVISIONAL_EVIDENCE_ID,
+      secured: true,
+    },
+  });
+  assert.equal(summary.blockedWriteMatches, false);
+  assert.equal(summary.persistedCanonical, false);
+  assert.equal(summary.persistedNonCanonical, true);
+});
+
+test("MapGuess canonical evidence also requires its blocked write and a locked route goal", () => {
+  const base = {
+    canonicalBlockedWriteId: MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
+    canonicalEvidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+    evidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+    persisted: true,
+    requiresLockedRouteGoal: true,
+    siteId: "mapguess",
+  };
+  const incomplete = summarizeHubSiteEvidence({
+    ...base,
+    state: {
+      blockedWriteId: MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
+      evidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+      routeGoal: null,
+      routeGoalLocked: false,
+      secured: true,
+    },
+  });
+  assert.equal(incomplete.routeGoalMatches, false);
+  assert.equal(incomplete.persistedCanonical, false);
+
+  const complete = summarizeHubSiteEvidence({
+    ...base,
+    state: {
+      blockedWriteId: MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
+      evidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+      routeGoal: "fastest",
+      routeGoalLocked: true,
+      secured: true,
+    },
+  });
+  assert.equal(complete.blockedWriteMatches, true);
+  assert.equal(complete.routeGoalMatches, true);
+  assert.equal(complete.persistedCanonical, true);
+});
+
+test("MapGuess canonical slot-10 evidence counts when persisted and exactly matched", () => {
   const summary = summarizeHubSiteEvidence({
     canonicalEvidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
     evidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
@@ -141,10 +200,10 @@ test("MapGuess provisional slot-10 evidence never counts canonical even if persi
   });
   assert.equal(summary.displayEvidenceId, MAPGUESS_PROVISIONAL_EVIDENCE_ID);
   assert.equal(summary.displayEvidenceRecord.slot, 10);
-  assert.equal(summary.displayEvidenceProvisional, true);
-  assert.equal(summary.persistedCanonical, false);
-  assert.equal(summary.persistedNonCanonical, true);
-  assert.equal(summary.displayMode, "persisted-noncanonical");
+  assert.equal(summary.displayEvidenceProvisional, false);
+  assert.equal(summary.persistedCanonical, true);
+  assert.equal(summary.persistedNonCanonical, false);
+  assert.equal(summary.displayMode, "persisted-canonical");
 });
 
 test("MyCorner canonical slot-four evidence counts only when persisted and exactly matched", () => {
