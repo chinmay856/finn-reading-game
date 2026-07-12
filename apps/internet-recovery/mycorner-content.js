@@ -20,10 +20,10 @@ export const MYCORNER_DECK_B_IDS = Object.freeze([
 export const MYCORNER_CONTENT_READINESS = Object.freeze({
   deckACount: MYCORNER_DECK_A_IDS.length,
   deckBCount: MYCORNER_DECK_B_IDS.length,
-  firstRunShortfall: 7,
+  firstRunShortfall: 0,
   plannedCount: MYCORNER_DECK_A_IDS.length + MYCORNER_DECK_B_IDS.length,
   requiredFirstRun: 7,
-  structuredCandidateCount: 1,
+  structuredCandidateCount: 7,
 });
 
 const DEFAULT_MYCORNER_CATALOG = Object.freeze(

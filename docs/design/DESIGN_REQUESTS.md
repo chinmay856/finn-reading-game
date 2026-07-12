@@ -227,6 +227,19 @@ revision-bound review under `docs/design/review/` that:
 This review must not claim a real-microphone run or change `availability`.
 Those independent evidence gates remain fail-closed.
 
+## Current builder request — MyCorner content review packet
+
+MyCorner's complete seven-record first-run Deck A is now structured. Review
+`content/mycorner/first-run-passages.js` against the frozen A02–A07 manuscript
+and publish a revision-bound response under `docs/design/review/` confirming:
+
+1. exact prose, prompt, and choice fidelity for every ID;
+2. whether shared feedback needs passage-specific replacements;
+3. any accessibility, sensitivity, factual, or microphone-risk tokens;
+4. that the existing `7A + 3B` order remains canonical.
+
+Do not claim microphone evidence or promote availability in the design response.
+
 ## Outstanding designer decisions
 
 ### P0 — Canonical MapGuess runtime fixture and eight-reading manifest

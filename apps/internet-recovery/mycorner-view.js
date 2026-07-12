@@ -388,7 +388,7 @@ export function getMyCornerCampaignView(currentState, {
       totalUnitCount: MYCORNER_CAMPAIGN_UNITS.length,
     },
     readingGate: {
-      firstRunShortfall: 7,
+      firstRunShortfall: 0,
       micState: "off",
       plannedCount: 10,
       playable: false,
