@@ -135,6 +135,10 @@ small original avatar/theme-fragment pack rather than a whole board.
 
 ### Yahuh! Portal
 
+**Answered:** See
+[`YAHUH_RUNTIME_RESPONSE_2026-07-12.md`](YAHUH_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 Freeze six modules: titles/summaries, category/channel IDs and display names,
 source IDs, dates/times, sponsorship flags, one safe fictional Mail record,
 distinct route summaries, the single generated origin/timestamp, and the

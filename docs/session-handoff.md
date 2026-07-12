@@ -1,5 +1,13 @@
 # Session handoff
 
+## Yahuh! Portal design response
+
+- Branch: `agent/yahuh-runtime-design-response`.
+- Builder packet:
+  [`design/YAHUH_RUNTIME_RESPONSE_2026-07-12.md`](design/YAHUH_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes the six-module fixture, processes, evidence, content-ID plan,
+  responsive behavior, and hub continuation without promoting passages.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
