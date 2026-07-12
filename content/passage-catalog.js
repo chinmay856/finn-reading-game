@@ -1,9 +1,12 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./wikiwhy/photosynthesis-passage.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-matters.js";
 import { A_SECOND_READING_PASSAGE } from "./faceplace/a-second-reading.js";
+import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "./mapguess/a-map-is-not-a-photograph.js";
+import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "./mycorner/a-cabin-with-a-purpose.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
 const APPROVED_REVIEW_FIELDS = Object.freeze([
+  "accessibility",
   "comprehension",
   "editorial",
   "factual",
@@ -24,6 +27,8 @@ export const PASSAGE_CATALOG = Object.freeze([
   PHOTOSYNTHESIS_PASSAGE,
   WHY_DISAGREEMENT_MATTERS_PASSAGE,
   A_SECOND_READING_PASSAGE,
+  A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
+  A_CABIN_WITH_A_PURPOSE_PASSAGE,
 ]);
 
 export function getPassageById(id, catalog = PASSAGE_CATALOG) {
@@ -66,6 +71,11 @@ function hasRequiredReviewState(passage) {
   return passage?.transcriptionReview?.tested === true;
 }
 
+function hasConcreteFrozenRevision(value, text) {
+  if (!text(value)) return false;
+  return !/(?:^|[-_\s])(pending|placeholder|unresolved|tbd|todo)(?:$|[-_\s])/iu.test(value);
+}
+
 function hasRequiredSourceAndRights(passage, text) {
   const source = passage?.source ?? {};
   const rights = passage?.rights ?? {};
@@ -87,14 +97,14 @@ function hasRequiredSourceAndRights(passage, text) {
     const revision = source.reviewedRevisionUrl ?? source.frozenRevision;
     return text(rights.licenseId)
       && text(rights.licenseUrl)
-      && (passage.availability !== "approved" || text(revision));
+      && (passage.availability !== "approved" || hasConcreteFrozenRevision(revision, text));
   }
 
   if (rights.basis === "public-domain") {
     return text(rights.evidenceUrl)
       && text(rights.permissionUrl)
       && text(rights.jurisdiction)
-      && (passage.availability !== "approved" || text(source.frozenRevision));
+      && (passage.availability !== "approved" || hasConcreteFrozenRevision(source.frozenRevision, text));
   }
 
   return false;

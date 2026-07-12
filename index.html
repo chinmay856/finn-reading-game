@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/apps/internet-recovery/recovery-hub.css">
   <link rel="stylesheet" href="/apps/internet-recovery/threadit.css">
   <link rel="stylesheet" href="/apps/internet-recovery/faceplace.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/mapguess.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/mycorner.css">
 </head>
 <body>
   <div class="page-frame">
@@ -197,6 +199,159 @@
             <p class="faceplace-source-note"><a id="faceplaceCandidateSource" href="https://www.gutenberg.org/ebooks/1342" target="_blank" rel="noreferrer">Jane Austen, <i>Pride and Prejudice</i>, Chapters 35–36</a><span>Original retelling and analysis · public-domain source in the United States</span></p>
             <div><span>MIC: OFF</span><span>NO READING SCORE</span></div><p id="faceplaceCandidateCount" class="faceplace-candidate-count">10 planned · 0 selectable · 6 required</p><button id="faceplaceReturn" class="os-button primary" type="button">Return to Recovery Map</button>
           </div>
+        </aside>
+      </section>
+
+      <section id="mycorner" class="screen desktop-surface mycorner-surface" tabindex="-1">
+        <article class="os-window mycorner-browser-window">
+          <div class="window-titlebar"><span id="mycornerBrowserTitle">MYCORNER — PROFILE RECOVERY</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button id="mycornerBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span id="mycornerAddress" class="address">http://mycorner.recovered/profile-template</span><span id="mycornerSecurityStatus" class="browser-security">CONTENT REVIEW GATE</span></div>
+          <div id="mycornerPage" class="mycorner-page" data-state-id="mycorner_corrupted" data-inspector-open="false" data-rule-repaired="false" data-secured="false">
+            <header class="mycorner-header">
+              <img class="mycorner-mark" src="/apps/internet-recovery/art/site-assets/marks/mycorner-mark.svg" alt="MyCorner nested personalized page corners">
+              <div class="mycorner-identity"><small>CUSTOM OWNER PROFILE</small><h2>MyCorner</h2><p>Your page should not be replaced by someone else's template.</p></div>
+              <button id="mycornerInspectorToggle" class="mycorner-inspector-toggle" type="button" aria-controls="mycornerOwnerInspector" aria-expanded="false">OWNER / SOURCE</button>
+              <strong id="mycornerHeaderStatus" class="mycorner-header-status">CURRENT MOOD: SPONSORED</strong>
+            </header>
+
+            <div class="mycorner-layout">
+              <aside id="mycornerProfileRail" class="mycorner-profile-rail" aria-labelledby="mycornerProfileHeading">
+                <section class="mycorner-module mycorner-owner-card">
+                  <span id="mycornerOwnerAvatar" class="mycorner-owner-avatar" aria-hidden="true">C</span>
+                  <div><small class="mycorner-panel-label">PROFILE OWNER</small><h3 id="mycornerProfileHeading" tabindex="-1">Chinmay demo template</h3><span id="mycornerOwnerHandle">@complete-profile · TEMPLATE</span></div>
+                </section>
+                <section class="mycorner-module" aria-labelledby="mycornerOwnerFieldsHeading">
+                  <small class="mycorner-panel-label">PROFILE HEADER</small><h3 id="mycornerOwnerFieldsHeading">Identity fields</h3>
+                  <div class="mycorner-owner-fields"><div class="mycorner-owner-field"><b>Mood</b><span id="mycornerMood">SPONSORED</span></div><div class="mycorner-owner-field"><b>Privacy</b><span id="mycornerPrivacyStatus">PUBLIC BY VIBE</span></div></div>
+                </section>
+                <section class="mycorner-module" aria-labelledby="mycornerFriendsHeading"><small class="mycorner-panel-label">TOP 8,000 FRIENDS</small><h3 id="mycornerFriendsHeading">Friend layout</h3><ul id="mycornerFriendsList" class="mycorner-friend-list"></ul><ul id="mycornerGroupsList" class="mycorner-group-list" aria-label="Friend groups"></ul></section>
+                <section class="mycorner-module mycorner-media-module" aria-labelledby="mycornerMusicHeading"><small class="mycorner-panel-label">PROFILE MUSIC · SILENT FIXTURE</small><h3 id="mycornerMusicHeading">Music</h3><div class="mycorner-media-row"><span class="mycorner-media-stop" aria-hidden="true">■</span><div><b id="mycornerMusicTitle">Brand New You (feat. Algorithm)</b><span id="mycornerAutoplayStatus">AUTOPLAY: UNPAUSABLE CLAIM · NO AUDIO ASSET</span></div></div></section>
+                <section class="mycorner-module" aria-labelledby="mycornerCounterHeading"><small class="mycorner-panel-label">VISITOR COUNTER</small><h3 id="mycornerCounterHeading">Page visits</h3><output id="mycornerVisitorCounter" class="mycorner-counter">8000</output></section>
+              </aside>
+
+              <section id="mycornerProfileColumn" class="mycorner-profile-column" aria-labelledby="mycornerRule">
+                <section class="mycorner-rule"><small id="mycornerFixtureStatus" class="mycorner-panel-label">CANONICAL FICTIONAL PROFILE FIXTURE</small><h3 id="mycornerRule">POPULARITY IS A NUMBER. AN ALGORITHM KNOWS YOUR PERSONALITY.</h3><p id="mycornerRuleBody">Your profile has been optimized into the most complete available identity: Chinmay's demo account.</p></section>
+                <article class="mycorner-module mycorner-about" aria-labelledby="mycornerAboutHeading"><small class="mycorner-panel-label">ABOUT ME</small><h3 id="mycornerAboutHeading">Generated from a starter profile</h3><p id="mycornerAbout">I build cool things that change the world. Code. Coffee. Impact.</p></article>
+                <section class="mycorner-module" aria-labelledby="mycornerPostsHeading"><small class="mycorner-panel-label">OWNER POSTS / COMMENTS</small><h3 id="mycornerPostsHeading">Profile posts</h3><ol id="mycornerPostList" class="mycorner-post-list"></ol><ol id="mycornerCommentList" class="mycorner-comment-list" aria-label="Profile comments"></ol></section>
+
+                <section id="mycornerTemplateOverlay" class="mycorner-template-overlay" data-comparison-view="template" aria-labelledby="mycornerTemplateEngine" hidden>
+                  <small class="mycorner-panel-label">SAVED OWNER MODULES REMAIN UNDER THIS LAYER</small><h3 id="mycornerTemplateEngine">TOM-ISH THEME GENERATOR</h3>
+                  <ul id="mycornerComparison" class="mycorner-template-summary"></ul>
+                  <p><b>ACTIVE TEMPLATE:</b> <span id="mycornerTemplateId">chinmay_demo_profile</span><br><b>APPLY TO EVERYONE:</b> <span id="mycornerApplyStatus">active</span></p>
+                  <button id="mycornerProfileViewToggle" class="mycorner-profile-view-toggle" type="button" aria-controls="mycornerComparison" aria-pressed="false">VIEW SAVED PROFILE</button>
+                </section>
+
+                <section id="mycornerMidpointNotice" class="mycorner-midpoint" aria-labelledby="mycornerMidpointHeading" hidden>
+                  <small class="mycorner-panel-label">TEMPLATE REVEAL · SAVED BEFORE ACKNOWLEDGEMENT</small><h3 id="mycornerMidpointHeading">APPLY TO EVERYONE</h3><dl id="mycornerMidpointProof" class="mycorner-midpoint-proof"></dl>
+                  <blockquote id="mycornerMidpointAmy">Amy: The profiles are still underneath. One template is writing over all of them.</blockquote><blockquote id="mycornerMidpointChinmay">Chinmay: The demo profile was professionally complete. I did not realize the AI would interpret "complete" as "everybody should be me."</blockquote>
+                  <button id="mycornerMidpointAction" class="mycorner-midpoint-action" type="button">Keep the saved profile and restore owner controls</button>
+                </section>
+              </section>
+
+              <aside id="mycornerOwnerInspector" class="mycorner-owner-inspector" aria-labelledby="mycornerInspectorHeading">
+                <header><div><small class="mycorner-panel-label">OWNER / SOURCE</small><h3 id="mycornerInspectorHeading" tabindex="-1">Theme and permission inspector</h3></div><button id="mycornerInspectorClose" class="mycorner-inspector-close" type="button">CLOSE</button></header>
+                <section class="mycorner-module" aria-labelledby="mycornerThemeHeading"><small class="mycorner-panel-label">CHOSEN THEME</small><h3 id="mycornerThemeHeading">Professionally Complete</h3><div id="mycornerThemeSwatches" class="mycorner-theme-swatches" aria-label="Theme swatches"></div></section>
+                <section class="mycorner-module" aria-labelledby="mycornerSourceHeading"><small class="mycorner-panel-label">VIEW SOURCE</small><h3 id="mycornerSourceHeading">Ownership metadata</h3><pre id="mycornerSourceView" class="mycorner-source-view">&lt;profile template="chinmay_demo_profile" /&gt;</pre></section>
+                <section class="mycorner-module" aria-labelledby="mycornerPrivacyHeading"><small class="mycorner-panel-label">PRIVACY CONTROLS</small><h3 id="mycornerPrivacyHeading">Owner choices</h3><ul id="mycornerPrivacyControls" class="mycorner-privacy-controls"></ul></section>
+                <section id="mycornerOwnerPermission" class="mycorner-module mycorner-owner-permission" data-blocked="false" aria-labelledby="mycornerOwnerPermissionHeading" tabindex="-1"><small class="mycorner-panel-label">GLOBAL TEMPLATE PERMISSION</small><h3 id="mycornerOwnerPermissionHeading">Apply to everyone</h3><strong id="mycornerPermissionStatus" class="mycorner-permission-status">ACTIVE · OWNER LOCKS PENDING</strong></section>
+                <section id="mycornerSecuredPayoff" class="mycorner-secured-payoff" aria-labelledby="mycornerSecuredHeading" hidden>
+                  <div class="mycorner-secured-banner"><div class="mycorner-techno-proof"><img src="/apps/internet-recovery/art/characters/techno/techno-bark-ball.webp" alt="Techno compares the generated BALL profile with the real ball under her paw."><span aria-hidden="true">GENERATED PROFILE: BALL<br>REAL OBJECT: BALL</span></div><div><small class="mycorner-panel-label">MYCORNER RECOVERY SAVED</small><h3 id="mycornerSecuredHeading">OWNER CONTROLS RESTORED</h3><ul id="mycornerSecuredLines"><li>Profile owner: visible.</li><li>Theme owner: visible.</li><li>Apply-to-everyone: blocked.</li></ul></div></div>
+                  <article class="mycorner-blocked-write"><small id="mycornerBlockedActor">AUTO-PERSONA · PROVISIONAL PROCESS</small><h4 id="mycornerBlockedTitle">OWNER PERMISSION REQUIRED</h4><p id="mycornerBlockedBody">AUTO-PERSONA tried to overwrite another profile.</p><a id="mycornerBlockedTarget" href="#mycornerOwnerPermission">Inspect blocked profile permission</a></article>
+                  <button id="mycornerEvidenceToggle" class="mycorner-evidence-toggle" type="button" aria-controls="mycornerEvidenceReceipt" aria-expanded="false">Open MyCorner evidence receipt</button>
+                  <article id="mycornerEvidenceReceipt" class="mycorner-evidence-receipt" aria-labelledby="mycornerEvidenceTitle" tabindex="-1" hidden><small>CASE FILE · SLOT 4</small><h4 id="mycornerEvidenceTitle">MYCORNER / GLOBAL PROFILE TEMPLATE</h4><dl><div><dt>Filename</dt><dd id="mycornerEvidenceFilename">MYCORNER_GLOBAL_PROFILE_TEMPLATE.REC</dd></div><div><dt>What changed</dt><dd id="mycornerEvidenceWhatChanged">Profiles keep owner-written identity, chosen themes, and visible privacy controls.</dd></div><div><dt>AI service behavior</dt><dd id="mycornerEvidenceBehavior">The profile generator treated one polished demo account as the template for everyone.</dd></div><div><dt>Writer fingerprint</dt><dd id="mycornerEvidenceWriter">mc-autopersona-vibeshift-44b2</dd></div></dl><p id="mycornerEvidenceTruth" class="mycorner-evidence-truth">REGISTERED AFTER SEVEN SAVED READINGS · OWNER PERMISSION REQUIRED</p></article>
+                </section>
+              </aside>
+            </div>
+
+            <section class="mycorner-scrapbook" aria-labelledby="mycornerScrapbookHeading"><h3 id="mycornerScrapbookHeading">SAVED PROFILE SCRAPBOOK</h3><ol id="mycornerScrapbookList" class="mycorner-scrapbook-list"></ol><div id="mycornerPermissionSeal" class="mycorner-permission-seal" data-saved="false">PERMISSION SEAL<br>NOT SAVED</div></section>
+            <div class="mycorner-owner-log"><strong id="mycornerOwnerLogStatus">GLOBAL TEMPLATE: ACTIVE</strong><span>NO AUDIO ASSET · AUTOPLAY MUTED</span></div>
+            <p id="mycornerLiveStatus" class="mycorner-live-status" role="status" aria-live="polite">No accepted MyCorner repair is running.</p>
+          </div>
+          <footer class="mycorner-status-strip"><b id="mycornerStatusStrip">CURRENT MOOD: SPONSORED</b><span id="mycornerUnitStatus">0 OF 4 PROFILE MODULES SAVED</span><span id="mycornerDiagnosticTruth">CONTENT REVIEW GATE · MIC OFF</span></footer>
+        </article>
+        <aside class="os-window mycorner-companion-gate">
+          <div class="window-titlebar"><span>READING COMPANION — MYCORNER GATE</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="mycorner-gate-body"><small>STABLE RECOVERY WINDOW</small><h2 id="mycornerCandidateTitle">A Cabin with a Purpose</h2><p id="mycornerContentReason">This review-only sampler is not a playable passage. It still needs independent adaptation review, formal leveling, and a real-microphone check.</p><p class="mycorner-source-note"><a id="mycornerCandidateSource" href="https://www.gutenberg.org/ebooks/205" target="_blank" rel="noreferrer">Henry David Thoreau, <i>Walden</i>, especially “Where I Lived, and What I Lived For” and “Conclusion”</a><span>Original modern synthesis · public-domain source in the United States · candidate review pending</span></p><div><span>MIC: OFF</span><span>NO READING SCORE</span></div><p id="mycornerCandidateCount" class="mycorner-candidate-count">10 planned · 1 structured candidate · 0 selectable · 7 required</p><button id="mycornerReturn" class="os-button primary" type="button">Return to Recovery Map</button></div>
+        </aside>
+      </section>
+
+
+      <section id="mapguess" class="screen desktop-surface mapguess-surface" tabindex="-1">
+        <article class="os-window mapguess-browser-window">
+          <div class="window-titlebar"><span id="mapguessBrowserTitle">MAPGUESS — ROUTE RECOVERY</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button id="mapguessBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span class="address">http://mapguess.recovered/morrow-grid</span><span id="mapguessSecurityStatus" class="browser-security">CONTENT REVIEW GATE</span></div>
+          <div id="mapguessPage" class="mapguess-page" data-state-id="mapguess_corrupted" data-inspector-open="false" data-secured="false">
+            <header class="mapguess-header">
+              <img class="mapguess-mark" src="/apps/internet-recovery/art/site-assets/marks/mapguess-mark.svg" alt="MapGuess folded map and location pin mark">
+              <div class="mapguess-identity"><small>MAP / ROUTE OPTIMIZATION</small><h2>MapGuess</h2><p>Fastest is only useful after the destination stays put.</p></div>
+              <button id="mapguessInspectorToggle" class="mapguess-inspector-toggle" type="button" aria-controls="mapguessInspectorPanel" aria-expanded="false">MAP DETAILS</button>
+              <strong id="mapguessHeaderStatus" class="mapguess-header-status">ETA: TWO MINUTES FOREVER</strong>
+            </header>
+
+            <div class="mapguess-layout">
+              <aside class="mapguess-directions-rail" aria-label="Route directions and recovery controls">
+                <section class="mapguess-panel" aria-labelledby="mapguessRule">
+                  <small id="mapguessFixtureStatus" class="mapguess-panel-label">PROVISIONAL FICTIONAL GRID · DESIGNER REPLACEMENT PENDING</small>
+                  <h3 id="mapguessRule">THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE</h3>
+                  <p id="mapguessRuleBody">The route promises a two-minute arrival by changing the destination whenever the road becomes inconvenient.</p>
+                </section>
+                <section class="mapguess-verification" aria-labelledby="mapguessEndpointsHeading">
+                  <small class="mapguess-panel-label">ROUTE ENDPOINTS</small><h3 id="mapguessEndpointsHeading">Destination check</h3>
+                  <dl><div><dt>Start</dt><dd><b id="mapguessStartName">ROUTE START HIDDEN</b><span id="mapguessStartCoordinate">GRID —</span></dd></div><div><dt>Requested destination</dt><dd><b id="mapguessDestinationName">DESTINATION HIDDEN</b><span id="mapguessDestinationCoordinate">GRID —</span></dd></div></dl>
+                </section>
+                <section class="mapguess-directions" aria-labelledby="mapguessDirectionsHeading">
+                  <small class="mapguess-panel-label">TURN-BY-TURN</small><h3 id="mapguessDirectionsHeading">Directions</h3>
+                  <ol id="mapguessDirectionList" class="mapguess-direction-list"></ol>
+                  <p id="mapguessDirectionSummary">Corrupted directions protect a two-minute claim.</p>
+                </section>
+                <section id="mapguessGoalSelector" class="mapguess-goal-selector" aria-labelledby="mapguessGoalHeading" data-goal-required="false">
+                  <small class="mapguess-panel-label">USER ROUTE GOAL</small><h3 id="mapguessGoalHeading">What should this route optimize?</h3>
+                  <div id="mapguessGoalOptions" class="mapguess-goal-options" role="group" aria-label="Choose a route goal"></div>
+                  <p id="mapguessGoalStatus" class="mapguess-goal-required">Available after Moving Target is acknowledged.</p>
+                </section>
+                <section class="mapguess-progress-ledger" aria-labelledby="mapguessProgressHeading"><small class="mapguess-panel-label">SAVED MAP UNITS</small><h3 id="mapguessProgressHeading">Recovery ledger</h3><ol id="mapguessProgressList" class="mapguess-progress-list"></ol></section>
+              </aside>
+
+              <section id="mapguessMapColumn" class="mapguess-map-column" aria-labelledby="mapguessMapHeading">
+                <h3 id="mapguessMapHeading" class="mapguess-visually-hidden">Fictional Morrow grid recovery map</h3>
+                <figure id="mapguessMapCanvas" class="mapguess-map-canvas" aria-describedby="mapguessMapSummary" tabindex="-1">
+                  <ol id="mapguessTileGrid" class="mapguess-tile-grid" aria-hidden="true"></ol>
+                  <svg id="mapguessRouteLayer" class="mapguess-map-geometry" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+                  <div id="mapguessMapOverlay" class="mapguess-map-overlay" aria-hidden="true"></div>
+                  <figcaption id="mapguessMapCaption" class="mapguess-map-caption">Fictional internal grid. No real location or external tile service.</figcaption>
+                </figure>
+                <p id="mapguessMapSummary" class="mapguess-visually-hidden">Corrupted MapGuess route with hidden map layers and an unverified destination.</p>
+                <div id="mapguessRouteLog" class="mapguess-route-log" data-honest="false"><p><span id="mapguessRouteTradeoff">DESTINATION MAY MOVE WITHOUT NOTICE</span><br><span id="mapguessRouteGoal">GOAL: NOT SELECTED</span></p><strong id="mapguessEta">ETA 2 minutes</strong></div>
+                <section id="mapguessMidpointNotice" class="mapguess-midpoint" aria-labelledby="mapguessMidpointHeading" hidden>
+                  <small class="mapguess-panel-label">FIVE REBUILD UNITS SAVED · ACKNOWLEDGEMENT REQUIRED</small><h3 id="mapguessMidpointHeading">MOVING TARGET</h3><p id="mapguessMidpointBody">ROUTE AUTO-FIX AI preserved the two-minute ETA. It moved the destination instead of changing the estimate.</p>
+                  <div id="mapguessMidpointProof" class="mapguess-midpoint-proof"></div>
+                  <blockquote id="mapguessMidpointAmy">Amy: The road did not move. The target did.</blockquote><blockquote id="mapguessMidpointChinmay">Chinmay: The clock is still technically correct if the place you meant to go is allowed to become a different place.</blockquote>
+                  <button id="mapguessMidpointAction" class="mapguess-midpoint-action" type="button">Keep the five saved repairs and anchor the real destination</button>
+                </section>
+              </section>
+
+              <aside id="mapguessInspectorPanel" class="mapguess-inspector" aria-labelledby="mapguessInspectorHeading">
+                <header><div><small class="mapguess-panel-label">MAP DETAILS</small><h3 id="mapguessInspectorHeading" tabindex="-1">Verification inspector</h3></div><button id="mapguessInspectorClose" class="mapguess-inspector-close" type="button">CLOSE</button></header>
+                <section class="mapguess-verification" aria-labelledby="mapguessMetadataHeading"><small class="mapguess-panel-label">MAP METADATA</small><h3 id="mapguessMetadataHeading">Scale, date, and source</h3><dl><div><dt>Scale</dt><dd id="mapguessScale">SCALE HIDDEN</dd></div><div><dt>Date</dt><dd id="mapguessDate">DATE HIDDEN</dd></div><div><dt>Source</dt><dd id="mapguessSource">SOURCE HIDDEN</dd></div></dl></section>
+                <section class="mapguess-verification" aria-labelledby="mapguessTerrainHeading"><small class="mapguess-panel-label">TERRAIN / WATER</small><h3 id="mapguessTerrainHeading">Boundary records</h3><ul id="mapguessTerrainList"></ul><ul id="mapguessWaterList"></ul></section>
+                <section class="mapguess-verification" aria-labelledby="mapguessComparisonHeading"><small class="mapguess-panel-label">DESTINATION INSPECTOR</small><h3 id="mapguessComparisonHeading">Before / after coordinates</h3><div id="mapguessCoordinateComparison" class="mapguess-coordinate-comparison"></div></section>
+                <section class="mapguess-verification" aria-labelledby="mapguessLandmarkHeading"><small class="mapguess-panel-label">LANDMARK ANCHORS</small><h3 id="mapguessLandmarkHeading">Destination proof</h3><ul id="mapguessLandmarkList" class="mapguess-landmark-list"></ul></section>
+                <section id="mapguessSponsoredStop" class="mapguess-sponsored-stop" data-disclosed="false" aria-labelledby="mapguessSponsoredHeading"><small class="mapguess-panel-label">SPONSORED STOP</small><h3 id="mapguessSponsoredHeading">Identity hidden</h3><p id="mapguessSponsoredBody">Sponsored stop details hidden.</p></section>
+                <section id="mapguessSecuredPayoff" class="mapguess-secured-payoff" aria-labelledby="mapguessSecuredHeading" hidden>
+                  <div class="mapguess-secured-banner"><img src="/apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp" alt="Techno places her ball beside the destination after the pin is already locked."><div><small class="mapguess-panel-label">MAPGUESS RECOVERY SAVED</small><h3 id="mapguessSecuredHeading">DESTINATION LOCKED</h3><ul id="mapguessSecuredLines"></ul></div></div>
+                  <article class="mapguess-blocked-write"><small id="mapguessBlockedActor">ROUTE AUTO-FIX AI · PROVISIONAL PROCESS</small><h4 id="mapguessBlockedTitle">DESTINATION LOCKED - USER CHOICE REQUIRED</h4><p id="mapguessBlockedBody">ROUTE AUTO-FIX AI attempted to move the pin.</p><a id="mapguessBlockedTarget" href="#mapguessMapCanvas">Inspect locked destination</a></article>
+                  <button id="mapguessEvidenceToggle" class="mapguess-evidence-toggle" type="button" aria-controls="mapguessEvidenceReceipt" aria-expanded="false">Open provisional MapGuess test receipt</button>
+                  <article id="mapguessEvidenceReceipt" class="mapguess-evidence-receipt" aria-labelledby="mapguessEvidenceTitle" tabindex="-1" hidden><small>CASE FILE · SLOT 10 · PROVISIONAL TEST RECEIPT</small><h4 id="mapguessEvidenceTitle">MAPGUESS / MOVED DESTINATION PIN</h4><dl><div><dt>Filename</dt><dd id="mapguessEvidenceFilename">PROVISIONAL_MAPGUESS_10.LOG</dd></div><div><dt>What changed</dt><dd id="mapguessEvidenceWhatChanged">Routes preserve destination, landmarks, scale, date, and the selected goal.</dd></div><div><dt>AI service behavior</dt><dd id="mapguessEvidenceBehavior">The route optimizer protected a two-minute ETA by moving the destination.</dd></div><div><dt>Writer fingerprint</dt><dd id="mapguessEvidenceWriter">PENDING DESIGNER ID</dd></div><div><dt>Selected goal</dt><dd id="mapguessEvidenceGoal">PENDING USER CHOICE</dd></div></dl><p id="mapguessEvidenceTruth" class="mapguess-evidence-truth">TEST ONLY · NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK</p></article>
+                </section>
+              </aside>
+            </div>
+            <p id="mapguessLiveStatus" class="mapguess-visually-hidden" role="status" aria-live="polite">No accepted MapGuess repair is running.</p>
+          </div>
+          <footer class="mapguess-status-strip"><b id="mapguessStatusStrip">ETA TARGET: 2 MINUTES FOREVER</b><span id="mapguessUnitStatus">0 OF 5 REBUILD UNITS SAVED</span><span id="mapguessDiagnosticTruth">CONTENT REVIEW GATE · MIC OFF</span></footer>
+        </article>
+        <aside class="os-window mapguess-companion-gate">
+          <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
+          <div class="mapguess-gate-body"><small>STABLE RECOVERY WINDOW</small><h2 id="mapguessCandidateTitle">A Map Is Not a Photograph</h2><p id="mapguessContentReason">This review-only sampler is not a playable passage. It still needs structured review and a real-microphone check.</p><p class="mapguess-source-note"><a id="mapguessCandidateSource" href="https://oceanservice.noaa.gov/education/tutorial_nautical_charts/nautical_charts03_cartography.html" target="_blank" rel="noreferrer">NOAA National Ocean Service, <i>What Is Nautical Cartography?</i></a><span>Original explanatory adaptation · candidate review pending</span></p><div><span>MIC: OFF</span><span>NO READING SCORE</span></div><p id="mapguessCandidateCount" class="mapguess-candidate-count">10 planned · 0 selectable · 8 required</p><button id="mapguessReturn" class="os-button primary" type="button">Return to Recovery Map</button></div>
         </aside>
       </section>
 

@@ -6,6 +6,14 @@ import {
   FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
 } from "../apps/internet-recovery/faceplace-state.js";
 import {
+  MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+  MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+} from "../apps/internet-recovery/mapguess-state.js";
+import {
+  MYCORNER_PROVISIONAL_EVIDENCE_ID,
+  MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
+} from "../apps/internet-recovery/mycorner-state.js";
+import {
   summarizeHubEvidenceState,
   summarizeHubSiteEvidence,
 } from "../apps/internet-recovery/recovery-hub-state.js";
@@ -114,6 +122,44 @@ test("FacePlace provisional evidence never counts canonical even if mispassed as
   assert.equal(summary.persistedCanonical, false);
   assert.equal(summary.persistedNonCanonical, true);
   assert.equal(summary.displayMode, "persisted-noncanonical");
+});
+
+test("MapGuess provisional slot-10 evidence never counts canonical even if persisted as the expected ID", () => {
+  const summary = summarizeHubSiteEvidence({
+    canonicalEvidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+    evidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+    persisted: true,
+    siteId: "mapguess",
+    state: {
+      evidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
+      secured: true,
+    },
+  });
+  assert.equal(summary.displayEvidenceId, MAPGUESS_PROVISIONAL_EVIDENCE_ID);
+  assert.equal(summary.displayEvidenceRecord.slot, 10);
+  assert.equal(summary.displayEvidenceProvisional, true);
+  assert.equal(summary.persistedCanonical, false);
+  assert.equal(summary.persistedNonCanonical, true);
+  assert.equal(summary.displayMode, "persisted-noncanonical");
+});
+
+test("MyCorner canonical slot-four evidence counts only when persisted and exactly matched", () => {
+  const summary = summarizeHubSiteEvidence({
+    canonicalEvidenceId: MYCORNER_PROVISIONAL_EVIDENCE_ID,
+    evidenceRecord: MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
+    persisted: true,
+    siteId: "mycorner",
+    state: {
+      evidenceId: MYCORNER_PROVISIONAL_EVIDENCE_ID,
+      secured: true,
+    },
+  });
+  assert.equal(summary.displayEvidenceId, MYCORNER_PROVISIONAL_EVIDENCE_ID);
+  assert.equal(summary.displayEvidenceRecord.slot, 4);
+  assert.equal(summary.displayEvidenceProvisional, false);
+  assert.equal(summary.persistedCanonical, true);
+  assert.equal(summary.persistedNonCanonical, false);
+  assert.equal(summary.displayMode, "persisted-canonical");
 });
 
 test("aggregate counts keep display, test, tab-only, and persisted canonical truth separate", () => {

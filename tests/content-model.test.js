@@ -10,6 +10,8 @@ import {
 import { PHOTOSYNTHESIS_PASSAGE } from "../content/wikiwhy/photosynthesis-passage.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "../content/threadit/why-disagreement-matters.js";
 import { A_SECOND_READING_PASSAGE } from "../content/faceplace/a-second-reading.js";
+import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "../content/mapguess/a-map-is-not-a-photograph.js";
+import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "../content/mycorner/a-cabin-with-a-purpose.js";
 import {
   WIKIWHY_DECK_A_IDS,
   WIKIWHY_DECK_B_IDS,
@@ -28,6 +30,7 @@ import {
 } from "../apps/internet-recovery/faceplace-content.js";
 
 const PASSED_REVIEW = Object.freeze({
+  accessibility: "passed",
   adaptationFidelity: "passed",
   comprehension: "passed",
   editorial: "passed",
@@ -156,6 +159,11 @@ test("approved content cannot bypass pending review, microphone, or rights gates
     { review: { transcription: "candidate-pending-real-microphone-test" } },
   )), false);
   assert.equal(isSelectablePassage(approvedPassage(
+    A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
+    "pending-accessibility-review-passage",
+    { review: { accessibility: "candidate-pending-human-review" } },
+  )), false);
+  assert.equal(isSelectablePassage(approvedPassage(
     WHY_DISAGREEMENT_MATTERS_PASSAGE,
     "untested-microphone-passage",
     { transcriptionReview: { tested: false } },
@@ -164,6 +172,10 @@ test("approved content cannot bypass pending review, microphone, or rights gates
     WHY_DISAGREEMENT_MATTERS_PASSAGE,
     "unfrozen-public-domain-passage",
     { source: { ...WHY_DISAGREEMENT_MATTERS_PASSAGE.source, frozenRevision: null } },
+  )), false);
+  assert.equal(isSelectablePassage(approvedPassage(
+    A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
+    "placeholder-revision-passage",
   )), false);
 });
 
@@ -185,7 +197,9 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 3);
+  assert.equal(PASSAGE_CATALOG.length, 5);
+  assert.ok(PASSAGE_CATALOG.includes(A_CABIN_WITH_A_PURPOSE_PASSAGE));
+  assert.equal(isSelectablePassage(A_CABIN_WITH_A_PURPOSE_PASSAGE), false);
   assert.equal(selectNextWikiWhyPassage({ completedPassageIds: [] }).passage.id, "photosynthesis-a01");
   const exhausted = selectNextWikiWhyPassage({ completedPassageIds: ["photosynthesis-a01"] });
   assert.equal(exhausted.passage, null);

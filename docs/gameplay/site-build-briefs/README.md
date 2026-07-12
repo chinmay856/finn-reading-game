@@ -44,16 +44,16 @@ after WikiWhy.
 
 | # | Site | Brief | Runtime status |
 | --- | --- | --- | --- |
-| 1 | WikiWhy | [`01-wikiwhy.md`](01-wikiwhy.md) | Playable baseline; production campaign pack complete |
-| 2 | ThreadIt | [`02-threadit.md`](02-threadit.md) | Production design complete; implementation pending |
-| 3 | FacePlace | [`03-faceplace.md`](03-faceplace.md) | Production design complete; implementation pending |
-| 4 | MyCorner | [`04-mycorner.md`](04-mycorner.md) | Production design complete; implementation pending |
+| 1 | WikiWhy | [`01-wikiwhy.md`](01-wikiwhy.md) | Deployed speech-playable baseline; production campaign structure complete |
+| 2 | ThreadIt | [`02-threadit.md`](02-threadit.md) | Deployed structural test build; `MIC: OFF`; no reading score |
+| 3 | FacePlace | [`03-faceplace.md`](03-faceplace.md) | Deployed provisional structural test build; `MIC: OFF`; no reading score |
+| 4 | MyCorner | [`04-mycorner.md`](04-mycorner.md) | Canonical structural runtime integrated on active branch; publication pending; `MIC: OFF` |
 | 5 | Yahuh! Portal | [`05-yahuh-portal.md`](05-yahuh-portal.md) | Production design complete; implementation pending |
 | 6 | ViewTube | [`06-viewtube.md`](06-viewtube.md) | Production design complete; implementation pending |
 | 7 | Search-ish | [`07-search-ish.md`](07-search-ish.md) | Production design complete; implementation pending |
 | 8 | Amaze-On | [`08-amaze-on.md`](08-amaze-on.md) | Production design complete; implementation pending |
 | 9 | Spotty-Fi | [`09-spotty-fi.md`](09-spotty-fi.md) | Production design complete; implementation pending |
-| 10 | MapGuess | [`10-mapguess.md`](10-mapguess.md) | Production design complete; implementation pending |
+| 10 | MapGuess | [`10-mapguess.md`](10-mapguess.md) | Structural runtime deployed through PR #36; `MIC: OFF`; no reading score |
 
 ## Shared runtime rules
 

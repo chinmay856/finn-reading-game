@@ -7,9 +7,10 @@ explicit omissions are more useful than another full-board mockup.
 
 ## Synchronization point
 
-- Deployed `main`: `f1b1bab` through PR #33; ThreadIt CI, Pages, and public HTTPS
-  verification passed.
-- Active implementation branch: `agent/faceplace-honest-zero-foundation`.
+- Deployed `main`: `e776471` through PRs #34 and #35; FacePlace CI, Pages, and
+  complete public HTTPS diagnostic verification passed.
+- Current implementation branch: `agent/mapguess-moving-target-foundation`;
+  FacePlace is already merged and deployed.
 - Last integrated design tip: `1f843bc`.
 - Executable FacePlace shape: three false-tracker units, Honest Zero
   acknowledgement, three honest-recovery units, then a blocked boost and slot-3
@@ -18,9 +19,11 @@ explicit omissions are more useful than another full-board mockup.
   first-run readings required.
 - Only WikiWhy is currently speech-playable.
 
-The branch already has a semantic, responsive six-card feed; relationship and
-source views; ranked/chronological order controls; a Why panel; the lying
-tracker; Honest Zero; a permanent secured payoff; and a Recovery Map receipt.
+The deployed implementation has a semantic, responsive six-card feed;
+relationship and source views; ranked/chronological order controls; a Why panel;
+the lying tracker; Honest Zero; a permanent secured payoff; and a Recovery Map
+receipt. Its corrupted, Honest Zero at 1180 CSS pixels, and secured captures are
+published under [`review/`](review/README.md).
 The current fictional people, posts, graph, process IDs, evidence fields, and
 receipt are deliberately **provisional/test-only**. They are replaceable data,
 not design canon. The test receipt is excluded from canonical evidence counts

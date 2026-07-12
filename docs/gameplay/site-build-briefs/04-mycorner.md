@@ -1,5 +1,11 @@
 # Site brief 04: MyCorner
 
+> Runtime update, 2026-07-12: designer PR #38 freezes the canonical fixture in
+> [`MYCORNER_RUNTIME_RESPONSE_2026-07-12.md`](../../design/MYCORNER_RUNTIME_RESPONSE_2026-07-12.md).
+> The seven-unit structural runtime is integrated on
+> `agent/mycorner-owner-controls-foundation`; reading content remains `MIC: OFF`
+> with zero selectable records until every normal review gate passes.
+
 ## Core promise
 
 MyCorner teaches that identity and presentation should remain owner-controlled.

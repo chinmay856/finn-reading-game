@@ -74,6 +74,38 @@ import { selectNextFacePlacePassage } from "./apps/internet-recovery/faceplace-c
 import {
   FACEPLACE_PROVISIONAL_FEED_FIXTURE,
 } from "./apps/internet-recovery/faceplace-copy.js";
+import {
+  MAPGUESS_ANCHOR_UNITS,
+  MAPGUESS_REBUILD_UNITS,
+  calculateMapGuessReadingOutcome,
+} from "./apps/internet-recovery/mapguess-rules.js";
+import {
+  MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD,
+  MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeMapGuessMidpoint,
+  acknowledgeMapGuessMidpointState,
+  advanceMapGuessState,
+  readMapGuessState,
+  setMapGuessRouteGoal,
+  setMapGuessRouteGoalState,
+} from "./apps/internet-recovery/mapguess-state.js";
+import { getMapGuessCampaignView } from "./apps/internet-recovery/mapguess-view.js";
+import { selectNextMapGuessPassage } from "./apps/internet-recovery/mapguess-content.js";
+import {
+  MYCORNER_OWNER_LOCK_UNITS,
+  MYCORNER_RESTORE_UNITS,
+  calculateMyCornerReadingOutcome,
+} from "./apps/internet-recovery/mycorner-rules.js";
+import {
+  MYCORNER_PROVISIONAL_BLOCKED_WRITE_RECORD,
+  MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeMyCornerMidpoint,
+  acknowledgeMyCornerMidpointState,
+  advanceMyCornerState,
+  readMyCornerState,
+} from "./apps/internet-recovery/mycorner-state.js";
+import { getMyCornerCampaignView } from "./apps/internet-recovery/mycorner-view.js";
+import { selectNextMyCornerPassage } from "./apps/internet-recovery/mycorner-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -141,6 +173,19 @@ const state = {
   faceplaceWhyOpen: false,
   faceplaceShowActOneResult: false,
   faceplaceTransitionTimer: null,
+  mapguessState: readMapGuessState(localStateStorage),
+  mapguessPersisted: Boolean(localStateStorage),
+  mapguessDiagnosticMode: false,
+  mapguessDiagnosticState: readMapGuessState(null),
+  mapguessEvidenceReceiptOpen: false,
+  mapguessInspectorOpen: false,
+  mycornerState: readMyCornerState(localStateStorage),
+  mycornerPersisted: Boolean(localStateStorage),
+  mycornerDiagnosticMode: false,
+  mycornerDiagnosticState: readMyCornerState(null),
+  mycornerEvidenceReceiptOpen: false,
+  mycornerInspectorOpen: false,
+  mycornerComparisonView: "template",
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -294,13 +339,15 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
   const threadItScreen = name === "threadit";
   const facePlaceScreen = name === "faceplace";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen;
+  const myCornerScreen = name === "mycorner";
+  const mapGuessScreen = name === "mapguess";
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -309,17 +356,25 @@ function show(name) {
         ? "THREADIT SOURCE TRACE"
         : facePlaceScreen
           ? "FACEPLACE FEED RECOVERY"
+          : myCornerScreen
+            ? "MYCORNER PROFILE RECOVERY"
+          : mapGuessScreen
+            ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
   const securedThreadItTask = threadItScreen && visibleThreadItState.secured;
   const visibleFacePlaceState = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : state.faceplaceState;
   const securedFacePlaceTask = facePlaceScreen && visibleFacePlaceState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask;
+  const visibleMapGuessState = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
+  const securedMapGuessTask = mapGuessScreen && visibleMapGuessState.secured;
+  const visibleMyCornerState = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
+  const securedMyCornerTask = myCornerScreen && visibleMyCornerState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedMapGuessTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -327,6 +382,10 @@ function show(name) {
     $("taskSite").innerHTML = `<img src="${THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge]}" alt=""> <span>ThreadIt · SECURED</span>`;
   } else if (securedFacePlaceTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("faceplace").markImage}" alt=""> <span>FacePlace · SECURED TEST</span>`;
+  } else if (securedMyCornerTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("mycorner").markImage}" alt=""> <span>MyCorner · SECURED TEST</span>`;
+  } else if (securedMapGuessTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("mapguess").markImage}" alt=""> <span>MapGuess · SECURED TEST</span>`;
   } else {
     $("taskSite").textContent = name === "hub" ? "□ No site open" : `□ ${wikiWhyScreen ? "WikiWhy" : selectedSite.name}`;
   }
@@ -336,6 +395,10 @@ function show(name) {
       ? "ThreadIt secured"
       : securedFacePlaceTask
         ? "FacePlace secured test"
+        : securedMyCornerTask
+          ? "MyCorner secured test"
+        : securedMapGuessTask
+          ? "MapGuess secured test"
       : $("taskSite").textContent);
   document.querySelectorAll(".desktop-shortcut").forEach((button) => button.classList.toggle("active", button.dataset.action === "hub" && name === "hub"));
   if (screenChanged) requestAnimationFrame(() => $(name).focus({ preventScroll: true }));
@@ -349,6 +412,10 @@ function renderRecoveryHub() {
   const diagnosticThreadIt = state.threaditDiagnosticMode ? state.threaditDiagnosticState : null;
   const realFacePlace = state.faceplaceState;
   const diagnosticFacePlace = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : null;
+  const realMyCorner = state.mycornerState;
+  const diagnosticMyCorner = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : null;
+  const realMapGuess = state.mapguessState;
+  const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
     requiredCanonicalSiteIds: RECOVERY_SITES.map(({ id }) => id),
     sites: [
@@ -379,11 +446,31 @@ function renderRecoveryHub() {
         siteId: "faceplace",
         state: realFacePlace,
       },
+      {
+        canonicalEvidenceId: null,
+        diagnosticEvidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticMapGuess,
+        evidenceRecord: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.mapguessPersisted,
+        siteId: "mapguess",
+        state: realMapGuess,
+      },
+      {
+        canonicalEvidenceId: MYCORNER_PROVISIONAL_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticMyCorner,
+        evidenceRecord: MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.mycornerPersisted,
+        siteId: "mycorner",
+        state: realMyCorner,
+      },
     ],
   });
   const wikiWhyEvidence = evidenceSummary.bySiteId.wikiwhy;
   const threadItEvidence = evidenceSummary.bySiteId.threadit;
   const facePlaceEvidence = evidenceSummary.bySiteId.faceplace;
+  const mapGuessEvidence = evidenceSummary.bySiteId.mapguess;
+  const myCornerEvidence = evidenceSummary.bySiteId.mycorner;
   const diagnosticSecured = wikiWhyEvidence.testSecured;
   const realSecured = wikiWhyEvidence.realSecured;
   const wikiWhySecured = wikiWhyEvidence.displaySecured;
@@ -452,7 +539,62 @@ function renderRecoveryHub() {
           : facePlaceCompletedCount
             ? `ACT I ${facePlaceCompletedCount}/3`
             : "CAMPAIGN TEST BUILD";
-  const incomingIds = getIncomingSiteIds({ facePlaceSecured, threadItSecured, wikiWhySecured });
+  const visibleMapGuess = diagnosticMapGuess ?? realMapGuess;
+  const mapGuessView = getMapGuessCampaignView(visibleMapGuess);
+  const mapGuessSecured = mapGuessEvidence.displaySecured;
+  const mapGuessStatus = mapGuessEvidence.testSecured
+    ? "DESTINATION LOCKED · TEST"
+    : mapGuessEvidence.realSecured
+      ? mapGuessEvidence.persistedNonCanonical
+        ? "DESTINATION LOCKED · PROVISIONAL"
+        : state.mapguessPersisted
+          ? "DESTINATION LOCKED"
+          : "DESTINATION LOCKED · TAB ONLY"
+      : state.mapguessDiagnosticMode
+        ? mapGuessView.midpoint.actionRequired
+          ? "MOVING TARGET · TEST"
+          : mapGuessView.midpoint.acknowledged
+            ? `ANCHORS ${mapGuessView.progress.anchorCompletedCount}/3 · TEST`
+            : `MAP LAYERS ${mapGuessView.progress.rebuildCompletedCount}/5 · TEST`
+        : mapGuessView.midpoint.actionRequired
+          ? "MOVING TARGET"
+          : mapGuessView.midpoint.acknowledged
+            ? `ANCHORS ${mapGuessView.progress.anchorCompletedCount}/3`
+            : mapGuessView.progress.rebuildCompletedCount
+              ? `MAP LAYERS ${mapGuessView.progress.rebuildCompletedCount}/5`
+              : "CAMPAIGN TEST BUILD";
+  const visibleMyCorner = diagnosticMyCorner ?? realMyCorner;
+  const myCornerView = getMyCornerCampaignView(visibleMyCorner, {
+    comparisonView: state.mycornerComparisonView,
+  });
+  const myCornerSecured = myCornerEvidence.displaySecured;
+  const myCornerTestSuffix = state.mycornerDiagnosticMode ? " · TEST" : "";
+  const myCornerStatus = myCornerEvidence.testSecured
+    ? "OWNER CONTROLS RESTORED · TEST"
+    : myCornerEvidence.realSecured
+      ? myCornerEvidence.persistedNonCanonical
+        ? "OWNER CONTROLS RESTORED · PROVISIONAL"
+        : state.mycornerPersisted
+          ? "OWNER CONTROLS RESTORED"
+          : "OWNER CONTROLS RESTORED · TAB ONLY"
+      : myCornerView.midpoint.actionRequired
+        ? `TEMPLATE REVEAL READY${myCornerTestSuffix}`
+        : myCornerView.midpoint.acknowledged
+          ? `OWNER LOCKS ${myCornerView.progress.ownerLockCompletedCount}/3${myCornerTestSuffix}`
+          : myCornerView.progress.restoreCompletedCount
+            ? `MODULES ${myCornerView.progress.restoreCompletedCount}/4${myCornerTestSuffix}`
+            : "CAMPAIGN TEST BUILD";
+  // Never offer a completed case again. Until design freezes a replacement
+  // rotation, an honest shorter list is safer than inventing a third case.
+  const securedIncomingSiteIds = new Set([
+    facePlaceSecured ? "faceplace" : null,
+    mapGuessSecured ? "mapguess" : null,
+    myCornerSecured ? "mycorner" : null,
+    threadItSecured ? "threadit" : null,
+    wikiWhySecured ? "wikiwhy" : null,
+  ].filter(Boolean));
+  const incomingIds = getIncomingSiteIds({ facePlaceSecured, threadItSecured, wikiWhySecured })
+    .filter((siteId) => !securedIncomingSiteIds.has(siteId));
   const securedCount = evidenceSummary.persistedCanonicalCount;
   $("securedSiteCount").textContent = String(securedCount);
   $("securedSiteCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
@@ -461,13 +603,19 @@ function renderRecoveryHub() {
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
     const siteSecured = (site.id === "wikiwhy" && wikiWhySecured)
       || (site.id === "threadit" && threadItSecured)
-      || (site.id === "faceplace" && facePlaceSecured);
+      || (site.id === "faceplace" && facePlaceSecured)
+      || (site.id === "mycorner" && myCornerSecured)
+      || (site.id === "mapguess" && mapGuessSecured);
     const siteStatus = site.id === "wikiwhy"
       ? wikiWhyStatus
       : site.id === "threadit"
         ? threadItStatus
         : site.id === "faceplace"
           ? facePlaceStatus
+          : site.id === "mycorner"
+            ? myCornerStatus
+          : site.id === "mapguess"
+            ? mapGuessStatus
         : "DESIGN PREVIEW";
     const securedIcon = site.id === "wikiwhy"
       ? WIKIWHY_SECURED_SEAL_URL
@@ -490,6 +638,10 @@ function renderRecoveryHub() {
         ? threadItStatus
         : site.id === "faceplace"
           ? facePlaceStatus
+          : site.id === "mycorner"
+            ? myCornerStatus
+          : site.id === "mapguess"
+            ? mapGuessStatus
           : "DESIGN PREVIEW";
     return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${status}</small></div></button>`;
   }).join("");
@@ -509,10 +661,34 @@ function renderRecoveryHub() {
           : " · PROVISIONAL";
       return `<li class="evidence-slot-recovered" data-provisional="true"><img src="${site.markImage}" alt=""><div><b>FacePlace — ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint ?? "PENDING DESIGNER ID"}</span><span>TEST ONLY · not registered for the final evidence unlock</span></div></li>`;
     }
+    if (site.id === "mycorner" && myCornerSecured) {
+      const persistenceLabel = myCornerEvidence.testSecured
+        ? " · TEST"
+        : myCornerEvidence.tabOnly
+          ? " · TAB ONLY"
+          : "";
+      return `<li class="evidence-slot-recovered"><img src="${site.markImage}" alt=""><div><b>MyCorner — ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: OWNER PERMISSION REQUIRED</span></div></li>`;
+    }
+    if (site.id === "mapguess" && mapGuessSecured) {
+      const persistenceLabel = mapGuessEvidence.testSecured
+        ? " · TEST"
+        : mapGuessEvidence.tabOnly
+          ? " · TAB ONLY"
+          : " · PROVISIONAL";
+      return `<li class="evidence-slot-recovered" data-provisional="true"><img src="${site.markImage}" alt=""><div><b>MapGuess — ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint ?? "PENDING DESIGNER ID"}</span><span>TEST ONLY · slot 10 is excluded from the final evidence unlock</span></div></li>`;
+    }
     return `<li>${site.name} — awaiting evidence</li>`;
   }).join("");
   const support = $("amySupportMessage");
-  if (state.faceplaceDiagnosticMode) {
+  if (state.selectedSiteId === "mapguess" && state.mapguessDiagnosticMode) {
+    support.innerHTML = mapGuessEvidence.testSecured
+      ? "<b>MapGuess secured in TEST mode.</b> Slot 10 shows a provisional moved-destination receipt. It is excluded from the final evidence unlock until the designer freezes the registry row."
+      : `<b>MapGuess structural test.</b> ${mapGuessStatus}. Its candidate passage remains review-only, so every advance is simulated and creates no reading score.`;
+  } else if (state.selectedSiteId === "mycorner" && state.mycornerDiagnosticMode) {
+    support.innerHTML = myCornerEvidence.testSecured
+      ? "<b>MyCorner secured in TEST mode.</b> Slot 4 shows a provisional global-template receipt. It is excluded from the final evidence unlock until the designer freezes the registry row."
+      : `<b>MyCorner structural test.</b> ${myCornerStatus}. Its candidate passage remains review-only, so every advance is simulated and creates no reading score.`;
+  } else if (state.faceplaceDiagnosticMode) {
     support.innerHTML = facePlaceEvidence.testSecured
       ? "<b>FacePlace secured in TEST mode.</b> Slot 3 shows a provisional promoted-feed receipt. It is excluded from the final evidence unlock, and the next-case order still needs designer confirmation."
       : `<b>FacePlace structural test.</b> ${facePlaceStatus}. Its sampler is review-only, so every advance is simulated and creates no reading score.`;
@@ -525,7 +701,9 @@ function renderRecoveryHub() {
       ? "<b>WikiWhy secured in TEST mode.</b> The displayed receipt is diagnostic; no reading score or real campaign save was created."
       : `<b>WikiWhy diagnostic active.</b> ${wikiWhyStatus}. No voice recording or transcript is saved.`;
   } else {
-    if (facePlaceEvidence.realSecured) support.innerHTML = "<b>FacePlace is structurally secured.</b> Its slot-3 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the registry row.";
+    if (myCornerEvidence.realSecured) support.innerHTML = "<b>MyCorner is structurally secured.</b> Its slot-4 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the fixture and evidence registry row.";
+    else if (mapGuessEvidence.realSecured) support.innerHTML = "<b>MapGuess is structurally secured.</b> Its slot-10 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the fixture and evidence registry row.";
+    else if (facePlaceEvidence.realSecured) support.innerHTML = "<b>FacePlace is structurally secured.</b> Its slot-3 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the registry row.";
     else if (realThreadItSecured && state.threaditPersisted && realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy and ThreadIt secured.</b> Two evidence files are in Finn’s Files. FacePlace is available as a content-gated campaign test.";
     else if (realThreadItSecured && state.threaditPersisted) support.innerHTML = "<b>ThreadIt secured.</b> Its synthetic-consensus evidence is in Finn’s Files. The candidate passage gate remains closed for new scored readings.";
     else if (realThreadItSecured) support.innerHTML = "<b>ThreadIt is secured in this tab.</b> This browser did not save the evidence for reload.";
@@ -534,7 +712,7 @@ function renderRecoveryHub() {
     else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
     else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
     else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
-    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt and FacePlace have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
+    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt, FacePlace, MyCorner, and MapGuess have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
   }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
@@ -1136,6 +1314,462 @@ function renderFacePlaceDiagnosticPanel(campaignState) {
   $("diagnosticAdvance").disabled = view.secured || midpointPending;
 }
 
+function mapGuessCoordinateLabel(coordinate) {
+  return coordinate?.visible && coordinate.grid ? `GRID ${coordinate.grid}` : "GRID —";
+}
+
+function mapGuessPoint(coordinate) {
+  if (!coordinate?.visible || !Number.isFinite(coordinate.column) || !Number.isFinite(coordinate.row)) return null;
+  return {
+    left: (coordinate.column - 0.5) * 10,
+    top: (coordinate.row - 0.5) * 10,
+  };
+}
+
+function mapGuessSvgPoint(point) {
+  if (!point || !Number.isFinite(point.column) || !Number.isFinite(point.row)) return null;
+  return `${(point.column - 0.5) * 10},${(point.row - 0.5) * 10}`;
+}
+
+function syncMapGuessInspector() {
+  const drawerMode = getComputedStyle($("mapguessInspectorToggle")).display !== "none";
+  if (!drawerMode) state.mapguessInspectorOpen = false;
+  const open = drawerMode && state.mapguessInspectorOpen;
+  $("mapguessPage").dataset.inspectorOpen = String(open);
+  $("mapguessInspectorToggle").setAttribute("aria-expanded", String(open));
+  $("mapguessInspectorPanel").setAttribute("aria-hidden", String(drawerMode && !open));
+  $("mapguessInspectorPanel").inert = drawerMode && !open;
+  $("mapguessMapColumn").setAttribute("aria-hidden", String(open));
+  $("mapguessMapColumn").inert = open;
+}
+
+function setMapGuessInspectorDrawerOpen(open) {
+  state.mapguessInspectorOpen = Boolean(open);
+  $("mapguessPage").dataset.inspectorOpen = String(state.mapguessInspectorOpen);
+  $("mapguessInspectorToggle").setAttribute("aria-expanded", String(state.mapguessInspectorOpen));
+  $("mapguessInspectorPanel").setAttribute("aria-hidden", String(!state.mapguessInspectorOpen));
+  $("mapguessInspectorPanel").inert = !state.mapguessInspectorOpen;
+  $("mapguessMapColumn").setAttribute("aria-hidden", String(state.mapguessInspectorOpen));
+  $("mapguessMapColumn").inert = state.mapguessInspectorOpen;
+}
+
+function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const view = getMapGuessCampaignView(campaignState, { reducedMotion });
+  const page = $("mapguessPage");
+  page.dataset.stateId = view.stateId;
+  page.dataset.secured = String(view.secured);
+  page.dataset.motion = view.motion.mode;
+  page.dataset.midpointPending = String(view.midpoint.actionRequired);
+  page.setAttribute("aria-label", view.ariaDescription);
+  $("mapguessHeaderStatus").textContent = view.headerStatus;
+  $("mapguessFixtureStatus").textContent = "PROVISIONAL FICTIONAL GRID · DESIGNER REPLACEMENT PENDING";
+  $("mapguessFixtureStatus").title = view.fixture.notice;
+  $("mapguessRule").textContent = view.ruleLabel;
+  $("mapguessRuleBody").textContent = view.ruleBody;
+  $("mapguessStartName").textContent = view.start.displayName;
+  $("mapguessStartCoordinate").textContent = mapGuessCoordinateLabel(view.start.coordinate);
+  $("mapguessDestinationName").textContent = view.destinationComparison.original.displayName;
+  $("mapguessDestinationCoordinate").textContent = mapGuessCoordinateLabel(view.destinationComparison.original.coordinate);
+
+  $("mapguessDirectionList").innerHTML = view.directions.steps.length
+    ? view.directions.steps.map((step, index) => `<li class="mapguess-direction" data-connected="${view.directions.honest}" aria-label="${escapeMarkup(step.accessibleSummary)}"><b>${step.ordinal ?? index + 1}</b><span>${escapeMarkup(step.instruction)}</span></li>`).join("")
+    : '<li class="mapguess-direction" data-connected="false"><b>!</b><span>Choose a route goal to compare honest directions.</span></li>';
+  $("mapguessDirectionSummary").textContent = view.directions.accessibleSummary;
+
+  $("mapguessGoalSelector").dataset.goalRequired = String(view.goals.goalRequired);
+  $("mapguessGoalOptions").innerHTML = view.goals.options.map((goal) => `<button class="mapguess-goal-option" type="button" data-mapguess-goal="${escapeMarkup(goal.goalId)}" aria-pressed="${goal.selected}" ${goal.enabled ? "" : "disabled"}><b>${escapeMarkup(goal.label)}</b><span>${escapeMarkup(goal.tradeoff)}${goal.etaDisplay ? ` · ${escapeMarkup(goal.etaDisplay)}` : ""}</span></button>`).join("");
+  const selectedGoal = view.goals.options.find(({ selected }) => selected) ?? null;
+  $("mapguessGoalStatus").textContent = view.goals.locked
+    ? `${selectedGoal?.label ?? "Selected route"} locked to the requested destination.`
+    : view.goals.goalRequired
+      ? "DESTINATION LOCKED - USER CHOICE REQUIRED"
+      : view.goals.selectionAvailable
+        ? selectedGoal
+          ? `${selectedGoal.label} selected. You may change it until the final anchor reading begins.`
+          : "Choose fastest, safest, scenic, or accessible before the final anchor reading."
+        : "Available after Moving Target is acknowledged.";
+  $("mapguessGoalOptions").querySelectorAll("[data-mapguess-goal]").forEach((button) => {
+    button.onclick = () => setMapGuessGoalFromControl(button.dataset.mapguessGoal);
+  });
+
+  const allUnits = [...MAPGUESS_REBUILD_UNITS, ...MAPGUESS_ANCHOR_UNITS];
+  const savedUnitIds = new Set(view.progress.completedUnitIds);
+  $("mapguessProgressList").innerHTML = allUnits.map((unit, index) => {
+    const saved = savedUnitIds.has(unit.unitId);
+    return `<li data-saved="${saved}"><span>${index + 1}. ${escapeMarkup(unit.visibleRepair)}</span><b class="mapguess-progress-state">${saved ? "SAVED" : "PENDING"}</b></li>`;
+  }).join("");
+
+  const tilePositions = [[1, 3], [2, 3], [3, 2], [4, 2]];
+  $("mapguessTileGrid").innerHTML = view.tiles.map((tile, index) => {
+    const terrainKind = tile.terrain.some(({ kind }) => kind === "canal") ? "water" : tile.terrain.length ? "land" : "unknown";
+    const [column, row] = tilePositions[index] ?? [((index % 4) + 1), Math.floor(index / 4) + 1];
+    const names = tile.placeNames.map(({ label }) => label).join(" · ");
+    const terrain = tile.terrain.map(({ label }) => label).join(" · ");
+    return `<li class="mapguess-map-tile" data-restored="${tile.restored}" data-terrain="${terrainKind}" style="grid-column:${column};grid-row:${row}" title="${escapeMarkup(tile.accessibleSummary)}"><b>${escapeMarkup(tile.grid ?? "??")}</b><span>${escapeMarkup(names || terrain || "MAP LAYER UNREADABLE")}</span></li>`;
+  }).join("");
+
+  const roadMarkup = view.fixedRoadGeometry.roads.map((road) => {
+    const points = road.geometryPoints.map(mapGuessSvgPoint).filter(Boolean).join(" ");
+    if (!points) return "";
+    return `<polyline class="mapguess-road" points="${points}"></polyline><polyline class="mapguess-road-center" points="${points}"></polyline>`;
+  }).join("");
+  const routeMarkup = view.routeSegments.filter(({ visible }) => visible).map((segment) => {
+    const from = mapGuessSvgPoint(segment.fromPoint);
+    const to = mapGuessSvgPoint(segment.toPoint);
+    if (!from || !to) return "";
+    return `<polyline class="mapguess-route-segment" data-connected="${segment.connected}" data-selected-goal="${segment.selectedForGoal}" points="${from} ${to}"></polyline>`;
+  }).join("");
+  $("mapguessRouteLayer").innerHTML = roadMarkup + routeMarkup;
+
+  const comparison = view.destinationComparison;
+  const currentDestination = comparison.currentLocation === "moved" ? comparison.moved : comparison.original;
+  const destinationPoint = mapGuessPoint(currentDestination.coordinate) ?? { left: 55, top: 72 };
+  const destinationLabel = comparison.currentLocation === "moved" ? "MOVED" : comparison.currentLocation === "original" ? "LOCKED" : "?";
+  const destinationMarkup = `<span id="mapguessDestinationPin" class="mapguess-destination" data-location="${comparison.currentLocation === "original" ? "original" : "moved"}" data-locked="${comparison.original.locked}" style="left:${destinationPoint.left}%;top:${destinationPoint.top}%" title="${escapeMarkup(currentDestination.accessibleSummary)}">${destinationLabel}</span>`;
+  const landmarkMarkup = view.landmarks.map((landmark, index) => {
+    const point = mapGuessPoint(landmark.coordinate);
+    if (!point) return "";
+    return `<span class="mapguess-landmark" data-anchored="${landmark.anchored}" data-revealed="${landmark.revealed}" style="left:${point.left}%;top:${point.top}%" title="${escapeMarkup(landmark.accessibleSummary)}">L${index + 1}</span>`;
+  }).join("");
+  $("mapguessMapOverlay").innerHTML = destinationMarkup + landmarkMarkup;
+  $("mapguessMapSummary").textContent = view.ariaDescription;
+  $("mapguessMapCaption").textContent = `${view.coordinateSystem.accessibleSummary} No real location or external tile service.`;
+  $("mapguessRouteLog").dataset.honest = String(view.directions.honest);
+  $("mapguessRouteTradeoff").textContent = view.directions.tradeoff;
+  $("mapguessRouteGoal").textContent = `GOAL: ${selectedGoal?.label ?? "NOT SELECTED"}`;
+  $("mapguessEta").textContent = view.directions.etaDisplay ? `ETA ${view.directions.etaDisplay}` : "ETA —";
+
+  $("mapguessMidpointNotice").hidden = !view.midpoint.visible;
+  $("mapguessMidpointHeading").textContent = view.midpoint.title;
+  $("mapguessMidpointBody").textContent = view.midpoint.body;
+  $("mapguessMidpointAmy").textContent = `Amy: ${view.midpoint.amyLine}`;
+  $("mapguessMidpointChinmay").textContent = `Chinmay: ${view.midpoint.chinmayLine}`;
+  $("mapguessMidpointProof").innerHTML = view.midpoint.proof.proofLines.map((line) => {
+    const divider = line.indexOf(":");
+    const label = divider >= 0 ? line.slice(0, divider) : line;
+    const value = divider >= 0 ? line.slice(divider + 1).trim() : "VERIFIED";
+    const truth = value === "NO" ? "no" : "yes";
+    return `<dl class="mapguess-proof-row" data-truth="${truth}"><dt>${escapeMarkup(label)}</dt><dd>${escapeMarkup(value)}</dd></dl>`;
+  }).join("");
+  $("mapguessMidpointAction").disabled = !view.midpoint.actionRequired;
+
+  $("mapguessScale").textContent = view.scale.display;
+  $("mapguessDate").textContent = view.mapDate.display;
+  $("mapguessSource").textContent = view.source.displayName;
+  $("mapguessTerrainList").innerHTML = view.terrain.map((record) => `<li>${escapeMarkup(record.label)}${record.cells.length ? ` · ${escapeMarkup(record.cells.join(", "))}` : ""}</li>`).join("");
+  $("mapguessWaterList").innerHTML = view.water.map((record) => `<li>${escapeMarkup(record.label)}${record.cells.length ? ` · ${escapeMarkup(record.cells.join(", "))}` : ""}</li>`).join("");
+  $("mapguessCoordinateComparison").innerHTML = comparison.visible
+    ? [comparison.original, comparison.moved].map((destination) => `<div class="mapguess-coordinate-card" data-current="${comparison.currentLocation === (destination.requested ? "original" : "moved")}" data-locked="${destination.locked}"><span class="mapguess-coordinate-label">${destination.requested ? "REQUESTED" : "AI-MOVED"}</span><strong>${escapeMarkup(destination.displayName)}</strong><span>${escapeMarkup(mapGuessCoordinateLabel(destination.coordinate))}</span></div>`).join("")
+    : '<div class="mapguess-coordinate-card"><span class="mapguess-coordinate-label">DESTINATION COMPARISON</span><strong>INSPECTOR LOCKED</strong><span>Save five rebuild units to compare coordinates.</span></div>';
+  $("mapguessLandmarkList").innerHTML = view.landmarks.map((landmark) => `<li data-anchored="${landmark.anchored}"><span>${escapeMarkup(landmark.displayName)} · ${escapeMarkup(mapGuessCoordinateLabel(landmark.coordinate))}</span><b class="mapguess-progress-state">${landmark.anchored ? "ANCHORED" : landmark.revealed ? "REVEALED" : "HIDDEN"}</b></li>`).join("");
+  $("mapguessSponsoredStop").dataset.disclosed = String(view.sponsoredStop.disclosed);
+  $("mapguessSponsoredHeading").textContent = view.sponsoredStop.disclosed ? view.sponsoredStop.disclosure : "IDENTITY HIDDEN";
+  $("mapguessSponsoredBody").textContent = `${view.sponsoredStop.text}${view.sponsoredStop.coordinate.visible ? ` · ${mapGuessCoordinateLabel(view.sponsoredStop.coordinate)}` : ""}`;
+
+  if (!view.secured) state.mapguessEvidenceReceiptOpen = false;
+  $("mapguessSecuredPayoff").hidden = !view.secured;
+  $("mapguessSecuredHeading").textContent = view.securedPayoff?.title ?? "DESTINATION LOCKED";
+  $("mapguessSecuredLines").innerHTML = (view.securedPayoff?.bodyLines ?? []).map((line) => `<li>${escapeMarkup(line)}</li>`).join("");
+  $("mapguessBlockedActor").textContent = view.blockedWrite?.process?.displayName
+    ? `${view.blockedWrite.process.displayName} · ${view.blockedWrite.process.upstreamServiceId ?? "UPSTREAM PENDING"}`
+    : "ROUTE AUTO-FIX AI · PROVISIONAL PROCESS";
+  $("mapguessBlockedTitle").textContent = view.blockedWrite?.title ?? MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD.title;
+  $("mapguessBlockedBody").textContent = view.blockedWrite?.body ?? MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD.body;
+  $("mapguessBlockedTarget").textContent = view.blockedWrite?.fixtureAttempt?.attemptedCoordinate?.grid
+    ? `Blocked move to grid ${view.blockedWrite.fixtureAttempt.attemptedCoordinate.grid}`
+    : "Inspect locked destination";
+  $("mapguessEvidenceTitle").textContent = view.evidence?.title ?? MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.title;
+  $("mapguessEvidenceFilename").textContent = view.evidence?.filename ?? MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.filename;
+  $("mapguessEvidenceWhatChanged").textContent = view.evidence?.whatChanged ?? MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.whatChanged;
+  $("mapguessEvidenceBehavior").textContent = view.evidence?.aiBehavior ?? MAPGUESS_PROVISIONAL_EVIDENCE_RECORD.aiBehavior;
+  $("mapguessEvidenceWriter").textContent = view.evidence?.fixtureDraft?.writerFingerprint ?? view.evidence?.writerFingerprint ?? "PENDING DESIGNER ID";
+  $("mapguessEvidenceGoal").textContent = view.evidence?.routeGoalLabel ?? selectedGoal?.label ?? "PENDING USER CHOICE";
+  $("mapguessEvidenceToggle").setAttribute("aria-expanded", String(view.secured && state.mapguessEvidenceReceiptOpen));
+  $("mapguessEvidenceToggle").textContent = state.mapguessEvidenceReceiptOpen ? "Close provisional MapGuess test receipt" : "Open provisional MapGuess test receipt";
+  $("mapguessEvidenceReceipt").hidden = !view.secured || !state.mapguessEvidenceReceiptOpen;
+
+  $("mapguessStatusStrip").textContent = view.secured
+    ? "DESTINATION LOCKED - USER CHOICE REQUIRED"
+    : view.midpoint.discovered
+      ? "ROAD FIXED · DESTINATION MOVE DISCLOSED"
+      : "ETA TARGET: 2 MINUTES FOREVER";
+  $("mapguessUnitStatus").textContent = view.secured
+    ? "3 OF 3 DESTINATION ANCHORS SAVED"
+    : view.midpoint.acknowledged
+      ? `${view.progress.anchorCompletedCount} OF 3 DESTINATION ANCHORS SAVED`
+      : `${view.progress.rebuildCompletedCount} OF 5 REBUILD UNITS SAVED`;
+  $("mapguessDiagnosticTruth").textContent = diagnosticMode ? "SIMULATED · NO READING SCORE" : "CONTENT REVIEW GATE · MIC OFF";
+  $("mapguessLiveStatus").textContent = campaignState.lastReaction ?? view.lastRepairAnnouncement;
+  $("mapguessBrowserTitle").textContent = view.secured
+    ? "MAPGUESS — DESTINATION LOCKED"
+    : view.midpoint.discovered
+      ? "MAPGUESS — MOVING TARGET"
+      : "MAPGUESS — ROUTE RECOVERY";
+  $("mapguessSecurityStatus").textContent = view.secured ? "DESTINATION LOCKED" : diagnosticMode ? "STRUCTURAL TEST" : "CONTENT REVIEW GATE";
+
+  const selection = selectNextMapGuessPassage(state.mapguessState);
+  $("mapguessCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("mapguessContentReason").textContent = selection.passage
+    ? "A reviewed MapGuess passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for an ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed records are still required.`;
+
+  syncMapGuessInspector();
+  return view;
+}
+
+function renderMapGuessDiagnosticPanel(campaignState) {
+  const view = getMapGuessCampaignView(campaignState);
+  const midpointPending = view.midpoint.actionRequired;
+  const goalRequired = view.goals.goalRequired;
+  if (view.secured) {
+    $("diagnosticPhase").textContent = "MAPGUESS · DESTINATION LOCKED";
+    $("diagnosticSummary").textContent = "Eight simulated readings completed the 5+3 campaign. Slot 10 remains explicitly provisional and test-only.";
+    $("diagnosticAdvance").textContent = "MapGuess ending reached";
+  } else if (midpointPending) {
+    $("diagnosticPhase").textContent = "MAPGUESS · MOVING TARGET";
+    $("diagnosticSummary").textContent = "Five rebuild units remain saved. Acknowledge the unchanged road and moved destination before anchoring anything.";
+    $("diagnosticAdvance").textContent = "Acknowledge Moving Target first";
+  } else if (goalRequired) {
+    $("diagnosticPhase").textContent = "MAPGUESS · ROUTE GOAL REQUIRED";
+    $("diagnosticSummary").textContent = "Two destination anchors are saved. Choose fastest, safest, scenic, or accessible before the final anchor reading.";
+    $("diagnosticAdvance").textContent = "Choose a route goal first";
+  } else if (view.midpoint.acknowledged) {
+    const next = MAPGUESS_ANCHOR_UNITS[view.progress.anchorCompletedCount];
+    $("diagnosticPhase").textContent = `MAPGUESS ANCHORS · ${view.progress.anchorCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.completedUnitCount} simulated readings · next result ${next?.visibleRepair.toLowerCase() ?? "locks the route"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated MapGuess reading →";
+  } else {
+    const next = MAPGUESS_REBUILD_UNITS[view.progress.rebuildCompletedCount];
+    $("diagnosticPhase").textContent = `MAPGUESS REBUILD · ${view.progress.rebuildCompletedCount} OF 5`;
+    $("diagnosticSummary").textContent = `${view.progress.rebuildCompletedCount} simulated reading${view.progress.rebuildCompletedCount === 1 ? "" : "s"} · next result ${next?.visibleRepair.toLowerCase() ?? "proves Moving Target"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated MapGuess reading →";
+  }
+  $("diagnosticAdvance").disabled = view.secured || midpointPending || goalRequired;
+}
+
+function syncMyCornerInspector() {
+  const drawerMode = getComputedStyle($("mycornerInspectorToggle")).display !== "none";
+  if (!drawerMode) state.mycornerInspectorOpen = false;
+  const open = drawerMode && state.mycornerInspectorOpen;
+  $("mycornerPage").dataset.inspectorOpen = String(open);
+  $("mycornerInspectorToggle").setAttribute("aria-expanded", String(open));
+  $("mycornerOwnerInspector").setAttribute("aria-hidden", String(drawerMode && !open));
+  $("mycornerOwnerInspector").inert = drawerMode && !open;
+  $("mycornerProfileColumn").setAttribute("aria-hidden", String(open));
+  $("mycornerProfileColumn").inert = open;
+}
+
+function setMyCornerInspectorOpen(open) {
+  state.mycornerInspectorOpen = Boolean(open);
+  syncMyCornerInspector();
+}
+
+function renderMyCornerCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const view = getMyCornerCampaignView(campaignState, {
+    comparisonView: state.mycornerComparisonView,
+    reducedMotion,
+  });
+  const page = $("mycornerPage");
+  const live = view.liveProfile;
+  // Once the midpoint is discovered, keep every saved module mounted as the
+  // base DOM. The active template is a separate site-owned layer above it.
+  const profile = view.midpoint.discovered ? view.comparison.savedProfile : live;
+  page.dataset.stateId = view.stateId;
+  page.dataset.secured = String(view.secured);
+  page.dataset.ruleRepaired = String(view.midpoint.discovered);
+  page.dataset.motion = view.motion.mode;
+  page.setAttribute("aria-label", view.ariaDescription);
+  $("mycornerHeaderStatus").textContent = view.headerStatus;
+  $("mycornerFixtureStatus").textContent = "CANONICAL FICTIONAL PROFILE FIXTURE";
+  $("mycornerFixtureStatus").title = view.fixture.notice;
+  $("mycornerRule").textContent = view.ruleLabel;
+  $("mycornerRuleBody").textContent = view.ruleBody;
+
+  $("mycornerOwnerAvatar").textContent = profile.owner.initials ?? "?";
+  $("mycornerProfileHeading").textContent = profile.owner.displayName ?? profile.owner.label ?? "PROFILE OWNER HIDDEN";
+  $("mycornerOwnerHandle").textContent = `${profile.owner.handle ?? "OWNER FIELD PENDING"}${profile.owner.restored ? " · OWNER" : " · TEMPLATE"}`;
+  $("mycornerMood").textContent = profile.currentMood?.value ?? "MOOD HIDDEN";
+  $("mycornerPrivacyStatus").textContent = profile.privacyControls[0]?.value ?? "PRIVACY HIDDEN";
+  $("mycornerAddress").textContent = `http://mycorner.recovered/${profile.owner.handle ? profile.owner.handle.replace(/^@/u, "") : "profile-template"}`;
+
+  const friendNameById = new Map(profile.friends.map((friend) => [friend.id, friend.displayName]));
+  $("mycornerFriendsList").innerHTML = profile.friends.length
+    ? profile.friends.map((friend) => `<li class="mycorner-friend" aria-label="${escapeMarkup(friend.accessibleSummary)}"><span class="mycorner-friend-avatar" aria-hidden="true">${escapeMarkup(friend.initials)}</span><b>${escapeMarkup(friend.displayName)}</b></li>`).join("")
+    : `<li class="mycorner-friend"><span class="mycorner-friend-avatar" aria-hidden="true">C</span><b>${escapeMarkup(profile.friendGroups[0]?.label ?? "FRIENDS HIDDEN")}</b></li>`;
+  $("mycornerGroupsList").innerHTML = profile.friendGroups.map((group) => {
+    const members = (group.memberIds ?? []).map((id) => friendNameById.get(id)).filter(Boolean).join(", ");
+    return `<li aria-label="${escapeMarkup(group.accessibleSummary)}"><b>${escapeMarkup(group.label)}</b>${members ? `<span> · ${escapeMarkup(members)}</span>` : ""}</li>`;
+  }).join("");
+  $("mycornerMusicTitle").textContent = profile.music.title ?? profile.music.label ?? "MUSIC HIDDEN";
+  $("mycornerAutoplayStatus").textContent = `${profile.music.artist ? `${profile.music.artist} · ` : ""}${profile.music.claimedAutoplayRequired ? "AUTOPLAY CLAIM: UNPAUSABLE" : "AUTOPLAY: OFF"} · NO AUDIO ASSET`;
+  $("mycornerVisitorCounter").textContent = String(profile.counter.value ?? "—");
+  $("mycornerVisitorCounter").setAttribute("aria-label", `${profile.counter.label ?? "Visitor counter"}: ${profile.counter.value ?? "unavailable"}`);
+
+  $("mycornerAboutHeading").textContent = profile.about.restored ? "Owner-written About Me" : "Generated from a starter profile";
+  $("mycornerAbout").textContent = profile.about.text ?? profile.about.value ?? "Owner-written About Me hidden.";
+  $("mycornerPostList").innerHTML = profile.posts.length
+    ? profile.posts.map((post) => `<li aria-label="${escapeMarkup(post.accessibleSummary)}"><header><b>${profile.owner.restored ? "PROFILE OWNER" : "GENERATED PROFILE"}</b>${post.timestamp ? `<time datetime="${escapeMarkup(post.timestamp)}">${escapeMarkup(new Date(post.timestamp).toLocaleDateString())}</time>` : ""}</header><p>${escapeMarkup(post.body)}</p></li>`).join("")
+    : '<li><header><b>OWNER POSTS</b></header><p>Saved owner posts remain underneath the active template.</p></li>';
+  $("mycornerCommentList").innerHTML = profile.comments.map((comment) => `<li aria-label="${escapeMarkup(comment.accessibleSummary)}"><b>${escapeMarkup(friendNameById.get(comment.authorId) ?? "SAVED COMMENT AUTHOR")}</b> · ${escapeMarkup(comment.body)}</li>`).join("");
+
+  const comparisonAvailable = view.comparison.available && !view.secured;
+  const savedComparison = view.comparison.activeView === "saved";
+  $("mycornerTemplateOverlay").hidden = !comparisonAvailable;
+  $("mycornerTemplateOverlay").dataset.comparisonView = savedComparison ? "saved" : "template";
+  $("mycornerTemplateEngine").textContent = savedComparison ? "SAVED OWNER SNAPSHOT" : view.midpoint.title ?? "TOM-ISH THEME GENERATOR";
+  const template = view.comparison.templateProfile;
+  $("mycornerComparison").innerHTML = savedComparison
+    ? view.savedChoices.map((choice) => `<li><b>${escapeMarkup(choice.label)}</b><span>${escapeMarkup(choice.value)}</span></li>`).join("")
+    : [
+        ["PROFILE OWNER", live.owner.displayName],
+        ["CURRENT MOOD", live.currentMood?.value],
+        ["ABOUT ME", live.about.text ?? live.about.value],
+        ["FRIEND LAYOUT", live.friendGroups[0]?.label],
+        ["THEME", live.theme.name ?? live.theme.label],
+        ["MUSIC", live.music.title ?? live.music.label],
+        ["PRIVACY", live.privacyControls[0]?.value],
+      ].map(([label, value]) => `<li><b>${escapeMarkup(label)}</b><span>${escapeMarkup(value ?? "PENDING")}</span></li>`).join("");
+  $("mycornerTemplateId").textContent = template?.id ?? "TEMPLATE ID HIDDEN";
+  $("mycornerApplyStatus").textContent = view.truth.globalApplyBlocked ? "blocked" : "active";
+  $("mycornerProfileViewToggle").hidden = !comparisonAvailable;
+  $("mycornerProfileViewToggle").setAttribute("aria-pressed", String(savedComparison));
+  $("mycornerProfileViewToggle").textContent = savedComparison
+    ? view.midpoint.viewTemplateAction
+    : view.midpoint.viewSavedAction;
+
+  $("mycornerMidpointNotice").hidden = !view.midpoint.visible;
+  $("mycornerMidpointHeading").textContent = view.midpoint.title ?? "APPLY TO EVERYONE";
+  $("mycornerMidpointProof").innerHTML = (view.midpoint.proofLines ?? []).map((line) => {
+    const divider = line.indexOf(":");
+    const label = divider >= 0 ? line.slice(0, divider) : line;
+    const value = divider >= 0 ? line.slice(divider + 1).trim() : "VERIFIED";
+    return `<div><dt>${escapeMarkup(label)}</dt><dd>${escapeMarkup(value)}</dd></div>`;
+  }).join("");
+  $("mycornerMidpointAmy").textContent = view.midpoint.amyLine ? `Amy: ${view.midpoint.amyLine}` : "";
+  $("mycornerMidpointChinmay").textContent = view.midpoint.chinmayLine ? `Chinmay: ${view.midpoint.chinmayLine}` : "";
+  $("mycornerMidpointAction").disabled = !view.midpoint.actionRequired;
+
+  $("mycornerThemeHeading").textContent = profile.theme.name ?? profile.theme.label ?? "THEME HIDDEN";
+  const swatches = profile.theme.swatches ?? ["#244A88", "#8097B8", "#17212B", "#C4478C"];
+  $("mycornerThemeSwatches").innerHTML = swatches.map((swatch, index) => `<span class="mycorner-theme-swatch" style="background:${escapeMarkup(swatch)}" aria-label="Theme swatch ${index + 1}: ${escapeMarkup(swatch)}">${index + 1}</span>`).join("");
+  const sourceLines = Array.isArray(profile.sourceView.lines)
+    ? profile.sourceView.lines
+    : [`${profile.sourceView.label ?? "SOURCE"} = ${profile.sourceView.value ?? "UNAVAILABLE"}`];
+  $("mycornerSourceView").textContent = sourceLines.join("\n");
+  $("mycornerSourceView").setAttribute("aria-label", profile.sourceView.accessibleSummary);
+  $("mycornerPrivacyControls").innerHTML = profile.privacyControls.map((control) => `<li aria-label="${escapeMarkup(control.accessibleSummary)}"><span>${escapeMarkup(control.label)}</span><strong>${escapeMarkup(control.value)}</strong></li>`).join("");
+  $("mycornerOwnerPermission").dataset.blocked = String(view.truth.globalApplyBlocked);
+  $("mycornerPermissionStatus").textContent = view.truth.globalApplyBlocked
+    ? "BLOCKED · OWNER PERMISSION REQUIRED"
+    : view.midpoint.discovered
+      ? "ACTIVE · OWNER LOCKS IN PROGRESS"
+      : "PROCESS HIDDEN · OWNER LOCKS PENDING";
+
+  if (!view.secured) state.mycornerEvidenceReceiptOpen = false;
+  $("mycornerSecuredPayoff").hidden = !view.secured;
+  $("mycornerSecuredHeading").textContent = view.securedPayoff?.title ?? "OWNER CONTROLS RESTORED";
+  $("mycornerSecuredLines").innerHTML = (view.securedPayoff?.bodyLines ?? []).map((line) => `<li>${escapeMarkup(line)}</li>`).join("");
+  $("mycornerBlockedActor").textContent = view.blockedWrite?.process?.displayName
+    ? `${view.blockedWrite.process.displayName} · ${view.blockedWrite.process.upstreamServiceId ?? "UPSTREAM PENDING"}`
+    : "AUTO-PERSONA · AI REPAIR SERVICE";
+  $("mycornerBlockedTitle").textContent = view.blockedWrite?.title ?? MYCORNER_PROVISIONAL_BLOCKED_WRITE_RECORD.title;
+  $("mycornerBlockedBody").textContent = view.blockedWrite?.body ?? MYCORNER_PROVISIONAL_BLOCKED_WRITE_RECORD.body;
+  $("mycornerBlockedTarget").textContent = view.blockedWrite?.fixtureAttempt?.targetId
+    ? `Blocked profile: ${view.blockedWrite.fixtureAttempt.targetId}`
+    : "Inspect blocked profile permission";
+  $("mycornerEvidenceTitle").textContent = view.evidence?.title ?? MYCORNER_PROVISIONAL_EVIDENCE_RECORD.title;
+  $("mycornerEvidenceFilename").textContent = view.evidence?.filename ?? MYCORNER_PROVISIONAL_EVIDENCE_RECORD.filename;
+  $("mycornerEvidenceWhatChanged").textContent = view.evidence?.whatChanged ?? MYCORNER_PROVISIONAL_EVIDENCE_RECORD.whatChanged;
+  $("mycornerEvidenceBehavior").textContent = view.evidence?.aiBehavior ?? MYCORNER_PROVISIONAL_EVIDENCE_RECORD.aiBehavior;
+  $("mycornerEvidenceWriter").textContent = view.evidence?.fixtureDraft?.writerFingerprint ?? view.evidence?.writerFingerprint ?? "mc-autopersona-vibeshift-44b2";
+  $("mycornerEvidenceToggle").setAttribute("aria-expanded", String(view.secured && state.mycornerEvidenceReceiptOpen));
+  $("mycornerEvidenceToggle").textContent = state.mycornerEvidenceReceiptOpen ? "Close MyCorner evidence receipt" : "Open MyCorner evidence receipt";
+  $("mycornerEvidenceReceipt").hidden = !view.secured || !state.mycornerEvidenceReceiptOpen;
+
+  $("mycornerScrapbookList").innerHTML = view.scrapbook.slots.map((slot) => `<li class="mycorner-scrapbook-slot" data-saved="${slot.completed}" aria-label="${escapeMarkup(slot.accessibleSummary)}"><span>${escapeMarkup(slot.label)}</span><b class="mycorner-progress-state">${slot.completed ? "SAVED" : "PENDING"}</b></li>`).join("");
+  $("mycornerPermissionSeal").dataset.saved = String(view.scrapbook.permissionSeal.completed);
+  $("mycornerPermissionSeal").textContent = view.scrapbook.permissionSeal.completed ? "OWNER PERMISSION REQUIRED" : "PERMISSION SEAL NOT SAVED";
+  $("mycornerPermissionSeal").setAttribute("aria-label", view.scrapbook.permissionSeal.accessibleSummary);
+  $("mycornerOwnerLogStatus").textContent = view.truth.globalApplyBlocked
+    ? "GLOBAL TEMPLATE: BLOCKED"
+    : view.midpoint.discovered
+      ? "GLOBAL TEMPLATE: ACTIVE"
+      : "GLOBAL TEMPLATE: PROCESS HIDDEN";
+
+  $("mycornerStatusStrip").textContent = view.secured
+    ? "OWNER CONTROLS RESTORED"
+    : view.midpoint.discovered
+      ? "APPLY TO EVERYONE: ACTIVE"
+      : "CURRENT MOOD: SPONSORED";
+  $("mycornerUnitStatus").textContent = view.secured
+    ? "3 OF 3 OWNER LOCKS SAVED"
+    : view.midpoint.acknowledged
+      ? `${view.progress.ownerLockCompletedCount} OF 3 OWNER LOCKS SAVED`
+      : `${view.progress.restoreCompletedCount} OF 4 PROFILE MODULES SAVED`;
+  $("mycornerDiagnosticTruth").textContent = diagnosticMode ? "SIMULATED · NO READING SCORE" : "CONTENT REVIEW GATE · MIC OFF";
+  $("mycornerLiveStatus").textContent = campaignState.lastReaction ?? view.lastRepairAnnouncement;
+  $("mycornerBrowserTitle").textContent = view.secured
+    ? "MYCORNER — OWNER CONTROLS RESTORED"
+    : view.midpoint.discovered
+      ? "MYCORNER — APPLY TO EVERYONE"
+      : "MYCORNER — PROFILE RECOVERY";
+  $("mycornerSecurityStatus").textContent = view.secured ? "OWNER CONTROLS RESTORED" : diagnosticMode ? "STRUCTURAL TEST" : "CONTENT REVIEW GATE";
+
+  const selection = selectNextMyCornerPassage(state.mycornerState);
+  $("mycornerCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("mycornerContentReason").textContent = selection.passage
+    ? "A reviewed MyCorner passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed records are still required.`;
+
+  syncMyCornerInspector();
+  return view;
+}
+
+function renderMyCornerDiagnosticPanel(campaignState) {
+  const view = getMyCornerCampaignView(campaignState, { comparisonView: state.mycornerComparisonView });
+  const midpointPending = view.midpoint.actionRequired;
+  if (view.secured) {
+    $("diagnosticPhase").textContent = "MYCORNER · OWNER CONTROLS RESTORED";
+    $("diagnosticSummary").textContent = "Seven simulated readings completed the 4+3 campaign. Slot 4 remains explicitly provisional and test-only.";
+    $("diagnosticAdvance").textContent = "MyCorner ending reached";
+  } else if (midpointPending) {
+    $("diagnosticPhase").textContent = "MYCORNER · APPLY TO EVERYONE";
+    $("diagnosticSummary").textContent = "Four profile groups remain saved underneath the active template. Acknowledge the reveal before restoring owner locks.";
+    $("diagnosticAdvance").textContent = "Acknowledge Apply to Everyone first";
+  } else if (view.midpoint.acknowledged) {
+    const next = MYCORNER_OWNER_LOCK_UNITS[view.progress.ownerLockCompletedCount];
+    $("diagnosticPhase").textContent = `MYCORNER OWNER LOCKS · ${view.progress.ownerLockCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.completedUnitCount} simulated readings · next result ${next?.visibleRepair.toLowerCase() ?? "blocks the global template"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated MyCorner reading →";
+  } else {
+    const next = MYCORNER_RESTORE_UNITS[view.progress.restoreCompletedCount];
+    $("diagnosticPhase").textContent = `MYCORNER PROFILE RESTORE · ${view.progress.restoreCompletedCount} OF 4`;
+    $("diagnosticSummary").textContent = `${view.progress.restoreCompletedCount} simulated reading${view.progress.restoreCompletedCount === 1 ? "" : "s"} · next result ${next?.visibleRepair.toLowerCase() ?? "reveals the template"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated MyCorner reading →";
+  }
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+}
+
+function openMyCornerExperience() {
+  state.selectedSiteId = "mycorner";
+  hideCharacterDialog();
+  const visibleState = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
+  renderMyCornerCampaign(visibleState, { diagnosticMode: state.mycornerDiagnosticMode });
+  renderMyCornerDiagnosticPanel(visibleState);
+  show("mycorner");
+}
+
+function openMapGuessExperience() {
+  state.selectedSiteId = "mapguess";
+  hideCharacterDialog();
+  const visibleState = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
+  renderMapGuessCampaign(visibleState, { diagnosticMode: state.mapguessDiagnosticMode });
+  renderMapGuessDiagnosticPanel(visibleState);
+  show("mapguess");
+}
+
 function openFacePlaceExperience() {
   state.selectedSiteId = "faceplace";
   hideCharacterDialog();
@@ -1186,6 +1820,14 @@ function openRecoverySite(siteId) {
     openFacePlaceExperience();
     return;
   }
+  if (site.id === "mycorner" && site.runtimeAvailable) {
+    openMyCornerExperience();
+    return;
+  }
+  if (site.id === "mapguess" && site.runtimeAvailable) {
+    openMapGuessExperience();
+    return;
+  }
   renderSitePreview(site);
 }
 
@@ -1204,6 +1846,11 @@ function returnToHub() {
   state.faceplaceWhyOpen = false;
   clearTimeout(state.faceplaceTransitionTimer);
   state.faceplaceShowActOneResult = false;
+  state.mapguessEvidenceReceiptOpen = false;
+  state.mapguessInspectorOpen = false;
+  state.mycornerEvidenceReceiptOpen = false;
+  state.mycornerInspectorOpen = false;
+  state.mycornerComparisonView = "template";
   renderRecoveryHub();
   show("hub");
 }
@@ -1566,6 +2213,14 @@ function beginDiagnosticShield() {
 }
 
 async function advanceDiagnosticExperience() {
+  if (state.selectedSiteId === "mycorner") {
+    await advanceMyCornerDiagnosticExperience();
+    return;
+  }
+  if (state.selectedSiteId === "mapguess") {
+    await advanceMapGuessDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "faceplace") {
     await advanceFacePlaceDiagnosticExperience();
     return;
@@ -1701,6 +2356,262 @@ function resetFacePlaceDiagnosticExperience() {
   $("faceplaceLiveStatus").textContent = "FACEPLACE TEST RESET · NO READING SCORE CREATED";
 }
 
+function applyMapGuessDiagnosticState(nextState) {
+  state.mapguessDiagnosticMode = true;
+  state.mapguessDiagnosticState = nextState;
+  renderMapGuessCampaign(nextState, { diagnosticMode: true });
+  renderMapGuessDiagnosticPanel(nextState);
+  renderRecoveryHub();
+  show("mapguess");
+}
+
+async function advanceMapGuessDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const current = state.mapguessDiagnosticState ?? readMapGuessState(null);
+  const view = getMapGuessCampaignView(current);
+  if (view.secured || view.midpoint.actionRequired || view.goals.goalRequired) {
+    applyMapGuessDiagnosticState(current);
+    if (view.midpoint.actionRequired) requestAnimationFrame(() => {
+      $("mapguessMidpointAction").scrollIntoView({ block: "nearest" });
+      $("mapguessMidpointAction").focus({ preventScroll: true });
+    });
+    if (view.goals.goalRequired) requestAnimationFrame(() => $("mapguessGoalSelector").scrollIntoView({ block: "nearest" }));
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = advanceMapGuessState(current, {
+    completedAt: new Date().toISOString(),
+    outcome: calculateMapGuessReadingOutcome({ campaignState: current }),
+    passageId: `mapguess-diagnostic-passage-${ordinal}`,
+    sessionId: `mapguess-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? "MapGuess diagnostic did not advance");
+  if (transition.events.includes("site-secured")) state.mapguessEvidenceReceiptOpen = false;
+  applyMapGuessDiagnosticState(transition.state);
+  if (transition.events.includes("midpoint-discovered")) {
+    requestAnimationFrame(() => {
+      $("mapguessMidpointAction").scrollIntoView({ block: "nearest" });
+      $("mapguessMidpointAction").focus({ preventScroll: true });
+    });
+  }
+  if (transition.events.includes("provisional-blocked-write-recorded")) {
+    $("mapguessLiveStatus").textContent = "DESTINATION LOCKED. ROUTE AUTO-FIX AI move denied. Provisional slot-10 test receipt available.";
+  }
+  diagnostic("mapguess-wrapper-diagnostic-advance", {
+    completedUnitIds: transition.state.completedUnitIds,
+    events: transition.events,
+    routeGoal: transition.state.routeGoal,
+    stateId: transition.state.stateId,
+  });
+}
+
+function resetMapGuessDiagnosticExperience() {
+  state.mapguessDiagnosticMode = true;
+  state.mapguessEvidenceReceiptOpen = false;
+  state.mapguessInspectorOpen = false;
+  applyMapGuessDiagnosticState(readMapGuessState(null));
+  $("mapguessLiveStatus").textContent = "MAPGUESS TEST RESET · NO READING SCORE CREATED";
+}
+
+function buildMapGuessPreviewState(unitCount, { routeGoal = "scenic" } = {}) {
+  let previewState = readMapGuessState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === MAPGUESS_REBUILD_UNITS.length && !previewState.midpointAcknowledged) {
+      previewState = acknowledgeMapGuessMidpointState(previewState, {
+        acknowledgedAt: "2026-07-12T00:00:05.500Z",
+      }).state;
+    }
+    if (index === MAPGUESS_REBUILD_UNITS.length + MAPGUESS_ANCHOR_UNITS.length - 1 && !previewState.routeGoal) {
+      previewState = setMapGuessRouteGoalState(previewState, routeGoal, {
+        selectedAt: "2026-07-12T00:00:07.500Z",
+      }).state;
+    }
+    const transition = advanceMapGuessState(previewState, {
+      completedAt: `2026-07-12T00:00:0${index}.000Z`,
+      outcome: calculateMapGuessReadingOutcome({ campaignState: previewState }),
+      passageId: `mapguess-preview-passage-${index + 1}`,
+      sessionId: `mapguess-preview-session-${index + 1}`,
+    });
+    if (!transition.ok) throw new Error(transition.reason ?? "MapGuess preview state did not advance");
+    previewState = transition.state;
+  }
+  return previewState;
+}
+
+function canContinueMapGuessInTab(transition) {
+  return transition.ok || ["unavailable", "write-failed"].includes(transition.reason);
+}
+
+function acknowledgeMapGuessMovingTarget() {
+  const diagnosticMode = state.mapguessDiagnosticMode;
+  const current = diagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
+  const transition = diagnosticMode
+    ? acknowledgeMapGuessMidpointState(current, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeMapGuessMidpoint(localStateStorage, {
+        acknowledgedAt: new Date().toISOString(),
+        currentState: current,
+      });
+  if (!canContinueMapGuessInTab(transition)) return;
+  if (diagnosticMode) state.mapguessDiagnosticState = transition.state;
+  else {
+    state.mapguessState = transition.state;
+    state.mapguessPersisted = transition.ok;
+  }
+  renderMapGuessCampaign(transition.state, { diagnosticMode });
+  renderMapGuessDiagnosticPanel(transition.state);
+  renderRecoveryHub();
+  $("mapguessLiveStatus").textContent = transition.ok
+    ? "MOVING TARGET ACKNOWLEDGED · CHOOSE A ROUTE GOAL"
+    : "MOVING TARGET ACKNOWLEDGED IN THIS TAB · NOT SAVED FOR RELOAD";
+  requestAnimationFrame(() => {
+    const firstGoal = $("mapguessGoalOptions").querySelector("[data-mapguess-goal]:not(:disabled)");
+    firstGoal?.scrollIntoView({ block: "nearest" });
+    firstGoal?.focus({ preventScroll: true });
+  });
+}
+
+function setMapGuessGoalFromControl(routeGoal) {
+  const diagnosticMode = state.mapguessDiagnosticMode;
+  const current = diagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
+  const transition = diagnosticMode
+    ? setMapGuessRouteGoalState(current, routeGoal, { selectedAt: new Date().toISOString() })
+    : setMapGuessRouteGoal(localStateStorage, routeGoal, {
+        currentState: current,
+        selectedAt: new Date().toISOString(),
+      });
+  if (!canContinueMapGuessInTab(transition)) return;
+  if (diagnosticMode) state.mapguessDiagnosticState = transition.state;
+  else {
+    state.mapguessState = transition.state;
+    state.mapguessPersisted = transition.ok;
+  }
+  renderMapGuessCampaign(transition.state, { diagnosticMode });
+  renderMapGuessDiagnosticPanel(transition.state);
+  renderRecoveryHub();
+  $("mapguessLiveStatus").textContent = transition.ok
+    ? `${transition.state.routeGoal.toUpperCase()} ROUTE GOAL SELECTED · SAVED`
+    : `${transition.state.routeGoal.toUpperCase()} ROUTE GOAL SELECTED · PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD`;
+  requestAnimationFrame(() => $("mapguessGoalOptions").querySelector(`[data-mapguess-goal="${routeGoal}"]`)?.focus({ preventScroll: true }));
+}
+
+function applyMyCornerDiagnosticState(nextState) {
+  state.mycornerDiagnosticMode = true;
+  state.mycornerDiagnosticState = nextState;
+  renderMyCornerCampaign(nextState, { diagnosticMode: true });
+  renderMyCornerDiagnosticPanel(nextState);
+  renderRecoveryHub();
+  show("mycorner");
+}
+
+async function advanceMyCornerDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const current = state.mycornerDiagnosticState ?? readMyCornerState(null);
+  const view = getMyCornerCampaignView(current, { comparisonView: state.mycornerComparisonView });
+  if (view.secured || view.midpoint.actionRequired) {
+    applyMyCornerDiagnosticState(current);
+    if (view.midpoint.actionRequired) requestAnimationFrame(() => {
+      $("mycornerMidpointAction").scrollIntoView({ block: "nearest" });
+      $("mycornerMidpointAction").focus({ preventScroll: true });
+    });
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = advanceMyCornerState(current, {
+    completedAt: new Date().toISOString(),
+    outcome: calculateMyCornerReadingOutcome({ campaignState: current }),
+    passageId: `mycorner-diagnostic-passage-${ordinal}`,
+    sessionId: `mycorner-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? "MyCorner diagnostic did not advance");
+  if (transition.events.includes("site-secured")) {
+    state.mycornerEvidenceReceiptOpen = false;
+    state.mycornerInspectorOpen = true;
+  }
+  state.mycornerComparisonView = "template";
+  applyMyCornerDiagnosticState(transition.state);
+  if (transition.events.includes("site-secured")) setMyCornerInspectorOpen(true);
+  if (transition.events.includes("midpoint-discovered")) {
+    requestAnimationFrame(() => {
+      $("mycornerMidpointAction").scrollIntoView({ block: "nearest" });
+      $("mycornerMidpointAction").focus({ preventScroll: true });
+    });
+  }
+  if (transition.events.includes("canonical-blocked-write-recorded")) {
+    $("mycornerLiveStatus").textContent = "OWNER CONTROLS RESTORED. AUTO-PERSONA overwrite denied. Slot-4 evidence receipt available.";
+  }
+  diagnostic("mycorner-wrapper-diagnostic-advance", {
+    completedUnitIds: transition.state.completedUnitIds,
+    events: transition.events,
+    stateId: transition.state.stateId,
+  });
+}
+
+function resetMyCornerDiagnosticExperience() {
+  state.mycornerDiagnosticMode = true;
+  state.mycornerEvidenceReceiptOpen = false;
+  state.mycornerInspectorOpen = false;
+  state.mycornerComparisonView = "template";
+  applyMyCornerDiagnosticState(readMyCornerState(null));
+  $("mycornerLiveStatus").textContent = "MYCORNER TEST RESET · NO READING SCORE CREATED";
+}
+
+function buildMyCornerPreviewState(unitCount) {
+  let previewState = readMyCornerState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === MYCORNER_RESTORE_UNITS.length && !previewState.midpointAcknowledged) {
+      previewState = acknowledgeMyCornerMidpointState(previewState, {
+        acknowledgedAt: "2026-07-12T00:00:04.500Z",
+      }).state;
+    }
+    const transition = advanceMyCornerState(previewState, {
+      completedAt: `2026-07-12T00:00:0${index}.000Z`,
+      outcome: calculateMyCornerReadingOutcome({ campaignState: previewState }),
+      passageId: `mycorner-preview-passage-${index + 1}`,
+      sessionId: `mycorner-preview-session-${index + 1}`,
+    });
+    if (!transition.ok) throw new Error(transition.reason ?? "MyCorner preview state did not advance");
+    previewState = transition.state;
+  }
+  return previewState;
+}
+
+function acknowledgeMyCornerTemplateReveal() {
+  const diagnosticMode = state.mycornerDiagnosticMode;
+  const current = diagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
+  const transition = diagnosticMode
+    ? acknowledgeMyCornerMidpointState(current, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeMyCornerMidpoint(localStateStorage, {
+        acknowledgedAt: new Date().toISOString(),
+        currentState: current,
+      });
+  if (!transition?.state || (!transition.ok && transition.reason !== "write-failed")) return;
+  if (diagnosticMode) state.mycornerDiagnosticState = transition.state;
+  else {
+    state.mycornerState = transition.state;
+    state.mycornerPersisted = transition.ok;
+  }
+  state.mycornerComparisonView = "template";
+  state.mycornerInspectorOpen = true;
+  renderMyCornerCampaign(transition.state, { diagnosticMode });
+  renderMyCornerDiagnosticPanel(transition.state);
+  renderRecoveryHub();
+  setMyCornerInspectorOpen(true);
+  if (!transition.ok) {
+    $("mycornerLiveStatus").textContent = "OWNER-CONTROL ACKNOWLEDGEMENT SAVED IN THIS TAB ONLY · BROWSER STORAGE UNAVAILABLE";
+  }
+  requestAnimationFrame(() => $("mycornerOwnerPermission").scrollIntoView({ block: "nearest" }));
+}
+
+function toggleMyCornerComparison() {
+  const visibleState = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
+  if (!visibleState.midpointDiscovered || visibleState.secured) return;
+  state.mycornerComparisonView = state.mycornerComparisonView === "template" ? "saved" : "template";
+  renderMyCornerCampaign(visibleState, { diagnosticMode: state.mycornerDiagnosticMode });
+  requestAnimationFrame(() => $("mycornerProfileViewToggle").focus({ preventScroll: true }));
+}
+
 function buildFacePlacePreviewState(unitCount) {
   let previewState = readFacePlaceState(null);
   for (let index = 0; index < unitCount; index += 1) {
@@ -1808,11 +2719,14 @@ function renderRecoveredFilesShortcut() {
   const wikiWhyEvidenceSaved = state.campaignState.phase === "secured" && state.campaignPersisted;
   const threadItEvidenceSaved = state.threaditState.secured && state.threaditPersisted;
   const evidenceCount = Number(wikiWhyEvidenceSaved) + Number(threadItEvidenceSaved);
+  const provisionalReceiptCount = Number(state.faceplaceState.secured && state.faceplacePersisted)
+    + Number(state.mapguessState.secured && state.mapguessPersisted)
+    + Number(state.mycornerState.secured && state.mycornerPersisted);
   const wikiWhyRepairInTab = state.campaignState.repairCount > 0;
   const wikiWhyRepairSaved = wikiWhyRepairInTab && state.campaignPersisted;
-  $("recoveredFilesShortcut").disabled = evidenceCount === 0 && !wikiWhyRepairSaved;
-  $("recoveredFilesCount").textContent = evidenceCount
-    ? `${evidenceCount} evidence file${evidenceCount === 1 ? "" : "s"}`
+  $("recoveredFilesShortcut").disabled = evidenceCount === 0 && provisionalReceiptCount === 0 && !wikiWhyRepairSaved;
+  $("recoveredFilesCount").textContent = evidenceCount || provisionalReceiptCount
+    ? `${evidenceCount} canonical · ${provisionalReceiptCount} test receipt${provisionalReceiptCount === 1 ? "" : "s"}`
     : wikiWhyRepairSaved
       ? `${state.campaignState.repairCount} repair${state.campaignState.repairCount === 1 ? "" : "s"} saved`
       : wikiWhyRepairInTab
@@ -2318,6 +3232,16 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (state.selectedSiteId === "mycorner") {
+    await discardActiveReadingForDiagnostics();
+    resetMyCornerDiagnosticExperience();
+    return;
+  }
+  if (state.selectedSiteId === "mapguess") {
+    await discardActiveReadingForDiagnostics();
+    resetMapGuessDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "faceplace") {
     await discardActiveReadingForDiagnostics();
     resetFacePlaceDiagnosticExperience();
@@ -2373,6 +3297,10 @@ $("threaditBack").onclick = returnToHub;
 $("threaditReturn").onclick = returnToHub;
 $("faceplaceBack").onclick = returnToHub;
 $("faceplaceReturn").onclick = returnToHub;
+$("mycornerBack").onclick = returnToHub;
+$("mycornerReturn").onclick = returnToHub;
+$("mapguessBack").onclick = returnToHub;
+$("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
 $("threaditTraceTab").onclick = () => openThreadItView("trace");
 $("threaditTraceControl").onclick = () => openThreadItView("trace");
@@ -2440,12 +3368,71 @@ $("faceplaceEvidenceToggle").onclick = () => {
   if (state.faceplaceEvidenceReceiptOpen) requestAnimationFrame(() => $("faceplaceEvidenceReceipt").focus({ preventScroll: true }));
   else $("faceplaceEvidenceToggle").focus({ preventScroll: true });
 };
+$("mycornerInspectorToggle").onclick = () => {
+  setMyCornerInspectorOpen(!state.mycornerInspectorOpen);
+  if (state.mycornerInspectorOpen) requestAnimationFrame(() => $("mycornerInspectorHeading").focus({ preventScroll: true }));
+};
+$("mycornerInspectorClose").onclick = () => {
+  setMyCornerInspectorOpen(false);
+  $("mycornerInspectorToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !state.mycornerInspectorOpen) return;
+  event.preventDefault();
+  setMyCornerInspectorOpen(false);
+  $("mycornerInspectorToggle").focus({ preventScroll: true });
+});
+$("mycornerMidpointAction").onclick = acknowledgeMyCornerTemplateReveal;
+$("mycornerProfileViewToggle").onclick = toggleMyCornerComparison;
+$("mycornerEvidenceToggle").onclick = () => {
+  const visibleState = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
+  if (!visibleState.secured) return;
+  state.mycornerEvidenceReceiptOpen = !state.mycornerEvidenceReceiptOpen;
+  renderMyCornerCampaign(visibleState, { diagnosticMode: state.mycornerDiagnosticMode });
+  if (state.mycornerEvidenceReceiptOpen) requestAnimationFrame(() => $("mycornerEvidenceReceipt").focus({ preventScroll: true }));
+  else $("mycornerEvidenceToggle").focus({ preventScroll: true });
+};
+$("mycornerBlockedTarget").onclick = (event) => {
+  event.preventDefault();
+  $("mycornerOwnerPermission").scrollIntoView({ block: "nearest" });
+  $("mycornerOwnerPermission").focus({ preventScroll: true });
+};
+$("mapguessInspectorToggle").onclick = () => {
+  setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
+  if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
+};
+$("mapguessInspectorClose").onclick = () => {
+  setMapGuessInspectorDrawerOpen(false);
+  $("mapguessInspectorToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || state.activeScreen !== "mapguess" || !state.mapguessInspectorOpen) return;
+  event.preventDefault();
+  setMapGuessInspectorDrawerOpen(false);
+  $("mapguessInspectorToggle").focus({ preventScroll: true });
+});
+$("mapguessMidpointAction").onclick = acknowledgeMapGuessMovingTarget;
+$("mapguessEvidenceToggle").onclick = () => {
+  const visibleState = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
+  if (!visibleState.secured) return;
+  state.mapguessEvidenceReceiptOpen = !state.mapguessEvidenceReceiptOpen;
+  renderMapGuessCampaign(visibleState, { diagnosticMode: state.mapguessDiagnosticMode });
+  if (state.mapguessEvidenceReceiptOpen) requestAnimationFrame(() => $("mapguessEvidenceReceipt").focus({ preventScroll: true }));
+  else $("mapguessEvidenceToggle").focus({ preventScroll: true });
+};
+$("mapguessBlockedTarget").onclick = (event) => {
+  event.preventDefault();
+  $("mapguessMapCanvas").scrollIntoView({ block: "nearest" });
+  $("mapguessMapCanvas").focus({ preventScroll: true });
+};
 window.addEventListener("resize", () => {
   if (state.activeScreen === "threadit") scheduleThreadItConnectors(threadItConnectorRelationships);
   if (state.activeScreen === "faceplace") {
     if (!matchMedia("(max-width: 1279px)").matches) state.faceplaceProfilePanelOpen = false;
     syncFacePlaceProfileDrawer();
   }
+  if (state.activeScreen === "mycorner") syncMyCornerInspector();
+  if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
 $("taskHub").onclick = returnToHub;
@@ -2457,6 +3444,14 @@ $("taskReader").onclick = () => {
   }
   if (state.selectedSiteId === "faceplace") {
     openFacePlaceExperience();
+    return;
+  }
+  if (state.selectedSiteId === "mycorner") {
+    openMyCornerExperience();
+    return;
+  }
+  if (state.selectedSiteId === "mapguess") {
+    openMapGuessExperience();
     return;
   }
   if (state.result && !state.resultApplied) show("review");
@@ -2477,7 +3472,25 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
     if (button.dataset.action === "hub") returnToHub();
     else if (button.dataset.action === "files") {
       const threadItEvidenceSaved = state.threaditState.secured && state.threaditPersisted;
-      if (threadItEvidenceSaved && (state.selectedSiteId === "threadit" || state.campaignState.phase !== "secured")) {
+      const facePlaceEvidenceSaved = state.faceplaceState.secured && state.faceplacePersisted;
+      const mapGuessEvidenceSaved = state.mapguessState.secured && state.mapguessPersisted;
+      const myCornerEvidenceSaved = state.mycornerState.secured && state.mycornerPersisted;
+      if (myCornerEvidenceSaved && state.selectedSiteId === "mycorner") {
+        state.mycornerDiagnosticMode = false;
+        state.mycornerEvidenceReceiptOpen = true;
+        openMyCornerExperience();
+        requestAnimationFrame(() => $("mycornerEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (mapGuessEvidenceSaved && state.selectedSiteId === "mapguess") {
+        state.mapguessDiagnosticMode = false;
+        state.mapguessEvidenceReceiptOpen = true;
+        openMapGuessExperience();
+        requestAnimationFrame(() => $("mapguessEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (facePlaceEvidenceSaved && state.selectedSiteId === "faceplace") {
+        state.faceplaceDiagnosticMode = false;
+        state.faceplaceEvidenceReceiptOpen = true;
+        openFacePlaceExperience();
+        requestAnimationFrame(() => $("faceplaceEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (threadItEvidenceSaved && (state.selectedSiteId === "threadit" || state.campaignState.phase !== "secured")) {
         state.threaditDiagnosticMode = false;
         state.threaditEvidenceReceiptOpen = true;
         openThreadItExperience();
@@ -2535,6 +3548,10 @@ if (uiPreview) {
   state.threaditPersisted = true;
   state.faceplaceState = readFacePlaceState(null);
   state.faceplacePersisted = true;
+  state.mapguessState = readMapGuessState(null);
+  state.mapguessPersisted = true;
+  state.mycornerState = readMyCornerState(null);
+  state.mycornerPersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -2551,6 +3568,10 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("threadit");
 } else if (requestedLaunch === "faceplace") {
   openRecoverySite("faceplace");
+} else if (requestedLaunch === "mycorner") {
+  openRecoverySite("mycorner");
+} else if (requestedLaunch === "mapguess") {
+  openRecoverySite("mapguess");
 } else if (requestedSite) {
   openRecoverySite(requestedSite);
 } else if (uiPreview === "hub") {
@@ -2617,6 +3638,109 @@ if (requestedLaunch === "wikiwhy") {
   state.faceplaceWhyOpen = ["faceplace-recovery-2", "faceplace-secured", "faceplace-evidence"].includes(uiPreview);
   state.faceplaceEvidenceReceiptOpen = uiPreview === "faceplace-evidence";
   openFacePlaceExperience();
+} else if ([
+  "mycorner",
+  "mycorner-corrupted",
+  "mycorner-restore-1",
+  "mycorner-restore-2",
+  "mycorner-restore-3",
+  "mycorner-restore-4",
+  "mycorner-template-reveal",
+  "mycorner-template-saved",
+  "mycorner-template-inspector",
+  "mycorner-template-acknowledged",
+  "mycorner-owner-lock-1",
+  "mycorner-owner-lock-2",
+  "mycorner-secured",
+  "mycorner-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "mycorner-evidence": 7,
+    "mycorner-secured": 7,
+    "mycorner-owner-lock-2": 6,
+    "mycorner-owner-lock-1": 5,
+    "mycorner-template-acknowledged": 4,
+    "mycorner-template-inspector": 4,
+    "mycorner-template-saved": 4,
+    "mycorner-template-reveal": 4,
+    "mycorner-restore-4": 4,
+    "mycorner-restore-3": 3,
+    "mycorner-restore-2": 2,
+    "mycorner-restore-1": 1,
+  }[uiPreview] ?? 0;
+  state.mycornerDiagnosticMode = uiPreview !== "mycorner";
+  state.mycornerDiagnosticState = buildMyCornerPreviewState(unitCount);
+  if (uiPreview === "mycorner-template-acknowledged") {
+    state.mycornerDiagnosticState = acknowledgeMyCornerMidpointState(state.mycornerDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:04.500Z",
+    }).state;
+  }
+  state.mycornerComparisonView = uiPreview === "mycorner-template-saved" ? "saved" : "template";
+  state.mycornerEvidenceReceiptOpen = uiPreview === "mycorner-evidence";
+  state.mycornerInspectorOpen = uiPreview === "mycorner-template-inspector";
+  openMyCornerExperience();
+  if (uiPreview === "mycorner-template-inspector") setMyCornerInspectorOpen(true);
+  if (uiPreview === "mycorner-evidence") {
+    requestAnimationFrame(() => $("mycornerEvidenceReceipt").scrollIntoView({ block: "nearest" }));
+  }
+} else if ([
+  "mapguess",
+  "mapguess-corrupted",
+  "mapguess-rebuild-1",
+  "mapguess-rebuild-2",
+  "mapguess-rebuild-3",
+  "mapguess-rebuild-4",
+  "mapguess-rebuild-5",
+  "mapguess-moving-target",
+  "mapguess-moving-target-inspector",
+  "mapguess-moving-target-acknowledged",
+  "mapguess-anchor-1",
+  "mapguess-anchor-2",
+  "mapguess-goal-fastest",
+  "mapguess-goal-safest",
+  "mapguess-goal-scenic",
+  "mapguess-goal-accessible",
+  "mapguess-secured",
+  "mapguess-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "mapguess-evidence": 8,
+    "mapguess-secured": 8,
+    "mapguess-goal-accessible": 7,
+    "mapguess-goal-scenic": 7,
+    "mapguess-goal-safest": 7,
+    "mapguess-goal-fastest": 7,
+    "mapguess-anchor-2": 7,
+    "mapguess-anchor-1": 6,
+    "mapguess-moving-target-acknowledged": 5,
+    "mapguess-moving-target": 5,
+    "mapguess-moving-target-inspector": 5,
+    "mapguess-rebuild-5": 5,
+    "mapguess-rebuild-4": 4,
+    "mapguess-rebuild-3": 3,
+    "mapguess-rebuild-2": 2,
+    "mapguess-rebuild-1": 1,
+  }[uiPreview] ?? 0;
+  state.mapguessDiagnosticMode = uiPreview !== "mapguess";
+  state.mapguessDiagnosticState = buildMapGuessPreviewState(unitCount);
+  if (uiPreview === "mapguess-moving-target-acknowledged") {
+    state.mapguessDiagnosticState = acknowledgeMapGuessMidpointState(state.mapguessDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:05.500Z",
+    }).state;
+  }
+  const goalPreview = /^mapguess-goal-(fastest|safest|scenic|accessible)$/u.exec(uiPreview ?? "");
+  if (goalPreview) {
+    state.mapguessDiagnosticState = setMapGuessRouteGoalState(state.mapguessDiagnosticState, goalPreview[1], {
+      selectedAt: "2026-07-12T00:00:07.500Z",
+    }).state;
+  }
+  state.mapguessEvidenceReceiptOpen = uiPreview === "mapguess-evidence";
+  state.mapguessInspectorOpen = uiPreview === "mapguess-moving-target-inspector";
+  openMapGuessExperience();
+  if (uiPreview === "mapguess-moving-target-inspector") setMapGuessInspectorDrawerOpen(true);
+  if (uiPreview === "mapguess-evidence") {
+    requestAnimationFrame(() => $("mapguessEvidenceReceipt").scrollIntoView({ block: "nearest" }));
+  }
 } else if (uiPreview === "read") {
   const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
   updateProgress({

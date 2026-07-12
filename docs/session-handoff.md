@@ -9,21 +9,84 @@
 - The response freezes original fictional wrapper records, stable IDs,
   accessible summaries, process/evidence routes, content-manifest intent, and
   responsive behavior. It does not promote candidate reading prose.
-- Remaining design-data work is the canonical fixture backlog for MyCorner,
-  Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi, MapGuess, and the
-  final evidence record.
+- Later site and endgame design packets are published separately under
+  `docs/design/`; this packet remains the authority for its three named sites.
 
-## FacePlace Honest Zero foundation
+## MyCorner owner-controls foundation
 
-- ThreadIt's complete structural campaign is authoritative on deployed `main`
-  at `f1b1bab` through PR #33. GitHub Actions and GitHub Pages passed, and its
-  corrupted, Act I, midpoint, trace, secured, evidence-open, and two-evidence
-  Recovery Map states were verified on the public HTTPS build.
+- Deployed `main` is authoritative at `65368e8` through MapGuess PR #36. The
+  MapGuess Moving Target route, CI, Pages workflow, and public HTTPS interaction
+  were verified.
+- Active implementation is `agent/mycorner-owner-controls-foundation`.
+- Designer PR #38 has been inspected and its canonical response is preserved in
+  `docs/design/MYCORNER_RUNTIME_RESPONSE_2026-07-12.md`. The runtime now uses
+  the exact Mara Vale fixture, process lineage, slot-four evidence route, and
+  frozen 7A plus 3B passage-ID plan.
+- MyCorner owns four exact profile restore units, an explicit saved Apply to
+  Everyone acknowledgement, and three owner-lock units. It preserves six saved
+  choices plus a separate permission seal and never exposes a percentage.
+- All reading content remains fail-closed: one structured candidate, zero
+  selectable records, `MIC: OFF`, and no score. The wrapper fixture may be
+  canonical without promoting unreviewed reading content.
+- The canonical evidence row is registered only for a persisted seven-reading
+  secured state with exact ID `mycorner.evidence.global-profile-template-01`.
+  Diagnostics and failed-storage tab states remain noncanonical.
+- Focused MyCorner, DOM, and hub validation passes 58 tests. Remaining work is
+  complete documentation reconciliation, full-suite validation, explicit diff
+  review, PR/CI/merge, Pages deployment, and public HTTPS QA.
+
+The MapGuess section below is retained as milestone history. Its publication-
+pending language is superseded by PR #36 and deployed `65368e8`.
+
+## MapGuess moving-target foundation
+
+- Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
+  spoken-separator accessibility PR #35. Both workflows and GitHub Pages passed,
+  and the FacePlace diagnostic route was verified on the public HTTPS build.
 - Active implementation continues on
-  `agent/faceplace-honest-zero-foundation`. FacePlace is runtime-available as an
-  honest structural test build but remains non-playable with `MIC: OFF` while
-  all first-run content is review-gated. WikiWhy remains the only
-  speech-playable site.
+  `agent/mapguess-moving-target-foundation`. MapGuess's structural runtime is
+  implemented and under final validation; it has not been committed, pushed,
+  merged, deployed, or verified on the public site yet.
+- The wrapper owns an eight-unit MapGuess campaign: exactly five rebuild units,
+  an explicit moving-target acknowledgement, and exactly three anchor units.
+  The fifth save reveals the coordinate overwrite; anchor work cannot begin
+  until Finn acknowledges it.
+- The fictional fixture keeps road geometry stable while `ROUTE AUTO-FIX AI`
+  moves the destination from the intended location to a sponsored stop. The
+  midpoint proof reads `ROAD GEOMETRY CHANGED: NO`, `DESTINATION COORDINATES
+  CHANGED: YES`, and `ETA TARGET: 2 MINUTES FOREVER`.
+- Before anchor unit eight, Finn must explicitly choose one valid route goal:
+  fastest, safest, scenic, or accessible. That wrapper-owned choice is not
+  speech or comprehension scoring, remains changeable until the last unit
+  begins, and is locked when the route becomes secured.
+- The final diagnostic route produces a provisional slot-10 test receipt and
+  blocked-write record. It may be displayed for structural QA, but it is
+  excluded from canonical evidence counts and cannot satisfy the ten-site
+  final-unlock predicate.
+- The independent Reading Companion reports `10 planned / 0 selectable / 8
+  required`. `A Map Is Not a Photograph` is a structured candidate only; it is
+  unavailable and cannot be selected, scored, or silently repeated.
+- The current branch includes the campaign rules and persistence, content/copy
+  fixture, semantic map view, responsive right-side inspector drawer, Recovery
+  Map integration, diagnostic routes, and automated contracts. Reading Engine,
+  theme-neutral Game Rules, speech, and real session history remain unchanged.
+  The shared Content Platform gate now explicitly requires accessibility review
+  before approved content can become selectable.
+- Validation known so far: `npm run check`, 43 focused MapGuess state/content/view
+  tests, the full 193-test suite, and `npm run build` pass. The runtime has been
+  visually inspected at 1440px and 1180px, including the collapsed inspector
+  drawer. Remaining work is final diff review, commit and push, PR and CI,
+  merge, Pages deploy, and public HTTPS verification.
+
+## FacePlace Honest Zero foundation (deployed)
+
+- FacePlace is authoritative on deployed `main` at `e776471` through PRs #34
+  and #35. GitHub Actions and GitHub Pages passed, and its corrupted, Honest
+  Zero, recovery, secured, evidence-open, and Recovery Map return states were
+  verified on the public HTTPS build.
+- FacePlace remains an honest structural test build and non-playable with
+  `MIC: OFF` while all first-run content is review-gated. WikiWhy remains the
+  only speech-playable site.
 - The wrapper owns a six-unit FacePlace model: exactly three false-tracker
   repairs, an explicit Honest Zero acknowledgement, and exactly three later
   honest-recovery units. Unit four stays blocked until the acknowledgement;
@@ -52,11 +115,11 @@
   test evidence, tab-only diagnostics, persisted noncanonical records, and real
   canonical receipts. Reading Engine, Content Platform review rules,
   theme-neutral Game Rules, speech, and real session history remain unchanged.
-- Validation on the active branch: `npm run check`, `npm test` (150 passing),
-  `npm run build`, and deterministic FacePlace state/view/DOM routes pass.
-  Remaining before this milestone is authoritative: finish accessibility and
-  browser QA, publish through PR/CI/Pages, verify public HTTPS, then replace the
-  provisional fixture and clear the six-record content gate.
+- Publication validation passed for FacePlace, including `npm run check`, the
+  full test suite, `npm run build`, deterministic state/view/DOM routes, PR CI,
+  Pages deployment, and public HTTPS QA. The remaining FacePlace work is to
+  replace the provisional fixture when design answers arrive and clear the
+  six-record content gate.
 
 ## Recovery Map and multi-site preview shell
 
