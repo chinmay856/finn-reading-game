@@ -33,6 +33,10 @@
   replayability targets for all ten sites: WikiWhy uses its existing Deck A/B,
   and the other nine sites now have ten candidate Reading Companion passage
   slots each with source lane, reading focus, and speech-risk notes.
+- Latest asset-use aid:
+  `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` identifies canonical character
+  sheets, character crop grids, current ten-site concept boards, preview-image
+  rules, and superseded/plain-board boundaries for builders.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems

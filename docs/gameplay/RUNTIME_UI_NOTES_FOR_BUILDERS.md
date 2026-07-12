@@ -40,6 +40,8 @@ Use these as source-of-truth design inputs:
   scene/state script and acceptance checks.
 - `docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md` - ten-site story and progress
   direction.
+- `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` - canonical art inputs, character
+  crop guidance, and preview-vs-playable asset rules.
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.
 - `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` - concrete Recovery Map,
   site-tile, Case File, evidence receipt, and global story beat copy.

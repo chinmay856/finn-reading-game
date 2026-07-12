@@ -23,6 +23,7 @@ designed to support many future themes.
 - Internet Recovery player-facing copy deck: [`docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`](docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md)
 - Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
 - Runtime UI notes for builders: [`docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md`](docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md)
+- Runtime asset use brief: [`docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md`](docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md)
 - Site runtime copy packs: [`docs/gameplay/SITE_RUNTIME_COPY_PACKS.md`](docs/gameplay/SITE_RUNTIME_COPY_PACKS.md)
 - WikiWhy first-slice build brief: [`docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md`](docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md)
 - Ten-site build briefs: [`docs/gameplay/site-build-briefs/README.md`](docs/gameplay/site-build-briefs/README.md)
