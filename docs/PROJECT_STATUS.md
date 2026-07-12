@@ -1,5 +1,9 @@
 # Project status
 
+## Deployment health — 2026-07-12
+
+The browser build is code-split on the canonical platform/wrapper boundary and no longer exceeds Vite's 500 kB chunk warning. CI checkout and setup-node actions now use their official Node 24 runtime releases.
+
 ## Review manifests — 2026-07-12
 
 All three final-incident candidates have revision-bound pending manifests and an exact status command. Current result: 0/3 approved, with every human-review, real-microphone, and transcription-token blocker listed explicitly.
