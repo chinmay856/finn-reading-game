@@ -1,5 +1,13 @@
 # Session handoff
 
+## MapGuess design response
+
+- Branch: `agent/mapguess-runtime-design-response`.
+- Builder packet:
+  [`design/MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md`](design/MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md).
+- It replaces provisional map identities with canonical original data and
+  freezes routes, evidence, content IDs, art sufficiency, and responsiveness.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
