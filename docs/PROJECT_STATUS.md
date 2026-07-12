@@ -8,14 +8,14 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/faceplace-honest-zero-foundation`
+- **Active implementation branch:** `agent/mapguess-moving-target-foundation`
 - **Repository:** `chinmay856/finn-reading-game`
 - **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
-- **Deployed main:** `f1b1bab` through PR #33
+- **Deployed main:** `e776471` through PRs #34 and #35
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
-- **Current stage:** Validate and publish FacePlace's six-unit Honest Zero
-  structural campaign without scoring candidate passages or allowing provisional
-  evidence to unlock canonical progression
+- **Current stage:** Complete final validation and publish MapGuess's eight-unit
+  moving-target structural campaign without scoring candidate passages or
+  allowing its provisional slot-10 receipt to unlock canonical progression
 
 ## Deployed implementation
 
@@ -37,31 +37,38 @@ product and architecture source of truth is
   midpoint acknowledgement, three trace units, permanent secured state, and
   Case File slot 2 test route. It shipped through PR #33; CI, Pages deployment,
   and the complete public HTTPS diagnostic route were verified.
+- FacePlace now has its own semantic six-card feed, exactly three false-tracker
+  repairs, an explicit Honest Zero acknowledgement, three honest-recovery units,
+  and a permanent secured test route. It shipped through PR #34, followed by
+  the spoken-separator accessibility correction in PR #35. CI, Pages deployment,
+  and the public HTTPS diagnostic route were verified at `e776471`.
 
-## Current FacePlace branch
+## Current MapGuess branch
 
-- FacePlace has an executable, explicitly provisional/test-only campaign with
-  exactly three false-tracker units, an explicit Honest Zero acknowledgement,
-  and exactly three honest-recovery units. It remains `playable: false` and
-  `MIC: OFF`; diagnostic advances create no reading score.
-- The six-card fictional feed fixture supports ranked-versus-chronological order,
-  relationship clusters, recommendation reasons, duplicate-source inspection,
-  `People You May Sort Of Know`, and the exact provisional card targeted by the
-  final blocked boost.
-- The lying tracker records three saved repairs before normalizing to Honest
-  Zero. Unit four cannot begin until Finn acknowledges the zero, and later units
-  measure only the three honest recovery checks without erasing the earlier
-  repairs.
-- The final structural route exposes a provisional slot-3 test receipt and
-  blocked-write record. The hub labels that receipt as test-only and excludes it
-  from canonical evidence counts and the ten-site final-unlock predicate.
-- The independent Reading Companion shows an honest content gate: ten passages
-  planned, zero selectable, and six distinct first-run records required. `A
-  Second Reading` is a candidate only and cannot be selected or scored.
-- All fixture identities, posts, source graph, process mapping, evidence IDs, and
-  route fields are replaceable without changing the frozen state or layout
-  contracts. The focused request is
-  [`design/FACEPLACE_RUNTIME_REQUEST.md`](design/FACEPLACE_RUNTIME_REQUEST.md).
+- MapGuess has an executable, explicitly provisional/test-only campaign with
+  exactly five rebuild units followed by an explicit moving-target
+  acknowledgement and exactly three anchor units. It remains non-speech
+  gameplay with `MIC: OFF`; diagnostic advances and route-goal choices create
+  no reading score.
+- The fictional map fixture uses a stable road network while the hostile repair
+  moves the destination pin. The midpoint proves that road geometry did not
+  change, destination coordinates did change, and the ETA target remains
+  `2 MINUTES FOREVER`.
+- Anchor unit eight cannot start until Finn explicitly chooses one valid route
+  goal: fastest, safest, scenic, or accessible. The choice remains changeable
+  after midpoint acknowledgement until the final unit begins, then locks on
+  secure.
+- The final structural route exposes a provisional slot-10 test receipt and
+  blocked-write record for `ROUTE AUTO-FIX AI`. The hub must label that receipt
+  test-only, exclude it from canonical evidence counts, and never use it for the
+  ten-site final-unlock predicate.
+- The independent Reading Companion exposes the content gate honestly: ten
+  passages planned, zero selectable, and eight distinct first-run records
+  required. `A Map Is Not a Photograph` is a structured candidate only and
+  cannot be selected or scored.
+- The state, view, semantic three-column layout, responsive inspector drawer,
+  diagnostic routes, hub integration, and provisional fixture are implemented.
+  Final validation and publication remain; this branch is not deployed.
 
 ## Deployed WikiWhy implementation
 
@@ -107,6 +114,9 @@ product and architecture source of truth is
   before promotion.
 - Candidate selection is fail-closed: the runtime will not score a draft or
   silently reuse one passage to imply campaign depth.
+- MapGuess's two planned five-record decks are still entirely review-gated.
+  Its first-run structural route requires eight distinct records; the current
+  candidate is unavailable and the runtime reports zero selectable passages.
 - This branch also prevents an availability-only promotion from bypassing the
   gate. `approved` records require explicit passed review states, a completed
   transcription review, and rights-basis-specific source evidence; the existing
@@ -125,9 +135,12 @@ product and architecture source of truth is
   proof. Its
   semantic source tree must be DOM content with inline SVG connectors, not a
   flattened concept-board image.
-- FacePlace's state and semantic feed layout are executable, but all current
-  record identities and slot-3 evidence fields remain provisional/test-only
-  pending the focused designer packet.
+- FacePlace's deployed state and semantic feed layout remain explicitly
+  provisional/test-only pending the focused designer packet; its slot-3 test
+  receipt is not canonical evidence.
+- MapGuess's state and semantic map layout are executable on the current branch,
+  but the fictional fixture, process mapping, blocked-write fields, and slot-10
+  evidence record are provisional pending designer review.
 - WikiWhy evidence slot 1 is the route-log artifact
   `wikiwhy.evidence.route-fragment-01`, visible as `AI WRITE ROUTE / 01`.
 - The separate `EVIDENCE_11.LIVE` final breach is designed but must not begin
@@ -135,15 +148,18 @@ product and architecture source of truth is
 
 ## Validation
 
-- `npm run check` — passed
-- `npm test` — 150 tests passed on the FacePlace implementation branch
-- `npm run build` — passed
-- Browser QA — WikiWhy's full diagnostic route remains verified. ThreadIt's
-  corrupted, Act I, midpoint, trace, secured, evidence-open, and Recovery Map
-  states were verified on the deployed public HTTPS build, with no console
-  warnings or errors. FacePlace's deterministic routes pass automated state,
-  view, DOM-contract, syntax, and production-build checks; final browser QA is
-  part of this branch's publication gate.
+- `npm run check` — passed on the MapGuess implementation branch
+- Focused MapGuess tests — 43 passed across state, content, and view contracts
+- Full test suite — 193 passed, including MapGuess DOM, hub-count, and
+  Reading Engine separation contracts
+- `npm run build` — passed on the MapGuess implementation branch
+- Browser QA — the MapGuess structural runtime has been visually inspected at
+  1440px and 1180px widths, including the desktop inspector and collapsed
+  browser-owned drawer behavior. PR CI, Pages deployment, and public HTTPS
+  verification remain publication gates.
+- Deployed FacePlace CI, Pages deployment, corrupted-to-secured routes,
+  evidence-open state, Recovery Map return, and spoken separator accessibility
+  correction were verified publicly through `e776471`.
 
 ## Known limitations
 
@@ -157,23 +173,23 @@ product and architecture source of truth is
   untrusted on the development computer.
 - Post-secured Deck B replay is not implemented.
 - ThreadIt is an honest structural test build with its passage content gated.
-  FacePlace is an honest provisional structural test build with a stricter
-  test-only evidence boundary; the other seven non-WikiWhy sites remain honest
-  design previews.
+  FacePlace is a deployed provisional structural test build with a strict
+  test-only evidence boundary. MapGuess is an unpublished provisional
+  structural build with the same noncanonical boundary; the other six
+  non-WikiWhy sites remain honest design previews.
 
 ## Immediate next milestone
 
-1. Finish FacePlace accessibility and browser QA, then publish the complete
-   structural campaign through PR, CI, merge, Pages deployment, and public HTTPS
-   verification.
-2. Replace provisional FacePlace fixture and evidence fields when the parallel
-   designer answers
-   [`design/FACEPLACE_RUNTIME_REQUEST.md`](design/FACEPLACE_RUNTIME_REQUEST.md).
-3. Keep slot 3 excluded from canonical evidence counts and the final unlock
+1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
+   deployment, and public HTTPS verification.
+2. Keep slot 10 excluded from canonical evidence counts and the final unlock
    until a persisted record matches the fixed, designer-approved registry row.
-4. Promote FacePlace content only after provenance, adaptation fidelity,
+3. Replace provisional MapGuess fixture and evidence fields when the parallel
+   designer supplies the canonical runtime packet; retain the frozen 5+3 state
+   and semantic layout contracts.
+4. Promote MapGuess content only after provenance, adaptation fidelity,
    grade/sensitivity, comprehension, profile, and real-microphone review, and
-   freeze six distinct first-run records without a silent repeat.
+   freeze eight distinct first-run records without a silent repeat.
 
 Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
 template, or start the final breach before enough real campaigns exist.

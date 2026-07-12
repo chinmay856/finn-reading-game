@@ -1,12 +1,13 @@
 # Current implementation review captures
 
 These images are temporary design-review evidence for the executable Recovery
-Map, WikiWhy campaign, and ThreadIt structural test. ThreadIt is now deployed on
-`main` at `f1b1bab` through PR #33; CI, Pages, and its complete public HTTPS
-diagnostic route passed. FacePlace is the active structural-test milestone, and
-its captures will be added after that branch is published and deployed. These
-files are not runtime assets and should be replaced when a later milestone
-materially changes the corresponding screen.
+Map and site structural tests. FacePlace is deployed on `main` at `e776471`
+through PRs #34 and #35; CI, Pages, and its complete public HTTPS diagnostic
+route passed. MapGuess is the active structural-test milestone. Its captures are
+from the implemented local branch and must not be described as deployed until
+that branch is published, merged, and verified. These files are not runtime
+assets and should be replaced when a later milestone materially changes the
+corresponding screen.
 
 - `recovery-map-current.jpg` — all ten sites, three Incoming Cases, Case File,
   persistent desktop rim, and Amy Support.
@@ -43,6 +44,20 @@ materially changes the corresponding screen.
 - `threadit-tracing-v1.jpg` — midpoint trace view proving ten accounts share one
   generated origin; the source tree is accessible DOM with inline SVG
   connectors, not a flattened board.
+- `faceplace-corrupted-v1.png` — deployed false-tracker baseline with the
+  semantic six-card feed and independent Reading Companion.
+- `faceplace-honest-zero-1180-v1.png` — deployed Honest Zero transition at 1180
+  CSS pixels with the keyboard-addressable browser-owned left drawer.
+- `faceplace-secured-v1.png` — deployed blocked boost and explicitly provisional
+  slot-3 test receipt.
+- `mapguess-corrupted-v1.png` — local 1440×900 corrupted map with unreadable
+  layers, two-minute claim, directions rail, and semantic map surface.
+- `mapguess-moving-target-v1.png` — local 1440×900 midpoint proof showing that
+  the road stayed fixed while the destination coordinates changed.
+- `mapguess-evidence-v1.png` — local secured/evidence route with selected goal,
+  blocked destination move, and visible `PROVISIONAL_MAPGUESS_10.LOG` receipt.
+- `mapguess-inspector-1180-v1.png` — local 1180 CSS-pixel browser-owned right
+  inspector drawer with the directions/goal rail and map still visible.
 
 The ThreadIt forum copy is explicitly provisional while the canonical fixture
 request remains open. `Why Disagreement Matters` is a candidate passage and is
@@ -52,14 +67,25 @@ The deployed implementation also includes deterministic `threadit-trace-1`,
 `threadit-trace-2`, `threadit-secured`, and `threadit-evidence` routes; all were
 verified on the public HTTPS build.
 
-The active FacePlace branch now includes deterministic corrupted, false-tracker
-1–3, Honest Zero, acknowledged, recovery 1–2, secured, evidence-open, and
-Recovery Map routes. Its six-card fixture and slot-3 receipt are explicitly
-provisional/test-only, remain excluded from canonical evidence counts, and
-cannot unlock the final incident. Review should focus on the semantic feed,
-Honest Zero transition, independent Reading Companion, and 1180 CSS-pixel
-left-rail drawer; record-level canon is requested in
+The deployed FacePlace implementation includes deterministic corrupted,
+false-tracker 1–3, Honest Zero, acknowledged, recovery 1–2, secured,
+evidence-open, and Recovery Map routes. Its six-card fixture and slot-3 receipt
+are explicitly provisional/test-only, remain excluded from canonical evidence
+counts, and cannot unlock the final incident. Record-level canon is still
+requested in
 [`../FACEPLACE_RUNTIME_REQUEST.md`](../FACEPLACE_RUNTIME_REQUEST.md).
+
+The active MapGuess branch includes deterministic corrupted, rebuild 1–5,
+Moving Target, acknowledged, anchor 1–2, four goal-choice, secured,
+evidence-open, and Recovery Map routes. It preserves the exact five-plus-three
+unit contract and requires one of four valid wrapper-level goals before the
+final unit. Its fictional grid and slot-10 receipt are explicitly
+provisional/test-only, excluded from canonical counts, and unable to unlock the
+final incident. The content lane reports ten planned records, one structured
+candidate, zero selectable records, and eight required first-run readings.
+Record-level canon is requested in
+[`../MAPGUESS_RUNTIME_REQUEST.md`](../MAPGUESS_RUNTIME_REQUEST.md). The branch is
+not yet published or deployed.
 
 Review requests and response protocol live in
 [`../DESIGN_REQUESTS.md`](../DESIGN_REQUESTS.md).

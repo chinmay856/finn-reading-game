@@ -13,6 +13,7 @@ const PREVIEWS = Object.freeze({
 
 const MARKS = Object.freeze({
   faceplace: new URL("./art/site-assets/marks/faceplace-mark.svg", import.meta.url).href,
+  mapguess: new URL("./art/site-assets/marks/mapguess-mark.svg", import.meta.url).href,
 });
 
 export const RECOVERY_SITES = Object.freeze([
@@ -64,7 +65,7 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "mapguess", name: "MapGuess", mark: "M?", archetype: "Maps and navigation",
     belief: "THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE.", description: "The promised arrival time stays fixed by quietly moving the destination.",
-    accent: "#177449", playable: false, previewImage: PREVIEWS.mapguess,
+    accent: "#177449", markImage: MARKS.mapguess, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.mapguess,
   }),
 ]);
 

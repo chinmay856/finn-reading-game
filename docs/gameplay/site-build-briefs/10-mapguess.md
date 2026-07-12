@@ -1,5 +1,12 @@
 # Site brief 10: MapGuess
 
+## Implementation status
+
+The complete five-rebuild-plus-three-anchor structural runtime is implemented
+on the active branch, but it is not deployed yet. It remains an explicitly
+provisional, test-only build with `MIC: OFF` and no reading score while final
+validation and publication are pending.
+
 ## Core promise
 
 MapGuess teaches that fastest is only useful after the destination and goal are
@@ -48,13 +55,16 @@ the road becomes inconvenient.
 
 Accepted readings restore:
 
-- tile clarity;
-- place names;
-- scale;
-- date;
-- terrain;
+- tile clarity and place names;
+- scale and map date;
+- terrain and water boundaries;
 - route segments;
-- landmark anchors.
+- destination coordinates and the landmark inspector.
+
+Act I restores the ability to inspect the landmark records; it does not anchor
+any landmark. The actual landmark anchors are the first two post-midpoint
+steps: unit 6 anchors landmark one, then unit 7 anchors landmarks two and three.
+Unit 8 applies the explicit route-goal choice and locks the destination.
 
 Progress is the route becoming less absurd and the map becoming more readable.
 

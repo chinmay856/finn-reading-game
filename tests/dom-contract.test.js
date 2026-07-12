@@ -6,6 +6,14 @@ import {
   getWikiWhyDialogDescriptionIds,
   isWikiWhyDialogDismissible,
 } from "../apps/internet-recovery/wikiwhy-dialogues.js";
+import {
+  MAPGUESS_COPY,
+  MAPGUESS_COPY_IDS,
+} from "../apps/internet-recovery/mapguess-copy.js";
+import {
+  MAPGUESS_ANCHOR_UNITS,
+  MAPGUESS_REBUILD_UNITS,
+} from "../apps/internet-recovery/mapguess-rules.js";
 
 test("every app DOM reference exists in the prototype HTML", async () => {
   const [app, html] = await Promise.all([
@@ -248,6 +256,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(app, /openWikiWhyExperience/u);
   assert.match(app, /openThreadItExperience/u);
   assert.match(app, /openFacePlaceExperience/u);
+  assert.match(app, /openMapGuessExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
   assert.match(app, /keepPreparationVisible/u);
@@ -257,7 +266,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
-  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 3);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 4);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
 });
@@ -402,6 +411,94 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(css, /faceplace-page\[data-profile-open="true"\] \.faceplace-profile-rail/u);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
   assert.doesNotMatch(engine, /FacePlace|faceplace|Honest Zero|feed recovery/iu);
+});
+
+test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evidence-safe", async () => {
+  const [app, content, copy, css, engine, html, state, view] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mapguess-content.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mapguess-copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mapguess.css", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mapguess-state.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mapguess-view.js", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/marks/mapguess-mark.svg", import.meta.url)),
+  ]);
+  const start = html.indexOf('<section id="mapguess"');
+  const end = html.indexOf('<section id="setup"', start);
+  const markup = html.slice(start, end);
+  assert.ok(start > -1 && end > start);
+  assert.match(html, /mapguess\.css/u);
+
+  assert.deepEqual(MAPGUESS_REBUILD_UNITS.map(({ unitId }) => unitId), [
+    "tiles_names",
+    "scale_date",
+    "terrain",
+    "route_segments",
+    "destination_inspector",
+  ]);
+  assert.deepEqual(MAPGUESS_ANCHOR_UNITS.map(({ unitId }) => unitId), [
+    "landmark_1",
+    "landmarks_2_3",
+    "goal_route_lock",
+  ]);
+  assert.equal(MAPGUESS_COPY[MAPGUESS_COPY_IDS.midpointProofRoad], "ROAD GEOMETRY CHANGED: NO");
+  assert.equal(MAPGUESS_COPY[MAPGUESS_COPY_IDS.midpointProofDestination], "DESTINATION COORDINATES CHANGED: YES");
+  assert.equal(MAPGUESS_COPY[MAPGUESS_COPY_IDS.midpointProofEta], "ETA TARGET: 2 MINUTES FOREVER");
+
+  assert.match(markup, /id="mapguessPage"[^>]+data-state-id="mapguess_corrupted"/u);
+  assert.match(markup, /id="mapguessDirectionList"[^>]+class="mapguess-direction-list"/u);
+  assert.match(markup, /id="mapguessGoalOptions"[^>]+role="group"[^>]+aria-label="Choose a route goal"/u);
+  assert.match(markup, /id="mapguessProgressList"[^>]+class="mapguess-progress-list"/u);
+  assert.match(markup, /id="mapguessMapCanvas"[^>]+aria-describedby="mapguessMapSummary"[^>]+tabindex="-1"/u);
+  assert.match(markup, /<svg id="mapguessRouteLayer"[^>]+aria-hidden="true"/u);
+  assert.match(markup, /id="mapguessMidpointNotice"[^>]+aria-labelledby="mapguessMidpointHeading"/u);
+  assert.match(markup, /id="mapguessMidpointProof"/u);
+  assert.match(markup, /id="mapguessMidpointAction"/u);
+  assert.doesNotMatch(markup, /\d+\s*%/u);
+  assert.doesNotMatch(markup, /role="progressbar"/u);
+
+  assert.match(markup, /id="mapguessInspectorToggle"[^>]+aria-controls="mapguessInspectorPanel"[^>]+aria-expanded="false"/u);
+  assert.match(markup, /id="mapguessInspectorPanel"[^>]+aria-labelledby="mapguessInspectorHeading"/u);
+  assert.match(markup, /id="mapguessInspectorHeading"[^>]+tabindex="-1"/u);
+  assert.match(markup, /id="mapguessInspectorClose"/u);
+  assert.match(css, /@media \(min-width: 1180px\) and \(max-width: 1279px\)/u);
+  assert.match(css, /mapguess-page\[data-inspector-open="true"\] \.mapguess-inspector/u);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
+  assert.match(app, /state\.mapguessInspectorOpen/u);
+  assert.match(app, /event\.key !== "Escape"/u);
+  assert.match(app, /state\.mapguessInspectorOpen \|\| !\$\("mapguess"\)\.classList\.contains\("on"\)/u);
+
+  assert.match(markup, /CASE FILE[^<]+SLOT 10[^<]+PROVISIONAL TEST RECEIPT/u);
+  assert.match(markup, /id="mapguessEvidenceFilename">PROVISIONAL_MAPGUESS_10\.LOG/u);
+  assert.match(markup, /TEST ONLY[^<]+NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK/u);
+  assert.match(markup, /MIC: OFF/u);
+  assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /10 planned[^<]+0 selectable[^<]+8 required/u);
+  assert.match(content, /requiredFirstRun: 8/u);
+  assert.match(content, /structuredCandidateCount: 1/u);
+  assert.match(copy, /PROVISIONAL MAPGUESS FIXTURE - NOT CANONICAL/u);
+  assert.match(state, /eligibleForCanonicalCount: false/u);
+  assert.match(state, /registryStatus: "provisional-test-only"/u);
+  assert.match(view, /externalTileService/u);
+  assert.match(view, /usesRealLocation/u);
+
+  assert.match(app, /getMapGuessCampaignView/u);
+  assert.match(app, /advanceMapGuessState/u);
+  assert.match(app, /acknowledgeMapGuessMidpoint/u);
+  assert.match(app, /setMapGuessRouteGoal/u);
+  assert.match(app, /selectNextMapGuessPassage/u);
+  assert.match(app, /\["unavailable", "write-failed"\]\.includes\(transition\.reason\)/u);
+  assert.match(app, /data-mapguess-goal\]:not\(\[disabled\]\)/u);
+  assert.match(app, /MOVING TARGET ACKNOWLEDGED IN THIS TAB ONLY/u);
+  assert.match(app, /"mapguess-moving-target": 5/u);
+  assert.match(app, /"mapguess-anchor-2": 7/u);
+  assert.match(app, /"mapguess-secured": 8/u);
+  assert.match(app, /provisional-blocked-write-recorded/u);
+  assert.match(app, /slot 10 is excluded from the final evidence unlock/u);
+  assert.match(app, /mapguessMapColumn[\s\S]+\.inert = state\.mapguessInspectorOpen/u);
+  assert.doesNotMatch(engine, /MapGuess|mapguess|Moving Target|route goal/iu);
 });
 
 test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {
