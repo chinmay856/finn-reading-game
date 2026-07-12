@@ -1,5 +1,18 @@
 # Parallel design requests
 
+## 2026-07-12 builder reconciliation
+
+- Designer PR #38 answered the complete MyCorner runtime packet. The active
+  implementation uses the frozen Mara Vale fixture, 7A plus 3B plan, responsive
+  drawer contract, process lineage, and canonical slot-four evidence row.
+- Designer PR #39 has been detected for Yahuh and will be reconciled after the
+  MyCorner publication boundary.
+- Designer PR #37 answers the shared ThreadIt, WikiWhy, and FacePlace runtime
+  backlog; it remains queued for a scoped reconciliation so deployed behavior
+  is not mixed into the MyCorner PR.
+- No new MyCorner P0 art request is outstanding. Existing initials, DOM/CSS
+  theme fragments, shared character crops, and Techno still are sufficient.
+
 This is the durable implementation-to-design handoff for Internet Recovery 98.
 The parallel designer can answer the remaining decisions here or publish a
 focused follow-up on `agent/campaign-spine-content`.
