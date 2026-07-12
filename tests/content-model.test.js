@@ -13,6 +13,7 @@ import { A_SECOND_READING_PASSAGE } from "../content/faceplace/a-second-reading.
 import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "../content/mapguess/a-map-is-not-a-photograph.js";
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "../content/mycorner/a-cabin-with-a-purpose.js";
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "../content/yahuh/the-newspaper-that-found-people-on-the-moon.js";
+import { ENDGAME_PASSAGES } from "../content/endgame/final-incident-passages.js";
 import {
   WIKIWHY_DECK_A_IDS,
   WIKIWHY_DECK_B_IDS,
@@ -198,7 +199,7 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 7);
+  assert.equal(PASSAGE_CATALOG.length, 7 + ENDGAME_PASSAGES.length);
   assert.ok(PASSAGE_CATALOG.includes(A_CABIN_WITH_A_PURPOSE_PASSAGE));
   assert.ok(PASSAGE_CATALOG.includes(THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE));
   assert.equal(isSelectablePassage(A_CABIN_WITH_A_PURPOSE_PASSAGE), false);

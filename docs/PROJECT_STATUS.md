@@ -1,5 +1,9 @@
 # Project status
 
+## Endgame content structure — 2026-07-12
+
+All three canonical final-incident passages are now structured and ordered in the reusable Content Platform. They deliberately fail the selectable-content predicate until every required independent review and real-microphone transcription check passes.
+
 ## Final incident runtime — in progress 2026-07-12
 
 The canonical `EVIDENCE_11.LIVE` persistence and UI foundation is implemented on `agent/evidence-11-live-finale`. It remains locked behind ten distinct persisted canonical site receipts. The real containment path stops honestly at checkpoint 1 until the three frozen original passages receive independent editorial, grade, sensitivity, comprehension, accessibility, transcription-profile, and real-microphone approval.

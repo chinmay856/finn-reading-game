@@ -5,6 +5,7 @@ import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "./mapguess/a-map-is-not-a-pho
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "./mycorner/a-cabin-with-a-purpose.js";
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "./yahuh/the-newspaper-that-found-people-on-the-moon.js";
 import { THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE } from "./viewtube/the-sky-becomes-a-streak-of-fire.js";
+import { ENDGAME_PASSAGES } from "./endgame/final-incident-passages.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
 const APPROVED_REVIEW_FIELDS = Object.freeze([
@@ -33,6 +34,7 @@ export const PASSAGE_CATALOG = Object.freeze([
   A_CABIN_WITH_A_PURPOSE_PASSAGE,
   THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE,
   THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE,
+  ...ENDGAME_PASSAGES,
 ]);
 
 export function getPassageById(id, catalog = PASSAGE_CATALOG) {
