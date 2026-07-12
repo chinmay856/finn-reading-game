@@ -1,5 +1,15 @@
 # Session handoff
 
+## 2026-07-12 builder-owned design continuation
+
+- The parallel designer is paused after completing their available work.
+- Remaining visual, copy, interaction, asset, and art-direction decisions now
+  belong to the builder and should be resolved against the canonical design
+  library instead of waiting for another design PR.
+- Former design-request packets remain useful as acceptance checklists and are
+  relabeled builder-owned follow-ups. Independent editorial review and real
+  microphone testing remain separate evidence gates.
+
 ## 2026-07-12 MyCorner structured first-run deck
 
 - Encoded frozen manuscripts A02–A07 as six theme-neutral candidate records.

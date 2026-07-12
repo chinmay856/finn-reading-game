@@ -1,5 +1,14 @@
 # Project status
 
+## Design ownership — active 2026-07-12
+
+The parallel designer has completed and paused their work. Remaining visual,
+copy, interaction, asset, and art-direction decisions are builder-owned and will
+be resolved directly from the canonical design library. The repository will no
+longer wait for a separate designer response. Independent editorial review and
+real-microphone evidence remain external approval gates and must not be
+self-certified by the implementation author.
+
 ## MyCorner structured content — active 2026-07-12
 
 MyCorner's full seven-record first-run roster is represented as theme-neutral
