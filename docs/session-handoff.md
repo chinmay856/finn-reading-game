@@ -1,5 +1,16 @@
 # Session handoff
 
+## 2026-07-12 compact desktop and Search-ish artwork
+
+- Added a shared desktop affordance contract: real enabled controls receive a
+  cyan action halo, the primary next action pulses, disabled controls dim, and
+  reduced-motion users receive a static treatment.
+- Demoted the left shortcut rail visually without removing its Easter eggs.
+- Recolored Search-ish away from Google-like primaries and integrated a
+  board-derived source-network illustration as a 164 KB lazy WebP.
+- At 1440×900 the Search-ish page reports `scrollHeight === clientHeight`, shows
+  all four result cards, and keeps the full Reading Companion visible.
+
 ## 2026-07-12 Yahuh structured first-run deck
 
 - Encoded frozen manuscripts A02–A06 and catalogued the full six-record Deck A.

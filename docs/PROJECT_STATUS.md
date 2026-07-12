@@ -1,5 +1,13 @@
 # Project status
 
+## Compact desktop interaction and Search-ish art — active 2026-07-12
+
+The desktop site contract now distinguishes real enabled controls with a steady
+action halo and reserves animation for the primary next action. Search-ish uses
+an original ultraviolet/cyan/lime/coral palette, a board-derived 164 KB lazy
+WebP, and a fixed 1440×900 board that exposes all four results, the source
+inspector, progress strip, and full Reading Companion without site scrolling.
+
 ## Yahuh structured content — active 2026-07-12
 
 Yahuh's complete six-record first-run roster is encoded as Content Platform
