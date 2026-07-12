@@ -405,6 +405,20 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   The canonical eight-unit ownership contract and independent Reading Companion
   remain unchanged.
 
+### MapGuess graphics fidelity (2026-07-12)
+
+- MapGuess now expresses its canonical fictional navigation board through blue
+  route chrome, a state-aware act ribbon, layered contour paper, map-layer
+  warning labels, flowing disconnected routes, a moving-target pulse, anchor
+  beacons, and a stronger route log.
+- All cartography remains semantic DOM/SVG and fictional. No external map,
+  iframe, real location, remote tile service, or new raster payload was added;
+  route/pin/anchor movement stops under reduced motion.
+- Desktop QA confirmed four corrupted map blocks, the semantic route, persistent
+  fixed Techno, zero external-map frames, and no horizontal overflow. The exact
+  five-rebuild plus three-anchor contract and independent Reading Companion
+  remain unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock
