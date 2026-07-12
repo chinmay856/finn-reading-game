@@ -16,16 +16,20 @@ test("the recovery map exposes ten unique wrapper-owned site identities", () => 
   assert.ok(RECOVERY_SITES.every(({ archetype, belief, previewImage }) => archetype && belief && previewImage));
 });
 
-test("only WikiWhy is speech-playable while four sites expose honest structural runtimes", () => {
+test("only WikiWhy is speech-playable while five sites expose honest structural runtimes", () => {
   const playable = RECOVERY_SITES.filter(({ playable }) => playable);
   const runtimeAvailable = RECOVERY_SITES.filter(({ runtimeAvailable }) => runtimeAvailable);
   assert.deepEqual(playable.map(({ id }) => id), ["wikiwhy"]);
-  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mapguess"]);
+  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mycorner", "mapguess"]);
   assert.equal(getRecoverySite("threadit").playable, false);
   assert.equal(getRecoverySite("threadit").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.equal(getRecoverySite("faceplace").playable, false);
   assert.equal(getRecoverySite("faceplace").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.match(getRecoverySite("faceplace").markImage, /faceplace-mark\.svg/u);
+  assert.equal(getRecoverySite("mycorner").playable, false);
+  assert.equal(getRecoverySite("mycorner").runtimeLabel, "CAMPAIGN TEST BUILD");
+  assert.equal(getRecoverySite("mycorner").description, "Every profile has become one CEO demo page.");
+  assert.match(getRecoverySite("mycorner").markImage, /mycorner-mark\.svg/u);
   assert.equal(getRecoverySite("mapguess").playable, false);
   assert.equal(getRecoverySite("mapguess").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.match(getRecoverySite("mapguess").markImage, /mapguess-mark\.svg/u);

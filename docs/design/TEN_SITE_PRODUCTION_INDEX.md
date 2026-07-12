@@ -30,13 +30,13 @@ Clean visual review board:
 | 1 | WikiWhy | dynamic Act I repair to 80 percent; saved rogue rewrite; exactly 3 Shield passes | globe/question mark, encyclopedia page, evidence-route asset, secured seal | Deck A/B authored; first Content Platform record connected | shipped speech-playable campaign baseline |
 | 2 | ThreadIt | 4 untangle units; Consensus Cascade; 3 trace/containment units | interlocked conversation mark, semantic source tree, bot/process/badge SVGs | one structured candidate; zero selectable | shipped provisional structural test; public HTTPS verified |
 | 3 | FacePlace | exactly 3 nonsense-tracker repairs; Honest Zero; exactly 3 honest recovery units | overlapping profile-frame mark, cobalt/aqua feed | one structured candidate; zero selectable | shipped provisional structural test through PRs #34/#35; public HTTPS verified |
-| 4 | MyCorner | 4 profile-module units; Apply to Everyone; 3 owner-lock units | nested-corner mark, scrapbook modules | sampler/deck plan review-only | production design complete |
+| 4 | MyCorner | 4 profile-module units; Apply to Everyone; 3 owner-lock units | nested-corner mark, scrapbook modules | 7A + 3B IDs frozen; 1 structured candidate; 0 selectable | canonical structural runtime integrated; publication pending |
 | 5 | Yahuh! Portal | 3 module-pair sorts; Single Source; 3 channel-pair reconnections | crooked comet/exclamation mark, purple/gold switchboard | sampler/deck plan review-only | production design complete |
 | 6 | ViewTube | 4 recording-context units; Autoplay Corroboration; 3 evidence tracks | CRT/play-bolt mark, silent player/timeline | sampler/deck plan review-only | production design complete |
 | 7 | Search-ish | 4 result-origin units; Five Costumes; 3 independent branch gates | magnifier/cursor mark, indigo/teal source branches | sampler/deck plan review-only | production design complete |
 | 8 | Amaze-On | 4 evidence-parcel sorts; Negative Purchasing; 3 receipt/consent units | choice-parcel mark, warm warehouse/receipt UI | sampler/deck plan review-only | production design complete |
 | 9 | Spotty-Fi | 5 mixtape units; More Like the Last Thing; 3 ownership units | cassette/dial mark, silent charcoal/magenta player | sampler/deck plan review-only | production design complete |
-| 10 | MapGuess | 5 map-layer units; Moving Target; 3 destination-lock units plus explicit route goal | folded-map/question-pin mark, cream map/route UI | 10 planned; 1 structured candidate; 0 selectable; 8 required | local provisional structural test implemented; publication/deployment pending |
+| 10 | MapGuess | 5 map-layer units; Moving Target; 3 destination-lock units plus explicit route goal | folded-map/question-pin mark, cream map/route UI | 10 planned; 1 structured candidate; 0 selectable; 8 required | structural runtime deployed through PR #36 |
 
 ## Authoritative per-site files
 
