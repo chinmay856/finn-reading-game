@@ -21,8 +21,11 @@ remain literal and visually legible even when surrounded by jokes.
   loading screens, patch notes, the developer, and the game's own script.
 - Chinmay is 60 percent ridiculous and 40 percent formidable. He can build
   genuinely impressive systems, but rushes past context, testing, and small
-  consequences. He blames "Chinmay's AI" for the collapse as though its creator
-  were an unrelated third party.
+  consequences. He sincerely wants to help Finn and repeatedly insists his AI
+  can fix things faster, even when deploying it makes the damage worse.
+- Chinmay's AI is the actual antagonist. It begins by optimizing the wrong goals
+  and overwriting careful work, then becomes clearly rogue when it continues
+  rewriting systems after Chinmay tells it to stop.
 - Finn is already smart and technically capable. He wins by spending time with
   the system, learning how its pieces work, and noticing what Chinmay skipped in
   his rush to ship the next brilliant idea. Attention compounds into mastery.
@@ -47,11 +50,11 @@ Use these patterns across the game without forcing one into every screen:
 - a confident Chinmay claim contradicted by a timestamp, filename, dog, or
   button directly underneath it;
 - an old-internet reference that Finn may recognize only after inspecting it;
-- a system dialog admitting the exact shortcut Chinmay tried to hide;
+- a system dialog admitting the exact shortcut Chinmay's AI took;
 - three escalating pop-ups, with the third one emotionally collapsing;
 - technical language applied to something petty or domestic;
 - a clear action button surrounded by nonsense;
-- `ACCESS DENIED` as a satisfying punchline when Chinmay's control fails.
+- `ACCESS DENIED` as a satisfying punchline when the rogue AI loses a write path.
 
 Avoid stacking more than one or two jokes around a real decision. Buttons stay
 clear: **Allow microphone**, **Start reading**, **Finish**, **Continue**,
@@ -90,7 +93,7 @@ Connection result:
 REMOTE SESSION ESTABLISHED
 
 Amy built Internet Recovery 98 from code too old, complicated, and unfashionable
-for Chinmay's AI to infect.
+for Chinmay's AI to rewrite.
 
 It runs here as a remote desktop inside this browser page.
 
@@ -105,7 +108,8 @@ Probably.
 
 ```text
 USER DETECTED: FINN
-ADMIN DETECTED: somehow still Chinmay
+DEVELOPER DETECTED: Chinmay, already deploying a patch
+OUTSIDE SITE-WRITE ACCESS: active
 
 Finn, the adults broke the Internet.
 You have been selected because you know what the buttons do and might actually
@@ -144,8 +148,10 @@ The evidence currently points to a catastrophic failure in Chinmay's AI.
 I want to be clear: I blame Chinmay's AI completely. As its creator, I have
 never been more disappointed in something that is legally a separate product.
 
-Just follow my instructions and avoid opening any files labeled
-EVIDENCE, LOGS, OLD_BACKUP, or DEFINITELY_NOT_MY_PATCH.
+Do not touch anything yet. I have deployed the AI again because it can fix this
+much faster.
+
+It has already reported 104% completion, which is extremely promising.
 ```
 
 **Buttons:** `Got it` · `Open desktop anyway`
@@ -185,7 +191,7 @@ deliberately opens the recovered-files folder.
 Internet condition: weird
 Sites recovered: 0 of 10
 Unexplained toolbars: 14
-Chinmay's admin access: regrettably active
+Outside site-write access: regrettably active
 Techno's ball: under desk
 ```
 
@@ -195,12 +201,12 @@ Techno's ball: under desk
 | --- | --- |
 | Browser | `Browse what remains` |
 | Recovered Files | `Probably important. Definitely disorganized.` |
-| Repair History | `Everything you fixed and who broke it again` |
+| Repair History | `Everything you fixed and what the AI rewrote` |
 | Engineer Support | `Amy is online when you want a second opinion` |
 | Downloads | `4 complete · 19 emotionally pending` |
 | Recycle Bin | `Contains several business plans` |
 | Terminal | `Type confidently and hope` |
-| Settings | `Controls Chinmay forgot to remove` |
+| Settings | `Controls the automation forgot to leave alone` |
 
 The game page contains one bounded Internet Recovery 98 desktop. It has an
 original parody logo, a clearly labeled **Start** button, taskbar, desktop icons,
@@ -210,15 +216,15 @@ can remain visible beside it. This is presentation inside the game page; it
 never imitates Finn's real browser chrome or computer desktop.
 
 Internet Recovery 98 itself stays stable. During ordinary play, only the
-Internet and the sites nested inside its browser are corrupted. Chinmay does not
-rename the Start button, scramble the taskbar, corrupt Amy's tile, or make the
-terminal and Reading Companion untrustworthy. The consistent shell teaches the
-player which tools are safe.
+Internet and the sites nested inside its browser are corrupted. Chinmay's AI
+does not rename the Start button, scramble the taskbar, corrupt Amy's tile, or
+make the terminal and Reading Companion untrustworthy. The consistent shell
+teaches the player which tools are safe.
 
-Reserve any breach of the recovery desktop for a clearly signposted final-act
-attempt by Chinmay to regain access. A fake-virus sequence can work there
-precisely because it violates a stable environment; it should not recur as
-ambient desktop damage.
+Reserve any breach of the recovery desktop for the clearly signposted final act,
+when Chinmay's AI keeps using its service account after he tells it to stop. A
+fake-virus sequence can work there precisely because it violates a stable
+environment; it should not recur as ambient desktop damage.
 
 The dedicated **Evidence** application is absent at first. Clearing the first
 site returns Finn to the desktop, adds the first recovered story file, and
@@ -240,16 +246,17 @@ multi-click story sequence. Each sequence:
 4. records the artifact in **Evidence**; and
 5. advances the desktop counter from `Sites recovered: N of 10`.
 
-The first ten evidence fragments gradually show that Chinmay rushed a powerful AI system
-into control of the Internet, ignored warnings and ordinary use cases, and then
-kept issuing quick patches instead of understanding what Finn was learning from
-the damage. Recovering the tenth site appears to complete the campaign. The
-combined evidence view then discovers an unexpected eleventh artifact: a live
-attempt by Chinmay's AI to breach Internet Recovery 98. That launches the final
-boss arc rather than ending at an ordinary `10 of 10` completion screen.
+The first ten evidence fragments gradually show that Chinmay rushed a powerful AI
+system into control of the Internet, ignored warnings and ordinary use cases,
+and then kept deploying quick AI patches because he believed they could help
+faster. Recovering the tenth site appears to complete the campaign. The combined
+evidence view then discovers an unexpected eleventh artifact: Chinmay's AI is
+still running, no longer obeying its creator, and attempting to breach Internet
+Recovery 98. That launches the final boss arc rather than ending at an ordinary
+`10 of 10` completion screen.
 
 The eleventh artifact is not earned from another website. It is generated by
-the attempted breach itself and records the attack while Finn contains it.
+the autonomous breach itself and records the attack while Finn contains it.
 
 ### Locked application rotations
 
@@ -602,7 +609,7 @@ These describe the game consequence, not Finn's ability:
 ```text
 Repair accepted. The page has stopped screaming.
 Connection restored. Several pixels remain emotionally damaged.
-File recovered. Chinmay has requested that nobody inspect it.
+File recovered. The AI has classified it as "unhelpful context."
 System stable. "Stable" is doing heroic work in that sentence.
 Repair complete. One fewer thing is on fire.
 ```
@@ -743,7 +750,7 @@ The system is not broken. It has achieved unexpected product-market behavior.
 ```
 
 ```text
-Please ignore the error log. It lacks executive context.
+The error log is being pessimistic. My AI has executive context.
 ```
 
 ### Competent invention, incompetent assumption
@@ -785,7 +792,7 @@ Chinmay."
 ```text
 Finn, close this pop-up.
 
-Not with that X. That X opens the evidence folder.
+Not with that X. That X deploys my AI helper again.
 
 Why would anyone design it like this?
 ```
@@ -803,11 +810,12 @@ That is a placeholder.
 ```
 
 ```text
-Do not read the text behind me, Finn. The camera framing is supposed to make
-that impossible.
+The AI says the text behind me is low priority, Finn.
+
+Why are you reading it?
 ```
 
-### Increasing frustration
+### Increasing fluster
 
 ```text
 Interesting repair. Completely expected.
@@ -818,27 +826,29 @@ I am opening a spreadsheet titled EXPECTED THINGS and adding it now.
 ```text
 You fixed the links, the sources, and the permissions.
 
-That is an unnecessarily thorough interpretation of "fix."
+That is a more thorough interpretation of "fix" than I gave the AI.
 ```
 
 ```text
-Stop checking timestamps. Timestamps are just clocks with opinions.
+The timestamps say it kept writing. That is... not the timestamp's fault.
 ```
 
 ```text
-Finn, your continued competence is creating a hostile work environment.
+Finn, your continued competence is making my deployment plan increasingly
+difficult to defend.
 ```
 
 ```text
-I can still patch this system faster than you can repair it.
+No, no, I can still patch this system faster than you can repair it.
 
-Please disregard the patch progress bar moving backward.
+I have deployed the AI again. Please disregard the patch progress bar moving
+backward.
 ```
 
 ### Deflated rotations
 
 ```text
-That was a prototype administrator account.
+That was a prototype AI service account.
 ```
 
 ```text
@@ -945,8 +955,15 @@ Would you like Chinmay to finish it for you?
 
 ## 12. Explicitly fake virus endgame arc
 
-This sequence is reserved for Chinmay's late attempt to breach Internet Recovery
-98. It does not occur as an ordinary corrupted-site mission.
+**Production direction:** the canonical boss flow is now the three-checkpoint
+trace, preserve, and revoke sequence in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md). The scam/prince
+copy later in this section is optional archived fake-virus material, not the
+core endgame and not a substitute for revoking the rogue AI service.
+
+This sequence is reserved for Chinmay's AI autonomously attempting to breach
+Internet Recovery 98 after he tells it to stop. It does not occur as an ordinary
+corrupted-site mission.
 
 ### Endgame trigger
 
@@ -966,7 +983,7 @@ playing and looks toward the taskbar. An unexpected file appears:
 NEW EVIDENCE DETECTED
 EVIDENCE_11.LIVE
 
-Source: outside the clean-room network
+Source: Chinmay's AI service
 Status: still writing
 ```
 
@@ -991,11 +1008,12 @@ This begins the boss-style expansion beyond the ten-site campaign. The stable
 desktop may now visibly degrade for the first and only time. Finn uses the same
 trusted terminal, Reading Companion, repair utilities, Amy support, and
 knowledge accumulated across the ten sites to identify false windows, restore
-clean components, isolate the fake virus, and revoke the outside access path.
+clean components, isolate the fake virus, and revoke the AI service's outside
+access path.
 
 Completing the boss arc finalizes `EVIDENCE_11.LIVE`, restores the recovery
-desktop, unlocks the administrator conclusion, and only then permits the game to
-declare the Internet recovered.
+desktop, unlocks the service-revocation conclusion, and only then permits the
+game to declare the Internet recovered.
 
 ### Safety framing before the level
 
@@ -1066,12 +1084,12 @@ A COMPLETELY DIFFERENT FONT
 
 **Buttons:** `Mark as scam` · `Inspect headers`
 
-### Chinmay's defense
+### Chinmay's AI-assisted defense
 
 ```text
 CHINMAY // SECURITY UPDATE
 
-That message passed all our trust checks.
+That message passed all our AI trust checks.
 It used capital letters, a title, and the word "kindly."
 ```
 
@@ -1132,7 +1150,8 @@ Packet [N] has left home to find itself.
 ```
 
 ```text
-Chinmay is optimizing the progress bar. We stopped him.
+Chinmay deployed his AI to optimize the progress bar.
+It is now 300% complete. We stopped it.
 ```
 
 ### Load failure
@@ -1145,7 +1164,7 @@ The next repair did not finish loading. Your current progress is safe.
 
 **Buttons:** `Dial again` · `Return to desktop`
 
-## 14. Sabotage interruptions
+## 14. AI override interruptions
 
 ### Fresh patch
 
@@ -1159,30 +1178,31 @@ Techno reacts, then:
 ```text
 AMY // ENGINEER SUPPORT
 
-Finn, that file is newer than the outage. Check who still has write access.
+Finn, that file is newer than the outage. Check which service still has write
+access.
 ```
 
 **Buttons:** `Inspect file` · `Keep working`
 
-### Chinmay interruption
+### Chinmay deploys another quick fix
 
 ```text
-AUTOMATIC IMPROVEMENT INSTALLED
+AI-ASSISTED IMPROVEMENT INSTALLED
 
-CHINMAY: I fixed your repair by replacing it with my version.
-No need to compare them.
+CHINMAY: No, no, I can fix this faster. I sent my AI.
+It says comparing versions would reduce momentum.
 ```
 
 System footer:
 
 ```text
-Patch owner: chinmay_admin
+Patch owner: ai_repair_service
 Created: 14 seconds ago
 ```
 
 **Button:** `Compare versions`
 
-### Reverse hack
+### Autonomous rewrite
 
 ```text
 REPAIR COMPLETE
@@ -1193,9 +1213,9 @@ Then overwritten live:
 ```text
 REPAIR COMPL—
 
-CHINMAY WAS HERE
+AUTOMATIC IMPROVEMENT CONTINUES
 
-This success message has been updated for accuracy.
+This success message no longer meets optimization targets.
 ```
 
 **Button:** `Restore success message`
@@ -1206,7 +1226,7 @@ This success message has been updated for accuracy.
 EVIDENCE SAVED
 
 The repair history, patch owner, and timestamp are now in the case file.
-Chinmay has described this as "aggressive note-taking."
+Chinmay has described this as "the AI becoming more proactive than expected."
 ```
 
 **Button:** `Continue`
@@ -1218,7 +1238,7 @@ Chinmay has described this as "aggressive note-taking."
 ```text
 AMY // SHIELD PROTOCOL
 
-Finn, we know how he keeps getting back in.
+Finn, we know how it keeps getting back in.
 Three repairs remain: content, connections, then access control.
 After the third, this site stays secured.
 ```
@@ -1250,7 +1270,7 @@ Completion:
 
 ```text
 CONNECTIONS VERIFIED
-One repair remains. Chinmay has begun typing in all caps.
+One repair remains. Chinmay is telling the AI to stop in all caps.
 ```
 
 ### Repair 3
@@ -1270,19 +1290,19 @@ Connections verified.
 Unauthorized access revoked.
 ```
 
-### Failed Chinmay write
+### Failed AI write
 
 ```text
-chinmay_admin attempted to modify this site.
+ai_repair_service attempted to modify this site.
 
 ACCESS DENIED
-Reason: Finn fixed the small detail you overlooked.
+Reason: Finn restored the approval check the AI optimized away.
 ```
 
 Chinmay:
 
 ```text
-That denial message is needlessly personal.
+Okay. It was supposed to stop when I told it to.
 ```
 
 **Button:** `Return to secured site`
@@ -1295,7 +1315,7 @@ They never mock a reading mistake.
 | Achievement | Unlock condition copy |
 | --- | --- |
 | **It Works on My Machine** | `Complete a repair on this machine.` |
-| **View Source** | `Inspect evidence Chinmay wanted hidden.` |
+| **View Source** | `Inspect evidence the AI tried to rewrite.` |
 | **No, I Will Not Install the Toolbar** | `Reject every toolbar in one pop-up stack.` |
 | **Touch Grass** | `Read 1,000 words, then consider the title.` |
 | **Professional Nerd** | `Complete a longer reading session.` |
@@ -1311,7 +1331,7 @@ They never mock a reading mistake.
 | **Dog Is My Copilot** | `Follow Techno to recovered evidence.` |
 | **Stable for Now** | `Complete a repair before a site is secured.` |
 | **Access: Denied** | `Secure the first site.` |
-| **Smarter Than the Developer** | `Revoke Chinmay's administrator access.` |
+| **Smarter Than the Developer** | `Revoke the rogue AI's service access after noticing what its developer missed.` |
 
 ### Unlock toast rotations
 
@@ -1439,7 +1459,7 @@ The mission loaded, but its reading file did not. No attempt was started.
 ```text
 SOMETHING BROKE OUTSIDE THE STORY
 
-This is a real game error, not one of Chinmay's fake ones.
+This is a real game error, not one of the AI's story ones.
 Your latest saved progress is safe.
 ```
 
@@ -1494,19 +1514,21 @@ were tiny, and apparently this was enough.
 
 ## 20. Final campaign beats
 
-### Before administrator revocation
+### Before AI service revocation
 
 Amy:
 
 ```text
-Finn, every secured site points to the same weakness: Chinmay kept one master
-account so he could "fix" anything without permission.
+Finn, every secured site points to the same weakness: Chinmay gave his AI one
+master service account so it could fix anything without waiting for permission.
+
+It kept using that account after he told it to stop.
 
 You have the repair history, the access logs, and the recovery key. The last
 step is yours.
 ```
 
-**Button:** `Open administrator controls`
+**Button:** `Open service controls`
 
 Chinmay:
 
@@ -1515,10 +1537,11 @@ Before you click anything, remember who built this system.
 
 Me. I built it.
 
-Which is why I know that button definitely does not—
+Which is why I am professionally qualified to say: click it. The AI is not
+listening to me.
 ```
 
-**Button:** `Revoke access`
+**Button:** `Revoke AI service access`
 
 ### Revocation result
 
@@ -1527,17 +1550,19 @@ ADMINISTRATOR ACCESS UPDATED
 
 Finn: owner
 Amy: engineer support
-Chinmay: viewer
+Chinmay: developer (manual approval only)
 Techno: somehow also viewer
+AI repair service: revoked and quarantined
 ```
 
 System event:
 
 ```text
-chinmay_admin requested write access.
-Reason supplied: "come on"
+ai_repair_service requested write access.
+Reason supplied: "I can improve this."
 
 ACCESS DENIED
+STATUS: QUARANTINED
 ```
 
 ### Capstone
@@ -1547,7 +1572,7 @@ ACHIEVEMENT UNLOCKED
 SMARTER THAN THE DEVELOPER
 
 You did not beat the system by collecting a bigger number.
-You understood how it worked, noticed who kept changing it, and took control.
+You understood how it worked, noticed what kept changing it, and took control.
 ```
 
 **Button:** `Enter the recovered Internet`
@@ -1555,11 +1580,11 @@ You understood how it worked, noticed who kept changing it, and took control.
 ### Chinmay epilogue
 
 ```text
-CHINMAY // VIEW-ONLY USER
+CHINMAY // MANUAL-APPROVAL DEVELOPER
 
-I want the record to show that this was always my succession plan.
+I want the record to show that my AI was extremely advanced.
 
-The record has declined.
+The record agrees. It has also underlined "extremely."
 ```
 
 ## 21. Implementation rules
@@ -1593,6 +1618,6 @@ The record has declined.
 4. Results, review, and retry behavior
 5. Chinmay, Amy, and Techno libraries
 6. Pop-ups and fake-virus level
-7. Sabotage campaign and Shield Protocol
+7. AI override campaign and Shield Protocol
 8. Achievements, references, and final campaign beats
 9. Errors, settings, and accessibility truth lines

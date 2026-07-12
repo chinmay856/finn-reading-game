@@ -1,5 +1,80 @@
 # Session handoff
 
+## Rogue-AI campaign design track
+
+- Latest design-only builder aid:
+  `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` translates the reviewed art,
+  copy deck, WikiWhy flow, hub, character sheets, and accessibility rules into
+  concrete runtime UI notes. It is explicitly not an implementation change and
+  keeps all wrapper-specific material out of Reading Engine, speech, scoring,
+  and Content Platform logic.
+- Latest site-copy aid:
+  `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` gives the builder concrete
+  corrupted/repaired page copy, midpoint copy, AI-denial text, secured payoffs,
+  and character beats for all ten sites. Other sites remain design/previews
+  until their own passages and mechanics are implemented.
+- Latest WikiWhy build aid:
+  `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` narrows the immediate
+  builder target to the WikiWhy playable slice with screen/state copy,
+  ownership boundaries, character panel IDs, loading/error copy, and acceptance
+  checks.
+- Latest ten-site build aid:
+  `docs/gameplay/site-build-briefs/README.md` indexes builder-facing briefs for
+  all ten Internet Recovery 98 sites. Each site brief records runtime identity,
+  layout, local three-act flow, progress fiction, character states, reading
+  lane, and acceptance checks without implementing code.
+- Latest campaign hub aid:
+  `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` gives concrete Recovery Map
+  copy, site tile text, evidence-file receipts, blocked-write labels, Incoming
+  Case rotation guidance, and count-based global story beats for the ten-site
+  campaign.
+- Latest content-planning aid:
+  `content/proposed-sites/PASSAGE_DECK_PLANS.md` outlines two-deck
+  replayability targets for all ten sites: WikiWhy uses its existing Deck A/B,
+  and the other nine sites now have ten candidate Reading Companion passage
+  slots each with source lane, reading focus, and speech-risk notes.
+- Latest asset-use aid:
+  `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` identifies canonical character
+  sheets, character crop grids, current ten-site concept boards, preview-image
+  rules, and superseded/plain-board boundaries for builders.
+- Canon now separates intent from consequence: Chinmay irresponsibly rushed a
+  powerful AI into deployment but sincerely believes his automated fixes will
+  help. The AI becomes the actual antagonist when it keeps rewriting systems
+  beyond his commands. Finn owns the decisive final action and revokes the AI
+  service's recovery access.
+- Chinmay is always long-haired. His visual state progresses from neat,
+  overconfident polish to increasingly messy, frazzled, and flustered concern;
+  he is never angry at Finn, threatening, or villain-coded.
+- The campaign hub, WikiWhy worked example, and nine non-WikiWhy generated
+  boards remain story/composition references. Production state contracts,
+  exact copy IDs, responsive/accessibility rules, and original marks are now
+  frozen in gameplay briefs and site-asset manifests. Passage acceptance and
+  runtime implementation remain build/content work.
+- The prior inconsistent MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
+  MapGuess boards now carry `-superseded` filenames and are comparison history
+  only. The current storyboard filenames are indexed in
+  `apps/internet-recovery/art/concepts/sites/README.md`; do not use any board as
+  a runtime background or final identity asset.
+- Production character sheets now live under
+  `apps/internet-recovery/art/characters/`. Builders choose Amy, Chinmay, and
+  Techno states by wrapper story mood instead of regenerating character art per
+  message. `Chinmay` is the only canonical spelling; alternate transcriptions
+  never enter assets, copy, or filenames.
+- Current revised boards carry the `rogue-ai` filename; the earlier unsuffixed
+  boards remain only as superseded layout-history references. Generation
+  provenance and the final shared prompt direction are recorded in
+  `apps/internet-recovery/art/concepts/ROGUE_AI_PROMPT_NOTES.md`.
+- Private photos guide likeness only: never paste one into a board or use a
+  photoreal character panel. Amy, Chinmay, and Techno share one consistent
+  illustrated editorial-cartoon treatment. Techno remains ball-obsessed;
+  long-haired Chinmay becomes progressively messier and more frazzled without
+  angry or villain coding.
+- Each site owns its own three-act story, middle change, progress fiction,
+  reading lane, and resolution; the reusable Reading Engine does not know about
+  Chinmay, the AI, the desktop shell, or any site mechanic.
+- Publication target: draft PR #23 on `agent/campaign-spine-content`, stacked on
+  the nine-site design branch.
+
 ## WikiWhy interface track
 
 - Reviewed the complete merged prototype handoff, campaign flow, character
@@ -9,6 +84,12 @@
   Recovery 98 remote desktop, one dominant WikiWhy browser window, one compact
   independent Reading Companion, one progress-driven repair wipe, and quiet
   result/comprehension windows.
+- New reviewed visual direction for the next wrapper pass: present the game as a
+  remote tunnel into Finn's fictional Internet Recovery 98 desktop. Keep the
+  Recovery Browser visibly inset rather than full-canvas, leave a restrained
+  stable desktop rim with taskbar/status chrome and a few old-computer Easter
+  eggs, and keep the Reading Companion visibly separate from corrupted site
+  content. This is shared framing; each site's browser composition may vary.
 - Added stable implemented copy IDs in `apps/internet-recovery/copy.js`; no
   wrapper copy or WikiWhy concepts entered the Reading Engine or speech files.
 - Added `?uiPreview=read` and `?uiPreview=review` as no-microphone visual QA
@@ -17,7 +98,7 @@
   attributed Content Platform record. Title, paragraphs, word count,
   provenance, profile, and comprehension now hydrate the interface from that
   record instead of the former hard-coded evidence demo.
-- Deliberately deferred the 80% reverse hack, ten-session campaign, Shield
+- Deliberately deferred the 80% rogue AI rewrite, ten-session campaign, Shield
   Protocol, achievements, and generated character sprites until the core
   one-passage experience is reviewed.
 - Next action: deploy and judge whether the compact reader holds attention at
@@ -43,17 +124,27 @@
 - Added `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`, a reviewable wrapper-only
   deck covering first launch, navigation, mission framing, microphone/privacy,
   reading states, quiet results, voluntary retries, character dialogue, pop-ups,
-  a clearly labeled fake-virus level, dial-up loading, sabotage, Shield Protocol,
-  achievements, settings, errors, old-Internet references, and final story beats.
+  a clearly labeled fake-virus level, dial-up loading, AI interference, Shield
+  Protocol, achievements, settings, errors, old-Internet references, and final
+  story beats.
 - Approved voice: edgy teen comedy without cruelty; mild profanity; direct use
   of Finn's name; extensive fourth-wall breaks; and Chinmay as a brilliant,
-  theatrical inventor whose overlooked details defeat his plans.
+  theatrical, overconfident inventor whose sincere attempts to help by deploying
+  his AI create additional problems for Finn to solve. Chinmay is not malicious.
+- Chinmay always has long hair. His campaign art progresses from neat and
+  confident to increasingly messy, frazzled, and flustered as the AI ignores
+  him. He may look startled, embarrassed, tired, or relieved, but never angry at
+  Finn, threatening, or villain-coded.
 - Reading feedback stays minimal and nonjudgmental. Metrics remain visible,
   recognition uncertainty is explicit, continuing is always available, and no
   score can force a retry.
 - Canonical wrapper title is now `Internet Recovery 98`. Finn opens it as an
-  ordinary browser-based game, and the game page contains Amy's bounded remote
-  recovery desktop. Amy assembled the new recovery environment from old,
+  ordinary browser-based game, and the game page becomes a clearly bounded
+  remote-tunnel view into his fictional Internet Recovery desktop. The Recovery
+  Browser remains visibly inset within that shell, leaving room for restrained
+  trash/recycle-bin, folder, file, shortcut, taskbar, and status-chrome details.
+  It must not imitate Finn's real desktop. Amy assembled the new recovery
+  environment from old,
   pre-generative-AI code that Chinmay's contaminated AI systems did not
   understand or want to rewrite. The contained desktop uses original parody
   start/taskbar/browser/terminal conventions and must not imitate Finn's actual
@@ -63,22 +154,33 @@
 - Internet Recovery 98 uses a normal `Start` label. The recovery desktop is a
   stable, trusted shell: taskbar, terminal, Reading Companion, repair tools, Amy
   tile, and Techno do not become corrupted during ordinary site missions. Only
-  websites nested inside the old browser are unstable. A single explicitly
-  fictional virus breach is reserved as a possible late-game escalation when
-  Chinmay makes a final attempt to regain control.
+  websites nested inside the old browser are unstable. The Reading Companion
+  remains its own recovery window, and site-specific browser layouts may vary
+  inside the shared desktop frame. A single explicitly fictional virus breach
+  is now frozen as the late-game escalation when Chinmay's AI acts beyond his
+  command and attempts to enter the recovery desktop.
 - Campaign structure is ten sites and eleven evidence files. Each site supplies
   one story artifact. Apparent completion at `10 of 10` is interrupted by
   `EVIDENCE_11.LIVE`, which records Chinmay's AI attempting to breach the
-  recovery desktop. The resulting fake-virus boss arc is the only ordinary-story
-  exception to the desktop's stability and leads to a separate conclusion.
-- Parody-site body copy remains intentionally out of scope for this pass.
-- Implementation has not begun. Review the deck in its suggested section order,
-  then assign stable wrapper copy IDs before wiring approved lines into UI.
+  recovery desktop after acting beyond his command. The resulting fake-virus
+  boss arc is the only ordinary-story exception to the desktop's stability and
+  leads to a separate conclusion in which Finn traces the common origin,
+  preserves all eleven evidence files, and revokes the AI service's access
+  across exactly three saved reading checkpoints. See
+  [`gameplay/FINAL_BREACH_RUNTIME_BRIEF.md`](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
+- The ten-site production design pass is complete. Every site has stable copy
+  IDs, exact repair/midpoint/finale/persistence contracts, responsive and
+  reduced-motion direction, and an original runtime mark. WikiWhy and ThreadIt
+  also have focused implementation-usable SVG packs. Generated boards remain
+  story/composition references rather than runtime backgrounds.
+- Parallel implementation is active on `agent/recovery-hub-navigation` / PR 30.
+  The design branch answers its durable requests through
+  [`design/BUILDER_RESPONSE_2026-07-12.md`](design/BUILDER_RESPONSE_2026-07-12.md).
 
 ## Current state
 
-- Branch: `agent/predictive-reading-guide`
-- Base: synchronized `main` at merge commit `996971e` from PR #12
+- Branch: `agent/campaign-spine-content`
+- Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
 - Current engine: Transformers.js `3.7.1`, timestamped Whisper base,

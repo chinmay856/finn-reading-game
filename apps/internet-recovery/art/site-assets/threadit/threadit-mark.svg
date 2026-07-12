@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">ThreadIt interlocked conversation mark</title>
+  <desc id="desc">Two original speech cards linked together like a chain.</desc>
+  <path d="M16 22h58c8 0 14 6 14 14v30c0 8-6 14-14 14H47L27 96V80H16C8 80 2 74 2 66V36c0-8 6-14 14-14Z" fill="#F26822" stroke="#17212B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M54 48h58c8 0 14 6 14 14v30c0 8-6 14-14 14h-9v16l-20-16H54c-8 0-14-6-14-14V62c0-8 6-14 14-14Z" fill="#6655A6" stroke="#17212B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M48 48h26c8 0 14 6 14 14v18H54c-8 0-14-6-14-14V56c0-4 3-8 8-8Z" fill="#F4F1EA" stroke="#17212B" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="59" cy="64" r="4" fill="#17212B"/>
+  <circle cx="73" cy="64" r="4" fill="#17212B"/>
+</svg>
+

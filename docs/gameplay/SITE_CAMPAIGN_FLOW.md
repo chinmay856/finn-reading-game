@@ -4,23 +4,56 @@
 
 Each site should feel like a compact mystery and an escalating contest, not a
 visible worksheet sequence. Finn initially believes he is repairing ordinary
-damage. Only after he has invested in the site does the game reveal that new
-corruption is still being written in the background.
+damage. Chinmay sincerely offers his AI service as a faster helper and does not
+realize that it is rewriting Finn's repairs. Only after Finn has invested in the
+site does the game reveal that the helper keeps writing new corruption in the
+background and is beginning to act beyond Chinmay's commands.
 
 WikiWhy is one worked campaign. Other sites share only a broad three-act rhythm:
 an apparent problem, a meaningful mid-campaign change, and a site-specific
-resolution. They do not inherit WikiWhy's percentages, passage counts, reverse
-hack, shield structure, or progress metaphor.
+resolution. They do not inherit WikiWhy's percentages, passage counts, rogue AI
+rewrite, shield structure, or progress metaphor.
 
-## The two-act arc
+Visual reference:
+[`wikiwhy-three-act-rogue-ai.png`](../../apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png).
+
+## Shared presentation grammar
+
+Every site opens inside a visibly inset Recovery Browser window within Finn's
+fictional Internet Recovery 98 remote desktop. The site never becomes the whole
+game canvas: retain a restrained rim of the safe desktop, including some
+taskbar/status chrome and a few optional old-computer objects such as an original
+trash/recycle-bin parody, folders, files, or repair shortcuts. Those objects are
+environmental Easter eggs, not required navigation or reading targets.
+
+The Reading Companion remains a separate recovery window beside the browser.
+It must be visually distinct from corrupted site copy, retain its own title and
+microphone/status treatment, and remain trustworthy while the site changes.
+Ordinary corruption stays inside the inset browser; only the singular final
+campaign breach may violate the stable desktop shell.
+
+This is a shared containment rule, not a shared page layout. Each site's browser
+window may use the composition that fits its archetype and local story: article,
+feed, profile, thread, portal, video workspace, results page, storefront, music
+library, or map. Window proportions and placement may vary when that improves
+the site, provided the desktop boundary and independent Reading Companion remain
+clear. All of this presentation belongs to the Internet Recovery 98 wrapper;
+the Reading Engine receives no desktop, site, or character concepts.
+
+## The three-act arc
 
 ### Act I — ordinary recovery
 
 The mission entry shows a site that is obviously wrong but not obviously
 malicious. Broken citations, absurd confident claims, missing images, and `XXXX`
 text look like residue from the wider Internet collapse. Chinmay does not appear
-as a villain. If he appears at all, he offers bland CEO reassurance or takes
-credit for “supporting” the recovery.
+as a villain because he is not one. If he appears at all, he offers sincere,
+overconfident CEO reassurance, deploys his AI as a supposedly faster helper, or
+takes credit for “supporting” the recovery. He believes the service is helping.
+Every portrait keeps his long hair. It begins neat and becomes progressively
+messier, frazzled, and flustered at later campaign-wide story beats as the AI
+ignores him. His expressions may be startled or embarrassed, never angry,
+threatening, or villain-coded.
 
 Finn completes a hidden, adaptive run until site stability reaches 80%. Each
 completed passage advances the same simple site-repair wipe by roughly 10–20
@@ -87,7 +120,7 @@ it does not overshoot into the finale.
 Dynamic jumps apply only to Act I. Once the final three challenges begin, all
 three story beats occur so the finale stays trustworthy and complete.
 
-## The warning and reverse hack
+## Act II — warning and rogue AI rewrite
 
 At roughly 70% visible site stability, the page begins showing subtle clues:
 
@@ -99,14 +132,16 @@ At roughly 70% visible site stability, the page begins showing subtle clues:
 Amy opens a concise engineer channel between roughly 70% and 79%:
 
 > **AMY // ENGINEER CHANNEL**  
-> “Hold on. You are fixing it—but something is still writing corruption behind
-> you. Keep going. I think I can trap the next change.”
+> “Hold on. You are fixing it—but something is still rewriting the page behind
+> you. Keep going. I think I can trace the next change.”
 
-This is the first explicit suspicion, not proof of who is responsible.
+This is the first explicit suspicion that the helper service is responsible,
+not proof of how far it has moved beyond Chinmay's command.
 
 When an Act I passage brings site stability to 80%, it appears to finish
-normally. Then the screen is interrupted by the first unmistakable live reverse
-hack:
+normally. Then the screen is interrupted by the first unmistakable live rewrite
+from Chinmay's AI service. The service is no longer waiting for the command he
+gave it:
 
 1. the repair edge freezes;
 2. a background write process appears;
@@ -125,12 +160,12 @@ site regions. The new zero measures **shield stabilization**, not the original
 repair. Labeling the new meter differently is essential so the game does not lie
 about what was lost.
 
-## Act II — the three-step Shield Protocol
+## Act III — the three-step containment finale
 
-After the reverse hack, Amy reveals an exact finish line:
+After the rogue AI rewrite, Amy reveals an exact finish line:
 
-> “Okay. I caught the change. Give me three clean repair passes and I can seal
-> this site around it. Three. No surprise fourth one.”
+> “Okay. I caught the AI's change. Give me three clean repair passes and I can
+> seal this site around it. Three. No surprise fourth one.”
 
 The finale is deliberately short, explicit, and fast-moving. It always contains
 exactly three new passages:
@@ -139,9 +174,9 @@ exactly three new passages:
    jumps from 0% to about 33%.
 2. **Shield Pass 2 — Verify:** complete a passage plus one independent
    comprehension/evidence check. Stabilization jumps to about 66%.
-3. **Shield Pass 3 — Seal:** complete the final passage while Chinmay's write
-   process visibly pushes against the repair boundary. Stabilization reaches
-   100% and the shield locks.
+3. **Shield Pass 3 — Seal:** complete the final passage while the AI service's
+   write process visibly pushes against the repair boundary. Stabilization
+   reaches 100% and the shield locks.
 
 The comprehension check must refer to the Reading Companion passage, not tiny
 decorative WikiWhy copy. A wrong answer offers another attempt or a clue; it
@@ -159,24 +194,30 @@ At 100% shield stabilization:
 - the repaired WikiWhy page resolves completely;
 - its browser title and desktop icon gain a persistent **SECURED** shield;
 - Techno celebrates with the ball;
-- a hidden Chinmay admin window attempts one more write and receives
+- a hidden AI service process attempts one more write and receives
   **ACCESS DENIED**;
-- Chinmay is briefly visible, frustrated and surprised, but the full scope of his
-  sabotage remains a larger-game revelation;
+- Chinmay is briefly visible, surprised and embarrassed, and insists that he
+  told the AI to help; the full scope of the service acting beyond his command
+  remains a larger-game revelation;
 - the site can be revisited without canonical re-corruption.
 
-The final joke is not merely that Chinmay loses. Finn sees that his repeated
-work produced the evidence and stable state Amy needed to block him.
+The final joke is not merely that an automated shortcut loses. Finn sees that
+his repeated work produced the evidence and stable state Amy needed to block the
+AI service when Chinmay's faster fix could not.
 
 ## Screen sequence to explore
 
-1. **Mission entry:** obviously corrupted WikiWhy; no malicious framing.
-2. **Act I reading:** ordinary progress wipe and compact Reading Companion.
+1. **Mission entry:** obviously corrupted WikiWhy inside an inset browser, with
+   the stable desktop rim still visible and no malicious framing.
+2. **Act I reading:** ordinary progress wipe and a clearly separate compact
+   Reading Companion.
 3. **Seventy-percent clue:** Amy warning, suspicious timestamp, alert Techno.
-4. **Reverse hack:** accessible red system takeover and right-to-left corruption.
+4. **Rogue AI rewrite:** accessible red system takeover and right-to-left
+   corruption.
 5. **Shield Protocol:** explicit three-pass finale with large 33% jumps and an
    independent comprehension check on pass two.
-6. **Secured completion:** Amy stabilizes the site; Chinmay's write is denied.
+6. **Secured completion:** Amy stabilizes the site; the AI service's write is
+   denied.
 
 These are game-flow concepts, not implementation specifications. Timing,
 thresholds, passage counts, and adaptation rules remain provisional until the
@@ -185,5 +226,5 @@ basic reading loop is playtested.
 The prototype-facing summary is maintained in
 [`PROTOTYPE_DESIGN_HANDOFF.md`](PROTOTYPE_DESIGN_HANDOFF.md). WikiWhy is the
 worked example; each future site needs its own page structure, corrupted belief,
-repair behavior, progress logic, middle twist, finale, sabotage, character
+repair behavior, progress logic, middle twist, finale, AI interference, character
 beats, and payoff.

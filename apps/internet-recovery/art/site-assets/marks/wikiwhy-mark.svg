@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">WikiWhy evidence globe</title>
+  <desc id="desc">An original globe contains source lines and a question mark.</desc>
+  <circle cx="61" cy="61" r="47" fill="#F4F1E8" stroke="#1D3557" stroke-width="7"/>
+  <ellipse cx="61" cy="61" rx="23" ry="47" fill="none" stroke="#5F7E9B" stroke-width="4"/>
+  <path d="M16 48h90M16 74h90M28 31c20 12 46 12 66 0M28 91c20-12 46-12 66 0" fill="none" stroke="#5F7E9B" stroke-width="4"/>
+  <circle cx="95" cy="92" r="26" fill="#287A55" stroke="#1D3557" stroke-width="6"/>
+  <path d="M86 84c1-7 6-11 12-11 7 0 12 4 12 10 0 9-12 10-12 18M98 110h.1" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+</svg>
+

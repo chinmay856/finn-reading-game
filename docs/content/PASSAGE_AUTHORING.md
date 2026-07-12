@@ -153,8 +153,8 @@ For an initial 30-passage review set:
 - 10 original pieces across comedy, suspense, speculative fiction, and game lore.
 
 Balance is measured across the library, not forced into every site. Repeated
-sabotage visits should rotate source type and structure so replay changes the
-kind of reading practice, not only the topic.
+visits should rotate source type and structure so replay changes
+the kind of reading practice, not only the topic.
 
 ## Required content metadata
 
