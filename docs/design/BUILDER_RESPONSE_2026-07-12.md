@@ -6,6 +6,8 @@ This response was prepared against implementation commit `5542682` on
 `agent/recovery-hub-navigation` and the four runtime captures in
 `docs/design/review/` on that branch.
 
+The first focused production pack is published at design commit `8b4440b`.
+
 The current Recovery Map, WikiWhy reading view, Amy warning, and Chinmay rewrite
 composition are approved as the implementation baseline. The design changes
 below are additive state and asset directions; they do not ask the builder to
@@ -65,6 +67,14 @@ Its asset manifest is
 The source tree is meaningful information, so its nodes, labels, relationships,
 and duplicate status must exist in the accessibility tree. The supplied SVG
 process art is a visual accent, not the source of truth.
+
+## Final breach response
+
+The separate `EVIDENCE_11.LIVE` boss arc is production-frozen in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](../gameplay/FINAL_BREACH_RUNTIME_BRIEF.md),
+with three saved checkpoints, complete copy IDs, a safety contract, resumable
+state, original SVG assets, and a six-state production board. It does not reuse
+an ordinary site's progress model.
 
 ## Non-negotiable continuity
 

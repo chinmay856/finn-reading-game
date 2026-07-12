@@ -259,8 +259,13 @@ help; later evidence shows the AI continuing after he tells it to stop. Ten
 secured sites produce a genuine apparent finish. An unexpected eleventh live
 evidence file then starts the separate, singular rogue-AI breach of Amy's
 previously trustworthy recovery desktop and leads to revocation of the AI
-service's outside deployment access. This remains design-only and is not a
-request to implement campaign state in the current mechanics test.
+service's outside deployment access. The production design now freezes that
+breach as exactly three saved checkpoints—trace origin, preserve evidence, and
+revoke access—with a truthful fake-virus safety gate, resumable state, exact
+copy IDs, original SVG assets, and a six-state board in
+[`gameplay/FINAL_BREACH_RUNTIME_BRIEF.md`](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
+This remains wrapper design and does not place campaign state in the Reading
+Engine or Content Platform.
 
 One review-only grades 10–12 sample is now drafted for each non-WikiWhy site.
 The sampler spans argumentative nonfiction, literary retelling, reflective

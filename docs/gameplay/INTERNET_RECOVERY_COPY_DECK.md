@@ -955,6 +955,12 @@ Would you like Chinmay to finish it for you?
 
 ## 12. Explicitly fake virus endgame arc
 
+**Production direction:** the canonical boss flow is now the three-checkpoint
+trace, preserve, and revoke sequence in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md). The scam/prince
+copy later in this section is optional archived fake-virus material, not the
+core endgame and not a substitute for revoking the rogue AI service.
+
 This sequence is reserved for Chinmay's AI autonomously attempting to breach
 Internet Recovery 98 after he tells it to stop. It does not occur as an ordinary
 corrupted-site mission.

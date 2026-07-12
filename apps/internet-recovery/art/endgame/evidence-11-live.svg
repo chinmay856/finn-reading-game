@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Evidence 11 live file</title>
+  <desc id="desc">A new live evidence file with a red recording dot and a route entering the recovery desktop.</desc>
+  <path d="M20 8h58l30 30v82H20Z" fill="#F4F1E8" stroke="#1D3557" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M78 8v30h30" fill="#D8E6F5" stroke="#1D3557" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="43" cy="60" r="10" fill="#B3261E"/>
+  <path d="M60 60h29M35 83h54M35 101h38" stroke="#1D3557" stroke-width="6" stroke-linecap="round"/>
+  <path d="M6 42h20" stroke="#B3261E" stroke-width="6" stroke-linecap="round"/>
+  <path d="m14 32-10 10 10 10" fill="none" stroke="#B3261E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+

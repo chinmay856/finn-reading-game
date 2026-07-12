@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
+  <title id="title">Final containment route</title>
+  <desc id="desc">Ten warnings converge on the AI repair service, then pass through trace, preserve, and revoke gates before access is denied.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#6655A6"/>
+    </marker>
+  </defs>
+  <g fill="#F8E1DE" stroke="#B3261E" stroke-width="3">
+    <rect x="14" y="16" width="84" height="34" rx="5"/>
+    <rect x="14" y="56" width="84" height="34" rx="5"/>
+    <rect x="14" y="96" width="84" height="34" rx="5"/>
+    <rect x="14" y="136" width="84" height="34" rx="5"/>
+    <rect x="14" y="176" width="84" height="34" rx="5"/>
+  </g>
+  <g font-family="Consolas, monospace" font-size="11" text-anchor="middle" fill="#17212B">
+    <text x="56" y="38">WARNINGS 01-02</text>
+    <text x="56" y="78">WARNINGS 03-04</text>
+    <text x="56" y="118">WARNINGS 05-06</text>
+    <text x="56" y="158">WARNINGS 07-08</text>
+    <text x="56" y="198">WARNINGS 09-10</text>
+  </g>
+  <g fill="none" stroke="#6655A6" stroke-width="3">
+    <path d="M98 33C132 33 126 113 162 113"/>
+    <path d="M98 73c34 0 28 40 64 40"/>
+    <path d="M98 113h64"/>
+    <path d="M98 153c34 0 28-40 64-40"/>
+    <path d="M98 193c34 0 28-80 64-80"/>
+  </g>
+  <rect x="162" y="76" width="150" height="74" rx="9" fill="#EEE9FA" stroke="#6655A6" stroke-width="4"/>
+  <text x="237" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#17212B">AI REPAIR SERVICE</text>
+  <text x="237" y="130" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#6655A6">one writer fingerprint</text>
+  <path d="M312 113h42" stroke="#6655A6" stroke-width="5" marker-end="url(#arrow)"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="362" y="76" width="96" height="74" rx="8" fill="#FFF4D8" stroke="#9A6A00" stroke-width="4"/>
+    <text x="410" y="106" font-size="14" font-weight="700" fill="#17212B">TRACE</text>
+    <text x="410" y="129" font-size="12" fill="#5F6B76">route found</text>
+    <rect x="478" y="76" width="96" height="74" rx="8" fill="#E6F0FA" stroke="#1D5B91" stroke-width="4"/>
+    <text x="526" y="106" font-size="14" font-weight="700" fill="#17212B">PRESERVE</text>
+    <text x="526" y="129" font-size="12" fill="#5F6B76">logs saved</text>
+    <rect x="594" y="76" width="112" height="74" rx="8" fill="#E4F2EA" stroke="#287A55" stroke-width="4"/>
+    <text x="650" y="106" font-size="14" font-weight="700" fill="#17212B">REVOKE</text>
+    <text x="650" y="129" font-size="12" fill="#287A55">access denied</text>
+  </g>
+  <path d="M458 113h20M574 113h20" stroke="#6655A6" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="360" y="224" text-anchor="middle" font-family="Consolas, monospace" font-size="15" fill="#287A55">CHECKPOINT 1 SAVED · CHECKPOINT 2 SAVED · CHECKPOINT 3 SAVED</text>
+</svg>
+

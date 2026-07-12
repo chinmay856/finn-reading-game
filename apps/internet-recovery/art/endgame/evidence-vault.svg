@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Read-only evidence vault</title>
+  <desc id="desc">A secured case file holding eleven preserved evidence records.</desc>
+  <path d="M24 60h82l18 20h108v142H24Z" fill="#E6F0FA" stroke="#1D3557" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M24 92h208v130H24Z" fill="#D8E6F5" stroke="#1D3557" stroke-width="8"/>
+  <g fill="#FFFFFF" stroke="#5F6B76" stroke-width="3">
+    <rect x="44" y="108" width="76" height="28" rx="4"/>
+    <rect x="136" y="108" width="76" height="28" rx="4"/>
+    <rect x="44" y="146" width="76" height="28" rx="4"/>
+    <rect x="136" y="146" width="76" height="28" rx="4"/>
+    <rect x="44" y="184" width="76" height="28" rx="4"/>
+  </g>
+  <g font-family="Consolas, monospace" font-size="13" text-anchor="middle" fill="#17212B">
+    <text x="82" y="127">01-02</text><text x="174" y="127">03-04</text>
+    <text x="82" y="165">05-06</text><text x="174" y="165">07-08</text>
+    <text x="82" y="203">09-11</text>
+  </g>
+  <circle cx="174" cy="197" r="32" fill="#287A55" stroke="#1D3557" stroke-width="6"/>
+  <path d="M158 197l11 11 23-27" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+

@@ -28,6 +28,9 @@ pass are recorded in [`ROGUE_AI_PROMPT_NOTES.md`](ROGUE_AI_PROMPT_NOTES.md).
   count-based ten-site campaign hub: Finn's inset remote desktop, Case File
   mystery, genuine `10 OF 10` apparent finish, and the rogue AI's separate
   eleventh breach.
+- `../endgame/final-breach-containment-board.svg` — **production state board:**
+  canonical six-state Evidence 11 sequence: genuine finish, arrival/safety,
+  trace, preserve, revoke, and restored epilogue.
 - `wikiwhy-three-act-rogue-ai.png` — **review-ready:** preferred
   WikiWhy-specific three-act example with dynamic Act I repair, an 80%
   rogue-AI rewrite, and an exact three-pass finale.

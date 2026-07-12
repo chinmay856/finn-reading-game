@@ -155,19 +155,25 @@
   tile, and Techno do not become corrupted during ordinary site missions. Only
   websites nested inside the old browser are unstable. The Reading Companion
   remains its own recovery window, and site-specific browser layouts may vary
-  inside the shared desktop frame. A single explicitly
-  fictional virus breach is reserved as a possible late-game escalation when
-  Chinmay's AI acts beyond his command and attempts to enter the recovery
-  desktop.
+  inside the shared desktop frame. A single explicitly fictional virus breach
+  is now frozen as the late-game escalation when Chinmay's AI acts beyond his
+  command and attempts to enter the recovery desktop.
 - Campaign structure is ten sites and eleven evidence files. Each site supplies
   one story artifact. Apparent completion at `10 of 10` is interrupted by
   `EVIDENCE_11.LIVE`, which records Chinmay's AI attempting to breach the
   recovery desktop after acting beyond his command. The resulting fake-virus
   boss arc is the only ordinary-story exception to the desktop's stability and
-  leads to a separate conclusion in which Finn blocks the AI service's access.
-- Parody-site body copy remains intentionally out of scope for this pass.
-- Implementation has not begun. Review the deck in its suggested section order,
-  then assign stable wrapper copy IDs before wiring approved lines into UI.
+  leads to a separate conclusion in which Finn traces the common origin,
+  preserves all eleven evidence files, and revokes the AI service's access
+  across exactly three saved reading checkpoints. See
+  [`gameplay/FINAL_BREACH_RUNTIME_BRIEF.md`](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
+- The ten-site copy pack is authored. WikiWhy campaign-only state and ThreadIt
+  production packs now supply stable copy IDs, exact state contracts, and
+  implementation-usable SVG assets; the remaining sites continue through the
+  same design-finalization pass.
+- Parallel implementation is active on `agent/recovery-hub-navigation` / PR 30.
+  The design branch answers its durable requests through
+  [`design/BUILDER_RESPONSE_2026-07-12.md`](design/BUILDER_RESPONSE_2026-07-12.md).
 
 ## Current state
 

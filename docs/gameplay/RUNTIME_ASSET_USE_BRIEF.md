@@ -10,6 +10,9 @@ The first focused production packs live under
   manifest.
 - `wikiwhy-campaign/` contains the canonical WikiWhy evidence-route artifact and
   permanent secured seal.
+- `apps/internet-recovery/art/endgame/` contains the Evidence 11 icon,
+  containment route, read-only evidence vault, access-revoked badge, and
+  final-breach production state board.
 
 These assets take precedence over generated board microcopy or real-product
 chrome. The canonical boards remain composition/story references; meaningful

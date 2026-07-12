@@ -444,6 +444,8 @@ I did not send that. Finn, shut the AI out. I am done touching the fixes.
 ```
 
 This starts the separate final-breach arc. It is not an eleventh website.
+Continue with the production state and copy contract in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md).
 
 ## Techno hub beats
 
@@ -475,4 +477,3 @@ Accessible labels should describe behavior without giving Techno dialogue.
   then?
 - Can all hub story/copy be removed without breaking reading, scoring, passage
   display, or comprehension?
-

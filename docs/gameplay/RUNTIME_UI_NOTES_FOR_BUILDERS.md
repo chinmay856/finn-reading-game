@@ -45,6 +45,8 @@ Use these as source-of-truth design inputs:
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.
 - `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` - concrete Recovery Map,
   site-tile, Case File, evidence receipt, and global story beat copy.
+- `docs/gameplay/FINAL_BREACH_RUNTIME_BRIEF.md` - exact three-checkpoint
+  Evidence 11 breach, copy IDs, persistence, safety, and end-state contract.
 - `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md` - full wrapper copy library.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` - concrete visible copy for the
   ten corrupted/repaired site pages.
@@ -475,3 +477,13 @@ Before handing a screen to playtest, verify:
 - Copy does not blame Finn for recognition issues.
 - No wrapper terms entered Reading Engine, speech adapter, or theme-neutral
   content records.
+
+### 16. Final breach
+
+Do not extrapolate the ordinary-site repair UI into the endgame. After all ten
+sites are secured, use the singular three-checkpoint sequence in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md): trace origin,
+preserve evidence, and revoke access. `EVIDENCE_11.LIVE` is a Recovery Desktop
+artifact, not an eleventh website. The outer browser boundary, Reading
+Companion, microphone truth, safety banner, save/exit action, and all ten site
+states remain trustworthy.
