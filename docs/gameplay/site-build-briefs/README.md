@@ -20,6 +20,9 @@ For Recovery Map tile text, evidence-file receipts, blocked-write labels, and
 global campaign beats, use
 [`../CAMPAIGN_HUB_RUNTIME_BRIEF.md`](../CAMPAIGN_HUB_RUNTIME_BRIEF.md).
 
+For replay-oriented Reading Companion content planning, use
+[`../../../content/proposed-sites/PASSAGE_DECK_PLANS.md`](../../../content/proposed-sites/PASSAGE_DECK_PLANS.md).
+
 ## Build order recommendation
 
 1. WikiWhy as the first playable slice.

@@ -33,6 +33,7 @@ designed to support many future themes.
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
 - WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)
 - Nine-site sample passage sampler: [`content/proposed-sites/SAMPLE_PASSAGES.md`](content/proposed-sites/SAMPLE_PASSAGES.md)
+- Ten-site passage deck plans: [`content/proposed-sites/PASSAGE_DECK_PLANS.md`](content/proposed-sites/PASSAGE_DECK_PLANS.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
 - Desktop prototype entry point: [`index.html`](index.html)
 

@@ -28,6 +28,11 @@
   copy, site tile text, evidence-file receipts, blocked-write labels, Incoming
   Case rotation guidance, and count-based global story beats for the ten-site
   campaign.
+- Latest content-planning aid:
+  `content/proposed-sites/PASSAGE_DECK_PLANS.md` outlines two-deck
+  replayability targets for all ten sites: WikiWhy uses its existing Deck A/B,
+  and the other nine sites now have ten candidate Reading Companion passage
+  slots each with source lane, reading focus, and speech-risk notes.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems
