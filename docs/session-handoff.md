@@ -1,5 +1,10 @@
 # Session handoff
 
+## 2026-07-12 ThreadIt visual fidelity
+
+- ThreadIt now more closely matches the canonical three-act board through orange identity framing, an Act 1 ribbon, deeper ranked-post cards, bot-copy labels, a gridded source canvas, animated trace connectors, and stronger question/generated/independent visual states.
+- The source tree remains semantic DOM plus inline SVG; no flattened board or new bitmap asset was added. Reduced motion disables connector flow and card movement.
+
 ## 2026-07-12 shared desktop and finale fidelity
 
 - Added subtle shared CRT scanlines, signal sweep, and window-title depth without changing semantic layout or pointer behavior.
