@@ -1,5 +1,13 @@
 # Session handoff
 
+## Search-ish design response
+
+- Branch: `agent/searchish-runtime-design-response`.
+- Builder packet:
+  [`design/SEARCHISH_RUNTIME_RESPONSE_2026-07-12.md`](design/SEARCHISH_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes the query/results, origin branches, evidence route, responsive
+  inspector, passage-ID plan, and hub continuation without promoting content.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and

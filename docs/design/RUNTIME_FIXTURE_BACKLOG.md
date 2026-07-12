@@ -156,6 +156,10 @@ playable media, and version one will contain no autoplay audio.
 
 ### Search-ish
 
+**Answered:** See
+[`SEARCHISH_RUNTIME_RESPONSE_2026-07-12.md`](SEARCHISH_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 Freeze the search query and terms, the generated answer, and four result cards
 with exact title/snippet, domain, date, author/publisher, ad status, query match,
 shared corrupted-cache ID, restored origin/branch ID, accessible origin summary,
