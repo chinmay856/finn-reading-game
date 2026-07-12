@@ -314,6 +314,18 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
 
 ## Immediate next milestone
 
+### FacePlace graphics fidelity (2026-07-12)
+
+- FacePlace now carries the canonical cobalt/aqua identity through a branded
+  act ribbon, textured network paper, deeper feed cards, amplified-post flags,
+  and an animated nonsense tracker without adding runtime bitmap payload.
+- The act ribbon changes with the existing repaired and secured state flags;
+  duplicate-card and tracker motion stop under `prefers-reduced-motion`.
+- Desktop visual QA confirmed six feed cards, three amplified duplicates, the
+  persistent fixed Techno companion, and no horizontal page overflow.
+- The semantic feed, provisional-data boundary, independent Reading Companion,
+  and wrapper/platform separation are unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock

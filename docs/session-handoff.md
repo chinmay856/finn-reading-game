@@ -591,6 +591,23 @@ pending language is superseded by PR #36 and deployed `65368e8`.
 
 ## Historical predictive-guide snapshot
 
+## FacePlace visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/faceplace-visual-fidelity`, based on synchronized
+  `main` after merged ThreadIt PR #75.
+- `faceplace.css` now supplies a compact production-fidelity layer matching the
+  canonical three-act board: cobalt/aqua header, state-aware act ribbon,
+  network-paper texture, dimensional feed cards, `AMPLIFIED` corruption flags,
+  and a drifting nonsense-tracker treatment.
+- No new raster asset is loaded. Existing semantic DOM, state contracts,
+  provisional fixture/evidence boundary, and persistent Techno remain intact.
+- Local browser QA at the corrupted preview found six cards, three duplicate
+  flags, fixed Techno, and no horizontal overflow. `npm test` (310 tests),
+  `npm run check`, `npm run build`, and `git diff --check` all pass.
+- No newer designer PR was present at this synchronization point. The focused
+  canonical fixture request in `design/FACEPLACE_RUNTIME_REQUEST.md` remains
+  unanswered; do not promote the current test receipt.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:
