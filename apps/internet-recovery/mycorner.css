@@ -15,6 +15,163 @@
   color: var(--mycorner-ink);
 }
 
+/* Production-fidelity layer: an intentionally tacky, owner-authored profile. */
+.mycorner-browser-window {
+  box-shadow: 0 18px 42px #05152d70, 0 0 0 1px #b9d6ff55;
+}
+
+.mycorner-page {
+  background:
+    radial-gradient(circle at 16px 13px, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 20%, #c4478c20 0 1px, transparent 2px),
+    linear-gradient(120deg, transparent 0 48%, #244a880a 49% 51%, transparent 52%) 0 0 / 46px 46px,
+    var(--mycorner-pale);
+  background-size: 34px 30px, 29px 31px, 46px 46px, auto;
+}
+
+.mycorner-header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #173563, var(--mycorner-blue) 55%, #5b2d78);
+  box-shadow: inset 0 -4px #132b52, inset 0 1px #b8dcff88;
+}
+
+.mycorner-header::after {
+  content: "ACT I · ALGORITHM KNOWS YOU";
+  position: absolute;
+  right: -36px;
+  bottom: 5px;
+  width: 205px;
+  padding: 3px 30px;
+  transform: rotate(-6deg);
+  background: var(--mycorner-owner);
+  color: #fff;
+  font: 800 8px/1.25 "Lucida Console", Consolas, monospace;
+  text-align: center;
+  box-shadow: 0 2px 0 #40113e66;
+}
+
+.mycorner-page[data-rule-repaired="true"] .mycorner-header::after {
+  content: "ACT II · APPLY TO EVERYONE";
+  background: var(--mycorner-warning);
+}
+
+.mycorner-page[data-secured="true"] .mycorner-header::after {
+  content: "ACT III · OWNER CONTROLS";
+  background: var(--mycorner-permission);
+}
+
+.mycorner-mark {
+  transform: rotate(-2deg);
+  border-radius: 3px 10px 3px 10px;
+  box-shadow: 3px 3px 0 #071a38aa;
+}
+
+.mycorner-module,
+.mycorner-rule,
+.mycorner-owner-inspector > section {
+  box-shadow: 2px 3px 0 #244a8818, 0 8px 16px #244a880d;
+}
+
+.mycorner-module {
+  position: relative;
+}
+
+.mycorner-module::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 42%;
+  width: 34px;
+  height: 9px;
+  transform: rotate(-2deg);
+  background: #e7bf4588;
+  box-shadow: inset 0 0 0 1px #9b761a44;
+  pointer-events: none;
+}
+
+.mycorner-owner-card {
+  background:
+    linear-gradient(135deg, #fff4fa, #fff 60%),
+    #fff;
+  box-shadow: 3px 3px 0 #c4478c2e;
+}
+
+.mycorner-friend,
+.mycorner-post-list > li {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.mycorner-friend:hover,
+.mycorner-post-list > li:hover {
+  transform: translateY(-2px) rotate(.15deg);
+  box-shadow: 0 6px 12px #244a8824;
+}
+
+.mycorner-rule::after {
+  content: "AUTO-PERSONA";
+  position: absolute;
+  top: -7px;
+  right: 8px;
+  padding: 2px 7px;
+  transform: rotate(2deg);
+  background: var(--mycorner-warning);
+  color: #fff;
+  font: 800 8px/1.2 "Lucida Console", Consolas, monospace;
+  letter-spacing: .05em;
+}
+
+.mycorner-page[data-rule-repaired="true"] .mycorner-rule::after {
+  content: "OWNER AUTHORED";
+  background: var(--mycorner-permission);
+}
+
+.mycorner-template-overlay {
+  background:
+    repeating-linear-gradient(135deg, #fff3f1f2 0 14px, #aa3b3514 15px 18px),
+    #fff3f1f2;
+  animation: mycorner-template-scan 5s linear infinite;
+}
+
+.mycorner-template-overlay::after {
+  content: "APPLYING TEMPLATE TO EVERYONE";
+  position: sticky;
+  display: block;
+  bottom: 0;
+  margin: 10px -8px -8px;
+  padding: 6px;
+  background: var(--mycorner-warning);
+  color: #fff;
+  font: 800 10px/1.2 "Lucida Console", Consolas, monospace;
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+.mycorner-scrapbook {
+  position: relative;
+  background:
+    linear-gradient(100deg, #fff9dd, #fff3b4 52%, #fff9dd),
+    #fff9dd;
+  box-shadow: 0 4px 0 #9b761a33;
+}
+
+.mycorner-scrapbook-slot[data-saved="true"] {
+  box-shadow: 2px 3px 0 #c4478c22;
+  animation: mycorner-scrapbook-arrive 320ms ease-out both;
+}
+
+.mycorner-permission-seal[data-saved="true"] {
+  box-shadow: 0 0 0 4px #2c7a5715;
+}
+
+@keyframes mycorner-template-scan {
+  to { background-position: 130px 0; }
+}
+
+@keyframes mycorner-scrapbook-arrive {
+  from { opacity: .35; transform: translateY(7px) rotate(-2deg); }
+}
+
 .mycorner-surface {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(340px, 25vw, 380px);
