@@ -1,5 +1,13 @@
 # Session handoff
 
+## 2026-07-12 Spotty-Fi identity and compact board
+
+- Strengthened the wrapper-owned SVG mark with a large acid-green music note
+  while retaining the original cassette/tuning identity.
+- Compacted Spotty-Fi into a fixed desktop board at 1440×900; browser inspection
+  reports `scrollHeight === clientHeight` with all five tracks and queue entries
+  visible alongside the full Reading Companion.
+
 ## 2026-07-12 compact desktop and Search-ish artwork
 
 - Added a shared desktop affordance contract: real enabled controls receive a

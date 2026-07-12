@@ -1,5 +1,12 @@
 # Project status
 
+## Spotty-Fi identity and compact board — active 2026-07-12
+
+Spotty-Fi now uses a clearer cassette-plus-music-note SVG mark and a fixed
+1440×900 board. Five library cards, all five queue entries, the silent player,
+history/suggestions, progress strip, and full Reading Companion fit without
+site-page scrolling.
+
 ## Compact desktop interaction and Search-ish art — active 2026-07-12
 
 The desktop site contract now distinguishes real enabled controls with a steady
