@@ -1,5 +1,12 @@
 # Project status
 
+## ViewTube and Amaze-On compact boards — active 2026-07-12
+
+The final two overflowing site simulations now fit at 1440×900. ViewTube's
+desktop page measures 706/706 client/scroll pixels and Amaze-On measures
+700/700; both Reading Companions also fit exactly. Compression affects site
+chrome and card spacing, not reading typography.
+
 ## MapGuess illustrated board — active 2026-07-12
 
 MapGuess now uses a bright board-derived fictional summer terrain layer beneath
