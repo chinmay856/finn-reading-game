@@ -15,6 +15,8 @@ const MARKS = Object.freeze({
   faceplace: new URL("./art/site-assets/marks/faceplace-mark.svg", import.meta.url).href,
   mapguess: new URL("./art/site-assets/marks/mapguess-mark.svg", import.meta.url).href,
   mycorner: new URL("./art/site-assets/marks/mycorner-mark.svg", import.meta.url).href,
+  viewtube: new URL("./art/site-assets/marks/viewtube-mark.svg", import.meta.url).href,
+  yahuh: new URL("./art/site-assets/marks/yahuh-mark.svg", import.meta.url).href,
 });
 
 export const RECOVERY_SITES = Object.freeze([
@@ -40,13 +42,13 @@ export const RECOVERY_SITES = Object.freeze([
   }),
   Object.freeze({
     id: "yahuh", name: "Yahuh! Portal", mark: "Y!", archetype: "Crowded web portal",
-    belief: "IF INFORMATION EXISTS, IT BELONGS ON THE FRONT PAGE.", description: "Weather, finance, mail, and shopping have merged into one stream.",
-    accent: "#55247c", playable: false, previewImage: PREVIEWS.yahuh,
+    belief: "IF INFORMATION EXISTS, IT BELONGS ON THE FRONT PAGE.", description: "All information has been blended into homepage paste.",
+    accent: "#6e3e98", markImage: MARKS.yahuh, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.yahuh,
   }),
   Object.freeze({
     id: "viewtube", name: "ViewTube", mark: "V", archetype: "Video-sharing site",
     belief: "WATCH TIME PROVES TRUTH", description: "The same buffering toast clip is wearing ten different costumes.",
-    accent: "#a51f17", playable: false, previewImage: PREVIEWS.viewtube,
+    accent: "#a51f17", markImage: MARKS.viewtube, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.viewtube,
   }),
   Object.freeze({
     id: "searchish", name: "Search-ish", mark: "S?", archetype: "Web search",
