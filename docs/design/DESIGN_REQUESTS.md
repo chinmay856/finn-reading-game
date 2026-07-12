@@ -1,5 +1,13 @@
 # Parallel design requests
 
+## Amaze-On integration status
+
+- Runtime response PR #42 and the complete A01-A07 roster from PR #53 are
+  integrated into `agent/amazeon-consent-ledger-foundation`.
+- No visual or asset request is outstanding. The existing Amaze-On mark,
+  semantic parcels and bins, receipt treatment, shared characters, and
+  `techno-alert-ball-pin.webp` satisfy the frozen response.
+
 ## 2026-07-12 current builder queue
 
 ## Search-ish focused follow-up
