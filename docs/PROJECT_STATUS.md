@@ -1,5 +1,12 @@
 # Project status
 
+## MapGuess illustrated board — active 2026-07-12
+
+MapGuess now uses a bright board-derived fictional summer terrain layer beneath
+its semantic tile, route, destination, and landmark overlays. The optimized lazy
+WebP is 214 KB. At 1440×900 the site page and Reading Companion fit without page
+scrolling; narrow secondary detail rails retain independent inspector scrolling.
+
 ## Spotty-Fi identity and compact board — active 2026-07-12
 
 Spotty-Fi now uses a clearer cassette-plus-music-note SVG mark and a fixed
