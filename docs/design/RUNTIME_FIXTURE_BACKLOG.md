@@ -122,6 +122,12 @@ tab-only state, or displayed counts never satisfy it.
 
 ### MyCorner
 
+**Answered:** See
+[`MYCORNER_RUNTIME_RESPONSE_2026-07-12.md`](MYCORNER_RUNTIME_RESPONSE_2026-07-12.md)
+for the canonical fixture, process/evidence contract, seven-unit assignments,
+7A + 3B manifest plan, visual decisions, and hub continuation. Passage records
+remain independently review-gated.
+
 Freeze one canonical profile fixture: owner identity; About, posts, comments,
 friends, groups, theme, original fictional music metadata, counter, privacy,
 and source-view values; the six saved choices used in the midpoint proof;

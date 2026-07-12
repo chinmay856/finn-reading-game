@@ -1,5 +1,14 @@
 # Session handoff
 
+## MyCorner design response
+
+- Branch: `agent/mycorner-runtime-design-response`.
+- Canonical builder packet:
+  [`design/MYCORNER_RUNTIME_RESPONSE_2026-07-12.md`](design/MYCORNER_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes MyCorner's fictional profile data, seven unit mappings,
+  process/evidence route, manifest intent, responsive behavior, and hub
+  continuation. Passage eligibility remains a separate review gate.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
