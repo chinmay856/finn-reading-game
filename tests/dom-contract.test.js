@@ -256,6 +256,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(app, /openWikiWhyExperience/u);
   assert.match(app, /openThreadItExperience/u);
   assert.match(app, /openFacePlaceExperience/u);
+  assert.match(app, /openMyCornerExperience/u);
   assert.match(app, /openMapGuessExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
@@ -266,7 +267,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
-  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 4);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 5);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
 });
@@ -324,6 +325,7 @@ test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", as
   assert.match(app, /DUPLICATE-SOURCE QUARANTINE · 10 ACCOUNTS RETAINED/u);
   assert.match(app, /THREADIT_EVIDENCE_RECORD/u);
   assert.match(app, /getIncomingSiteIds\(\{ facePlaceSecured, threadItSecured, wikiWhySecured \}\)/u);
+  assert.match(app, /\.filter\(\(siteId\) => !securedIncomingSiteIds\.has\(siteId\)\)/u);
   assert.match(app, /"threadit-evidence": 7/u);
   assert.match(app, /THREADIT_TRACE_01\.LOG saved to Case File slot 2/u);
   assert.match(app, /threaditMidpointAction[\s\S]+threaditTraceTab[^\n]+focus/u);
@@ -468,7 +470,12 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
   assert.match(app, /state\.mapguessInspectorOpen/u);
   assert.match(app, /event\.key !== "Escape"/u);
-  assert.match(app, /state\.mapguessInspectorOpen \|\| !\$\("mapguess"\)\.classList\.contains\("on"\)/u);
+  assert.match(app, /state\.activeScreen !== "mapguess"/u);
+  assert.match(app, /function canContinueMapGuessInTab\(transition\)/u);
+  assert.match(app, /\["unavailable", "write-failed"\]\.includes\(transition\.reason\)/u);
+  assert.match(app, /MOVING TARGET ACKNOWLEDGED IN THIS TAB · NOT SAVED FOR RELOAD/u);
+  assert.match(app, /\[data-mapguess-goal\]:not\(:disabled\)/u);
+  assert.match(app, /ROUTE GOAL SELECTED · PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD/u);
 
   assert.match(markup, /CASE FILE[^<]+SLOT 10[^<]+PROVISIONAL TEST RECEIPT/u);
   assert.match(markup, /id="mapguessEvidenceFilename">PROVISIONAL_MAPGUESS_10\.LOG/u);
@@ -489,9 +496,6 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /acknowledgeMapGuessMidpoint/u);
   assert.match(app, /setMapGuessRouteGoal/u);
   assert.match(app, /selectNextMapGuessPassage/u);
-  assert.match(app, /\["unavailable", "write-failed"\]\.includes\(transition\.reason\)/u);
-  assert.match(app, /data-mapguess-goal\]:not\(\[disabled\]\)/u);
-  assert.match(app, /MOVING TARGET ACKNOWLEDGED IN THIS TAB ONLY/u);
   assert.match(app, /"mapguess-moving-target": 5/u);
   assert.match(app, /"mapguess-anchor-2": 7/u);
   assert.match(app, /"mapguess-secured": 8/u);
@@ -499,6 +503,84 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /slot 10 is excluded from the final evidence unlock/u);
   assert.match(app, /mapguessMapColumn[\s\S]+\.inert = state\.mapguessInspectorOpen/u);
   assert.doesNotMatch(engine, /MapGuess|mapguess|Moving Target|route goal/iu);
+});
+
+test("MyCorner owner-control runtime preserves saved DOM, stays content-gated, and registers canonical slot four", async () => {
+  const [app, catalog, copy, css, engine, html, packageFile, state, view] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/site-catalog.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mycorner-copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mycorner.css", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mycorner-state.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/mycorner-view.js", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/marks/mycorner-mark.svg", import.meta.url)),
+  ]);
+  const start = html.indexOf('<section id="mycorner"');
+  const end = html.indexOf('<section id="mapguess"', start);
+  const markup = html.slice(start, end);
+  assert.ok(start > -1 && end > start);
+  assert.match(html, /mycorner\.css/u);
+  assert.doesNotMatch(markup, /<main\b/iu);
+  assert.match(markup, /id="mycornerProfileColumn"/u);
+  assert.match(markup, /id="mycornerTemplateOverlay"[^>]+data-comparison-view="template"/u);
+  assert.match(markup, /id="mycornerProfileViewToggle"[^>]+aria-controls="mycornerComparison"/u);
+  assert.match(markup, /id="mycornerMidpointProof"/u);
+  assert.match(copy, /SAVED OWNER SNAPSHOT: six distinct module choices/u);
+  assert.match(markup, /id="mycornerScrapbookList"/u);
+  assert.match(markup, /id="mycornerPermissionSeal"/u);
+  assert.match(markup, /id="mycornerOwnerInspector"[^>]+aria-labelledby="mycornerInspectorHeading"/u);
+  assert.match(markup, /id="mycornerOwnerPermission"[^>]+tabindex="-1"/u);
+  assert.match(markup, /id="mycornerEvidenceFilename">MYCORNER_GLOBAL_PROFILE_TEMPLATE\.REC/u);
+  assert.match(markup, /REGISTERED AFTER SEVEN SAVED READINGS · OWNER PERMISSION REQUIRED/u);
+  assert.match(markup, /Techno compares the generated BALL profile with the real ball under her paw\./u);
+  assert.match(markup, /GENERATED PROFILE: BALL/u);
+  assert.match(markup, /MIC: OFF/u);
+  assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /10 planned · 1 structured candidate · 0 selectable · 7 required/u);
+  assert.doesNotMatch(markup, /role="progressbar"|\d+%/u);
+  assert.doesNotMatch(markup, /mycorner\.recovered\/mara-vale/u);
+
+  assert.match(app, /getMyCornerCampaignView/u);
+  assert.match(app, /advanceMyCornerState/u);
+  assert.match(app, /acknowledgeMyCornerMidpoint/u);
+  assert.match(app, /selectNextMyCornerPassage/u);
+  assert.match(app, /const profile = view\.midpoint\.discovered \? view\.comparison\.savedProfile : live/u);
+  assert.match(app, /mycornerPostList[\s\S]+profile\.posts/u);
+  assert.match(app, /mycornerTemplateOverlay[^\r\n]+hidden = !comparisonAvailable/u);
+  assert.match(app, /mycornerComparisonView === "template" \? "saved" : "template"/u);
+  assert.match(app, /mycornerOwnerInspector[^\r\n]+inert = drawerMode && !open/u);
+  assert.match(app, /mycornerProfileColumn[^\r\n]+inert = open/u);
+  assert.match(app, /mycorner-template-acknowledged/u);
+  assert.match(app, /"mycorner-evidence": 7/u);
+  assert.match(app, /canonicalEvidenceId: MYCORNER_PROVISIONAL_EVIDENCE_RECORD\.id,[\s\S]+siteId: "mycorner"/u);
+  assert.match(app, /escapeMarkup\(post\.body\)/u);
+  assert.match(app, /mycornerEvidenceFilename[^\r\n]+MYCORNER_PROVISIONAL_EVIDENCE_RECORD\.filename/u);
+  assert.match(app, /transition\.reason !== "write-failed"/u);
+  assert.match(app, /state\.mycornerInspectorOpen = true/u);
+  assert.match(css, /\.mycorner-template-overlay\s*\{[\s\S]*?position: absolute;[\s\S]*?inset: 0;[\s\S]*?overflow: auto;/u);
+  assert.match(css, /\.mycorner-midpoint\s*\{[\s\S]*?z-index: 6;/u);
+
+  assert.match(view, /viewTemplateAction/u);
+  assert.match(view, /visible: state\.midpointDiscovered && !globalApplyBlocked/u);
+  assert.match(view, /currentMood/u);
+  assert.match(view, /savedProfile/u);
+  assert.match(state, /slot: 4/u);
+  assert.match(state, /canonical: true/u);
+  assert.match(state, /eligibleForCanonicalCount: true/u);
+  assert.match(copy, /upstreamServiceId: "ai_repair_service"/u);
+  assert.match(copy, /audioAssetId: null/u);
+  assert.match(copy, /autoplay: false/u);
+  assert.match(copy, /mycorner-mark\.svg/u);
+  assert.match(catalog, /id: "mycorner"[\s\S]+markImage: MARKS\.mycorner[\s\S]+runtimeAvailable: true/u);
+  assert.match(packageFile, /node --check apps\/internet-recovery\/mycorner-view\.js/u);
+  assert.match(packageFile, /node --check content\/mycorner\/a-cabin-with-a-purpose\.js/u);
+  assert.match(css, /@media \(min-width: 1180px\) and \(max-width: 1279px\)/u);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
+  assert.match(css, /mycorner-comment-list li[\s\S]+font-size: 14px/u);
+  assert.doesNotMatch(engine, /MyCorner|mycorner|owner controls|AUTO-PERSONA/iu);
 });
 
 test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {
