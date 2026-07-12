@@ -1,9 +1,27 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./wikiwhy/photosynthesis-passage.js";
+import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-matters.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
+const APPROVED_REVIEW_FIELDS = Object.freeze([
+  "comprehension",
+  "editorial",
+  "factual",
+  "grade",
+  "profile",
+  "rights",
+  "sensitivity",
+  "transcription",
+]);
+const PROTOTYPE_REVIEW_FIELDS = Object.freeze([
+  "factual",
+  "grade",
+  "sensitivity",
+  "transcription",
+]);
 
 export const PASSAGE_CATALOG = Object.freeze([
   PHOTOSYNTHESIS_PASSAGE,
+  WHY_DISAGREEMENT_MATTERS_PASSAGE,
 ]);
 
 export function getPassageById(id, catalog = PASSAGE_CATALOG) {
@@ -34,14 +52,57 @@ export function describePassageRights(passage) {
   });
 }
 
+function hasRequiredReviewState(passage) {
+  const review = passage?.review ?? {};
+  if (passage?.availability === "prototype") {
+    return PROTOTYPE_REVIEW_FIELDS.every((field) => ["prototype", "passed"].includes(review[field]));
+  }
+  if (passage?.availability !== "approved") return false;
+  if (!APPROVED_REVIEW_FIELDS.every((field) => review[field] === "passed")) return false;
+  const sourceBasis = `${passage?.source?.basis ?? ""} ${passage?.source?.sourceType ?? ""}`;
+  if (/adaptation/u.test(sourceBasis) && review.adaptationFidelity !== "passed") return false;
+  return passage?.transcriptionReview?.tested === true;
+}
+
+function hasRequiredSourceAndRights(passage, text) {
+  const source = passage?.source ?? {};
+  const rights = passage?.rights ?? {};
+  const common = text(source.domain)
+    && text(source.sourceType)
+    && text(rights.basis)
+    && text(rights.creditLine)
+    && text(rights.verifiedOn);
+  if (!common) return false;
+
+  if (rights.basis === "original") return true;
+
+  const adaptedSource = text(source.attribution)
+    && text(source.sourceUrl)
+    && text(source.modificationNotice);
+  if (!adaptedSource) return false;
+
+  if (rights.basis === "license") {
+    const revision = source.reviewedRevisionUrl ?? source.frozenRevision;
+    return text(rights.licenseId)
+      && text(rights.licenseUrl)
+      && (passage.availability !== "approved" || text(revision));
+  }
+
+  if (rights.basis === "public-domain") {
+    return text(rights.evidenceUrl)
+      && text(rights.permissionUrl)
+      && text(rights.jurisdiction)
+      && (passage.availability !== "approved" || text(source.frozenRevision));
+  }
+
+  return false;
+}
+
 export function isSelectablePassage(passage) {
   const choices = passage?.comprehension?.choices;
   const checkpoint = passage?.profile?.checkpoint;
   const endDetection = passage?.profile?.endDetection;
   const guide = passage?.profile?.guide;
-  const source = passage?.source;
-  const rights = passage?.rights;
-  const review = passage?.review;
   const text = (value) => typeof value === "string" && value.trim().length > 0;
   const number = (value) => typeof value === "number" && Number.isFinite(value);
   const positive = (value) => number(value) && value > 0;
@@ -88,18 +149,8 @@ export function isSelectablePassage(passage) {
     && positive(passage.profile?.targetWpm?.comfortable)
     && positive(passage.profile?.targetWpm?.stretch)
     && passage.profile.targetWpm.comfortable <= passage.profile.targetWpm.stretch
-    && text(source?.attribution)
-    && text(source?.domain)
-    && text(source?.sourceType)
-    && text(source?.sourceUrl)
-    && text(rights?.basis)
-    && text(rights?.creditLine)
-    && text(rights?.verifiedOn)
-    && (rights.basis !== "license" || (text(rights.licenseId) && text(rights.licenseUrl)))
-    && text(review?.factual)
-    && text(review?.grade)
-    && text(review?.sensitivity)
-    && text(review?.transcription),
+    && hasRequiredSourceAndRights(passage, text)
+    && hasRequiredReviewState(passage),
   );
 }
 

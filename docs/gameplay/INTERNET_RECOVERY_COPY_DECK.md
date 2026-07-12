@@ -968,45 +968,47 @@ corrupted-site mission.
 ### Endgame trigger
 
 ```text
-ALL SITES RECOVERED
+RECOVERY MAP UPDATED
+10 OF 10 SITES SECURED
 
-Sites recovered: 10 of 10
-Evidence recovered: 10 of 10
-
-The Internet is—
+The ten repairs are holding. Every known outside site-write path is blocked.
 ```
 
-The completion window freezes before making a permanent claim. Techno stops
-playing and looks toward the taskbar. An unexpected file appears:
+Amy: `Ten sites secured. The repairs are holding, Finn.`
+
+Chinmay: `I will admit your careful manual recovery outperformed my fully
+automated shortcut, which is a sentence I am handling with maturity.`
+
+Techno's celebration gets a full beat. Finn then chooses
+`Review completed Case File`. Only after that explicit action does an
+unexpected file appear:
 
 ```text
-NEW EVIDENCE DETECTED
+LIVE EVIDENCE DETECTED
 EVIDENCE_11.LIVE
 
-Source: Chinmay's AI service
-Status: still writing
+SOURCE: RECOVERY DESKTOP
+STATUS: ARRIVING NOW
 ```
 
 Amy:
 
 ```text
-Finn, do not close that file. It is recording a live access attempt.
-
-Chinmay's AI is trying to enter Internet Recovery 98.
+That file was not recovered from a site. It was created by something trying to
+enter this desktop.
 ```
 
-System transition:
+Chinmay:
 
 ```text
-RECOVERY DESKTOP BREACH IN PROGRESS
-
-The ten website repairs are complete.
-Protect the clean recovery system to finish the job.
+I did not send that. Finn, shut the AI out. I am done touching the fixes.
 ```
 
-This begins the boss-style expansion beyond the ten-site campaign. The stable
-desktop may now visibly degrade for the first and only time. Finn uses the same
-trusted terminal, Reading Companion, repair utilities, Amy support, and
+The player chooses `Inspect live evidence`, then reaches the production safety
+gate in [`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md). The
+stable desktop may visibly degrade for the first and only time only after the
+player accepts that gate. Finn uses the same trusted terminal, Reading
+Companion, repair utilities, Amy support, and
 knowledge accumulated across the ten sites to identify false windows, restore
 clean components, isolate the fake virus, and revoke the AI service's outside
 access path.

@@ -1,8 +1,9 @@
 # Current implementation review captures
 
 These images are temporary design-review evidence for the executable Recovery
-Map and WikiWhy campaign branches. They are not runtime assets and should be
-replaced when a later milestone materially changes the corresponding screen.
+Map, WikiWhy campaign, and ThreadIt structural-test branches. They are not
+runtime assets and should be replaced when a later milestone materially changes
+the corresponding screen.
 
 - `recovery-map-current.jpg` — all ten sites, three Incoming Cases, Case File,
   persistent desktop rim, and Amy Support.
@@ -31,6 +32,23 @@ replaced when a later milestone materially changes the corresponding screen.
   3.
 - `recovery-map-secured-v3.png` — secured WikiWhy tile seal and canonical route
   artifact in Case File slot 1.
+- `threadit-corrupted-v1.jpg` — executable 1440×900 ThreadIt corrupted state,
+  with the generated reply above the displaced question, semantic source nodes,
+  and the independent content-review-gated Reading Companion.
+- `threadit-untangle-1-v1.jpg` — first structural repair, with the original
+  question returned to the top and its timestamp restored.
+- `threadit-tracing-v1.jpg` — midpoint trace view proving ten accounts share one
+  generated origin; the source tree is accessible DOM with inline SVG
+  connectors, not a flattened board.
+
+The ThreadIt forum copy is explicitly provisional while the canonical fixture
+request remains open. `Why Disagreement Matters` is a candidate passage and is
+not selectable or speech-scored in these screens.
+
+The implementation now also includes deterministic `threadit-trace-1`,
+`threadit-trace-2`, `threadit-secured`, and `threadit-evidence` preview routes.
+Their captures will be added after the branch is published and the deployed
+HTTPS build is available for final browser verification.
 
 Review requests and response protocol live in
 [`../DESIGN_REQUESTS.md`](../DESIGN_REQUESTS.md).

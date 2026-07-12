@@ -212,24 +212,27 @@ test("Shield pass 2 exposes semantic source-to-claim connections", async () => {
   assert.match(css, /wikiwhy-campaign-overlay ol\[hidden\] \{ display: none; \}/u);
 });
 
-test("secured WikiWhy navigation and Case File use the canonical seal and route artifact", async () => {
+test("secured site navigation and Case File use each site's canonical evidence", async () => {
   const [app, css] = await Promise.all([
     readFile(new URL("../app.js", import.meta.url), "utf8"),
     readFile(new URL("../apps/internet-recovery/recovery-hub.css", import.meta.url), "utf8"),
   ]);
   assert.match(app, /data-secured="\$\{siteSecured\}"/u);
-  assert.match(app, /✓ \$\{wikiWhyStatus\}/u);
+  assert.match(app, /✓ \$\{siteStatus\}/u);
   assert.match(app, /WIKIWHY_SECURED_SEAL_URL/u);
   assert.match(app, /WIKIWHY_EVIDENCE_ROUTE_URL/u);
   assert.match(app, /evidence-slot-recovered/u);
   assert.match(app, /WikiWhy · SECURED/u);
+  assert.match(app, /ThreadIt · SECURED/u);
+  assert.match(app, /THREADIT_EVIDENCE_RECORD/u);
+  assert.match(app, /const wikiWhyRepairInTab = state\.campaignState\.repairCount > 0/u);
   assert.match(app, /taskSite[^\n]*innerHTML/u);
   assert.match(css, /site-card\[data-secured="true"\]/u);
   assert.match(css, /task-button\.secured/u);
   assert.match(css, /evidence-slot-recovered/u);
 });
 
-test("the recovery hub is clickable without pretending unfinished sites are playable", async () => {
+test("the recovery hub is clickable while only WikiWhy is speech-playable", async () => {
   const [app, catalog, engine, html] = await Promise.all([
     readFile(new URL("../app.js", import.meta.url), "utf8"),
     readFile(new URL("../apps/internet-recovery/site-catalog.js", import.meta.url), "utf8"),
@@ -243,6 +246,7 @@ test("the recovery hub is clickable without pretending unfinished sites are play
   assert.match(app, /renderRecoveryHub/u);
   assert.match(app, /renderSitePreview/u);
   assert.match(app, /openWikiWhyExperience/u);
+  assert.match(app, /openThreadItExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
   assert.match(app, /keepPreparationVisible/u);
@@ -252,8 +256,82 @@ test("the recovery hub is clickable without pretending unfinished sites are play
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 2);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
+});
+
+test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", async () => {
+  const [app, copy, css, engine, html, hubCss, view] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/threadit-copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/threadit.css", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/recovery-hub.css", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/threadit-view.js", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/threadit/threadit-mark.svg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/site-assets/threadit/avatar-reader.svg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/site-assets/threadit/avatar-consensus-bot.svg", import.meta.url)),
+  ]);
+  const start = html.indexOf('<section id="threadit"');
+  const end = html.indexOf('<section id="setup"', start);
+  const markup = html.slice(start, end);
+  assert.ok(start > -1 && end > start);
+  assert.match(html, /threadit\.css/u);
+  assert.match(markup, /id="threaditPostList"/u);
+  assert.match(markup, /id="threaditSourceTree"/u);
+  assert.match(markup, /id="threaditRelationshipList"[^>]+aria-label="ThreadIt source relationship outline"/u);
+  assert.match(markup, /id="threaditSourceTree"[^>]+aria-describedby="threaditRelationshipSummary"/u);
+  assert.match(markup, /id="threaditMidpointNotice"[^>]+aria-labelledby="threaditMidpointHeading"/u);
+  assert.match(markup, /id="threaditMidpointAction"/u);
+  assert.match(markup, /id="threaditSecuredPayoff"[^>]+aria-labelledby="threaditSecuredHeading"/u);
+  assert.match(markup, /id="threaditEvidenceToggle"[^>]+aria-controls="threaditEvidenceReceipt"/u);
+  assert.match(markup, /id="threaditEvidenceReceipt"[^>]+tabindex="-1"/u);
+  assert.match(markup, /POSTING PAUSED: DUPLICATE SOURCE/u);
+  assert.match(markup, /THREADIT \/ SYNTHETIC CONSENSUS OVERFLOW/u);
+  assert.match(markup, /class="threadit-tabset" role="tablist"/u);
+  assert.match(markup, /id="threaditSourceToggle"[^>]+aria-controls="threaditSourcePanel"/u);
+  assert.match(markup, /id="threaditSourceClose"[^>]+aria-label="Close source relationships"/u);
+  assert.match(markup, /<svg id="threaditConnectorLayer"/u);
+  assert.match(markup, /data-relationship="replies-to"/u);
+  assert.match(markup, /PROVISIONAL FORUM FIXTURE/u);
+  assert.match(markup, /MIC: OFF/u);
+  assert.match(markup, /NO READING SCORE/u);
+  assert.doesNotMatch(markup, /role="progressbar"/u);
+  assert.match(app, /getThreadItCampaignView/u);
+  assert.match(app, /advanceThreadItState/u);
+  assert.match(app, /selectNextThreadItPassage/u);
+  assert.match(app, /threaditDiagnosticMode/u);
+  assert.match(app, /state\.threaditDiagnosticMode = uiPreview !== "threadit"/u);
+  assert.match(app, /relationship\.fromNodeId/u);
+  assert.match(app, /relationship\.toNodeId/u);
+  assert.match(app, /threadit-connector-inner/u);
+  assert.match(app, /relationship\.accessibleSummary/u);
+  assert.match(app, /data-corrupted-rank/u);
+  assert.match(app, /--threadit-avatar-hue/u);
+  assert.match(app, /threadit-source-quarantine/u);
+  assert.match(app, /DUPLICATE-SOURCE QUARANTINE · 10 ACCOUNTS RETAINED/u);
+  assert.match(app, /THREADIT_EVIDENCE_RECORD/u);
+  assert.match(app, /getIncomingSiteIds\(\{ threadItSecured, wikiWhySecured \}\)/u);
+  assert.match(app, /"threadit-evidence": 7/u);
+  assert.match(app, /THREADIT_TRACE_01\.LOG saved to Case File slot 2/u);
+  assert.match(app, /threaditMidpointAction[\s\S]+threaditTraceTab[^\n]+focus/u);
+  assert.match(copy, /canonical: false/u);
+  assert.match(copy, /provisional-awaiting-designer-fixture/u);
+  assert.match(view, /accessibleSummary/u);
+  assert.match(view, /purple-double/u);
+  assert.match(css, /grid-template-columns: minmax\(0, 1\.45fr\) minmax\(280px, 0\.75fr\)/u);
+  assert.match(css, /@container threadit-browser \(max-width: 760px\)/u);
+  assert.match(css, /font: 700 12px\/1\.35 "Lucida Console"/u);
+  assert.match(css, /data-generated-clone="true"[^}]+hue-rotate/su);
+  assert.match(css, /data-corrupted-rank="top"[^}]+threadit-post-votes b/su);
+  assert.match(css, /threadit-secured-payoff/u);
+  assert.match(css, /threadit-midpoint-notice/u);
+  assert.match(css, /threadit-source-quarantine\[data-quarantined="true"\]/u);
+  assert.match(hubCss, /@media \(max-width: 1279px\)[^{]+\{[^}]+desktop-shortcut-rail \{ width: 68px;/su);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
+  assert.doesNotMatch(engine, /ThreadIt|threadit|source tree|Consensus Cascade/iu);
 });
 
 test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {

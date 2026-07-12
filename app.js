@@ -28,8 +28,32 @@ import {
   getWikiWhyDialogDescriptionIds,
   isWikiWhyDialogDismissible,
 } from "./apps/internet-recovery/wikiwhy-dialogues.js";
-import { getRecoverySite, INCOMING_SITE_IDS, RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
+import { getIncomingSiteIds, getRecoverySite, RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
 import { selectNextWikiWhyPassage } from "./apps/internet-recovery/wikiwhy-content.js";
+import {
+  THREADIT_ACT_ONE_UNITS,
+  THREADIT_TRACE_UNITS,
+  calculateThreadItReadingOutcome,
+} from "./apps/internet-recovery/threadit-rules.js";
+import {
+  acknowledgeThreadItMidpoint,
+  acknowledgeThreadItMidpointState,
+  advanceThreadItState,
+  THREADIT_EVIDENCE_ID,
+  THREADIT_EVIDENCE_RECORD,
+  readThreadItState,
+  setThreadItOpenView,
+  setThreadItOpenViewState,
+} from "./apps/internet-recovery/threadit-state.js";
+import { getThreadItCampaignView } from "./apps/internet-recovery/threadit-view.js";
+import { selectNextThreadItPassage } from "./apps/internet-recovery/threadit-content.js";
+import {
+  THREADIT_ASSET_IDS,
+  THREADIT_ASSETS,
+  THREADIT_COPY,
+  THREADIT_COPY_IDS,
+  THREADIT_PROVISIONAL_FORUM_FIXTURE,
+} from "./apps/internet-recovery/threadit-copy.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
 let PARAGRAPHS = activePassage.paragraphs;
@@ -81,6 +105,11 @@ const state = {
   campaignEligible: true, campaignState: readWikiWhyState(localStateStorage),
   campaignPersisted: Boolean(localStateStorage), contentAvailabilityReason: null,
   contentCandidateCount: 0, resultApplied: false,
+  threaditState: readThreadItState(localStateStorage),
+  threaditPersisted: Boolean(localStateStorage),
+  threaditDiagnosticMode: false,
+  threaditDiagnosticState: readThreadItState(null),
+  threaditEvidenceReceiptOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -203,6 +232,7 @@ function openNextCampaignReading() {
 }
 
 function openWikiWhyExperience({ showEvidence = false } = {}) {
+  renderDiagnosticPanel(state.diagnosticState ?? readWikiWhyDiagnosticState(localStateStorage));
   if (state.campaignState.phase === "secured") state.evidenceReceiptOpen = showEvidence;
   renderCampaignMeter(state.campaignState);
   if (state.campaignState.phase === "secured") {
@@ -233,27 +263,40 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
+  const threadItScreen = name === "threadit";
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
       ? `${selectedSite.name.toUpperCase()} PREVIEW`
-      : "WIKIWHY REPAIR";
+      : threadItScreen
+        ? "THREADIT SOURCE TRACE"
+        : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
-  $("taskSite").classList.toggle("active", name === "sitePreview" || wikiWhyScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review");
+  $("taskSite").classList.toggle("active", activeSiteScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
-  $("taskSite").classList.toggle("secured", securedWikiWhyTask);
+  const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
+  const securedThreadItTask = threadItScreen && visibleThreadItState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask;
+  $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
+  } else if (securedThreadItTask) {
+    $("taskSite").innerHTML = `<img src="${THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge]}" alt=""> <span>ThreadIt · SECURED</span>`;
   } else {
     $("taskSite").textContent = name === "hub" ? "□ No site open" : `□ ${wikiWhyScreen ? "WikiWhy" : selectedSite.name}`;
   }
-  $("taskSite").setAttribute("aria-label", securedWikiWhyTask ? "WikiWhy secured" : $("taskSite").textContent);
+  $("taskSite").setAttribute("aria-label", securedWikiWhyTask
+    ? "WikiWhy secured"
+    : securedThreadItTask
+      ? "ThreadIt secured"
+      : $("taskSite").textContent);
   document.querySelectorAll(".desktop-shortcut").forEach((button) => button.classList.toggle("active", button.dataset.action === "hub" && name === "hub"));
   if (screenChanged) requestAnimationFrame(() => $(name).focus({ preventScroll: true }));
 }
@@ -279,34 +322,89 @@ function renderRecoveryHub() {
       : realWikiWhy.stability > 0
         ? `SITE STABILITY ${realWikiWhy.stability}%`
         : "RECOVERY AVAILABLE";
-  const incomingIds = wikiWhySecured ? ["threadit", "mapguess", "viewtube"] : INCOMING_SITE_IDS;
-  $("securedSiteCount").textContent = durableWikiWhySecured ? "1" : "0";
-  $("evidenceCount").textContent = durableWikiWhySecured ? "1/10" : "0/10";
+  const realThreadIt = state.threaditState;
+  const diagnosticThreadIt = state.threaditDiagnosticMode ? state.threaditDiagnosticState : null;
+  const visibleThreadIt = diagnosticThreadIt ?? realThreadIt;
+  const threadItView = getThreadItCampaignView(visibleThreadIt);
+  const diagnosticThreadItSecured = Boolean(diagnosticThreadIt?.secured);
+  const realThreadItSecured = realThreadIt.secured && realThreadIt.evidenceId === THREADIT_EVIDENCE_ID;
+  const threadItSecured = diagnosticThreadItSecured || realThreadItSecured;
+  const durableThreadItSecured = diagnosticThreadItSecured || (realThreadItSecured && state.threaditPersisted);
+  const threadItActOneCount = Math.min(
+    THREADIT_ACT_ONE_UNITS.length,
+    threadItView.progress.completedUnitCount,
+  );
+  const threadItTraceCount = Math.max(0, threadItView.progress.completedUnitCount - THREADIT_ACT_ONE_UNITS.length);
+  const threadItStatus = diagnosticThreadItSecured
+    ? "SOURCE TREE STABLE · TEST"
+    : realThreadItSecured
+      ? state.threaditPersisted ? "SOURCE TREE STABLE" : "SOURCE TREE STABLE · TAB ONLY"
+      : state.threaditDiagnosticMode
+        ? threadItView.midpoint.acknowledged
+          ? `TRACE ${threadItTraceCount}/3 · TEST`
+          : threadItView.midpoint.discovered
+            ? "TRACE VIEW READY · TEST"
+            : `RELATIONSHIPS ${threadItActOneCount}/4 · TEST`
+        : threadItView.midpoint.acknowledged
+          ? `TRACE ${threadItTraceCount}/3`
+          : threadItView.midpoint.discovered
+            ? "TRACE VIEW READY"
+            : threadItActOneCount
+              ? `RELATIONSHIPS ${threadItActOneCount}/4`
+              : "CAMPAIGN TEST BUILD";
+  const incomingIds = getIncomingSiteIds({ threadItSecured, wikiWhySecured });
+  const securedCount = Number(durableWikiWhySecured) + Number(durableThreadItSecured);
+  $("securedSiteCount").textContent = String(securedCount);
+  $("evidenceCount").textContent = `${securedCount}/10`;
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
-    const siteSecured = site.id === "wikiwhy" && wikiWhySecured;
+    const siteSecured = (site.id === "wikiwhy" && wikiWhySecured)
+      || (site.id === "threadit" && threadItSecured);
+    const siteStatus = site.id === "wikiwhy"
+      ? wikiWhyStatus
+      : site.id === "threadit"
+        ? threadItStatus
+        : "DESIGN PREVIEW";
+    const securedIcon = site.id === "wikiwhy"
+      ? WIKIWHY_SECURED_SEAL_URL
+      : THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge];
     return `
-    <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" data-secured="${siteSecured}" aria-label="${site.name}, ${siteSecured ? "secured" : site.id === "wikiwhy" ? wikiWhyStatus.toLowerCase() : "design preview"}" style="--site-accent:${site.accent}">
+    <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" data-runtime="${Boolean(site.runtimeAvailable)}" data-secured="${siteSecured}" aria-label="${site.name}, ${siteSecured ? "secured" : siteStatus.toLowerCase()}" style="--site-accent:${site.accent}">
       <img src="${site.previewImage}" alt="">
-      <span aria-hidden="true">${siteSecured ? `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt="">` : site.mark}</span>
-      <div><b>${site.name}</b><small>${siteSecured ? `✓ ${wikiWhyStatus}` : site.id === "wikiwhy" ? wikiWhyStatus : "DESIGN PREVIEW"}</small></div>
+      <span aria-hidden="true">${siteSecured ? `<img src="${securedIcon}" alt="">` : site.mark}</span>
+      <div><b>${site.name}</b><small>${siteSecured ? `✓ ${siteStatus}` : siteStatus}</small></div>
     </button>
   `;
   }).join("");
   $("incomingCases").innerHTML = incomingIds.map((siteId) => {
     const site = getRecoverySite(siteId);
-    return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${site.id === "wikiwhy" ? wikiWhyStatus : "Design file received"}</small></div></button>`;
+    const status = site.id === "wikiwhy" ? wikiWhyStatus : site.id === "threadit" ? threadItStatus : "DESIGN PREVIEW";
+    return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${status}</small></div></button>`;
   }).join("");
   $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
-    if (site.id !== "wikiwhy" || !wikiWhySecured) return `<li>${site.name} — awaiting evidence</li>`;
-    return `<li class="evidence-slot-recovered"><img src="${WIKIWHY_EVIDENCE_ROUTE_URL}" alt=""><div><b>WikiWhy — ${WIKIWHY_EVIDENCE_RECORD.label}${diagnosticSecured ? " · TEST" : state.campaignPersisted ? "" : " · TAB ONLY"}</b><span>${WIKIWHY_EVIDENCE_RECORD.filename}</span><span>Writer: ${WIKIWHY_EVIDENCE_RECORD.writerFingerprint} · Command: ${WIKIWHY_EVIDENCE_RECORD.commandState}</span><span>Write state: ${WIKIWHY_EVIDENCE_RECORD.writeState}</span><span>Route: ${WIKIWHY_EVIDENCE_RECORD.routeFragment}</span></div></li>`;
+    if (site.id === "wikiwhy" && wikiWhySecured) {
+      return `<li class="evidence-slot-recovered"><img src="${WIKIWHY_EVIDENCE_ROUTE_URL}" alt=""><div><b>WikiWhy — ${WIKIWHY_EVIDENCE_RECORD.label}${diagnosticSecured ? " · TEST" : state.campaignPersisted ? "" : " · TAB ONLY"}</b><span>${WIKIWHY_EVIDENCE_RECORD.filename}</span><span>Writer: ${WIKIWHY_EVIDENCE_RECORD.writerFingerprint} · Command: ${WIKIWHY_EVIDENCE_RECORD.commandState}</span><span>Write state: ${WIKIWHY_EVIDENCE_RECORD.writeState}</span><span>Route: ${WIKIWHY_EVIDENCE_RECORD.routeFragment}</span></div></li>`;
+    }
+    if (site.id === "threadit" && threadItSecured) {
+      const persistenceLabel = diagnosticThreadItSecured ? " · TEST" : state.threaditPersisted ? "" : " · TAB ONLY";
+      return `<li class="evidence-slot-recovered"><img src="${THREADIT_ASSETS[THREADIT_ASSET_IDS.duplicateSourceIcon]}" alt=""><div><b>ThreadIt — ${THREADIT_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${THREADIT_EVIDENCE_RECORD.filename}</span><span>What changed: ${THREADIT_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${THREADIT_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${THREADIT_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: POSTING PAUSED: DUPLICATE SOURCE</span></div></li>`;
+    }
+    return `<li>${site.name} — awaiting evidence</li>`;
   }).join("");
-  if (!state.diagnosticMode) {
-    const support = $("amySupportMessage");
-    if (realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy secured.</b> Its evidence file is in Finn’s Files. ThreadIt, MapGuess, and ViewTube remain honest design previews.";
+  const support = $("amySupportMessage");
+  if (state.threaditDiagnosticMode) {
+    support.innerHTML = diagnosticThreadItSecured
+      ? "<b>ThreadIt secured in TEST mode.</b> Case File slot 2 shows the synthetic-consensus receipt. No reading score or real campaign save was created."
+      : `<b>ThreadIt structural test.</b> ${threadItStatus}. Its candidate passage remains unavailable, so every advance is clearly simulated.`;
+  } else if (!state.diagnosticMode) {
+    if (realThreadItSecured && state.threaditPersisted && realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy and ThreadIt secured.</b> Two evidence files are in Finn’s Files. FacePlace, Spotty-Fi, and Search-ish remain honest design previews.";
+    else if (realThreadItSecured && state.threaditPersisted) support.innerHTML = "<b>ThreadIt secured.</b> Its synthetic-consensus evidence is in Finn’s Files. The candidate passage gate remains closed for new scored readings.";
+    else if (realThreadItSecured) support.innerHTML = "<b>ThreadIt is secured in this tab.</b> This browser did not save the evidence for reload.";
+    else if (realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy secured.</b> Its evidence file is in Finn’s Files. ThreadIt has a complete structural campaign test; its candidate passage remains under review.";
     else if (realSecured) support.innerHTML = "<b>WikiWhy is secured in this tab.</b> This browser did not save the evidence for reload, so Finn’s Files remains unavailable.";
     else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
     else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
     else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
+    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt’s semantic Act I test is available with MIC: OFF until its passage clears review.";
   }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
@@ -328,6 +426,307 @@ function renderSitePreview(site) {
   show("sitePreview");
 }
 
+function escapeMarkup(value) {
+  return String(value ?? "").replace(/[&<>"']/gu, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+let threadItConnectorRevision = 0;
+let threadItConnectorRelationships = [];
+
+function getThreadItConnectorPath(fromElement, toElement, canvasRect) {
+  const from = fromElement.getBoundingClientRect();
+  const to = toElement.getBoundingClientRect();
+  const fromCenter = {
+    x: from.left - canvasRect.left + from.width / 2,
+    y: from.top - canvasRect.top + from.height / 2,
+  };
+  const toCenter = {
+    x: to.left - canvasRect.left + to.width / 2,
+    y: to.top - canvasRect.top + to.height / 2,
+  };
+  const dx = toCenter.x - fromCenter.x;
+  const dy = toCenter.y - fromCenter.y;
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    const direction = Math.sign(dx) || 1;
+    const startX = fromCenter.x + direction * from.width / 2;
+    const endX = toCenter.x - direction * to.width / 2;
+    const bend = Math.max(18, Math.abs(endX - startX) * 0.45);
+    return `M ${startX} ${fromCenter.y} C ${startX + direction * bend} ${fromCenter.y}, ${endX - direction * bend} ${toCenter.y}, ${endX} ${toCenter.y}`;
+  }
+  const direction = Math.sign(dy) || 1;
+  const startY = fromCenter.y + direction * from.height / 2;
+  const endY = toCenter.y - direction * to.height / 2;
+  const bend = Math.max(18, Math.abs(endY - startY) * 0.45);
+  return `M ${fromCenter.x} ${startY} C ${fromCenter.x} ${startY + direction * bend}, ${toCenter.x} ${endY - direction * bend}, ${toCenter.x} ${endY}`;
+}
+
+function drawThreadItConnectors(relationships) {
+  const canvas = $("threaditConnectorLayer").closest(".threadit-source-canvas");
+  const canvasRect = canvas.getBoundingClientRect();
+  if (!canvasRect.width || !canvasRect.height) return;
+  const width = Math.max(1, canvas.scrollWidth, canvas.clientWidth);
+  const height = Math.max(1, canvas.scrollHeight, canvas.clientHeight);
+  $("threaditConnectorLayer").setAttribute("viewBox", `0 0 ${width} ${height}`);
+  $("threaditConnectorLayer").innerHTML = relationships.flatMap((relationship) => {
+    const from = document.getElementById(relationship.fromNodeId);
+    const to = document.getElementById(relationship.toNodeId);
+    if (!from || !to) return [];
+    const path = getThreadItConnectorPath(from, to, canvasRect);
+    const attributes = `data-line-style="${escapeMarkup(relationship.lineStyle)}" data-relationship="${escapeMarkup(relationship.kind)}" data-from-node-id="${escapeMarkup(relationship.fromNodeId)}" data-to-node-id="${escapeMarkup(relationship.toNodeId)}" d="${path}"`;
+    const paths = [`<path class="threadit-connector" ${attributes}></path>`];
+    if (relationship.lineStyle === "purple-double") {
+      paths.push(`<path class="threadit-connector threadit-connector-inner" ${attributes}></path>`);
+    }
+    return paths;
+  }).join("");
+}
+
+function scheduleThreadItConnectors(relationships) {
+  threadItConnectorRelationships = relationships;
+  const revision = ++threadItConnectorRevision;
+  requestAnimationFrame(() => {
+    if (revision === threadItConnectorRevision) drawThreadItConnectors(relationships);
+  });
+}
+
+function renderThreadItPost(post, {
+  chronologyRestored,
+  citationRestored,
+  isCorruptedTop,
+  questionRestored,
+} = {}) {
+  const question = post.kind === "question";
+  const generated = post.originType === "generated-copy";
+  const avatar = generated
+    ? THREADIT_ASSETS[THREADIT_ASSET_IDS.consensusBotAvatar]
+    : THREADIT_ASSETS[THREADIT_ASSET_IDS.readerAvatar];
+  const status = question
+    ? questionRestored ? "ORIGIN FOUND" : "UNLINKED"
+    : chronologyRestored ? "REPLY ORDER RESTORED" : "UNLINKED";
+  const timestamp = question && !questionRestored ? "TIMESTAMP MISSING" : post.timestamp;
+  const title = question ? post.title : post.authorLabel;
+  const corruptedQuestion = question && !questionRestored
+    ? `<em>${escapeMarkup(THREADIT_COPY[THREADIT_COPY_IDS.corruptModule3])}</em>`
+    : "";
+  const citation = citationRestored && post.citationId
+    ? `<p class="threadit-citation"><b>ORIGIN FOUND</b><span>${escapeMarkup(THREADIT_PROVISIONAL_FORUM_FIXTURE.sources.find(({ id }) => id === post.citationId)?.text)}</span></p>`
+    : "";
+  const sourceWarning = generated
+    ? `<span class="threadit-source-warning">${escapeMarkup(THREADIT_COPY[THREADIT_COPY_IDS.corruptModule2])}</span>`
+    : "";
+  return `<li class="threadit-post" data-node-type="${question ? "question" : "reply"}" data-origin="${escapeMarkup(post.originType ?? "original")}" data-corrupted-rank="${isCorruptedTop ? "top" : ""}" aria-label="${escapeMarkup(post.accessibleSummary)}">
+    <div class="threadit-post-votes"><b>${escapeMarkup(post.voteCount)}</b><span>votes</span></div>
+    <img class="threadit-post-avatar" src="${avatar}" alt="">
+    <article class="threadit-post-main"><header class="threadit-post-meta"><div><b class="threadit-post-title">${escapeMarkup(title)}</b><span>${escapeMarkup(post.authorLabel)} · ${escapeMarkup(timestamp)}</span></div><strong class="threadit-post-status">${status}</strong></header>${corruptedQuestion}<p class="threadit-post-body">${escapeMarkup(post.body)}</p>${sourceWarning}${citation}</article>
+  </li>`;
+}
+
+function renderThreadItDuplicateGroup(replies) {
+  const avatar = THREADIT_ASSETS[THREADIT_ASSET_IDS.consensusBotAvatar];
+  return `<li class="threadit-post threadit-duplicate-group" data-node-type="duplicate-group" data-origin="generated-copy" aria-label="Two replies disclosed as copies from one provisional generated origin.">
+    <div class="threadit-post-votes"><b>${replies.length}</b><span>copies</span></div>
+    <img class="threadit-post-avatar" src="${avatar}" alt="">
+    <article class="threadit-post-main"><header class="threadit-post-meta"><div><b class="threadit-post-title">DUPLICATE CLAIM</b><span>SHARED ORIGIN: CONSENSUS AUTO-FIX</span></div><strong class="threadit-post-status">DUPLICATE CLAIM</strong></header><ul>${replies.map((reply) => `<li><b>${escapeMarkup(reply.authorLabel)} · ${escapeMarkup(reply.timestamp)}</b><span>${escapeMarkup(reply.body)}</span></li>`).join("")}</ul></article>
+  </li>`;
+}
+
+function renderThreadItCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getThreadItCampaignView(campaignState, {
+    reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+  });
+  const completed = new Set(view.progress.completedUnitIds);
+  const questionRestored = completed.has("question_origin");
+  const chronologyRestored = completed.has("reply_chronology");
+  const citationRestored = completed.has("citation_origin");
+  const duplicateDisclosed = completed.has("duplicate_disclosure");
+  const actOneComplete = view.progress.completedUnitCount >= THREADIT_ACT_ONE_UNITS.length;
+  const midpointPending = view.midpoint.discovered && !view.midpoint.acknowledged && !view.secured;
+  const fixture = THREADIT_PROVISIONAL_FORUM_FIXTURE;
+  const duplicateIds = new Set(fixture.duplicateGroup.replyIds);
+  const duplicateReplies = fixture.replies.filter(({ id }) => duplicateIds.has(id));
+  const orderedReplies = [...fixture.replies].sort((left, right) => (
+    chronologyRestored
+      ? left.timestamp.localeCompare(right.timestamp)
+      : right.voteCount - left.voteCount
+  ));
+  const topReply = fixture.replies.find(({ id }) => id === fixture.corruptedTopReplyId);
+  const orderedPosts = questionRestored
+    ? [fixture.originalQuestion, ...orderedReplies]
+    : [topReply, fixture.originalQuestion, ...orderedReplies.filter(({ id }) => id !== topReply.id)];
+  const renderedPosts = [];
+  let duplicateGroupRendered = false;
+  for (const post of orderedPosts) {
+    if (duplicateDisclosed && duplicateIds.has(post.id)) {
+      if (!duplicateGroupRendered) renderedPosts.push(renderThreadItDuplicateGroup(duplicateReplies));
+      duplicateGroupRendered = true;
+      continue;
+    }
+    renderedPosts.push(renderThreadItPost(post, {
+      chronologyRestored,
+      citationRestored,
+      isCorruptedTop: !questionRestored && post.id === topReply.id,
+      questionRestored,
+    }));
+  }
+  if (!chronologyRestored) {
+    renderedPosts.push(`<li class="threadit-moderator-note">${escapeMarkup(THREADIT_COPY[THREADIT_COPY_IDS.corruptModule4])}</li>`);
+  }
+
+  const renderSourceNode = (node) => {
+    const avatar = node.originType === "generated-copy"
+      ? THREADIT_ASSETS[THREADIT_ASSET_IDS.consensusBotAvatar]
+      : THREADIT_ASSETS[THREADIT_ASSET_IDS.readerAvatar];
+    const generatedClone = node.id.startsWith("threadit-clone-");
+    const cloneIndex = generatedClone ? Math.max(0, Number(node.id.slice(-2)) - 1) : 0;
+    return `<li id="${escapeMarkup(node.id)}" class="threadit-source-node" data-origin="${escapeMarkup(node.originType)}" data-duplicate-group="${escapeMarkup(node.duplicateGroupId ?? "")}" data-generated-clone="${generatedClone}" style="--threadit-clone-index:${cloneIndex};--threadit-avatar-hue:${cloneIndex * 21}deg" aria-label="${escapeMarkup(node.authorSourceLabel)}" aria-describedby="${escapeMarkup(node.id)}-summary"><img class="threadit-node-avatar" src="${avatar}" alt=""><div><b>${escapeMarkup(node.authorSourceLabel)}</b><span class="threadit-relationship-label">${escapeMarkup(node.relationshipLabel)}</span><small class="threadit-node-meta">${escapeMarkup(node.orderLabel)}</small></div><strong class="threadit-node-status">${escapeMarkup(node.statusLabel)}</strong><span id="${escapeMarkup(node.id)}-summary" class="threadit-visually-hidden">${escapeMarkup(node.accessibleSummary)}</span></li>`;
+  };
+  const generatedClones = view.nodes.filter(({ id }) => id.startsWith("threadit-clone-"));
+  let cloneGroupRendered = false;
+  $("threaditSourceTree").innerHTML = view.nodes.map((node) => {
+    const generatedClone = node.id.startsWith("threadit-clone-");
+    if (view.midpoint.discovered && generatedClone) {
+      if (cloneGroupRendered) return "";
+      cloneGroupRendered = true;
+      const groupLabel = view.secured
+        ? "DUPLICATE-SOURCE QUARANTINE · 10 ACCOUNTS RETAINED"
+        : "CONSENSUS CASCADE · 10 APPARENT ACCOUNTS";
+      return `<li class="threadit-source-quarantine" data-quarantined="${view.secured}" aria-label="${groupLabel}"><strong>${groupLabel}</strong><ul>${generatedClones.map(renderSourceNode).join("")}</ul></li>`;
+    }
+    return renderSourceNode(node);
+  }).join("");
+  const nodeLabels = new Map(view.nodes.map(({ authorSourceLabel, id }) => [id, authorSourceLabel]));
+  $("threaditRelationshipSummary").textContent = view.ariaDescription;
+  $("threaditRelationshipList").innerHTML = view.nodes.map((node) => {
+    const outgoing = view.relationships.filter(({ fromNodeId }) => fromNodeId === node.id);
+    if (!outgoing.length) return "";
+    return `<li><span>${escapeMarkup(node.authorSourceLabel)}</span><ul>${outgoing.map((relationship) => `<li>${escapeMarkup(relationship.relationshipLabel)} ${escapeMarkup(nodeLabels.get(relationship.toNodeId) ?? relationship.toNodeId)}. ${escapeMarkup(relationship.accessibleSummary)}</li>`).join("")}</ul></li>`;
+  }).join("");
+  scheduleThreadItConnectors(view.relationships);
+
+  $("threaditPage").dataset.stateId = view.stateId;
+  $("threaditPage").dataset.activeView = view.activeView;
+  $("threaditPage").dataset.midpoint = String(view.midpoint.discovered);
+  $("threaditPage").dataset.motion = view.motion.mode;
+  $("threaditPage").dataset.secured = String(view.secured);
+  const sourceOpen = view.activeView === "trace" || midpointPending;
+  $("threaditPage").dataset.sourceOpen = String(sourceOpen);
+  $("threaditSourceToggle").setAttribute("aria-expanded", String(sourceOpen));
+  $("threaditSourceToggle").textContent = sourceOpen ? "CLOSE SOURCES" : "OPEN SOURCES";
+  $("threaditPage").setAttribute("aria-label", view.ariaDescription);
+  $("threaditHeaderStatus").textContent = view.headerStatus;
+  $("threaditRule").textContent = actOneComplete
+    ? THREADIT_COPY[THREADIT_COPY_IDS.ruleRepaired]
+    : THREADIT_COPY[THREADIT_COPY_IDS.ruleCorrupted];
+  $("threaditRuleBody").textContent = actOneComplete
+    ? THREADIT_COPY[THREADIT_COPY_IDS.repairBody]
+    : THREADIT_COPY[THREADIT_COPY_IDS.corruptBody];
+  $("threaditPostList").innerHTML = renderedPosts.join("");
+  $("threaditSourceStatus").textContent = view.secured
+    ? view.headerStatus
+    : view.midpoint.banner
+    ?? (view.progress.completedUnitCount
+      ? `${Math.min(4, view.progress.completedUnitCount)} OF 4 RELATIONSHIPS FOUND`
+      : "ORIGIN NOT TRACED");
+  $("threaditSourceSummary").textContent = view.midpoint.truthLine ?? view.ariaDescription;
+  $("threaditStatusStrip").textContent = view.bottomStatus;
+  const traceCompleted = Math.max(0, view.progress.completedUnitCount - THREADIT_ACT_ONE_UNITS.length);
+  $("threaditUnitStatus").textContent = view.secured
+    ? "3 OF 3 TRACE CHECKS SAVED"
+    : view.midpoint.acknowledged
+      ? `${traceCompleted} OF 3 TRACE CHECKS SAVED`
+      : `${Math.min(4, view.progress.completedUnitCount)} OF 4 RELATIONSHIPS RESTORED`;
+  $("threaditDiagnosticTruth").textContent = diagnosticMode ? "SIMULATED · NO READING SCORE" : "CONTENT REVIEW GATE · MIC OFF";
+  $("threaditLiveStatus").textContent = campaignState.lastReaction ?? view.bottomStatus;
+  $("threaditBrowserTitle").textContent = view.secured
+    ? "THREADIT — SOURCE TREE STABLE"
+    : view.midpoint.discovered
+    ? view.activeView === "trace"
+      ? "THREADIT — SOURCE RELATIONSHIP RECOVERY · TRACE VIEW"
+      : "THREADIT — SOURCE RELATIONSHIP RECOVERY · TRACE READY"
+    : "THREADIT — SOURCE RELATIONSHIP RECOVERY";
+  $("threaditSecurityStatus").textContent = view.secured
+    ? "SOURCE TREE STABLE"
+    : view.activeView === "trace"
+    ? "TRACE VIEW ACTIVE"
+    : view.midpoint.discovered
+      ? "TRACE VIEW READY"
+      : "CONTENT REVIEW GATE";
+  $("threaditThreadTab").disabled = view.secured;
+  $("threaditThreadTab").setAttribute("aria-selected", String(view.activeView === "thread"));
+  $("threaditTraceTab").disabled = !view.midpoint.discovered;
+  $("threaditTraceTab").setAttribute("aria-selected", String(view.activeView === "trace"));
+  $("threaditTraceControl").disabled = !view.midpoint.discovered;
+  $("threaditTraceControl").textContent = view.activeView === "trace" ? "TRACE VIEW OPEN" : "OPEN TRACE VIEW";
+  $("threaditFixtureStatus").title = fixture.notice;
+
+  $("threaditMidpointNotice").hidden = !midpointPending;
+  $("threaditMidpointProcess").src = THREADIT_ASSETS[THREADIT_ASSET_IDS.consensusCascade];
+  if (!view.secured) state.threaditEvidenceReceiptOpen = false;
+  $("threaditSecuredPayoff").hidden = !view.secured;
+  $("threaditSecuredBadge").src = THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge];
+  $("threaditDuplicateIcon").src = THREADIT_ASSETS[THREADIT_ASSET_IDS.duplicateSourceIcon];
+  $("threaditBlockedWriteTitle").textContent = view.blockedWrite?.title ?? THREADIT_COPY[THREADIT_COPY_IDS.blockedTitle];
+  $("threaditBlockedWriteBody").textContent = view.blockedWrite?.body ?? THREADIT_COPY[THREADIT_COPY_IDS.blockedBody];
+  $("threaditEvidenceTitle").textContent = view.evidence?.title ?? "THREADIT / SYNTHETIC CONSENSUS OVERFLOW";
+  $("threaditEvidenceWhatChanged").textContent = view.evidence?.whatChanged ?? THREADIT_EVIDENCE_RECORD.whatChanged;
+  $("threaditEvidenceBehavior").textContent = view.evidence?.aiBehavior ?? THREADIT_EVIDENCE_RECORD.aiBehavior;
+  $("threaditEvidenceWriter").textContent = view.evidence?.writerFingerprint ?? "consensus_auto_fix";
+  $("threaditEvidenceToggle").setAttribute("aria-expanded", String(view.secured && state.threaditEvidenceReceiptOpen));
+  $("threaditEvidenceToggle").textContent = state.threaditEvidenceReceiptOpen
+    ? "Close THREADIT_TRACE_01.LOG"
+    : "Open THREADIT_TRACE_01.LOG";
+  $("threaditEvidenceReceipt").hidden = !view.secured || !state.threaditEvidenceReceiptOpen;
+
+  const selection = selectNextThreadItPassage(state.threaditState);
+  $("threaditCandidateCount").textContent = `${selection.unavailableCount} planned record${selection.unavailableCount === 1 ? "" : "s"} · ${selection.selectableCount} selectable`;
+  $("threaditContentReason").textContent = selection.passage
+    ? "A reviewed ThreadIt passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    : "This candidate passage has provenance and comprehension metadata, but it remains unavailable until formal review and a real-microphone check are complete.";
+  return view;
+}
+
+function renderThreadItDiagnosticPanel(campaignState) {
+  const view = getThreadItCampaignView(campaignState);
+  const actOneCompleted = Math.min(THREADIT_ACT_ONE_UNITS.length, view.progress.completedUnitCount);
+  const traceCompleted = Math.max(0, view.progress.completedUnitCount - THREADIT_ACT_ONE_UNITS.length);
+  const midpointPending = view.midpoint.discovered && !view.midpoint.acknowledged;
+  if (view.secured) {
+    $("diagnosticPhase").textContent = "THREADIT · SOURCE TREE STABLE";
+    $("diagnosticSummary").textContent = "Seven simulated passages completed the authored campaign. Evidence and the blocked-write record are visible without a reading score.";
+    $("diagnosticAdvance").textContent = "ThreadIt ending reached";
+  } else if (midpointPending) {
+    $("diagnosticPhase").textContent = "THREADIT · CONSENSUS CASCADE FOUND";
+    $("diagnosticSummary").textContent = "Four simulated passages restored Act I. Open Trace View to acknowledge the midpoint before any trace unit can advance.";
+    $("diagnosticAdvance").textContent = "Open Trace View first";
+  } else if (view.midpoint.acknowledged) {
+    $("diagnosticPhase").textContent = `THREADIT TRACE · ${traceCompleted} OF 3 CHECKS`;
+    $("diagnosticSummary").textContent = `${view.progress.completedUnitCount} simulated passages · next result ${THREADIT_TRACE_UNITS[traceCompleted]?.visibleRepair.toLowerCase() ?? "saves the secured source tree"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated trace passage →";
+  } else {
+    $("diagnosticPhase").textContent = `THREADIT ACT I · ${actOneCompleted} OF 4 RELATIONSHIPS`;
+    $("diagnosticSummary").textContent = `${actOneCompleted} simulated passage${actOneCompleted === 1 ? "" : "s"} · next result restores ${THREADIT_ACT_ONE_UNITS[actOneCompleted]?.unitId.replaceAll("_", " ") ?? "the source trace"}.`;
+    $("diagnosticAdvance").textContent = "Skip simulated ThreadIt passage →";
+  }
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+}
+
+function openThreadItExperience() {
+  state.selectedSiteId = "threadit";
+  hideCharacterDialog();
+  const visibleState = state.threaditDiagnosticMode
+    ? state.threaditDiagnosticState
+    : state.threaditState;
+  renderThreadItCampaign(visibleState, { diagnosticMode: state.threaditDiagnosticMode });
+  renderThreadItDiagnosticPanel(visibleState);
+  show("threadit");
+}
+
 function keepPreparationVisible() {
   if (!state.preparing) return false;
   show("setup");
@@ -344,8 +743,12 @@ function openRecoverySite(siteId) {
   }
   const site = getRecoverySite(siteId);
   state.selectedSiteId = site.id;
-  if (site.playable) {
+  if (site.id === "wikiwhy" && site.playable) {
     openWikiWhyExperience();
+    return;
+  }
+  if (site.id === "threadit" && site.runtimeAvailable) {
+    openThreadItExperience();
     return;
   }
   renderSitePreview(site);
@@ -718,6 +1121,10 @@ function beginDiagnosticShield() {
 }
 
 async function advanceDiagnosticExperience() {
+  if (state.selectedSiteId === "threadit") {
+    await advanceThreadItDiagnosticExperience();
+    return;
+  }
   if (keepPreparationVisible()) return;
   await discardActiveReadingForDiagnostics();
   const current = state.diagnosticState ?? readWikiWhyDiagnosticState(localStateStorage);
@@ -734,12 +1141,118 @@ async function advanceDiagnosticExperience() {
   }
 }
 
+function applyThreadItDiagnosticState(nextState) {
+  state.threaditDiagnosticMode = true;
+  state.threaditDiagnosticState = nextState;
+  renderThreadItCampaign(nextState, { diagnosticMode: true });
+  renderThreadItDiagnosticPanel(nextState);
+  renderRecoveryHub();
+  show("threadit");
+}
+
+async function advanceThreadItDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const current = state.threaditDiagnosticState ?? readThreadItState(null);
+  const view = getThreadItCampaignView(current);
+  if (view.secured || (view.midpoint.discovered && !view.midpoint.acknowledged)) {
+    applyThreadItDiagnosticState(current);
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = advanceThreadItState(current, {
+    completedAt: new Date().toISOString(),
+    outcome: calculateThreadItReadingOutcome({ campaignState: current }),
+    passageId: `threadit-diagnostic-passage-${ordinal}`,
+    sessionId: `threadit-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? "ThreadIt diagnostic did not advance");
+  if (transition.events.includes("site-secured")) state.threaditEvidenceReceiptOpen = false;
+  applyThreadItDiagnosticState(transition.state);
+  if (transition.events.includes("midpoint-discovered")) {
+    requestAnimationFrame(() => $("threaditMidpointAction").focus({ preventScroll: true }));
+  }
+  if (transition.events.includes("blocked-write-recorded")) {
+    $("threaditLiveStatus").textContent = "SOURCE TREE STABLE. POSTING PAUSED: DUPLICATE SOURCE. THREADIT_TRACE_01.LOG saved to Case File slot 2.";
+  }
+  diagnostic("threadit-wrapper-diagnostic-advance", {
+    completedUnitIds: transition.state.completedUnitIds,
+    events: transition.events,
+    stateId: transition.state.stateId,
+  });
+}
+
+function resetThreadItDiagnosticExperience() {
+  state.threaditDiagnosticMode = true;
+  state.threaditEvidenceReceiptOpen = false;
+  applyThreadItDiagnosticState(readThreadItState(null));
+  $("threaditLiveStatus").textContent = "THREADIT TEST RESET · NO READING SCORE CREATED";
+}
+
+function buildThreadItPreviewState(unitCount) {
+  let previewState = readThreadItState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === THREADIT_ACT_ONE_UNITS.length && !previewState.midpointAcknowledged) {
+      previewState = acknowledgeThreadItMidpointState(previewState, {
+        acknowledgedAt: "2026-07-12T00:00:04.000Z",
+      }).state;
+    }
+    const transition = advanceThreadItState(previewState, {
+      completedAt: `2026-07-12T00:00:0${index}.000Z`,
+      outcome: calculateThreadItReadingOutcome({ campaignState: previewState }),
+      passageId: `threadit-preview-passage-${index + 1}`,
+      sessionId: `threadit-preview-session-${index + 1}`,
+    });
+    previewState = transition.state;
+  }
+  return previewState;
+}
+
+function openThreadItView(viewName) {
+  const diagnostic = state.threaditDiagnosticMode;
+  const current = diagnostic ? state.threaditDiagnosticState : state.threaditState;
+  let transition;
+  if (viewName === "trace" && current.midpointDiscovered && !current.midpointAcknowledged) {
+    transition = diagnostic
+      ? acknowledgeThreadItMidpointState(current, { acknowledgedAt: new Date().toISOString() })
+      : acknowledgeThreadItMidpoint(localStateStorage, {
+          acknowledgedAt: new Date().toISOString(),
+          currentState: current,
+        });
+  } else {
+    transition = diagnostic
+      ? setThreadItOpenViewState(current, viewName)
+      : setThreadItOpenView(localStateStorage, viewName, { currentState: current });
+  }
+  if (!transition?.state) return;
+  if (diagnostic) state.threaditDiagnosticState = transition.state;
+  else {
+    state.threaditState = transition.state;
+    state.threaditPersisted = transition.ok;
+  }
+  renderThreadItCampaign(transition.state, { diagnosticMode: diagnostic });
+  renderThreadItDiagnosticPanel(transition.state);
+}
+
+function renderRecoveredFilesShortcut() {
+  const wikiWhyEvidenceSaved = state.campaignState.phase === "secured" && state.campaignPersisted;
+  const threadItEvidenceSaved = state.threaditState.secured && state.threaditPersisted;
+  const evidenceCount = Number(wikiWhyEvidenceSaved) + Number(threadItEvidenceSaved);
+  const wikiWhyRepairInTab = state.campaignState.repairCount > 0;
+  const wikiWhyRepairSaved = wikiWhyRepairInTab && state.campaignPersisted;
+  $("recoveredFilesShortcut").disabled = evidenceCount === 0 && !wikiWhyRepairSaved;
+  $("recoveredFilesCount").textContent = evidenceCount
+    ? `${evidenceCount} evidence file${evidenceCount === 1 ? "" : "s"}`
+    : wikiWhyRepairSaved
+      ? `${state.campaignState.repairCount} repair${state.campaignState.repairCount === 1 ? "" : "s"} saved`
+      : wikiWhyRepairInTab
+        ? "Tab only · not saved"
+        : "Empty";
+}
+
 function renderSavedRepair(savedState, { persisted = state.campaignPersisted } = {}) {
+  renderRecoveredFilesShortcut();
   if (savedState.repairCount < 1) return;
-  $("recoveredFilesShortcut").disabled = !persisted;
-  $("recoveredFilesCount").textContent = persisted
-    ? `${savedState.repairCount} repair${savedState.repairCount === 1 ? "" : "s"} saved`
-    : "Tab only · not saved";
   $("savedRepairReceipt").hidden = false;
   $("savedRepairEyebrow").textContent = persisted ? "LASTING REPAIR FOUND" : "TAB-ONLY REPAIR";
   $("savedStability").textContent = savedState.phase === "shield"
@@ -1235,6 +1748,11 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (state.selectedSiteId === "threadit") {
+    await discardActiveReadingForDiagnostics();
+    resetThreadItDiagnosticExperience();
+    return;
+  }
   if (keepPreparationVisible()) return;
   await discardActiveReadingForDiagnostics();
   hideCharacterDialog();
@@ -1276,10 +1794,50 @@ $("characterDialog").addEventListener("keydown", (event) => {
 });
 $("previewBack").onclick = returnToHub;
 $("previewReturn").onclick = returnToHub;
+$("threaditBack").onclick = returnToHub;
+$("threaditReturn").onclick = returnToHub;
+$("threaditThreadTab").onclick = () => openThreadItView("thread");
+$("threaditTraceTab").onclick = () => openThreadItView("trace");
+$("threaditTraceControl").onclick = () => openThreadItView("trace");
+$("threaditMidpointAction").onclick = () => {
+  openThreadItView("trace");
+  requestAnimationFrame(() => $("threaditTraceTab").focus({ preventScroll: true }));
+};
+$("threaditSourceToggle").onclick = () => {
+  const page = $("threaditPage");
+  const nextOpen = page.dataset.sourceOpen !== "true";
+  page.dataset.sourceOpen = String(nextOpen);
+  $("threaditSourceToggle").setAttribute("aria-expanded", String(nextOpen));
+  $("threaditSourceToggle").textContent = nextOpen ? "CLOSE SOURCES" : "OPEN SOURCES";
+};
+$("threaditSourceClose").onclick = () => {
+  $("threaditPage").dataset.sourceOpen = "false";
+  $("threaditSourceToggle").setAttribute("aria-expanded", "false");
+  $("threaditSourceToggle").textContent = "OPEN SOURCES";
+  $("threaditSourceToggle").focus();
+};
+$("threaditEvidenceToggle").onclick = () => {
+  const visibleState = state.threaditDiagnosticMode
+    ? state.threaditDiagnosticState
+    : state.threaditState;
+  if (!visibleState.secured) return;
+  state.threaditEvidenceReceiptOpen = !state.threaditEvidenceReceiptOpen;
+  renderThreadItCampaign(visibleState, { diagnosticMode: state.threaditDiagnosticMode });
+  if (state.threaditEvidenceReceiptOpen) {
+    requestAnimationFrame(() => $("threaditEvidenceReceipt").focus?.({ preventScroll: true }));
+  }
+};
+window.addEventListener("resize", () => {
+  if (state.activeScreen === "threadit") scheduleThreadItConnectors(threadItConnectorRelationships);
+});
 $("taskStart").onclick = returnToHub;
 $("taskHub").onclick = returnToHub;
 $("taskSite").onclick = () => openRecoverySite(state.selectedSiteId);
 $("taskReader").onclick = () => {
+  if (state.selectedSiteId === "threadit") {
+    openThreadItExperience();
+    return;
+  }
   if (state.result && !state.resultApplied) show("review");
   else if (state.listening) show("read");
   else if (state.preparing) show("setup");
@@ -1296,9 +1854,17 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       repair: "RECOVERED_A: is a deliberately fictional repair disk. Please do not insert it into a real computer.",
     };
     if (button.dataset.action === "hub") returnToHub();
-    else if (button.dataset.action === "files" && state.campaignState.phase === "secured" && state.campaignPersisted) {
-      openWikiWhyExperience({ showEvidence: true });
-      requestAnimationFrame(() => $("wikiwhyEvidenceReceipt").focus({ preventScroll: true }));
+    else if (button.dataset.action === "files") {
+      const threadItEvidenceSaved = state.threaditState.secured && state.threaditPersisted;
+      if (threadItEvidenceSaved && (state.selectedSiteId === "threadit" || state.campaignState.phase !== "secured")) {
+        state.threaditDiagnosticMode = false;
+        state.threaditEvidenceReceiptOpen = true;
+        openThreadItExperience();
+        requestAnimationFrame(() => $("threaditEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (state.campaignState.phase === "secured" && state.campaignPersisted) {
+        openWikiWhyExperience({ showEvidence: true });
+        requestAnimationFrame(() => $("wikiwhyEvidenceReceipt").focus({ preventScroll: true }));
+      } else showDesktopMessage(messages.files);
     } else showDesktopMessage(messages[button.dataset.action]);
   };
 });
@@ -1355,10 +1921,39 @@ setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
 if (requestedLaunch === "wikiwhy") {
   openRecoverySite("wikiwhy");
+} else if (requestedLaunch === "threadit") {
+  openRecoverySite("threadit");
 } else if (requestedSite) {
-  renderSitePreview(getRecoverySite(requestedSite));
+  openRecoverySite(requestedSite);
 } else if (uiPreview === "hub") {
   show("hub");
+} else if ([
+  "threadit",
+  "threadit-corrupted",
+  "threadit-untangle-1",
+  "threadit-tracing",
+  "threadit-trace-1",
+  "threadit-trace-2",
+  "threadit-secured",
+  "threadit-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "threadit-evidence": 7,
+    "threadit-secured": 7,
+    "threadit-trace-1": 5,
+    "threadit-trace-2": 6,
+    "threadit-tracing": 4,
+    "threadit-untangle-1": 1,
+  }[uiPreview] ?? 0;
+  state.threaditDiagnosticMode = uiPreview !== "threadit";
+  state.threaditDiagnosticState = buildThreadItPreviewState(unitCount);
+  if (uiPreview === "threadit-tracing") {
+    state.threaditDiagnosticState = acknowledgeThreadItMidpointState(state.threaditDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:04.000Z",
+    }).state;
+  }
+  state.threaditEvidenceReceiptOpen = uiPreview === "threadit-evidence";
+  openThreadItExperience();
 } else if (uiPreview === "read") {
   const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
   updateProgress({

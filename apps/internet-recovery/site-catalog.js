@@ -15,12 +15,12 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "wikiwhy", name: "WikiWhy", mark: "W", archetype: "Internet encyclopedia",
     belief: "USERS ARE ALWAYS RIGHT", description: "Confident claims, missing context, and citations pointing nowhere.",
-    accent: "#8b1f1a", playable: true, previewImage: PREVIEWS.wikiwhy,
+    accent: "#8b1f1a", playable: true, runtimeAvailable: true, runtimeLabel: "RECOVERY AVAILABLE", previewImage: PREVIEWS.wikiwhy,
   }),
   Object.freeze({
     id: "threadit", name: "ThreadIt", mark: "T", archetype: "Forum / source lineage",
     belief: "MOST VOTES WINS REALITY", description: "Replies outrank questions while one automated source repeats itself.",
-    accent: "#e35a16", playable: false, previewImage: PREVIEWS.threadit,
+    accent: "#e35a16", playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.threadit,
   }),
   Object.freeze({
     id: "faceplace", name: "FacePlace", mark: "F", archetype: "Ranked social feed",
@@ -65,6 +65,16 @@ export const RECOVERY_SITES = Object.freeze([
 ]);
 
 export const INCOMING_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "mapguess"]);
+const AFTER_WIKIWHY_INCOMING_SITE_IDS = Object.freeze(["threadit", "mapguess", "viewtube"]);
+const AFTER_THREADIT_ONLY_INCOMING_SITE_IDS = Object.freeze(["wikiwhy", "mapguess", "viewtube"]);
+const AFTER_THREADIT_INCOMING_SITE_IDS = Object.freeze(["faceplace", "spottyfi", "searchish"]);
+
+export function getIncomingSiteIds({ threadItSecured = false, wikiWhySecured = false } = {}) {
+  if (wikiWhySecured && threadItSecured) return AFTER_THREADIT_INCOMING_SITE_IDS;
+  if (wikiWhySecured) return AFTER_WIKIWHY_INCOMING_SITE_IDS;
+  if (threadItSecured) return AFTER_THREADIT_ONLY_INCOMING_SITE_IDS;
+  return INCOMING_SITE_IDS;
+}
 
 export function getRecoverySite(siteId) {
   return RECOVERY_SITES.find(({ id }) => id === siteId) ?? RECOVERY_SITES[0];

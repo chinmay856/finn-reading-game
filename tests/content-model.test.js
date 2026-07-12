@@ -8,11 +8,44 @@ import {
   selectNextPassage,
 } from "../content/passage-catalog.js";
 import { PHOTOSYNTHESIS_PASSAGE } from "../content/wikiwhy/photosynthesis-passage.js";
+import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "../content/threadit/why-disagreement-matters.js";
 import {
   WIKIWHY_DECK_A_IDS,
   WIKIWHY_DECK_B_IDS,
   selectNextWikiWhyPassage,
 } from "../apps/internet-recovery/wikiwhy-content.js";
+import {
+  THREADIT_DECK_A_IDS,
+  THREADIT_DECK_B_IDS,
+  selectNextThreadItPassage,
+} from "../apps/internet-recovery/threadit-content.js";
+
+const PASSED_REVIEW = Object.freeze({
+  adaptationFidelity: "passed",
+  comprehension: "passed",
+  editorial: "passed",
+  factual: "passed",
+  grade: "passed",
+  profile: "passed",
+  rights: "passed",
+  sensitivity: "passed",
+  transcription: "passed",
+});
+
+function approvedPassage(base, id, overrides = {}) {
+  return Object.freeze({
+    ...base,
+    ...overrides,
+    availability: "approved",
+    id,
+    review: Object.freeze({ ...base.review, ...PASSED_REVIEW, ...overrides.review }),
+    transcriptionReview: Object.freeze({
+      ...base.transcriptionReview,
+      ...overrides.transcriptionReview,
+      tested: overrides.transcriptionReview?.tested ?? true,
+    }),
+  });
+}
 
 test("passage carries a reusable reading profile", () => {
   assert.equal(EVIDENCE_PASSAGE.profile.form, "expository-prose");
@@ -40,26 +73,16 @@ test("the selected campaign passage is a reusable attributed content record", ()
 });
 
 test("the neutral catalog selects unseen eligible records and excludes candidates", () => {
-  const approved = Object.freeze({
-    ...PHOTOSYNTHESIS_PASSAGE,
-    availability: "approved",
-    id: "approved-passage",
-  });
+  const approved = approvedPassage(PHOTOSYNTHESIS_PASSAGE, "approved-passage");
   const candidate = Object.freeze({
     ...PHOTOSYNTHESIS_PASSAGE,
     availability: "candidate",
     id: "candidate-passage",
   });
-  const publicDomain = Object.freeze({
-    ...PHOTOSYNTHESIS_PASSAGE,
-    availability: "approved",
-    id: "public-domain-passage",
-    rights: Object.freeze({
-      basis: "public-domain",
-      creditLine: "Public-domain source; adaptation reviewed for this edition.",
-      verifiedOn: "2026-07-12",
-    }),
-  });
+  const publicDomain = approvedPassage(
+    WHY_DISAGREEMENT_MATTERS_PASSAGE,
+    "public-domain-passage",
+  );
   assert.equal(isSelectablePassage(candidate), false);
   assert.equal(isSelectablePassage(publicDomain), true);
   assert.equal(describePassageRights(publicDomain).label, "Public-domain source");
@@ -85,11 +108,7 @@ test("the neutral catalog selects unseen eligible records and excludes candidate
 });
 
 test("selectable passage timing and pace metadata must be real, sensible numbers", () => {
-  const approved = {
-    ...PHOTOSYNTHESIS_PASSAGE,
-    availability: "approved",
-    id: "approved-numeric-baseline",
-  };
+  const approved = approvedPassage(PHOTOSYNTHESIS_PASSAGE, "approved-numeric-baseline");
   const malformedProfiles = [
     {
       ...approved.profile,
@@ -118,16 +137,93 @@ test("selectable passage timing and pace metadata must be real, sensible numbers
   }
 });
 
+test("approved content cannot bypass pending review, microphone, or rights gates", () => {
+  const availabilityOnly = Object.freeze({
+    ...WHY_DISAGREEMENT_MATTERS_PASSAGE,
+    availability: "approved",
+  });
+  assert.equal(isSelectablePassage(availabilityOnly), false);
+  assert.equal(isSelectablePassage(approvedPassage(
+    WHY_DISAGREEMENT_MATTERS_PASSAGE,
+    "pending-review-passage",
+    { review: { transcription: "candidate-pending-real-microphone-test" } },
+  )), false);
+  assert.equal(isSelectablePassage(approvedPassage(
+    WHY_DISAGREEMENT_MATTERS_PASSAGE,
+    "untested-microphone-passage",
+    { transcriptionReview: { tested: false } },
+  )), false);
+  assert.equal(isSelectablePassage(approvedPassage(
+    WHY_DISAGREEMENT_MATTERS_PASSAGE,
+    "unfrozen-public-domain-passage",
+    { source: { ...WHY_DISAGREEMENT_MATTERS_PASSAGE.source, frozenRevision: null } },
+  )), false);
+});
+
+test("original approved content does not require a fabricated external source URL", () => {
+  const original = approvedPassage(PHOTOSYNTHESIS_PASSAGE, "original-passage", {
+    rights: Object.freeze({
+      basis: "original",
+      creditLine: "Original project-authored passage.",
+      verifiedOn: "2026-07-12",
+    }),
+    source: Object.freeze({
+      domain: "humanities",
+      sourceType: "original",
+    }),
+  });
+  assert.equal(isSelectablePassage(original), true);
+});
+
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 1);
+  assert.equal(PASSAGE_CATALOG.length, 2);
   assert.equal(selectNextWikiWhyPassage({ completedPassageIds: [] }).passage.id, "photosynthesis-a01");
   const exhausted = selectNextWikiWhyPassage({ completedPassageIds: ["photosynthesis-a01"] });
   assert.equal(exhausted.passage, null);
   assert.equal(exhausted.reason, "no-unseen-passages");
   assert.equal(exhausted.selectableCount, 1);
   assert.equal(exhausted.unavailableCount, 19);
+});
+
+test("ThreadIt candidate records preserve provenance but fail closed", () => {
+  const passage = WHY_DISAGREEMENT_MATTERS_PASSAGE;
+  assert.equal(passage.id, "why-disagreement-matters-a01");
+  assert.equal(passage.availability, "candidate");
+  assert.equal(passage.paragraphs.length, 4);
+  assert.equal(passage.comprehension.choices.length, 3);
+  assert.equal(passage.comprehension.choices.filter(({ correct }) => correct).length, 1);
+  assert.equal(passage.source.author, "John Stuart Mill");
+  assert.equal(passage.source.title, "On Liberty");
+  assert.equal(passage.source.ebookNumber, "34901");
+  assert.equal(passage.source.originalPublicationYear, 1859);
+  assert.equal(passage.source.ebookReleaseDate, "2011-01-10");
+  assert.equal(passage.source.ebookLastUpdated, "2019-08-12");
+  assert.match(passage.source.chapter, /Liberty of Thought and Discussion/u);
+  assert.match(passage.source.sourceUrl, /gutenberg\.org\/ebooks\/34901/u);
+  assert.match(passage.source.editionStatement, /print edition date is not stated/iu);
+  assert.equal(passage.rights.basis, "public-domain");
+  assert.match(passage.rights.jurisdiction, /United States/iu);
+  assert.match(passage.rights.jurisdiction, /elsewhere requires/iu);
+  assert.match(passage.rights.permissionUrl, /gutenberg\.org\/policy\/permission/u);
+  assert.equal(passage.transcriptionReview.tested, false);
+  assert.match(passage.review.transcription, /pending-real-microphone-test/u);
+  assert.equal(isSelectablePassage(passage), false);
+  assert.equal(describePassageRights(passage).label, "Public-domain source");
+  assert.equal(describePassageRights(passage).url, passage.source.sourceUrl);
+  assert.doesNotMatch(JSON.stringify(passage), /ThreadIt|Internet Recovery|repair|reward/iu);
+});
+
+test("ThreadIt owns two planned decks and selects no candidate content", () => {
+  const ids = [...THREADIT_DECK_A_IDS, ...THREADIT_DECK_B_IDS];
+  assert.equal(new Set(ids).size, 10);
+  assert.equal(THREADIT_DECK_A_IDS[0], WHY_DISAGREEMENT_MATTERS_PASSAGE.id);
+  const selection = selectNextThreadItPassage({ completedPassageIds: [] });
+  assert.equal(selection.passage, null);
+  assert.equal(selection.reason, "no-selectable-passages");
+  assert.equal(selection.selectableCount, 0);
+  assert.equal(selection.unavailableCount, 10);
 });
 
 test("theme-neutral content metadata contains no wrapper outcomes", () => {

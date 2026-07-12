@@ -4,7 +4,7 @@
   top: 72px;
   bottom: 48px;
   left: 8px;
-  width: 92px;
+  width: 88px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -150,6 +150,11 @@
 .taskbar .task-button.secured img { width: 20px; height: 20px; margin-right: 5px; }
 .tunnel-tray { display: flex; align-items: center; gap: 4px; color: #246b3c; font-weight: 700; }
 .tunnel-tray i { width: 8px; height: 8px; border-radius: 50%; background: #54cc62; box-shadow: 0 0 5px #54cc62; }
+
+@media (max-width: 1279px) {
+  .desktop-shortcut-rail { width: 68px; }
+  .hub-surface,.site-preview-surface,.setup-surface,.mission-surface,.review-surface { padding-left: 86px; }
+}
 
 @media (max-width: 1180px) {
   .site-grid { grid-template-columns: repeat(4, 1fr); }

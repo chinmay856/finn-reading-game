@@ -8,14 +8,14 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/wikiwhy-campaign-foundation`
+- **Active implementation branch:** `agent/threadit-act-one-foundation`
 - **Repository:** `chinmay856/finn-reading-game`
 - **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
-- **Deployed main:** `270c63d` through PR #30
+- **Deployed main:** `17826e4` through PR #32
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
-- **Current stage:** Publish the production-aligned WikiWhy campaign foundation,
-  then promote enough reviewed passages to make the complete route playable
-  without fake repetition
+- **Current stage:** Validate and publish ThreadIt's complete seven-unit
+  structural campaign test without scoring its review-only passage or borrowing
+  WikiWhy's mechanic
 
 ## Deployed implementation
 
@@ -30,8 +30,49 @@ product and architecture source of truth is
   session history.
 - The Reading Engine, Content Platform, theme-neutral strength calculation,
   wrapper rules, and Internet Recovery presentation remain separated.
+- WikiWhy now has versioned campaign state, the 70–79% route clue, saved-versus-
+  AI comparison, exactly three Shield passes, permanent secured navigation, and
+  canonical `AI WRITE ROUTE / 01` evidence. This shipped through PR #32.
 
-## Current branch implementation
+## Current ThreadIt branch
+
+- The branch adds versioned non-audio ThreadIt state, four fixed Act I
+  relationship units, a saved midpoint boundary, three later trace units, and
+  permanent secured/evidence contracts. Session/passage deduplication,
+  stale-tab reconciliation, and blocked-storage fallback are covered by pure
+  state tests.
+- The executable site restores the displaced question, reply chronology,
+  citation origin, and duplicate disclosure through four objective diagnostic
+  passes, then presents the reviewed Consensus Cascade midpoint before an
+  explicit Trace View acknowledgement.
+- Three later diagnostic passes verify the shared generated origin, separate
+  legitimate independent sources, and quarantine duplicate posting. The final
+  state permanently shows `SOURCE TREE STABLE`, the one-time blocked-write
+  announcement, `THREADIT_TRACE_01.LOG`, and Case File slot 2. No simulated pass
+  creates a reading score or real campaign save.
+- The Recovery Map test route counts ThreadIt independently, rotates the next
+  three preview cases to FacePlace/Spotty-Fi/Search-ish, and uses ThreadIt's own
+  secured badge rather than WikiWhy's seal. The site remains `playable: false`
+  while its candidate passage is gated.
+- The source tree uses semantic DOM nodes, a nested text relationship outline,
+  node-anchored inline SVG connectors, reduced-motion state swaps, and no site
+  percentage meter.
+- At the 1440×900 target, the source tree and independent Reading Companion
+  remain side by side. At 1180 CSS pixels, a keyboard-addressable source drawer
+  stays inside the Recovery Browser and never overlaps Reading Companion.
+- `Why Disagreement Matters` now has a structured candidate record, conservative
+  Project Gutenberg provenance, a reading profile, and comprehension metadata.
+  It remains fail-closed until formal factual/grade/sensitivity/transcription
+  review and a real-microphone check are complete.
+- ThreadIt's campaign consumes seven distinct first-run readings, while planned
+  Deck A currently contains five slots. Even after the sampler passes review,
+  the site remains non-playable until two reviewed additions or explicitly
+  named Deck B overflows complete the seven-record first-run manifest.
+- The exact canonical forum fixture is the only open ThreadIt copy artifact;
+  the clearly labeled provisional wrapper fixture and replacement request live
+  in [`design/DESIGN_REQUESTS.md`](design/DESIGN_REQUESTS.md).
+
+## Deployed WikiWhy implementation
 
 - Integrated the complete production design package through design tip
   `1f843bc`, including the WikiWhy campaign pack, approved ThreadIt handoff,
@@ -68,12 +109,17 @@ product and architecture source of truth is
 
 - `photosynthesis-a01` is the only executable record and remains prototype
   content, not final production-approved content.
-- The other 19 WikiWhy deck drafts are candidates only. They need structured
-  three-choice comprehension/feedback, permanent provenance, rights notice,
-  factual review, grade/sensitivity review, a reading profile, and real
-  microphone testing before promotion.
+- The other 19 WikiWhy deck entries are review-only drafts, not structured
+  selectable records. They need passage records, three-choice comprehension and
+  feedback, permanent provenance, rights notice, factual review,
+  grade/sensitivity review, a reading profile, and real microphone testing
+  before promotion.
 - Candidate selection is fail-closed: the runtime will not score a draft or
   silently reuse one passage to imply campaign depth.
+- This branch also prevents an availability-only promotion from bypassing the
+  gate. `approved` records require explicit passed review states, a completed
+  transcription review, and rights-basis-specific source evidence; the existing
+  WikiWhy `prototype` lane remains explicit and separate.
 - Worst case requires eleven readings (up to eight 10% Act I advances plus
   three Shield passes), while Deck A has ten. The content plan still needs one
   explicit Deck B overflow or repeat policy.
@@ -95,12 +141,17 @@ product and architecture source of truth is
 ## Validation
 
 - `npm run check` — passed
-- `npm test` — 84 tests passed
+- `npm test` — 107 tests passed
 - `npm run build` — passed
-- Browser QA — full diagnostic route clicked through at desktop scale: warning,
-  rewrite, Amy contradiction, Shield 0/3 through 3/3, secured payoff, source and
-  license links, content gate, keyboard-addressable controls, and clean current
-  console
+- Browser QA — WikiWhy's full diagnostic route remains verified. ThreadIt was
+  checked at 1440×900 through corrupted, first-untangle, all four Act I repairs,
+  and midpoint trace; at 1180 CSS pixels its source drawer opens/closes with
+  focus return, no Reading Companion overlap, and no horizontal page overflow.
+  Source relationships are exposed as node descriptions plus a nested text
+  outline, and trace metadata meets the 12-pixel readability floor. Deterministic
+  trace-1, trace-2, secured, and evidence-open routes now pass syntax, state,
+  DOM-contract, and production-build checks; their final browser click-through
+  remains part of post-deployment verification.
 
 ## Known limitations
 
@@ -113,15 +164,22 @@ product and architecture source of truth is
   Whisper base, WebAssembly/q8. First load is roughly 77 MB; WebGPU/q4 remains
   untrusted on the development computer.
 - Post-secured Deck B replay is not implemented.
-- ThreadIt and the other eight non-WikiWhy sites remain honest previews.
+- ThreadIt is an honest structural test build with its passage content gated;
+  the other eight non-WikiWhy sites remain honest design previews.
 
 ## Immediate next milestone
 
-1. Publish this branch, run CI, merge, deploy, and smoke-check live HTTPS.
-2. Promote the lowest-risk WikiWhy candidates only after the documented content
-   gate; begin with A02, A05, A07, A08, and A09.
-3. Build ThreadIt's unique Act I source-tree browser consequence without
-   borrowing WikiWhy's wipe, state, or content.
+1. Publish the complete ThreadIt structural-campaign branch through PR, CI, merge,
+   deployment, and live HTTPS verification.
+2. Replace the provisional forum fixture when the parallel designer publishes
+   the requested canonical records.
+3. Promote content only after the documented provenance, review, comprehension,
+   profile, and real-microphone gates; freeze ThreadIt's seven-record first-run
+   manifest rather than silently repeating its five planned Deck A records.
+4. Start FacePlace as the next honest structural/content-gated vertical slice:
+   three lying-tracker units, explicit Honest Zero acknowledgement, and three
+   honest-recovery units. Exact fixture and evidence-route requests are in
+   [`design/RUNTIME_FIXTURE_BACKLOG.md`](design/RUNTIME_FIXTURE_BACKLOG.md).
 
 Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
 template, or start the final breach before enough real campaigns exist.
