@@ -14,6 +14,10 @@ import {
   MYCORNER_PROVISIONAL_EVIDENCE_RECORD,
 } from "../apps/internet-recovery/mycorner-state.js";
 import {
+  YAHUH_PROVISIONAL_EVIDENCE_ID,
+  YAHUH_PROVISIONAL_EVIDENCE_RECORD,
+} from "../apps/internet-recovery/yahuh-state.js";
+import {
   summarizeHubEvidenceState,
   summarizeHubSiteEvidence,
 } from "../apps/internet-recovery/recovery-hub-state.js";
@@ -156,6 +160,25 @@ test("MyCorner canonical slot-four evidence counts only when persisted and exact
   });
   assert.equal(summary.displayEvidenceId, MYCORNER_PROVISIONAL_EVIDENCE_ID);
   assert.equal(summary.displayEvidenceRecord.slot, 4);
+  assert.equal(summary.displayEvidenceProvisional, false);
+  assert.equal(summary.persistedCanonical, true);
+  assert.equal(summary.persistedNonCanonical, false);
+  assert.equal(summary.displayMode, "persisted-canonical");
+});
+
+test("Yahuh canonical slot-five evidence counts only when persisted and exactly matched", () => {
+  const summary = summarizeHubSiteEvidence({
+    canonicalEvidenceId: YAHUH_PROVISIONAL_EVIDENCE_ID,
+    evidenceRecord: YAHUH_PROVISIONAL_EVIDENCE_RECORD,
+    persisted: true,
+    siteId: "yahuh",
+    state: {
+      evidenceId: YAHUH_PROVISIONAL_EVIDENCE_ID,
+      secured: true,
+    },
+  });
+  assert.equal(summary.displayEvidenceId, YAHUH_PROVISIONAL_EVIDENCE_ID);
+  assert.equal(summary.displayEvidenceRecord.slot, 5);
   assert.equal(summary.displayEvidenceProvisional, false);
   assert.equal(summary.persistedCanonical, true);
   assert.equal(summary.persistedNonCanonical, false);

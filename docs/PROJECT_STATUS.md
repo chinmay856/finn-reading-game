@@ -65,6 +65,19 @@ product and architecture source of truth is
 The older MapGuess branch notes below are retained as milestone history; their
 publication-pending language is superseded by PR #36 and deployed `65368e8`.
 
+## Current Yahuh branch
+
+- MyCorner is deployed through PR #45 and live-copy fix PR #47 at `76e6f05`.
+- Active implementation is `agent/yahuh-channel-reconnect-foundation` using the
+  canonical designer response from PR #39.
+- Yahuh implements exactly three paired sorts, saved Single Source discovery
+  and acknowledgement, and three channel reconnections across six modules.
+- The frozen 6A plus 4B plan has one structured candidate and zero selectable
+  records. All six required readings remain review-gated, so `MIC: OFF` and no
+  reading score remain mandatory.
+- Canonical Case File slot 5 requires the exact persisted secured state and
+  `yahuh.evidence.single-stream-merge-01`; diagnostics remain excluded.
+
 ## Current MapGuess branch
 
 - MapGuess has an executable, explicitly provisional/test-only campaign with
