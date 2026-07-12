@@ -17,7 +17,7 @@ accessibility, comprehension, reading-profile, rights, and real-microphone gates
 | ThreadIt | 7 | A01 plus A02–A07 structured candidate records; frozen manuscripts originated in [PR #55](https://github.com/chinmay856/finn-reading-game/pull/55) | manuscript complete and encoded; review-gated |
 | FacePlace | 6 | A01 plus A02–A06 structured candidate records; frozen manuscripts originated in [PR #56](https://github.com/chinmay856/finn-reading-game/pull/56) | manuscript complete and encoded; review-gated |
 | MyCorner | 7 | A01 plus A02–A07 structured candidate records; frozen manuscripts originated in [PR #57](https://github.com/chinmay856/finn-reading-game/pull/57) | manuscript complete and encoded; review-gated |
-| Yahuh! Portal | 6 | A01 structured candidate on `main`; A02–A06 in [PR #48](https://github.com/chinmay856/finn-reading-game/pull/48) | manuscript complete; review-gated |
+| Yahuh! Portal | 6 | A01 plus A02–A06 structured candidate records; frozen manuscripts originated in [PR #48](https://github.com/chinmay856/finn-reading-game/pull/48) | manuscript complete and encoded; review-gated |
 | ViewTube | 7 | A01 candidate on builder branch; A02–A07 in [PR #49](https://github.com/chinmay856/finn-reading-game/pull/49) | manuscript complete; review-gated |
 | Search-ish | 7 | A01–A07 in [PR #51](https://github.com/chinmay856/finn-reading-game/pull/51) | manuscript complete; review-gated |
 | Amaze-On | 7 | A01–A07 in [PR #53](https://github.com/chinmay856/finn-reading-game/pull/53) | manuscript complete; review-gated |

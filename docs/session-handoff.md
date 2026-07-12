@@ -1,5 +1,12 @@
 # Session handoff
 
+## 2026-07-12 Yahuh structured first-run deck
+
+- Encoded frozen manuscripts A02–A06 and catalogued the full six-record Deck A.
+- Corrected readiness from one structured candidate and six missing manuscripts
+  to six structured candidates and no manuscript shortfall.
+- All records remain fail-closed pending external evidence.
+
 ## 2026-07-12 builder-owned design continuation
 
 - The parallel designer is paused after completing their available work.

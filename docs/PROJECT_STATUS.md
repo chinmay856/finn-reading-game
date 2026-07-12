@@ -1,5 +1,11 @@
 # Project status
 
+## Yahuh structured content — active 2026-07-12
+
+Yahuh's complete six-record first-run roster is encoded as Content Platform
+candidates. Its manuscript shortfall is now zero; every record remains
+unselectable pending independent review and real-microphone evidence.
+
 ## Design ownership — active 2026-07-12
 
 The parallel designer has completed and paused their work. Remaining visual,

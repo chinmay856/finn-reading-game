@@ -20,10 +20,10 @@ export const YAHUH_DECK_B_IDS = Object.freeze([
 export const YAHUH_CONTENT_READINESS = Object.freeze({
   deckACount: YAHUH_DECK_A_IDS.length,
   deckBCount: YAHUH_DECK_B_IDS.length,
-  firstRunShortfall: 6,
+  firstRunShortfall: 0,
   plannedCount: YAHUH_DECK_A_IDS.length + YAHUH_DECK_B_IDS.length,
   requiredFirstRun: 6,
-  structuredCandidateCount: 1,
+  structuredCandidateCount: 6,
 });
 
 const DEFAULT_YAHUH_CATALOG = Object.freeze(
