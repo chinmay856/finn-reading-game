@@ -23,6 +23,8 @@ not influence reading accuracy, scoring, comprehension, or saved progress.
 These exact production-sheet crops support the authored WikiWhy story states:
 
 - `techno-alert-ball-pin.webp` is `techno_alert_ball_pin` (row 1, column 2).
+- `techno-suspicious-file.webp` is `techno_suspicious_file` (row 1, column 3).
+- `techno-bark-ball.webp` is `techno_bark_ball` (row 1, column 4).
 - `techno-celebrate-spin.webp` is `techno_celebrate_spin` (row 2, column 3).
 
 Each 384 by 512 source cell is resized to 288 by 384 and shown as a small state

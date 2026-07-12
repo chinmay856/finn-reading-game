@@ -5,6 +5,7 @@ import {
   WIKIWHY_ACT_ONE_LIMIT,
   calculateWikiWhyReadingOutcome,
   calculateWikiWhyRepair,
+  calculateWikiWhySiteVisualPercent,
   describeWikiWhyRepairAdvance,
   describeWikiWhyShieldPass,
 } from "../apps/internet-recovery/wikiwhy-rules.js";
@@ -76,6 +77,23 @@ test("WikiWhy reaction copy is derived from the progress actually applied", () =
   assert.match(describeWikiWhyRepairAdvance(19), /clearing faster/iu);
   assert.match(describeWikiWhyRepairAdvance(5), /held/iu);
   assert.match(describeWikiWhyShieldPass(3), /locked out/iu);
+});
+
+test("live Shield projection never erases the preserved 80 percent repair", () => {
+  for (const campaignPercent of [0, 17, 33, 66, 79]) {
+    assert.equal(calculateWikiWhySiteVisualPercent({
+      campaignPercent,
+      campaignState: { phase: "shield" },
+    }), 80);
+  }
+  assert.equal(calculateWikiWhySiteVisualPercent({
+    campaignPercent: 91,
+    campaignState: { phase: "shield" },
+  }), 91);
+  assert.equal(calculateWikiWhySiteVisualPercent({
+    campaignPercent: 38,
+    campaignState: { phase: "act-one" },
+  }), 38);
 });
 
 test("the rewrite and secured phases cannot silently consume another reading", () => {

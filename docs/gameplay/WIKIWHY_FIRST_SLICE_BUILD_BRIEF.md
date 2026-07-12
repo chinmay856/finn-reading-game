@@ -249,10 +249,10 @@ EVIDENCE SAVED
 Failure label:
 
 ```text
-AUTOMATIC VERIFICATION CONTINUES
-Writer: wiki_auto_fix_ai
-Command: ended
-Write status: active
+AUTOMATIC WRITE DETECTED. SAVED REPAIR PRESERVED.
+Writer: ai_repair_service
+Command: ENDED
+Write state: ACTIVE UNTIL SHIELD
 ```
 
 Chinmay panel: `chinmay_fluster_1`
@@ -323,7 +323,7 @@ Evidence file:
 
 ```text
 Evidence file recovered:
-WIKIWHY / ACTIVE WRITE AFTER COMMAND END
+WIKIWHY / ENDED COMMAND, ACTIVE WRITER
 
 What changed:
 People can contribute, but evidence earns trust.

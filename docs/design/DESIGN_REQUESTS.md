@@ -1,139 +1,109 @@
 # Parallel design requests
 
 This is the durable implementation-to-design handoff for Internet Recovery 98.
-The parallel designer can answer in the response table, update the referenced
-brief, or publish a focused asset commit on the design branch.
+The parallel designer can answer the two remaining decisions here or publish a
+focused follow-up on `agent/campaign-spine-content`.
 
 ## Current synchronization point
 
 - Implementation branch: `agent/wikiwhy-campaign-foundation`
-- Last integrated design tip: `40f961e` (`Align character design handoff with site briefs`)
+- Last integrated design tip: `1f843bc` (`Add ten-site production overview board`)
 - Deployed `main`: `270c63d` through PR #30
-- Canonical architecture: [`../ARCHITECTURE_AND_VISION.md`](../ARCHITECTURE_AND_VISION.md)
-- Current runtime briefs: [`../gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md`](../gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md) and [`../gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md`](../gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md)
+- Designer response consumed:
+  [`BUILDER_RESPONSE_2026-07-12.md`](BUILDER_RESPONSE_2026-07-12.md)
+- Production index:
+  [`TEN_SITE_PRODUCTION_INDEX.md`](TEN_SITE_PRODUCTION_INDEX.md)
+- WikiWhy contract:
+  [`../gameplay/WIKIWHY_CAMPAIGN_STATE_PACK.md`](../gameplay/WIKIWHY_CAMPAIGN_STATE_PACK.md)
+- ThreadIt contract:
+  [`../gameplay/THREADIT_PRODUCTION_HANDOFF.md`](../gameplay/THREADIT_PRODUCTION_HANDOFF.md)
 
-The complete runtime-note, copy-pack, hub, asset-use, passage-plan, and ten-site
-brief package through `40f961e` is integrated. Do not republish those documents
-unchanged merely to acknowledge this request.
+The complete production package through `1f843bc` is integrated. Do not
+republish it unchanged merely to acknowledge this handoff.
+
+## Decisions already consumed
+
+| Design decision | Builder status |
+| --- | --- |
+| Exactly three Incoming Cases: WikiWhy, ThreadIt, MapGuess before WikiWhy; ThreadIt, MapGuess, ViewTube after | Implemented |
+| `ai_repair_service` owns the ended-command write | Implemented; the earlier `wiki_auto_fix_ai` drift is removed |
+| 70–79% right-edge clue and readable background-write log | Implemented as semantic DOM/CSS with reduced-motion fallback |
+| 80% saved-versus-AI comparison | Implemented with all three production rows |
+| Amy evidence/tools/supportive and Chinmay fluster mappings | Implemented from approved production-sheet crops |
+| Exactly three Shield passes; comprehension and score cannot add or remove a pass | Implemented |
+| Continue remains available after an accepted uncertain result; retry stays optional | Preserved |
+| Evidence slot 1 is `wikiwhy.evidence.route-fragment-01`, visible as `AI WRITE ROUTE / 01` | Implemented with `evidence-route-fragment-01.svg` and `WIKIWHY_TRACE_01.LOG` |
+| ThreadIt is site 2 and uses an accessible semantic source tree | Accepted as the next implementation milestone |
+| The ten-site production system and separate `EVIDENCE_11.LIVE` contract | Integrated; final breach remains gated behind ten real secured sites |
 
 ## Current implementation review captures
 
 - [Recovery Map](review/recovery-map-current.jpg)
 - [WikiWhy ordinary reading](review/wikiwhy-reading-current.jpg)
 - [70–79% background-write warning](review/wikiwhy-warning-v3.png)
-- [80% rogue-AI write](review/wikiwhy-rewrite-v3.png)
-- [Shield Protocol at 0/3](review/wikiwhy-shield-v3.png)
-- [Secured blocked-write payoff](review/wikiwhy-secured-v3.png)
+- [Unobstructed 70–79% route clue](review/wikiwhy-clue-v3.png)
+- [80% rogue-AI write and comparison entry](review/wikiwhy-rewrite-v3.png)
+- [Saved repair versus AI rewrite](review/wikiwhy-compare-v3.png)
+- [Shield Protocol](review/wikiwhy-shield-v3.png)
+- [Shield pass 2 source links](review/wikiwhy-shield-links-v3.png)
+- [Shield pass 3 write access](review/wikiwhy-shield-access-v3.png)
+- [Secured route-log payoff](review/wikiwhy-secured-v3.png)
+- [User-opened evidence route](review/wikiwhy-evidence-open-v3.png)
+- [Blocked autonomous write](review/wikiwhy-blocked-write-v3.png)
+- [Secured Recovery Map and Case File](review/recovery-map-secured-v3.png)
 
 These are executable browser screens at the 1440×900 target, not composite
-concept boards. The implementation now has a versioned real campaign state,
-ordered warning/rewrite events, exactly three Shield passes, secured evidence,
-safe resume, an accessible state overlay, and canonical Amy/Chinmay/Techno
-crops. Only the first passage is currently executable; unreviewed drafts are
-honestly gated.
+concept boards. Only `photosynthesis-a01` is executable; review-only passage
+drafts remain fail-closed.
 
-## Requests, in priority order
+## Outstanding designer decisions
 
-### P0 — Resolve the remaining WikiWhy contract conflicts
+### P0 — First-run passage 11
 
-Please answer the focused questions below. Engineering used the narrowest safe
-precedence while keeping these choices configurable:
+The minimum 10% Act I advance can require eight Act I readings plus exactly
+three Shield readings: eleven total. Deck A has ten records. Choose one:
 
-1. Architecture and campaign semantics over presentation notes.
-2. The detailed WikiWhy first-slice brief over shared examples.
-3. The site copy pack for decorative browser copy.
-4. Runtime UI notes for shared chrome and accessibility.
+1. **Approve one reviewed Deck B overflow record.** Builder recommendation:
+   `printing-press-b01`, after the normal source, rights, factual, grade,
+   sensitivity, comprehension, profile, and microphone gate.
+2. Approve one explicitly disclosed least-recent Deck A repeat.
 
-No answer should move wrapper names, thresholds, characters, or evidence into
-the Reading Engine, Content Platform, or theme-neutral strength calculation.
+The builder will not silently score a candidate or repeat one passage to imply
+depth. This decision changes wrapper selection policy only; it does not promote
+content by itself.
 
-### P0 — Publish implementation-usable WikiWhy state layers
+### P0 — Post-secured replay
 
-The DOM/CSS state treatment is now functional and reduced-motion safe. If the
-art direction needs more than the current overlays, publish reusable deltas—not
-another full reader mockup—for:
+Specify where Deck B replay lives after WikiWhy is secured and how it remains
+separate from canonical campaign state. Please decide:
 
-- the 70–79% clue;
-- the accessible right-to-left 80% write;
-- Shield states 0/3, 1/3, 2/3, and 3/3;
-- the permanent secured browser/icon treatment;
-- evidence slot 1 and its access-route fragment.
+- Recovery Map action, Finn's Files action, or secured WikiWhy browser action;
+- visible label for the replay lane;
+- whether replay stores a separate non-audio history cursor;
+- confirmation that replay can never change `secured`, Shield checkpoints,
+  Case File evidence, or the route-log receipt.
 
-For each asset include ID, file, dimensions, intended phase, accessible
-description, and whether it is decorative or meaningful. Do not cover the
-Reading Companion, microphone state, current highlight, or result controls.
+Builder recommendation: expose `Open alternate recovered files` inside secured
+WikiWhy, with a separate replay cursor and no campaign-state writes.
 
-### P1 — Supply the production ThreadIt handoff
+## Next designer checkpoint
 
-ThreadIt remains the preferred second-site portability proof because its source
-tree must not look like WikiWhy's wipe. The executable pack still needs:
-
-1. Original mark plus palette, type, border, and spacing tokens.
-2. Browser layouts for `threadit_corrupted`, `threadit_tracing`, and
-   `threadit_secured`.
-3. Implementation-usable duplicate-source avatars, connector/source tree,
-   Consensus Auto-Fix process, and secured payoff assets where DOM/SVG is not
-   enough.
-4. Midpoint `Consensus Cascade / TRACE VIEW` and final
-   `POSTING PAUSED: DUPLICATE SOURCE` compositions.
-5. Character placement that never covers reading or result controls.
-6. A manifest with IDs, dimensions, state, and accessibility role.
-
-Target 1440×900 first and keep the inset browser plus separate Reading Companion
-workable at 1180 CSS pixels. Remove board labels, generated microcopy, real
-product marks, and legacy browser chrome from runtime assets.
-
-### P1 — Clarify the first-run content promise
-
-The wrapper's minimum 10% Act I advance can require eight Act I readings, then
-exactly three Shield readings: eleven total. Deck A contains ten. Engineering
-will not silently score an unreviewed draft or repeat one passage as fake depth.
-Please decide whether first-run overflow uses one approved Deck B passage or an
-explicit least-recent Deck A repeat. Content promotion still requires its own
-source, rights, factual, grade, sensitivity, comprehension, and microphone
-review regardless of this design decision.
-
-## Focused questions
-
-| Question | Designer response |
-| --- | --- |
-| Before WikiWhy is secured, should Incoming Cases show only WikiWhy, or the currently implemented three cards (WikiWhy, ThreadIt, MapGuess) with the latter two clearly preview-only? | Pending |
-| Is `wiki_auto_fix_ai` a site process under `ai_repair_service`, a separate process, or accidental copy drift? Which ID belongs at rewrite, evidence receipt, and final denial? | Pending |
-| Confirm copy precedence when the WikiWhy brief, runtime notes, and site copy pack give different lines for one beat. | Pending |
-| Confirm the runtime panel sequence: `amy_tools → amy_evidence → amy_skeptical → amy_supportive`; `chinmay_fluster_1 → chinmay_fluster_2`; `techno_idle_ball_bounce → techno_alert_ball_pin → techno_celebrate_spin`. | Pending |
-| Does Shield Pass 2 require its independent comprehension question to be answered, or merely presented? A wrong/skip will never revoke reading progress or add a fourth pass. | Pending |
-| When Finn chooses Continue after an uncertain or partial completed reading, should it still advance Act I and count as one Shield pass? | Pending |
-| Which exact asset becomes WikiWhy evidence slot 1? Provide ID, file, dimensions, label, accessible description, and access-route fragment. | Pending |
-| After WikiWhy is secured, where does Deck B replay live, and how is replay kept from changing canonical campaign/evidence state? | Pending |
-| Is ThreadIt definitively site 2, or is MapGuess now materially more production-ready? | Pending |
-| For the eleven-reading worst case, approve one Deck B overflow passage or one explicit Deck A repeat. | Pending |
-
-## Current character extraction
-
-| Beat | Production ID | Runtime crop |
-| --- | --- | --- |
-| Setup and Shield reveal | `amy_tools` | `amy-tools.jpg` |
-| Suspicion and evidence trace | `amy_evidence` | `amy-evidence.jpg` |
-| Rewrite contradiction | `amy_skeptical` | `amy-skeptical.jpg` |
-| Secured encouragement | `amy_supportive` | `amy-supportive.jpg` |
-| First proof the shortcut backfired | `chinmay_fluster_1` | `chinmay-fluster-1.jpg` |
-| Blocked autonomous write | `chinmay_fluster_2` | `chinmay-fluster-2.jpg` |
-| Suspicion action | `techno_alert_ball_pin` | `techno-alert-ball-pin.webp` |
-| Secured action | `techno_celebrate_spin` | `techno-celebrate-spin.webp` |
-
-Chinmay remains long-haired, sincere, and increasingly frazzled—never angry or
-villain-coded. Techno remains visual and has no dialogue.
+No new art is currently blocking WikiWhy publication or the first ThreadIt
+vertical slice. The next useful design review should respond to an executable
+ThreadIt corrupted/source-tree screen, not create another full-board mockup in
+advance.
 
 ## Boundaries for design responses
 
-- Do not put site names, story thresholds, evidence, or character state in the
-  Reading Engine, speech, Content Platform records, or theme-neutral scoring.
+- Do not put site names, thresholds, evidence, character state, or replay state
+  in the Reading Engine, speech adapter, or theme-neutral strength calculation.
 - Do not promote passage text without provenance, rights, factual, grade-level,
-  sensitivity, comprehension, and microphone review.
-- Do not use private photos or photoreal character panels.
-- Do not change Finn, Chinmay, the AI, Amy, or Techno's canonical roles.
-- Do not corrupt the trusted desktop shell during ordinary missions.
+  sensitivity, comprehension, profile, and real-microphone review.
+- Keep the Recovery Desktop stable during ordinary sites.
+- The AI service is the hostile writer. Chinmay remains responsible, sincere,
+  long-haired, and increasingly flustered—not malicious.
+- Only Reading Companion text is speech-scored.
 
-When a request is answered, replace `Pending` with the decision and commit hash,
-then update the relevant asset manifest. That gives implementation agents an
+When a remaining request is answered, record the decision and design commit in
+this file or a linked response file. That gives implementation agents an
 objective synchronization point instead of relying on chat history.

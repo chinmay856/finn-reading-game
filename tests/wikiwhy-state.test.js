@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  WIKIWHY_EVIDENCE_RECORD,
   WIKIWHY_EVIDENCE_ID,
   WIKIWHY_STATE_KEY,
   applyWikiWhyReading,
@@ -51,6 +52,14 @@ test("empty WikiWhy campaign state starts in Act I without evidence", () => {
   assert.equal(state.stability, 0);
   assert.equal(state.evidenceId, null);
   assert.deepEqual(state.appliedSessionIds, []);
+});
+
+test("WikiWhy uses the production-frozen route fragment as evidence slot 1", () => {
+  assert.equal(WIKIWHY_EVIDENCE_ID, "wikiwhy.evidence.route-fragment-01");
+  assert.equal(WIKIWHY_EVIDENCE_RECORD.label, "AI WRITE ROUTE / 01");
+  assert.equal(WIKIWHY_EVIDENCE_RECORD.filename, "WIKIWHY_TRACE_01.LOG");
+  assert.equal(WIKIWHY_EVIDENCE_RECORD.writerFingerprint, "ai_repair_service");
+  assert.equal(WIKIWHY_EVIDENCE_RECORD.routeFragment, "generated_summary -> site_publish_gate");
 });
 
 test("one Act I reading can emit the warning and rewrite events in order", () => {

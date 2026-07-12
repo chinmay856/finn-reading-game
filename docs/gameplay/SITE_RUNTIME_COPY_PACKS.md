@@ -178,10 +178,10 @@ going. I think I can catch the next write.
 80 percent rewrite label:
 
 ```text
-AUTOMATIC VERIFICATION CONTINUES
-Writer: wiki_auto_fix_ai
-Command: ended
-Write status: active
+AUTOMATIC WRITE DETECTED. SAVED REPAIR PRESERVED.
+Writer: ai_repair_service
+Command: ENDED
+Write state: ACTIVE UNTIL SHIELD
 ```
 
 ### Shield Finale

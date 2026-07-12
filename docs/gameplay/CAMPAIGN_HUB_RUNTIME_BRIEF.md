@@ -95,7 +95,7 @@ NO READING SCORE
 
 | # | Site | Tile tagline | Corrupted label | Secured label | Evidence file |
 | --- | --- | --- | --- | --- | --- |
-| 1 | WikiWhy | `The encyclopedia forgot what evidence is.` | `SOURCES OPTIONAL` | `EVIDENCE CONNECTED` | `WIKIWHY / ACTIVE WRITE AFTER COMMAND END` |
+| 1 | WikiWhy | `The encyclopedia forgot what evidence is.` | `SOURCES OPTIONAL` | `EVIDENCE CONNECTED` | `WIKIWHY / ENDED COMMAND, ACTIVE WRITER` |
 | 2 | ThreadIt | `A thread where votes are pretending to be facts.` | `THREAD ORDER: EMOTIONAL` | `SOURCE TREE STABLE` | `THREADIT / SYNTHETIC CONSENSUS OVERFLOW` |
 | 3 | FacePlace | `A feed measuring avocado instead of recovery.` | `FEED TRACKER: AVOCADO%` | `FEED RECOVERY VERIFIED` | `FACEPLACE / PROMOTED-FEED RECORD` |
 | 4 | MyCorner | `Every profile has become one CEO demo page.` | `CURRENT MOOD: SPONSORED` | `OWNER CONTROLS RESTORED` | `MYCORNER / GLOBAL PROFILE TEMPLATE` |
@@ -128,7 +128,7 @@ story artifacts; they are not Reading Engine records.
 
 ```text
 Evidence file recovered:
-WIKIWHY / ACTIVE WRITE AFTER COMMAND END
+WIKIWHY / ENDED COMMAND, ACTIVE WRITER
 
 What changed:
 People can contribute, but evidence earns trust.

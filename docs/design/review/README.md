@@ -1,8 +1,8 @@
 # Current implementation review captures
 
 These images are temporary design-review evidence for the executable Recovery
-Map and WikiWhy campaign branches. They are not runtime assets and should be replaced when a later
-milestone materially changes the corresponding screen.
+Map and WikiWhy campaign branches. They are not runtime assets and should be
+replaced when a later milestone materially changes the corresponding screen.
 
 - `recovery-map-current.jpg` — all ten sites, three Incoming Cases, Case File,
   persistent desktop rim, and Amy Support.
@@ -11,11 +11,26 @@ milestone materially changes the corresponding screen.
 - `amy-warning-current.jpg` — production `amy_evidence` crop in the 76% warning.
 - `chinmay-rewrite-current.jpg` — production `chinmay_fluster_1` crop when the AI
   keeps writing after its command ends.
-- `wikiwhy-warning-v3.png` — current 76% suspicion state and Amy warning.
-- `wikiwhy-rewrite-v3.png` — current 80% autonomous-write state and Chinmay log.
-- `wikiwhy-shield-v3.png` — Shield Protocol reset at 0/3 with the exact checklist.
-- `wikiwhy-secured-v3.png` — final blocked-write dialogue and persisted evidence
-  state after Shield pass 3.
+- `wikiwhy-warning-v3.png` — frozen 76% right-edge route clue and Amy warning.
+- `wikiwhy-clue-v3.png` — the same clue unobstructed, including its struck-
+  through generated replacement attempt.
+- `wikiwhy-rewrite-v3.png` — 80% autonomous-write state and canonical AI writer
+  log.
+- `wikiwhy-compare-v3.png` — semantic saved-repair versus AI-rewrite comparison.
+- `wikiwhy-shield-v3.png` — Shield Protocol reset at 0/3 while the saved 80%
+  repair remains visible.
+- `wikiwhy-shield-links-v3.png` — pass 2 with semantic claim-to-source
+  connections and the labeled LINKS segment.
+- `wikiwhy-shield-access-v3.png` — explicit pass 3 WRITE ACCESS confirmation
+  before the secured payoff.
+- `wikiwhy-secured-v3.png` — permanent secured seal, all three labeled Shield
+  segments, and the route-fragment evidence receipt.
+- `wikiwhy-evidence-open-v3.png` — user-opened route log with the historical
+  active state, current denial, route, and Finn's restored approval check.
+- `wikiwhy-blocked-write-v3.png` — final denied-write dialogue after Shield pass
+  3.
+- `recovery-map-secured-v3.png` — secured WikiWhy tile seal and canonical route
+  artifact in Case File slot 1.
 
 Review requests and response protocol live in
 [`../DESIGN_REQUESTS.md`](../DESIGN_REQUESTS.md).

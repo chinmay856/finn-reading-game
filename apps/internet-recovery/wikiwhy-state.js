@@ -9,12 +9,18 @@ const LEGACY_WIKIWHY_STATE_KEYS = Object.freeze([
   "internet-recovery-98.wikiwhy.prototype.v1",
 ]);
 
-export const WIKIWHY_EVIDENCE_ID = "wikiwhy.active-write-after-command-end";
+export const WIKIWHY_EVIDENCE_ID = "wikiwhy.evidence.route-fragment-01";
 export const WIKIWHY_EVIDENCE_RECORD = Object.freeze({
+  commandState: "ENDED",
+  filename: "WIKIWHY_TRACE_01.LOG",
   id: WIKIWHY_EVIDENCE_ID,
-  title: "WIKIWHY / ACTIVE WRITE AFTER COMMAND END",
+  label: "AI WRITE ROUTE / 01",
   principle: "People can contribute, but evidence earns trust.",
-  behavior: "The automated verifier kept writing after its command ended.",
+  routeFragment: "generated_summary -> site_publish_gate",
+  summary: "A separate AI service kept a WikiWhy publish route active after its command ended.",
+  title: "WIKIWHY / ENDED COMMAND, ACTIVE WRITER",
+  writerFingerprint: "ai_repair_service",
+  writeState: "ACTIVE UNTIL SHIELD",
 });
 
 const PHASES = new Set(["act-one", "reverse-hack", "shield", "secured"]);

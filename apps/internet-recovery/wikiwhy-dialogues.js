@@ -10,6 +10,15 @@ export function isWikiWhyDialogDismissible(dialogId) {
   return !NON_DISMISSIBLE_DIALOGUES.has(dialogId);
 }
 
+export function getWikiWhyDialogDescriptionIds({ comparison = false, meta } = {}) {
+  return [
+    "dialogEyebrow",
+    "dialogBody",
+    meta ? "dialogMeta" : null,
+    comparison ? "dialogComparison" : null,
+  ].filter(Boolean).join(" ");
+}
+
 export const WIKIWHY_DIALOGUES = Object.freeze({
   "amy-warning": Object.freeze({
     action: "Keep going",
@@ -21,20 +30,21 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     title: "AMY // ENGINEER CHANNEL",
   }),
   "reverse-hack-ready": Object.freeze({
-    action: "Check the write log",
+    action: "Compare versions",
     body: "Okay, tiny clarification. My AI is not supposed to keep editing after the command ends, which is why this is technically very educational.",
-    eyebrow: "AUTOMATIC VERIFICATION CONTINUES",
+    eyebrow: "AUTOMATIC WRITE DETECTED · SAVED REPAIR PRESERVED",
     heading: "The AI service is still writing.",
-    meta: "Writer: wiki_auto_fix_ai · Service: ai_repair_service · Command: ENDED · Write status: ACTIVE",
+    meta: "Writer: ai_repair_service · Command: ENDED · Write status: ACTIVE",
     portrait: CHINMAY_FLUSTER_1_URL,
     speaker: "chinmay",
     title: "CEO BROADCAST // LIVE",
   }),
   "reverse-hack-amy": Object.freeze({
     action: "Start Shield Protocol",
-    body: "Good news: Finn’s work is saved. Bad news: your shortcut is still typing.",
+    body: "Finn, your saved repair is intact. The comparison proves a separate AI write is still active, so we seal the content, links, and write access next.",
+    comparison: true,
     eyebrow: "READINGS SAVED · EVIDENCE SAVED",
-    heading: "The background write is isolated.",
+    heading: "Your repair is preserved. The AI rewrite is not.",
     portrait: AMY_SKEPTICAL_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
@@ -69,16 +79,16 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
   "site-secured-amy": Object.freeze({
     action: "Open blocked-write log",
     body: "Nice work, Finn. That site is not just cleaner. It has a lock the shortcut cannot write through.",
-    eyebrow: "WIKIWHY SECURED",
-    heading: "Evidence file recovered.",
-    meta: "WIKIWHY / ACTIVE WRITE AFTER COMMAND END",
+    eyebrow: "SHIELD PROTOCOL 3 OF 3 · WRITE ACCESS",
+    heading: "Write access sealed. Evidence file recovered.",
+    meta: "WIKIWHY_TRACE_01.LOG · AI WRITE ROUTE / 01",
     portrait: AMY_SUPPORTIVE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
   "site-secured": Object.freeze({
     action: "Return to Recovery Map",
-    body: "ai_repair_service tried to modify WikiWhy and was denied. I would like the record to show that I am also upset with my AI, although I did name the deployment ‘Definitely Fine.’",
+    body: "ai_repair_service tried to modify WikiWhy and was denied because Finn restored the approval check the AI optimized away. I would like the record to show that I am also upset with my AI, although I did name the deployment ‘Definitely Fine.’",
     eyebrow: "ACCESS DENIED",
     heading: "Unauthorized AI write blocked.",
     meta: "AUTONOMOUS AI WRITE: ACCESS DENIED",

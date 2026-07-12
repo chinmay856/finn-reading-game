@@ -20,6 +20,11 @@ export function describeWikiWhyShieldPass(pass) {
   return reactions[index];
 }
 
+export function calculateWikiWhySiteVisualPercent({ campaignPercent = 0, campaignState = {} } = {}) {
+  const bounded = Math.min(100, Math.max(0, Number(campaignPercent) || 0));
+  return campaignState.phase === "shield" ? Math.max(80, bounded) : bounded;
+}
+
 export function calculateWikiWhyRepair({ comprehension, previousStability = 0, readingResult = {} }) {
   const strength = measureReadingSessionStrength({
     accuracy: readingResult.accuracy,

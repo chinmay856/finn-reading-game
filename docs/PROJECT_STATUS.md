@@ -13,9 +13,9 @@ product and architecture source of truth is
 - **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
 - **Deployed main:** `270c63d` through PR #30
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
-- **Current stage:** Align the real WikiWhy campaign foundation with the
-  production-frozen state pack, publish it, then promote enough reviewed
-  passages to make the complete route playable without fake repetition
+- **Current stage:** Publish the production-aligned WikiWhy campaign foundation,
+  then promote enough reviewed passages to make the complete route playable
+  without fake repetition
 
 ## Deployed implementation
 
@@ -47,9 +47,10 @@ product and architecture source of truth is
   plainly, but cannot add or remove Shield passes. A fourth/post-secured result
   is a no-op for campaign progress.
 - The nested browser has accessible phase overlays, a reduced-motion-safe
-  right-to-left rewrite treatment, the exact three-item Shield checklist, a
-  permanent evidence receipt, and production-sheet crops for Amy, Chinmay, and
-  Techno story beats. The trusted desktop and Reading Companion stay stable.
+  70–79% clue, right-to-left rewrite treatment, saved-versus-AI comparison, the
+  exact content/links/access Shield checklist, permanent secured seal, canonical
+  route-log receipt, and production-sheet crops for Amy, Chinmay, and Techno.
+  The trusted desktop and Reading Companion stay stable.
 - Campaign visuals rest on persisted campaign progress. Live transcript progress
   projects only toward the next possible campaign step instead of falsely
   repainting the whole site from 0 to 100 for every passage.
@@ -94,7 +95,7 @@ product and architecture source of truth is
 ## Validation
 
 - `npm run check` — passed
-- `npm test` — 78 tests passed
+- `npm test` — 84 tests passed
 - `npm run build` — passed
 - Browser QA — full diagnostic route clicked through at desktop scale: warning,
   rewrite, Amy contradiction, Shield 0/3 through 3/3, secured payoff, source and
@@ -116,12 +117,10 @@ product and architecture source of truth is
 
 ## Immediate next milestone
 
-1. Apply the new WikiWhy route-log evidence and explicit saved-versus-AI compare
-   state, then rerun the production gate.
-2. Publish this branch, run CI, merge, deploy, and smoke-check live HTTPS.
-3. Promote the lowest-risk WikiWhy candidates only after the documented content
+1. Publish this branch, run CI, merge, deploy, and smoke-check live HTTPS.
+2. Promote the lowest-risk WikiWhy candidates only after the documented content
    gate; begin with A02, A05, A07, A08, and A09.
-4. Build ThreadIt's unique Act I source-tree browser consequence without
+3. Build ThreadIt's unique Act I source-tree browser consequence without
    borrowing WikiWhy's wipe, state, or content.
 
 Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
