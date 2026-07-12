@@ -660,6 +660,23 @@ pending language is superseded by PR #36 and deployed `65368e8`.
 - No newer designer PR or fetch delta was present. The existing canonical
   ViewTube runtime response is sufficient for this CSS-only milestone.
 
+## Search-ish visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/searchish-visual-fidelity`, based on deployed ViewTube
+  PR #79 / `main` at `b487d65`.
+- `searchish.css` now applies the canonical source-evaluation palette and three
+  acts through a campaign ribbon, colored query trail, explicit generated-origin
+  warning, dimensional result cards, semantic branch wires, and trail depth.
+- No external search, iframe, remote content, or raster asset was added. The
+  exact four-origin plus three-branch state machine, canonical fixture/evidence,
+  content gate, independent Reading Companion, and reduced-motion behavior are
+  unchanged.
+- Local corrupted-state QA found four result cards, three branch gates, the
+  generated warning, fixed Techno, and no horizontal overflow. `npm test` (310
+  tests), `npm run check`, `npm run build`, and `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The existing canonical
+  Search-ish runtime response remains sufficient for this CSS-only milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:
