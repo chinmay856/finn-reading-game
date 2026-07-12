@@ -15,6 +15,7 @@ const MARKS = Object.freeze({
   faceplace: new URL("./art/site-assets/marks/faceplace-mark.svg", import.meta.url).href,
   mapguess: new URL("./art/site-assets/marks/mapguess-mark.svg", import.meta.url).href,
   mycorner: new URL("./art/site-assets/marks/mycorner-mark.svg", import.meta.url).href,
+  searchish: new URL("./art/site-assets/marks/searchish-mark.svg", import.meta.url).href,
   viewtube: new URL("./art/site-assets/marks/viewtube-mark.svg", import.meta.url).href,
   yahuh: new URL("./art/site-assets/marks/yahuh-mark.svg", import.meta.url).href,
 });
@@ -53,7 +54,7 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "searchish", name: "Search-ish", mark: "S?", archetype: "Web search",
     belief: "THE FIRST RESULT IS THE ANSWER", description: "Five confident results all redirect to one generated cache.",
-    accent: "#d27b12", playable: false, previewImage: PREVIEWS.searchish,
+    accent: "#d27b12", markImage: MARKS.searchish, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.searchish,
   }),
   Object.freeze({
     id: "amazeon", name: "Amaze-On", mark: "A", archetype: "Online marketplace",
