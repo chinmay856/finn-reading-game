@@ -509,3 +509,13 @@ template, or start the final breach before enough real campaigns exist.
 
 Preserve the historical mobile prototype and its branches as side-test
 reference; do not resume mobile optimization unless the user reprioritizes it.
+
+### ThreadIt desktop scanability (2026-07-12)
+
+- The desktop ThreadIt forum feed now uses a compact two-column board so all
+  six first-run posts can be scanned together without scrolling the site page.
+- Feed-only metadata, avatars, and excerpts are compressed at desktop sizes;
+  the independent Reading Companion type and layout are unchanged.
+- Browser QA at 1440x900 measured 6 of 6 posts fully visible, a 612px page
+  client/scroll height match, and no page overflow. Interactive controls retain
+  the shared cyan action halo and reduced-motion-safe treatment.

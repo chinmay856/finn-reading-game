@@ -1,5 +1,25 @@
 /* Desktop-only board compression. Reading Companion typography is untouched. */
 @media (min-width:1280px) and (min-height:760px) {
+  /* ThreadIt reads as a forum board at a glance: the feed is a compact
+     two-column scan surface while the Reading Companion keeps its large type. */
+  #threadit .threadit-layout { gap:8px; padding:8px; }
+  #threadit .threadit-thread-column { overflow:hidden; }
+  #threadit .threadit-thread-column>header { padding:6px 8px; }
+  #threadit .threadit-thread-column>header h3 { margin:2px 0; font-size:14px; }
+  #threadit .threadit-thread-column>header p { font-size:11px; line-height:1.25; }
+  #threaditPostList,.threadit-post-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; }
+  #threadit .threadit-post { grid-template-columns:30px 24px minmax(0,1fr); gap:5px; min-height:0; padding:6px 7px; }
+  #threadit .threadit-post-votes { min-height:42px; padding:4px 1px; font-size:9px; }
+  #threadit .threadit-post>img { width:24px; height:24px; }
+  #threadit .threadit-post-meta { gap:2px 5px; }
+  #threadit .threadit-post-title { font-size:11px; line-height:1.2; }
+  #threadit .threadit-post-meta span,#threadit .threadit-post-status { font-size:9px; line-height:1.2; }
+  #threadit .threadit-post-body { display:-webkit-box; margin-top:3px; overflow:hidden; font-size:10px; line-height:1.25; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+  #threadit .threadit-source-warning,#threadit .threadit-citation { margin-top:3px; padding:3px; font-size:9px; line-height:1.2; }
+  #threadit .threadit-duplicate-group article>ul { margin-top:3px; padding-left:12px; font-size:9px; line-height:1.2; }
+  #threadit .threadit-duplicate-group article>ul li { padding-top:2px; }
+  #threadit .threadit-status-strip { padding:4px 8px; font-size:9px; }
+
   .viewtube-surface,.amazeon-surface { gap:10px; padding-top:8px; padding-bottom:42px; }
   #viewtube .viewtube-page { display:grid; grid-template-rows:auto minmax(0,1fr) auto; overflow:hidden; }
   #viewtube .viewtube-content-layout { min-height:0; grid-template-rows:minmax(240px,1.1fr) minmax(125px,.52fr); gap:6px; padding:6px; }
