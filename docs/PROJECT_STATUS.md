@@ -8,14 +8,13 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/mapguess-moving-target-foundation`
+- **Active implementation branch:** `agent/mycorner-owner-controls-foundation`
 - **Repository:** `chinmay856/finn-reading-game`
 - **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
-- **Deployed main:** `e776471` through PRs #34 and #35
+- **Deployed main:** `65368e8` through MapGuess PR #36
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
-- **Current stage:** Complete final validation and publish MapGuess's eight-unit
-  moving-target structural campaign without scoring candidate passages or
-  allowing its provisional slot-10 receipt to unlock canonical progression
+- **Current stage:** Reconcile designer PR #38 and publish MyCorner's seven-unit
+  owner-control campaign while keeping all unreviewed passages unavailable
 
 ## Deployed implementation
 
@@ -42,6 +41,29 @@ product and architecture source of truth is
   and a permanent secured test route. It shipped through PR #34, followed by
   the spoken-separator accessibility correction in PR #35. CI, Pages deployment,
   and the public HTTPS diagnostic route were verified at `e776471`.
+- MapGuess's complete five-plus-three Moving Target campaign shipped through PR
+  #36. CI and Pages passed, and the public HTTPS route was verified at
+  `65368e8`, including a saved SCENIC route-goal interaction.
+
+## Current MyCorner branch
+
+- Designer PR #38 froze `mycorner-profile-fixture-01`, the seven-plus-three
+  passage-ID plan, process lineage, responsive drawer behavior, blocked-write
+  target, and canonical Case File slot 4 contract.
+- MyCorner implements four profile restores, an explicit Apply to Everyone
+  acknowledgement, and three owner-lock readings. The six saved choices and
+  separate owner-permission seal never become a percentage.
+- The exact fictional Mara Vale profile fixture is canonical wrapper data. The
+  one structured passage remains a review-gated candidate; zero passages are
+  selectable, so `MIC: OFF` and `NO READING SCORE` remain honest.
+- Canonical slot-four evidence is eligible only after the persisted secured
+  seven-reading state and exact registered ID. Diagnostic and tab-only states
+  remain excluded from canonical hub counts.
+- Focused MyCorner and hub/DOM validation currently passes 58 tests. Full-suite
+  validation is being refreshed after documentation reconciliation.
+
+The older MapGuess branch notes below are retained as milestone history; their
+publication-pending language is superseded by PR #36 and deployed `65368e8`.
 
 ## Current MapGuess branch
 
