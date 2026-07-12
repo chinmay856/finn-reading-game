@@ -45,6 +45,19 @@ product and architecture source of truth is
   #36. CI and Pages passed, and the public HTTPS route was verified at
   `65368e8`, including a saved SCENIC route-goal interaction.
 
+## Current ViewTube branch
+
+- `agent/viewtube-evidence-track-foundation` implements the canonical fictional
+  silent-video fixture, four context restores, saved autoplay-loop discovery,
+  explicit acknowledgement, three evidence tracks, and canonical Case File
+  slot 6 registration.
+- ViewTube is a clickable structural campaign test build, not speech-playable.
+  Its reading companion remains fail-closed at zero selectable passages.
+- Designer PRs #40 and #49 are integrated. The dedicated Techno clue-point art
+  remains outstanding and is published back to the designer with acceptance
+  criteria; the approved paw-alert still is the temporary fallback.
+- Local validation: `npm run check`, 268 tests, and production build pass.
+
 ## Current MyCorner branch
 
 - Designer PR #38 froze `mycorner-profile-fixture-01`, the seven-plus-three
@@ -64,6 +77,19 @@ product and architecture source of truth is
 
 The older MapGuess branch notes below are retained as milestone history; their
 publication-pending language is superseded by PR #36 and deployed `65368e8`.
+
+## Current Yahuh branch
+
+- MyCorner is deployed through PR #45 and live-copy fix PR #47 at `76e6f05`.
+- Active implementation is `agent/yahuh-channel-reconnect-foundation` using the
+  canonical designer response from PR #39.
+- Yahuh implements exactly three paired sorts, saved Single Source discovery
+  and acknowledgement, and three channel reconnections across six modules.
+- The frozen 6A plus 4B plan has one structured candidate and zero selectable
+  records. All six required readings remain review-gated, so `MIC: OFF` and no
+  reading score remain mandatory.
+- Canonical Case File slot 5 requires the exact persisted secured state and
+  `yahuh.evidence.single-stream-merge-01`; diagnostics remain excluded.
 
 ## Current MapGuess branch
 
