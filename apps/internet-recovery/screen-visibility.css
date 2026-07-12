@@ -1,0 +1,3 @@
+.screen:not(.on) {
+  display: none !important;
+}
