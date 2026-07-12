@@ -146,3 +146,67 @@ Do not copy modern creator transcripts.
 - Can the player see that ten loops are one source?
 - Does the repaired state make transcript/source/footage distinct?
 - Is the decorative site transcript not confused with the Reading Companion?
+
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| CRT charcoal | `#242A31` |
+| Cream canvas | `#F3EFE5` |
+| ViewTube red | `#B43A31` |
+| Context aqua | `#31848A` |
+| Timeline yellow | `#D7A93E` |
+| Duplicate purple | `#6851A1` |
+| Verified green | `#2C7A57` |
+| Border / focus | `#89939C` / `#0B66D0` |
+
+Use the original angular play bolt inside a CRT. Do not use a rounded red play
+rectangle, copied player controls, real creator UI, or a familiar video-site
+wordmark. Site transcript text uses 13-14 pixels and is labeled `SITE TRANSCRIPT
+(NOT READING PASSAGE)`.
+
+### Exact timeline sequence
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `viewtube_restore_1` | first accepted reading | title, creator, and recording date return | `recording_identity` |
+| `viewtube_restore_2` | second accepted reading | distinct frame strip and duration return | `distinct_frames` |
+| `viewtube_restore_3` | third accepted reading | decorative transcript reconnects to timestamps | `transcript_track` |
+| `viewtube_restore_4` | fourth accepted reading | source/context panel returns | `source_context` |
+| `viewtube_autoplay_loop` | restore 4 saves | final eight seconds clone into ten apparent confirmations | midpoint |
+| `viewtube_track_1` | next accepted reading | footage hashes grouped; duplicate loops quarantined | `footage_track_verified` |
+| `viewtube_track_2` | next accepted reading | transcript timing linked to original recording | `transcript_track_verified` |
+| `viewtube_track_3` | next accepted reading | source evidence separated from recommendations | `source_track_verified` |
+| `viewtube_secured` | track 3 saves | evidence tracks, denial, receipt | secured |
+
+The timeline is the progress display. It has four Act I clips and three final
+evidence tracks; do not add a percentage bar.
+
+### Midpoint proof
+
+Show the repeated clip thumbnails with the same short hash and one origin:
+
+```text
+PLAYBACKS: 10
+DISTINCT MEDIA HASHES: 1
+NEW EVIDENCE: 0
+```
+
+Do not autoplay audio. A restrained visual loop may run once between readings;
+reduced motion shows one frame strip with ten duplicate badges.
+
+### Final composition and audio
+
+- main player remains a silent visual frame during microphone use;
+- recommendations sit in a clearly separate rail;
+- site transcript and source panels remain distinct from the Reading Companion;
+- bottom timeline labels `FOOTAGE`, `TRANSCRIPT`, and `SOURCE`;
+- blocked log reads `DUPLICATE FRAMES - NO NEW EVIDENCE`.
+
+Any future audio starts only after user interaction, pauses during capture, and
+has a visible mute state.

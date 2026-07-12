@@ -33,6 +33,72 @@ assigned passage.
 - Chinmay copy can be overconfident, defensive, embarrassed, or alarmed. It
   cannot be threatening, cruel, or villainous.
 
+## Canonical Copy ID Contract
+
+The exact text in each site section below is frozen under this ID pattern. The
+order of lists in a section supplies the numeric suffix.
+
+| Section label | Stable ID |
+| --- | --- |
+| Page Identity rows | IDs already printed in the identity table |
+| Corrupted Page Copy / Headline | `site.<slug>.corrupt.headline` |
+| Corrupted Page Copy / Body | `site.<slug>.corrupt.body` |
+| Corrupted modules/snippets | `site.<slug>.corrupt.module.<n>` |
+| Repaired Page Copy / Headline | `site.<slug>.repair.headline` |
+| Repaired Page Copy / Body | `site.<slug>.repair.body` |
+| Repaired labels | `site.<slug>.repair.label.<n>` |
+| Midpoint heading/first named event | `site.<slug>.midpoint.title` |
+| Midpoint event body | `site.<slug>.midpoint.body` |
+| Midpoint Amy block | `site.<slug>.midpoint.amy` |
+| Midpoint Chinmay block | `site.<slug>.midpoint.chinmay` |
+| Resolution first heading | `site.<slug>.secure.title` |
+| Resolution body/checklist | `site.<slug>.secure.body` |
+| AI denial block | `site.<slug>.secure.denial` |
+
+Canonical slugs:
+
+| Site | Slug |
+| --- | --- |
+| WikiWhy | `wikiwhy` |
+| ThreadIt | `threadit` |
+| FacePlace | `faceplace` |
+| MyCorner | `mycorner` |
+| Yahuh! Portal | `yahuh` |
+| ViewTube | `viewtube` |
+| Search-ish | `searchish` |
+| Amaze-On | `amazeon` |
+| Spotty-Fi | `spottyfi` |
+| MapGuess | `mapguess` |
+
+Shared site actions:
+
+| Copy ID | Text |
+| --- | --- |
+| `site.action.resume` | `Resume repair` |
+| `site.action.nextPassage` | `Open next recovered file` |
+| `site.action.returnToMap` | `Return to Recovery Map` |
+| `site.action.viewEvidence` | `View evidence` |
+
+Evidence titles and bodies are frozen under
+`site.<slug>.secure.evidenceTitle` and
+`site.<slug>.secure.evidenceBody` in the ten evidence-receipt blocks of
+[`CAMPAIGN_HUB_RUNTIME_BRIEF.md`](CAMPAIGN_HUB_RUNTIME_BRIEF.md).
+
+Techno accessible descriptions are frozen here:
+
+| Copy ID | Text |
+| --- | --- |
+| `site.wikiwhy.secure.technoAlt` | `Techno guards the recovered route log with her orange-and-blue ball.` |
+| `site.threadit.secure.technoAlt` | `Techno's ball rests on the one connector shared by the duplicate accounts.` |
+| `site.faceplace.secure.technoAlt` | `Techno pins her ball beside the restored Why this appeared control.` |
+| `site.mycorner.secure.technoAlt` | `Techno compares the generated BALL profile with the real ball under her paw.` |
+| `site.yahuh.secure.technoAlt` | `Techno's ball sits in Sports under the label Dog Toy - Not Breaking News.` |
+| `site.viewtube.secure.technoAlt` | `Techno paws the silent autoplay control off beside the duplicate-frame warning.` |
+| `site.searchish.secure.technoAlt` | `Techno nudges the cursor from the generated answer toward an independent source branch.` |
+| `site.amazeon.secure.technoAlt` | `Techno watches a suggested ball remain unpurchased until a human choice.` |
+| `site.spottyfi.secure.technoAlt` | `Techno spins with her ball beside the restored manual queue.` |
+| `site.mapguess.secure.technoAlt` | `Techno places her ball beside the destination after the pin is already locked.` |
+
 ## Site 1: WikiWhy
 
 ### Page Identity
@@ -709,7 +775,7 @@ AI denial:
 ```text
 Generated summary requested top-result placement.
 
-UNVERIFIED GENERATED SUMMARY
+TOP PLACEMENT DENIED - SOURCE ORIGIN REQUIRED
 ```
 
 Techno beat: Techno nudges the cursor from the answer box to the source branch.
@@ -1046,12 +1112,17 @@ AI service behavior:
 
 ## Builder Notes
 
-- Start implementation with WikiWhy only.
-- Use this document to populate preview copy for other sites if needed.
-- Do not wire other sites to reading/scoring until their own passage pool and
-  wrapper mechanics are implemented.
+- WikiWhy is the implemented first slice; ThreadIt is the approved second site.
+- All ten site designs are intended to become playable one vertical slice at a
+  time as their own reviewed passage records and wrapper state contracts are
+  connected.
+- Preview mode remains a truthful fallback only while a site's passage/mechanics
+  are not connected. Never borrow WikiWhy's passage, score, or progress.
 - Use canonical site-board filenames from
   `apps/internet-recovery/art/concepts/sites/README.md`.
+- Use exact site state contracts from
+  `docs/gameplay/site-build-briefs/` and shared behavior from
+  `docs/gameplay/SITE_PRODUCTION_SYSTEM.md`.
 - Use production character IDs from
   `apps/internet-recovery/art/characters/README.md`.
 - Treat this copy as wrapper configuration, not content records and not Reading

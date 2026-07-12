@@ -25,10 +25,15 @@ Build the smallest useful player path first:
 6. Accepted readings can reach Amy's warning, the 80 percent story turn, the
    exact three-pass Shield Protocol, and the secured-site payoff.
 7. The hub records WikiWhy as secured and unlocks one evidence entry.
+8. ThreadIt becomes the second playable site using its semantic source-tree
+   repair rather than WikiWhy's wipe.
+9. Add the remaining site vertical slices in the production order recorded in
+   `site-build-briefs/README.md`.
 
-Other sites can appear as design previews until their own content and mechanics
-are implemented. Do not fake their reading loops by reusing WikiWhy passage,
-score, or progression state.
+Preview mode remains a truthful temporary fallback while a site's own reviewed
+content and mechanics are not connected. All ten production designs are
+complete and intended for implementation. Do not fake any reading loop by
+reusing WikiWhy passage, score, or progression state.
 
 ## Builder input files
 
@@ -40,11 +45,15 @@ Use these as source-of-truth design inputs:
   scene/state script and acceptance checks.
 - `docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md` - ten-site story and progress
   direction.
+- `docs/gameplay/SITE_PRODUCTION_SYSTEM.md` - shared production behavior,
+  persistence, responsive layout, motion, accessibility, and asset ownership.
 - `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` - canonical art inputs, character
   crop guidance, and preview-vs-playable asset rules.
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.
 - `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` - concrete Recovery Map,
   site-tile, Case File, evidence receipt, and global story beat copy.
+- `docs/gameplay/FINAL_BREACH_RUNTIME_BRIEF.md` - exact three-checkpoint
+  Evidence 11 breach, copy IDs, persistence, safety, and end-state contract.
 - `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md` - full wrapper copy library.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` - concrete visible copy for the
   ten corrupted/repaired site pages.
@@ -475,3 +484,13 @@ Before handing a screen to playtest, verify:
 - Copy does not blame Finn for recognition issues.
 - No wrapper terms entered Reading Engine, speech adapter, or theme-neutral
   content records.
+
+### 16. Final breach
+
+Do not extrapolate the ordinary-site repair UI into the endgame. After all ten
+sites are secured, use the singular three-checkpoint sequence in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md): trace origin,
+preserve evidence, and revoke access. `EVIDENCE_11.LIVE` is a Recovery Desktop
+artifact, not an eleventh website. The outer browser boundary, Reading
+Companion, microphone truth, safety banner, save/exit action, and all ten site
+states remain trustworthy.

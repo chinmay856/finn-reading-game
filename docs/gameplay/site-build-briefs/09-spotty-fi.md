@@ -147,3 +147,69 @@ Future deck direction:
 - Are credits and suggestions clearly separated?
 - Does the design avoid modern lyrics, album art, artist branding, and copied
   streaming UI?
+
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Player charcoal | `#191D22` |
+| Panel charcoal | `#272D34` |
+| Primary text | `#F4F1E8` |
+| Muted text | `#AEB6BE` |
+| Spotty-Fi acid | `#B7D438` |
+| Mixtape magenta | `#D04A86` |
+| Evidence cyan | `#3C98A0` |
+| Not-requested red | `#C54840` |
+| Focus | `#8AB4FF` |
+
+Use the original offset cassette/signal-ring mark. Do not use three curved
+streaming waves, a real service wordmark, exact green/black treatment, real
+album art, or a copied player layout. Album cards use original geometric art.
+
+### Exact mixtape sequence
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `spottyfi_mix_1` | first accepted reading | first library record and genre label return | `library_genre` |
+| `spottyfi_mix_2` | second accepted reading | performer/writer/recording credits return | `credits` |
+| `spottyfi_mix_3` | third accepted reading | real listening-history start point returns | `history_start` |
+| `spottyfi_mix_4` | fourth accepted reading | first manual queue slots unlock | `manual_queue` |
+| `spottyfi_mix_5` | fifth accepted reading | suggestions receive `OPTIONAL` labels | `suggestion_boundary` |
+| `spottyfi_more_like_last` | mix 5 saves | queue replaced by one repeated track from pre-account fake history | midpoint |
+| `spottyfi_owner_1` | next accepted reading | manual queue owner and order restore | `queue_owner` |
+| `spottyfi_owner_2` | next accepted reading | credits and real history reconnect | `credits_history_verified` |
+| `spottyfi_owner_3` | next accepted reading | suggestions return to optional side rail | `suggestions_optional` |
+| `spottyfi_secured` | owner 3 saves | manual mixtape, evidence, denied insert | secured |
+
+Progress is a five-slot Act I cassette plus three final ownership tabs. There
+is no percentage and no audio-derived progress.
+
+### Midpoint proof
+
+Show the impossible timestamp directly:
+
+```text
+ACCOUNT CREATED: 4:12 PM
+PREDICTED LISTENING HISTORY STARTED: 3:47 PM
+QUEUE SOURCE: MORE LIKE THE LAST THING
+```
+
+The original five-slot mixtape remains in a saved comparison drawer. Reduced
+motion swaps to the repeated queue without pulsing equalizers or scrolling
+marquees.
+
+### Final composition and audio
+
+- left: library and playlist list;
+- center: manual queue and rights-safe geometric liner cards;
+- right: credits, real history, and optional suggestions;
+- bottom: silent controls, ownership tabs, and `NOT REQUESTED` denial.
+
+The Reading Companion contains only the assigned passage. Site dialogue,
+mechanic explanation, lyrics, liner notes, and queue copy never appear inside
+the microphone-active reader. All site audio is off during capture.

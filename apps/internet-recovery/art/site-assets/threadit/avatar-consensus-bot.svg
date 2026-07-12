@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Consensus Auto-Fix account avatar</title>
+  <desc id="desc">An original square robot face surrounded by repeated origin rings.</desc>
+  <circle cx="48" cy="48" r="44" fill="#EEE9FA" stroke="#6655A6" stroke-width="4"/>
+  <circle cx="48" cy="48" r="34" fill="none" stroke="#F26822" stroke-width="4" stroke-dasharray="8 6"/>
+  <rect x="26" y="29" width="44" height="38" rx="9" fill="#FFFFFF" stroke="#17212B" stroke-width="4"/>
+  <path d="M48 20v9" stroke="#17212B" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="17" r="4" fill="#F26822" stroke="#17212B" stroke-width="2"/>
+  <circle cx="39" cy="46" r="4" fill="#6655A6"/>
+  <circle cx="57" cy="46" r="4" fill="#6655A6"/>
+  <path d="M39 57h18" stroke="#17212B" stroke-width="4" stroke-linecap="round"/>
+</svg>

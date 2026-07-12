@@ -1,5 +1,9 @@
 # Site brief 02: ThreadIt
 
+**Production handoff:** tokens, responsive layout, named states, semantic source
+tree, stable copy IDs, and the asset manifest are frozen in
+[`../THREADIT_PRODUCTION_HANDOFF.md`](../THREADIT_PRODUCTION_HANDOFF.md).
+
 ## Core promise
 
 ThreadIt teaches that votes and confidence can rank attention, but they do not

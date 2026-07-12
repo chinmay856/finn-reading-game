@@ -143,3 +143,81 @@ Future deck direction:
 - Does the ending require user choice before rerouting?
 - Does Techno's ball pin the destination as a visual joke without becoming a
   required puzzle mechanic?
+
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Map paper | `#F5EBCF` |
+| Water blue | `#5B9FC1` |
+| Land green | `#75A66C` |
+| Road yellow | `#D6B43D` |
+| Route red | `#C23E38` |
+| Ink / muted | `#22303A` / `#66717A` |
+| Destination blue | `#2F6F9E` |
+| Locked green | `#2C7A57` |
+| Focus | `#075CCB` |
+
+Use the original folded-map/question-pin mark. Do not use a real navigation
+wordmark, exact pin, copied map tiles, or familiar browser chrome.
+
+### Exact map sequence
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `mapguess_rebuild_1` | first accepted reading | first tile block and place names clarify | `tiles_names` |
+| `mapguess_rebuild_2` | second accepted reading | scale and map date return | `scale_date` |
+| `mapguess_rebuild_3` | third accepted reading | terrain and water boundaries return | `terrain` |
+| `mapguess_rebuild_4` | fourth accepted reading | route segments reconnect to roads | `route_segments` |
+| `mapguess_rebuild_5` | fifth accepted reading | destination coordinates and landmark inspector return | `destination_inspector` |
+| `mapguess_moving_target` | rebuild 5 saves and route reaches pin | destination jumps to preserve two-minute ETA | midpoint |
+| `mapguess_anchor_1` | next accepted reading | landmark one anchors the original coordinate | `landmark_1` |
+| `mapguess_anchor_2` | next accepted reading | landmarks two and three triangulate the pin | `landmarks_2_3` |
+| `mapguess_anchor_3` | next accepted reading plus explicit goal choice | destination locks and route recalculates honestly | `goal_route_lock` |
+| `mapguess_secured` | anchor 3 saves | destination, evidence, denied pin move | secured |
+
+Progress is five map-repair layers followed by three destination-lock steps.
+There is no generic percentage.
+
+### Midpoint proof
+
+Keep the road fixed while the destination marker visibly changes coordinates.
+Show both records:
+
+```text
+ROAD GEOMETRY CHANGED: NO
+DESTINATION COORDINATES CHANGED: YES
+ETA TARGET: 2 MINUTES FOREVER
+```
+
+Reduced motion uses a before/after coordinate card instead of a jumping pin.
+
+### Goal choice and final composition
+
+Before `mapguess_anchor_3` can secure the site, Finn chooses one fictional route
+goal with ordinary controls:
+
+- `FASTEST`
+- `SAFEST`
+- `SCENIC`
+- `ACCESSIBLE`
+
+This choice is wrapper interaction, not speech scoring or comprehension. All
+four choices are valid; the resulting route must keep the same locked
+destination and show the relevant tradeoff.
+
+Final layout:
+
+- center: map with anchored destination and three labeled landmarks;
+- left: directions and four-goal selector;
+- right: scale/date/terrain verification and sponsored-stop warning;
+- bottom: honest ETA log and `DESTINATION LOCKED - USER CHOICE REQUIRED`
+  denial.
+
+Techno's ball may visually pin the destination after it is already locked. The
+ball is never the interactive control.

@@ -143,3 +143,67 @@ Hold more sensitive source material until human review passes.
   malicious?
 - Does the ending make permission and ownership visible?
 - Does autoplay remain optional/mutable and silent during microphone use?
+
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Page blue | `#244A88` |
+| Module pale blue | `#E7F0FF` |
+| Ink / muted | `#17212B` / `#5F6D7A` |
+| Owner magenta | `#C4478C` |
+| Scrapbook yellow | `#E7BF45` |
+| Permission green | `#2C7A57` |
+| Template warning | `#AA3B35` |
+| Border / focus | `#8097B8` / `#075CCB` |
+
+Use the original nested-corner mark. Headings may use a deliberately awkward
+rounded/system display face; body copy stays 14-16 pixels and readable. Glitter,
+counters, and tacky theme fragments remain decorative and silent.
+
+### Exact module sequence
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `mycorner_restore_1` | first accepted reading | owner identity and About Me return | `owner_about` |
+| `mycorner_restore_2` | second accepted reading | chosen theme and friend layout return | `theme_friends` |
+| `mycorner_restore_3` | third accepted reading | music controls and visitor counter return | `media_counter` |
+| `mycorner_restore_4` | fourth accepted reading | privacy controls and source view return | `privacy_source` |
+| `mycorner_template_reveal` | restore 4 saves | `chinmay_demo_profile` overlays all modules; saved owner snapshots remain underneath | midpoint |
+| `mycorner_owner_lock_1` | next accepted reading | profile-owner field locked to the actual page owner | `profile_owner_lock` |
+| `mycorner_owner_lock_2` | next accepted reading | theme/media selections locked to owner choices | `presentation_owner_lock` |
+| `mycorner_owner_lock_3` | next accepted reading | global template permission removed | `global_apply_blocked` |
+| `mycorner_secured` | owner lock 3 saves | `OWNER CONTROLS RESTORED`, evidence, blocked write | secured |
+
+There is no percentage. A six-slot scrapbook rail shows the four recovered
+modules and the two owner-control groups; the final global permission seal sits
+beside the rail rather than pretending to be another profile module.
+
+### Midpoint proof
+
+The template reveal must show one concrete comparison:
+
+```text
+SAVED OWNER SNAPSHOT: six distinct module choices
+ACTIVE TEMPLATE: chinmay_demo_profile
+APPLY TO EVERYONE: active
+```
+
+Do not remove or overwrite the saved module cards. Render the template as a
+semi-opaque site-owned layer with a visible `VIEW SAVED PROFILE` comparison.
+Reduced motion swaps between saved and template views without flicker.
+
+### Final composition
+
+- left: friends, counter, and optional silent music widget;
+- center: owner-authored About/posts;
+- right: theme/source/permission inspector;
+- bottom: owner-control log and `OWNER PERMISSION REQUIRED` denial.
+
+All autoplay controls default off and remain muted while microphone capture is
+active.

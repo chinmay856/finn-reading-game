@@ -273,7 +273,7 @@ Use these as the satisfying secured-state punchlines:
 | MyCorner | `OWNER PERMISSION REQUIRED` |
 | Yahuh! Portal | `CATEGORY AND SOURCE REQUIRED` |
 | ViewTube | `DUPLICATE FRAMES - NO NEW EVIDENCE` |
-| Search-ish | `UNVERIFIED GENERATED SUMMARY` |
+| Search-ish | `TOP PLACEMENT DENIED - SOURCE ORIGIN REQUIRED` |
 | Amaze-On | `HUMAN CONFIRMATION REQUIRED` |
 | Spotty-Fi | `NOT REQUESTED` |
 | MapGuess | `DESTINATION LOCKED - USER CHOICE REQUIRED` |
@@ -444,6 +444,8 @@ I did not send that. Finn, shut the AI out. I am done touching the fixes.
 ```
 
 This starts the separate final-breach arc. It is not an eleventh website.
+Continue with the production state and copy contract in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md).
 
 ## Techno hub beats
 

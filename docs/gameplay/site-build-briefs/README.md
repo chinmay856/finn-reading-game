@@ -1,10 +1,16 @@
 # Internet Recovery 98 site build briefs
 
+Shared production behavior, persistence, responsive layout, motion, and
+accessibility are frozen in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md). Each brief below
+adds its own exact repair units, midpoint trigger, finish condition, and visual
+identity.
+
 ## Purpose
 
 These briefs turn the reviewed ten-site design library into builder-facing
-runtime direction. They are design artifacts only: no code, no runtime state
-shape, and no Reading Engine behavior is defined here.
+runtime direction. They are design artifacts only: they define wrapper-facing
+state contracts and visual behavior, not code or Reading Engine behavior.
 
 Use them to build or preview each Internet Recovery 98 site while preserving
 the project boundaries:
@@ -26,11 +32,10 @@ For replay-oriented Reading Companion content planning, use
 ## Build order recommendation
 
 1. WikiWhy as the first playable slice.
-2. ThreadIt or MapGuess as the second slice, because their repair visuals are
-   legible without heavy media assets.
-3. FacePlace or Spotty-Fi once the builder has reusable feed/list components.
-4. The remaining sites as preview windows until each has a content pool and
-   site-specific mechanics.
+2. ThreadIt as the approved second-site portability proof.
+3. MapGuess, FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish,
+   Amaze-On, then Spotty-Fi, unless implementation dependencies justify a
+   documented change.
 
 This order is pragmatic only. The campaign spine supports flexible site order
 after WikiWhy.
@@ -39,16 +44,16 @@ after WikiWhy.
 
 | # | Site | Brief | Runtime status |
 | --- | --- | --- | --- |
-| 1 | WikiWhy | [`01-wikiwhy.md`](01-wikiwhy.md) | First playable slice |
-| 2 | ThreadIt | [`02-threadit.md`](02-threadit.md) | Design-ready |
-| 3 | FacePlace | [`03-faceplace.md`](03-faceplace.md) | Design-ready |
-| 4 | MyCorner | [`04-mycorner.md`](04-mycorner.md) | Design-ready |
-| 5 | Yahuh! Portal | [`05-yahuh-portal.md`](05-yahuh-portal.md) | Design-ready |
-| 6 | ViewTube | [`06-viewtube.md`](06-viewtube.md) | Design-ready |
-| 7 | Search-ish | [`07-search-ish.md`](07-search-ish.md) | Design-ready |
-| 8 | Amaze-On | [`08-amaze-on.md`](08-amaze-on.md) | Design-ready |
-| 9 | Spotty-Fi | [`09-spotty-fi.md`](09-spotty-fi.md) | Design-ready |
-| 10 | MapGuess | [`10-mapguess.md`](10-mapguess.md) | Design-ready |
+| 1 | WikiWhy | [`01-wikiwhy.md`](01-wikiwhy.md) | Playable baseline; production campaign pack complete |
+| 2 | ThreadIt | [`02-threadit.md`](02-threadit.md) | Production design complete; implementation pending |
+| 3 | FacePlace | [`03-faceplace.md`](03-faceplace.md) | Production design complete; implementation pending |
+| 4 | MyCorner | [`04-mycorner.md`](04-mycorner.md) | Production design complete; implementation pending |
+| 5 | Yahuh! Portal | [`05-yahuh-portal.md`](05-yahuh-portal.md) | Production design complete; implementation pending |
+| 6 | ViewTube | [`06-viewtube.md`](06-viewtube.md) | Production design complete; implementation pending |
+| 7 | Search-ish | [`07-search-ish.md`](07-search-ish.md) | Production design complete; implementation pending |
+| 8 | Amaze-On | [`08-amaze-on.md`](08-amaze-on.md) | Production design complete; implementation pending |
+| 9 | Spotty-Fi | [`09-spotty-fi.md`](09-spotty-fi.md) | Production design complete; implementation pending |
+| 10 | MapGuess | [`10-mapguess.md`](10-mapguess.md) | Production design complete; implementation pending |
 
 ## Shared runtime rules
 

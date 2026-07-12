@@ -1,5 +1,26 @@
 # Internet Recovery 98 runtime asset use brief
 
+## Production site-state assets
+
+The first focused production packs live under
+`apps/internet-recovery/art/site-assets/`:
+
+- `threadit/` contains the original ThreadIt mark, account/process assets,
+  duplicate-source badge, secured badge, and an explicit DOM/SVG ownership
+  manifest.
+- `wikiwhy-campaign/` contains the canonical WikiWhy evidence-route artifact and
+  permanent secured seal.
+- `marks/` contains original production marks for the eight sites that no
+  longer rely on generated-board or real-product-like logos; WikiWhy and
+  ThreadIt marks are linked from its manifest.
+- `apps/internet-recovery/art/endgame/` contains the Evidence 11 icon,
+  containment route, read-only evidence vault, access-revoked badge, and
+  final-breach production state board.
+
+These assets take precedence over generated board microcopy or real-product
+chrome. The canonical boards remain composition/story references; meaningful
+runtime trees, statuses, controls, and evidence content must be DOM-native.
+
 ## Purpose
 
 This is a design-only asset-use brief for the builder. It identifies which
@@ -70,13 +91,16 @@ Use a 4x2 grid, left to right, top row first:
 
 Accessible labels describe what Techno does. Do not give her dialogue.
 
-## Canonical ten-site concept boards
+## Ten-site storyboard references
 
-All canonical site boards are `1536x1024` PNGs. Use them as visual references,
-preview images, and layout/story guides. They are not final responsive UI
-screenshots and should not be treated as exact implementation blueprints.
+The generated site boards are `1536x1024` PNGs. Use them as broad composition,
+story, and preview references. They are not production identity assets, final
+responsive UI screenshots, exact copy, or implementation blueprints. Embedded
+`WIP`, `REVIEW ONLY`, `CONCEPT BOARD`, generated microcopy, and legacy
+browser/product-like details are historical exploration and must not enter
+runtime UI.
 
-| Site | Canonical board |
+| Site | Storyboard reference |
 | --- | --- |
 | WikiWhy | `apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png` |
 | ThreadIt | `apps/internet-recovery/art/concepts/sites/threadit-rogue-ai-campaign.png` |
@@ -91,7 +115,6 @@ screenshots and should not be treated as exact implementation blueprints.
 
 Use the site boards for:
 
-- visual identity and transformed parody direction;
 - desktop/browser/companion relationship;
 - local three-act story tone;
 - midpoint and finale reference;
@@ -103,6 +126,7 @@ Do not use them for:
 - exact responsive layout measurements;
 - speech-scored passage content;
 - character panel crops, except as rough context;
+- final marks, palette tokens, controls, or browser chrome;
 - real brand logos, exact screenshots, or copied trade dress.
 
 ## Historical and superseded files
@@ -131,6 +155,8 @@ For a playable site:
 
 - build the runtime layout from HTML/CSS/DOM or equivalent UI components;
 - use board composition as a reference, not as the entire screen;
+- use the original mark manifest and site brief tokens instead of generated
+  board logos;
 - use character-sheet crops for Amy, Chinmay, and Techno instead of board
   cameos;
 - keep decorative site art outside the Reading Companion.
