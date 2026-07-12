@@ -63,6 +63,10 @@ focused follow-up on `agent/campaign-spine-content`.
 
 ## Current synchronization point
 
+> MapGuess's canonical runtime packet is answered in
+> [`MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md`](MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md).
+> Passage IDs remain review-gated and provisional runtime receipts remain test-only.
+
 - Implementation branch: `agent/mapguess-moving-target-foundation`
 - Last integrated design tip: `1f843bc` (`Add ten-site production overview board`)
 - Deployed `main`: `e776471` through PRs #34 and #35; FacePlace CI, Pages, and

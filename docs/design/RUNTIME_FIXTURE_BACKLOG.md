@@ -191,6 +191,10 @@ rights-cleared pack and an exact rule that mutes it during microphone capture.
 
 ### MapGuess
 
+**Answered:** See
+[`MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md`](MAPGUESS_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 The active branch now includes a complete local structural test with five
 map-rebuild units, explicit Moving Target acknowledgement, three
 destination-anchor units, all four valid goal choices, an exact blocked target,
