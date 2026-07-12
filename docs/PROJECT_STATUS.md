@@ -351,6 +351,19 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   and no horizontal page overflow. The canonical fixture, six-unit contract,
   content gate, and independent Reading Companion remain unchanged.
 
+### ViewTube graphics fidelity (2026-07-12)
+
+- ViewTube now presents its semantic silent player as a CRT evidence surface
+  with a state-aware act ribbon, scanline motion, glass/reflection depth,
+  duplicate-frame flags, richer recommendation thumbnails, and a stronger
+  editing timeline.
+- The site remains media-free and silent: no video, audio, autoplay, iframe, or
+  new raster payload was introduced. Reduced-motion disables scan, clone, and
+  timeline animations.
+- Desktop corrupted-state QA confirmed the Act I ribbon, silent-evidence badge,
+  persistent fixed Techno, and no horizontal page overflow. The canonical
+  seven-unit timeline and independent Reading Companion remain unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock

@@ -644,6 +644,22 @@ pending language is superseded by PR #36 and deployed `65368e8`.
   runtime response remains sufficient; no new art request is needed for this
   CSS-only milestone.
 
+## ViewTube visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/viewtube-visual-fidelity`, based on deployed Yahuh PR
+  #78 / `main` at `eb82c6b`.
+- `viewtube.css` now supplies the canonical silent CRT/editor character via a
+  state-aware act ribbon, scanline and glass treatments, duplicate-frame flags,
+  styled recommendation thumbnails, and a stronger evidence timeline.
+- No media or raster asset was added. The site remains silent and preserves the
+  exact four-restore plus three-track state machine, content gate, decorative
+  transcript separation, evidence contract, and reduced-motion fallback.
+- Local corrupted-state QA found the expected act ribbon and silent visual-only
+  badge, fixed Techno, and no horizontal overflow. `npm test` (310 tests),
+  `npm run check`, `npm run build`, and `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The existing canonical
+  ViewTube runtime response is sufficient for this CSS-only milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:
