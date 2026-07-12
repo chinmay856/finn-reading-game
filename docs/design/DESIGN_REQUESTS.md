@@ -1,19 +1,12 @@
 # Parallel design requests
 
-## Amaze-On integration status
-
-- Runtime response PR #42 and the complete A01-A07 roster from PR #53 are
-  integrated into `agent/amazeon-consent-ledger-foundation`.
-- No visual or asset request is outstanding. The existing Amaze-On mark,
-  semantic parcels and bins, receipt treatment, shared characters, and
-  `techno-alert-ball-pin.webp` satisfy the frozen response.
-
 ## 2026-07-12 current builder queue
 
-- Eight structural site runtimes are on `main`: WikiWhy, ThreadIt, FacePlace,
-  MapGuess, MyCorner, Yahuh, ViewTube, and Search-ish. WikiWhy remains the only
-  speech-playable site; the other integrated sites remain honestly gated until
-  their content records pass independent review and real-microphone checks.
+- Nine structural site runtimes are on `main`: WikiWhy, ThreadIt, FacePlace,
+  MapGuess, MyCorner, Yahuh, ViewTube, Search-ish, and Amaze-On. WikiWhy remains
+  the only speech-playable site; the other integrated sites remain honestly
+  gated until their content records pass independent review and real-microphone
+  checks.
 - Search-ish shipped through builder PR #62. Designer PR #41 and content PR #51
   are fully consumed; its canonical Techno mapping is
   `searchish.techno.generated-cache-alert` to
@@ -24,10 +17,11 @@
   Accessible meaning: Techno pins her orange-and-blue ball beside the original
   media hash while duplicate playbacks remain quarantined. No new raster,
   audio, or video asset is required.
-- Amaze-On is the next unimplemented site and is ready from PR #42. Its complete
-  first-run manuscript roster is already on `main` through PR #53.
-- Spotty-Fi is the final unimplemented site and is ready from PR #43. Its
-  complete first-run manuscript roster is already on `main` through PR #54.
+- Amaze-On shipped through builder PR #64 with the frozen Orbit Bounce Ball
+  payoff and consent ledger. Designer PR #42 is fully consumed.
+- Spotty-Fi is the sole remaining site build and is ready from PR #43. Its
+  complete first-run manuscript roster is already on `main` through PR #54,
+  including the exact Techno, Amy, and Chinmay mappings.
 - MapGuess's canonical runtime replacement is in PR #44 and its complete
   first-run manuscript roster is already on `main` through PR #58.
 - The `EVIDENCE_11.LIVE` finale contract and three checkpoint manuscripts are
@@ -35,8 +29,8 @@
   secured sites.
 - The index merged through PR #59 records every complete first-run manuscript
   roster. Manuscript completion does not promote content: runtime encoding,
-  source/rights review,
-  grade and sensitivity review, comprehension/profile review, and real
+  source/rights review, grade and sensitivity review, comprehension/profile
+  review, and real
   microphone testing remain explicit gates.
 
 No unanswered P0 design or art request is known at this synchronization point.
