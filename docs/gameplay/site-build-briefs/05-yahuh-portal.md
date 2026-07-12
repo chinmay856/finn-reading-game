@@ -1,5 +1,11 @@
 # Site brief 05: Yahuh! Portal
 
+> Runtime update, 2026-07-12: designer PR #39 freezes the canonical fixture in
+> [`YAHUH_RUNTIME_RESPONSE_2026-07-12.md`](../../design/YAHUH_RUNTIME_RESPONSE_2026-07-12.md).
+> The six-unit structural runtime is integrated on
+> `agent/yahuh-channel-reconnect-foundation`; reading content remains `MIC: OFF`
+> with zero selectable records until every normal review gate passes.
+
 ## Core promise
 
 Yahuh! Portal teaches that labels, categories, dates, sources, and sponsorship

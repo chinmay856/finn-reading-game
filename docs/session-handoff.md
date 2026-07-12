@@ -8,6 +8,36 @@
 - It replaces provisional map identities with canonical original data and
   freezes routes, evidence, content IDs, art sufficiency, and responsiveness.
 
+## ViewTube evidence-track foundation
+
+- Active branch: `agent/viewtube-evidence-track-foundation`.
+- Integrated designer PR #40's canonical silent-video runtime contract and PR
+  #49's first-run manuscripts without touching stashes or `worktrees/`.
+- ViewTube now has a seven-unit structural runtime: four recording-context
+  restores, an explicit autoplay-loop acknowledgement, and three independently
+  verified evidence tracks. The runtime is silent, keeps the microphone off,
+  and cannot create a reading score while its manuscripts remain review-gated.
+- Canonical persisted evidence is reserved for Case File slot 6 as
+  `VIEWTUBE_DUPLICATE_MEDIA_HASHES.REC`; diagnostic state is still labeled test.
+- `npm run check`, all 268 tests, and `npm run build` pass locally.
+- The only outstanding ViewTube art dependency is the dedicated
+  `techno_clue_point` pose. A focused request is published on designer PR #40;
+  the paw-alert still remains the explicit temporary fallback.
+
+## Yahuh channel-reconnect foundation
+
+- Deployed `main` is authoritative at `76e6f05` through MyCorner PR #45 and
+  live-copy fix PR #47. Both CI and Pages passed; the public corrupted and
+  secured MyCorner routes were verified without console errors.
+- Active implementation is `agent/yahuh-channel-reconnect-foundation`.
+- Designer PR #39 is reconciled into the exact six-module fixture, 6A plus 4B
+  plan, process lineage, responsive drawer, Techno payoff, blocked retry, and
+  canonical slot-five evidence contract.
+- Yahuh remains content-gated: one structured candidate, zero selectable
+  passages, six reviewed readings required, `MIC: OFF`, and no score.
+- Focused Yahuh, DOM, and hub validation passes 58 tests. Remaining work is
+  full-suite validation, scope review, PR/CI/merge, Pages deploy, and HTTPS QA.
+
 ## MyCorner owner-controls foundation
 
 - Deployed `main` is authoritative at `65368e8` through MapGuess PR #36. The

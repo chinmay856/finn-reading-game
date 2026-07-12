@@ -257,6 +257,8 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(app, /openThreadItExperience/u);
   assert.match(app, /openFacePlaceExperience/u);
   assert.match(app, /openMyCornerExperience/u);
+  assert.match(app, /openYahuhExperience/u);
+  assert.match(app, /openViewTubeExperience/u);
   assert.match(app, /openMapGuessExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
@@ -267,7 +269,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
-  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 5);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 7);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
 });
@@ -413,6 +415,15 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(css, /faceplace-page\[data-profile-open="true"\] \.faceplace-profile-rail/u);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
   assert.doesNotMatch(engine, /FacePlace|faceplace|Honest Zero|feed recovery/iu);
+});
+
+test("inactive desktop surfaces stay hidden after site-specific layout CSS", async () => {
+  const [html, visibilityCss] = await Promise.all([
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/screen-visibility.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /screen-visibility\.css/u);
+  assert.match(visibilityCss, /\.screen:not\(\.on\)\s*\{[\s\S]*display:\s*none\s*!important/u);
 });
 
 test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evidence-safe", async () => {
@@ -581,6 +592,76 @@ test("MyCorner owner-control runtime preserves saved DOM, stays content-gated, a
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
   assert.match(css, /mycorner-comment-list li[\s\S]+font-size: 14px/u);
   assert.doesNotMatch(engine, /MyCorner|mycorner|owner controls|AUTO-PERSONA/iu);
+});
+
+test("Yahuh switchboard runtime is semantic, six-module exact, content-gated, and canonically registered", async () => {
+  const [app, catalog, copy, css, content, engine, html, packageFile, state, view] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/site-catalog.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/yahuh-copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/yahuh.css", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/yahuh-content.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/yahuh-state.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/yahuh-view.js", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/marks/yahuh-mark.svg", import.meta.url)),
+  ]);
+  const start = html.indexOf('<section id="yahuh"');
+  const end = html.indexOf('<section id="mapguess"', start);
+  const markup = html.slice(start, end);
+  assert.ok(start > -1 && end > start);
+  assert.match(html, /yahuh\.css/u);
+  assert.doesNotMatch(markup, /<main\b/iu);
+  assert.match(markup, /id="yahuhModuleGrid"[^>]+aria-label="Portal modules"/u);
+  assert.match(markup, /id="yahuhSwitchboard"[^>]+aria-labelledby="yahuhSwitchboardHeading"/u);
+  assert.match(markup, /id="yahuhRouteList"/u);
+  assert.match(markup, /id="yahuhSourceLogList"/u);
+  assert.match(markup, /id="yahuhMidpointProof"/u);
+  assert.match(markup, /id="yahuhEvidenceFilename">YAHUH_SINGLE_STREAM_MERGE\.REC/u);
+  assert.match(markup, /REGISTERED AFTER SIX SAVED READINGS · CATEGORY AND SOURCE REQUIRED/u);
+  assert.match(markup, /MIC: OFF/u);
+  assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /10 planned · 1 structured candidate · 0 selectable · 6 required/u);
+  assert.match(markup, /class="yahuh-directory-button"[^>]+disabled/u);
+  assert.match(markup, /id="yahuhTechnoImage"/u);
+  assert.doesNotMatch(markup, /role="progressbar"|\d+%/u);
+
+  assert.match(app, /getYahuhCampaignView/u);
+  assert.match(app, /advanceYahuhState/u);
+  assert.match(app, /acknowledgeYahuhMidpoint/u);
+  assert.match(app, /selectNextYahuhPassage/u);
+  assert.match(app, /yahuhModuleGrid[^\r\n]+view\.activeModules/u);
+  assert.match(app, /yahuhSwitchboard[^\r\n]+inert = drawerMode && !open/u);
+  assert.match(app, /yahuhPortalRegion[^\r\n]+inert = open/u);
+  assert.match(app, /state\.yahuhSwitchboardOpen \|\| !\$\("yahuh"\)\.classList\.contains\("on"\)/u);
+  assert.match(app, /"yahuh-single-stream": 3/u);
+  assert.match(app, /"yahuh-secured": 6/u);
+  assert.match(app, /canonicalEvidenceId: YAHUH_PROVISIONAL_EVIDENCE_RECORD\.id,[\s\S]+siteId: "yahuh"/u);
+  assert.match(app, /yahuhEvidenceFilename[^\r\n]+evidence\.filename/u);
+  assert.match(app, /yahuhTechnoImage[^\r\n]+\.alt = view\.securedPayoff\.technoAlt/u);
+  assert.match(app, /blockedWrite\.process\?\.displayName/u);
+  assert.match(app, /SAVED CHANNEL LABEL:[^\r\n]+record\.channelLabel/u);
+  assert.match(app, /transition\.reason !== "write-failed"/u);
+  assert.match(view, /activeModules: modules/u);
+  assert.match(view, /savedLabelSnapshot/u);
+  assert.match(view, /switchboardRoutes/u);
+  assert.match(copy, /VISIBLE MODULES: 6/u);
+  assert.match(state, /slot: 5/u);
+  assert.match(state, /canonical: true/u);
+  assert.match(state, /eligibleForCanonicalCount: true/u);
+  assert.match(copy, /modules = \[/u);
+  assert.match(copy, /yahuh-mark\.svg/u);
+  assert.match(content, /structuredCandidateCount: 1/u);
+  assert.match(catalog, /id: "yahuh"[\s\S]+markImage: MARKS\.yahuh[\s\S]+runtimeAvailable: true/u);
+  assert.match(packageFile, /node --check apps\/internet-recovery\/yahuh-view\.js/u);
+  assert.match(packageFile, /node --check content\/yahuh\/the-newspaper-that-found-people-on-the-moon\.js/u);
+  assert.match(css, /@media \(min-width: 1180px\) and \(max-width: 1279px\)/u);
+  assert.match(css, /yahuh-directory-button:disabled/u);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
+  assert.match(css, /yahuh-techno-label \{[\s\S]+display: flex;[\s\S]+align-items: center;/u);
+  assert.doesNotMatch(engine, /Yahuh|yahuh|Single Source|switchboard|AUTO-LAYOUT/iu);
 });
 
 test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {
