@@ -1,5 +1,13 @@
 # Session handoff
 
+## Complete manuscript inventory
+
+- Branch: `agent/content-readiness-index`.
+- Durable audit:
+  [`design/CONTENT_READINESS_INDEX_2026-07-12.md`](design/CONTENT_READINESS_INDEX_2026-07-12.md).
+- Every first-run site arc and the final breach has a complete manuscript roster.
+  Runtime encoding and independent review/microphone gates remain outstanding.
+
 ## Yahuh channel-reconnect foundation
 
 - Deployed `main` is authoritative at `76e6f05` through MyCorner PR #45 and
