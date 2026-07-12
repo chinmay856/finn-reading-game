@@ -19,6 +19,8 @@ Use these inputs first:
 
 - `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` for final runtime UI copy,
   screen-state notes, and character-state usage.
+- `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` for the immediate
+  WikiWhy-only scene/state script and acceptance checks.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` for concrete visible copy on the
   corrupted/repaired site pages.
 - `content/wikiwhy/PASSAGE_DECKS.md` for the Reading Companion passage pool and

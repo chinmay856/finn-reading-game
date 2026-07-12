@@ -36,6 +36,8 @@ Use these as source-of-truth design inputs:
 
 - `docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md` - core WikiWhy flow and ownership
   boundary.
+- `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` - immediate WikiWhy-only
+  scene/state script and acceptance checks.
 - `docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md` - ten-site story and progress
   direction.
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.

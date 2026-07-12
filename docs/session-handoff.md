@@ -13,6 +13,11 @@
   corrupted/repaired page copy, midpoint copy, AI-denial text, secured payoffs,
   and character beats for all ten sites. Other sites remain design/previews
   until their own passages and mechanics are implemented.
+- Latest WikiWhy build aid:
+  `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` narrows the immediate
+  builder target to the WikiWhy playable slice with screen/state copy,
+  ownership boundaries, character panel IDs, loading/error copy, and acceptance
+  checks.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems
