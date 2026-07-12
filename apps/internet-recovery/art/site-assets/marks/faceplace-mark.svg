@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">FacePlace overlapping profile frames</title>
+  <desc id="desc">Two original profile cards overlap while remaining visibly separate.</desc>
+  <rect x="12" y="24" width="72" height="82" rx="10" fill="#E7F4F4" stroke="#315FA8" stroke-width="7"/>
+  <circle cx="48" cy="51" r="14" fill="#2C8F91"/>
+  <path d="M27 88c3-17 11-25 21-25s18 8 21 25" fill="#F2C14E" stroke="#17212B" stroke-width="4" stroke-linecap="round"/>
+  <rect x="54" y="12" width="62" height="74" rx="10" fill="#FFFFFF" stroke="#17212B" stroke-width="7"/>
+  <circle cx="85" cy="37" r="12" fill="#315FA8"/>
+  <path d="M69 70c2-14 8-21 16-21s14 7 16 21" fill="#2C8F91" stroke="#17212B" stroke-width="4" stroke-linecap="round"/>
+</svg>
+

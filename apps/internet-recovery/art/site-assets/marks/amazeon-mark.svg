@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Amaze-On choice parcel</title>
+  <desc id="desc">An original parcel has a tape route that stops at a separate human-choice gate.</desc>
+  <path d="m18 36 46-22 46 22-46 23Z" fill="#FBF3E7" stroke="#173A59" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M18 36v54l46 24 46-24V36L64 59Z" fill="#E8D5B8" stroke="#173A59" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M64 59v55M46 23l45 23" stroke="#D67727" stroke-width="9" stroke-linecap="round"/>
+  <rect x="82" y="70" width="34" height="28" rx="5" fill="#E4F2EA" stroke="#2C7A57" stroke-width="5"/>
+  <path d="m91 84 6 6 11-13" fill="none" stroke="#2C7A57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+

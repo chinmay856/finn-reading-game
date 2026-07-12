@@ -55,8 +55,8 @@ Progress: 114%
 Progress: AVOCADO%
 ```
 
-For the first few accepted readings, real page improvements happen while the
-tracker remains nonsense:
+For exactly the first three accepted readings, real page improvements happen
+while the tracker remains nonsense:
 
 - duplicate posts collapse;
 - timestamps return;
@@ -145,3 +145,62 @@ Future deck direction:
 - Does the ending make `Why this appeared` a restored control?
 - Does the site avoid humiliating Finn or any real social-media user?
 
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Paper / card | `#FFFFFF` / `#F3F6FA` |
+| Ink / muted | `#17212B` / `#617080` |
+| FacePlace cobalt | `#315FA8` |
+| Context aqua | `#2C8F91` |
+| Nonsense yellow | `#F2C14E` |
+| Forced-distribution red | `#B33A32` |
+| Verified green | `#2C7A57` |
+| Border / focus | `#AAB6C2` / `#075CCB` |
+
+Use the original overlapping profile-frame mark from the shared mark manifest.
+Use Arial/system sans for feed UI, 14-16 pixel card copy, and 11-13 pixel
+metadata. The layout may evoke a ranked feed but must not reproduce a real
+social platform's navigation, `f` mark, exact blue, or card geometry.
+
+### Exact state sequence
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `faceplace_false_tracker_1` | first accepted reading | one duplicate cluster collapses; tracker shows `12%` | `duplicates_collapsed` |
+| `faceplace_false_tracker_2` | second accepted reading | author names and timestamps return; tracker shows `114%` | `authorship_time_restored` |
+| `faceplace_false_tracker_3` | third accepted reading | recommendation labels and the shell of `Why this appeared` return; tracker shows `AVOCADO%` | `context_controls_restored` |
+| `faceplace_honest_zero` | third unit is saved | Amy reveals the counter measured reactions; recovered cards remain | midpoint discovered/acknowledged |
+| `faceplace_recovery_1` | next accepted reading | chronological branch restored; honest tracker reaches `34%` | `chronology_verified` |
+| `faceplace_recovery_2` | next accepted reading | authorship and recommendation reasons verified; tracker reaches `67%` | `recommendations_explained` |
+| `faceplace_recovery_3` | next accepted reading | forced distribution disabled; honest tracker reaches `100%` | `distribution_gate_restored` |
+| `faceplace_secured` | recovery 3 saves | evidence receipt and permanent secured treatment | secured |
+
+The first three nonsense values are decorative site satire, not reading score
+or learner progress. Do not live-announce the changing joke value. Announce the
+real repair consequence instead.
+
+### Midpoint and persistence
+
+`faceplace_honest_zero` starts the new honest tracker at zero while all three
+Act I repairs remain visibly checked and stored under `RECOVERED POSTS SAVED`.
+The zero is a corrected measurement, never a reset of Finn's work.
+
+Save after every row above. Resume directly at the next unfinished unit. With
+reduced motion, collapse/reorder cards instantly and show the completed-unit
+status; do not animate feed cards flying across the Reading Companion.
+
+### Final composition
+
+- left: profile identity and chronological filter;
+- center: feed cards with explicit `CHRONOLOGICAL` or `RECOMMENDED` labels;
+- right: honest tracker plus `Why this appeared` detail;
+- lower log: `FORCED DISTRIBUTION: OFF` and the blocked AI write.
+
+The visible feed may scroll, but reading mode freezes its wheel focus unless the
+player intentionally enters the site window.

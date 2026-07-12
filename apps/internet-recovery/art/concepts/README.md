@@ -1,10 +1,10 @@
 # Internet Recovery OS concept boards
 
-These generated boards capture visual direction for the wrapper. The campaign
-hub, WikiWhy board, and nine non-WikiWhy site boards are the current
-builder-ready design references. They are approved direction for prototype and
-implementation planning, not final runtime UI, exact production copy, or
-cropped sprite exports.
+These generated boards preserve visual/story exploration for the wrapper. They
+are composition references, not runtime backgrounds or sources of exact logos,
+browser chrome, copy, passages, or state logic. Production inputs now live in
+the site build briefs, runtime copy pack, production system, character
+manifests, site-asset manifests, and final-breach pack.
 
 The final shared prompt direction and per-board deltas for the current canon
 pass are recorded in [`ROGUE_AI_PROMPT_NOTES.md`](ROGUE_AI_PROMPT_NOTES.md).

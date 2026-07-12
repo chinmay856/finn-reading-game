@@ -45,15 +45,16 @@
 - Chinmay is always long-haired. His visual state progresses from neat,
   overconfident polish to increasingly messy, frazzled, and flustered concern;
   he is never angry at Finn, threatening, or villain-coded.
-- The campaign hub, WikiWhy worked example, and nine non-WikiWhy site boards are
-  now the builder-ready ten-site design set. They approve design direction,
-  story arc, progress fiction, and layout reference for implementation planning,
-  while final runtime UI, exact copy, passage selection, and cropped assets
-  remain build work.
+- The campaign hub, WikiWhy worked example, and nine non-WikiWhy generated
+  boards remain story/composition references. Production state contracts,
+  exact copy IDs, responsive/accessibility rules, and original marks are now
+  frozen in gameplay briefs and site-asset manifests. Passage acceptance and
+  runtime implementation remain build/content work.
 - The prior inconsistent MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
   MapGuess boards now carry `-superseded` filenames and are comparison history
-  only. Use the canonical non-WIP filenames in
-  `apps/internet-recovery/art/concepts/sites/README.md`.
+  only. The current storyboard filenames are indexed in
+  `apps/internet-recovery/art/concepts/sites/README.md`; do not use any board as
+  a runtime background or final identity asset.
 - Production character sheets now live under
   `apps/internet-recovery/art/characters/`. Builders choose Amy, Chinmay, and
   Techno states by wrapper story mood instead of regenerating character art per
@@ -167,10 +168,11 @@
   preserves all eleven evidence files, and revokes the AI service's access
   across exactly three saved reading checkpoints. See
   [`gameplay/FINAL_BREACH_RUNTIME_BRIEF.md`](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
-- The ten-site copy pack is authored. WikiWhy campaign-only state and ThreadIt
-  production packs now supply stable copy IDs, exact state contracts, and
-  implementation-usable SVG assets; the remaining sites continue through the
-  same design-finalization pass.
+- The ten-site production design pass is complete. Every site has stable copy
+  IDs, exact repair/midpoint/finale/persistence contracts, responsive and
+  reduced-motion direction, and an original runtime mark. WikiWhy and ThreadIt
+  also have focused implementation-usable SVG packs. Generated boards remain
+  story/composition references rather than runtime backgrounds.
 - Parallel implementation is active on `agent/recovery-hub-navigation` / PR 30.
   The design branch answers its durable requests through
   [`design/BUILDER_RESPONSE_2026-07-12.md`](design/BUILDER_RESPONSE_2026-07-12.md).

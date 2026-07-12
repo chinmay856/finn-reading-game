@@ -23,8 +23,9 @@ Build one playable WikiWhy loop inside the Internet Recovery 98 desktop:
 7. Amy reveals exactly three final Shield Protocol repairs.
 8. WikiWhy becomes secured and records an evidence file.
 
-Other sites may remain preview-only. Do not make the other nine sites secretly
-reuse WikiWhy's passage, percentage model, or Shield Protocol.
+Other sites may remain preview-only until their own vertical slices are
+implemented, but all ten production designs are complete. Do not make the other
+nine sites reuse WikiWhy's passage, percentage model, or Shield Protocol.
 
 ## Required inputs
 
@@ -455,4 +456,3 @@ of these:
 - Does the final state show `ACCESS DENIED` and an evidence file?
 - Can the builder implement this without putting wrapper story into the Reading
   Engine or Content Platform?
-

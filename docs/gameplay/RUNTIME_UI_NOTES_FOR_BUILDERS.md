@@ -25,10 +25,15 @@ Build the smallest useful player path first:
 6. Accepted readings can reach Amy's warning, the 80 percent story turn, the
    exact three-pass Shield Protocol, and the secured-site payoff.
 7. The hub records WikiWhy as secured and unlocks one evidence entry.
+8. ThreadIt becomes the second playable site using its semantic source-tree
+   repair rather than WikiWhy's wipe.
+9. Add the remaining site vertical slices in the production order recorded in
+   `site-build-briefs/README.md`.
 
-Other sites can appear as design previews until their own content and mechanics
-are implemented. Do not fake their reading loops by reusing WikiWhy passage,
-score, or progression state.
+Preview mode remains a truthful temporary fallback while a site's own reviewed
+content and mechanics are not connected. All ten production designs are
+complete and intended for implementation. Do not fake any reading loop by
+reusing WikiWhy passage, score, or progression state.
 
 ## Builder input files
 
@@ -40,6 +45,8 @@ Use these as source-of-truth design inputs:
   scene/state script and acceptance checks.
 - `docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md` - ten-site story and progress
   direction.
+- `docs/gameplay/SITE_PRODUCTION_SYSTEM.md` - shared production behavior,
+  persistence, responsive layout, motion, accessibility, and asset ownership.
 - `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` - canonical art inputs, character
   crop guidance, and preview-vs-playable asset rules.
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.

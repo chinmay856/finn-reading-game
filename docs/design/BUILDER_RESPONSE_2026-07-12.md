@@ -68,6 +68,18 @@ The source tree is meaningful information, so its nodes, labels, relationships,
 and duplicate status must exist in the accessibility tree. The supplied SVG
 process art is a visual accent, not the source of truth.
 
+## Remaining site response
+
+FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi,
+and MapGuess now each contain exact Act I units, midpoint triggers, preserved
+state, finale units, secured conditions, palette tokens, responsive behavior,
+reduced-motion direction, and accessible composition in their files under
+[`site-build-briefs/`](../gameplay/site-build-briefs/README.md). Shared behavior
+is frozen in
+[`SITE_PRODUCTION_SYSTEM.md`](../gameplay/SITE_PRODUCTION_SYSTEM.md), and the
+original runtime marks are in
+[`site-assets/marks/`](../../apps/internet-recovery/art/site-assets/marks/README.md).
+
 ## Final breach response
 
 The separate `EVIDENCE_11.LIVE` boss arc is production-frozen in

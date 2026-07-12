@@ -273,7 +273,7 @@ Use these as the satisfying secured-state punchlines:
 | MyCorner | `OWNER PERMISSION REQUIRED` |
 | Yahuh! Portal | `CATEGORY AND SOURCE REQUIRED` |
 | ViewTube | `DUPLICATE FRAMES - NO NEW EVIDENCE` |
-| Search-ish | `UNVERIFIED GENERATED SUMMARY` |
+| Search-ish | `TOP PLACEMENT DENIED - SOURCE ORIGIN REQUIRED` |
 | Amaze-On | `HUMAN CONFIRMATION REQUIRED` |
 | Spotty-Fi | `NOT REQUESTED` |
 | MapGuess | `DESTINATION LOCKED - USER CHOICE REQUIRED` |

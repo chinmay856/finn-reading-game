@@ -141,3 +141,66 @@ Future deck direction:
 - Does the repaired state preserve variety instead of merging everything?
 - Is sponsored content labeled without making the player read ads aloud?
 
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Portal purple | `#6E3E98` |
+| Lavender panel | `#EEE5F5` |
+| Ink / muted | `#17212B` / `#626B75` |
+| Directory gold | `#D5A43A` |
+| Channel blue | `#356E9C` |
+| Sponsored coral | `#B74B43` |
+| Restored green | `#2C7A57` |
+| Border / focus | `#9583AA` / `#075CCB` |
+
+Use the original crooked comet/exclamation mark. Do not use a real portal's
+wordmark, exact purple, browser logo, or legacy Internet Explorer chrome.
+Beveled controls and crowded modules are allowed; category headings remain at
+least 14 pixels.
+
+### Exact switchboard sequence
+
+The portal owns six modules: News, Weather, Finance, Sports, Mail, Sponsored.
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `yahuh_sort_1` | first accepted reading | News and Weather regain category, source, and date labels | `news_weather_sorted` |
+| `yahuh_sort_2` | second accepted reading | Finance and Sports regain category, source, and date labels | `finance_sports_sorted` |
+| `yahuh_sort_3` | third accepted reading | Mail and Sponsored regain channel and sponsorship labels | `mail_sponsored_sorted` |
+| `yahuh_single_stream` | sort 3 saves | all six channels show one timestamp and one AI stream origin | midpoint |
+| `yahuh_reconnect_1` | next accepted reading | News/Weather reconnect to distinct channels | `news_weather_channels` |
+| `yahuh_reconnect_2` | next accepted reading | Finance/Sports reconnect to distinct channels | `finance_sports_channels` |
+| `yahuh_reconnect_3` | next accepted reading | Mail/Sponsored separate and sponsorship gate restores | `mail_sponsored_channels` |
+| `yahuh_secured` | reconnect 3 saves | switchboard, evidence, blocked merge | secured |
+
+There is no percentage. Each module pair lights one labeled switchboard circuit.
+The relationship and channel name must also exist in DOM text.
+
+### Midpoint proof
+
+All six modules show the same generated origin ID and timestamp. The page may
+look momentarily tidy, but a persistent summary reads:
+
+```text
+VISIBLE MODULES: 6
+INDEPENDENT CHANNELS: 1
+SAME-MILLISECOND REWRITE: CONFIRMED
+```
+
+Act I labels remain saved in a comparison drawer. Reduced motion swaps to the
+merged view and then to the trace summary without animated module collisions.
+
+### Final composition
+
+- portal grid stays crowded but each module has a category, source, and date;
+- the side switchboard shows six distinct channel routes;
+- sponsored content is visibly labeled and never placed in the Reading
+  Companion;
+- blocked log reads `CATEGORY AND SOURCE REQUIRED`.
+

@@ -108,16 +108,20 @@ Composition:
 - bottom strip reads `ACTIVE SORT: CONFIDENCE DESCENDING`.
 
 Each accepted reading result repairs one coherent relationship group. A larger
-theme-neutral outcome may reconnect up to three adjacent relationships, but the
-wrapper never explains that as a score reward.
+theme-neutral outcome may reconnect more visible cards inside that unit, but it
+does not change the authored finish line or add later work.
 
-Repair sequence pool:
+Exact Act I sequence:
 
-1. restore the original question to the top;
-2. reconnect a reply to the comment it answers;
-3. restore one timestamp order;
-4. attach one citation to its introducing post;
-5. collapse two duplicate posts under a shared-origin disclosure.
+| State ID | Visible repair | Saved unit |
+| --- | --- | --- |
+| `threadit_untangle_1` | original question returns to the top; its timestamp returns | `question_origin` |
+| `threadit_untangle_2` | reply chronology and one nested branch reconnect | `reply_chronology` |
+| `threadit_untangle_3` | a citation reconnects to the post that introduced it | `citation_origin` |
+| `threadit_untangle_4` | two duplicate replies collapse under one disclosed origin | `duplicate_disclosure` |
+
+`threadit_tracing` triggers only after `threadit_untangle_4` is saved. All four
+Act I relationships remain visible in Trace View.
 
 Visible status labels:
 
@@ -169,6 +173,21 @@ Composition:
 
 The secured state is permanent in canonical campaign state. Replay may surface
 another archived incident without reopening the original route.
+
+Exact post-midpoint sequence:
+
+| State ID | Visible repair | Saved unit |
+| --- | --- | --- |
+| `threadit_trace_1` | shared model-run origin is verified for the cloned accounts | `shared_origin_verified` |
+| `threadit_trace_2` | independent sources receive separate green branches | `independent_sources_separated` |
+| `threadit_trace_3` | generated copies move into quarantine and duplicate-posting gate activates | `duplicate_posting_blocked` |
+| `threadit_secured` | source tree, evidence receipt, and blocked write save | secured |
+
+There are four Act I reading units and three post-midpoint reading units. Retry,
+score, recognition limits, or comprehension never add an eighth unit. Save
+after every unit, midpoint discovery, midpoint acknowledgement, and secured
+state. Reduced motion swaps each relationship group in place and renders the
+completed trace without drawing animations.
 
 ## Source-tree semantics
 
@@ -252,4 +271,3 @@ they remain responsive and accessible.
 - Reading Companion content is the only scored speech.
 - At 1180 CSS pixels, site controls and the Reading Companion remain usable
   without horizontal page scrolling.
-

@@ -194,12 +194,13 @@ Use that evidence to choose the next smallest Reading Engine improvement.
 The private Amy/Chinmay and Techno references remain outside the repository.
 Generated concept boards are cataloged under
 [`apps/internet-recovery/art/concepts`](../apps/internet-recovery/art/concepts/README.md).
-The campaign hub, WikiWhy example, and nine non-WikiWhy site boards are now the
-builder-ready ten-site design set. They approve site direction, story arc,
-progress fiction, and layout reference for implementation planning; they do not
-freeze final runtime UI, exact production copy, passage selection, or cropped
-runtime assets. Earlier inconsistent boards have `-superseded` filenames and
-remain comparison history only, not builder inputs.
+The campaign hub, WikiWhy example, and nine non-WikiWhy generated boards remain
+story/composition references. Production state contracts, exact copy IDs,
+responsive/accessibility rules, and original marks now live in the gameplay
+briefs and site-asset manifests; the boards are not runtime backgrounds or the
+source of final logos/browser chrome. Passage acceptance and implementation
+remain separate work. Earlier inconsistent boards have `-superseded` filenames
+and remain comparison history only.
 
 Production character sheets now live under
 [`apps/internet-recovery/art/characters`](../apps/internet-recovery/art/characters/README.md).
@@ -245,10 +246,13 @@ copy is wrapper-owned decorative visual content.
 
 The broader design library now defines the done ten-site roster: WikiWhy,
 ThreadIt, FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On,
-Spotty-Fi, and MapGuess. The nine non-WikiWhy sites each have a three-act board,
-unique progress fiction and midpoint, and a researched reading-source lane.
-They are ready for implementation planning, while the current prototype should
-still begin with the smallest useful WikiWhy slice.
+Spotty-Fi, and MapGuess. All ten now have exact wrapper-facing state contracts,
+site-specific repair units and midpoint triggers, persistence and resume rules,
+finish conditions, palette/type/layout direction, reduced-motion behavior,
+canonical copy IDs, and original production mark direction. WikiWhy and
+ThreadIt also have focused runtime asset packs. The generated boards remain
+story/composition history rather than runtime backgrounds. Implementation and
+passage acceptance remain separate work.
 
 The proposed campaign spine now connects those ten independent site stories
 without imposing one global progress mechanic. WikiWhy is the onboarding case;

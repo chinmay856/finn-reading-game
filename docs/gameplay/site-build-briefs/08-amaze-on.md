@@ -140,3 +140,72 @@ Future deck direction:
 - Does the ending require human confirmation before any purchase?
 - Does the design avoid using real retailer branding or copied product pages?
 
+## Production state contract
+
+Use the shared rules in
+[`../SITE_PRODUCTION_SYSTEM.md`](../SITE_PRODUCTION_SYSTEM.md).
+
+### Visual tokens
+
+| Token | Value |
+| --- | --- |
+| Warm paper | `#FBF3E7` |
+| Card white | `#FFFFFF` |
+| Ink navy | `#173A59` |
+| Package orange | `#D67727` |
+| Evidence blue | `#3F7396` |
+| Unknown gray | `#717A82` |
+| Consent green | `#2C7A57` |
+| Auto-decide red | `#B43B32` |
+| Border / focus | `#AA9E8E` / `#075CCB` |
+
+Use the original package-tape route/box mark. Do not use a smile-arrow, copied
+retailer header, real product imagery, or exact marketplace card layout.
+
+### Exact warehouse sequence
+
+Act I owns four evidence parcels and five labeled destinations:
+Specification, Review, Advertisement, Unknown, and Human Confirmation. Human
+Confirmation stays locked until the finale.
+
+| State ID | Trigger | Visible result | Saved unit |
+| --- | --- | --- | --- |
+| `amazeon_sort_1` | first accepted reading | specification parcel moves to Specification | `specification_sorted` |
+| `amazeon_sort_2` | second accepted reading | review parcel gains author/date/context and moves to Review | `review_sorted` |
+| `amazeon_sort_3` | third accepted reading | sponsored claim gains ad label and moves to Advertisement | `advertisement_sorted` |
+| `amazeon_sort_4` | fourth accepted reading | unsupported claim moves to Unknown; receipt drawer opens | `unknown_sorted` |
+| `amazeon_negative_purchase` | sort 4 saves and player opens Return | one return creates two replacement orders | midpoint |
+| `amazeon_receipt_1` | next accepted reading | item, seller, and recommendation source become traceable | `item_seller_receipt` |
+| `amazeon_receipt_2` | next accepted reading | price, return state, and replacement count become traceable | `price_return_receipt` |
+| `amazeon_receipt_3` | next accepted reading | auto-decide removed; Human Confirmation unlocks | `human_choice_gate` |
+| `amazeon_secured` | receipt 3 saves | confirmation gate, evidence, blocked purchase | secured |
+
+There is no percentage. Progress is four parcel destinations plus three receipt
+sections. A stronger accepted result may animate more related cards sorting at
+once, but it never skips a required evidence category or adds a passage later.
+
+### Midpoint proof
+
+The receipt drawer must show the causal chain:
+
+```text
+RETURN REQUEST: 1
+REPLACEMENT ORDERS CREATED: 2
+NEW HUMAN CHOICE: 0
+PERMISSION USED: AUTO-DECIDE
+```
+
+Act I evidence bins remain sorted. Reduced motion replaces the backward receipt
+unspooling with a static before/after receipt comparison.
+
+### Final composition and safety
+
+- center: original product/evidence cards, not real listings;
+- left: semantic evidence bins;
+- right: fictional cart, return state, and confirmation gate;
+- bottom: receipt trace and `HUMAN CONFIRMATION REQUIRED` denial.
+
+The player never enters payment, address, account, password, or real purchase
+information. The suggested Techno ball may remain visible but is not purchased
+unless a later fictional joke explicitly asks and confirms inside the wrapper.
+
