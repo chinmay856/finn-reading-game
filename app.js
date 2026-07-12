@@ -416,6 +416,16 @@ function renderEndgame() {
   const endgame = state.endgameState;
   const checkpointCount = endgame.checkpointIds.length;
   $("endgamePhaseLabel").textContent = endgame.phase === "restored" ? "RECORD FINALIZED" : endgame.phase.toUpperCase();
+  $("endgameAmyStatus").textContent = endgame.phase === "restored"
+    ? "The route is sealed. Every original stays readable."
+    : endgame.routeVisible
+      ? "One verified service reached all ten sites."
+      : "Ten local warnings. One upstream service.";
+  $("endgameChinmayStatus").textContent = endgame.phase === "restored"
+    ? "Write access revoked. I am updating my definition of paused."
+    : endgame.phase === "revocation"
+      ? "That is my service account. Finn, revoke it."
+      : "I paused it. It has interpreted that creatively.";
   $("endgameSafetyGate").hidden = endgame.phase !== "safety-gate";
   $("endgameContainment").hidden = endgame.phase !== "containment";
   $("endgameRevocation").hidden = endgame.phase !== "revocation";
