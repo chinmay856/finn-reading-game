@@ -1,0 +1,189 @@
+# Yahuh! Portal first-run manuscripts A02–A06
+
+## Status and shared metadata
+
+These five texts are original project prose for grades 10–12. Together with
+public-domain candidate `the-newspaper-that-found-people-on-the-moon-a01`, they
+complete Yahuh's six-record first-run manuscript roster. This file freezes
+text, IDs, comprehension intent, and source/rights metadata. It does not mark a
+record selectable: each still needs independent editorial, factual, grade,
+sensitivity, accessibility, comprehension, reading-profile, and real-microphone
+review before encoding as `approved`.
+
+Shared source fields:
+
+```text
+source.basis: original-project-prose
+source.domain: media-literacy
+source.sourceType: original
+rights.basis: original
+rights.creditLine: Original prose created for Finn Reading Game.
+rights.verifiedOn: 2026-07-12
+```
+
+## `the-front-page-choice-a02` — The Front Page Choice
+
+> A newspaper cannot place every event on its front page. Editors must choose
+> which stories receive the most space, the largest headlines, and the earliest
+> attention. Those choices do not automatically make the selected stories more
+> true than everything left inside the paper. They show what the editors judged
+> important for their audience at a particular moment.
+>
+> Several factors can influence that judgment. A story may affect many people,
+> involve immediate danger, reveal a new public decision, or continue an issue
+> readers already follow. Timing matters as well. A carefully researched report
+> may appear below a fast-breaking update simply because the update happened
+> later. Photographs, available space, and the interests of likely readers also
+> shape the page.
+>
+> This means that reading a front page requires two kinds of attention. First,
+> the reader should evaluate each report: Who produced it? What evidence does it
+> offer? When was it published? Second, the reader should notice the selection
+> itself. Which events were emphasized, which were summarized, and which were
+> absent? Another newspaper may arrange the same day differently without either
+> publication inventing its facts.
+>
+> A front page is therefore both a collection of reports and a map of editorial
+> priorities. It can help readers find significant information, but it cannot
+> represent the whole world. Understanding the choices behind the layout makes
+> the page more useful, not less trustworthy.
+
+Comprehension prompt: `What does a front-page position show most directly?`
+
+- Correct: `What editors judged important for that audience and moment.`
+- Distractor: `That the story is more true than every story inside the paper.`
+- Distractor: `That no other publication covered the day accurately.`
+
+## `weather-is-not-a-mood-a03` — Weather Is Not a Mood
+
+> A weather forecast is a measured estimate, not a personality assigned to the
+> sky. Words such as pleasant, gloomy, or miserable can make a forecast sound
+> vivid, but they also mix observation with preference. A rainy afternoon may
+> disappoint someone planning a picnic and help someone caring for a dry garden.
+> The same conditions can have different meanings without changing the data.
+>
+> Useful forecasts separate measurements from interpretation. Temperature,
+> wind direction, humidity, expected rainfall, and the probability of a storm
+> describe conditions that instruments and models can estimate. A forecast may
+> still be uncertain. Saying that rain has a sixty percent chance does not mean
+> that forecasters are sixty percent sure of every detail. It expresses a
+> defined probability for a place and period, based on available evidence and a
+> forecasting method.
+>
+> Dates and locations matter just as much as the numbers. A prediction for the
+> western side of a region may not describe the eastern side. A morning report
+> can become outdated when new observations arrive. Readers should therefore
+> check when the forecast was issued, what area it covers, and whether warnings
+> come from the same source as ordinary daily estimates.
+>
+> Clear labels make the information easier to use. The forecast provides the
+> evidence-based estimate; the reader decides what those conditions mean for a
+> game, trip, garden, or commute. The sky does not need an algorithm to choose
+> its mood, and the reader does not need one either.
+
+Comprehension prompt: `Why should forecasts separate measurements from words such as gloomy?`
+
+- Correct: `Measurements describe conditions, while those mood words express preferences.`
+- Distractor: `Weather instruments cannot measure temperature or wind.`
+- Distractor: `Every reader must react to rain in the same way.`
+
+## `reading-a-public-ledger-a04` — Reading a Public Ledger
+
+> A public budget can look like a wall of numbers, but each line records a
+> choice. Money assigned to a library roof cannot also pay for a new bus shelter
+> unless the budget changes. Reading the ledger means asking not only how large
+> a number is, but what category it belongs to, what period it covers, and what
+> assumptions produced it.
+>
+> Consider a repair project with three figures: an estimate, an approved amount,
+> and an actual cost. The estimate predicts what the work may require. The
+> approved amount sets the current spending limit. The actual cost records what
+> has been spent so far. Treating these figures as interchangeable can create a
+> false story. A project below its approved limit is not necessarily complete,
+> and an estimate that later changes was not automatically dishonest.
+>
+> Context appears in labels, dates, and notes. A contingency line may reserve
+> money for damage discovered after construction begins. A transfer may move
+> funds from one category to another through a documented vote. A total may
+> cover one month, one year, or several years. Without those details, a dramatic
+> percentage can attract attention while explaining very little.
+>
+> Public ledgers are valuable because they allow readers to trace decisions.
+> The goal is not to assume that every number proves success or failure. It is
+> to connect the amount to its purpose, authority, and time period. When those
+> relationships remain visible, citizens can disagree about priorities while
+> still discussing the same record.
+
+Comprehension prompt: `Why are an estimate, an approved amount, and an actual cost not interchangeable?`
+
+- Correct: `They describe prediction, permission, and spending at different stages.`
+- Distractor: `Only the largest of the three numbers is part of the budget.`
+- Distractor: `An estimate is always evidence that someone acted dishonestly.`
+
+## `the-label-on-the-ad-a05` — The Label on the Ad
+
+> Advertising can contain accurate information. A shop may truthfully announce
+> its opening date, describe a product, or state the price of a sale. The problem
+> begins when promotional material is presented as if it were selected by an
+> independent news desk. The missing label hides a relationship that readers
+> need in order to evaluate the message.
+>
+> A sponsorship label answers one basic question: Why is this here? It tells the
+> reader that someone paid for placement or supplied the promotional content.
+> That fact does not prove every claim false. It does reveal an interest in the
+> outcome. The sponsor wants attention, visits, or purchases, while an
+> independent report should be organized around informing the audience.
+>
+> Placement can blur this boundary. An advertisement may use a headline, date,
+> image, and type style similar to nearby articles. A recommendation system may
+> insert it between ordinary updates. If the label is small, vague, or absent,
+> readers can mistake visual similarity for editorial independence. Clear
+> language such as SPONSORED or ADVERTISEMENT restores the missing context.
+>
+> Readers should still examine the claim itself. Who created it? Is evidence
+> linked? Does another source support the statement? What action does the
+> message encourage? Labels make these questions possible by identifying the
+> speaker's role. They do not replace judgment. They ensure that judgment begins
+> with an honest description of why the message entered the page.
+
+Comprehension prompt: `What important relationship does a sponsorship label reveal?`
+
+- Correct: `Someone paid for or supplied the promotional placement.`
+- Distractor: `Every statement in the material has been proven false.`
+- Distractor: `The message was selected by an independent news editor.`
+
+## `what-counts-as-news-a06` — What Counts as News
+
+> An event does not arrive with the word news attached to it. People decide that
+> a development deserves public attention, then gather and present information
+> about it. That decision depends partly on consequence. A change to school
+> schedules may matter greatly within one town and barely register elsewhere. A
+> scientific discovery may affect few people today while changing important
+> choices years later.
+>
+> News judgment also considers novelty, proximity, conflict, public
+> responsibility, and continuing significance. These factors help editors sort
+> a flood of possible reports. They can also create blind spots. A dramatic but
+> minor event may receive more attention than a gradual change with larger
+> effects. A story close to the audience may crowd out an important event in a
+> distant place.
+>
+> The distinction between event and report is essential. The event is what
+> happened. The report is an account built from interviews, documents,
+> observations, and editorial choices. A strong report identifies its sources,
+> distinguishes confirmed facts from open questions, and states when the
+> information was gathered. Repetition across many portals does not create new
+> evidence if every version comes from the same report.
+>
+> Asking what counts as news therefore leads to another question: news for whom,
+> and for what purpose? No single portal can display every relevant event.
+> Readers become better informed by comparing coverage, tracing original
+> sources, and noticing what each publication treats as significant. The goal
+> is not a page with no judgment. It is judgment whose evidence and priorities
+> can be examined.
+
+Comprehension prompt: `What is the key difference between an event and a news report?`
+
+- Correct: `The event happened; the report is an evidence-based account shaped by sources and choices.`
+- Distractor: `An event matters only after every portal repeats it.`
+- Distractor: `A report contains no editorial judgment once it names a source.`
