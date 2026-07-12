@@ -1,0 +1,1370 @@
+#threadit {
+  --threadit-paper: #f4f1ea;
+  --threadit-panel: #fff;
+  --threadit-ink: #17212b;
+  --threadit-muted: #5f6b76;
+  --threadit-line: #aeb8c2;
+  --threadit-orange: #f26822;
+  --threadit-trace: #6655a6;
+  --threadit-duplicate: #b3261e;
+  --threadit-secure: #287a55;
+  --threadit-focus: #0b57d0;
+  --threadit-radius: 6px;
+  --threadit-gap-1: 4px;
+  --threadit-gap-2: 8px;
+  --threadit-gap-3: 16px;
+  --threadit-gap-4: 24px;
+  min-width: 0;
+  min-height: 0;
+  color: var(--threadit-ink);
+}
+
+.threadit-surface {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+  gap: var(--threadit-gap-3);
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 18px 18px 20px 110px;
+  align-items: stretch;
+}
+
+.threadit-surface.on {
+  display: grid;
+}
+
+.threadit-surface > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.threadit-browser-window {
+  display: grid;
+  grid-template-rows: 30px 38px minmax(0, 1fr) auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.threadit-companion-gate {
+  position: relative;
+  z-index: 0;
+  min-width: 340px;
+  min-height: 0;
+  overflow: auto;
+  isolation: isolate;
+}
+
+.threadit-page {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--threadit-paper);
+  color: var(--threadit-ink);
+  container: threadit-browser / inline-size;
+  font: 15px/1.45 Arial, Helvetica, sans-serif;
+}
+
+.threadit-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--threadit-gap-3);
+  align-items: center;
+  padding: 12px var(--threadit-gap-3);
+  border-bottom: 1px solid var(--threadit-line);
+  background: var(--threadit-panel);
+}
+
+.threadit-header > img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.threadit-header > div:nth-child(2) {
+  min-width: 0;
+}
+
+.threadit-header > div:nth-child(2) h2 {
+  margin: 0;
+  font: 800 clamp(22px, 2.2vw, 26px)/1.35 "Arial Narrow", Arial, sans-serif;
+}
+
+.threadit-header > div:nth-child(2) p {
+  margin: 4px 0 0;
+  overflow: hidden;
+  color: var(--threadit-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.threadit-header > strong {
+  max-width: 260px;
+  color: var(--threadit-duplicate);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+  text-align: right;
+}
+
+.threadit-mark {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.threadit-identity {
+  min-width: 0;
+}
+
+.threadit-wordmark {
+  margin: 0;
+  font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.threadit-tagline {
+  margin: var(--threadit-gap-1) 0 0;
+  overflow: hidden;
+  color: var(--threadit-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.threadit-header-status {
+  display: grid;
+  gap: var(--threadit-gap-1);
+  justify-items: end;
+  max-width: 280px;
+  text-align: right;
+}
+
+.threadit-header-status strong,
+.threadit-rule {
+  font-family: "Lucida Console", Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.035em;
+}
+
+.threadit-rule {
+  margin: 0;
+  color: var(--threadit-duplicate);
+  font-weight: 700;
+}
+
+.threadit-page[data-secured="true"] .threadit-rule,
+.threadit-page[data-state-id="threadit_secured"] .threadit-rule,
+.threadit-page[data-threadit-state="threadit_secured"] .threadit-rule {
+  color: var(--threadit-secure);
+}
+
+.threadit-tabs {
+  display: flex;
+  gap: 2px;
+  align-items: end;
+  min-height: 38px;
+  padding: var(--threadit-gap-2) var(--threadit-gap-3) 0;
+  border-bottom: 1px solid var(--threadit-line);
+  background: #e8e4dc;
+}
+
+.threadit-tabset {
+  display: flex;
+  gap: 2px;
+  align-items: end;
+}
+
+.threadit-tabs [role="tab"],
+.threadit-tab {
+  min-height: 30px;
+  padding: 6px 12px;
+  border: 1px solid var(--threadit-line);
+  border-bottom: 0;
+  border-radius: var(--threadit-radius) var(--threadit-radius) 0 0;
+  background: #dedad1;
+  color: var(--threadit-ink);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-tabs [role="tab"][aria-selected="true"],
+.threadit-tab[aria-selected="true"],
+.threadit-tab.is-active {
+  border-top: 3px solid var(--threadit-orange);
+  background: var(--threadit-panel);
+}
+
+.threadit-tabs [role="tab"]:disabled,
+.threadit-tab:disabled {
+  color: var(--threadit-muted);
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.threadit-source-toggle {
+  display: none;
+  margin-left: auto;
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 2px outset #d6d6ce;
+  background: #dedad1;
+  color: var(--threadit-ink);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  gap: var(--threadit-gap-3);
+  min-width: 0;
+  min-height: 0;
+  padding: var(--threadit-gap-3);
+  overflow: hidden;
+}
+
+.threadit-page:is(
+  [data-active-view="trace"],
+  [data-view="trace"],
+  [data-state-id="threadit_tracing"],
+  [data-state-id="threadit_secured"],
+  [data-threadit-state="threadit_tracing"],
+  [data-threadit-state="threadit_secured"]
+) .threadit-layout {
+  grid-template-columns: minmax(0, 42fr) minmax(320px, 58fr);
+}
+
+.threadit-page[data-secured="true"] .threadit-layout,
+.threadit-page[data-state-id="threadit_secured"] .threadit-layout {
+  grid-template-columns: minmax(0, 30fr) minmax(360px, 70fr);
+}
+
+.threadit-thread-column,
+.threadit-source-panel {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+.threadit-thread-column {
+  display: grid;
+  align-content: start;
+  gap: var(--threadit-gap-2);
+}
+
+.threadit-thread-column > header {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  padding: 9px;
+  border: 1px solid var(--threadit-line);
+  background: var(--threadit-paper);
+}
+
+.threadit-thread-column > header small {
+  display: block;
+  color: var(--threadit-trace);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-thread-column > header h3 {
+  margin: 6px 0 4px;
+  color: var(--threadit-duplicate);
+  font: 700 17px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-thread-column > header p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.threadit-column-heading {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  gap: var(--threadit-gap-2);
+  align-items: center;
+  justify-content: space-between;
+  min-height: 34px;
+  padding: 6px var(--threadit-gap-2);
+  border-bottom: 1px solid var(--threadit-line);
+  background: var(--threadit-paper);
+  font-family: "Lucida Console", Consolas, monospace;
+  font-size: 12px;
+}
+
+#threaditPostList,
+.threadit-post-list {
+  display: grid;
+  gap: var(--threadit-gap-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.threadit-post {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 34px minmax(0, 1fr);
+  gap: var(--threadit-gap-2);
+  padding: 10px 12px;
+  border: 1px solid var(--threadit-line);
+  border-left: 4px solid var(--threadit-line);
+  border-radius: var(--threadit-radius);
+  background: var(--threadit-panel);
+  box-shadow: 0 1px 0 #17212b12;
+}
+
+.threadit-post > img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.threadit-post-main {
+  min-width: 0;
+}
+
+.threadit-post-main > header {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.threadit-post-main > header b,
+.threadit-post-main > header span {
+  display: block;
+}
+
+.threadit-post-main > header span {
+  margin-top: 2px;
+  color: var(--threadit-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.threadit-post-main > header strong {
+  flex: 0 0 auto;
+  color: var(--threadit-muted);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-post-main > p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.threadit-post-main > em,
+.threadit-source-warning {
+  display: block;
+  margin-top: 6px;
+  color: var(--threadit-duplicate);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-citation {
+  padding: 7px;
+  border-left: 3px solid var(--threadit-secure);
+  background: #eef8f2;
+}
+
+.threadit-citation b,
+.threadit-citation span {
+  display: block;
+}
+
+.threadit-duplicate-group article > ul {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.threadit-duplicate-group article > ul li {
+  display: grid;
+  gap: 3px;
+  padding: 6px;
+  border-top: 1px dotted var(--threadit-duplicate);
+}
+
+.threadit-moderator-note {
+  padding: 8px;
+  border: 1px dashed var(--threadit-duplicate);
+  background: #fff7f5;
+  color: var(--threadit-duplicate);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-post[data-node-type="question"],
+.threadit-post[data-post-kind="question"] {
+  border-left-color: var(--threadit-orange);
+}
+
+.threadit-post[data-origin="independent"],
+.threadit-post[data-origin-type="independent"] {
+  border-left-color: var(--threadit-secure);
+}
+
+.threadit-post[data-origin="generated-copy"],
+.threadit-post[data-origin-type="generated-copy"] {
+  border-left-color: var(--threadit-trace);
+}
+
+.threadit-post[data-status="duplicate-paused"],
+.threadit-post[data-quarantined="true"] {
+  border-color: var(--threadit-duplicate);
+  border-style: dashed;
+  background: #fff7f5;
+}
+
+.threadit-post[data-depth] {
+  margin-inline-start: min(calc(var(--threadit-depth, 1) * 18px), 72px);
+}
+
+.threadit-post-votes {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 2px;
+  color: var(--threadit-muted);
+  font-family: "Lucida Console", Consolas, monospace;
+  font-size: 12px;
+  text-align: center;
+}
+
+.threadit-post[data-corrupted-rank="top"] .threadit-post-votes b {
+  color: var(--threadit-duplicate);
+  font-size: 21px;
+}
+
+.threadit-post-main {
+  min-width: 0;
+}
+
+.threadit-post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--threadit-gap-1) var(--threadit-gap-2);
+  align-items: baseline;
+  margin-bottom: 5px;
+  color: var(--threadit-muted);
+  font-size: 12px;
+}
+
+.threadit-post-meta strong {
+  color: var(--threadit-ink);
+}
+
+.threadit-post-title {
+  margin: 0 0 6px;
+  font: 700 clamp(20px, 2vw, 27px)/1.35 Georgia, "Times New Roman", serif;
+}
+
+.threadit-post-body {
+  margin: 0;
+  color: var(--threadit-ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.threadit-post-source,
+.threadit-post-status,
+.threadit-node-status,
+.threadit-relationship-label {
+  display: inline-block;
+  margin-top: var(--threadit-gap-2);
+  padding: 3px 6px;
+  border: 1px solid var(--threadit-line);
+  border-radius: 2px;
+  background: #f0ede6;
+  color: var(--threadit-muted);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-provisional-notice {
+  margin: 0;
+  padding: var(--threadit-gap-2);
+  border: 1px dashed var(--threadit-trace);
+  background: #f3f0ff;
+  color: #403675;
+  font: 700 12px/1.4 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-source-panel {
+  position: relative;
+  border: 1px solid var(--threadit-line);
+  border-radius: var(--threadit-radius);
+  background: #ebe8e1;
+}
+
+.threadit-source-panel > header {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px;
+  border-bottom: 1px solid var(--threadit-line);
+  background: #ebe8e1;
+}
+
+.threadit-source-panel > header h3,
+.threadit-source-panel > header small {
+  display: block;
+  margin: 0;
+}
+
+.threadit-source-panel > header h3 {
+  margin-top: 3px;
+  font: 700 13px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-source-panel > header button {
+  min-height: 32px;
+  border: 2px outset #d6d6ce;
+  background: #dedad1;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.threadit-source-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.threadit-source-panel > header .threadit-source-close {
+  display: none;
+}
+
+.threadit-midpoint-notice {
+  display: grid;
+  gap: 7px;
+  margin: 12px;
+  padding: 12px;
+  border: 2px solid var(--threadit-trace);
+  border-radius: var(--threadit-radius);
+  background: #f3f0ff;
+}
+
+.threadit-midpoint-notice[hidden] {
+  display: none;
+}
+
+.threadit-midpoint-notice > img {
+  width: min(100%, 720px);
+  max-height: 74px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.threadit-midpoint-notice small {
+  color: var(--threadit-trace);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-midpoint-notice h3,
+.threadit-midpoint-notice p,
+.threadit-midpoint-notice blockquote {
+  margin: 0;
+}
+
+.threadit-midpoint-notice h3 {
+  color: var(--threadit-trace);
+  font: 800 18px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-midpoint-notice p,
+.threadit-midpoint-notice blockquote {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.threadit-midpoint-notice blockquote {
+  padding: 7px 9px;
+  border-left: 4px solid var(--threadit-trace);
+  background: var(--threadit-panel);
+}
+
+.threadit-midpoint-notice button {
+  min-height: 36px;
+  border: 2px outset #d6d6ce;
+  background: #dedad1;
+  color: var(--threadit-ink);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-secured-payoff {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--threadit-gap-2);
+  margin: 12px;
+  padding: 12px;
+  border: 2px solid var(--threadit-secure);
+  border-radius: var(--threadit-radius);
+  background: #eef8f2;
+}
+
+.threadit-secured-payoff[hidden],
+.threadit-evidence-receipt[hidden] {
+  display: none;
+}
+
+.threadit-secured-payoff > img {
+  width: min(100%, 460px);
+  max-height: 72px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.threadit-secured-payoff small,
+.threadit-evidence-receipt dt {
+  color: var(--threadit-muted);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-secured-payoff h3,
+.threadit-secured-payoff h4,
+.threadit-secured-payoff p,
+.threadit-secured-payoff ul,
+.threadit-evidence-receipt dl,
+.threadit-evidence-receipt dd {
+  margin: 0;
+}
+
+.threadit-secured-payoff h3 {
+  margin-top: 4px;
+  color: var(--threadit-secure);
+  font: 800 19px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-secured-payoff ul {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.threadit-blocked-write {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
+  padding: 9px;
+  border: 2px dashed var(--threadit-duplicate);
+  background: #fff7f5;
+}
+
+.threadit-blocked-write > img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.threadit-blocked-write h4 {
+  margin-top: 3px;
+  color: var(--threadit-duplicate);
+  font: 700 13px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-blocked-write p {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.threadit-secured-payoff > button {
+  min-height: 36px;
+  border: 2px outset #d6d6ce;
+  background: #dedad1;
+  color: var(--threadit-ink);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-evidence-receipt {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--threadit-line);
+  background: var(--threadit-panel);
+}
+
+.threadit-evidence-receipt h4 {
+  color: var(--threadit-ink);
+  font: 800 15px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-evidence-receipt dl {
+  display: grid;
+  gap: 8px;
+}
+
+.threadit-evidence-receipt dl > div {
+  display: grid;
+  gap: 2px;
+}
+
+.threadit-evidence-receipt dd {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.threadit-source-canvas {
+  position: relative;
+  min-height: 340px;
+  padding: 12px;
+}
+
+.threadit-source-panel-inner {
+  display: grid;
+  gap: var(--threadit-gap-3);
+  min-width: 0;
+  min-height: 100%;
+  padding: var(--threadit-gap-3);
+}
+
+#threaditSourceTree,
+.threadit-source-tree {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--threadit-gap-3);
+  align-content: start;
+  min-width: 0;
+  min-height: 340px;
+  isolation: isolate;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.threadit-page[data-midpoint="true"] #threaditSourceTree,
+.threadit-page[data-midpoint="true"] .threadit-source-tree {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.threadit-source-node {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 7px;
+}
+
+.threadit-source-node > img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.threadit-source-node > div b,
+.threadit-source-node > div span,
+.threadit-source-node > div small,
+.threadit-source-node > strong {
+  display: block;
+}
+
+.threadit-source-node > div span,
+.threadit-source-node > div small {
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+  color: var(--threadit-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.threadit-source-node > strong {
+  grid-column: 1 / -1;
+  color: var(--threadit-muted);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-source-node[data-generated-clone="true"] .threadit-node-avatar {
+  filter: hue-rotate(var(--threadit-avatar-hue, 0deg)) saturate(1.15);
+}
+
+.threadit-source-quarantine {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 2px solid var(--threadit-trace);
+  border-radius: var(--threadit-radius);
+  background: transparent;
+}
+
+.threadit-source-quarantine > strong {
+  color: var(--threadit-trace);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-source-quarantine > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.threadit-source-quarantine[data-quarantined="true"] {
+  border-color: var(--threadit-duplicate);
+  border-style: dashed;
+  background: transparent;
+}
+
+.threadit-source-quarantine[data-quarantined="true"] > strong {
+  color: var(--threadit-duplicate);
+}
+
+.threadit-source-quarantine[data-quarantined="true"] .threadit-source-node {
+  border-color: var(--threadit-duplicate);
+}
+
+#threaditSourceSummary {
+  margin: 0 12px 12px;
+  padding: 8px;
+  border: 1px dotted var(--threadit-line);
+  background: var(--threadit-panel);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.threadit-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.threadit-source-panel > #threaditSourceTree,
+.threadit-source-panel > .threadit-source-tree {
+  margin: var(--threadit-gap-3);
+}
+
+#threaditConnectorLayer,
+.threadit-connector-layer {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+#threaditConnectorLayer [data-line-style],
+.threadit-connector-layer [data-line-style] {
+  fill: none;
+  stroke: var(--threadit-line);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+#threaditConnectorLayer [data-line-style="gray-interrupted"],
+.threadit-connector-layer [data-line-style="gray-interrupted"] {
+  stroke-dasharray: 5 7;
+}
+
+#threaditConnectorLayer [data-line-style="green-solid"],
+.threadit-connector-layer [data-line-style="green-solid"] {
+  stroke: var(--threadit-secure);
+  stroke-width: 3;
+}
+
+#threaditConnectorLayer [data-line-style="purple-double"],
+.threadit-connector-layer [data-line-style="purple-double"] {
+  stroke: var(--threadit-trace);
+  stroke-width: 6;
+}
+
+#threaditConnectorLayer .threadit-connector-inner[data-line-style="purple-double"],
+.threadit-connector-layer .threadit-connector-inner[data-line-style="purple-double"] {
+  stroke: var(--threadit-paper);
+  stroke-width: 2;
+}
+
+#threaditConnectorLayer [data-line-style="red-dashed"],
+.threadit-connector-layer [data-line-style="red-dashed"] {
+  stroke: var(--threadit-duplicate);
+  stroke-width: 3;
+  stroke-dasharray: 8 5;
+}
+
+.threadit-source-node {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  padding: 10px;
+  border: 2px solid var(--threadit-line);
+  border-radius: var(--threadit-radius);
+  background: var(--threadit-panel);
+  box-shadow: 2px 2px 0 #17212b1c;
+}
+
+.threadit-page[data-motion="stepped-trace"] .threadit-source-node[data-generated-clone="true"] {
+  animation: threadit-trace-node-enter 420ms ease-out both;
+  animation-delay: calc(min(var(--threadit-clone-index, 0), 9) * 45ms);
+}
+
+.threadit-source-node[data-origin="original"],
+.threadit-source-node[data-origin-type="original"] {
+  border-color: var(--threadit-orange);
+}
+
+.threadit-source-node[data-origin="independent"],
+.threadit-source-node[data-origin-type="independent"] {
+  border-color: var(--threadit-secure);
+}
+
+.threadit-source-node[data-origin="generated-copy"],
+.threadit-source-node[data-origin-type="generated-copy"] {
+  border-color: var(--threadit-trace);
+}
+
+.threadit-source-node[data-origin="unknown"],
+.threadit-source-node[data-origin-type="unknown"] {
+  border-style: dashed;
+}
+
+.threadit-node-heading {
+  display: flex;
+  gap: var(--threadit-gap-2);
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.threadit-node-heading strong {
+  overflow-wrap: anywhere;
+}
+
+.threadit-node-avatar {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.threadit-node-meta,
+.threadit-node-summary {
+  margin: var(--threadit-gap-1) 0 0;
+  color: var(--threadit-muted);
+  font: 12px/1.4 "Lucida Console", Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+.threadit-node-summary {
+  color: var(--threadit-ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.threadit-relationship-label {
+  color: var(--threadit-ink);
+  white-space: normal;
+}
+
+.threadit-duplicate-group {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
+  gap: var(--threadit-gap-2);
+  padding: var(--threadit-gap-3);
+  border: 2px dashed var(--threadit-duplicate);
+  border-radius: var(--threadit-radius);
+  background: #fff7f5;
+}
+
+.threadit-relationship-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--threadit-gap-2);
+  margin: 0;
+  padding: var(--threadit-gap-2);
+  border: 1px solid var(--threadit-line);
+  background: var(--threadit-panel);
+  list-style: none;
+  color: var(--threadit-muted);
+  font: 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-relationship-legend li {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.threadit-legend-line {
+  flex: 0 0 28px;
+  border-top: 2px solid var(--threadit-line);
+}
+
+.threadit-legend-line[data-line-style="green-solid"] {
+  border-color: var(--threadit-secure);
+  border-width: 3px;
+}
+
+.threadit-legend-line[data-line-style="purple-double"] {
+  height: 5px;
+  border-top: 2px solid var(--threadit-trace);
+  border-bottom: 2px solid var(--threadit-trace);
+}
+
+.threadit-legend-line[data-line-style="red-dashed"] {
+  border-color: var(--threadit-duplicate);
+  border-style: dashed;
+}
+
+.threadit-trace-banner,
+.threadit-secured-banner,
+.threadit-blocked-write {
+  position: relative;
+  z-index: 3;
+  padding: 10px 12px;
+  border: 2px solid var(--threadit-trace);
+  border-radius: var(--threadit-radius);
+  background: #f3f0ff;
+}
+
+.threadit-trace-banner strong,
+.threadit-secured-banner strong,
+.threadit-blocked-write strong {
+  display: block;
+  font-family: "Lucida Console", Consolas, monospace;
+  font-size: 12px;
+}
+
+.threadit-secured-banner {
+  border-color: var(--threadit-secure);
+  background: #eef8f2;
+}
+
+.threadit-blocked-write {
+  border-color: var(--threadit-duplicate);
+  background: #fff1ee;
+}
+
+.threadit-secured-badge {
+  display: block;
+  width: min(100%, 460px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.threadit-status-strip {
+  display: flex;
+  gap: var(--threadit-gap-2) var(--threadit-gap-3);
+  align-items: center;
+  justify-content: space-between;
+  min-height: 34px;
+  padding: 7px var(--threadit-gap-3);
+  border-top: 1px solid var(--threadit-line);
+  background: #dedad1;
+  color: var(--threadit-ink);
+  font: 700 12px/1.35 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-status-strip [data-status-kind="warning"] {
+  color: var(--threadit-duplicate);
+}
+
+.threadit-status-strip [data-status-kind="secure"] {
+  color: var(--threadit-secure);
+}
+
+.threadit-live-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.threadit-gate-body {
+  display: flex;
+  min-height: calc(100% - 30px);
+  flex-direction: column;
+  padding: 17px;
+  border: 1px inset #d6d6ce;
+  background: #fffefb;
+}
+
+.threadit-gate-body > small {
+  color: var(--threadit-secure);
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.threadit-gate-body h2 {
+  margin: 7px 0 10px;
+  font: 700 27px/1.35 Georgia, serif;
+}
+
+.threadit-gate-body > p {
+  font: 14px/1.5 Georgia, serif;
+}
+
+.threadit-source-note {
+  display: grid;
+  gap: 5px;
+  padding: 9px;
+  border: 1px solid var(--threadit-line);
+  background: #f4f1ea;
+}
+
+.threadit-source-note a {
+  color: #174f66;
+  font-weight: 700;
+}
+
+.threadit-source-note span,
+.threadit-candidate-count {
+  color: var(--threadit-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.threadit-gate-body > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 7px;
+  margin-top: auto;
+  padding: 9px;
+  border: 2px inset #d6d6ce;
+  background: #ecece5;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.threadit-gate-body button {
+  margin-top: 12px;
+}
+
+.threadit-support-card {
+  width: min(320px, calc(100% - 32px));
+  margin: var(--threadit-gap-3);
+  margin-inline-start: auto;
+  padding: 12px;
+  border: 2px solid var(--threadit-line);
+  border-radius: var(--threadit-radius);
+  background: var(--threadit-panel);
+}
+
+.threadit-dialogue-modal {
+  position: absolute;
+  z-index: 12;
+  inset: 50% auto auto 50%;
+  width: min(720px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: var(--threadit-gap-3);
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--threadit-line);
+  border-radius: var(--threadit-radius);
+  background: var(--threadit-panel);
+  box-shadow: 0 12px 30px #17212b55;
+}
+
+.threadit-page button:focus-visible,
+.threadit-page a:focus-visible,
+.threadit-page [tabindex]:focus-visible {
+  outline: 3px solid var(--threadit-focus);
+  outline-offset: 2px;
+}
+
+/* ThreadIt communicates progress through repaired relationships and never uses a site percentage meter. */
+
+@keyframes threadit-trace-node-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@container threadit-browser (max-width: 760px) {
+  .threadit-header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .threadit-header-status {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: start;
+    max-width: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .threadit-layout,
+  .threadit-page:is(
+    [data-active-view="trace"],
+    [data-view="trace"],
+    [data-state-id="threadit_tracing"],
+    [data-state-id="threadit_secured"],
+    [data-threadit-state="threadit_tracing"],
+    [data-threadit-state="threadit_secured"]
+  ) .threadit-layout {
+    grid-template-columns: minmax(0, 1fr);
+    overflow: auto;
+  }
+
+  .threadit-thread-column,
+  .threadit-source-panel {
+    overflow: visible;
+  }
+
+  .threadit-source-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .threadit-source-panel > header .threadit-source-close {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .threadit-page[data-source-open] .threadit-source-panel {
+    position: absolute;
+    z-index: 10;
+    inset: 112px 0 34px auto;
+    width: min(390px, calc(100% - 28px));
+    overflow: auto;
+    border-right: 0;
+    border-radius: var(--threadit-radius) 0 0 var(--threadit-radius);
+    box-shadow: -8px 0 18px #17212b38;
+  }
+
+  .threadit-page[data-source-open="false"] .threadit-source-panel {
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(100%);
+  }
+
+  .threadit-page[data-source-open="true"] .threadit-source-panel {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  #threaditSourceTree,
+  .threadit-source-tree {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1279px) {
+  .threadit-surface {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 320px);
+    gap: 12px;
+    padding-left: 86px;
+  }
+
+  .threadit-companion-gate {
+    min-width: 300px;
+  }
+
+  .threadit-tagline,
+  .threadit-post-meta-secondary,
+  .threadit-node-meta-secondary {
+    display: none;
+  }
+
+  .threadit-header,
+  .threadit-layout {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 1179px) {
+  .threadit-surface {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(560px, 1fr) auto;
+  }
+
+  .threadit-companion-gate {
+    min-width: 0;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 960px) {
+  .threadit-surface {
+    padding-left: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .threadit-page,
+  .threadit-page *,
+  .threadit-page *::before,
+  .threadit-page *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .threadit-page[data-source-open="false"] .threadit-source-panel {
+    transform: none;
+  }
+
+  #threaditConnectorLayer [data-line-style="gray-interrupted"],
+  .threadit-connector-layer [data-line-style="gray-interrupted"] {
+    stroke-dasharray: 5 7;
+  }
+}
+
+@media (forced-colors: active) {
+  .threadit-post,
+  .threadit-source-panel,
+  .threadit-source-node,
+  .threadit-duplicate-group,
+  .threadit-status-strip,
+  .threadit-trace-banner,
+  .threadit-secured-banner,
+  .threadit-blocked-write {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: auto;
+  }
+
+  #threaditConnectorLayer [data-line-style],
+  .threadit-connector-layer [data-line-style] {
+    stroke: CanvasText;
+  }
+
+  .threadit-page button:focus-visible,
+  .threadit-page a:focus-visible,
+  .threadit-page [tabindex]:focus-visible {
+    outline-color: Highlight;
+  }
+}

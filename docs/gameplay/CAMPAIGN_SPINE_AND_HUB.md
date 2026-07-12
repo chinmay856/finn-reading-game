@@ -243,9 +243,10 @@ are denied. Chinmay admits Finn's manual recovery held up better than his
 automatic patches. This is an apparent campaign finish, not a fake reward
 instantly snatched away.
 
-Then an unexpected file arrives in a previously nonexistent eleventh slot:
+Finn chooses `Review completed Case File`. Only then does an unexpected file
+arrive in a previously nonexistent eleventh slot:
 
-`LIVE_EVIDENCE_11 — SOURCE: RECOVERY DESKTOP`
+`EVIDENCE_11.LIVE — SOURCE: RECOVERY DESKTOP`
 
 It was created by the attempted breach itself, not recovered from another site.
 

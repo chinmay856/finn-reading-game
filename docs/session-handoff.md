@@ -1,46 +1,63 @@
 # Session handoff
 
-## WikiWhy real campaign foundation
+## ThreadIt structural campaign foundation
 
-- The deployed Recovery Map milestone is authoritative on `main` at `270c63d`
-  through PR #30. Active work continues on
-  `agent/wikiwhy-campaign-foundation`.
-- Integrated the parallel designer's complete production package through design
-  tip `1f843bc`, including the frozen WikiWhy campaign pack, ThreadIt production
-  handoff, ten-site system/index and original marks, and the separate final-
-  breach contract/assets. Newer site contracts replaced only their older design
-  sections; implementation history remained intact.
-- Replaced the real WikiWhy `stability only` save with version 3 campaign state.
-  It migrates v1/v2, persists explicit phase, warning/rewrite timing, Shield
-  pass, completed passage IDs, a bounded set of applied session IDs, secured
-  time, and final evidence ID. A prior session cannot count twice even after
-  later sessions or reloads.
-- Real transitions now support Act I warning, ordered 70/80 crossing, the 80%
-  autonomous write, explicit Shield start, exactly three accepted Shield
-  readings at 33/66/100, permanent secured state, blocked AI write, and Case
-  File evidence slot 1. Evidence is absent before Shield pass 3.
-- The nested WikiWhy page renders persisted campaign progress at rest and only
-  projects toward the next possible step while a reading is active. It has the
-  frozen 70–79% route clue, a right-to-left 80% rewrite, semantic saved-versus-
-  AI comparison, distinct content/links/access Shield states, permanent secured
-  seal, and the canonical route-log receipt. Reduced-motion mode keeps every
-  state understandable without animation.
-- Added a neutral executable-content catalog and wrapper-owned WikiWhy deck
-  order. Only `photosynthesis-a01` is selectable. The other 19 deck drafts are
-  candidates and cannot be speech-scored until their content gate is complete.
-  When no unseen executable passage remains, the UI disables microphone setup
-  and explains that progress is safe instead of silently repeating content.
-- The photosynthesis record now exposes a reviewed revision, modification
-  notice, license metadata, and visible source/contributor plus CC BY-SA 4.0
-  links outside the scored passage.
-- Full browser diagnostic QA covers the warning, rewrite, Amy/Chinmay sequence,
-  exact three-pass Shield, final evidence receipt, content gate, keyboard flow,
-  and a clean fresh-tab console. Review images and the two remaining passage/
-  replay decisions are in `docs/design/DESIGN_REQUESTS.md` for the parallel
-  designer.
-- Validation: `npm run check`, `npm test` (84 passing), and `npm run build` pass.
-- Next: publish/merge/deploy this foundation, promote reviewed WikiWhy content,
-  then build the approved ThreadIt semantic source-tree Act I slice.
+- WikiWhy's production-aligned campaign foundation is authoritative on deployed
+  `main` at `17826e4` through PR #32. GitHub Actions and the GitHub Pages HTTPS
+  deployment passed, and the complete live diagnostic route was verified.
+- Active implementation continues on `agent/threadit-act-one-foundation`.
+  ThreadIt is runtime-available as an honest structural test build but remains
+  non-playable while its first Reading Companion passage is review-gated.
+- The wrapper now owns a versioned ThreadIt campaign model with exactly four Act
+  I units, an explicit midpoint acknowledgement, exactly three later trace
+  units, and permanent secured/evidence records. It deduplicates passage and
+  session IDs, reconciles stale tabs, and falls back safely when browser storage
+  is blocked without storing audio, transcript, score, or comprehension data.
+- The executable UI now covers `threadit_corrupted`, all four Act I repairs, the
+  reviewed midpoint card and explicit acknowledgement, `threadit_tracing`, all
+  three trace/containment units, and `threadit_secured`. It reorders semantic
+  forum posts, renders a nested text relationship outline and node-anchored
+  inline SVG connectors, preserves legitimate disagreement, and never reuses a
+  WikiWhy wipe or percentage meter.
+- The permanent structural ending keeps ten generated copies visible in
+  quarantine, separates three independent source branches, announces the one-
+  time `POSTING PAUSED: DUPLICATE SOURCE` result, exposes
+  `THREADIT_TRACE_01.LOG`, and writes the canonical test receipt to Case File
+  slot 2. The hub then rotates to FacePlace, Spotty-Fi, and Search-ish previews.
+- At 1440×900 the Recovery Browser and independent Reading Companion remain
+  side by side. At 1180 CSS pixels, the source panel opens and closes as a
+  browser-owned overlay, returns keyboard focus to its trigger, creates no page
+  overflow, and never overlaps Reading Companion.
+- `Why Disagreement Matters` is registered as a candidate Content Platform
+  record with comprehension/profile/provenance metadata. It is deliberately not
+  selectable until formal review and a real-microphone check are complete.
+- ThreadIt requires seven distinct first-run readings, but planned Deck A has
+  five slots. Passing the sampler alone cannot unlock scored play; two reviewed
+  additions or explicitly named Deck B overflows are still required, with no
+  silent repeat.
+- The neutral catalog now rejects availability-only promotion: an `approved`
+  record needs explicit passed review states, completed real-microphone review,
+  and rights-basis-specific evidence. The existing WikiWhy `prototype` lane
+  remains explicit and continues to validate separately.
+- The forum fixture is clearly marked provisional. The exact replacement fields
+  and current executable screenshots are published in
+  `docs/design/DESIGN_REQUESTS.md` for the parallel designer.
+- FacePlace is the prepared next milestone: exactly three lying-tracker units,
+  explicit Honest Zero acknowledgement, and exactly three honest-recovery
+  units. The exact feed fixture, evidence registry, remaining-site data
+  packets, content-manifest decisions, and final-breach questions are recorded
+  in `docs/design/RUNTIME_FIXTURE_BACKLOG.md`; no new full-board art is needed.
+- Preserved boundaries: ThreadIt strings, site assets, repair units, and campaign
+  persistence stay in the wrapper; generic passage records stay in Content
+  Platform; Reading Engine, speech, theme-neutral Game Rules, and real session
+  history are unchanged.
+- Validation: `npm run check`, `npm test` (107 passing), `npm run build`, 1440×900
+  Chrome visual captures, and the 1180 CSS-pixel source-drawer interaction all
+  pass without horizontal page overflow or Reading Companion overlap.
+- Final trace/finale runtime checks and the production build pass. Remaining
+  before this milestone is authoritative: publish the reviewed scope through a
+  pull request, run CI and live HTTPS verification, then replace the provisional
+  fixture and clear the passage review gates.
 
 ## Recovery Map and multi-site preview shell
 

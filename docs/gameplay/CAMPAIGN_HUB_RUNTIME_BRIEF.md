@@ -24,7 +24,7 @@ Required hub regions:
 | --- | --- |
 | Recovery Browser home | Shows the ten-site recovery map and Incoming Cases. |
 | Incoming Cases | At most three unsecured/playable-or-preview site tiles. |
-| Case File | Ten evidence slots plus the later `LIVE_EVIDENCE_11` slot. |
+| Case File | Ten evidence slots plus the later `EVIDENCE_11.LIVE` (`LIVE EVIDENCE 11`) slot. |
 | Amy Support | Gives short context and notices evidence patterns. |
 | Desktop rim | Taskbar/status chrome, old-computer Easter eggs, Techno. |
 | Reading Companion | Minimized or idle on hub; never scores hub text. |
@@ -425,7 +425,7 @@ Pause on the accomplishment. Do not instantly undercut it.
 The eleventh file appears only after the ten-site celebration has landed.
 
 ```text
-LIVE_EVIDENCE_11
+EVIDENCE_11.LIVE
 SOURCE: RECOVERY DESKTOP
 STATUS: ARRIVING NOW
 ```
