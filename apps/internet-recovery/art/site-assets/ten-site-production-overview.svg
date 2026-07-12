@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Internet Recovery 98 ten-site production design overview</title>
+  <desc id="desc">Ten clean site cards show each original identity, Act I repair, midpoint change, finish, and authored reading-unit count.</desc>
+  <defs>
+    <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0v8" fill="none" stroke="#FFFFFF" stroke-opacity=".04"/></pattern>
+  </defs>
+  <rect width="1536" height="1024" fill="#0C2948"/>
+  <rect width="1536" height="1024" fill="url(#grid)"/>
+  <rect x="14" y="12" width="1508" height="58" rx="5" fill="#174E82" stroke="#E8EEF3" stroke-width="3"/>
+  <text x="768" y="49" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#FFFFFF">INTERNET RECOVERY 98 · TEN-SITE PRODUCTION DESIGN OVERVIEW</text>
+
+  <!-- WikiWhy -->
+  <g transform="translate(18 88)">
+    <rect width="288" height="424" rx="8" fill="#F4F1E8" stroke="#FFFFFF" stroke-width="3"/>
+    <rect width="288" height="42" rx="8" fill="#1D3557"/>
+    <text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">01 · WIKIWHY</text>
+    <g transform="translate(16 56) scale(.52)">
+      <circle cx="61" cy="61" r="47" fill="#F4F1E8" stroke="#1D3557" stroke-width="7"/>
+      <ellipse cx="61" cy="61" rx="23" ry="47" fill="none" stroke="#5F7E9B" stroke-width="4"/><path d="M16 48h90M16 74h90" stroke="#5F7E9B" stroke-width="4"/>
+      <circle cx="95" cy="92" r="26" fill="#287A55" stroke="#1D3557" stroke-width="6"/><text x="95" y="105" text-anchor="middle" font-family="Arial" font-size="39" font-weight="800" fill="#FFFFFF">?</text>
+    </g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#287A55">EVIDENCE EARNS TRUST</text>
+    <text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">collaborative encyclopedia</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#E6EEF6" stroke="#1D3557" stroke-width="2"/>
+    <text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">DYNAMIC ACT I TO 80%</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">repair evidence and source checks</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Ended command keeps writing.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 Shield passes: content, links, access.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/>
+    <text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">VARIABLE ACT I + EXACTLY 3</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: SOURCE CHECKS RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/>
+    <text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- ThreadIt -->
+  <g transform="translate(321 88)">
+    <rect width="288" height="424" rx="8" fill="#F4F1EA" stroke="#FFFFFF" stroke-width="3"/>
+    <rect width="288" height="42" rx="8" fill="#F26822"/>
+    <text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#17212B">02 · THREADIT</text>
+    <g transform="translate(16 57) scale(.52)"><path d="M16 22h58c8 0 14 6 14 14v30c0 8-6 14-14 14H47L27 96V80H16C8 80 2 74 2 66V36c0-8 6-14 14-14Z" fill="#F26822" stroke="#17212B" stroke-width="5"/><path d="M54 48h58c8 0 14 6 14 14v30c0 8-6 14-14 14h-9v16l-20-16H54c-8 0-14-6-14-14V62c0-8 6-14 14-14Z" fill="#6655A6" stroke="#17212B" stroke-width="5"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#6655A6">VOTES ARE NOT EVIDENCE</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">forum and source lineage</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#EEE9FA" stroke="#6655A6" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">4 UNTANGLE UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">question, chronology, citation, duplicates</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Consensus Cascade: ten accounts, one source.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 trace/separate/quarantine units.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">4 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: SOURCE TREE STABLE</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- FacePlace -->
+  <g transform="translate(624 88)">
+    <rect width="288" height="424" rx="8" fill="#F3F6FA" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#315FA8"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">03 · FACEPLACE</text>
+    <g transform="translate(16 57) scale(.52)"><rect x="12" y="24" width="72" height="82" rx="10" fill="#E7F4F4" stroke="#315FA8" stroke-width="7"/><circle cx="48" cy="51" r="14" fill="#2C8F91"/><rect x="54" y="12" width="62" height="74" rx="10" fill="#FFFFFF" stroke="#17212B" stroke-width="7"/><circle cx="85" cy="37" r="12" fill="#315FA8"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#2C8F91">A FEED IS A SELECTION</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">ranked social feed</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#FFF4D8" stroke="#D09A25" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">3 NONSENSE-TRACKER REPAIRS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">12% · 114% · AVOCADO%</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Honest Zero; recovered posts stay saved.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 honest feed recovery units to 100%.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">3 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: FEED RECOVERY VERIFIED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- MyCorner -->
+  <g transform="translate(927 88)">
+    <rect width="288" height="424" rx="8" fill="#E7F0FF" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#244A88"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">04 · MYCORNER</text>
+    <g transform="translate(16 57) scale(.52)"><path d="M18 102V24h80" fill="none" stroke="#244A88" stroke-width="12"/><path d="M42 102V48h56" fill="none" stroke="#C4478C" stroke-width="12"/><path d="M66 102V72h32" fill="none" stroke="#E7BF45" stroke-width="12"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#C4478C">YOU CHOOSE THE PROFILE</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">custom personal homepage</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#F8E7F1" stroke="#C4478C" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">4 PROFILE MODULE UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">about, theme, media, privacy/source</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Apply to Everyone overlays saved profiles.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 owner locks: profile, theme, permission.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">4 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: OWNER CONTROLS RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- Yahuh -->
+  <g transform="translate(1230 88)">
+    <rect width="288" height="424" rx="8" fill="#EEE5F5" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#6E3E98"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">05 · YAHUH! PORTAL</text>
+    <g transform="translate(16 57) scale(.52)"><path d="M14 91C38 53 62 35 93 23" fill="none" stroke="#D5A43A" stroke-width="13" stroke-linecap="round"/><path d="M82 18 108 25 91 78 69 72Z" fill="#6E3E98" stroke="#17212B" stroke-width="5"/><circle cx="75" cy="98" r="13" fill="#6E3E98" stroke="#17212B" stroke-width="5"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#6E3E98">LABELS MAKE MEANING</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">old web portal/directory</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#FFF4D8" stroke="#D5A43A" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">3 MODULE-PAIR SORTS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">news/weather · finance/sports · mail/ads</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Six modules become one generated stream.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 channel-pair reconnections.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">3 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="10">secured: CATEGORY SWITCHBOARD RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- ViewTube -->
+  <g transform="translate(18 532)">
+    <rect width="288" height="424" rx="8" fill="#F3EFE5" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#B43A31"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">06 · VIEWTUBE</text>
+    <g transform="translate(16 57) scale(.52)"><rect x="12" y="18" width="104" height="78" rx="12" fill="#F3EFE5" stroke="#242A31" stroke-width="7"/><path d="M49 35 86 57 67 62 80 80 42 59 59 54Z" fill="#B43A31" stroke="#242A31" stroke-width="4"/><path d="M46 98 38 114M82 98l8 16" stroke="#242A31" stroke-width="7"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#B43A31">CONTEXT BEATS REPEATS</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">silent video/evidence page</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#F8E1DE" stroke="#B43A31" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">4 RECORDING-CONTEXT UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">identity, frames, transcript, source</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Autoplay counts ten loops as confirmation.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 tracks: footage, transcript, source.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">4 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: EVIDENCE TRACKS RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- Search-ish -->
+  <g transform="translate(321 532)">
+    <rect width="288" height="424" rx="8" fill="#F4F6F8" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#4E57A6"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">07 · SEARCH-ISH</text>
+    <g transform="translate(16 57) scale(.52)"><circle cx="50" cy="50" r="33" fill="#F4F6F8" stroke="#4E57A6" stroke-width="8"/><path d="M74 74 111 111" stroke="#17212B" stroke-width="12"/><circle cx="39" cy="46" r="7" fill="#2B8580"/><circle cx="61" cy="35" r="7" fill="#D39A2E"/><circle cx="64" cy="61" r="7" fill="#B85148"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#2B8580">SEARCH FINDS SOURCES</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">source-evaluation search</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#EEE9FA" stroke="#4E57A6" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">4 RESULT-ORIGIN UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">domain, date, author, ad/query metadata</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">Five costumes; every result hits one cache.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 branch/origin gates.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">4 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="10">secured: INDEPENDENT BRANCHES RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- Amaze-On -->
+  <g transform="translate(624 532)">
+    <rect width="288" height="424" rx="8" fill="#FBF3E7" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#173A59"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">08 · AMAZE-ON</text>
+    <g transform="translate(16 57) scale(.52)"><path d="m18 36 46-22 46 22-46 23Z" fill="#FBF3E7" stroke="#173A59" stroke-width="6"/><path d="M18 36v54l46 24 46-24V36L64 59Z" fill="#E8D5B8" stroke="#173A59" stroke-width="6"/><path d="M64 59v55M46 23l45 23" stroke="#D67727" stroke-width="9"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#D67727">RECOMMENDED ≠ CHOSEN</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">marketplace and receipts</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#FFF4D8" stroke="#D67727" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">4 EVIDENCE-PARCEL SORTS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">spec · review · ad · unknown</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">One return creates two replacement orders.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 receipt/consent units.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">4 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="10">secured: HUMAN CONFIRMATION REQUIRED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- Spotty-Fi -->
+  <g transform="translate(927 532)">
+    <rect width="288" height="424" rx="8" fill="#272D34" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#191D22"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#B7D438">09 · SPOTTY-FI</text>
+    <g transform="translate(16 57) scale(.52)"><circle cx="82" cy="48" r="32" fill="none" stroke="#D04A86" stroke-width="10" stroke-dasharray="35 14"/><rect x="14" y="45" width="86" height="62" rx="9" fill="#272D34" stroke="#F4F1E8" stroke-width="6"/><circle cx="42" cy="68" r="7" fill="#B7D438"/><circle cx="72" cy="68" r="7" fill="#D04A86"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#B7D438">TASTE IS CHOSEN</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#AEB6BE">silent music library/queue</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#343B44" stroke="#B7D438" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#F4F1E8">5 MIXTAPE UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11" fill="#AEB6BE">library, credits, history, queue, suggestions</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#D04A86">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13" fill="#F4F1E8">Fake pre-account history replaces the queue.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#B7D438">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13" fill="#F4F1E8">3 queue/credit/suggestion ownership units.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#191D22" stroke="#AEB6BE" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700" fill="#F4F1E8">5 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11" fill="#AEB6BE">secured: MANUAL MIXTAPE RESTORED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#293F31" stroke="#B7D438" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#B7D438">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <!-- MapGuess -->
+  <g transform="translate(1230 532)">
+    <rect width="288" height="424" rx="8" fill="#F5EBCF" stroke="#FFFFFF" stroke-width="3"/><rect width="288" height="42" rx="8" fill="#2F6F9E"/><text x="16" y="28" font-family="Arial" font-size="18" font-weight="800" fill="#FFFFFF">10 · MAPGUESS</text>
+    <g transform="translate(16 57) scale(.52)"><path d="m10 30 34-15 40 15 34-15v83l-34 15-40-15-34 15Z" fill="#F5EBCF" stroke="#22303A" stroke-width="6"/><path d="M44 15v83M84 30v83" stroke="#5B9FC1" stroke-width="5"/><path d="M20 83c22-19 36-14 48-28 13-15 22-16 39-24" fill="none" stroke="#C23E38" stroke-width="6"/></g>
+    <text x="96" y="80" font-family="Arial" font-size="14" font-weight="800" fill="#2F6F9E">GOAL BEFORE ROUTE</text><text x="96" y="103" font-family="Arial" font-size="12" fill="#5F6B76">map and navigation</text>
+    <rect x="16" y="130" width="256" height="44" rx="5" fill="#E5F0E2" stroke="#75A66C" stroke-width="2"/><text x="144" y="148" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700">5 MAP-LAYER UNITS</text><text x="144" y="166" text-anchor="middle" font-family="Arial" font-size="11">tiles, scale/date, terrain, route, destination</text>
+    <text x="20" y="205" font-family="Arial" font-size="12" font-weight="800" fill="#B3261E">MIDDLE</text><text x="20" y="226" font-family="Arial" font-size="13">The destination moves to preserve the ETA.</text>
+    <text x="20" y="260" font-family="Arial" font-size="12" font-weight="800" fill="#287A55">FINISH</text><text x="20" y="281" font-family="Arial" font-size="13">3 anchor units; unit 3 includes goal choice.</text>
+    <rect x="20" y="306" width="248" height="52" rx="6" fill="#FFFFFF" stroke="#AAB6C2" stroke-width="2"/><text x="144" y="327" text-anchor="middle" font-family="Consolas" font-size="12" font-weight="700">5 + 3 READING UNITS</text><text x="144" y="348" text-anchor="middle" font-family="Consolas" font-size="11">secured: DESTINATION LOCKED</text>
+    <rect x="20" y="378" width="248" height="30" rx="5" fill="#E4F2EA" stroke="#287A55" stroke-width="2"/><text x="144" y="398" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#287A55">PRODUCTION DESIGN COMPLETE</text>
+  </g>
+
+  <rect x="18" y="974" width="1500" height="34" rx="5" fill="#F4F1E8" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="768" y="996" text-anchor="middle" font-family="Arial" font-size="14" font-weight="800" fill="#17212B">ONLY THE READING COMPANION IS SCORED · EVERY SITE SAVES EACH UNIT · MIDPOINTS PRESERVE WORK · SECURED STATES STAY SECURED</text>
+</svg>

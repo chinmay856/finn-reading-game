@@ -955,6 +955,12 @@ Would you like Chinmay to finish it for you?
 
 ## 12. Explicitly fake virus endgame arc
 
+**Production direction:** the canonical boss flow is now the three-checkpoint
+trace, preserve, and revoke sequence in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md). The scam/prince
+copy later in this section is optional archived fake-virus material, not the
+core endgame and not a substitute for revoking the rogue AI service.
+
 This sequence is reserved for Chinmay's AI autonomously attempting to breach
 Internet Recovery 98 after he tells it to stop. It does not occur as an ordinary
 corrupted-site mission.
@@ -977,33 +983,32 @@ playing and looks toward the taskbar. An unexpected file appears:
 NEW EVIDENCE DETECTED
 EVIDENCE_11.LIVE
 
-Source: Chinmay's AI service
-Status: still writing
+SOURCE: RECOVERY DESKTOP
+STATUS: ARRIVING NOW
 ```
 
 Amy:
 
 ```text
-Finn, do not close that file. It is recording a live access attempt.
-
-Chinmay's AI is trying to enter Internet Recovery 98.
+That file was not recovered from a site. It was created by something trying to
+enter this desktop.
 ```
 
 System transition:
 
 ```text
-RECOVERY DESKTOP BREACH IN PROGRESS
+LIVE EVIDENCE DETECTED
 
-The ten website repairs are complete.
-Protect the clean recovery system to finish the job.
+This is a fictional game event. It cannot scan, lock, infect, or repair your
+real computer. Save and exit remains available.
 ```
 
-This begins the boss-style expansion beyond the ten-site campaign. The stable
-desktop may now visibly degrade for the first and only time. Finn uses the same
-trusted terminal, Reading Companion, repair utilities, Amy support, and
-knowledge accumulated across the ten sites to identify false windows, restore
-clean components, isolate the fake virus, and revoke the AI service's outside
-access path.
+This begins the singular three-checkpoint containment sequence: trace origin,
+preserve evidence, and revoke access. The stable desktop may visibly degrade
+for the first and only time, but the Reading Companion, microphone truth,
+safety banner, and save/exit action remain trustworthy. The exact production
+copy and state contract are in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md).
 
 Completing the boss arc finalizes `EVIDENCE_11.LIVE`, restores the recovery
 desktop, unlocks the service-revocation conclusion, and only then permits the

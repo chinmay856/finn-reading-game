@@ -245,7 +245,7 @@ instantly snatched away.
 
 Then an unexpected file arrives in a previously nonexistent eleventh slot:
 
-`LIVE_EVIDENCE_11 — SOURCE: RECOVERY DESKTOP`
+`EVIDENCE_11.LIVE — SOURCE: RECOVERY DESKTOP`
 
 It was created by the attempted breach itself, not recovered from another site.
 
@@ -268,10 +268,12 @@ bar. The capstone asks Finn to use three accumulated ideas:
    verify the assembled route, then execute the revocation command Amy prepared
    and safeguarded.
 
-The exact passage count and presentation remain a separate final-breach design
-decision. The important promise is that no ordinary site completion is erased,
-the player understands why the desktop is different, and the breach checkpoints
-safely. Finn can resume after fatigue, a browser interruption, or an intentional
+The production endgame uses exactly three saved reading checkpoints: trace
+origin, preserve evidence, and revoke access. Its complete state, copy,
+interaction, persistence, visual, and safety contract is frozen in
+[`FINAL_BREACH_RUNTIME_BRIEF.md`](FINAL_BREACH_RUNTIME_BRIEF.md). No ordinary
+site completion is erased, the player understands why the desktop is different,
+and Finn can resume after fatigue, a browser interruption, or an intentional
 exit without replaying completed capstone work.
 
 On success, Finn verifies and executes the revocation through the recovery tool

@@ -145,20 +145,21 @@ gave it:
 
 1. the repair edge freezes;
 2. a background write process appears;
-3. colors drain, then the whole browser flashes red;
-4. repaired page regions rapidly corrupt from right to left;
-5. the old stability meter crashes from 80% to 0%;
-6. the page returns in a visibly different **UNSTABLE / LIVE CORRUPTION** mode.
+3. the completed reading saves as `READINGS SAVED · EVIDENCE SAVED`;
+4. a muted red hatched layer moves from the site's right edge toward the center;
+5. the left 35 percent and the saved 80 percent repair snapshot remain visible;
+6. the page enters a distinct containment objective without resetting progress.
 
-The sequence is dramatic but brief. It does not flash faster than accessibility
-guidance permits, honors reduced motion, and provides a skip. Red is never the
-only signal.
+The sequence is dramatic but restrained. It never flashes the full browser,
+never touches the Reading Companion or desktop controls, honors reduced motion,
+and provides a skip. Hatch, labels, and layout carry the change without relying
+on red alone.
 
 The apparent reset changes the objective rather than erasing progress. Finn
 keeps his completed readings, accuracy history, recovered evidence, and unlocked
-site regions. The new zero measures **shield stabilization**, not the original
-repair. Labeling the new meter differently is essential so the game does not lie
-about what was lost.
+site regions. A new three-segment Shield measures containment layered on top of
+the saved repair. Do not show an 80-to-zero crash; that falsely implies Finn's
+work was lost.
 
 ## Act III — the three-step containment finale
 
@@ -170,21 +171,21 @@ After the rogue AI rewrite, Amy reveals an exact finish line:
 The finale is deliberately short, explicit, and fast-moving. It always contains
 exactly three new passages:
 
-1. **Shield Pass 1 — Recover:** restore the main content layer. Stabilization
-   jumps from 0% to about 33%.
-2. **Shield Pass 2 — Verify:** complete a passage plus one independent
-   comprehension/evidence check. Stabilization jumps to about 66%.
-3. **Shield Pass 3 — Seal:** complete the final passage while the AI service's
-   write process visibly pushes against the repair boundary. Stabilization
-   reaches 100% and the shield locks.
+1. **Shield Pass 1 — Content:** restore the saved article copy and fill the
+   segment labeled `CONTENT`.
+2. **Shield Pass 2 — Links:** reconnect evidence to claims, complete one
+   independent passage-grounded check, and fill `LINKS`.
+3. **Shield Pass 3 — Access:** deny the active service route, clear the final
+   hatch, and fill `ACCESS`.
 
 The comprehension check must refer to the Reading Companion passage, not tiny
 decorative WikiWhy copy. A wrong answer offers another attempt or a clue; it
 does not erase reading progress or add a surprise fourth passage.
 
 Each final pass should feel more powerful than an Act I repair: larger clean
-regions, louder but optional feedback, more animated system resistance, and a
-clear `1 OF 3`, `2 OF 3`, `3 OF 3` label.
+regions, optional feedback, visible system resistance, and a clear `1 OF 3`,
+`2 OF 3`, `3 OF 3` label. Segment names, not percentages, communicate the
+three saved containment checkpoints.
 
 ## Permanent completion
 
@@ -212,16 +213,17 @@ AI service when Chinmay's faster fix could not.
 2. **Act I reading:** ordinary progress wipe and a clearly separate compact
    Reading Companion.
 3. **Seventy-percent clue:** Amy warning, suspicious timestamp, alert Techno.
-4. **Rogue AI rewrite:** accessible red system takeover and right-to-left
-   corruption.
-5. **Shield Protocol:** explicit three-pass finale with large 33% jumps and an
-   independent comprehension check on pass two.
+4. **Rogue AI rewrite:** restrained right-to-center hatched rewrite over the
+   saved 80 percent snapshot.
+5. **Shield Protocol:** explicit `CONTENT`, `LINKS`, and `ACCESS` passes, with
+   an independent comprehension check on pass two.
 6. **Secured completion:** Amy stabilizes the site; the AI service's write is
    denied.
 
-These are game-flow concepts, not implementation specifications. Timing,
-thresholds, passage counts, and adaptation rules remain provisional until the
-basic reading loop is playtested.
+This page explains the story rationale. Exact WikiWhy runtime state, motion,
+copy, evidence, and persistence are frozen in
+[`WIKIWHY_CAMPAIGN_STATE_PACK.md`](WIKIWHY_CAMPAIGN_STATE_PACK.md), which takes
+precedence if narrative wording here ever drifts.
 
 The prototype-facing summary is maintained in
 [`PROTOTYPE_DESIGN_HANDOFF.md`](PROTOTYPE_DESIGN_HANDOFF.md). WikiWhy is the

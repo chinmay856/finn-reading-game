@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title desc">
+  <title id="title">VibeShift AI Auto-Fix access revoked</title>
+  <desc id="desc">A green final status badge showing the fictional AI repair service has no outside write access.</desc>
+  <rect x="4" y="4" width="512" height="112" rx="12" fill="#E4F2EA" stroke="#1D3557" stroke-width="8"/>
+  <path d="M32 58h66" stroke="#B3261E" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="65" cy="58" r="31" fill="none" stroke="#B3261E" stroke-width="8"/>
+  <path d="M43 36l44 44" stroke="#B3261E" stroke-width="8" stroke-linecap="round"/>
+  <text x="122" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#287A55">VIBESHIFT AI AUTO-FIX</text>
+  <text x="122" y="78" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#17212B">OUTSIDE ACCESS REVOKED</text>
+  <text x="122" y="101" font-family="Consolas, monospace" font-size="13" fill="#5F6B76">ai_repair_service · write scope: none</text>
+</svg>

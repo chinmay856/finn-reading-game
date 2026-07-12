@@ -6,6 +6,7 @@ Engine, Content Platform, or Game Rules.
 
 - `amy-supportive.jpg` is panel 4, `amy_supportive`.
 - `amy-evidence.jpg` is panel 5, `amy_evidence`.
+- `amy-tools.jpg` is panel 6, `amy_tools`.
 - `chinmay-fluster-1.jpg` is panel 3, `chinmay_fluster_1`.
 - `chinmay-fluster-2.jpg` is panel 4, `chinmay_fluster_2`.
 

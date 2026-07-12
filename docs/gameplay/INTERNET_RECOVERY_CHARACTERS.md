@@ -149,8 +149,9 @@ The current production set includes:
 
 Private references must stay outside the public repository and guide likeness
 only; never paste them into boards or ship photo-real character panels. Earlier
-WIP exploration boards remain under `apps/internet-recovery/art/concepts/` for
-history only.
+exploration boards remain under `apps/internet-recovery/art/concepts/` for
+history only. For runtime asset selection and crop guidance, use
+[`RUNTIME_ASSET_USE_BRIEF.md`](RUNTIME_ASSET_USE_BRIEF.md).
 
 ### Reusable Chinmay portrait states
 
@@ -177,12 +178,18 @@ disorder, and collar/tie polish may change.
 
 The browser is the main bridge between reading and Internet repair. Finn visits
 recognizable but original parody sites whose layouts evoke different web eras;
-the broken page itself contains the passage, evidence, and visible repair
-consequence. Do not reproduce real logos, names, trade dress, or copied page
-content. Parody should target familiar interface habits and internet history,
-not rely on confusion with the real service.
+the broken page shows the visible repair consequence while the separate Reading
+Companion supplies the scored passage. Do not reproduce real logos, names, trade
+dress, or copied page content. Parody should target familiar interface habits
+and internet history, not rely on confusion with the real service.
 
-Initial wrapper-owned site roster:
+Current wrapper-owned site roster and builder briefs live in
+[`TEN_SITE_DESIGN_LIBRARY.md`](TEN_SITE_DESIGN_LIBRARY.md) and
+[`site-build-briefs`](site-build-briefs/README.md). WikiWhy is the first
+playable slice; the other nine sites may appear as previews until their own
+content pools and mechanics are connected.
+
+Earlier partial roster, retained as historical background only:
 
 | Parody site | Familiar archetype | Broken joke and reading purpose |
 | --- | --- | --- |
@@ -217,10 +224,10 @@ under-construction graphics—can instead strengthen MyCorner or appear later as
 individual recovered pages.
 
 The dominant progress feedback is the page repairing itself, not a conventional
-bar. The reading passage lives in a compact, continuously scrolling side panel
-or dock inside the browser. It keeps the current line comfortably centered with
-enough surrounding prose to maintain place. The larger site canvas begins
-visibly broken and resolves as theme-neutral reading progress crosses milestones.
+bar. The reading passage lives in the separate Reading Companion window. It
+keeps the current line comfortably centered with enough surrounding prose to
+maintain place. The larger site canvas begins visibly broken and resolves as
+theme-neutral reading progress crosses wrapper-owned milestones.
 
 Only selected content regions need to be corrupt. For example, WikiWhy's
 “Overconfident Facts” can begin as `XXXX XXXX`, scrambled characters, missing
@@ -235,15 +242,16 @@ three-part wrapper story:
 
 1. **Corrupted rule:** the site confidently teaches a funny but genuinely bad
    internet habit.
-2. **Evidence passage:** Finn reads material that supplies context, identifies
-   the failure, and gives him something concrete to notice.
+2. **Middle change:** the site's progress fiction reveals that Chinmay's AI
+   optimized the wrong proxy or continued writing beyond the intended command.
 3. **Repaired principle:** the page rewrites itself into a concise, useful idea
    and visibly demonstrates the change.
 
 The lesson should emerge from the joke and the repair rather than a quiz or an
-adult lecture. Amy may point to evidence, but Finn's reading is what reveals it.
-The AI's proxy goal often produces the corrupted rule, tying media literacy to
-the larger story without making Chinmay a deliberate saboteur.
+adult lecture. Amy may point to evidence already visible in logs or site state,
+but decorative site copy is not the scored reading passage. The AI's proxy goal
+often produces the corrupted rule, tying media literacy to the larger story
+without making Chinmay a deliberate saboteur.
 
 | Site | Corrupted rule and visible failure | Wrapper story clue shown on the site | Repaired principle and payoff |
 | --- | --- | --- | --- |
@@ -303,7 +311,9 @@ Other sites must implement the distinct progress fiction and middle change in
 their approved design. ThreadIt restores source branches, FacePlace replaces a
 lying tracker, MapGuess rebuilds a route, and so on. They may reuse neutral
 progress events and shared window primitives, but they do not inherit
-WikiWhy's wipe, percentages, thresholds, or finale.
+WikiWhy's wipe, percentages, thresholds, or finale. Exact contracts are indexed
+in [`SITE_PRODUCTION_SYSTEM.md`](SITE_PRODUCTION_SYSTEM.md) and
+[`site-build-briefs/README.md`](site-build-briefs/README.md).
 
 The Reading Companion remains a compact continuous-scroll box with previous
 context, a stable highlighted current line, and upcoming context. The website

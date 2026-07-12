@@ -1,15 +1,32 @@
-# Done site campaign boards
+# Site campaign storyboard references
 
 These nine non-WikiWhy site boards accompany
 [`TEN_SITE_DESIGN_LIBRARY.md`](../../../../../docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md).
-Together with the reviewed WikiWhy board, they are the current builder-ready
-ten-site design set for Internet Recovery 98.
+Together with the reviewed WikiWhy board, they preserve the visual/story
+exploration that led to the production design set.
 
-Done means: approved as a design reference for prototype/build work. It does not
-mean final runtime UI, cropped art exports, production copy, or final passage
-selection.
+These generated boards are composition references, not runtime backgrounds or
+the source of final logos, browser chrome, microcopy, passage text, or state
+logic. Some include embedded `WIP`, `REVIEW ONLY`, `CONCEPT BOARD`, or legacy
+browser/product-like details from exploration. Treat those labels/details as
+historical and never surface them in runtime UI.
 
-## Builder-ready site boards
+Production builder inputs are:
+
+- [`TEN_SITE_PRODUCTION_INDEX.md`](../../../../../docs/design/TEN_SITE_PRODUCTION_INDEX.md)
+  and its clean
+  [`ten-site-production-overview.svg`](../../site-assets/ten-site-production-overview.svg)
+  for the authoritative all-site completion view;
+- [`site-build-briefs/README.md`](../../../../../docs/gameplay/site-build-briefs/README.md)
+  for exact site state contracts;
+- [`SITE_RUNTIME_COPY_PACKS.md`](../../../../../docs/gameplay/SITE_RUNTIME_COPY_PACKS.md)
+  for canonical copy IDs and text;
+- [`SITE_PRODUCTION_SYSTEM.md`](../../../../../docs/gameplay/SITE_PRODUCTION_SYSTEM.md)
+  for shared responsive, persistence, motion, and accessibility behavior;
+- [`site-assets/marks/README.md`](../../site-assets/marks/README.md) for original
+  production site marks.
+
+## Storyboard files
 
 - `threadit-rogue-ai-campaign.png` - source-lineage and automated
   consensus-cascade concept.
@@ -30,11 +47,15 @@ selection.
 - `mapguess-rogue-ai-campaign.png` - moving-destination and goal-based
   route-choice concept with unified illustrated characters.
 
-WikiWhy remains the tenth site and lives at
+WikiWhy completes this ten-site storyboard set and is canonical site 1. Its
+reference lives at
 [`../wikiwhy-three-act-rogue-ai.png`](../wikiwhy-three-act-rogue-ai.png).
 
 ## Superseded art treatments
 
+- Plain `*-campaign.png` files in this directory are earlier concept passes.
+  They remain useful as visual history; when comparing storyboard direction,
+  use the matching `*-rogue-ai-campaign.png` reference instead.
 - `mycorner-rogue-ai-campaign-superseded.png` mixed near-photo profile images
   with flat cartoon characters.
 - `search-ish-rogue-ai-campaign-superseded.png`,
@@ -60,7 +81,6 @@ illustrated editorial-cartoon treatment. Techno remains ball-obsessed, and
 long-haired Chinmay becomes progressively messier, frazzled, and flustered
 without angry or villain coding.
 
-The builder should use these boards for site identity, layout direction, story
-beats, progress fiction, and midpoint/resolution tone. Final implementation
-still needs responsive layout, accessibility, exact copy, passage selection,
-and runtime asset cropping.
+Use these boards for broad composition, story beats, progress fiction, and
+midpoint/resolution tone. Use the production documents and asset manifests for
+identity, exact copy, layout behavior, accessibility, and runtime assets.

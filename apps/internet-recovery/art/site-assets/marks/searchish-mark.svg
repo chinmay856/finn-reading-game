@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Search-ish source magnifier</title>
+  <desc id="desc">A magnifying lens contains three independent source branches and a cursor handle.</desc>
+  <circle cx="50" cy="50" r="33" fill="#F4F6F8" stroke="#4E57A6" stroke-width="8"/>
+  <path d="M74 74 111 111" stroke="#17212B" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="39" cy="46" r="7" fill="#2B8580"/>
+  <circle cx="61" cy="35" r="7" fill="#D39A2E"/>
+  <circle cx="64" cy="61" r="7" fill="#B85148"/>
+  <path d="M46 46h8M58 40l-6 6 8 10" fill="none" stroke="#17212B" stroke-width="4" stroke-linecap="round"/>
+  <path d="m101 80 12 29-13-5-8 12Z" fill="#FFFFFF" stroke="#17212B" stroke-width="4" stroke-linejoin="round"/>
+</svg>
