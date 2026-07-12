@@ -1,5 +1,18 @@
 # Session handoff
 
+## Runtime fixture design response
+
+- Branch: `agent/runtime-fixture-design-response`.
+- The current builder P0 requests for ThreadIt, WikiWhy, and FacePlace are
+  answered in
+  [`design/RUNTIME_FIXTURE_RESPONSE_2026-07-12.md`](design/RUNTIME_FIXTURE_RESPONSE_2026-07-12.md).
+- The response freezes original fictional wrapper records, stable IDs,
+  accessible summaries, process/evidence routes, content-manifest intent, and
+  responsive behavior. It does not promote candidate reading prose.
+- Remaining design-data work is the canonical fixture backlog for MyCorner,
+  Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi, MapGuess, and the
+  final evidence record.
+
 ## FacePlace Honest Zero foundation
 
 - ThreadIt's complete structural campaign is authoritative on deployed `main`

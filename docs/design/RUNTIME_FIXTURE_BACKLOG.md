@@ -1,5 +1,14 @@
 # Runtime fixture and endgame data backlog
 
+## Latest P0 response
+
+The canonical ThreadIt forum fixture, WikiWhy passage-11 and secured-replay
+policies, and complete FacePlace fixture/evidence/content/hub packet are frozen
+in
+[`RUNTIME_FIXTURE_RESPONSE_2026-07-12.md`](RUNTIME_FIXTURE_RESPONSE_2026-07-12.md).
+Those three packets are no longer awaiting design. Passage promotion remains a
+separate content-review gate.
+
 This is the builder-to-designer backlog for exact runtime data that is still
 missing after the production package through design tip `1f843bc`. The campaign
 state sequences, site tokens, broad layouts, copy packs, original marks, and

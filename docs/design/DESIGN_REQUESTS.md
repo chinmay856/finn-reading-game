@@ -6,6 +6,12 @@ focused follow-up on `agent/campaign-spine-content`.
 
 ## Current synchronization point
 
+> **Design response published:** The ThreadIt fixture, WikiWhy passage/replay
+> policy, and complete FacePlace P0 packet are answered in
+> [`RUNTIME_FIXTURE_RESPONSE_2026-07-12.md`](RUNTIME_FIXTURE_RESPONSE_2026-07-12.md).
+> Reading records named there remain review-gated and are not promoted by the
+> design decision.
+
 - Implementation branch: `agent/faceplace-honest-zero-foundation`
 - Last integrated design tip: `1f843bc` (`Add ten-site production overview board`)
 - Deployed `main`: `f1b1bab` through PR #33; ThreadIt CI, Pages, and public
