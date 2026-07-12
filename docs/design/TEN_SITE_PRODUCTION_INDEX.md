@@ -27,16 +27,16 @@ Clean visual review board:
 
 | # | Site | Exact local flow | Production identity | Passage status | Builder status |
 | --- | --- | --- | --- | --- | --- |
-| 1 | WikiWhy | dynamic Act I repair to 80 percent; saved rogue rewrite; exactly 3 Shield passes | globe/question mark, encyclopedia page, evidence-route asset, secured seal | Deck A/B authored; first Content Platform record connected | playable baseline; campaign states pending implementation |
-| 2 | ThreadIt | 4 untangle units; Consensus Cascade; 3 trace/containment units | interlocked conversation mark, semantic source tree, bot/process/badge SVGs | sampler/deck plan review-only | approved second playable site |
-| 3 | FacePlace | exactly 3 nonsense-tracker repairs; Honest Zero; exactly 3 honest recovery units | overlapping profile-frame mark, cobalt/aqua feed | sampler/deck plan review-only | production design complete |
+| 1 | WikiWhy | dynamic Act I repair to 80 percent; saved rogue rewrite; exactly 3 Shield passes | globe/question mark, encyclopedia page, evidence-route asset, secured seal | Deck A/B authored; first Content Platform record connected | shipped speech-playable campaign baseline |
+| 2 | ThreadIt | 4 untangle units; Consensus Cascade; 3 trace/containment units | interlocked conversation mark, semantic source tree, bot/process/badge SVGs | one structured candidate; zero selectable | shipped provisional structural test; public HTTPS verified |
+| 3 | FacePlace | exactly 3 nonsense-tracker repairs; Honest Zero; exactly 3 honest recovery units | overlapping profile-frame mark, cobalt/aqua feed | one structured candidate; zero selectable | shipped provisional structural test through PRs #34/#35; public HTTPS verified |
 | 4 | MyCorner | 4 profile-module units; Apply to Everyone; 3 owner-lock units | nested-corner mark, scrapbook modules | sampler/deck plan review-only | production design complete |
 | 5 | Yahuh! Portal | 3 module-pair sorts; Single Source; 3 channel-pair reconnections | crooked comet/exclamation mark, purple/gold switchboard | sampler/deck plan review-only | production design complete |
 | 6 | ViewTube | 4 recording-context units; Autoplay Corroboration; 3 evidence tracks | CRT/play-bolt mark, silent player/timeline | sampler/deck plan review-only | production design complete |
 | 7 | Search-ish | 4 result-origin units; Five Costumes; 3 independent branch gates | magnifier/cursor mark, indigo/teal source branches | sampler/deck plan review-only | production design complete |
 | 8 | Amaze-On | 4 evidence-parcel sorts; Negative Purchasing; 3 receipt/consent units | choice-parcel mark, warm warehouse/receipt UI | sampler/deck plan review-only | production design complete |
 | 9 | Spotty-Fi | 5 mixtape units; More Like the Last Thing; 3 ownership units | cassette/dial mark, silent charcoal/magenta player | sampler/deck plan review-only | production design complete |
-| 10 | MapGuess | 5 map-layer units; Moving Target; 3 destination-lock units plus explicit route goal | folded-map/question-pin mark, cream map/route UI | sampler/deck plan review-only | production design complete |
+| 10 | MapGuess | 5 map-layer units; Moving Target; 3 destination-lock units plus explicit route goal | folded-map/question-pin mark, cream map/route UI | 10 planned; 1 structured candidate; 0 selectable; 8 required | local provisional structural test implemented; publication/deployment pending |
 
 ## Authoritative per-site files
 
@@ -77,11 +77,15 @@ SVG marks.
 
 ## Builder consumption order
 
-1. Keep the implemented Recovery Desktop and WikiWhy reader baseline.
-2. Add WikiWhy's campaign-only state pack.
-3. Build ThreadIt as the second portability proof.
-4. Build MapGuess, FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish,
-   Amaze-On, and Spotty-Fi one vertical slice at a time.
+1. Keep the implemented Recovery Desktop and shipped WikiWhy reader/campaign
+   baseline.
+2. Preserve ThreadIt and FacePlace as deployed portability proofs while their
+   provisional fixtures await canonical replacements.
+3. Publish and verify the implemented local MapGuess vertical slice without
+   promoting its provisional fixture or slot-10 test receipt.
+4. Build MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On, and Spotty-Fi
+   one vertical slice at a time.
 5. Keep unimplemented sites in truthful preview mode without borrowing another
    site's passage or rules.
-6. After ten sites, build the separate final breach from its dedicated pack.
+6. After ten real canonical sites, build the separate final breach from its
+   dedicated pack.

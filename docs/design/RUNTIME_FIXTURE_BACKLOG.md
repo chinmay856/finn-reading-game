@@ -13,6 +13,11 @@ or product chrome.
 
 ## Immediate implementation packets
 
+MapGuess is the active implementation response priority. Its complete P0 schema
+is in [`MAPGUESS_RUNTIME_REQUEST.md`](MAPGUESS_RUNTIME_REQUEST.md), with the
+fixture-specific backlog summarized in the MapGuess section below. FacePlace
+and ThreadIt are deployed but still need their canonical replacement fixtures.
+
 ### ThreadIt forum fixture
 
 Provide the original question and four to six replies with stable IDs, authors,
@@ -186,18 +191,36 @@ rights-cleared pack and an exact rule that mutes it during microphone capture.
 
 ### MapGuess
 
+The active branch now includes a complete local structural test with five
+map-rebuild units, explicit Moving Target acknowledgement, three
+destination-anchor units, all four valid goal choices, an exact blocked target,
+and a slot-10 receipt. It has not yet been committed, pushed, merged, deployed,
+or verified on public HTTPS. The current ten-by-ten grid, places, coordinates,
+routes, process-local IDs, and visible `PROVISIONAL_MAPGUESS_10.LOG` receipt are
+deliberately provisional/test-only. They are excluded from canonical evidence
+counts and cannot unlock the final incident.
+
 Freeze one entirely fictional incident: destination, original and moved
 coordinates, three landmarks and their coordinates, scale, map date, source
 identity, sponsored-stop text, and midpoint before/after proof. Include the
-Act-I tile/feature IDs, restored place names, terrain/water records, road and
-route-segment records, and accessible geometry summaries. Supply four
-goal-specific route variants (`fastest`, `safest`, `scenic`, `accessible`),
-tradeoff text, directions, and honest ETA treatment.
+Act-I tile/feature IDs, restored place names, terrain/water records, fixed road
+geometry, route-segment records, and accessible geometry summaries. Assign
+objective changes or proofs one-to-one to `tiles_names`, `scale_date`,
+`terrain`, `route_segments`, `destination_inspector`, `landmark_1`,
+`landmarks_2_3`, and `goal_route_lock`.
 
-Confirm that the goal is selected after midpoint and before the third anchor
-reading, may change until that reading begins, and appears in the final receipt.
-Confirm that responsive DOM/inline SVG is the intended map source; no external
-tile service or real user location will be used.
+Supply four goal-specific route variants (`fastest`, `safest`, `scenic`,
+`accessible`), each preserving the same destination and providing tradeoff
+text, directions, route-segment IDs, and honest ETA treatment. Confirm that the
+goal becomes selectable after midpoint acknowledgement, may change until the
+final reading begins, locks on secure, and appears in the final receipt.
+
+Also freeze the `ROUTE AUTO-FIX AI -> ai_repair_service` process mapping,
+canonical slot-10 evidence row, writer fingerprint, blocked actor/target, and
+selected-goal evidence field. Confirm that responsive DOM/inline SVG is the
+intended map source; no external tile service or real user location will be
+used. The complete response schema and acceptance criteria are in
+[`MAPGUESS_RUNTIME_REQUEST.md`](MAPGUESS_RUNTIME_REQUEST.md).
 
 ## First-run content manifest decisions
 
@@ -216,13 +239,13 @@ real-microphone review. Candidate records are never silently scored or repeated.
 | Search-ish | 7 | 0 | 5 | Author `The Domain Clue` and `When Results Disagree` as A06/A07. |
 | Amaze-On | 7 | 0 | 5 | Author `The Free Sample Problem` and `The Seller Behind the Listing` as A06/A07. |
 | Spotty-Fi | 8 | 0 | 5 | Author three A additions or explicit reviewed B overflows. |
-| MapGuess | 8 | 0 | 5 | Author three A additions or explicit reviewed B overflows. |
+| MapGuess | 8 | 1 candidate | 5 | Freeze `A Map Is Not a Photograph` ID/Deck position; author three A06-A08 additions or name three explicit reviewed B overflows. |
 
-ThreadIt A01 and FacePlace `A Second Reading` are structured candidate records;
-the later-site A01 texts are Markdown samplers and all other titles are planning
-rows. Deck labels do not author or promote content. Each new or moved title must
-become a structured record and pass the full content and microphone gate
-independently.
+ThreadIt A01, FacePlace `A Second Reading`, and MapGuess `A Map Is Not a
+Photograph` are structured candidate records. The other later-site A01 texts are
+Markdown samplers and all remaining titles are planning rows. Deck labels do not
+author or promote content. Each new or moved title must become a structured
+record and pass the full content and microphone gate independently.
 
 ## `EVIDENCE_11.LIVE` data and implementation gaps
 
