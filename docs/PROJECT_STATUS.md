@@ -1,5 +1,9 @@
 # Project status
 
+## Visual fidelity — active 2026-07-12
+
+The Recovery Map has a size-conscious graphics upgrade and persistent animated Techno companion using existing optimized assets. Bundle architecture remains split; no flattened design board or large sprite sheet was added to runtime.
+
 ## Deployment health — 2026-07-12
 
 The browser build is code-split on the canonical platform/wrapper boundary and no longer exceeds Vite's 500 kB chunk warning. CI checkout and setup-node actions now use their official Node 24 runtime releases.

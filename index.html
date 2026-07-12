@@ -39,6 +39,11 @@
         <button class="desktop-shortcut" type="button" data-action="recycle"><span class="shortcut-art bin" aria-hidden="true"></span><b>Recycle<br>Byte</b></button>
       </nav>
 
+      <aside id="technoPet" class="techno-desktop-pet" data-screen="hub" aria-label="Techno, Finn's animated recovery companion">
+        <picture><source media="(prefers-reduced-motion: reduce)" srcset="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-still.webp"><img src="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-loop.webp" alt="Techno plays with her orange-and-blue ball"></picture>
+        <span id="technoPetStatus">SNIFFING FOR SUSPICIOUS FILES</span>
+      </aside>
+
       <section id="hub" class="screen on desktop-surface hub-surface" tabindex="-1">
         <article class="os-window recovery-map-window">
           <div class="window-titlebar"><span>RECOVERY BROWSER — MAP OF WHAT REMAINS</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
@@ -46,7 +51,7 @@
           <div class="recovery-map-body">
             <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 CANONICAL</span></div></header>
             <div id="siteGrid" class="site-grid" aria-label="Recovery sites"></div>
-            <section class="incoming-cases"><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div><div id="incomingCases" class="incoming-case-list"></div></section>
+            <section class="incoming-cases"><div class="incoming-case-heading"><img src="/apps/internet-recovery/art/characters/techno/techno-suspicious-file.webp" alt="Techno studies a suspicious recovered file"><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div></div><div id="incomingCases" class="incoming-case-list"></div></section>
           </div>
         </article>
         <div class="hub-side-windows">

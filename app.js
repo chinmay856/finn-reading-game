@@ -453,6 +453,14 @@ function show(name) {
   const screenChanged = state.activeScreen !== name;
   for (const id of ["hub", "endgame", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
+  $("technoPet").dataset.screen = name;
+  $("technoPetStatus").textContent = name === "hub"
+    ? "SNIFFING FOR SUSPICIOUS FILES"
+    : name === "endgame"
+      ? "GUARDING EVIDENCE 11"
+      : ["read", "review", "setup"].includes(name)
+        ? "READING SUPPORT DOG ON DUTY"
+        : "INSPECTING THIS SITE";
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
   const threadItScreen = name === "threadit";
@@ -863,7 +871,7 @@ function renderRecoveryHub() {
     return `
     <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" data-runtime="${Boolean(site.runtimeAvailable)}" data-secured="${siteSecured}" aria-label="${site.name}, ${siteStatus.toLowerCase()}" style="--site-accent:${site.accent}">
       <img src="${site.previewImage}" alt="">
-      <span aria-hidden="true">${siteSecured ? `<img src="${securedIcon}" alt="">` : site.mark}</span>
+      <span aria-hidden="true"><img src="${siteSecured ? securedIcon : site.markImage}" alt=""></span>
       <div><b>${site.name}</b><small>${siteSecured ? `✓ ${siteStatus}` : siteStatus}</small></div>
     </button>
   `;
@@ -883,7 +891,7 @@ function renderRecoveryHub() {
           : site.id === "mapguess"
             ? mapGuessStatus
           : "DESIGN PREVIEW";
-    return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${status}</small></div></button>`;
+    return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span><img src="${site.markImage}" alt=""></span><div><b>${site.name}</b><small>${status}</small></div></button>`;
   }).join("");
   $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
     if (site.id === "wikiwhy" && wikiWhySecured) {
