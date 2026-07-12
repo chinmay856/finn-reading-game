@@ -8,6 +8,20 @@
 - It freezes the query/results, origin branches, evidence route, responsive
   inspector, passage-ID plan, and hub continuation without promoting content.
 
+## Yahuh channel-reconnect foundation
+
+- Deployed `main` is authoritative at `76e6f05` through MyCorner PR #45 and
+  live-copy fix PR #47. Both CI and Pages passed; the public corrupted and
+  secured MyCorner routes were verified without console errors.
+- Active implementation is `agent/yahuh-channel-reconnect-foundation`.
+- Designer PR #39 is reconciled into the exact six-module fixture, 6A plus 4B
+  plan, process lineage, responsive drawer, Techno payoff, blocked retry, and
+  canonical slot-five evidence contract.
+- Yahuh remains content-gated: one structured candidate, zero selectable
+  passages, six reviewed readings required, `MIC: OFF`, and no score.
+- Focused Yahuh, DOM, and hub validation passes 58 tests. Remaining work is
+  full-suite validation, scope review, PR/CI/merge, Pages deploy, and HTTPS QA.
+
 ## MyCorner owner-controls foundation
 
 - Deployed `main` is authoritative at `65368e8` through MapGuess PR #36. The

@@ -3,6 +3,7 @@ import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-ma
 import { A_SECOND_READING_PASSAGE } from "./faceplace/a-second-reading.js";
 import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "./mapguess/a-map-is-not-a-photograph.js";
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "./mycorner/a-cabin-with-a-purpose.js";
+import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "./yahuh/the-newspaper-that-found-people-on-the-moon.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
 const APPROVED_REVIEW_FIELDS = Object.freeze([
@@ -29,6 +30,7 @@ export const PASSAGE_CATALOG = Object.freeze([
   A_SECOND_READING_PASSAGE,
   A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
   A_CABIN_WITH_A_PURPOSE_PASSAGE,
+  THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE,
 ]);
 
 export function getPassageById(id, catalog = PASSAGE_CATALOG) {

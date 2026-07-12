@@ -106,6 +106,21 @@ import {
 } from "./apps/internet-recovery/mycorner-state.js";
 import { getMyCornerCampaignView } from "./apps/internet-recovery/mycorner-view.js";
 import { selectNextMyCornerPassage } from "./apps/internet-recovery/mycorner-content.js";
+import {
+  YAHUH_RECONNECT_UNITS,
+  YAHUH_SORT_UNITS,
+  calculateYahuhReadingOutcome,
+} from "./apps/internet-recovery/yahuh-rules.js";
+import {
+  YAHUH_PROVISIONAL_BLOCKED_WRITE_RECORD,
+  YAHUH_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeYahuhMidpoint,
+  acknowledgeYahuhMidpointState,
+  advanceYahuhState,
+  readYahuhState,
+} from "./apps/internet-recovery/yahuh-state.js";
+import { getYahuhCampaignView } from "./apps/internet-recovery/yahuh-view.js";
+import { selectNextYahuhPassage } from "./apps/internet-recovery/yahuh-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -186,6 +201,12 @@ const state = {
   mycornerEvidenceReceiptOpen: false,
   mycornerInspectorOpen: false,
   mycornerComparisonView: "template",
+  yahuhState: readYahuhState(localStateStorage),
+  yahuhPersisted: Boolean(localStateStorage),
+  yahuhDiagnosticMode: false,
+  yahuhDiagnosticState: readYahuhState(null),
+  yahuhEvidenceReceiptOpen: false,
+  yahuhSwitchboardOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -339,15 +360,16 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
   const threadItScreen = name === "threadit";
   const facePlaceScreen = name === "faceplace";
   const myCornerScreen = name === "mycorner";
+  const yahuhScreen = name === "yahuh";
   const mapGuessScreen = name === "mapguess";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || mapGuessScreen;
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -358,12 +380,14 @@ function show(name) {
           ? "FACEPLACE FEED RECOVERY"
           : myCornerScreen
             ? "MYCORNER PROFILE RECOVERY"
+          : yahuhScreen
+            ? "YAHUH CATEGORY RECOVERY"
           : mapGuessScreen
             ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || mapGuessScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
@@ -374,7 +398,9 @@ function show(name) {
   const securedMapGuessTask = mapGuessScreen && visibleMapGuessState.secured;
   const visibleMyCornerState = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
   const securedMyCornerTask = myCornerScreen && visibleMyCornerState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedMapGuessTask;
+  const visibleYahuhState = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
+  const securedYahuhTask = yahuhScreen && visibleYahuhState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedMapGuessTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -384,6 +410,8 @@ function show(name) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("faceplace").markImage}" alt=""> <span>FacePlace · SECURED TEST</span>`;
   } else if (securedMyCornerTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mycorner").markImage}" alt=""> <span>MyCorner · SECURED TEST</span>`;
+  } else if (securedYahuhTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("yahuh").markImage}" alt=""> <span>Yahuh! Portal · SECURED TEST</span>`;
   } else if (securedMapGuessTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mapguess").markImage}" alt=""> <span>MapGuess · SECURED TEST</span>`;
   } else {
@@ -397,6 +425,8 @@ function show(name) {
         ? "FacePlace secured test"
         : securedMyCornerTask
           ? "MyCorner secured test"
+        : securedYahuhTask
+          ? "Yahuh Portal secured test"
         : securedMapGuessTask
           ? "MapGuess secured test"
       : $("taskSite").textContent);
@@ -414,6 +444,8 @@ function renderRecoveryHub() {
   const diagnosticFacePlace = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : null;
   const realMyCorner = state.mycornerState;
   const diagnosticMyCorner = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : null;
+  const realYahuh = state.yahuhState;
+  const diagnosticYahuh = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : null;
   const realMapGuess = state.mapguessState;
   const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
@@ -464,6 +496,15 @@ function renderRecoveryHub() {
         siteId: "mycorner",
         state: realMyCorner,
       },
+      {
+        canonicalEvidenceId: YAHUH_PROVISIONAL_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: YAHUH_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticYahuh,
+        evidenceRecord: YAHUH_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.yahuhPersisted,
+        siteId: "yahuh",
+        state: realYahuh,
+      },
     ],
   });
   const wikiWhyEvidence = evidenceSummary.bySiteId.wikiwhy;
@@ -471,6 +512,7 @@ function renderRecoveryHub() {
   const facePlaceEvidence = evidenceSummary.bySiteId.faceplace;
   const mapGuessEvidence = evidenceSummary.bySiteId.mapguess;
   const myCornerEvidence = evidenceSummary.bySiteId.mycorner;
+  const yahuhEvidence = evidenceSummary.bySiteId.yahuh;
   const diagnosticSecured = wikiWhyEvidence.testSecured;
   const realSecured = wikiWhyEvidence.realSecured;
   const wikiWhySecured = wikiWhyEvidence.displaySecured;
@@ -584,12 +626,32 @@ function renderRecoveryHub() {
           : myCornerView.progress.restoreCompletedCount
             ? `MODULES ${myCornerView.progress.restoreCompletedCount}/4${myCornerTestSuffix}`
             : "CAMPAIGN TEST BUILD";
+  const visibleYahuh = diagnosticYahuh ?? realYahuh;
+  const yahuhView = getYahuhCampaignView(visibleYahuh);
+  const yahuhSecured = yahuhEvidence.displaySecured;
+  const yahuhTestSuffix = state.yahuhDiagnosticMode ? " · TEST" : "";
+  const yahuhStatus = yahuhEvidence.testSecured
+    ? "CATEGORY SWITCHBOARD RESTORED · TEST"
+    : yahuhEvidence.realSecured
+      ? yahuhEvidence.persistedNonCanonical
+        ? "CATEGORY SWITCHBOARD RESTORED · PROVISIONAL"
+        : state.yahuhPersisted
+          ? "CATEGORY SWITCHBOARD RESTORED"
+          : "CATEGORY SWITCHBOARD RESTORED · TAB ONLY"
+      : yahuhView.midpoint.actionRequired
+        ? `SINGLE SOURCE READY${yahuhTestSuffix}`
+        : yahuhView.midpoint.acknowledged
+          ? `CHANNELS ${yahuhView.progress.reconnectCompletedCount}/3${yahuhTestSuffix}`
+          : yahuhView.progress.sortCompletedCount
+            ? `SORT CIRCUITS ${yahuhView.progress.sortCompletedCount}/3${yahuhTestSuffix}`
+            : "CAMPAIGN TEST BUILD";
   // Never offer a completed case again. Until design freezes a replacement
   // rotation, an honest shorter list is safer than inventing a third case.
   const securedIncomingSiteIds = new Set([
     facePlaceSecured ? "faceplace" : null,
     mapGuessSecured ? "mapguess" : null,
     myCornerSecured ? "mycorner" : null,
+    yahuhSecured ? "yahuh" : null,
     threadItSecured ? "threadit" : null,
     wikiWhySecured ? "wikiwhy" : null,
   ].filter(Boolean));
@@ -605,6 +667,7 @@ function renderRecoveryHub() {
       || (site.id === "threadit" && threadItSecured)
       || (site.id === "faceplace" && facePlaceSecured)
       || (site.id === "mycorner" && myCornerSecured)
+      || (site.id === "yahuh" && yahuhSecured)
       || (site.id === "mapguess" && mapGuessSecured);
     const siteStatus = site.id === "wikiwhy"
       ? wikiWhyStatus
@@ -614,6 +677,8 @@ function renderRecoveryHub() {
           ? facePlaceStatus
           : site.id === "mycorner"
             ? myCornerStatus
+          : site.id === "yahuh"
+            ? yahuhStatus
           : site.id === "mapguess"
             ? mapGuessStatus
         : "DESIGN PREVIEW";
@@ -640,6 +705,8 @@ function renderRecoveryHub() {
           ? facePlaceStatus
           : site.id === "mycorner"
             ? myCornerStatus
+          : site.id === "yahuh"
+            ? yahuhStatus
           : site.id === "mapguess"
             ? mapGuessStatus
           : "DESIGN PREVIEW";
@@ -669,6 +736,14 @@ function renderRecoveryHub() {
           : "";
       return `<li class="evidence-slot-recovered"><img src="${site.markImage}" alt=""><div><b>MyCorner — ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${MYCORNER_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: OWNER PERMISSION REQUIRED</span></div></li>`;
     }
+    if (site.id === "yahuh" && yahuhSecured) {
+      const persistenceLabel = yahuhEvidence.testSecured
+        ? " · TEST"
+        : yahuhEvidence.tabOnly
+          ? " · TAB ONLY"
+          : "";
+      return `<li class="evidence-slot-recovered"><img src="${site.markImage}" alt=""><div><b>Yahuh! Portal — ${YAHUH_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${YAHUH_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${YAHUH_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${YAHUH_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${YAHUH_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: CATEGORY AND SOURCE REQUIRED</span></div></li>`;
+    }
     if (site.id === "mapguess" && mapGuessSecured) {
       const persistenceLabel = mapGuessEvidence.testSecured
         ? " · TEST"
@@ -686,8 +761,12 @@ function renderRecoveryHub() {
       : `<b>MapGuess structural test.</b> ${mapGuessStatus}. Its candidate passage remains review-only, so every advance is simulated and creates no reading score.`;
   } else if (state.selectedSiteId === "mycorner" && state.mycornerDiagnosticMode) {
     support.innerHTML = myCornerEvidence.testSecured
-      ? "<b>MyCorner secured in TEST mode.</b> Slot 4 shows a provisional global-template receipt. It is excluded from the final evidence unlock until the designer freezes the registry row."
+      ? "<b>MyCorner secured in TEST mode.</b> Slot 4 is diagnostic and cannot count as persisted canonical evidence."
       : `<b>MyCorner structural test.</b> ${myCornerStatus}. Its candidate passage remains review-only, so every advance is simulated and creates no reading score.`;
+  } else if (state.selectedSiteId === "yahuh" && state.yahuhDiagnosticMode) {
+    support.innerHTML = yahuhEvidence.testSecured
+      ? "<b>Yahuh! Portal secured in TEST mode.</b> Slot 5 is diagnostic and cannot count as persisted canonical evidence."
+      : `<b>Yahuh! Portal structural test.</b> ${yahuhStatus}. Its candidate passage remains review-only, so every advance is simulated and creates no reading score.`;
   } else if (state.faceplaceDiagnosticMode) {
     support.innerHTML = facePlaceEvidence.testSecured
       ? "<b>FacePlace secured in TEST mode.</b> Slot 3 shows a provisional promoted-feed receipt. It is excluded from the final evidence unlock, and the next-case order still needs designer confirmation."
@@ -701,7 +780,12 @@ function renderRecoveryHub() {
       ? "<b>WikiWhy secured in TEST mode.</b> The displayed receipt is diagnostic; no reading score or real campaign save was created."
       : `<b>WikiWhy diagnostic active.</b> ${wikiWhyStatus}. No voice recording or transcript is saved.`;
   } else {
-    if (myCornerEvidence.realSecured) support.innerHTML = "<b>MyCorner is structurally secured.</b> Its slot-4 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the fixture and evidence registry row.";
+    if (yahuhEvidence.realSecured) support.innerHTML = yahuhEvidence.persistedCanonical
+      ? "<b>Yahuh! Portal is secured.</b> Its canonical single-stream receipt is saved in Case File slot 5."
+      : "<b>Yahuh! Portal is secured in this tab.</b> This browser did not save its canonical evidence for reload.";
+    else if (myCornerEvidence.realSecured) support.innerHTML = myCornerEvidence.persistedCanonical
+      ? "<b>MyCorner is secured.</b> Its canonical global-template receipt is saved in Case File slot 4."
+      : "<b>MyCorner is secured in this tab.</b> This browser did not save its canonical evidence for reload.";
     else if (mapGuessEvidence.realSecured) support.innerHTML = "<b>MapGuess is structurally secured.</b> Its slot-10 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the fixture and evidence registry row.";
     else if (facePlaceEvidence.realSecured) support.innerHTML = "<b>FacePlace is structurally secured.</b> Its slot-3 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the registry row.";
     else if (realThreadItSecured && state.threaditPersisted && realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy and ThreadIt secured.</b> Two evidence files are in Finn’s Files. FacePlace is available as a content-gated campaign test.";
@@ -712,7 +796,7 @@ function renderRecoveryHub() {
     else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
     else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
     else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
-    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt, FacePlace, MyCorner, and MapGuess have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
+    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt, FacePlace, MyCorner, Yahuh! Portal, and MapGuess have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
   }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
@@ -1752,6 +1836,142 @@ function renderMyCornerDiagnosticPanel(campaignState) {
   $("diagnosticAdvance").disabled = view.secured || midpointPending;
 }
 
+function syncYahuhSwitchboard() {
+  const drawerMode = getComputedStyle($("yahuhSwitchboardToggle")).display !== "none";
+  if (!drawerMode) state.yahuhSwitchboardOpen = false;
+  const open = drawerMode && state.yahuhSwitchboardOpen;
+  $("yahuhPage").dataset.switchboardOpen = String(open);
+  $("yahuhSwitchboardToggle").setAttribute("aria-expanded", String(open));
+  $("yahuhSwitchboard").setAttribute("aria-hidden", String(drawerMode && !open));
+  $("yahuhSwitchboard").inert = drawerMode && !open;
+  $("yahuhPortalRegion").setAttribute("aria-hidden", String(open));
+  $("yahuhPortalRegion").inert = open;
+}
+
+function setYahuhSwitchboardOpen(open, { returnFocus = false } = {}) {
+  state.yahuhSwitchboardOpen = Boolean(open);
+  syncYahuhSwitchboard();
+  if (returnFocus) $("yahuhSwitchboardToggle").focus({ preventScroll: true });
+}
+
+function renderYahuhCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getYahuhCampaignView(campaignState, {
+    reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+  });
+  const page = $("yahuhPage");
+  page.dataset.stateId = view.stateId;
+  page.dataset.secured = String(view.secured);
+  page.dataset.midpointDiscovered = String(view.midpoint.discovered);
+  page.dataset.motion = view.motion.mode;
+  page.setAttribute("aria-label", view.ariaDescription);
+  $("yahuhHeaderStatus").textContent = view.headerStatus;
+  $("yahuhStatusStrip").textContent = view.headerStatus;
+  $("yahuhFixtureStatus").title = view.fixture.notice;
+  $("yahuhRule").textContent = view.ruleLabel;
+  $("yahuhRuleBody").textContent = view.ruleBody;
+  $("yahuhModuleGrid").innerHTML = view.activeModules.map((module) => `
+    <article class="yahuh-module" data-yahuh-module-id="${escapeMarkup(module.id)}" data-state="${escapeMarkup(module.state)}" aria-label="${escapeMarkup(module.accessibleSummary)}">
+      <small class="yahuh-panel-label">${escapeMarkup(module.originalCategoryLabel)} · ${escapeMarkup(module.state.toUpperCase())}</small>
+      <h3>${escapeMarkup(module.headline)}</h3>
+      <p>${escapeMarkup(module.summary)}</p>
+      <dl class="yahuh-module-meta">
+        <div><dt>CATEGORY</dt><dd>${escapeMarkup(module.category.label)}</dd></div>
+        <div><dt>SOURCE</dt><dd>${escapeMarkup(module.source.label)}</dd></div>
+        <div><dt>DATE</dt><dd>${escapeMarkup(module.date.display)}</dd></div>
+        <div><dt>DISCLOSURE</dt><dd class="${module.sponsorship.sponsored ? "yahuh-sponsor-label" : ""}">${escapeMarkup(module.sponsorship.label)}</dd></div>
+      </dl>
+    </article>`).join("");
+  $("yahuhCircuitList").innerHTML = view.circuits.map((circuit, index) => {
+    const pair = view.activeModules.filter(({ sortUnitId }) => sortUnitId === circuit.sortUnitId).map(({ originalCategoryLabel }) => originalCategoryLabel).join(" + ");
+    return `<li class="yahuh-circuit" data-reconnected="${circuit.reconnected}"><b>CIRCUIT ${index + 1} · ${escapeMarkup(pair)}</b><span>${circuit.reconnected ? "DISTINCT CHANNELS CONNECTED" : circuit.sortSaved ? "LABELS SAVED · CHANNELS PENDING" : "SORT PENDING"}</span></li>`;
+  }).join("");
+  $("yahuhRouteList").innerHTML = view.switchboardRoutes.map((route) => `
+    <li class="yahuh-route" data-route-state="${escapeMarkup(route.state)}" aria-label="${escapeMarkup(route.accessibleSummary)}"><b>${escapeMarkup(route.moduleLabel)} → ${escapeMarkup(route.channelLabel)}</b><span>${escapeMarkup(route.sourceLabel)}</span><span class="yahuh-route-status">${escapeMarkup(route.state.toUpperCase())}</span></li>`).join("");
+  $("yahuhSavedLabelList").innerHTML = view.savedLabelSnapshot.length
+    ? view.savedLabelSnapshot.map((record) => `<li><b>${escapeMarkup(record.categoryLabel)}</b><span>SOURCE: ${escapeMarkup(record.sourceLabel)}</span><span>SAVED CHANNEL LABEL: ${escapeMarkup(record.channelLabel)} · ${escapeMarkup(record.sponsorshipLabel)}</span></li>`).join("")
+    : "<li><b>NO SAVED LABELS YET</b><span>Complete a sort circuit first.</span></li>";
+  $("yahuhSavedLabels").hidden = !view.midpoint.savedComparisonAvailable;
+
+  $("yahuhMidpoint").hidden = !view.midpoint.actionRequired;
+  $("yahuhMidpointHeading").textContent = view.midpoint.title;
+  $("yahuhMidpointBody").textContent = view.midpoint.body;
+  $("yahuhMidpointProof").innerHTML = view.midpoint.proof.map((line) => `<li>${escapeMarkup(line)}</li>`).join("");
+  $("yahuhMidpointAmy").textContent = `Amy: ${view.midpoint.amy}`;
+  $("yahuhMidpointChinmay").textContent = `Chinmay: ${view.midpoint.chinmay}`;
+  $("yahuhMidpointAction").textContent = view.midpoint.actionLabel;
+
+  $("yahuhSecuredPayoff").hidden = !view.secured;
+  if (view.secured) {
+    $("yahuhSecuredHeading").textContent = view.securedPayoff.status;
+    $("yahuhSecuredBody").textContent = view.securedPayoff.body;
+    $("yahuhTechnoLabel").textContent = view.securedPayoff.technoLabel;
+    $("yahuhTechnoImage").alt = view.securedPayoff.technoAlt;
+    $("yahuhBlockedActor").textContent = `${view.securedPayoff.blockedWrite.process?.displayName ?? "AUTO-LAYOUT"} · CHILD RETRY JOB`;
+    $("yahuhBlockedTitle").textContent = view.securedPayoff.blockedWrite.label;
+    $("yahuhBlockedBody").textContent = view.securedPayoff.blockedWrite.body;
+    $("yahuhEvidenceFilename").textContent = view.securedPayoff.evidence.filename;
+    $("yahuhEvidenceWhatChanged").textContent = view.securedPayoff.evidence.whatChanged;
+    $("yahuhEvidenceBehavior").textContent = view.securedPayoff.evidence.aiBehavior;
+    $("yahuhEvidenceWriter").textContent = view.securedPayoff.evidence.writerFingerprint;
+  }
+  $("yahuhEvidenceToggle").setAttribute("aria-expanded", String(state.yahuhEvidenceReceiptOpen));
+  $("yahuhEvidenceReceipt").hidden = !view.secured || !state.yahuhEvidenceReceiptOpen;
+
+  $("yahuhSourceLogList").innerHTML = view.sourceLog.map((entry) => `<li><b>${escapeMarkup(entry.categoryLabel)} · ${escapeMarkup(entry.state.toUpperCase())}</b><span>${escapeMarkup(entry.sourceLabel)}</span><span>${escapeMarkup(entry.channelLabel)} · ${escapeMarkup(entry.dateLabel)}</span></li>`).join("");
+  $("yahuhUnitStatus").textContent = view.midpoint.acknowledged
+    ? `${view.progress.reconnectCompletedCount} OF 3 RECONNECT CIRCUITS SAVED`
+    : `${view.progress.sortCompletedCount} OF 3 SORT CIRCUITS SAVED`;
+  $("yahuhLiveStatus").textContent = view.secured
+    ? "CATEGORY SWITCHBOARD RESTORED · SLOT-5 EVIDENCE AVAILABLE"
+    : view.midpoint.actionRequired
+      ? "SINGLE SOURCE OF EVERYTHING SAVED · ACKNOWLEDGEMENT REQUIRED"
+      : view.progress.completedUnitCount
+        ? `${view.progress.completedUnitCount} OF 6 YAHUH UNITS SAVED${diagnosticMode ? " · TEST" : ""}`
+        : "No accepted Yahuh repair is running.";
+
+  const selection = selectNextYahuhPassage(state.yahuhState);
+  $("yahuhCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("yahuhContentReason").textContent = selection.passage
+    ? "A reviewed Yahuh passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed record is still required.`;
+  syncYahuhSwitchboard();
+  return view;
+}
+
+function renderYahuhDiagnosticPanel(campaignState) {
+  const view = getYahuhCampaignView(campaignState);
+  const midpointPending = view.midpoint.actionRequired;
+  if (view.secured) {
+    $("diagnosticPhase").textContent = "YAHUH · CATEGORY SWITCHBOARD RESTORED";
+    $("diagnosticSummary").textContent = "Six simulated readings completed the 3+3 campaign. Slot 5 is diagnostic here and counts only after real persisted readings.";
+    $("diagnosticAdvance").textContent = "Yahuh ending reached";
+  } else if (midpointPending) {
+    $("diagnosticPhase").textContent = "YAHUH · SINGLE SOURCE OF EVERYTHING";
+    $("diagnosticSummary").textContent = "All six labels remain saved while every active module points to one generated origin and timestamp.";
+    $("diagnosticAdvance").textContent = "Acknowledge Single Source first";
+  } else if (view.midpoint.acknowledged) {
+    const next = YAHUH_RECONNECT_UNITS[view.progress.reconnectCompletedCount];
+    $("diagnosticPhase").textContent = `YAHUH RECONNECT · ${view.progress.reconnectCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.completedUnitCount} simulated readings · next result ${next?.visibleRepair.toLowerCase() ?? "restores the switchboard"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated Yahuh reading →";
+  } else {
+    const next = YAHUH_SORT_UNITS[view.progress.sortCompletedCount];
+    $("diagnosticPhase").textContent = `YAHUH SORT · ${view.progress.sortCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.sortCompletedCount} simulated reading${view.progress.sortCompletedCount === 1 ? "" : "s"} · next result ${next?.visibleRepair.toLowerCase() ?? "reveals Single Source"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated Yahuh reading →";
+  }
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+}
+
+function openYahuhExperience() {
+  state.selectedSiteId = "yahuh";
+  hideCharacterDialog();
+  const visibleState = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
+  renderYahuhCampaign(visibleState, { diagnosticMode: state.yahuhDiagnosticMode });
+  renderYahuhDiagnosticPanel(visibleState);
+  show("yahuh");
+}
+
 function openMyCornerExperience() {
   state.selectedSiteId = "mycorner";
   hideCharacterDialog();
@@ -1824,6 +2044,10 @@ function openRecoverySite(siteId) {
     openMyCornerExperience();
     return;
   }
+  if (site.id === "yahuh" && site.runtimeAvailable) {
+    openYahuhExperience();
+    return;
+  }
   if (site.id === "mapguess" && site.runtimeAvailable) {
     openMapGuessExperience();
     return;
@@ -1851,6 +2075,8 @@ function returnToHub() {
   state.mycornerEvidenceReceiptOpen = false;
   state.mycornerInspectorOpen = false;
   state.mycornerComparisonView = "template";
+  state.yahuhEvidenceReceiptOpen = false;
+  state.yahuhSwitchboardOpen = false;
   renderRecoveryHub();
   show("hub");
 }
@@ -2213,6 +2439,10 @@ function beginDiagnosticShield() {
 }
 
 async function advanceDiagnosticExperience() {
+  if (state.selectedSiteId === "yahuh") {
+    await advanceYahuhDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "mycorner") {
     await advanceMyCornerDiagnosticExperience();
     return;
@@ -2612,6 +2842,112 @@ function toggleMyCornerComparison() {
   requestAnimationFrame(() => $("mycornerProfileViewToggle").focus({ preventScroll: true }));
 }
 
+function applyYahuhDiagnosticState(nextState) {
+  state.yahuhDiagnosticMode = true;
+  state.yahuhDiagnosticState = nextState;
+  renderYahuhCampaign(nextState, { diagnosticMode: true });
+  renderYahuhDiagnosticPanel(nextState);
+  renderRecoveryHub();
+  show("yahuh");
+}
+
+async function advanceYahuhDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const current = state.yahuhDiagnosticState ?? readYahuhState(null);
+  const view = getYahuhCampaignView(current);
+  if (view.secured || view.midpoint.actionRequired) {
+    applyYahuhDiagnosticState(current);
+    if (view.midpoint.actionRequired) {
+      state.yahuhSwitchboardOpen = true;
+      setYahuhSwitchboardOpen(true);
+      requestAnimationFrame(() => $("yahuhMidpointAction").focus({ preventScroll: true }));
+    }
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = advanceYahuhState(current, {
+    completedAt: new Date().toISOString(),
+    outcome: calculateYahuhReadingOutcome({ campaignState: current }),
+    passageId: `yahuh-diagnostic-passage-${ordinal}`,
+    sessionId: `yahuh-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? "Yahuh diagnostic did not advance");
+  if (transition.events.includes("site-secured")) {
+    state.yahuhEvidenceReceiptOpen = false;
+    state.yahuhSwitchboardOpen = true;
+  }
+  applyYahuhDiagnosticState(transition.state);
+  if (transition.events.includes("midpoint-discovered") || transition.events.includes("site-secured")) {
+    setYahuhSwitchboardOpen(true);
+  }
+  if (transition.events.includes("midpoint-discovered")) {
+    requestAnimationFrame(() => $("yahuhMidpointAction").focus({ preventScroll: true }));
+  }
+  if (transition.events.includes("canonical-blocked-write-recorded")) {
+    $("yahuhLiveStatus").textContent = "CATEGORY SWITCHBOARD RESTORED. AUTO-LAYOUT merge denied. Slot-5 evidence receipt available.";
+  }
+  diagnostic("yahuh-wrapper-diagnostic-advance", {
+    completedUnitIds: transition.state.completedUnitIds,
+    events: transition.events,
+    stateId: transition.state.stateId,
+  });
+}
+
+function resetYahuhDiagnosticExperience() {
+  state.yahuhDiagnosticMode = true;
+  state.yahuhEvidenceReceiptOpen = false;
+  state.yahuhSwitchboardOpen = false;
+  applyYahuhDiagnosticState(readYahuhState(null));
+  $("yahuhLiveStatus").textContent = "YAHUH TEST RESET · NO READING SCORE CREATED";
+}
+
+function buildYahuhPreviewState(unitCount) {
+  let previewState = readYahuhState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === YAHUH_SORT_UNITS.length && !previewState.midpointAcknowledged) {
+      previewState = acknowledgeYahuhMidpointState(previewState, {
+        acknowledgedAt: "2026-07-12T00:00:03.500Z",
+      }).state;
+    }
+    const transition = advanceYahuhState(previewState, {
+      completedAt: `2026-07-12T00:00:0${index}.000Z`,
+      outcome: calculateYahuhReadingOutcome({ campaignState: previewState }),
+      passageId: `yahuh-preview-passage-${index + 1}`,
+      sessionId: `yahuh-preview-session-${index + 1}`,
+    });
+    if (!transition.ok) throw new Error(transition.reason ?? "Yahuh preview state did not advance");
+    previewState = transition.state;
+  }
+  return previewState;
+}
+
+function acknowledgeYahuhSingleStream() {
+  const diagnosticMode = state.yahuhDiagnosticMode;
+  const current = diagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
+  const transition = diagnosticMode
+    ? acknowledgeYahuhMidpointState(current, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeYahuhMidpoint(localStateStorage, {
+        acknowledgedAt: new Date().toISOString(),
+        currentState: current,
+      });
+  if (!transition?.state || (!transition.ok && transition.reason !== "write-failed")) return;
+  if (diagnosticMode) state.yahuhDiagnosticState = transition.state;
+  else {
+    state.yahuhState = transition.state;
+    state.yahuhPersisted = transition.ok;
+  }
+  state.yahuhSwitchboardOpen = true;
+  renderYahuhCampaign(transition.state, { diagnosticMode });
+  renderYahuhDiagnosticPanel(transition.state);
+  renderRecoveryHub();
+  setYahuhSwitchboardOpen(true);
+  if (!transition.ok) {
+    $("yahuhLiveStatus").textContent = "SINGLE-SOURCE ACKNOWLEDGEMENT SAVED IN THIS TAB ONLY · BROWSER STORAGE UNAVAILABLE";
+  }
+  requestAnimationFrame(() => $("yahuhSwitchboardHeading").focus({ preventScroll: true }));
+}
+
 function buildFacePlacePreviewState(unitCount) {
   let previewState = readFacePlaceState(null);
   for (let index = 0; index < unitCount; index += 1) {
@@ -2718,10 +3054,11 @@ function openThreadItView(viewName) {
 function renderRecoveredFilesShortcut() {
   const wikiWhyEvidenceSaved = state.campaignState.phase === "secured" && state.campaignPersisted;
   const threadItEvidenceSaved = state.threaditState.secured && state.threaditPersisted;
-  const evidenceCount = Number(wikiWhyEvidenceSaved) + Number(threadItEvidenceSaved);
+  const myCornerEvidenceSaved = state.mycornerState.secured && state.mycornerPersisted;
+  const yahuhEvidenceSaved = state.yahuhState.secured && state.yahuhPersisted;
+  const evidenceCount = Number(wikiWhyEvidenceSaved) + Number(threadItEvidenceSaved) + Number(myCornerEvidenceSaved) + Number(yahuhEvidenceSaved);
   const provisionalReceiptCount = Number(state.faceplaceState.secured && state.faceplacePersisted)
-    + Number(state.mapguessState.secured && state.mapguessPersisted)
-    + Number(state.mycornerState.secured && state.mycornerPersisted);
+    + Number(state.mapguessState.secured && state.mapguessPersisted);
   const wikiWhyRepairInTab = state.campaignState.repairCount > 0;
   const wikiWhyRepairSaved = wikiWhyRepairInTab && state.campaignPersisted;
   $("recoveredFilesShortcut").disabled = evidenceCount === 0 && provisionalReceiptCount === 0 && !wikiWhyRepairSaved;
@@ -3232,6 +3569,11 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (state.selectedSiteId === "yahuh") {
+    await discardActiveReadingForDiagnostics();
+    resetYahuhDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "mycorner") {
     await discardActiveReadingForDiagnostics();
     resetMyCornerDiagnosticExperience();
@@ -3299,6 +3641,7 @@ $("faceplaceBack").onclick = returnToHub;
 $("faceplaceReturn").onclick = returnToHub;
 $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
+$("yahuhReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
@@ -3397,6 +3740,25 @@ $("mycornerBlockedTarget").onclick = (event) => {
   $("mycornerOwnerPermission").scrollIntoView({ block: "nearest" });
   $("mycornerOwnerPermission").focus({ preventScroll: true });
 };
+$("yahuhSwitchboardToggle").onclick = () => {
+  setYahuhSwitchboardOpen(!state.yahuhSwitchboardOpen);
+  if (state.yahuhSwitchboardOpen) requestAnimationFrame(() => $("yahuhSwitchboardHeading").focus({ preventScroll: true }));
+};
+$("yahuhSwitchboardClose").onclick = () => setYahuhSwitchboardOpen(false, { returnFocus: true });
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !state.yahuhSwitchboardOpen || !$("yahuh").classList.contains("on")) return;
+  event.preventDefault();
+  setYahuhSwitchboardOpen(false, { returnFocus: true });
+});
+$("yahuhMidpointAction").onclick = acknowledgeYahuhSingleStream;
+$("yahuhEvidenceToggle").onclick = () => {
+  const visibleState = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
+  if (!visibleState.secured) return;
+  state.yahuhEvidenceReceiptOpen = !state.yahuhEvidenceReceiptOpen;
+  renderYahuhCampaign(visibleState, { diagnosticMode: state.yahuhDiagnosticMode });
+  if (state.yahuhEvidenceReceiptOpen) requestAnimationFrame(() => $("yahuhEvidenceReceipt").focus({ preventScroll: true }));
+  else $("yahuhEvidenceToggle").focus({ preventScroll: true });
+};
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -3432,6 +3794,7 @@ window.addEventListener("resize", () => {
     syncFacePlaceProfileDrawer();
   }
   if (state.activeScreen === "mycorner") syncMyCornerInspector();
+  if (state.activeScreen === "yahuh") syncYahuhSwitchboard();
   if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
@@ -3448,6 +3811,10 @@ $("taskReader").onclick = () => {
   }
   if (state.selectedSiteId === "mycorner") {
     openMyCornerExperience();
+    return;
+  }
+  if (state.selectedSiteId === "yahuh") {
+    openYahuhExperience();
     return;
   }
   if (state.selectedSiteId === "mapguess") {
@@ -3475,7 +3842,15 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       const facePlaceEvidenceSaved = state.faceplaceState.secured && state.faceplacePersisted;
       const mapGuessEvidenceSaved = state.mapguessState.secured && state.mapguessPersisted;
       const myCornerEvidenceSaved = state.mycornerState.secured && state.mycornerPersisted;
-      if (myCornerEvidenceSaved && state.selectedSiteId === "mycorner") {
+      const yahuhEvidenceSaved = state.yahuhState.secured && state.yahuhPersisted;
+      if (yahuhEvidenceSaved && state.selectedSiteId === "yahuh") {
+        state.yahuhDiagnosticMode = false;
+        state.yahuhEvidenceReceiptOpen = true;
+        state.yahuhSwitchboardOpen = true;
+        openYahuhExperience();
+        setYahuhSwitchboardOpen(true);
+        requestAnimationFrame(() => $("yahuhEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (myCornerEvidenceSaved && state.selectedSiteId === "mycorner") {
         state.mycornerDiagnosticMode = false;
         state.mycornerEvidenceReceiptOpen = true;
         openMyCornerExperience();
@@ -3552,6 +3927,8 @@ if (uiPreview) {
   state.mapguessPersisted = true;
   state.mycornerState = readMyCornerState(null);
   state.mycornerPersisted = true;
+  state.yahuhState = readYahuhState(null);
+  state.yahuhPersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -3570,6 +3947,8 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("faceplace");
 } else if (requestedLaunch === "mycorner") {
   openRecoverySite("mycorner");
+} else if (requestedLaunch === "yahuh") {
+  openRecoverySite("yahuh");
 } else if (requestedLaunch === "mapguess") {
   openRecoverySite("mapguess");
 } else if (requestedSite) {
@@ -3682,6 +4061,46 @@ if (requestedLaunch === "wikiwhy") {
   if (uiPreview === "mycorner-template-inspector") setMyCornerInspectorOpen(true);
   if (uiPreview === "mycorner-evidence") {
     requestAnimationFrame(() => $("mycornerEvidenceReceipt").scrollIntoView({ block: "nearest" }));
+  }
+} else if ([
+  "yahuh",
+  "yahuh-corrupted",
+  "yahuh-sort-1",
+  "yahuh-sort-2",
+  "yahuh-sort-3",
+  "yahuh-single-stream",
+  "yahuh-single-stream-acknowledged",
+  "yahuh-switchboard",
+  "yahuh-reconnect-1",
+  "yahuh-reconnect-2",
+  "yahuh-secured",
+  "yahuh-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "yahuh-evidence": 6,
+    "yahuh-secured": 6,
+    "yahuh-reconnect-2": 5,
+    "yahuh-reconnect-1": 4,
+    "yahuh-switchboard": 3,
+    "yahuh-single-stream-acknowledged": 3,
+    "yahuh-single-stream": 3,
+    "yahuh-sort-3": 3,
+    "yahuh-sort-2": 2,
+    "yahuh-sort-1": 1,
+  }[uiPreview] ?? 0;
+  state.yahuhDiagnosticMode = uiPreview !== "yahuh";
+  state.yahuhDiagnosticState = buildYahuhPreviewState(unitCount);
+  if (["yahuh-single-stream-acknowledged", "yahuh-switchboard"].includes(uiPreview)) {
+    state.yahuhDiagnosticState = acknowledgeYahuhMidpointState(state.yahuhDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:03.500Z",
+    }).state;
+  }
+  state.yahuhEvidenceReceiptOpen = uiPreview === "yahuh-evidence";
+  state.yahuhSwitchboardOpen = ["yahuh-switchboard", "yahuh-evidence"].includes(uiPreview);
+  openYahuhExperience();
+  if (state.yahuhSwitchboardOpen) setYahuhSwitchboardOpen(true);
+  if (uiPreview === "yahuh-evidence") {
+    requestAnimationFrame(() => $("yahuhEvidenceReceipt").scrollIntoView({ block: "nearest" }));
   }
 } else if ([
   "mapguess",
