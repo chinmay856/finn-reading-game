@@ -46,6 +46,41 @@
 
 ## Rogue-AI campaign design track
 
+- Latest design-only builder aid:
+  `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` translates the reviewed art,
+  copy deck, WikiWhy flow, hub, character sheets, and accessibility rules into
+  concrete runtime UI notes. It is explicitly not an implementation change and
+  keeps all wrapper-specific material out of Reading Engine, speech, scoring,
+  and Content Platform logic.
+- Latest site-copy aid:
+  `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` gives the builder concrete
+  corrupted/repaired page copy, midpoint copy, AI-denial text, secured payoffs,
+  and character beats for all ten sites. Other sites remain design/previews
+  until their own passages and mechanics are implemented.
+- Latest WikiWhy build aid:
+  `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` narrows the immediate
+  builder target to the WikiWhy playable slice with screen/state copy,
+  ownership boundaries, character panel IDs, loading/error copy, and acceptance
+  checks.
+- Latest ten-site build aid:
+  `docs/gameplay/site-build-briefs/README.md` indexes builder-facing briefs for
+  all ten Internet Recovery 98 sites. Each site brief records runtime identity,
+  layout, local three-act flow, progress fiction, character states, reading
+  lane, and acceptance checks without implementing code.
+- Latest campaign hub aid:
+  `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` gives concrete Recovery Map
+  copy, site tile text, evidence-file receipts, blocked-write labels, Incoming
+  Case rotation guidance, and count-based global story beats for the ten-site
+  campaign.
+- Latest content-planning aid:
+  `content/proposed-sites/PASSAGE_DECK_PLANS.md` outlines two-deck
+  replayability targets for all ten sites: WikiWhy uses its existing Deck A/B,
+  and the other nine sites now have ten candidate Reading Companion passage
+  slots each with source lane, reading focus, and speech-risk notes.
+- Latest asset-use aid:
+  `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` identifies canonical character
+  sheets, character crop grids, current ten-site concept boards, preview-image
+  rules, and superseded/plain-board boundaries for builders.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems

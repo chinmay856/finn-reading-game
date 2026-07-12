@@ -35,6 +35,9 @@ WikiWhy remains the tenth site and lives at
 
 ## Superseded art treatments
 
+- Plain `*-campaign.png` files in this directory are earlier concept passes.
+  They remain useful as visual history but are not the current builder input
+  when a matching `*-rogue-ai-campaign.png` file exists.
 - `mycorner-rogue-ai-campaign-superseded.png` mixed near-photo profile images
   with flat cartoon characters.
 - `search-ish-rogue-ai-campaign-superseded.png`,
