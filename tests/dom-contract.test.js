@@ -416,6 +416,15 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.doesNotMatch(engine, /FacePlace|faceplace|Honest Zero|feed recovery/iu);
 });
 
+test("inactive desktop surfaces stay hidden after site-specific layout CSS", async () => {
+  const [html, visibilityCss] = await Promise.all([
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/screen-visibility.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /screen-visibility\.css/u);
+  assert.match(visibilityCss, /\.screen:not\(\.on\)\s*\{[\s\S]*display:\s*none\s*!important/u);
+});
+
 test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evidence-safe", async () => {
   const [app, content, copy, css, engine, html, state, view] = await Promise.all([
     readFile(new URL("../app.js", import.meta.url), "utf8"),
