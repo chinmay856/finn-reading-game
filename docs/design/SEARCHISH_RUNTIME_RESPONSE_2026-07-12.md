@@ -92,7 +92,14 @@ canonicalEligibility: persisted secured state, exact registry ID, and persisted 
 ## Layout, art, and content
 
 Existing mark, semantic cards, inline-SVG connectors, shared character crops,
-and `techno_clue_point` suffice. At 1180–1279 CSS pixels the branch inspector
+and the existing Techno paw-alert still suffice. The canonical secured mapping
+is wrapper asset ID `searchish.techno.generated-cache-alert` to
+`apps/internet-recovery/art/characters/techno/techno-paw-alert-still.webp`.
+Accessible meaning: “Techno raises one paw toward the generated-cache origin
+proof while the independent source branches remain visible.” This supersedes
+the nonexistent `techno_clue_point` name; no new raster asset is required.
+
+At 1180–1279 CSS pixels the branch inspector
 becomes a Recovery Browser-owned drawer labeled `Source branch inspector`.
 The opener remains visible; focus moves inside; Escape/close returns focus;
 background is inert; it never overlaps the Reading Companion. Reduced motion
