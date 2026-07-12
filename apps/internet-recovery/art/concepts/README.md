@@ -9,11 +9,12 @@ sprite exports.
 The final shared prompt direction and per-board deltas for the current canon
 pass are recorded in [`ROGUE_AI_PROMPT_NOTES.md`](ROGUE_AI_PROMPT_NOTES.md).
 
-- `amy-techno-character-board.png` — Amy expressions/support poses and Techno's
-  ball-obsessed sprite direction.
-- `chinmay-portrait-exploration-wip.png` — **WIP:** six canonical reusable
-  Chinmay portrait states from neutral confidence through three escalating
-  fluster levels and relieved cooperation.
+- `amy-techno-character-board.png` — superseded exploration for Amy
+  expressions/support poses and Techno's ball-obsessed sprite direction.
+  Production sheets now live in [`../characters`](../characters/README.md).
+- `chinmay-portrait-exploration-wip.png` — superseded WIP reference for six
+  reusable Chinmay portrait states. Production sheets now live in
+  [`../characters`](../characters/README.md).
 - `dial-up-loading-interstitial.png` — honest, accessible, dial-up-inspired
   between-page loading states.
 - `parody-sites-and-repair-states.png` — transformed parody-site identities and
@@ -68,7 +69,9 @@ Nine additional proposed site directions are indexed under
 deliberately explore different progress metaphors and midpoint changes.
 Version-two WIP cleanup boards now replace the rejected or inconsistent
 character treatments for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
-MapGuess. The earlier files remain only as explicit comparison history.
+MapGuess. The earlier files remain only as explicit comparison history. Final
+Amy, Chinmay, and Techno production character sheets are available in
+[`../characters`](../characters/README.md).
 
 The campaign-spine board accompanies
 [`CAMPAIGN_SPINE_AND_HUB.md`](../../../../docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md).

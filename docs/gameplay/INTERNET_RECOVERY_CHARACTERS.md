@@ -128,33 +128,29 @@ escalation is communicated through progressively messier grooming, a rumpled CEO
 presentation, anxious gestures, and flustered expressions—never anger,
 villainous lighting, or threatening body language.
 
-## Character exploration set
+## Production character sheets
 
-After the private reference photos are reattached, create and review these
-wrapper-only explorations before selecting production art:
+Builder-ready production sheets live under
+[`apps/internet-recovery/art/characters`](../../apps/internet-recovery/art/characters/README.md).
+They are wrapper-owned art references that may be cropped into runtime assets by
+panel order.
 
-1. **Amy portrait sheet:** neutral, skeptical, amused, and focused expressions;
-   chat-avatar crop plus waist-up engineer-support pose.
-2. **Amy cutscene poses:** annotating evidence, holding a cable, and reacting to
-   a suspicious timestamp without taking over Finn's task.
-3. **Chinmay escalation sheet:** the same long-haired silhouette across neutral
+The current production set includes:
+
+1. **Amy portrait sheet:** neutral, skeptical, amused, supportive, evidence, and
+   tools poses.
+2. **Chinmay escalation sheet:** the same long-haired silhouette across neutral
    focus, polished CEO confidence, three escalating fluster levels, and relieved
-   collaboration. Exclude angry and villainous poses. The current WIP reference
-   is [`chinmay-portrait-exploration-wip.png`](../../apps/internet-recovery/art/concepts/chinmay-portrait-exploration-wip.png).
-4. **Techno sprite sheet:** idle, alert, suspicious-file discovery, bark,
-   CEO-broadcast nap, and proud USB delivery. Explore both orange-dominant and
-   blue-dominant versions of her grooved fetch ball. The idle state should show
-   Techno tossing or bouncing the ball with her mouth; most other states retain
-   the ball somewhere in the pose.
-5. **Pair scale test:** Amy at support-window scale with Techno as desktop pet,
-   checked at both phone and desktop widths.
+   collaboration. Excludes angry and villainous poses.
+3. **Techno sprite sheet:** idle ball bounce, alert ball pin, suspicious-file
+   discovery, bark, CEO-broadcast nap, USB delivery, celebration spin, and clue
+   point. The ball appears in most poses in both orange-dominant and
+   blue-dominant treatments.
 
 Private references must stay outside the public repository and guide likeness
-only; never paste them into boards or ship photo-real character panels. Clearly
-labeled WIP exploration boards may live under
-`apps/internet-recovery/art/concepts/` for review. Builder-ready individual
-exports should move under `apps/internet-recovery/art/characters/` only after
-the portrait set is approved.
+only; never paste them into boards or ship photo-real character panels. Earlier
+WIP exploration boards remain under `apps/internet-recovery/art/concepts/` for
+history only.
 
 ### Reusable Chinmay portrait states
 

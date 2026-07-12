@@ -23,11 +23,8 @@ Use these inputs first:
   reviewed WikiWhy story beats.
 - `apps/internet-recovery/art/concepts/campaign-spine-and-hub-rogue-ai.png` for
   the stable remote-desktop framing and campaign-hub tone.
-- `apps/internet-recovery/art/concepts/amy-techno-character-board.png` for Amy
-  and Techno mood references.
-- `apps/internet-recovery/art/concepts/chinmay-portrait-exploration-wip.png`
-  only as WIP expression reference for long-haired Chinmay; do not treat it as a
-  final portrait export.
+- `apps/internet-recovery/art/characters/README.md` for production Amy,
+  Chinmay, and Techno character sheet IDs.
 - `apps/internet-recovery/art/concepts/sites/README.md` only to understand which
   non-WikiWhy boards are WIP or superseded.
 

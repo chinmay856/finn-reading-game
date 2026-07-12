@@ -49,3 +49,29 @@ The older boards remain in the repository only as layout-history or rejected
 art-treatment references. Their prior story attribution, photographic inserts,
 or inconsistent character rendering must not be copied into implementation or
 future art prompts.
+
+## Production character-sheet pass
+
+The production sheets under `apps/internet-recovery/art/characters/` were
+generated with Codex's built-in image-generation workflow from the reviewed
+concept boards as style and identity references. The final prompts intentionally
+removed embedded text labels; the asset IDs live in the character manifest so
+the builder is not dependent on generated lettering.
+
+Shared character-sheet constraints:
+
+- clean inked 2D editorial-cartoon style with warm cel shading;
+- 1536x1024 landscape sheets on a clean cream background;
+- consistent framed panels, scale, line weight, and readable silhouettes;
+- no photorealism, no pasted photos, no real logos, no watermark, and no WIP
+  labels;
+- private references remain likeness-only and are not committed.
+
+The final sheets are:
+
+- `../characters/amy-production-portraits.png` - six Amy support states:
+  neutral, skeptical, amused, supportive, evidence, and tools.
+- `../characters/chinmay-production-portraits.png` - six long-haired Chinmay
+  states: neutral, confident, fluster 1, fluster 2, fluster 3, and relieved.
+- `../characters/techno-production-sprites.png` - eight Techno states centered
+  on her original orange-and-blue grooved ball.
