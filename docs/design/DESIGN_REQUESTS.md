@@ -1,17 +1,33 @@
 # Parallel design requests
 
+## ViewTube focused follow-up
+
+- Runtime contract and first-run manuscripts are integrated from designer PRs
+  #40 and #49.
+- Outstanding asset: provide the dedicated `techno_clue_point` wrapper asset,
+  with a transparent background, clear pointing silhouette at compact desktop
+  size, and an accessible intent that reads as “Techno identifies the duplicate
+  media hash evidence.” If an existing approved asset is canonical instead,
+  explicitly map the contract to `techno-paw-alert-still.webp` or
+  `techno-alert-ball-pin.webp`.
+- The same request is published on PR #40 so the parallel designer can answer
+  without depending on this local branch.
+
 ## 2026-07-12 builder reconciliation
 
 - Designer PR #38 answered the complete MyCorner runtime packet. The active
   implementation uses the frozen Mara Vale fixture, 7A plus 3B plan, responsive
   drawer contract, process lineage, and canonical slot-four evidence row.
-- Designer PR #39 has been detected for Yahuh and will be reconciled after the
-  MyCorner publication boundary.
+- Designer PR #39 answered the Yahuh runtime packet. The active implementation
+  uses the exact six-module fixture, 6A plus 4B plan, process lineage,
+  responsive drawer, Techno payoff, and canonical slot-five evidence row.
 - Designer PR #37 answers the shared ThreadIt, WikiWhy, and FacePlace runtime
   backlog; it remains queued for a scoped reconciliation so deployed behavior
   is not mixed into the MyCorner PR.
 - No new MyCorner P0 art request is outstanding. Existing initials, DOM/CSS
   theme fragments, shared character crops, and Techno still are sufficient.
+- No new Yahuh P0 art request is outstanding. The existing mark, semantic DOM,
+  CSS modules, shared Chinmay crop, and `techno_alert_ball_pin` satisfy PR #39.
 
 This is the durable implementation-to-design handoff for Internet Recovery 98.
 The parallel designer can answer the remaining decisions here or publish a

@@ -178,7 +178,7 @@ test("MyCorner owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.deepEqual(MYCORNER_CONTENT_READINESS, {
     deckACount: 7,
     deckBCount: 3,
-    firstRunShortfall: 0,
+    firstRunShortfall: 7,
     plannedCount: 10,
     requiredFirstRun: 7,
     structuredCandidateCount: 1,
@@ -190,7 +190,7 @@ test("MyCorner owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.equal(gated.selectableCount, 0);
   assert.equal(gated.plannedCount, 10);
   assert.equal(gated.requiredFirstRun, 7);
-  assert.equal(gated.firstRunShortfall, 0);
+  assert.equal(gated.firstRunShortfall, 7);
 
   const approvedA = approvedRecord(MYCORNER_DECK_A_IDS[1]);
   const approvedB = approvedRecord(MYCORNER_DECK_B_IDS[0]);
