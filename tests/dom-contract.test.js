@@ -381,6 +381,7 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(app, /provisional-blocked-write-recorded/u);
   assert.match(app, /const securedCount = evidenceSummary\.persistedCanonicalCount/u);
   assert.match(app, /faceplace-repair-state/u);
+  assert.match(app, /aria-label="\$\{escapeMarkup\(`\$\{status\}: \$\{label\}`\)\}"/u);
   assert.match(app, /visibleCardType = card\.cardTypeVisible/u);
   assert.match(app, /visibleOriginKind = card\.cardTypeVisible/u);
   assert.match(app, /aria-label="\$\{site\.name\}, \$\{siteStatus\.toLowerCase\(\)\}"/u);
