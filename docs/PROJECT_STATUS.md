@@ -1,5 +1,9 @@
 # Project status
 
+## Independent review evidence workflow — 2026-07-12
+
+The Content Platform now has a fail-closed review evidence validator and durable protocol. It can safely promote a candidate projection only after independent reviews, exact-revision matching, a complete local real-microphone run, privacy confirmation, and unstable-token resolution. No candidate has been falsely promoted; collecting genuine evidence remains outstanding.
+
 ## Endgame content structure — 2026-07-12
 
 All three canonical final-incident passages are now structured and ordered in the reusable Content Platform. They deliberately fail the selectable-content predicate until every required independent review and real-microphone transcription check passes.
