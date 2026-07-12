@@ -1,5 +1,13 @@
 # Session handoff
 
+## Final breach design response
+
+- Branch: `agent/endgame-runtime-design-response`.
+- Builder packet:
+  [`design/ENDGAME_RUNTIME_RESPONSE_2026-07-12.md`](design/ENDGAME_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes Evidence 11, convergence semantics, safe storage/resume behavior,
+  archive replay isolation, and three original checkpoint passage candidates.
+
 ## Amaze-On consent-ledger foundation
 
 - Active branch: `agent/amazeon-consent-ledger-foundation`.

@@ -249,6 +249,12 @@ record and pass the full content and microphone gate independently.
 
 ## `EVIDENCE_11.LIVE` data and implementation gaps
 
+**Answered:** See
+[`ENDGAME_RUNTIME_RESPONSE_2026-07-12.md`](ENDGAME_RUNTIME_RESPONSE_2026-07-12.md)
+for the durable record, semantic convergence, storage/exit behavior, archive
+replay flag, and three original checkpoint candidates. Passage eligibility
+remains independently review-gated.
+
 The production sequence is already frozen: ten durable real evidence receipts,
 genuine finish, player-opened Case File, live-evidence arrival, safety gate,
 then exactly three checkpoint readings for trace, preserve, and revoke.
