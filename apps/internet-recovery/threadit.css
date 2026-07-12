@@ -19,6 +19,34 @@
   color: var(--threadit-ink);
 }
 
+/* Visual-fidelity layer derived from the canonical three-act board. */
+.threadit-browser-window { box-shadow: 7px 9px 0 #17396855, 0 18px 44px #07172555; }
+.threadit-page { background-image: radial-gradient(circle at 8% 14%, #f268220b 0 90px, transparent 91px), linear-gradient(135deg, #f8f5ee, #e9edf0); }
+.threadit-header { position: relative; border-bottom: 4px solid var(--threadit-orange); background: linear-gradient(110deg, #fff 0 72%, #fff1e7); box-shadow: 0 4px 12px #17212b18; }
+.threadit-header::after { content: "ACT 1 · APPARENT CONSENSUS"; position: absolute; right: 14px; bottom: -11px; padding: 3px 7px; border: 1px solid #b63e08; border-radius: 9px; background: var(--threadit-orange); color: #fff; font: 700 8px/1 "Lucida Console", Consolas, monospace; letter-spacing: .06em; }
+.threadit-header > img { width: 50px; height: 50px; filter: drop-shadow(2px 3px 0 #f2682233); }
+.threadit-header > div:nth-child(2) h2 { color: #d84d0e; letter-spacing: -.025em; }
+.threadit-tabs { background: linear-gradient(#ece9e2, #d9d4ca); }
+.threadit-tab[aria-selected="true"] { box-shadow: 0 -3px 0 #f26822, 0 3px 0 #fff; }
+.threadit-thread-column > header { border-left: 5px solid var(--threadit-duplicate); background: linear-gradient(100deg, #fff9f5, var(--threadit-paper)); box-shadow: 0 3px 8px #17212b16; }
+.threadit-post { overflow: hidden; border-width: 1px 1px 1px 5px; box-shadow: 0 4px 12px #17212b18; transition: translate .16s ease, box-shadow .16s ease; }
+.threadit-post::after { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: linear-gradient(90deg, var(--threadit-orange), transparent 55%); opacity: .55; pointer-events: none; }
+.threadit-post:hover { translate: 2px -2px; box-shadow: 0 7px 16px #17212b2b; }
+.threadit-post[data-origin="generated-copy"],.threadit-post[data-origin-type="generated-copy"] { background: linear-gradient(110deg, #fff, #f0edff); }
+.threadit-post[data-origin="generated-copy"]::before,.threadit-post[data-origin-type="generated-copy"]::before { content: "BOT COPY"; position: absolute; top: 7px; right: -26px; width: 90px; padding: 2px; rotate: 35deg; background: var(--threadit-trace); color: #fff; font: 700 7px/1 monospace; text-align: center; }
+.threadit-post[data-node-type="question"],.threadit-post[data-post-kind="question"] { background: linear-gradient(110deg, #fff, #fff5eb); }
+.threadit-post-votes { min-height: 54px; padding: 5px 2px; border-radius: 18px; background: #f1eee7; box-shadow: inset 0 0 0 1px #c8c0b5; }
+.threadit-source-panel { background-color: #e7e7e1; background-image: linear-gradient(#8a96a20d 1px, transparent 1px), linear-gradient(90deg, #8a96a20d 1px, transparent 1px), radial-gradient(circle at 50% 0, #ffffff, transparent 70%); background-size: 18px 18px, 18px 18px, auto; box-shadow: inset 0 0 28px #17212b12; }
+.threadit-source-panel > header { border-bottom: 3px solid var(--threadit-trace); background: linear-gradient(100deg, #f5f3ff, #ded9f4); }
+.threadit-source-node { box-shadow: 0 4px 10px #17212b24; transition: translate .15s ease, box-shadow .15s ease; }
+.threadit-source-node:hover { translate: 0 -2px; box-shadow: 0 7px 14px #17212b35; }
+#threaditConnectorLayer path { stroke-dasharray: 7 5; animation: threadit-trace-flow 2.2s linear infinite; filter: drop-shadow(0 0 2px #6655a688); }
+.threadit-page[data-state-id="threadit_secured"] #threaditConnectorLayer path,.threadit-page[data-threadit-state="threadit_secured"] #threaditConnectorLayer path { stroke: var(--threadit-secure); }
+.threadit-companion-gate { box-shadow: 7px 9px 0 #17396855, 0 18px 44px #07172544; }
+.threadit-gate-body { background-image: linear-gradient(#ffffffdd, #fffdf7ee), radial-gradient(circle at 90% 8%, #f2682230, transparent 28%); }
+@keyframes threadit-trace-flow { to { stroke-dashoffset: -24; } }
+@media(prefers-reduced-motion:reduce){.threadit-post,.threadit-source-node{transition:none}.threadit-post:hover,.threadit-source-node:hover{translate:none}#threaditConnectorLayer path{animation:none}}
+
 .threadit-surface {
   grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
   gap: var(--threadit-gap-3);

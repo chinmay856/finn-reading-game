@@ -1,5 +1,9 @@
 # Project status
 
+## ThreadIt graphics — 2026-07-12
+
+ThreadIt has received its first board-matching visual fidelity pass with no new image payload and no change to its content-review or canonical-evidence gates.
+
 ## Shared visual fidelity — active 2026-07-12
 
 Desktop chrome and the final incident now more closely match the canonical boards through reusable portraits, semantic SVG route/vault art, subtle CRT depth, and reduced-motion-safe animation. No flattened board image was introduced.
