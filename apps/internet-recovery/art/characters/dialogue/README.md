@@ -1,8 +1,9 @@
 # Dialogue portraits
 
-These wrapper-owned portraits were generated on 2026-07-11 for the lightweight
-Internet Recovery 98 dialogue-window prototype. They are presentation assets
-only and do not enter the Reading Engine, Content Platform, or Game Rules.
+These wrapper-owned portraits were generated on 2026-07-11 for an earlier
+lightweight Internet Recovery 98 dialogue-window prototype. They are retained
+as history but are not the current dialogue source. Presentation assets never
+enter the Reading Engine, Content Platform, or Game Rules.
 
 - `amy-engineer.jpg` follows the approved Amy/Techno character board: light
   brown hair, black rectangular glasses, olive utility jacket, navy shirt, and
@@ -16,3 +17,8 @@ approved concept boards as visual references, then resized to 512 by 512 JPEG
 assets at quality 88. The prompts requested square head-and-shoulders portraits,
 late-1990s educational PC-game illustration, no text, no border, and no other
 characters. Techno was not generated or altered as part of this work.
+
+The live prototype now uses `portrait-pack-pending.svg` for every character
+dialogue. A reviewed expression pack will replace that neutral placeholder and
+map specific expressions to specific lines. Do not infer canonical expressions
+from the two earlier portraits above.

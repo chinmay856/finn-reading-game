@@ -15,6 +15,7 @@ import {
   saveWikiWhyDiagnosticState,
 } from "./apps/internet-recovery/wikiwhy-diagnostics.js";
 import { WIKIWHY_DIALOGUES } from "./apps/internet-recovery/wikiwhy-dialogues.js";
+import { getRecoverySite, INCOMING_SITE_IDS, RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
 
 const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
 const PASSAGE = PARAGRAPHS.join(" ");
@@ -27,6 +28,8 @@ const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
 const uiPreview = new URLSearchParams(location.search).get("uiPreview");
+const requestedSite = new URLSearchParams(location.search).get("site");
+const requestedLaunch = new URLSearchParams(location.search).get("launch");
 
 function availableLocalStorage() {
   try {
@@ -52,6 +55,7 @@ const state = {
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
   sessionId: null, startedAt: 0, technoTimer: null,
   diagnosticMode: false, diagnosticState: null, dialogAction: null,
+  activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -79,7 +83,140 @@ function hydratePassage() {
 }
 
 function show(name) {
-  for (const id of ["setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  const screenChanged = state.activeScreen !== name;
+  for (const id of ["hub", "sitePreview", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  state.activeScreen = name;
+  const selectedSite = getRecoverySite(state.selectedSiteId);
+  const wikiWhyScreen = ["setup", "read", "review"].includes(name);
+  $("desktopContext").textContent = name === "hub"
+    ? "RECOVERY MAP"
+    : name === "sitePreview"
+      ? `${selectedSite.name.toUpperCase()} PREVIEW`
+      : "WIKIWHY REPAIR";
+  $("taskHub").classList.toggle("active", name === "hub");
+  $("taskSite").classList.toggle("active", name === "sitePreview" || wikiWhyScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review");
+  $("taskSite").textContent = name === "hub" ? "□ No site open" : `□ ${wikiWhyScreen ? "WikiWhy" : selectedSite.name}`;
+  document.querySelectorAll(".desktop-shortcut").forEach((button) => button.classList.toggle("active", button.dataset.action === "hub" && name === "hub"));
+  if (screenChanged) requestAnimationFrame(() => $(name).focus({ preventScroll: true }));
+}
+
+function renderRecoveryHub() {
+  const realWikiWhy = readWikiWhyState(localStateStorage);
+  const diagnosticWikiWhy = state.diagnosticMode ? state.diagnosticState : null;
+  const diagnosticView = diagnosticWikiWhy ? campaignView(diagnosticWikiWhy) : null;
+  const diagnosticSecured = diagnosticWikiWhy?.phase === "secured";
+  const realSecured = realWikiWhy.stability >= 100;
+  const wikiWhySecured = diagnosticSecured || realSecured;
+  const wikiWhyStatus = diagnosticSecured
+    ? "SECURED · TEST"
+    : realSecured
+      ? "SECURED"
+    : diagnosticView
+      ? `${diagnosticView.label} ${diagnosticView.percent}% · TEST`
+      : realWikiWhy.stability > 0
+        ? `SITE STABILITY ${realWikiWhy.stability}%`
+        : "RECOVERY AVAILABLE";
+  const incomingIds = wikiWhySecured ? ["threadit", "mapguess", "viewtube"] : INCOMING_SITE_IDS;
+  $("securedSiteCount").textContent = wikiWhySecured ? "1" : "0";
+  $("evidenceCount").textContent = wikiWhySecured ? "1/10" : "0/10";
+  $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => `
+    <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" style="--site-accent:${site.accent}">
+      <img src="${site.previewImage}" alt="">
+      <span aria-hidden="true">${site.mark}</span>
+      <div><b>${site.name}</b><small>${site.id === "wikiwhy" ? wikiWhyStatus : "DESIGN PREVIEW"}</small></div>
+    </button>
+  `).join("");
+  $("incomingCases").innerHTML = incomingIds.map((siteId) => {
+    const site = getRecoverySite(siteId);
+    return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${site.id === "wikiwhy" ? wikiWhyStatus : "Design file received"}</small></div></button>`;
+  }).join("");
+  $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
+    if (site.id !== "wikiwhy" || !wikiWhySecured) return `<li>${site.name} — awaiting evidence</li>`;
+    return `<li>${diagnosticSecured ? "WikiWhy — autonomous write log saved (TEST)" : "WikiWhy — repair record saved"}</li>`;
+  }).join("");
+  document.querySelectorAll("[data-site-id]").forEach((button) => {
+    button.onclick = () => openRecoverySite(button.dataset.siteId);
+  });
+}
+
+function renderSitePreview(site) {
+  state.selectedSiteId = site.id;
+  $("sitePreviewWindow").dataset.siteTheme = site.id;
+  $("sitePreviewWindow").style.setProperty("--site-accent", site.accent);
+  $("sitePreviewTitle").textContent = `${site.name.toUpperCase()} — DESIGN PREVIEW`;
+  $("sitePreviewAddress").textContent = `http://${site.id}.ir98/incoming-case`;
+  $("sitePreviewMark").textContent = site.mark;
+  $("sitePreviewArchetype").textContent = site.archetype.toUpperCase();
+  $("sitePreviewName").textContent = site.name;
+  $("sitePreviewBelief").textContent = site.belief;
+  $("sitePreviewDescription").textContent = `${site.description} This is an optimized crop from the current design-review board; its reading content and repair rules are not connected yet.`;
+  $("sitePreviewMotif").style.backgroundImage = `url("${site.previewImage}")`;
+  show("sitePreview");
+}
+
+function keepPreparationVisible() {
+  if (!state.preparing) return false;
+  show("setup");
+  $("modelProgress").textContent = "Microphone and local model setup are still running.";
+  return true;
+}
+
+function openRecoverySite(siteId) {
+  if (keepPreparationVisible()) return;
+  if (state.listening || (state.finishing && !state.result)) {
+    show("read");
+    $("readerState").textContent = "Finish the active reading before opening another window.";
+    return;
+  }
+  const site = getRecoverySite(siteId);
+  state.selectedSiteId = site.id;
+  if (site.playable) {
+    show(state.result ? "review" : "setup");
+    return;
+  }
+  renderSitePreview(site);
+}
+
+function returnToHub() {
+  if (keepPreparationVisible()) return;
+  if (state.listening || (state.finishing && !state.result)) {
+    show("read");
+    $("readerState").textContent = "Finish the active reading before returning to the Recovery Map.";
+    return;
+  }
+  hideCharacterDialog();
+  renderRecoveryHub();
+  show("hub");
+}
+
+function showDesktopMessage(message) {
+  if (keepPreparationVisible()) return;
+  if (state.listening || (state.finishing && !state.result)) {
+    show("read");
+    $("readerState").textContent = "Finish the active reading before inspecting desktop objects.";
+    return;
+  }
+  renderRecoveryHub();
+  show("hub");
+  const support = $("amySupportMessage");
+  if (support) support.innerHTML = `<b>Desktop object inspected.</b> ${message}`;
+}
+
+function positionTechnoAtRepair(percent, { animate = true } = {}) {
+  const sprite = $("technoRepairSprite");
+  const previous = Number(sprite.dataset.progress ?? 0);
+  const next = Math.min(100, Math.max(0, Number(percent) || 0));
+  const movedBackward = next < previous;
+  if (movedBackward) sprite.classList.add("is-repositioning");
+  sprite.style.left = `clamp(118px, ${next}%, calc(100% - 52px))`;
+  sprite.dataset.progress = String(next);
+  if (movedBackward) {
+    void sprite.offsetWidth;
+    requestAnimationFrame(() => sprite.classList.remove("is-repositioning"));
+  } else if (animate && next > previous) {
+    animateTechnoProgress();
+  }
 }
 
 function campaignView(campaignState) {
@@ -118,7 +255,7 @@ function renderCampaignMeter(campaignState, { diagnosticMode = false } = {}) {
   $("siteStatus").style.color = phase === "reverse-hack" ? "#a6231d" : phase === "secured" ? "#246b3c" : "#173968";
   $("repairFill").style.width = `${view.percent}%`;
   $("repairEdge").style.left = `${view.percent}%`;
-  $("technoRepairSprite").style.left = `clamp(82px, ${view.percent}%, calc(100% - 84px))`;
+  positionTechnoAtRepair(view.percent);
   $("repairPercent").textContent = `${view.percent}% campaign test`;
   $("latency").textContent = "SIMULATED · no speech engine used";
 }
@@ -189,6 +326,7 @@ function beginDiagnosticShield() {
 }
 
 async function advanceDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
   await discardActiveReadingForDiagnostics();
   const current = state.diagnosticState ?? readWikiWhyDiagnosticState(localStateStorage);
   const transition = advanceWikiWhyDiagnostic(current);
@@ -293,8 +431,7 @@ function updateProgress(alignment, latencyMs = null) {
   state.repairPercent = Math.max(state.repairPercent, percent);
   $("repairFill").style.width = `${percent}%`;
   $("repairEdge").style.left = `${percent}%`;
-  $("technoRepairSprite").style.left = `clamp(82px, ${percent}%, calc(100% - 84px))`;
-  if (percent > previousPercent) animateTechnoProgress();
+  positionTechnoAtRepair(percent, { animate: percent > previousPercent });
   $("repairPercent").textContent = `${percent}% repaired`;
   $("siteStatus").textContent = percent >= 100 ? "STATUS: REPAIR COMPLETE" : percent > 0 ? `STATUS: RECOVERING · ${percent}%` : "STATUS: CORRUPTED";
   $("siteStatus").classList.toggle("complete", percent >= 100);
@@ -500,15 +637,24 @@ async function exportReport() {
 }
 
 async function prepare() {
+  if (state.preparing) return;
+  state.preparing = true;
   $("begin").disabled = true;
-  $("modelProgress").textContent = "Requesting microphone…";
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  stream.getTracks().forEach((track) => track.stop());
-  state.modelDevice = await recognizer.load(requestedDevice);
-  state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
-  $("modelProgress").textContent = `Ready locally (${state.modelDevice}).`;
-  show("read");
-  await startReading();
+  try {
+    $("modelProgress").textContent = "Requesting microphone…";
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    stream.getTracks().forEach((track) => track.stop());
+    state.modelDevice = await recognizer.load(requestedDevice);
+    state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
+    $("modelProgress").textContent = `Ready locally (${state.modelDevice}).`;
+    show("read");
+    await startReading();
+  } catch (error) {
+    show("setup");
+    throw error;
+  } finally {
+    state.preparing = false;
+  }
 }
 
 $("begin").onclick = () => prepare().catch((error) => {
@@ -519,7 +665,12 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("readerState").textContent = error.message;
   $("listen").disabled = false;
 });
-$("again").onclick = () => location.reload();
+$("again").onclick = () => {
+  const url = new URL(location.href);
+  url.search = "";
+  url.searchParams.set("launch", "wikiwhy");
+  location.href = url.href;
+};
 $("continueResult").onclick = () => {
   const current = readWikiWhyState(localStateStorage);
   const outcome = calculateWikiWhyRepair({
@@ -546,6 +697,8 @@ $("continueResult").onclick = () => {
       });
   renderRepairOutcome(repair.state, repair.ok);
   renderCampaignMeter(repair.state);
+  if (repair.ok) renderSavedRepair(repair.state);
+  renderRecoveryHub();
   diagnostic("wrapper-repair-persistence", { advance: outcome.advance, saved: repair.ok });
   $("continueResult").disabled = true;
   $("continueResult").textContent = "Repair applied";
@@ -569,6 +722,7 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (keepPreparationVisible()) return;
   await discardActiveReadingForDiagnostics();
   hideCharacterDialog();
   const reset = resetWikiWhyDiagnosticState(localStateStorage);
@@ -581,6 +735,29 @@ $("diagnosticReset").onclick = async () => {
   $("progressText").textContent = "Diagnostic mode · no reading score created";
 };
 $("dialogAction").onclick = () => (state.dialogAction ?? hideCharacterDialog)();
+$("previewBack").onclick = returnToHub;
+$("previewReturn").onclick = returnToHub;
+$("taskStart").onclick = returnToHub;
+$("taskHub").onclick = returnToHub;
+$("taskSite").onclick = () => openRecoverySite(state.selectedSiteId);
+$("taskReader").onclick = () => {
+  if (state.result) show("review");
+  else if (state.listening) show("read");
+  else if (state.preparing) show("setup");
+  else showDesktopMessage("Reading Companion opens automatically beside an active recovery. No passage is running yet.");
+};
+document.querySelectorAll(".desktop-shortcut").forEach((button) => {
+  button.onclick = () => {
+    const messages = {
+      files: "Finn's Files holds recovered evidence after a site is secured. It never stores voice recordings or transcripts.",
+      notes: "TODO: repair the Internet, keep the useful parts, and label anything that says it is definitely not a virus.",
+      recycle: "Recycle Byte is empty. Apparently someone has been cleaning up after themselves.",
+      repair: "RECOVERED_A: is a deliberately fictional repair disk. Please do not insert it into a real computer.",
+    };
+    if (button.dataset.action === "hub") returnToHub();
+    else showDesktopMessage(messages[button.dataset.action]);
+  };
+});
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
   $("passage").addEventListener(eventName, () => {
     state.guidePausedUntil = performance.now() + 5_000;
@@ -620,16 +797,22 @@ function updateDesktopClock() {
 
 hydrateInternetRecoveryCopy();
 hydratePassage();
+renderRecoveryHub();
 const previousWikiWhyState = readWikiWhyState(localStateStorage);
 renderSavedRepair(previousWikiWhyState);
 renderCampaignMeter(previousWikiWhyState);
 state.diagnosticState = readWikiWhyDiagnosticState(localStateStorage);
 renderDiagnosticPanel(state.diagnosticState);
-$("recoveredFilesShortcut").onclick = () => $("savedRepairReceipt").scrollIntoView({ block: "center" });
 updateDesktopClock();
 setInterval(updateDesktopClock, 30_000);
 renderPassage(0);
-if (uiPreview === "read") {
+if (requestedLaunch === "wikiwhy") {
+  openRecoverySite("wikiwhy");
+} else if (requestedSite) {
+  renderSitePreview(getRecoverySite(requestedSite));
+} else if (uiPreview === "hub") {
+  show("hub");
+} else if (uiPreview === "read") {
   const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
   updateProgress({
     furthestMatchedTokenIndex: previewCount - 1,

@@ -126,6 +126,40 @@ test("campaign diagnostics stay in the wrapper and expose honest test controls",
   assert.doesNotMatch(engine, /diagnostic|Amy|Chinmay|Shield Protocol/iu);
 });
 
+test("the recovery hub is clickable without pretending unfinished sites are playable", async () => {
+  const [app, catalog, engine, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/site-catalog.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /id="hub"/u);
+  assert.match(html, /id="siteGrid"/u);
+  assert.match(html, /id="sitePreview"/u);
+  assert.match(html, /MECHANICS NOT CONNECTED/u);
+  assert.match(app, /renderRecoveryHub/u);
+  assert.match(app, /renderSitePreview/u);
+  assert.match(app, /show\(state\.result \? "review" : "setup"\)/u);
+  assert.match(app, /state\.preparing/u);
+  assert.match(app, /renderSavedRepair\(repair\.state\)/u);
+  assert.match(catalog, /playable: true/u);
+  assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
+  assert.match(html, /aria-label="Back to Recovery Map"/u);
+  assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
+});
+
+test("the rogue AI owns the overwrite while dialogue portraits await the reviewed pack", async () => {
+  const [css, dialogues, html] = await Promise.all([
+    readFile(new URL("../apps/internet-recovery/diagnostics.css", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/wikiwhy-dialogues.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.doesNotMatch(`${css}\n${dialogues}`, /CHINMAY WAS HERE|chinmay_admin/iu);
+  assert.match(dialogues, /ai_repair_service/u);
+  assert.match(dialogues, /portrait-pack-pending\.svg/u);
+  assert.match(html, /portrait-pack-pending\.svg/u);
+});
+
 test("live checkpoints cannot fragment the final recording", async () => {
   const capture = await readFile(new URL("../speech/audio-capture.js", import.meta.url), "utf8");
   assert.match(capture, /finalRecorder/u);

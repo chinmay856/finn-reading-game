@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#142b46">
-  <title>Internet Recovery 98 · WikiWhy</title>
+  <title>Internet Recovery 98 · Recovery Map</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/apps/internet-recovery/visual-polish.css">
   <link rel="stylesheet" href="/apps/internet-recovery/repair-outcome.css">
   <link rel="stylesheet" href="/apps/internet-recovery/diagnostics.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/recovery-hub.css">
 </head>
 <body>
   <div class="page-frame">
@@ -16,16 +17,58 @@
     <main class="recovery-desktop">
       <header class="desktop-banner">
         <div class="brand-lockup"><span class="brand-orbit" aria-hidden="true">◎</span><div><small>AMY'S CLEAN-ROOM NETWORK</small><h1>INTERNET RECOVERY 98</h1></div></div>
-        <div class="mission-crumbs" aria-label="Current location"><span>RECOVERY DESKTOP</span><i aria-hidden="true">›</i><b>WIKIWHY REPAIR</b></div>
+        <div class="mission-crumbs" aria-label="Current location"><span>RECOVERY DESKTOP</span><i aria-hidden="true">›</i><b id="desktopContext">RECOVERY MAP</b></div>
         <div class="connection-status"><span class="status-light" aria-hidden="true"></span><b>REMOTE SESSION ESTABLISHED</b><span>USER: FINN</span></div>
       </header>
 
-      <section id="setup" class="screen on desktop-surface setup-surface" style="overflow:auto">
-        <nav class="desktop-icons" aria-label="Recovery desktop shortcuts">
-          <button class="desktop-icon active" type="button"><span aria-hidden="true">▣</span><b>Browser</b><small>Browse what remains</small></button>
-          <button id="recoveredFilesShortcut" class="desktop-icon" type="button" disabled><span aria-hidden="true">▤</span><b>Recovered Files</b><small id="recoveredFilesCount">Nothing recovered yet</small></button>
-          <button class="desktop-icon" type="button" disabled><span aria-hidden="true">_</span><b>Terminal</b><small>Type confidently and hope</small></button>
-        </nav>
+      <nav class="desktop-shortcut-rail" aria-label="Recovery desktop shortcuts">
+        <button id="desktopBrowser" class="desktop-shortcut active" type="button" data-action="hub"><span class="shortcut-art computer" aria-hidden="true"></span><b>Recovery<br>Browser</b></button>
+        <button id="recoveredFilesShortcut" class="desktop-shortcut" type="button" data-action="files"><span class="shortcut-art folder" aria-hidden="true"></span><b>Finn's<br>Files</b><small id="recoveredFilesCount">Empty</small></button>
+        <button class="desktop-shortcut" type="button" data-action="repair"><span class="shortcut-art disk" aria-hidden="true"></span><b>RECOVERED_A:</b></button>
+        <button class="desktop-shortcut" type="button" data-action="notes"><span class="shortcut-art note" aria-hidden="true"></span><b>notes.txt</b></button>
+        <button class="desktop-shortcut" type="button" data-action="recycle"><span class="shortcut-art bin" aria-hidden="true"></span><b>Recycle<br>Byte</b></button>
+      </nav>
+
+      <section id="hub" class="screen on desktop-surface hub-surface" tabindex="-1">
+        <article class="os-window recovery-map-window">
+          <div class="window-titlebar"><span>RECOVERY BROWSER — MAP OF WHAT REMAINS</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="hub-browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span>recovery://map/incoming-cases</span><strong>REMOTE TUNNEL ACTIVE</strong></div>
+          <div class="recovery-map-body">
+            <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 SECURED</span></div></header>
+            <div id="siteGrid" class="site-grid" aria-label="Recovery sites"></div>
+            <section class="incoming-cases"><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div><div id="incomingCases" class="incoming-case-list"></div></section>
+          </div>
+        </article>
+        <div class="hub-side-windows">
+          <aside class="os-window case-file-window">
+            <div class="window-titlebar"><span>CASE FILE</span><span class="window-controls" aria-hidden="true">□ ×</span></div>
+            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10</span></div><ol id="evidenceSlots"></ol><small>Logs only. No audio or transcripts.</small></div>
+          </aside>
+          <aside class="os-window amy-support-window">
+            <div class="window-titlebar"><span>AMY // ENGINEER SUPPORT</span><span class="window-controls" aria-hidden="true">— □</span></div>
+            <div><img src="/apps/internet-recovery/art/characters/dialogue/portrait-pack-pending.svg" alt="Amy portrait placeholder"><p id="amySupportMessage"><b>System healthy.</b> WikiWhy is connected. The other site files are arriving, so their windows are view-only for now.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="sitePreview" class="screen desktop-surface site-preview-surface" tabindex="-1">
+        <article id="sitePreviewWindow" class="os-window site-preview-window" data-site-theme="threadit">
+          <div class="window-titlebar"><span id="sitePreviewTitle">THREADIT — DESIGN PREVIEW</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button id="previewBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span id="sitePreviewAddress" class="address">http://threadit.ir98/</span><span class="browser-security">VIEW ONLY</span></div>
+          <div class="site-preview-page">
+            <header><span id="sitePreviewMark">T</span><div><small id="sitePreviewArchetype">FORUM / SOURCE LINEAGE</small><h2 id="sitePreviewName">ThreadIt</h2></div><strong>INCOMING CASE</strong></header>
+            <div class="preview-corruption-card"><small>APPARENT PROBLEM</small><h3 id="sitePreviewBelief">MOST VOTES WINS REALITY</h3><p id="sitePreviewDescription">The repair window is still being designed.</p></div>
+            <div id="sitePreviewMotif" class="site-preview-motif" aria-hidden="true"></div>
+            <footer><span>DESIGN FILE RECEIVED</span><b>MECHANICS NOT CONNECTED</b></footer>
+          </div>
+        </article>
+        <aside class="os-window preview-companion-window">
+          <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
+          <div class="preview-companion-body"><small>STABLE RECOVERY WINDOW</small><h2>Passage not assigned yet</h2><p>This site preview does not borrow WikiWhy's passage or scoring. Its own reviewed content and repair rules will connect here later.</p><div><span>MIC: OFF</span><span>NO READING SCORE</span></div><button id="previewReturn" class="os-button primary" type="button">Return to Recovery Map</button></div>
+        </aside>
+      </section>
+
+      <section id="setup" class="screen desktop-surface setup-surface" style="overflow:auto" tabindex="-1">
 
         <article class="os-window mission-window" style="margin-top:1vh;max-height:100%;overflow:auto">
           <div class="window-titlebar"><span>RECOVERED_FILE_READY.txt</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
@@ -57,7 +100,7 @@
         </div>
       </section>
 
-      <section id="read" class="screen desktop-surface mission-surface">
+      <section id="read" class="screen desktop-surface mission-surface" tabindex="-1">
         <article class="os-window browser-window">
           <div class="window-titlebar danger"><span>WIKIWHY — INTERNET ENCYCLOPEDIA</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span class="address">http://wikiwhy.recovered/evidence</span><span class="browser-security">CONNECTION: QUESTIONABLE</span></div>
@@ -109,7 +152,7 @@
         </aside>
       </section>
 
-      <section id="review" class="screen desktop-surface review-surface">
+      <section id="review" class="screen desktop-surface review-surface" tabindex="-1">
         <article class="os-window result-window">
           <div class="window-titlebar success"><span>REPAIR_RESULT.log</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="window-body">
@@ -155,13 +198,13 @@
         <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogBody">
           <div class="window-titlebar"><span id="dialogTitle">AMY // ENGINEER CHANNEL</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="character-dialog-body">
-            <img id="dialogPortrait" src="/apps/internet-recovery/art/characters/dialogue/amy-engineer.jpg" alt="">
+            <img id="dialogPortrait" src="/apps/internet-recovery/art/characters/dialogue/portrait-pack-pending.svg" alt="">
             <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
           </div>
         </article>
       </div>
 
-      <footer class="taskbar"><button class="start-button" type="button">START</button><div class="task-button">▣ WikiWhy — repair</div><div class="task-button">▤ Reading Companion</div><div class="task-spacer"></div><div class="tray"><span aria-hidden="true">▮▮▮</span><time id="desktopClock">12:00 AM</time></div></footer>
+      <footer class="taskbar"><button id="taskStart" class="start-button" type="button">START</button><button id="taskHub" class="task-button active" type="button">▣ Recovery Browser</button><button id="taskSite" class="task-button" type="button">□ No site open</button><button id="taskReader" class="task-button" type="button">▤ Reading Companion</button><div class="task-spacer"></div><div class="tray"><span class="tunnel-tray"><i aria-hidden="true"></i>REMOTE TUNNEL</span><span aria-hidden="true">▮▮▮</span><time id="desktopClock">12:00 AM</time></div></footer>
     </main>
   </div>
   <script type="module" src="/app.js"></script>

@@ -1,4 +1,4 @@
-# WikiWhy production site assets
+# Internet Recovery production site assets
 
 These assets are wrapper-owned production images used by the live WikiWhy
 prototype. They are intentionally separate from the larger review-only concept
@@ -21,3 +21,9 @@ Both source generations were resized and optimized locally with the repository's
 installed `sharp` dependency. They contain no external user data and are used
 only by the Internet Recovery wrapper; neither image enters passage content,
 speech recognition, scoring, or Game Rules.
+
+## `previews/`
+
+The Recovery Map and unfinished-site preview windows use optimized crops taken
+directly from the preferred rogue-AI concept boards. See
+[`previews/README.md`](previews/README.md) for the derivation and scope boundary.
