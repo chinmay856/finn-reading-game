@@ -147,6 +147,14 @@ import { SPOTTYFI_EVIDENCE_RECORD, acknowledgeSpottyFiMidpoint, acknowledgeSpott
 import { getSpottyFiCampaignView } from "./apps/internet-recovery/spottyfi-view.js";
 import { selectNextSpottyFiPassage } from "./apps/internet-recovery/spottyfi-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
+import {
+  ENDGAME_CHECKPOINT_IDS,
+  acceptEndgameCheckpoint,
+  beginEndgameContainment,
+  confirmEndgameRevocation,
+  discoverEndgameEvidence,
+  readEndgameState,
+} from "./apps/internet-recovery/endgame-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
 let PARAGRAPHS = activePassage.paragraphs;
@@ -251,6 +259,8 @@ const state = {
   amazeonReceiptOpen: false,
   amazeonEvidenceReceiptOpen: false,
   spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
+  endgameState: readEndgameState(localStateStorage),
+  endgameStorageAvailable: null,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -402,9 +412,46 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
   openNextCampaignReading();
 }
 
+function renderEndgame() {
+  const endgame = state.endgameState;
+  const checkpointCount = endgame.checkpointIds.length;
+  $("endgamePhaseLabel").textContent = endgame.phase === "restored" ? "RECORD FINALIZED" : endgame.phase.toUpperCase();
+  $("endgameSafetyGate").hidden = endgame.phase !== "safety-gate";
+  $("endgameContainment").hidden = endgame.phase !== "containment";
+  $("endgameRevocation").hidden = endgame.phase !== "revocation";
+  $("endgameRestored").hidden = endgame.phase !== "restored";
+  $("endgameCheckpointList").innerHTML = ENDGAME_CHECKPOINT_IDS.map((id, index) => `<li data-complete="${index < checkpointCount}"><b>Checkpoint ${index + 1}</b><span>${id}</span><strong>${index < checkpointCount ? "SAVED" : index === checkpointCount ? "READY — REVIEW GATED" : "LOCKED"}</strong></li>`).join("");
+  $("endgameRouteStatus").textContent = endgame.routeVisible
+    ? "Shared route verified: AI service → Recovery Desktop"
+    : "Route hidden until checkpoint 1";
+  const endgamePreview = Boolean(uiPreview?.startsWith("endgame-"));
+  $("endgameCheckpointAdvance").textContent = endgamePreview
+    ? `Preview reviewed checkpoint ${Math.min(checkpointCount + 1, 3)}`
+    : "Checkpoint unavailable — review pending";
+  $("endgameCheckpointAdvance").disabled = !endgamePreview || checkpointCount >= ENDGAME_CHECKPOINT_IDS.length;
+  if (state.endgameStorageAvailable === false) {
+    $("endgameSafetyCopy").textContent = "Containment needs local saving before it can start. Your ten secured sites and evidence are unchanged. You can exit now and return after saving is available.";
+  } else {
+    $("endgameSafetyCopy").textContent = "Your ten secured sites and evidence are unchanged. A write/read/delete probe will run before containment begins.";
+  }
+  $("endgameLiveStatus").textContent = endgame.phase === "restored"
+    ? "AI repair service write access revoked. Evidence 01-11 verified read-only."
+    : endgame.phase === "revocation"
+      ? "Checkpoint 3 is saved. Human revocation confirmation is ready."
+      : endgame.phase === "containment"
+        ? `Containment saved. ${checkpointCount ? `Checkpoint ${checkpointCount} complete.` : "Checkpoint 1 is review gated."}`
+        : "Containment has not started.";
+}
+
+function openEndgame({ canonicalComplete = false } = {}) {
+  state.endgameState = discoverEndgameEvidence(state.endgameState, { canonicalComplete });
+  renderEndgame();
+  show("endgame");
+}
+
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "endgame", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
@@ -420,6 +467,8 @@ function show(name) {
   const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || spottyfiScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
+    : name === "endgame"
+      ? "EVIDENCE 11 CONTAINMENT"
     : name === "sitePreview"
       ? `${selectedSite.name.toUpperCase()} PREVIEW`
       : threadItScreen
@@ -779,6 +828,13 @@ function renderRecoveryHub() {
   $("securedSiteCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
   $("evidenceCount").textContent = `${securedCount}/10 canonical`;
   $("evidenceCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
+  $("endgameLaunch").hidden = !evidenceSummary.canonicalComplete && state.endgameState.phase === "locked";
+  $("endgameLaunch").dataset.canonicalComplete = String(evidenceSummary.canonicalComplete);
+  $("endgameLaunch").textContent = state.endgameState.phase === "restored"
+    ? "Open restored final incident"
+    : state.endgameState.phase === "locked"
+      ? "EVIDENCE_11.LIVE locked"
+      : "Open EVIDENCE_11.LIVE";
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
     const siteSecured = (site.id === "wikiwhy" && wikiWhySecured)
       || (site.id === "threadit" && threadItSecured)
@@ -3718,6 +3774,40 @@ $("begin").onclick = () => prepare().catch((error) => {
   $("begin").disabled = false;
   $("modelProgress").textContent = `Could not start: ${error.message}`;
 });
+$("endgameLaunch").onclick = () => openEndgame({
+  canonicalComplete: $("endgameLaunch").dataset.canonicalComplete === "true",
+});
+$("endgameBegin").onclick = () => {
+  const result = beginEndgameContainment(state.endgameState, { storage: localStateStorage });
+  state.endgameState = result.state;
+  state.endgameStorageAvailable = result.storageAvailable;
+  renderEndgame();
+  $("endgameLiveStatus").textContent = result.storageAvailable
+    ? "Containment started and saved. Checkpoint 1 is review gated."
+    : "Containment needs local saving before it can start.";
+};
+$("endgameCheckpointAdvance").onclick = () => {
+  if (!uiPreview?.startsWith("endgame-")) return;
+  const checkpointId = ENDGAME_CHECKPOINT_IDS[state.endgameState.checkpointIds.length];
+  const result = acceptEndgameCheckpoint(state.endgameState, checkpointId, { storage: localStateStorage });
+  state.endgameState = result.state;
+  renderEndgame();
+  $("endgameLiveStatus").textContent = result.accepted
+    ? `${checkpointId} saved. ${state.endgameState.phase === "revocation" ? "Human revocation confirmation is ready." : "The next checkpoint remains review gated."}`
+    : "The checkpoint could not be saved. Nothing was lost. Try again.";
+};
+$("endgameRevoke").onclick = () => {
+  const result = confirmEndgameRevocation(state.endgameState, { storage: localStateStorage });
+  state.endgameState = result.state;
+  renderEndgame();
+  renderRecoveryHub();
+  $("endgameLiveStatus").textContent = result.confirmed
+    ? "AI repair service write access revoked. Evidence 01-11 verified read-only."
+    : "The game could not save revocation yet. Nothing was lost. Try again.";
+};
+for (const id of ["endgameExit", "endgameSafetyExit", "endgameReturn"]) {
+  $(id).onclick = () => { renderRecoveryHub(); show("hub"); };
+}
 $("listen").onclick = () => (state.listening ? finishReading() : startReading()).catch((error) => {
   $("readerState").textContent = error.message;
   $("listen").disabled = false;
@@ -4647,6 +4737,22 @@ if (requestedLaunch === "wikiwhy") {
   if (uiPreview === "mapguess-evidence") {
     requestAnimationFrame(() => $("mapguessEvidenceReceipt").scrollIntoView({ block: "nearest" }));
   }
+} else if (["endgame-arrival", "endgame-containment", "endgame-checkpoint-1", "endgame-revocation", "endgame-restored"].includes(uiPreview)) {
+  const previewValues = new Map();
+  const previewStorage = {
+    getItem: (key) => previewValues.get(key) ?? null,
+    removeItem: (key) => previewValues.delete(key),
+    setItem: (key, value) => previewValues.set(key, String(value)),
+  };
+  state.endgameState = discoverEndgameEvidence(state.endgameState, { canonicalComplete: true });
+  if (uiPreview !== "endgame-arrival") state.endgameState = beginEndgameContainment(state.endgameState, { storage: previewStorage }).state;
+  const previewCheckpointCount = { "endgame-checkpoint-1": 1, "endgame-revocation": 3, "endgame-restored": 3 }[uiPreview] ?? 0;
+  for (const checkpointId of ENDGAME_CHECKPOINT_IDS.slice(0, previewCheckpointCount)) {
+    state.endgameState = acceptEndgameCheckpoint(state.endgameState, checkpointId, { storage: previewStorage }).state;
+  }
+  if (uiPreview === "endgame-restored") state.endgameState = confirmEndgameRevocation(state.endgameState, { storage: previewStorage }).state;
+  renderEndgame();
+  show("endgame");
 } else if (uiPreview === "read") {
   const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
   updateProgress({

@@ -13,12 +13,19 @@ They do not imitate a real operating system, antivirus product, or service.
 
 ## Reused character assets
 
-- celebration/restoration: `amy_supportive`, `chinmay_relieved`,
-  `techno_celebrate_spin`;
-- evidence/trace: `amy_evidence`, `chinmay_fluster_3`,
-  `techno_suspicious_file` or `techno_alert_ball_pin`;
-- safety/preserve/revoke: `amy_tools`, `chinmay_fluster_3`,
-  `techno_bark_ball` or `techno_clue_point`.
+- celebration/restoration: `amy_supportive`, `chinmay_relieved`, and wrapper ID
+  `endgame.techno.celebrate-spin` mapped to
+  `../characters/techno/techno-celebrate-spin.webp`;
+- evidence/trace: `amy_evidence`, `chinmay_fluster_3`, and wrapper ID
+  `endgame.techno.suspicious-file` mapped to
+  `../characters/techno/techno-suspicious-file.webp`;
+- safety/preserve/revoke: `amy_tools`, `chinmay_fluster_3`, and wrapper ID
+  `endgame.techno.bark-ball` mapped to
+  `../characters/techno/techno-bark-ball.webp`.
+
+The nonexistent `techno_clue_point` filename is superseded. Accessible safety
+meaning: “Techno barks beside her orange-and-blue ball while the AI service’s
+write access is revoked.”
 
 No new character portraits are required.
 

@@ -1,5 +1,13 @@
 # Session handoff
 
+## 2026-07-12 `EVIDENCE_11.LIVE` implementation
+
+- Imported the frozen endgame runtime contract from designer PR #46.
+- Added a theme-owned v1 finale state machine with ten-canonical-site gating, one-time evidence discovery, durable write/read/delete probing, ordered checkpoint saves, separate revocation persistence, and fail-closed normalization.
+- Added responsive semantic arrival, safety-gate, containment, revocation, and restored screens using the approved wrapper assets.
+- The three original checkpoint passages remain review-locked. Production cannot use the visual-preview checkpoint control and therefore cannot manufacture the canonical ending without approved readings.
+- No additional portrait or Techno request is outstanding; PR #46 maps all required character states to existing production assets.
+
 ## 2026-07-12 canonical receipt integrity follow-up
 
 - The Recovery Map now counts FacePlace slot 3 only when the exact canonical blocked-boost receipt is present in persisted v2 state.

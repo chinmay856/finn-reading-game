@@ -688,6 +688,18 @@ test("live checkpoints cannot fragment the final recording", async () => {
   assert.doesNotMatch(capture, /finalRecorder\.requestData/u);
 });
 
+test("the final incident is semantic, review gated, and cannot simulate canonical progress in production", async () => {
+  const [app, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /id="endgame"[\s\S]+id="endgameSafetyGate"[\s\S]+id="endgameContainment"[\s\S]+id="endgameRevocation"[\s\S]+id="endgameRestored"/u);
+  assert.match(html, /Checkpoint passages remain unavailable pending independent editorial, accessibility, comprehension, transcription-profile, and real-microphone review/u);
+  assert.match(app, /const endgamePreview = Boolean\(uiPreview\?\.startsWith\("endgame-"\)\)/u);
+  assert.match(app, /if \(!uiPreview\?\.startsWith\("endgame-"\)\) return;/u);
+  assert.match(app, /"Checkpoint unavailable — review pending"/u);
+});
+
 test("the Moonshine comparison is isolated and theme-neutral", async () => {
   const [app, html, worker] = await Promise.all([
     readFile(new URL("../moonshine-benchmark.js", import.meta.url), "utf8"),

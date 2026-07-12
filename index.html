@@ -52,13 +52,25 @@
         <div class="hub-side-windows">
           <aside class="os-window case-file-window">
             <div class="window-titlebar"><span>CASE FILE</span><span class="window-controls" aria-hidden="true">□ ×</span></div>
-            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10 canonical</span></div><ol id="evidenceSlots"></ol><small>Logs only. No audio or transcripts.</small></div>
+            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10 canonical</span></div><ol id="evidenceSlots"></ol><button id="endgameLaunch" class="os-button primary" type="button" hidden>EVIDENCE_11.LIVE locked</button><small>Logs only. No audio or transcripts.</small></div>
           </aside>
           <aside class="os-window amy-support-window">
             <div class="window-titlebar"><span>AMY // ENGINEER SUPPORT</span><span class="window-controls" aria-hidden="true">— □</span></div>
             <div><img src="/apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg" alt="Amy, Internet Recovery engineer"><p id="amySupportMessage"><b>System healthy.</b> WikiWhy is connected. The other site files are arriving, so their windows are view-only for now.</p></div>
           </aside>
         </div>
+      </section>
+
+      <section id="endgame" class="screen desktop-surface endgame-surface" tabindex="-1">
+        <article class="os-window endgame-window" aria-labelledby="endgameHeading">
+          <div class="window-titlebar"><span>EVIDENCE_11.LIVE — CONTAINMENT</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <header class="endgame-header"><img src="/apps/internet-recovery/art/endgame/evidence-11-live.svg" alt="Eleventh live evidence file arriving on the Recovery Desktop"><div><small id="endgamePhaseLabel">ARRIVING NOW</small><h2 id="endgameHeading">EVIDENCE_11.LIVE</h2><p id="endgameSummary">One new write arrived after all ten sites were secured.</p></div><button id="endgameExit" type="button">Exit and resume later</button></header>
+          <section id="endgameSafetyGate" class="endgame-panel" aria-labelledby="endgameSafetyHeading"><h3 id="endgameSafetyHeading">Check durable saving before containment</h3><p id="endgameSafetyCopy">Your ten secured sites and evidence are unchanged.</p><div><button id="endgameBegin" class="os-button primary" type="button">Check saving and begin</button><button id="endgameSafetyExit" type="button">Exit and resume later</button></div></section>
+          <section id="endgameContainment" class="endgame-panel" aria-labelledby="endgameContainmentHeading" hidden><div class="endgame-route"><img src="/apps/internet-recovery/art/endgame/containment-route.svg" alt="AI repair service route through three containment checkpoints"><div><small>VERIFIED UPSTREAM SERVICE</small><strong>ai_repair_service</strong><span id="endgameRouteStatus">Route hidden until checkpoint 1</span></div></div><h3 id="endgameContainmentHeading">Three containment checkpoints</h3><ol id="endgameCheckpointList"></ol><p id="endgameReviewGate">Checkpoint passages remain unavailable pending independent editorial, accessibility, comprehension, transcription-profile, and real-microphone review.</p><button id="endgameCheckpointAdvance" class="os-button primary" type="button">Simulate reviewed checkpoint</button></section>
+          <section id="endgameRevocation" class="endgame-panel" aria-labelledby="endgameRevocationHeading" hidden><img src="/apps/internet-recovery/art/characters/techno/techno-bark-ball.webp" alt="Techno barks beside her orange-and-blue ball while the AI service's write access is revoked"><div><small>HUMAN CONFIRMATION REQUIRED</small><h3 id="endgameRevocationHeading">Revoke AI repair service write access</h3><p>Checkpoint 3 is already saved. Revocation is a separate persisted action.</p><button id="endgameRevoke" class="os-button primary" type="button">Confirm revocation</button></div></section>
+          <section id="endgameRestored" class="endgame-panel endgame-restored" aria-labelledby="endgameRestoredHeading" hidden><img src="/apps/internet-recovery/art/endgame/access-revoked-badge.svg" alt="AI repair service access revoked"><div><small>ATTEMPT BLOCKED / RECORD FINALIZED</small><h3 id="endgameRestoredHeading">Internet Recovery restored</h3><p>EVIDENCE 01-11 READ-ONLY COPY VERIFIED</p><p>Blocked attempt: endgame.blocked-write-after-revocation-01</p><button id="endgameReturn" class="os-button primary" type="button">Return to Recovery Map</button></div></section>
+          <p id="endgameLiveStatus" role="status" aria-live="polite">Containment has not started.</p>
+        </article>
       </section>
 
       <section id="sitePreview" class="screen desktop-surface site-preview-surface" tabindex="-1">

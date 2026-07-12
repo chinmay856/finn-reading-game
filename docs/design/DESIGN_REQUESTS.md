@@ -1,5 +1,9 @@
 # Parallel design requests
 
+## Endgame visual request status — 2026-07-12
+
+Designer PR #46 is consumed. The runtime uses the approved `EVIDENCE_11.LIVE`, containment route, evidence vault, access-revoked badge, Amy/Chinmay states, and Techno mappings. No additional visual or art-direction request is outstanding. The remaining checkpoint gate is independent content, accessibility, transcription-profile, and real-microphone review rather than missing design collateral.
+
 ## Canonical evidence reconciliation
 
 - FacePlace PR #37 and MapGuess PR #44 are now fully consumed for their exact
