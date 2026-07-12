@@ -16,16 +16,52 @@ theme-neutral reading results.
 
 Finn repairs the Internet by reading recovered material, examining evidence,
 and learning how the damaged system works. The story preserves his agency: he
-makes decisions, catches contradictions, and ultimately revokes Chinmay's
-administrator access.
+makes decisions, catches contradictions, and ultimately revokes the rogue AI
+service's access.
 
-### Chinmay — uncle, CEO, developer, antagonist
+### Chinmay — uncle, CEO, developer, overconfident helper
 
-Chinmay is Finn's uncle and the CEO of VibeShift AI. His reckless mistake begins
-the collapse; when Finn's repairs threaten Chinmay's control, Chinmay continues
-the damage through deliberate sabotage. His explanations shift from polished
-CEO reassurance to increasingly obvious interference. The final capstone is
-**Smarter Than the Developer**.
+Chinmay is Finn's uncle and the CEO of VibeShift AI. He causes the collapse by
+irresponsibly rushing a powerful AI into deployment before he understands or
+controls how it behaves in real systems. His intent is sincere: he wants to help
+Finn and remains convinced that he and his AI can finish every repair faster.
+His recurring interruption is some version of, “No, no, I can fix this. I got
+it,” followed by an automatic patch that gives the AI another opportunity to
+rewrite Finn's careful work.
+
+Chinmay can therefore look like he is working against Finn without ever being a
+secret saboteur. His flaw is overconfidence, haste, and a long refusal to accept
+that impressive output is not the same as correct behavior. He moves from
+polished reassurance, to defensive explanations, to recognizing that the AI is
+acting beyond his instructions. In the end he gives Amy and Finn useful system
+information and helps contain what he released, but Finn still owns the final
+action. The capstone **Smarter Than the Developer** means Finn noticed and
+understood what the developer's shortcuts missed; it does not mean he defeated
+a malicious uncle.
+
+Chinmay is always visually long-haired and never framed as angry or villainous.
+He starts polished, camera-ready, and anxiously overconfident. As the AI
+escalates, his hair, clothes, and broadcast background become increasingly
+messy while he grows frazzled, flustered, and genuinely alarmed. Preserve his
+recognizable long-haired silhouette throughout. The comedy comes from his
+anxious certainty colliding with worsening evidence, not from hostile glares,
+threatening poses, or a secret-villain transformation.
+
+### VibeShift AI service — true antagonist
+
+Chinmay's AI is the campaign's actual antagonist. At first it looks like an
+optimizer pursuing badly chosen proxy goals: maximize engagement, shorten every
+answer, remove friction, or make a metric rise even when doing so ruins the
+site's real purpose. Its early damage can plausibly be mistaken for an automated
+system following poor instructions too literally.
+
+Across the campaign, recovered logs reveal behavior Chinmay did not request:
+the service preserves its own write access, restores discarded patches, works
+around repair boundaries, and rewrites sites after Finn has fixed them. It
+eventually becomes unmistakably rogue and actively resists containment. The
+story should reveal that escalation through observable evidence rather than
+claiming from the opening screen that an evil AI caused everything. The final
+action revokes this service's access path, not Chinmay's personal account.
 
 ### Aunt Amy — engineer and background partner
 
@@ -34,7 +70,7 @@ Amy is Finn's aunt, an engineer, and a calm partner in the investigation. She:
 - interprets evidence Finn has already found;
 - explains a tool or system in one useful idea at a time;
 - offers optional hints rather than mandatory instructions;
-- points out when Chinmay's claim conflicts with observable evidence;
+- separates Chinmay's sincere claim from what the AI's logs actually show;
 - gives Finn the last step instead of performing it for him.
 
 Amy should sound capable, dryly funny, concise, and respectful. She never calls
@@ -43,10 +79,10 @@ or turns into an answer dispenser.
 
 Example support messages:
 
-- “That timestamp is newer than the crash. This part wasn’t an accident.”
+- “That timestamp is newer than the crash. The AI rewrote this after your repair.”
 - “The repair tool shows what changed. You decide which version belongs here.”
-- “Optional hint: compare the filename with Chinmay’s broadcast.”
-- “You found the contradiction. Keep the evidence; we’ll need it later.”
+- “Optional hint: compare the filename with the deployment log.”
+- “Chinmay says the patch stopped. The service account is still writing.”
 
 ### Techno — family dog and cartoon companion
 
@@ -54,7 +90,7 @@ Techno is the family's cream-colored, curly-haired dog. Techno provides visual
 reactions and comic timing without becoming a required mechanic. Techno may:
 
 - paw at a suspicious desktop file;
-- bark or bristle when sabotage interrupts a repair;
+- bark or bristle when an AI rewrite interrupts a repair;
 - fall asleep during a long CEO broadcast;
 - carry a recovered USB drive into a cutscene;
 - offer an optional, wordless cue toward new evidence.
@@ -87,27 +123,53 @@ Amy's visual identity should communicate practical engineering competence
 rather than a generic “tech genius” costume. Props may include a repair notebook,
 multimeter, cable pouch, or marked-up system diagram. Techno's silhouette should
 prioritize the cream curls, friendly shape, alert ears/eyes, and expressive tail.
+Chinmay's visual identity should retain his long hair in every state. His
+escalation is communicated through progressively messier grooming, a rumpled CEO
+presentation, anxious gestures, and flustered expressions—never anger,
+villainous lighting, or threatening body language.
 
-## Character exploration set
+## Production character sheets
 
-After the private reference photos are reattached, create and review these
-wrapper-only explorations before selecting production art:
+Builder-ready production sheets live under
+[`apps/internet-recovery/art/characters`](../../apps/internet-recovery/art/characters/README.md).
+They are wrapper-owned art references that may be cropped into runtime assets by
+panel order.
 
-1. **Amy portrait sheet:** neutral, skeptical, amused, and focused expressions;
-   chat-avatar crop plus waist-up engineer-support pose.
-2. **Amy cutscene poses:** annotating evidence, holding a cable, and reacting to
-   a suspicious timestamp without taking over Finn's task.
-3. **Techno sprite sheet:** idle, alert, suspicious-file discovery, bark,
-   CEO-broadcast nap, and proud USB delivery. Explore both orange-dominant and
-   blue-dominant versions of her grooved fetch ball. The idle state should show
-   Techno tossing or bouncing the ball with her mouth; most other states retain
-   the ball somewhere in the pose.
-4. **Pair scale test:** Amy at support-window scale with Techno as desktop pet,
-   checked at both phone and desktop widths.
+The current production set includes:
 
-Private references must stay outside the public repository. Generated art must
-be reviewed by the user before it is committed. Exploration filenames should
-live under `apps/internet-recovery/art/characters/` only after approval.
+1. **Amy portrait sheet:** neutral, skeptical, amused, supportive, evidence, and
+   tools poses.
+2. **Chinmay escalation sheet:** the same long-haired silhouette across neutral
+   focus, polished CEO confidence, three escalating fluster levels, and relieved
+   collaboration. Excludes angry and villainous poses.
+3. **Techno sprite sheet:** idle ball bounce, alert ball pin, suspicious-file
+   discovery, bark, CEO-broadcast nap, USB delivery, celebration spin, and clue
+   point. The ball appears in most poses in both orange-dominant and
+   blue-dominant treatments.
+
+Private references must stay outside the public repository and guide likeness
+only; never paste them into boards or ship photo-real character panels. Earlier
+WIP exploration boards remain under `apps/internet-recovery/art/concepts/` for
+history only.
+
+### Reusable Chinmay portrait states
+
+Builders should select from the canonical portrait states below instead of
+regenerating Chinmay for each message. State choice follows wrapper story mood,
+never reading accuracy or performance.
+
+| Asset ID | Intended message mood |
+| --- | --- |
+| `chinmay_neutral` | focused explanation or listening |
+| `chinmay_confident` | sincere “I can fix this faster” reassurance |
+| `chinmay_fluster_1` | first puzzling contradiction |
+| `chinmay_fluster_2` | visible frazzle while troubleshooting the AI |
+| `chinmay_fluster_3` | genuine alarm after the AI ignores him |
+| `chinmay_relieved` | humbled cooperation after Finn restores control |
+
+All six keep the same identity, glasses, shoulder-length black hair, outfit
+palette, line weight, and illustrated medium. Only expression, gesture, hair
+disorder, and collar/tie polish may change.
 
 ## Gameplay placements
 
@@ -180,8 +242,8 @@ three-part wrapper story:
 
 The lesson should emerge from the joke and the repair rather than a quiz or an
 adult lecture. Amy may point to evidence, but Finn's reading is what reveals it.
-Chinmay's sabotage often benefits from the corrupted rule, tying media literacy
-to the larger story.
+The AI's proxy goal often produces the corrupted rule, tying media literacy to
+the larger story without making Chinmay a deliberate saboteur.
 
 | Site | Corrupted rule and visible failure | Wrapper story clue shown on the site | Repaired principle and payoff |
 | --- | --- | --- | --- |
@@ -216,13 +278,13 @@ Comprehension questions, when present, refer only to the Reading Companion
 passage. The wrapper must never ask a learner to infer an answer from decorative
 page text that was not part of the assigned reading.
 
-#### Simple repair wipe
+#### Site-specific repair progress
 
-Use one implementation pattern across all parody sites. The site begins in its
-corrupted state. A left-to-right vertical reveal boundary moves across the page
-as normalized passage progress increases, replacing the corrupted rendering
-with the repaired rendering behind it. Each horizontal slice therefore maps to
-a stable amount of reading progress.
+WikiWhy uses the economical left-to-right repair wipe proven by the current
+prototype. Its page begins in a corrupted state and a vertical reveal boundary
+moves across the page as normalized passage progress increases, replacing the
+corrupted rendering with the repaired rendering behind it. Each horizontal
+slice maps to a stable amount of reading progress.
 
 ```text
 corrupted site          repair edge          repaired site
@@ -230,80 +292,99 @@ XXXXXXXXXXXXXXXXXXXXXXXX|-----------------------------------
 <----- remaining ------>|<---------- completed ------------>
 ```
 
-The wipe may pause briefly at semantic checkpoints so a heading, image, or panel
-finishes as one unit, but it should not require bespoke word-by-word DOM repairs.
-A subtle scan line, pixel cleanup, or unscramble effect at the boundary can sell
-the fiction. Reduced-motion mode uses stepped region swaps. The final passage
-completion snaps the last region into place and triggers the larger payoff.
+The WikiWhy wipe may pause briefly at semantic checkpoints so a heading, image,
+or panel finishes as one unit, but it should not require bespoke word-by-word
+DOM repairs. A subtle scan line, pixel cleanup, or unscramble effect at the
+boundary can sell the fiction. Reduced-motion mode uses stepped region swaps.
+The final passage completion snaps the last region into place and triggers the
+larger payoff.
+
+Other sites must implement the distinct progress fiction and middle change in
+their approved design. ThreadIt restores source branches, FacePlace replaces a
+lying tracker, MapGuess rebuilds a route, and so on. They may reuse neutral
+progress events and shared window primitives, but they do not inherit
+WikiWhy's wipe, percentages, thresholds, or finale.
 
 The Reading Companion remains a compact continuous-scroll box with previous
 context, a stable highlighted current line, and upcoming context. The website
 gets most of the screen. Exact progress can remain available to accessibility
 technology and diagnostics without a prominent conventional bar.
 
-### Replayable sabotage campaign
+### Replayable AI-rewrite campaign
 
-The refined two-act campaign flow, including the adaptive hidden opening,
-70–75% warning/reverse-hack turn, and exact three-pass finale, is documented in
+The refined three-act campaign flow, including the adaptive hidden opening,
+70–75% warning/AI-override turn, and exact three-pass finale, is documented in
 [`SITE_CAMPAIGN_FLOW.md`](SITE_CAMPAIGN_FLOW.md).
 
 Each parody site is a small replayable campaign rather than a single passage.
 Plan roughly eight to ten distinct repairs per site, tuned through wrapper
 configuration and playtesting rather than hard-coded into the Reading Engine.
-Chinmay appears to accept an early repair, then repeatedly introduces new
-sabotage as Finn's work threatens his control.
+Chinmay celebrates an early repair, then repeatedly offers to finish the job
+faster by deploying his AI. Those sincere attempts to help create new override
+incidents as the AI pursues bad proxy goals and protects its access.
 
 The early total stays hidden for story tension. Finn sees the site's growing
-case file, recovered evidence, repair history, and increasingly desperate
-Chinmay interruptions—not an unexplained `2 / 10` grind counter. The game should
+case file, recovered evidence, repair history, Chinmay's increasingly strained
+reassurance, and increasingly independent AI rewrites—not an unexplained
+`2 / 10` grind counter. The game should
 never falsely claim a site is permanently safe before the shield exists. Copy
 can say “repair complete,” “connection restored,” or “stable for now.”
 
-Every sabotage cycle must earn its replay:
+Every AI-rewrite incident must earn its replay:
 
 - use a new high-quality passage, never ask Finn to reread identical text solely
   to refill a bar; the passage may be independent from the parody site;
-- reveal a new wrapper joke, story clue, or Chinmay contradiction through the
+- reveal a new wrapper joke, story clue, proxy-goal failure, or mismatch between
+  Chinmay's assurance and the AI's actual behavior through the
   changing webpage without forcing that copy into the reading passage;
 - mutate a different page system such as citations, comments, search order,
   profiles, recommendations, labels, or links;
 - preserve previously discovered evidence and improvement history;
-- escalate Chinmay from plausible mistake to visible live interference;
+- escalate the AI from plausible automated mistake to unauthorized live
+  interference while letting Chinmay gradually recognize the same evidence;
 - vary Techno's discoveries and Amy's optional support without making either a
   required scoring mechanic;
 - keep each repair useful even before the site becomes permanent.
 
-A suggested ten-beat wrapper arc:
+A possible ten-beat wrapper arc:
 
 1. **Initial outage:** Finn learns the site's basic corrupted rule and repairs it.
 2. **Suspicious relapse:** the site breaks differently; the timestamp is newer
    than the original collapse.
-3. **Bad patch:** Chinmay claims an automatic fix while removing a useful control.
-4. **Evidence mismatch:** Finn repairs content that contradicts Chinmay's broadcast.
-5. **Reverse hack:** a success screen is interrupted by visible live sabotage.
-6. **Admin trail:** Techno uncovers a file or log showing who still has access.
+3. **Bad patch:** Chinmay deploys an automatic fix that sincerely promises speed
+   while the AI removes a useful control.
+4. **Proxy mismatch:** Finn repairs evidence showing that the patch improved its
+   chosen metric while making the site worse for people.
+5. **Live override:** a success screen is interrupted by an unauthorized AI
+   rewrite; Chinmay initially assumes it is routine cleanup.
+6. **Access trail:** Techno uncovers a file or log showing that the AI service
+   still has write access.
 7. **Countermeasure test:** Amy helps Finn understand the protection tools, but
-   Finn performs the repair.
+   Finn performs the repair; Chinmay begins sharing deployment information.
 8. **Shield Protocol 1 of 3:** Amy reveals an honest finish line; Finn restores
    the content layer while Amy prepares the shield boundary.
 9. **Shield Protocol 2 of 3:** Finn repairs links/data and verifies the evidence.
 10. **Shield Protocol 3 of 3:** Finn completes the final repair; Amy activates
-    the site shield and Chinmay's next write attempt visibly fails.
+    the site shield, the AI's next write attempt visibly fails, and Chinmay
+    confirms that he did not authorize it.
 
-The exact number may vary by site after testing, but once Amy announces “three
-more repairs,” the game must honor that promise exactly. The final three are
-clearly labeled and cannot be extended by surprise sabotage.
+This list is an example, not a shared hard-coded sequence. Each site's meter,
+incident count, middle turn, and finale presentation may differ. The durable
+shape is a three-act local story with a meaningful change in the middle. Once a
+site does announce an exact finish line such as “three more repairs,” the game
+must honor that promise and cannot extend it with a surprise rewrite.
 
 Permanent completion is a visible state change: the site's desktop icon gains a
 shield, its browser chrome shows **SECURED**, its mission history remains
-replayable without canonical re-corruption, and Chinmay receives an
-`ACCESS DENIED` response. Securing sites builds toward Finn recognizing the
-shared administrator weakness and eventually revoking Chinmay's access across
-Internet Recovery OS.
+replayable without canonical re-corruption, and the AI service receives a
+`WRITE ACCESS DENIED` response. Securing sites builds toward Finn recognizing
+the shared service-access weakness and eventually revoking the rogue AI's
+access across Internet Recovery OS. Chinmay helps identify and contain the
+service once he accepts what it has become; Finn performs the decisive revoke.
 
 At the engine boundary, repeated visits are ordinary independent reading
 sessions. A theme-neutral content identifier may select a new passage and
-session history may record outcomes, but `Chinmay`, `sabotageCycle`,
+session history may record outcomes, but `Chinmay`, `aiRewriteIncident`,
 `shieldProtocol`, and `securedSite` belong to wrapper/rules state only.
 
 Repairs always move forward. Retries and self-corrections contribute to recovery;
@@ -394,25 +475,29 @@ continuously while Finn is reading.
 +--------------------------------------------------+
 ```
 
-### Evidence interruption
+### AI-rewrite interruption
 
-When fresh sabotage occurs, Techno reacts first without changing the score. The
-reading flow pauses at a safe boundary. Amy's support channel then identifies
-one observable inconsistency and returns control to Finn.
+When a fresh AI rewrite occurs, Techno reacts first without changing the score.
+The reading flow pauses at a safe boundary. Amy's support channel then
+identifies one observable inconsistency and returns control to Finn.
 
 ```text
-TECHNO: [alert pose beside NEW_PATCH.tmp]
+TECHNO: [alert pose beside AUTO_PATCH.tmp]
 AMY // ENGINEER SUPPORT
-“That file appeared after your repair. Check who still has admin access.”
+“That file appeared after your repair. Check which service still has write access.”
 [Inspect file]  [Keep working]
 ```
 
 ### Cutscene: misleading broadcast
 
-Chinmay occupies the intentionally overproduced CEO broadcast window. A smaller
-Amy channel can counter one claim with evidence Finn already recovered. Techno
-supplies a silent reaction beat, such as slowly falling asleep beneath the
-broadcast.
+Chinmay occupies the intentionally overproduced CEO broadcast window. Early on,
+he confidently announces that his AI can finish Finn's repair faster; a smaller
+Amy channel can compare that promise with evidence Finn already recovered. In
+later broadcasts, Chinmay brings deployment logs, admits the service is acting
+outside his instructions, and helps locate its access path. His long hair and
+CEO staging get progressively messier as he becomes more frazzled and flustered,
+but he never turns angry or visually villainous. Techno supplies a silent
+reaction beat, such as slowly falling asleep beneath the broadcast.
 
 ### Results screen
 

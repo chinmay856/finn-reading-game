@@ -1,18 +1,18 @@
 # Dialogue portraits
 
-These wrapper-owned portraits were generated on 2026-07-11 for the lightweight
-Internet Recovery 98 dialogue-window prototype. They are presentation assets
-only and do not enter the Reading Engine, Content Platform, or Game Rules.
+These wrapper-owned runtime crops come directly from the production character
+sheets in [`../`](../README.md). Presentation assets never enter the Reading
+Engine, Content Platform, or Game Rules.
 
-- `amy-engineer.jpg` follows the approved Amy/Techno character board: light
-  brown hair, black rectangular glasses, olive utility jacket, navy shirt, and
-  a capable engineer-channel expression.
-- `chinmay-ceo.jpg` follows the approved campaign and CEO-broadcast boards:
-  Indian man, black hair and rectangular glasses, navy suit, orange tie, and a
-  comically overconfident broadcast expression.
+- `amy-supportive.jpg` is panel 4, `amy_supportive`.
+- `amy-evidence.jpg` is panel 5, `amy_evidence`.
+- `chinmay-fluster-1.jpg` is panel 3, `chinmay_fluster_1`.
+- `chinmay-fluster-2.jpg` is panel 4, `chinmay_fluster_2`.
 
-Both images were produced with OpenAI image generation using the repository's
-approved concept boards as visual references, then resized to 512 by 512 JPEG
-assets at quality 88. The prompts requested square head-and-shoulders portraits,
-late-1990s educational PC-game illustration, no text, no border, and no other
-characters. Techno was not generated or altered as part of this work.
+Each file is the corresponding 512 by 512 sheet cell resized to 384 by 384,
+stripped of metadata, and encoded as JPEG quality 86. No character was
+regenerated or redrawn during runtime extraction. Dialogue chooses a portrait
+by wrapper story beat; reading performance never selects a character mood.
+
+`amy-engineer.jpg` and `chinmay-ceo.jpg` are retained only as earlier prototype
+history and are no longer referenced by the application.

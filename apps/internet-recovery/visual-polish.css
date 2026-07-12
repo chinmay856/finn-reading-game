@@ -255,16 +255,19 @@ body {
   left: 82px;
   bottom: 4px;
   width: clamp(118px, 11vw, 166px);
-  transform: translateX(-50%);
+  transform: translateX(-70%);
   pointer-events: none;
   transition: left .45s steps(5, end);
   filter: drop-shadow(2px 3px 1px #142b4666);
 }
 
+.techno-repair-sprite.is-repositioning { transition: none; }
+
 .techno-repair-sprite img {
   display: block;
   width: 100%;
   height: auto;
+  transform: scaleX(-1);
 }
 
 .reader-window {

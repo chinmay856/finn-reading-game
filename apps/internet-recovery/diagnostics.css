@@ -73,7 +73,7 @@
 .dialog-meta { padding: 8px; border: 1px dotted #555; background: #fff; color: #555; font: 11px/1.35 "Courier New", monospace !important; }
 
 .repair-stage.live-corruption { animation: nested-page-breach .7s steps(4, end) 2; }
-.repair-stage.live-corruption::after { content: "CHINMAY WAS HERE"; position: absolute; z-index: 12; inset: 14px 14px auto auto; padding: 8px 12px; border: 2px solid #ff5b4e; background: #3b0505; color: #ffdf55; font-weight: 700; box-shadow: 4px 4px 0 #4d0000; }
+.repair-stage.live-corruption::after { content: "VIBESHIFT AUTO-FIX AI · WRITE STILL ACTIVE"; position: absolute; z-index: 12; inset: 14px 14px auto auto; padding: 8px 12px; border: 2px solid #ff5b4e; background: #3b0505; color: #ffdf55; font-weight: 700; box-shadow: 4px 4px 0 #4d0000; }
 .repair-stage.shield-mode { outline: 4px solid #2d78a8; outline-offset: -6px; }
 .repair-stage.site-secured { outline: 5px solid #3b9d56; outline-offset: -7px; }
 

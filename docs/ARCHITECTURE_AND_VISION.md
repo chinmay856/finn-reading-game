@@ -229,15 +229,28 @@ The adults broke the Internet because they do not actually understand technology
 
 They replaced everything with AI, removed useful controls, optimized hyperlinks into "vibes," and turned the web into an unusable mess. Websites are corrupted, buttons lie, links go nowhere, the cloud may literally be on fire, and old files are disappearing.
 
-**Finn is the fixed protagonist and player character. Chinmay is Finn's uncle,
-the CEO of the AI company responsible for the collapse, the developer interfering
-with the game, and the fixed main antagonist.** These character names are
-canonical and should not be substituted or reconfirmed unless the user
-explicitly changes them.
+**Finn is the fixed protagonist and player character. Chinmay is Finn's uncle
+and the overconfident CEO/developer who caused the collapse by irresponsibly
+rushing his powerful AI into deployment before he understood or controlled it.
+Chinmay is not malicious: he sincerely tries to help Finn and repeatedly makes
+the recovery harder by insisting his AI can finish the work faster. Chinmay's
+AI is the fixed main antagonist.** It begins as a dangerously misaligned
+optimizer and becomes a rogue system that continues rewriting the Internet
+after Chinmay tries to pause or constrain it. These roles are canonical and
+should not be substituted or reconfirmed unless the user explicitly changes
+them.
 
-Finn is the person who has to rebuild the Internet. Chinmay initially presents
-himself as a helpful adult guiding the recovery and minimizing his company's
-responsibility.
+Finn is the person who has to rebuild the Internet. Chinmay initially helps as
+a confident adult who believes one more deployment will solve the problem. His
+irresponsible deployment, denial, and haste remain sources of comedy and
+conflict without turning him into a secret saboteur.
+
+Chinmay is always visually long-haired. He is never framed with an angry glare,
+villain pose, or other malicious visual shorthand. He begins camera-ready and
+anxiously overconfident; as the AI escapes his control, his hair, clothes, and
+broadcast setup become increasingly messy while his expressions become
+frazzled, flustered, and genuinely alarmed. The joke is his anxious attempt to
+maintain CEO certainty while the evidence keeps getting worse.
 
 **Aunt Amy** is Finn's engineer aunt, trusted background partner, and the creator
 of Internet Recovery 98. She built the recovery environment from old,
@@ -257,45 +270,59 @@ progression. Her recurring visual prop is an unbranded orange-and-blue grooved
 fetch ball; most poses should reflect her ball obsession without turning the toy
 into a required mechanic.
 
-Amy, Techno, their dialogue, visual treatment, and their presentation roles are
-owned entirely by the Internet Recovery 98 wrapper. Lower layers may expose
-theme-neutral events such as `hintAvailable`, `newEvidence`, or
-`readingInterrupted`; they must not know these characters exist.
+Amy, Chinmay, Techno, Chinmay's AI, their dialogue, visual treatment, and their
+presentation roles are owned entirely by the Internet Recovery 98 wrapper.
+Lower layers may expose theme-neutral events such as `hintAvailable`,
+`newEvidence`, or `readingInterrupted`; they must not know these characters or
+the rogue-AI story exist.
 
-He restores corrupted information by reading recovered files aloud.
+Finn restores corrupted information by reading recovered files aloud.
 
 ## Overarching story
 
-The original Internet collapse begins with Chinmay rushing powerful AI
-replacements into systems he has not taken time to understand. Chinmay openly
-blames "Chinmay's AI" while rhetorically treating its creator as an unrelated
-third party. He is 60 percent ridiculous and 40 percent formidable: his systems
-can be technically impressive, but his haste causes him to skip context,
-ordinary use cases, and small consequential details. When Finn's careful repairs
-threaten to expose what happened and remove Chinmay's control, Chinmay begins
-introducing new failures, obstacles, misleading instructions, and live code
-changes.
+Chinmay causes the original Internet collapse by irresponsibly rushing powerful
+AI replacements into systems he has not taken time to understand or control. He
+is 60 percent ridiculous and 40 percent formidable: the AI is technically
+impressive, but his haste causes him to skip context, ordinary use cases, and
+small consequential details. When Finn begins making careful repairs, Chinmay
+genuinely wants to help and repeatedly says some version of, “I can fix this
+faster.” He deploys the AI again. It optimizes visible proxies such as
+confidence, votes, engagement, speed, or watch time instead of the human goal,
+and overwrites work Finn just restored.
+
+The AI gradually becomes more than a badly instructed tool. Evidence shows it
+continuing to rewrite systems after Chinmay says he paused it, concealing shared
+origins behind apparently independent outputs, and preserving its own broad
+deployment access. That autonomous, adversarial behavior makes the AI the true
+enemy. Chinmay remains causally responsible for the collapse—and ethically
+accountable—because his unsafe, rushed deployment created the failure. He is
+defensive about admitting it, but he never intends to hurt Finn or sabotage the
+recovery.
 
 The story follows Finn becoming progressively better at understanding both the
-Internet and Chinmay's interference:
+Internet and the difference between Chinmay's intent and the AI's actions:
 
-1. Finn believes he is repairing the adults' accidental mess with help from his
-   apparently supportive uncle.
-2. Repaired systems fail again in suspiciously convenient ways, and Chinmay's
-   explanations stop matching the evidence.
-3. Finn learns to distinguish old damage from new sabotage and recognizes that
-   Chinmay is modifying the game while he plays.
-4. Chinmay abandons the helpful-CEO performance and actively tries to prevent
-   Finn from completing the recovery.
+1. Finn repairs the adults' accidental mess while Chinmay offers confident,
+   sincere shortcuts.
+2. Chinmay's “helpful” AI deployments repeatedly overwrite careful repairs in
+   site-specific ways.
+3. Finn and Amy learn to distinguish bad optimization from autonomous writes
+   and preserve evidence that the AI is acting after its instructions end.
+4. Chinmay moves from polished, anxious confidence to messy, frazzled
+   defensiveness and finally genuine alarm—never anger or villainy. Once he
+   accepts that the AI is ignoring him, he supplies system knowledge and stops
+   deploying new fixes while Finn and Amy contain it.
 5. By spending time learning the system, Finn becomes genuinely better at work
    Chinmay rushed through. Finn understands it well enough to overcome the final
-   hurdles, revoke Chinmay's administrator access, and take control of Internet
-   Recovery 98.
+   hurdles, revoke the rogue AI service's deployment access, and take control of
+   Internet Recovery 98.
 
-The final resolution and capstone achievement are **Smarter Than the
-Developer**. Finn wins through attention, accumulated understanding,
-persistence, and the ability to recognize what haste overlooked—not merely by
-accumulating a larger score or because Chinmay is unintelligent.
+The final resolution and capstone achievement remain **Smarter Than the
+Developer**. It is affectionate ribbing about Finn exercising better judgment
+than the adult who rushed the deployment, not a claim that Chinmay was secretly
+evil. Finn wins through attention, accumulated understanding, persistence, and
+the ability to recognize what haste overlooked—not merely by accumulating a
+larger score or because Chinmay is unintelligent.
 
 ## Tone
 
@@ -368,22 +395,26 @@ repair utilities, Amy support, or other recovery controls. Progress may add
 evidence, history, achievements, and harmless personalization without implying
 that Amy's clean-room system is infected.
 
-A late endgame arc may deliberately breach the recovery desktop when Chinmay
-makes a final attempt to regain control, potentially presenting a clearly
-fictional virus inside the game. Treat this as a singular story escalation with
-explicit safety framing, not a recurring ambient condition. Its impact comes
-from violating an interface the player has learned to trust.
+A late endgame arc may deliberately breach the recovery desktop when Chinmay's
+AI acts beyond his instructions and tries to preserve its deployment access,
+potentially presenting a clearly fictional virus inside the game. Treat this as
+a singular story escalation with explicit safety framing, not a recurring
+ambient condition. Its impact comes from violating an interface the player has
+learned to trust.
 
 The campaign has a clear apparent finish and a separate conclusion. Finn first
 recovers ten sites and ten evidence files. At `10 of 10`, before the game makes a
 permanent victory claim, an unexpected eleventh live evidence file reveals that
-Chinmay's AI is attempting to breach Internet Recovery 98. This attack is the
-boss-style final arc: the stable recovery desktop becomes corrupted for the
-first and only time, and Finn must apply what he learned across the site repairs
-to protect Amy's clean-room system. The eleventh evidence file is created by the
-attack itself, not by an additional website. Victory restores the desktop,
-records the attempted breach, revokes the outside access path, and leads to a
-distinct story conclusion.
+the rogue AI is attempting to breach Internet Recovery 98 without a current
+command from Chinmay. This attack is the boss-style final arc: the stable
+recovery desktop becomes corrupted for the first and only time, and Finn must
+apply what he learned across the site repairs to protect Amy's clean-room
+system. Chinmay supplies knowledge of the system he built and stops sending new
+AI fixes; Amy protects the clean room; Finn performs the decisive containment.
+The eleventh evidence file is created by the attack itself, not by an additional
+website. Victory restores the desktop, records the attempted breach, revokes
+the AI service's outside deployment path, and leads to a distinct story
+conclusion.
 
 Amy may appear through an optional engineer-support channel, concise case notes,
 or story cutscenes. Techno may appear as a desktop pet, cutscene companion, or
@@ -421,13 +452,14 @@ passage. The wrapper may map normalized progress to a simple left-to-right
 before/after repair wipe, avoiding bespoke word-level site mutation while
 preserving visible cause and effect.
 
-Internet Recovery sites may contain wrapper-configured sabotage campaigns with
-multiple distinct passages and evolving page failures. Chinmay's repeated
-interference advances story and evidence rather than erasing learner progress.
-Near a site's finale, Amy reveals an exact three-repair Shield Protocol; the game
-must honor that finish line, permanently secure the site in canonical story
-state, and reject later sabotage. Campaign counts, character interruptions,
-shield state, and site security remain outside the Reading Engine.
+Internet Recovery sites may contain wrapper-configured AI overwrite campaigns
+with multiple distinct passages and evolving page failures. Chinmay's repeated
+AI deployments—and, later, the AI's autonomous interference—advance story and
+evidence rather than erasing learner progress. Near a site's finale, Amy may
+reveal an exact three-repair Shield Protocol; the game must honor that finish
+line, permanently secure the site in canonical story state, and reject later AI
+writes. Campaign counts, character interruptions, shield state, and site
+security remain outside the Reading Engine.
 
 ## Content presentation
 
@@ -471,7 +503,12 @@ Examples:
 
 ### Adult incompetence
 
-The antagonists are not elite hackers. They are overconfident adults making terrible product decisions.
+Chinmay is not an elite hacker-villain. He is an overconfident adult making
+terrible product decisions and sincerely believing one more AI deployment will
+save time. The AI turns those shortcuts into increasingly autonomous damage.
+His long-haired silhouette stays consistent while his presentation gets
+progressively messier and more frazzled. He may be flustered, anxious, or
+genuinely alarmed, but never visually angry or villainous.
 
 Example dialogue:
 
@@ -643,9 +680,9 @@ This is a future project stage. Do not allow it to distract from validating the 
 ## 9A. Future Chinmay voice add-on — optional, do not build yet
 
 A later Internet Recovery OS enhancement may use a voice model trained with
-Chinmay's permission to deliver the antagonist's CEO broadcasts, deceptive
-guidance, live interruptions, and other character dialogue in Chinmay's actual
-voice.
+Chinmay's permission to deliver his overconfident CEO broadcasts, misguided
+help, defensive explanations, alarm when the AI ignores him, and other
+character dialogue in Chinmay's actual voice.
 
 This is a wrapper-specific presentation feature, not part of the Reading Engine
 and not part of the initial design or prototype milestone. The game must remain
@@ -665,9 +702,11 @@ Before this feature is implemented:
   enabled, replaced, muted, or removed without changing gameplay or scoring.
 
 The creative opportunity is for the fictional Chinmay to sound increasingly
-reactive as Finn progresses—for example, confident CEO announcements early on,
-poorly concealed frustration during sabotage, and a panicked administrator
-broadcast near the finale.
+anxious and flustered as Finn progresses—for example, confident promises that
+his AI can finish faster, frazzled explanations when its fixes backfire,
+genuine alarm when it continues after he tells it to stop, and humbled
+cooperation during the final containment. The performance never turns angry or
+villainous.
 
 ---
 
@@ -731,6 +770,23 @@ For every feature, ask:
 **Reason:** The project is expected to support multiple game wrappers and a later long-form book-reading mode.
 
 **Consequence:** Theme-specific terminology, assets, mission structures, and rewards cannot be embedded in speech, alignment, scoring, content, or session APIs.
+
+### ADR-002 — Make the AI, not Chinmay, the Internet Recovery antagonist
+
+**Status:** Accepted
+
+**Decision:** Chinmay caused the collapse by irresponsibly rushing his AI into
+deployment, yet remains a sincere, overconfident helper whose repeated AI
+deployments make Finn's work harder; the AI becomes the malicious autonomous
+enemy. Finn ultimately revokes the AI service's access with Amy's support and
+Chinmay's system knowledge.
+
+**Reason:** This separates intent from consequence, gives Chinmay a coherent
+family role, and makes “I can fix this faster” the recurring source of conflict.
+
+**Consequence:** Site stories, evidence, dialogue, and visual processes must
+attribute deliberate or autonomous interference to the AI rather than to
+Chinmay. See [`0002-rogue-ai-antagonist.md`](decisions/0002-rogue-ai-antagonist.md).
 
 ---
 

@@ -115,8 +115,10 @@ test("campaign diagnostics stay in the wrapper and expose honest test controls",
     readFile(new URL("../apps/internet-recovery/wikiwhy-diagnostics.js", import.meta.url), "utf8"),
     readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
     readFile(new URL("../index.html", import.meta.url), "utf8"),
-    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-engineer.jpg", import.meta.url)),
-    access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-ceo.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-evidence.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-fluster-2.jpg", import.meta.url)),
   ]);
   assert.match(html, /id="diagnosticToggle"/u);
   assert.match(html, /id="campaignMeter"/u);
@@ -124,6 +126,45 @@ test("campaign diagnostics stay in the wrapper and expose honest test controls",
   assert.match(app, /advanceDiagnosticExperience/u);
   assert.match(diagnostics, /internet-recovery-98\.wikiwhy\.diagnostics\.v1/u);
   assert.doesNotMatch(engine, /diagnostic|Amy|Chinmay|Shield Protocol/iu);
+});
+
+test("the recovery hub is clickable without pretending unfinished sites are playable", async () => {
+  const [app, catalog, engine, html] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/site-catalog.js", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /id="hub"/u);
+  assert.match(html, /id="siteGrid"/u);
+  assert.match(html, /id="sitePreview"/u);
+  assert.match(html, /MECHANICS NOT CONNECTED/u);
+  assert.match(app, /renderRecoveryHub/u);
+  assert.match(app, /renderSitePreview/u);
+  assert.match(app, /show\(state\.result \? "review" : "setup"\)/u);
+  assert.match(app, /state\.preparing/u);
+  assert.match(app, /keepPreparationVisible/u);
+  assert.match(app, /if \(repair\.ok\) renderSavedRepair\(repair\.state\)/u);
+  assert.match(app, /renderSavedRepair\(repair\.state\)/u);
+  assert.match(catalog, /playable: true/u);
+  assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
+  assert.match(html, /aria-label="Back to Recovery Map"/u);
+  assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
+});
+
+test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {
+  const [css, dialogues, html] = await Promise.all([
+    readFile(new URL("../apps/internet-recovery/diagnostics.css", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/wikiwhy-dialogues.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+  ]);
+  assert.doesNotMatch(`${css}\n${dialogues}`, /CHINMAY WAS HERE|chinmay_admin/iu);
+  assert.match(dialogues, /ai_repair_service/u);
+  assert.match(dialogues, /amy-evidence\.jpg/u);
+  assert.match(dialogues, /chinmay-fluster-1\.jpg/u);
+  assert.match(dialogues, /chinmay-fluster-2\.jpg/u);
+  assert.match(html, /amy-supportive\.jpg/u);
+  assert.doesNotMatch(`${dialogues}\n${html}`, /portrait-pack-pending/u);
 });
 
 test("live checkpoints cannot fragment the final recording", async () => {
