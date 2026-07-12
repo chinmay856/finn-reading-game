@@ -17,6 +17,7 @@ const MARKS = Object.freeze({
   mapguess: new URL("./art/site-assets/marks/mapguess-mark.svg", import.meta.url).href,
   mycorner: new URL("./art/site-assets/marks/mycorner-mark.svg", import.meta.url).href,
   searchish: new URL("./art/site-assets/marks/searchish-mark.svg", import.meta.url).href,
+  spottyfi: new URL("./art/site-assets/marks/spottyfi-mark.svg", import.meta.url).href,
   viewtube: new URL("./art/site-assets/marks/viewtube-mark.svg", import.meta.url).href,
   yahuh: new URL("./art/site-assets/marks/yahuh-mark.svg", import.meta.url).href,
 });
@@ -65,7 +66,7 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "spottyfi", name: "Spotty-Fi", mark: "S♪", archetype: "Music streaming",
     belief: "THE ALGORITHM IS YOUR TASTE", description: "A fabricated history keeps choosing the same silent twelve-second track.",
-    accent: "#6ebd22", playable: false, previewImage: PREVIEWS.spottyfi,
+    accent: "#6ebd22", markImage: MARKS.spottyfi, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.spottyfi,
   }),
   Object.freeze({
     id: "mapguess", name: "MapGuess", mark: "M?", archetype: "Maps and navigation",

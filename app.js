@@ -142,6 +142,10 @@ import { AMAZEON_SORT_UNITS, calculateAmazeOnReadingOutcome } from "./apps/inter
 import { AMAZEON_EVIDENCE_RECORD, acknowledgeAmazeOnMidpoint, acknowledgeAmazeOnMidpointState, advanceAmazeOnState, readAmazeOnState } from "./apps/internet-recovery/amazeon-state.js";
 import { getAmazeOnCampaignView } from "./apps/internet-recovery/amazeon-view.js";
 import { selectNextAmazeOnPassage } from "./apps/internet-recovery/amazeon-content.js";
+import { SPOTTYFI_DISCLOSURE_UNITS, calculateSpottyFiReadingOutcome } from "./apps/internet-recovery/spottyfi-rules.js";
+import { SPOTTYFI_EVIDENCE_RECORD, acknowledgeSpottyFiMidpoint, acknowledgeSpottyFiMidpointState, advanceSpottyFiState, readSpottyFiState } from "./apps/internet-recovery/spottyfi-state.js";
+import { getSpottyFiCampaignView } from "./apps/internet-recovery/spottyfi-view.js";
+import { selectNextSpottyFiPassage } from "./apps/internet-recovery/spottyfi-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -246,6 +250,7 @@ const state = {
   amazeonDiagnosticState: readAmazeOnState(null),
   amazeonReceiptOpen: false,
   amazeonEvidenceReceiptOpen: false,
+  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -399,7 +404,7 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
@@ -410,8 +415,9 @@ function show(name) {
   const viewtubeScreen = name === "viewtube";
   const searchishScreen = name === "searchish";
   const amazeonScreen = name === "amazeon";
+  const spottyfiScreen = name === "spottyfi";
   const mapGuessScreen = name === "mapguess";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || mapGuessScreen;
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || spottyfiScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -430,12 +436,14 @@ function show(name) {
             ? "SEARCH-ISH ORIGIN RECOVERY"
           : amazeonScreen
             ? "AMAZE-ON CONSENT RECOVERY"
+          : spottyfiScreen
+            ? "SPOTTY-FI LISTENER RECOVERY"
           : mapGuessScreen
             ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || mapGuessScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || spottyfiScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
@@ -454,7 +462,8 @@ function show(name) {
   const securedSearchishTask = searchishScreen && visibleSearchishState.secured;
   const visibleAmazeOnState = state.amazeonDiagnosticMode ? state.amazeonDiagnosticState : state.amazeonState;
   const securedAmazeOnTask = amazeonScreen && visibleAmazeOnState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedAmazeOnTask || securedMapGuessTask;
+  const visibleSpottyFiState=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;const securedSpottyFiTask=spottyfiScreen&&visibleSpottyFiState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedAmazeOnTask || securedSpottyFiTask || securedMapGuessTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -472,6 +481,7 @@ function show(name) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("searchish").markImage}" alt=""> <span>Search-ish · SECURED TEST</span>`;
   } else if (securedAmazeOnTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("amazeon").markImage}" alt=""> <span>Amaze-On · SECURED TEST</span>`;
+  } else if(securedSpottyFiTask){$("taskSite").innerHTML=`<img src="${getRecoverySite("spottyfi").markImage}" alt=""> <span>Spotty-Fi · SECURED TEST</span>`;
   } else if (securedMapGuessTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mapguess").markImage}" alt=""> <span>MapGuess · SECURED TEST</span>`;
   } else {
@@ -493,6 +503,8 @@ function show(name) {
           ? "Search-ish secured test"
         : securedAmazeOnTask
           ? "Amaze-On secured test"
+        : securedSpottyFiTask
+          ? "Spotty-Fi secured test"
         : securedMapGuessTask
           ? "MapGuess secured test"
       : $("taskSite").textContent);
@@ -518,6 +530,8 @@ function renderRecoveryHub() {
   const diagnosticSearchish = state.searchishDiagnosticMode ? state.searchishDiagnosticState : null;
   const realAmazeOn = state.amazeonState;
   const diagnosticAmazeOn = state.amazeonDiagnosticMode ? state.amazeonDiagnosticState : null;
+  const realSpottyFi = state.spottyfiState;
+  const diagnosticSpottyFi = state.spottyfiDiagnosticMode ? state.spottyfiDiagnosticState : null;
   const realMapGuess = state.mapguessState;
   const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
@@ -604,6 +618,7 @@ function renderRecoveryHub() {
         siteId: "amazeon",
         state: realAmazeOn,
       },
+      { canonicalEvidenceId: SPOTTYFI_EVIDENCE_RECORD.id, diagnosticEvidenceRecord: SPOTTYFI_EVIDENCE_RECORD, diagnosticState: diagnosticSpottyFi, evidenceRecord: SPOTTYFI_EVIDENCE_RECORD, persisted: state.spottyfiPersisted, siteId: "spottyfi", state: realSpottyFi },
     ],
   });
   const wikiWhyEvidence = evidenceSummary.bySiteId.wikiwhy;
@@ -1663,6 +1678,9 @@ function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
 }
 function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});show("amazeon");syncAmazeOnReceipt();}
 function buildAmazeOnPreviewState(unitCount){let current=readAmazeOnState(null);for(let index=0;index<unitCount;index+=1){if(index===AMAZEON_SORT_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeAmazeOnMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;const transition=advanceAmazeOnState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateAmazeOnReadingOutcome({campaignState:current}),passageId:`amazeon-preview-${index+1}`,sessionId:`amazeon-preview-session-${index+1}`});if(!transition.ok)throw new Error(transition.reason??"Amaze-On preview did not advance");current=transition.state;}return current;}
+function renderSpottyFiCampaign(campaignState,{diagnosticMode=false}={}){const view=getSpottyFiCampaignView(campaignState);$("spottyfiPage").dataset.detailOpen=String(state.spottyfiDetailOpen);$("spottyfiHeaderStatus").textContent=view.headerStatus;$("spottyfiQueueOwner").textContent=view.queueOwner;$("spottyfiTrackList").innerHTML=view.tracks.map((track,index)=>`<li><div class="spottyfi-cover" aria-hidden="true"></div><b>${escapeMarkup(track.title)}</b><span>${escapeMarkup(track.creator)} · ${track.duration}</span><span>${escapeMarkup(track.genreDisplay)}</span><span>${escapeMarkup(track.creditsDisplay)}</span></li>`).join("");$("spottyfiQueueList").innerHTML=view.tracks.map((track,index)=>`<li><b>${track.queuePosition??"—"}</b><span>${escapeMarkup(track.title)} — ${escapeMarkup(track.creator)}</span><span>${track.duration}</span></li>`).join("");$("spottyfiAccountCreated").textContent=view.history.accountCreated;$("spottyfiPredictedHistory").textContent=view.history.fakeHistoryStarted;$("spottyfiQueueSource").textContent=view.history.queueSource;$("spottyfiSuggestionList").innerHTML=view.suggestions.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiMidpoint").hidden=!view.midpoint.actionRequired;$("spottyfiMidpointBody").textContent=view.midpoint.body;$("spottyfiMidpointProof").innerHTML=view.midpoint.proof.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiTimelineUnits").innerHTML=[...view.progress.disclosureUnits,...view.progress.controlUnits].map(unit=>`<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");$("spottyfiSecuredPayoff").hidden=!view.secured;if(view.securedPayoff){$("spottyfiBlockedBody").textContent=`${view.securedPayoff.blockedWrite.label}: ${view.securedPayoff.blockedWrite.body}`;$("spottyfiEvidenceSummary").textContent=view.securedPayoff.evidence.aiBehavior}$("spottyfiEvidenceReceipt").hidden=!view.secured||!state.spottyfiEvidenceReceiptOpen;$("spottyfiEvidenceToggle").setAttribute("aria-expanded",String(state.spottyfiEvidenceReceiptOpen));const selection=selectNextSpottyFiPassage(state.spottyfiState);$("spottyfiCandidateCount").textContent=`${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;$("spottyfiLiveStatus").textContent=view.secured?`LISTENER CONTROL RESTORED${diagnosticMode?" · TEST":""}`:`${view.progress.completedUnitCount} OF 8 SPOTTY-FI UNITS SAVED`}
+function openSpottyFiExperience(){state.selectedSiteId="spottyfi";const current=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;renderSpottyFiCampaign(current,{diagnosticMode:state.spottyfiDiagnosticMode});show("spottyfi");syncSpottyFiDetail()}
+function buildSpottyFiPreviewState(unitCount){let current=readSpottyFiState(null);for(let index=0;index<unitCount;index++){if(index===SPOTTYFI_DISCLOSURE_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeSpottyFiMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:05.500Z"}).state;const t=advanceSpottyFiState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateSpottyFiReadingOutcome({campaignState:current}),passageId:`spottyfi-preview-${index+1}`,sessionId:`spottyfi-preview-session-${index+1}`});if(!t.ok)throw new Error(t.reason??"Spotty-Fi preview did not advance");current=t.state}return current}
 
 function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2284,6 +2302,7 @@ function openRecoverySite(siteId) {
     return;
   }
   if (site.id === "amazeon" && site.runtimeAvailable) { openAmazeOnExperience(); return; }
+  if (site.id === "spottyfi" && site.runtimeAvailable) { openSpottyFiExperience(); return; }
   if (site.id === "mapguess" && site.runtimeAvailable) {
     openMapGuessExperience();
     return;
@@ -2319,6 +2338,7 @@ function returnToHub() {
   state.searchishEvidenceReceiptOpen = false;
   state.amazeonReceiptOpen = false;
   state.amazeonEvidenceReceiptOpen = false;
+  state.spottyfiDetailOpen=false;state.spottyfiEvidenceReceiptOpen=false;
   renderRecoveryHub();
   show("hub");
 }
@@ -3887,6 +3907,7 @@ $("yahuhReturn").onclick = returnToHub;
 $("viewtubeReturn").onclick = returnToHub;
 $("searchishReturn").onclick = returnToHub;
 $("amazeonReturn").onclick = returnToHub;
+$("spottyfiReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
@@ -4095,6 +4116,9 @@ $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOn
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
 $("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const transition=state.amazeonDiagnosticMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else state.amazeonState=transition.state;state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
+function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
+$("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});
+$("spottyfiMidpointAction").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode)state.spottyfiDiagnosticState=t.state;else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()};$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -4134,6 +4158,7 @@ window.addEventListener("resize", () => {
   if (state.activeScreen === "viewtube") syncViewTubeDrawer();
   if (state.activeScreen === "searchish") syncSearchishInspector();
   if (state.activeScreen === "amazeon") syncAmazeOnReceipt();
+  if(state.activeScreen==="spottyfi")syncSpottyFiDetail();
   if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
@@ -4165,6 +4190,7 @@ $("taskReader").onclick = () => {
     return;
   }
   if(state.selectedSiteId==="amazeon"){openAmazeOnExperience();return;}
+  if(state.selectedSiteId==="spottyfi"){openSpottyFiExperience();return;}
   if (state.selectedSiteId === "mapguess") {
     openMapGuessExperience();
     return;
@@ -4194,7 +4220,9 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       const viewTubeEvidenceSaved = state.viewtubeState.secured && state.viewtubePersisted;
       const searchishEvidenceSaved = state.searchishState.secured && state.searchishPersisted;
       const amazeonEvidenceSaved = state.amazeonState.secured && state.amazeonPersisted;
-      if (amazeonEvidenceSaved && state.selectedSiteId === "amazeon") {
+      const spottyfiEvidenceSaved=state.spottyfiState.secured&&state.spottyfiPersisted;
+      if(spottyfiEvidenceSaved&&state.selectedSiteId==="spottyfi"){state.spottyfiDiagnosticMode=false;state.spottyfiEvidenceReceiptOpen=true;openSpottyFiExperience();requestAnimationFrame(()=>$("spottyfiEvidenceReceipt").focus({preventScroll:true}));
+      } else if (amazeonEvidenceSaved && state.selectedSiteId === "amazeon") {
         state.amazeonDiagnosticMode = false;
         state.amazeonEvidenceReceiptOpen = true;
         openAmazeOnExperience();
@@ -4301,6 +4329,7 @@ if (uiPreview) {
   state.searchishPersisted = true;
   state.amazeonState = readAmazeOnState(null);
   state.amazeonPersisted = true;
+  state.spottyfiState=readSpottyFiState(null);state.spottyfiPersisted=true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -4327,6 +4356,8 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("searchish");
 } else if (requestedLaunch === "amazeon") {
   openRecoverySite("amazeon");
+} else if(requestedLaunch==="spottyfi"){
+  openRecoverySite("spottyfi");
 } else if (requestedLaunch === "mapguess") {
   openRecoverySite("mapguess");
 } else if (requestedSite) {
@@ -4553,6 +4584,8 @@ if (requestedLaunch === "wikiwhy") {
 } else if (["amazeon","amazeon-corrupted","amazeon-sort-1","amazeon-sort-2","amazeon-sort-3","amazeon-sort-4","amazeon-negative-purchasing","amazeon-acknowledged","amazeon-receipt-1","amazeon-receipt-2","amazeon-secured","amazeon-evidence"].includes(uiPreview)) {
   const unitCount={"amazeon-evidence":7,"amazeon-secured":7,"amazeon-receipt-2":6,"amazeon-receipt-1":5,"amazeon-acknowledged":4,"amazeon-negative-purchasing":4,"amazeon-sort-4":4,"amazeon-sort-3":3,"amazeon-sort-2":2,"amazeon-sort-1":1}[uiPreview]??0;
   state.amazeonDiagnosticMode=uiPreview!=="amazeon";state.amazeonDiagnosticState=buildAmazeOnPreviewState(unitCount);if(uiPreview==="amazeon-acknowledged")state.amazeonDiagnosticState=acknowledgeAmazeOnMidpointState(state.amazeonDiagnosticState,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;state.amazeonReceiptOpen=["amazeon-acknowledged","amazeon-receipt-1","amazeon-receipt-2","amazeon-secured","amazeon-evidence"].includes(uiPreview);state.amazeonEvidenceReceiptOpen=uiPreview==="amazeon-evidence";openAmazeOnExperience();if(uiPreview==="amazeon-evidence")requestAnimationFrame(()=>$("amazeonEvidenceReceipt").scrollIntoView({block:"nearest"}));
+} else if(["spottyfi","spottyfi-corrupted","spottyfi-unit-1","spottyfi-unit-2","spottyfi-unit-3","spottyfi-unit-4","spottyfi-unit-5","spottyfi-predicted-history","spottyfi-acknowledged","spottyfi-control-1","spottyfi-control-2","spottyfi-secured","spottyfi-evidence"].includes(uiPreview)){
+  const unitCount={"spottyfi-evidence":8,"spottyfi-secured":8,"spottyfi-control-2":7,"spottyfi-control-1":6,"spottyfi-acknowledged":5,"spottyfi-predicted-history":5,"spottyfi-unit-5":5,"spottyfi-unit-4":4,"spottyfi-unit-3":3,"spottyfi-unit-2":2,"spottyfi-unit-1":1}[uiPreview]??0;state.spottyfiDiagnosticMode=uiPreview!=="spottyfi";state.spottyfiDiagnosticState=buildSpottyFiPreviewState(unitCount);if(uiPreview==="spottyfi-acknowledged")state.spottyfiDiagnosticState=acknowledgeSpottyFiMidpointState(state.spottyfiDiagnosticState,{acknowledgedAt:"2026-07-12T00:00:05.500Z"}).state;state.spottyfiDetailOpen=["spottyfi-acknowledged","spottyfi-control-1","spottyfi-control-2","spottyfi-secured","spottyfi-evidence"].includes(uiPreview);state.spottyfiEvidenceReceiptOpen=uiPreview==="spottyfi-evidence";openSpottyFiExperience();if(uiPreview==="spottyfi-evidence")requestAnimationFrame(()=>$("spottyfiEvidenceReceipt").scrollIntoView({block:"nearest"}));
 } else if ([
   "mapguess",
   "mapguess-corrupted",

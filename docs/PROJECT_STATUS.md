@@ -45,6 +45,16 @@ product and architecture source of truth is
   #36. CI and Pages passed, and the public HTTPS route was verified at
   `65368e8`, including a saved SCENIC route-goal interaction.
 
+## Current Spotty-Fi branch
+
+- `agent/spottyfi-history-proof-foundation` implements the canonical five-track
+  silent library, five disclosure units, saved predicted-history proof, three
+  listener-control units, and Case File slot 9 evidence.
+- All ten sites now expose structural runtimes; WikiWhy remains the only
+  speech-playable site while independent review gates remain closed elsewhere.
+- No Spotty-Fi asset request is open. The frozen Techno queue guard, Chinmay
+  fluster, Amy evidence crop, mark, and DOM/CSS covers are available.
+
 ## Current Amaze-On branch
 
 - `agent/amazeon-consent-ledger-foundation` implements four exact evidence
