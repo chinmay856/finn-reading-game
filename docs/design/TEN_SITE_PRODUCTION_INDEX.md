@@ -20,6 +20,9 @@ Canonical runtime copy IDs:
 Original site marks:
 [`site-assets/marks/README.md`](../../apps/internet-recovery/art/site-assets/marks/README.md).
 
+Clean visual review board:
+[`ten-site-production-overview.svg`](../../apps/internet-recovery/art/site-assets/ten-site-production-overview.svg).
+
 ## Completion matrix
 
 | # | Site | Exact local flow | Production identity | Passage status | Builder status |
@@ -82,4 +85,3 @@ SVG marks.
 5. Keep unimplemented sites in truthful preview mode without borrowing another
    site's passage or rules.
 6. After ten sites, build the separate final breach from its dedicated pack.
-

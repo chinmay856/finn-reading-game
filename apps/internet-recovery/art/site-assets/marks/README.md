@@ -23,3 +23,6 @@ Do not alter these into a real platform's letter mark, mascot, smile/arrow,
 streaming-wave icon, play rectangle, pin, wordmark, exact color order, or trade
 dress. Familiarity comes from archetype, parody name, layout role, and the
 site-specific palette defined in its build brief.
+
+Clean all-ten-site review board:
+[`../ten-site-production-overview.svg`](../ten-site-production-overview.svg).
