@@ -45,6 +45,16 @@ product and architecture source of truth is
   #36. CI and Pages passed, and the public HTTPS route was verified at
   `65368e8`, including a saved SCENIC route-goal interaction.
 
+## Current Amaze-On branch
+
+- `agent/amazeon-consent-ledger-foundation` implements four exact evidence
+  parcels, the saved one-return/two-deliveries midpoint, three receipt/choice
+  units, the denied Techno-ball purchase, and canonical Case File slot 8.
+- Amaze-On is an honest structural campaign build with MIC OFF and no reading
+  score. Seven manuscripts remain fail-closed pending independent review.
+- Designer PR #42 is integrated; existing mark, parcel presentation, receipt
+  treatment, shared characters, and Techno ball-pin satisfy the art contract.
+
 ## Current Search-ish branch
 
 - `agent/searchish-origin-proof-foundation` implements the frozen four-origin

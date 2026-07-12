@@ -12,6 +12,7 @@ const PREVIEWS = Object.freeze({
 });
 
 const MARKS = Object.freeze({
+  amazeon: new URL("./art/site-assets/marks/amazeon-mark.svg", import.meta.url).href,
   faceplace: new URL("./art/site-assets/marks/faceplace-mark.svg", import.meta.url).href,
   mapguess: new URL("./art/site-assets/marks/mapguess-mark.svg", import.meta.url).href,
   mycorner: new URL("./art/site-assets/marks/mycorner-mark.svg", import.meta.url).href,
@@ -59,7 +60,7 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "amazeon", name: "Amaze-On", mark: "A", archetype: "Online marketplace",
     belief: "RECOMMENDED MEANS CHOSEN", description: "Hidden automation turns one return into two future deliveries.",
-    accent: "#e69616", playable: false, previewImage: PREVIEWS.amazeon,
+    accent: "#e69616", markImage: MARKS.amazeon, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.amazeon,
   }),
   Object.freeze({
     id: "spottyfi", name: "Spotty-Fi", mark: "S♪", archetype: "Music streaming",

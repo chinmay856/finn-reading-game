@@ -138,6 +138,10 @@ import { calculateSearchishReadingOutcome, SEARCHISH_RESTORE_UNITS } from "./app
 import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
 import { getSearchishCampaignView } from "./apps/internet-recovery/searchish-view.js";
 import { selectNextSearchishPassage } from "./apps/internet-recovery/searchish-content.js";
+import { AMAZEON_SORT_UNITS, calculateAmazeOnReadingOutcome } from "./apps/internet-recovery/amazeon-rules.js";
+import { AMAZEON_EVIDENCE_RECORD, acknowledgeAmazeOnMidpoint, acknowledgeAmazeOnMidpointState, advanceAmazeOnState, readAmazeOnState } from "./apps/internet-recovery/amazeon-state.js";
+import { getAmazeOnCampaignView } from "./apps/internet-recovery/amazeon-view.js";
+import { selectNextAmazeOnPassage } from "./apps/internet-recovery/amazeon-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -236,6 +240,12 @@ const state = {
   searchishDiagnosticState: readSearchishState(null),
   searchishInspectorOpen: false,
   searchishEvidenceReceiptOpen: false,
+  amazeonState: readAmazeOnState(localStateStorage),
+  amazeonPersisted: Boolean(localStateStorage),
+  amazeonDiagnosticMode: false,
+  amazeonDiagnosticState: readAmazeOnState(null),
+  amazeonReceiptOpen: false,
+  amazeonEvidenceReceiptOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -389,7 +399,7 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
@@ -399,8 +409,9 @@ function show(name) {
   const yahuhScreen = name === "yahuh";
   const viewtubeScreen = name === "viewtube";
   const searchishScreen = name === "searchish";
+  const amazeonScreen = name === "amazeon";
   const mapGuessScreen = name === "mapguess";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || mapGuessScreen;
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -417,12 +428,14 @@ function show(name) {
             ? "VIEWTUBE EVIDENCE RECOVERY"
           : searchishScreen
             ? "SEARCH-ISH ORIGIN RECOVERY"
+          : amazeonScreen
+            ? "AMAZE-ON CONSENT RECOVERY"
           : mapGuessScreen
             ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || mapGuessScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
@@ -439,7 +452,9 @@ function show(name) {
   const securedViewTubeTask = viewtubeScreen && visibleViewTubeState.secured;
   const visibleSearchishState = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
   const securedSearchishTask = searchishScreen && visibleSearchishState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedMapGuessTask;
+  const visibleAmazeOnState = state.amazeonDiagnosticMode ? state.amazeonDiagnosticState : state.amazeonState;
+  const securedAmazeOnTask = amazeonScreen && visibleAmazeOnState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedAmazeOnTask || securedMapGuessTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -455,6 +470,8 @@ function show(name) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("viewtube").markImage}" alt=""> <span>ViewTube · SECURED TEST</span>`;
   } else if (securedSearchishTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("searchish").markImage}" alt=""> <span>Search-ish · SECURED TEST</span>`;
+  } else if (securedAmazeOnTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("amazeon").markImage}" alt=""> <span>Amaze-On · SECURED TEST</span>`;
   } else if (securedMapGuessTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mapguess").markImage}" alt=""> <span>MapGuess · SECURED TEST</span>`;
   } else {
@@ -474,6 +491,8 @@ function show(name) {
           ? "ViewTube secured test"
         : securedSearchishTask
           ? "Search-ish secured test"
+        : securedAmazeOnTask
+          ? "Amaze-On secured test"
         : securedMapGuessTask
           ? "MapGuess secured test"
       : $("taskSite").textContent);
@@ -497,6 +516,8 @@ function renderRecoveryHub() {
   const diagnosticViewTube = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : null;
   const realSearchish = state.searchishState;
   const diagnosticSearchish = state.searchishDiagnosticMode ? state.searchishDiagnosticState : null;
+  const realAmazeOn = state.amazeonState;
+  const diagnosticAmazeOn = state.amazeonDiagnosticMode ? state.amazeonDiagnosticState : null;
   const realMapGuess = state.mapguessState;
   const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
@@ -573,6 +594,15 @@ function renderRecoveryHub() {
         persisted: state.searchishPersisted,
         siteId: "searchish",
         state: realSearchish,
+      },
+      {
+        canonicalEvidenceId: AMAZEON_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: AMAZEON_EVIDENCE_RECORD,
+        diagnosticState: diagnosticAmazeOn,
+        evidenceRecord: AMAZEON_EVIDENCE_RECORD,
+        persisted: state.amazeonPersisted,
+        siteId: "amazeon",
+        state: realAmazeOn,
       },
     ],
   });
@@ -1604,6 +1634,36 @@ function buildSearchishPreviewState(unitCount) {
   return current;
 }
 
+function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getAmazeOnCampaignView(campaignState);
+  $("amazeonPage").dataset.receiptOpen = String(state.amazeonReceiptOpen);
+  $("amazeonHeaderStatus").textContent = view.headerStatus;
+  $("amazeonListingDescription").textContent = view.listing.description;
+  $("amazeonSeller").textContent = view.listing.sellerDisplay;
+  $("amazeonPrice").textContent = view.listing.priceDisplay;
+  $("amazeonRecommendationSource").textContent = view.listing.recommendationDisplay;
+  $("amazeonParcelList").innerHTML = view.parcels.map((parcel) => `<li class="amazeon-parcel" data-sorted="${parcel.sorted}"><b>${escapeMarkup(parcel.claim)}</b><span>SOURCE: ${escapeMarkup(parcel.sorted ? parcel.sourceType : "SOURCE TYPE HIDDEN")}</span><span>DESTINATION: ${escapeMarkup(parcel.sorted ? parcel.destination : "UNSORTED")}</span></li>`).join("");
+  $("amazeonRecommendationList").innerHTML = view.recommendations.map((item) => `<li><b>${escapeMarkup(item.label)}</b><span>${escapeMarkup(item.status)}</span></li>`).join("");
+  $("amazeonOriginalOrder").textContent = view.receipt.originalOrderId ?? "HIDDEN";
+  $("amazeonReturnState").textContent = view.receipt.returnState;
+  $("amazeonReplacementCount").textContent = view.receipt.replacementCount ?? "HIDDEN";
+  $("amazeonConsent").textContent = view.receipt.consent;
+  $("amazeonConfirmation").textContent = view.receipt.confirmation;
+  $("amazeonMidpoint").hidden = !view.midpoint.actionRequired;
+  $("amazeonMidpointBody").textContent = view.midpoint.body;
+  $("amazeonMidpointProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
+  $("amazeonTimelineUnits").innerHTML = [...view.progress.sortUnits, ...view.progress.receiptUnits].map((unit) => `<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");
+  $("amazeonSecuredPayoff").hidden = !view.secured;
+  if (view.securedPayoff) { $("amazeonBlockedBody").textContent = view.securedPayoff.blockedWrite.body; $("amazeonEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior; }
+  $("amazeonEvidenceReceipt").hidden = !view.secured || !state.amazeonEvidenceReceiptOpen;
+  $("amazeonEvidenceToggle").setAttribute("aria-expanded", String(state.amazeonEvidenceReceiptOpen));
+  const selection = selectNextAmazeOnPassage(state.amazeonState);
+  $("amazeonCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("amazeonLiveStatus").textContent = view.secured ? `HUMAN CONFIRMATION REQUIRED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 AMAZE-ON UNITS SAVED`;
+}
+function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});show("amazeon");syncAmazeOnReceipt();}
+function buildAmazeOnPreviewState(unitCount){let current=readAmazeOnState(null);for(let index=0;index<unitCount;index+=1){if(index===AMAZEON_SORT_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeAmazeOnMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;const transition=advanceAmazeOnState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateAmazeOnReadingOutcome({campaignState:current}),passageId:`amazeon-preview-${index+1}`,sessionId:`amazeon-preview-session-${index+1}`});if(!transition.ok)throw new Error(transition.reason??"Amaze-On preview did not advance");current=transition.state;}return current;}
+
 function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const view = getMapGuessCampaignView(campaignState, { reducedMotion });
@@ -2223,6 +2283,7 @@ function openRecoverySite(siteId) {
     openSearchishExperience();
     return;
   }
+  if (site.id === "amazeon" && site.runtimeAvailable) { openAmazeOnExperience(); return; }
   if (site.id === "mapguess" && site.runtimeAvailable) {
     openMapGuessExperience();
     return;
@@ -2256,6 +2317,8 @@ function returnToHub() {
   state.viewtubeEvidenceReceiptOpen = false;
   state.searchishInspectorOpen = false;
   state.searchishEvidenceReceiptOpen = false;
+  state.amazeonReceiptOpen = false;
+  state.amazeonEvidenceReceiptOpen = false;
   renderRecoveryHub();
   show("hub");
 }
@@ -3823,6 +3886,7 @@ $("mycornerReturn").onclick = returnToHub;
 $("yahuhReturn").onclick = returnToHub;
 $("viewtubeReturn").onclick = returnToHub;
 $("searchishReturn").onclick = returnToHub;
+$("amazeonReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
@@ -4025,6 +4089,12 @@ $("searchishEvidenceToggle").onclick = () => {
   renderSearchishCampaign(visible, { diagnosticMode: state.searchishDiagnosticMode });
   requestAnimationFrame(() => (state.searchishEvidenceReceiptOpen ? $("searchishEvidenceReceipt") : $("searchishEvidenceToggle")).focus({ preventScroll: true }));
 };
+function syncAmazeOnReceipt(){const drawer=matchMedia("(max-width: 1279px)").matches;const open=drawer&&state.amazeonReceiptOpen;$("amazeonPage").dataset.receiptOpen=String(open);$("amazeonReceiptToggle").setAttribute("aria-expanded",String(open));$("amazeonReceiptDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("amazeonReceiptDrawer").inert=drawer&&!open;}
+$("amazeonReceiptToggle").onclick=()=>{state.amazeonReceiptOpen=!state.amazeonReceiptOpen;syncAmazeOnReceipt();if(state.amazeonReceiptOpen)requestAnimationFrame(()=>$("amazeonReceiptHeading").focus({preventScroll:true}));};
+$("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});};
+document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
+$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const transition=state.amazeonDiagnosticMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else state.amazeonState=transition.state;state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
+$("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -4063,6 +4133,7 @@ window.addEventListener("resize", () => {
   if (state.activeScreen === "yahuh") syncYahuhSwitchboard();
   if (state.activeScreen === "viewtube") syncViewTubeDrawer();
   if (state.activeScreen === "searchish") syncSearchishInspector();
+  if (state.activeScreen === "amazeon") syncAmazeOnReceipt();
   if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
@@ -4093,6 +4164,7 @@ $("taskReader").onclick = () => {
     openSearchishExperience();
     return;
   }
+  if(state.selectedSiteId==="amazeon"){openAmazeOnExperience();return;}
   if (state.selectedSiteId === "mapguess") {
     openMapGuessExperience();
     return;
@@ -4121,7 +4193,13 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       const yahuhEvidenceSaved = state.yahuhState.secured && state.yahuhPersisted;
       const viewTubeEvidenceSaved = state.viewtubeState.secured && state.viewtubePersisted;
       const searchishEvidenceSaved = state.searchishState.secured && state.searchishPersisted;
-      if (searchishEvidenceSaved && state.selectedSiteId === "searchish") {
+      const amazeonEvidenceSaved = state.amazeonState.secured && state.amazeonPersisted;
+      if (amazeonEvidenceSaved && state.selectedSiteId === "amazeon") {
+        state.amazeonDiagnosticMode = false;
+        state.amazeonEvidenceReceiptOpen = true;
+        openAmazeOnExperience();
+        requestAnimationFrame(() => $("amazeonEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (searchishEvidenceSaved && state.selectedSiteId === "searchish") {
         state.searchishDiagnosticMode = false;
         state.searchishEvidenceReceiptOpen = true;
         openSearchishExperience();
@@ -4221,6 +4299,8 @@ if (uiPreview) {
   state.viewtubePersisted = true;
   state.searchishState = readSearchishState(null);
   state.searchishPersisted = true;
+  state.amazeonState = readAmazeOnState(null);
+  state.amazeonPersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -4245,6 +4325,8 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("viewtube");
 } else if (requestedLaunch === "searchish") {
   openRecoverySite("searchish");
+} else if (requestedLaunch === "amazeon") {
+  openRecoverySite("amazeon");
 } else if (requestedLaunch === "mapguess") {
   openRecoverySite("mapguess");
 } else if (requestedSite) {
@@ -4468,6 +4550,9 @@ if (requestedLaunch === "wikiwhy") {
   state.searchishEvidenceReceiptOpen = uiPreview === "searchish-evidence";
   openSearchishExperience();
   if (uiPreview === "searchish-evidence") requestAnimationFrame(() => $("searchishEvidenceReceipt").scrollIntoView({ block: "nearest" }));
+} else if (["amazeon","amazeon-corrupted","amazeon-sort-1","amazeon-sort-2","amazeon-sort-3","amazeon-sort-4","amazeon-negative-purchasing","amazeon-acknowledged","amazeon-receipt-1","amazeon-receipt-2","amazeon-secured","amazeon-evidence"].includes(uiPreview)) {
+  const unitCount={"amazeon-evidence":7,"amazeon-secured":7,"amazeon-receipt-2":6,"amazeon-receipt-1":5,"amazeon-acknowledged":4,"amazeon-negative-purchasing":4,"amazeon-sort-4":4,"amazeon-sort-3":3,"amazeon-sort-2":2,"amazeon-sort-1":1}[uiPreview]??0;
+  state.amazeonDiagnosticMode=uiPreview!=="amazeon";state.amazeonDiagnosticState=buildAmazeOnPreviewState(unitCount);if(uiPreview==="amazeon-acknowledged")state.amazeonDiagnosticState=acknowledgeAmazeOnMidpointState(state.amazeonDiagnosticState,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;state.amazeonReceiptOpen=["amazeon-acknowledged","amazeon-receipt-1","amazeon-receipt-2","amazeon-secured","amazeon-evidence"].includes(uiPreview);state.amazeonEvidenceReceiptOpen=uiPreview==="amazeon-evidence";openAmazeOnExperience();if(uiPreview==="amazeon-evidence")requestAnimationFrame(()=>$("amazeonEvidenceReceipt").scrollIntoView({block:"nearest"}));
 } else if ([
   "mapguess",
   "mapguess-corrupted",
