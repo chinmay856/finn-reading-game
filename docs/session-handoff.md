@@ -1,5 +1,31 @@
 # Session handoff
 
+## MyCorner owner-controls foundation
+
+- Deployed `main` is authoritative at `65368e8` through MapGuess PR #36. The
+  MapGuess Moving Target route, CI, Pages workflow, and public HTTPS interaction
+  were verified.
+- Active implementation is `agent/mycorner-owner-controls-foundation`.
+- Designer PR #38 has been inspected and its canonical response is preserved in
+  `docs/design/MYCORNER_RUNTIME_RESPONSE_2026-07-12.md`. The runtime now uses
+  the exact Mara Vale fixture, process lineage, slot-four evidence route, and
+  frozen 7A plus 3B passage-ID plan.
+- MyCorner owns four exact profile restore units, an explicit saved Apply to
+  Everyone acknowledgement, and three owner-lock units. It preserves six saved
+  choices plus a separate permission seal and never exposes a percentage.
+- All reading content remains fail-closed: one structured candidate, zero
+  selectable records, `MIC: OFF`, and no score. The wrapper fixture may be
+  canonical without promoting unreviewed reading content.
+- The canonical evidence row is registered only for a persisted seven-reading
+  secured state with exact ID `mycorner.evidence.global-profile-template-01`.
+  Diagnostics and failed-storage tab states remain noncanonical.
+- Focused MyCorner, DOM, and hub validation passes 58 tests. Remaining work is
+  complete documentation reconciliation, full-suite validation, explicit diff
+  review, PR/CI/merge, Pages deployment, and public HTTPS QA.
+
+The MapGuess section below is retained as milestone history. Its publication-
+pending language is superseded by PR #36 and deployed `65368e8`.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and
