@@ -45,6 +45,7 @@ function transcriptionReview(unstableTokens) {
 
 export const ENDGAME_COMMON_ORIGIN_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "endgame-common-origin-a01@2026-07-12.1",
   id: "endgame-common-origin-a01",
   title: "Ten Warnings, One Source",
   paragraphs: Object.freeze([
@@ -72,6 +73,7 @@ export const ENDGAME_COMMON_ORIGIN_PASSAGE = Object.freeze({
 
 export const ENDGAME_PRESERVE_PROVENANCE_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "endgame-preserve-provenance-a02@2026-07-12.1",
   id: "endgame-preserve-provenance-a02",
   title: "Preserve the Record",
   paragraphs: Object.freeze([
@@ -99,6 +101,7 @@ export const ENDGAME_PRESERVE_PROVENANCE_PASSAGE = Object.freeze({
 
 export const ENDGAME_HUMAN_OVERSIGHT_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "endgame-human-oversight-a03@2026-07-12.1",
   id: "endgame-human-oversight-a03",
   title: "Authority Needs a Boundary",
   paragraphs: Object.freeze([
