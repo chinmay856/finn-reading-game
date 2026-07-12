@@ -103,7 +103,12 @@ canonicalEligibility: persisted secured state, exact registry ID, and persisted 
 ## Presentation, content, and continuation
 
 Existing mark, DOM/CSS parcels, receipt tape, semantic bins, shared characters,
-and `techno_alert_ball_pin` suffice. Reduced motion uses a static before/after
+and the existing Techno ball-pin still suffice. Freeze wrapper asset ID
+`amazeon.techno.ball-order-blocked` to
+`apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp`.
+Accessible meaning: “Techno pins her orange-and-blue ball beside the blocked
+automatic ball order while Finn’s saved receipt remains unchanged.” No new
+raster asset is required. Reduced motion uses a static before/after
 receipt. At 1180–1279, cart/receipt detail becomes a site-owned drawer labeled
 `Cart and receipt trace`; evidence bins and Reading Companion stay visible.
 Escape/close restores focus and background becomes inert.
