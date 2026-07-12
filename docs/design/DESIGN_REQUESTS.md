@@ -8,8 +8,9 @@ chat history.
 ## Current synchronization point
 
 - Implementation baseline: `main` at `270c63d` (PR #30 merged)
-- Design response branch: `agent/campaign-spine-content` / PR #23
-- Focused response batch: `8b4440b`; complete ten-site contracts: `8786fea`
+- Final design response: `agent/amy-techno-design` / PR #31
+- Consolidated production-design commit: `b32fa22` (focused development history
+  remains available in PR #23)
 - Canonical architecture: [`../ARCHITECTURE_AND_VISION.md`](../ARCHITECTURE_AND_VISION.md)
 - Storyboard reference catalog (not runtime input):
   [`../../apps/internet-recovery/art/concepts/sites/README.md`](../../apps/internet-recovery/art/concepts/sites/README.md)

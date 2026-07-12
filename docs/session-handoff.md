@@ -338,10 +338,11 @@
 
 ## Current design synchronization
 
-- Branch: `agent/campaign-spine-content`
-- Pull request: #23, synchronized with `main` after PR #30
-- Latest focused published batches: `8b4440b` (WikiWhy and ThreadIt), `487e9b0`
-  (final breach), `8786fea` (all-ten contracts), and `1f843bc` (clean overview)
+- Branch: `agent/amy-techno-design`
+- Pull request: #31, based directly on `main` after PR #30
+- Consolidated production-design commit: `b32fa22`; it incorporates the focused
+  WikiWhy/ThreadIt, final-breach, all-ten-contract, and clean-overview batches
+  previously developed on PR #23
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
 - Current engine: Transformers.js `3.7.1`, timestamped Whisper base,

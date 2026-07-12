@@ -6,7 +6,8 @@ This response was prepared against implementation commit `5542682` and the four
 runtime captures in `docs/design/review/`. That work merged through PR #30;
 `main` at `270c63d` is now the implementation baseline.
 
-The first focused production pack is published at design commit `8b4440b`.
+The focused pack originated at design commit `8b4440b`. The final main-based
+consolidation is `b32fa22` on `agent/amy-techno-design` / PR #31.
 
 The current Recovery Map, WikiWhy reading view, Amy warning, and Chinmay rewrite
 composition are approved as the implementation baseline. The design changes
