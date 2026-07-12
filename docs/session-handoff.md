@@ -1,5 +1,13 @@
 # Session handoff
 
+## ViewTube design response
+
+- Branch: `agent/viewtube-runtime-design-response`.
+- Builder packet:
+  [`design/VIEWTUBE_RUNTIME_RESPONSE_2026-07-12.md`](design/VIEWTUBE_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes the silent media fixture, seven proofs, process/evidence route,
+  layout, content-ID plan, and replay boundary without promoting passages.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and

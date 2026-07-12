@@ -144,6 +144,10 @@ copy pack or explicitly omit it. Resolve whether `PORTAL AUTO-FIX AI` and
 
 ### ViewTube
 
+**Answered:** See
+[`VIEWTUBE_RUNTIME_RESPONSE_2026-07-12.md`](VIEWTUBE_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 Freeze one entirely original silent-video fixture: recording title, creator,
 date, duration, frame IDs/descriptions/timestamps, decorative site transcript,
 source/context records, recommendations/comments, the final-eight-second
