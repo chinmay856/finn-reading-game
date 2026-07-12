@@ -5,13 +5,16 @@
 - Designer PR #38 answered the complete MyCorner runtime packet. The active
   implementation uses the frozen Mara Vale fixture, 7A plus 3B plan, responsive
   drawer contract, process lineage, and canonical slot-four evidence row.
-- Designer PR #39 has been detected for Yahuh and will be reconciled after the
-  MyCorner publication boundary.
+- Designer PR #39 answered the Yahuh runtime packet. The active implementation
+  uses the exact six-module fixture, 6A plus 4B plan, process lineage,
+  responsive drawer, Techno payoff, and canonical slot-five evidence row.
 - Designer PR #37 answers the shared ThreadIt, WikiWhy, and FacePlace runtime
   backlog; it remains queued for a scoped reconciliation so deployed behavior
   is not mixed into the MyCorner PR.
 - No new MyCorner P0 art request is outstanding. Existing initials, DOM/CSS
   theme fragments, shared character crops, and Techno still are sufficient.
+- No new Yahuh P0 art request is outstanding. The existing mark, semantic DOM,
+  CSS modules, shared Chinmay crop, and `techno_alert_ball_pin` satisfy PR #39.
 
 This is the durable implementation-to-design handoff for Internet Recovery 98.
 The parallel designer can answer the remaining decisions here or publish a
