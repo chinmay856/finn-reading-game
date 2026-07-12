@@ -11,6 +11,7 @@ import { PHOTOSYNTHESIS_PASSAGE } from "../content/wikiwhy/photosynthesis-passag
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "../content/threadit/why-disagreement-matters.js";
 import { THREADIT_FIRST_RUN_PASSAGES } from "../content/threadit/first-run-passages.js";
 import { A_SECOND_READING_PASSAGE } from "../content/faceplace/a-second-reading.js";
+import { FACEPLACE_FIRST_RUN_PASSAGES } from "../content/faceplace/first-run-passages.js";
 import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "../content/mapguess/a-map-is-not-a-photograph.js";
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "../content/mycorner/a-cabin-with-a-purpose.js";
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "../content/yahuh/the-newspaper-that-found-people-on-the-moon.js";
@@ -200,7 +201,7 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 13 + ENDGAME_PASSAGES.length);
+  assert.equal(PASSAGE_CATALOG.length, 18 + ENDGAME_PASSAGES.length);
   assert.ok(PASSAGE_CATALOG.includes(A_CABIN_WITH_A_PURPOSE_PASSAGE));
   assert.ok(PASSAGE_CATALOG.includes(THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE));
   assert.equal(isSelectablePassage(A_CABIN_WITH_A_PURPOSE_PASSAGE), false);
@@ -287,12 +288,26 @@ test("FacePlace candidate content is structured, review-gated, and never silentl
   const ids = [...FACEPLACE_DECK_A_IDS, ...FACEPLACE_DECK_B_IDS];
   assert.equal(new Set(ids).size, 10);
   assert.equal(FACEPLACE_DECK_A_IDS[0], passage.id);
+  assert.deepEqual(
+    FACEPLACE_FIRST_RUN_PASSAGES.map(({ id }) => id),
+    FACEPLACE_DECK_A_IDS.slice(1),
+  );
+  for (const candidate of FACEPLACE_FIRST_RUN_PASSAGES) {
+    assert.equal(candidate.availability, "candidate");
+    assert.equal(candidate.paragraphs.length, 5);
+    assert.equal(candidate.comprehension.choices.length, 3);
+    assert.equal(candidate.comprehension.choices.filter(({ correct }) => correct).length, 1);
+    assert.equal(candidate.rights.basis, "original");
+    assert.equal(candidate.transcriptionReview.tested, false);
+    assert.equal(isSelectablePassage(candidate), false);
+    assert.ok(PASSAGE_CATALOG.includes(candidate));
+  }
   assert.deepEqual(FACEPLACE_CONTENT_READINESS, {
-    deckACount: 5,
-    deckBCount: 5,
+    deckACount: 6,
+    deckBCount: 4,
     plannedCount: 10,
     requiredFirstRun: 6,
-    firstRunShortfall: 1,
+    firstRunShortfall: 0,
   });
   const selection = selectNextFacePlacePassage({ completedPassageIds: [] });
   assert.equal(selection.passage, null);
@@ -300,8 +315,8 @@ test("FacePlace candidate content is structured, review-gated, and never silentl
   assert.equal(selection.selectableCount, 0);
   assert.equal(selection.plannedCount, 10);
   assert.equal(selection.requiredFirstRun, 6);
-  assert.equal(selection.firstRunShortfall, 1);
-  assert.equal(selection.unavailableCount, 5);
+  assert.equal(selection.firstRunShortfall, 0);
+  assert.equal(selection.unavailableCount, 6);
 });
 
 test("theme-neutral content metadata contains no wrapper outcomes", () => {

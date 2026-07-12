@@ -1,5 +1,16 @@
 # Session handoff
 
+## 2026-07-12 FacePlace structured first-run deck
+
+- Encoded frozen manuscripts A02–A06 as five theme-neutral candidate records
+  with exact prose, prompts, choices, original-work rights metadata, reading
+  profiles, and explicit pending review fields.
+- Moved `why-this-appeared-a06` into the first-run Deck A position frozen by the
+  manuscript packet, changing the stale `5A + 5B` runtime plan to `6A + 4B` and
+  removing the reported shortfall.
+- All six records remain unselectable. A focused revision-bound review request
+  is published for the parallel designer; microphone evidence remains separate.
+
 ## 2026-07-12 ThreadIt structured first-run deck
 
 - Encoded frozen manuscripts A02–A07 as six theme-neutral candidate passage
