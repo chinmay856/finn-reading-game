@@ -8,6 +8,11 @@
   concrete runtime UI notes. It is explicitly not an implementation change and
   keeps all wrapper-specific material out of Reading Engine, speech, scoring,
   and Content Platform logic.
+- Latest site-copy aid:
+  `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` gives the builder concrete
+  corrupted/repaired page copy, midpoint copy, AI-denial text, secured payoffs,
+  and character beats for all ten sites. Other sites remain design/previews
+  until their own passages and mechanics are implemented.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems

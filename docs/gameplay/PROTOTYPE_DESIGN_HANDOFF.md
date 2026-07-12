@@ -19,6 +19,8 @@ Use these inputs first:
 
 - `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` for final runtime UI copy,
   screen-state notes, and character-state usage.
+- `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` for concrete visible copy on the
+  corrupted/repaired site pages.
 - `content/wikiwhy/PASSAGE_DECKS.md` for the Reading Companion passage pool and
   attribution model.
 - `apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png` for the
