@@ -714,6 +714,25 @@ pending language is superseded by PR #36 and deployed `65368e8`.
 - No newer designer PR or fetch delta was present. The canonical Spotty-Fi
   runtime response remains sufficient for this lightweight fidelity milestone.
 
+## MapGuess visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/mapguess-visual-fidelity`, based on deployed Spotty-Fi
+  PR #82 / `main` at `20f6b23`.
+- `mapguess.css` now applies the canonical navigation-board art direction via
+  blue route chrome, three-act ribbon, contour paper, corrupted-layer labels,
+  flowing dashed routes, moving-target pulse, anchor beacons, and route-log
+  texture.
+- No external map, iframe, real location, remote tiles, or raster asset was
+  added. The exact five-rebuild plus three-anchor state machine, four valid
+  route goals, canonical fixture/evidence, content gate, Reading Companion
+  separation, and reduced-motion behavior remain unchanged.
+- Local corrupted-state QA found four corrupted blocks, one semantic route, the
+  expected act ribbon, fixed Techno, zero external frames, and no horizontal
+  overflow. `npm test` (310 tests), `npm run check`, `npm run build`, and
+  `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The canonical MapGuess
+  response remains sufficient for this CSS-only milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:

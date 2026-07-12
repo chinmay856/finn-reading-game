@@ -14,6 +14,154 @@
   color: var(--mapguess-ink);
 }
 
+/* Production-fidelity layer: fictional cartography rendered from semantic DOM. */
+.mapguess-browser-window {
+  box-shadow: 0 18px 44px #07162470, 0 0 0 1px #ccecff55;
+}
+
+.mapguess-header {
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  color: #fff;
+  background: linear-gradient(135deg, #163c63, var(--mapguess-destination) 58%, #4283a8);
+  box-shadow: inset 0 -4px #102f4f, inset 0 1px #d8f2ff66;
+}
+
+.mapguess-header::after {
+  content: "ACT I · FASTEST ALWAYS RIGHT";
+  position: absolute;
+  right: -38px;
+  bottom: 4px;
+  width: 220px;
+  padding: 3px 30px;
+  transform: rotate(-6deg);
+  background: var(--mapguess-road);
+  color: #432c16;
+  font: 800 8px/1.2 "Lucida Console", Consolas, monospace;
+  text-align: center;
+  box-shadow: 0 2px 0 #573b1844;
+}
+
+.mapguess-page[data-midpoint-discovered="true"] .mapguess-header::after,
+.mapguess-page[data-midpoint-pending="true"] .mapguess-header::after {
+  content: "ACT II · MOVING TARGET";
+  background: var(--mapguess-route);
+  color: #fff;
+}
+
+.mapguess-page[data-secured="true"] .mapguess-header::after {
+  content: "ACT III · ANCHOR AND CHOOSE";
+  background: var(--mapguess-locked);
+  color: #fff;
+}
+
+.mapguess-header .mapguess-identity small,
+.mapguess-header .mapguess-identity p,
+.mapguess-header .mapguess-header-status,
+.mapguess-header .mapguess-identity h2 {
+  color: #fff;
+  text-shadow: 1px 1px #102f4f;
+}
+
+.mapguess-mark {
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  transform: rotate(-3deg);
+  border: 2px solid #fff;
+  border-radius: 5px 16px 5px 16px;
+  background: #fffdf5;
+  box-shadow: 3px 3px 0 #0b2945aa;
+}
+
+.mapguess-map-canvas {
+  background:
+    radial-gradient(ellipse at 25% 35%, transparent 0 26px, #22303a10 27px 28px, transparent 29px 42px, #22303a0c 43px 44px, transparent 45px),
+    radial-gradient(ellipse at 75% 65%, transparent 0 34px, #22303a0f 35px 36px, transparent 37px 52px, #22303a0b 53px 54px, transparent 55px),
+    linear-gradient(27deg, transparent 48%, #22303a0b 49% 51%, transparent 52%),
+    linear-gradient(117deg, transparent 48%, #22303a0b 49% 51%, transparent 52%),
+    var(--mapguess-paper);
+  background-size: 180px 150px, 220px 180px, 92px 92px, 92px 92px, auto;
+  box-shadow: inset 0 0 28px #6c563a22, 0 8px 18px #22303a20;
+}
+
+.mapguess-map-tile {
+  transition: filter 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.mapguess-map-tile[data-restored="false"]::after {
+  content: "MAP LAYER UNREADABLE";
+  position: absolute;
+  inset: auto 5px 5px;
+  color: #66717a;
+  font: 800 7px/1.2 Consolas, monospace;
+  text-align: center;
+}
+
+.mapguess-map-tile[data-restored="true"] {
+  animation: mapguess-tile-clarify 320ms ease-out both;
+}
+
+.mapguess-road {
+  filter: drop-shadow(1px 2px 1px #59481766);
+}
+
+.mapguess-route-segment {
+  filter: drop-shadow(1px 2px 1px #5a171755);
+}
+
+.mapguess-route-segment[data-connected="false"] {
+  animation: mapguess-route-flow 1.7s linear infinite;
+}
+
+.mapguess-destination[data-location="moved"] {
+  animation: mapguess-target-pulse 1.35s ease-in-out infinite;
+  box-shadow: 0 0 0 5px #c23e3822;
+}
+
+.mapguess-destination[data-locked="true"] {
+  animation: none;
+  box-shadow: 0 0 0 3px var(--mapguess-locked), 0 0 18px #2c7a5788;
+}
+
+.mapguess-landmark[data-anchored="true"] {
+  box-shadow: 0 0 0 3px #2c7a5720, 0 0 12px #2c7a5766;
+  animation: mapguess-anchor-lock 320ms ease-out both;
+}
+
+.mapguess-directions,
+.mapguess-verification,
+.mapguess-goal-selector,
+.mapguess-progress-ledger {
+  box-shadow: 0 4px 0 #22303a15, 0 9px 17px #22303a0d;
+}
+
+.mapguess-coordinate-card[data-current="true"] {
+  background: repeating-linear-gradient(120deg, #fff2e7 0 14px, #c23e3813 15px 18px);
+}
+
+.mapguess-route-log {
+  background: repeating-linear-gradient(90deg, #fffdf5 0 40px, #efe4c6 41px 42px);
+  box-shadow: 0 4px 0 #22303a18;
+}
+
+@keyframes mapguess-route-flow {
+  to { stroke-dashoffset: -34; }
+}
+
+@keyframes mapguess-target-pulse {
+  50% { filter: brightness(1.3); transform: translate(-50%, -100%) scale(1.12); }
+}
+
+@keyframes mapguess-tile-clarify {
+  from { filter: blur(2px) saturate(.4); opacity: .55; }
+}
+
+@keyframes mapguess-anchor-lock {
+  from { opacity: .45; transform: translate(-50%, -50%) scale(.72); }
+}
+
 .mapguess-surface {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(340px, 25vw, 380px);
@@ -773,6 +921,27 @@
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
+}
+
+/* Keep the fidelity layer authoritative over the base component declarations. */
+#mapguess .mapguess-header {
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  color: #fff;
+  background: linear-gradient(135deg, #163c63, var(--mapguess-destination) 58%, #4283a8);
+  box-shadow: inset 0 -4px #102f4f, inset 0 1px #d8f2ff66;
+}
+
+#mapguess .mapguess-map-canvas {
+  background:
+    radial-gradient(ellipse at 25% 35%, transparent 0 26px, #22303a10 27px 28px, transparent 29px 42px, #22303a0c 43px 44px, transparent 45px),
+    radial-gradient(ellipse at 75% 65%, transparent 0 34px, #22303a0f 35px 36px, transparent 37px 52px, #22303a0b 53px 54px, transparent 55px),
+    linear-gradient(27deg, transparent 48%, #22303a0b 49% 51%, transparent 52%),
+    linear-gradient(117deg, transparent 48%, #22303a0b 49% 51%, transparent 52%),
+    var(--mapguess-paper);
+  background-size: 180px 150px, 220px 180px, 92px 92px, 92px 92px, auto;
+  box-shadow: inset 0 0 28px #6c563a22, 0 8px 18px #22303a20;
 }
 
 @media (min-width: 1180px) and (max-width: 1279px) {
