@@ -392,6 +392,19 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   canonical seven-unit consent/receipt contract and independent Reading
   Companion remain unchanged.
 
+### Spotty-Fi graphics fidelity (2026-07-12)
+
+- Spotty-Fi now carries its canonical charcoal/acid/magenta manual-mixtape
+  direction through a state-aware act ribbon, five original geometric silent
+  cards, a dark queue/control-room treatment, visual-only meter badge, history
+  drift, and an eight-unit cassette-style timeline.
+- No audio, video, lyrics, iframe, autoplay, remote album art, or new raster
+  payload was introduced. Meter/history movement stops under reduced motion.
+- Desktop QA confirmed five silent library cards, five manual queue entries,
+  zero media elements, persistent fixed Techno, and no horizontal page overflow.
+  The canonical eight-unit ownership contract and independent Reading Companion
+  remain unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock

@@ -695,6 +695,25 @@ pending language is superseded by PR #36 and deployed `65368e8`.
 - No newer designer PR or fetch delta was present. The existing canonical
   Amaze-On runtime response is sufficient for this CSS-only milestone.
 
+## Spotty-Fi visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/spottyfi-visual-fidelity`, based on deployed Amaze-On
+  PR #81 / `main` at `df81a7e`.
+- A separate `spottyfi-fidelity.css` layer now applies the canonical dark
+  manual-mixtape direction: three-act ribbon, five geometric silent cards,
+  magenta card labels, dark queue/history panel, visual-only level meter, and
+  cassette-style ownership timeline.
+- No media, lyrics, autoplay, iframe, remote album art, or raster asset was
+  added. The exact five-disclosure plus three-owner state machine, canonical
+  fixture/evidence, content gate, Reading Companion separation, and reduced
+  motion behavior remain unchanged.
+- Local corrupted-state QA found five library cards, five queue entries, the
+  no-audio badge, fixed Techno, zero media elements, and no horizontal overflow.
+  `npm test` (310 tests), `npm run check`, `npm run build`, and
+  `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The canonical Spotty-Fi
+  runtime response remains sufficient for this lightweight fidelity milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:
