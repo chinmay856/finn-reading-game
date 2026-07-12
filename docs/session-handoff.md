@@ -1,5 +1,14 @@
 # Session handoff
 
+## 2026-07-12 MapGuess illustrated board
+
+- Generated a fictional summer cartography layer from the canonical MapGuess
+  board direction and optimized it to a 214 KB WebP.
+- Integrated it only in the wrapper presentation layer. Semantic tile state,
+  SVG routes, destinations, landmarks, controls, and accessibility remain live.
+- Browser inspection at 1440×900 confirms the overall MapGuess page fits with
+  the full Reading Companion; secondary detail rails scroll independently.
+
 ## 2026-07-12 Spotty-Fi identity and compact board
 
 - Strengthened the wrapper-owned SVG mark with a large acid-green music note
