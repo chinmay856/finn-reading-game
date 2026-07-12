@@ -6,14 +6,14 @@ export const THREADIT_DECK_A_IDS = Object.freeze([
   "a-vote-is-not-a-measurement-a03",
   "the-objection-that-improved-the-plan-a04",
   "when-the-crowd-is-partly-right-a05",
+  "the-source-behind-the-agreement-a06",
+  "when-a-reply-is-a-copy-a07",
 ]);
 
 export const THREADIT_DECK_B_IDS = Object.freeze([
   "two-witnesses-one-rumor-b01",
   "the-reply-that-changed-the-question-b02",
   "evidence-under-pressure-b03",
-  "rules-for-a-fair-thread-b04",
-  "the-best-objection-b05",
 ]);
 
 export function selectNextThreadItPassage(campaignState, options = {}) {

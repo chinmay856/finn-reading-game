@@ -1,5 +1,16 @@
 # Session handoff
 
+## 2026-07-12 ThreadIt structured first-run deck
+
+- Encoded frozen manuscripts A02–A07 as six theme-neutral candidate passage
+  records with exact prose, prompts, choices, original-work rights metadata,
+  reading profiles, and explicit pending review fields.
+- Corrected ThreadIt's wrapper-owned deck plan from the stale `5A + 5B` list to
+  the manuscript packet's frozen `7A + 3B` contract.
+- All seven first-run records remain unselectable; no human review or microphone
+  evidence was fabricated. The parallel designer request now asks for a
+  revision-bound content review and focused feedback-copy decisions.
+
 ## 2026-07-12 ThreadIt visual fidelity
 
 - ThreadIt now more closely matches the canonical three-act board through orange identity framing, an Act 1 ribbon, deeper ranked-post cards, bot-copy labels, a gridded source canvas, animated trace connectors, and stronger question/generated/independent visual states.
