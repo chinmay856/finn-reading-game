@@ -6,9 +6,10 @@ focused follow-up on `agent/campaign-spine-content`.
 
 ## Current synchronization point
 
-- Implementation branch: `agent/threadit-act-one-foundation`
+- Implementation branch: `agent/faceplace-honest-zero-foundation`
 - Last integrated design tip: `1f843bc` (`Add ten-site production overview board`)
-- Deployed `main`: `17826e4` through PR #32
+- Deployed `main`: `f1b1bab` through PR #33; ThreadIt CI, Pages, and public
+  HTTPS diagnostic verification passed
 - Designer response consumed:
   [`BUILDER_RESPONSE_2026-07-12.md`](BUILDER_RESPONSE_2026-07-12.md)
 - Production index:
@@ -17,6 +18,8 @@ focused follow-up on `agent/campaign-spine-content`.
   [`../gameplay/WIKIWHY_CAMPAIGN_STATE_PACK.md`](../gameplay/WIKIWHY_CAMPAIGN_STATE_PACK.md)
 - ThreadIt contract:
   [`../gameplay/THREADIT_PRODUCTION_HANDOFF.md`](../gameplay/THREADIT_PRODUCTION_HANDOFF.md)
+- Focused FacePlace runtime response packet:
+  [`FACEPLACE_RUNTIME_REQUEST.md`](FACEPLACE_RUNTIME_REQUEST.md)
 - Exact remaining runtime-data backlog for sites two through ten and the final
   breach:
   [`RUNTIME_FIXTURE_BACKLOG.md`](RUNTIME_FIXTURE_BACKLOG.md)
@@ -36,10 +39,12 @@ republish it unchanged merely to acknowledge this handoff.
 | Exactly three Shield passes; comprehension and score cannot add or remove a pass | Implemented |
 | Continue remains available after an accepted uncertain result; retry stays optional | Preserved |
 | Evidence slot 1 is `wikiwhy.evidence.route-fragment-01`, visible as `AI WRITE ROUTE / 01` | Implemented with `evidence-route-fragment-01.svg` and `WIKIWHY_TRACE_01.LOG` |
-| ThreadIt is site 2 and uses an accessible semantic source tree | Accepted as the next implementation milestone |
-| ThreadIt uses four Act I units, explicit midpoint acknowledgement, exactly three trace units, and permanent secured/evidence state | Implemented as a seven-pass wrapper diagnostic with no reading score |
-| ThreadIt evidence is `THREADIT / SYNTHETIC CONSENSUS OVERFLOW` and the blocked write is `POSTING PAUSED: DUPLICATE SOURCE` | Implemented in the secured source tree and Case File slot 2 |
-| After WikiWhy and ThreadIt are secured, Incoming Cases rotate to FacePlace, Spotty-Fi, and Search-ish | Implemented; all three remain labeled `DESIGN PREVIEW` |
+| ThreadIt is site 2 and uses an accessible semantic source tree | Shipped through PR #33 and verified on public HTTPS |
+| ThreadIt uses four Act I units, explicit midpoint acknowledgement, exactly three trace units, and permanent secured/evidence state | Shipped as a seven-pass wrapper diagnostic with no reading score |
+| ThreadIt evidence is `THREADIT / SYNTHETIC CONSENSUS OVERFLOW` and the blocked write is `POSTING PAUSED: DUPLICATE SOURCE` | Shipped in the secured source tree and Case File slot 2 |
+| After WikiWhy and ThreadIt are secured, Incoming Cases rotate to FacePlace, Spotty-Fi, and Search-ish | Shipped; FacePlace now opens its own provisional structural test runtime while remaining `MIC: OFF` |
+| FacePlace uses three false-tracker units, Honest Zero acknowledgement, and three honest-recovery units | Implemented on the active branch with fixture/evidence fields explicitly provisional and test-only |
+| Provisional FacePlace slot-3 evidence cannot count canonical or unlock the final incident | Implemented in the hub/evidence-state boundary |
 | The ten-site production system and separate `EVIDENCE_11.LIVE` contract | Integrated; final breach remains gated behind ten real secured sites |
 
 ## Current implementation review captures
@@ -62,10 +67,10 @@ republish it unchanged merely to acknowledge this handoff.
 - [ThreadIt midpoint trace](review/threadit-tracing-v1.jpg)
 
 These are executable browser screens at the 1440×900 target, not composite
-concept boards. ThreadIt also passes the 1180 CSS-pixel fallback with a
-site-owned source overlay that never crosses into Reading Companion. Only
-`photosynthesis-a01` is executable; review-only passage drafts remain
-fail-closed.
+concept boards. ThreadIt also passes the 1180 CSS-pixel fallback and its complete
+route is verified on deployed public HTTPS. FacePlace captures will be added
+after its branch is published and deployed. Only `photosynthesis-a01` is
+executable; review-only and candidate passage records remain fail-closed.
 
 ## Outstanding designer decisions
 
@@ -120,42 +125,25 @@ WikiWhy, with a separate replay cursor and no campaign-state writes.
 
 ### P0 — Canonical FacePlace runtime fixture and identities
 
-FacePlace can now follow ThreadIt as a truthful structural campaign test, but
-the broad concept board does not freeze enough record-level runtime data. Please
-provide one compact Markdown, JSON, or table fixture with:
+FacePlace now runs the complete six-unit shape with a fictional six-card fixture,
+relationship/source views, feed-order and Why controls, Honest Zero, an exact
+blocked target, and a slot-3 test receipt. This is executable scaffolding, not
+canonical data. Every current fixture and evidence ID is replaceable,
+provisional/test-only, excluded from canonical counts, and unable to unlock the
+final incident.
 
-- the profile identity and five to seven exact feed-card records;
-- relationship clusters with stable IDs, labels, member IDs, and accessible
-  summaries;
-- each card's author, timestamp, body, reaction count, card type
-  (`chronological` or `recommended`), duplicate group, and source/origin;
-- the recommendation reason for every recommended card;
-- the `People You May Sort Of Know` entries;
-- the exact card that `FEED AUTO-FIX AI` tries to boost after the site is
-  secured.
-
-Please also freeze these six identity decisions in the same response:
-
-1. The initial tracker text before the first accepted result. The contract
-   freezes `12%`, `114%`, and `AVOCADO%` after units one through three, but not
-   the empty-state value.
-2. Whether visible `FEED AUTO-FIX AI` and the board's `VIBESHIFT AI
-   AMPLIFICATION JOB` are the same process, parent/child processes, or whether
-   the latter should be omitted.
-3. The exact evidence filename, writer fingerprint/service ID, blocked-write
-   actor ID, and boosted-card ID.
-4. The FacePlace-specific Chinmay midpoint line, or an explicit decision to
-   omit Chinmay from the site-local midpoint. The Amy line is already frozen.
-5. Whether the production mark, semantic DOM/CSS feed, and shared character
-   crops are sufficient. No FacePlace-specific avatar set, tracker badge,
-   secured badge, or evidence icon currently exists.
-6. The exact three Incoming Cases after the third site is secured, and whether
-   the three-evidence global dialogue occurs only after returning to the hub.
+Please answer the focused packet in
+[`FACEPLACE_RUNTIME_REQUEST.md`](FACEPLACE_RUNTIME_REQUEST.md). It requests the
+canonical identities/posts/source graph and one-to-one six-unit assignments;
+initial tracker; process mapping; complete evidence registry row and blocked
+actor/target; Chinmay midpoint omission/copy; asset sufficiency; sixth first-run
+record and Deck placement; post-FacePlace Incoming Cases/global beat; counter
+copy drift; and the 1180 CSS-pixel left-rail drawer decision.
 
 Builder recommendation: use original fictional people and posts, retain
-`FEED AUTO-FIX AI` as the player-facing process name, use DOM/CSS for all feed
-and tracker UI, fire the global beat after the local evidence payoff, and avoid
-another full-board mockup.
+`FEED AUTO-FIX AI` as the player-facing process name, approve semantic DOM/CSS
+for the feed and tracker, fire the global beat after the local evidence payoff,
+and avoid another full-board mockup.
 
 ### P0 — FacePlace six-reading first-run manifest
 
@@ -168,25 +156,23 @@ Deck A currently contains five slots. Choose one:
 2. Keep the current deck labels and explicitly designate one reviewed Deck B
    record as first-run overflow.
 
-The current `A Second Reading` Austen adaptation exists only as a review-only
-Markdown sampler. Before it enters the neutral catalog, the builder will encode
-it as `availability: candidate`; it will remain unselectable until provenance,
-adaptation fidelity, grade, sensitivity, three-choice comprehension, reading
-profile, and real-microphone review pass. The builder will not score sampler or
-candidate text, or silently repeat a passage to fill the sixth unit.
+`A Second Reading` is now encoded as a structured candidate and remains
+unselectable. Please freeze its intended ID and Deck A/B position as part of the
+six-record answer. It still requires provenance, adaptation fidelity, grade,
+sensitivity, three-choice comprehension, reading profile, and real-microphone
+review. The builder will not score candidate text or silently repeat a passage
+to fill the sixth unit.
 
 ## Next designer checkpoint
 
-No new art blocks ThreadIt. The executable branch now reaches corrupted,
-first-untangle, midpoint, trace 1/2/3, secured, evidence-open, and the two-file
-Recovery Map entirely through semantic runtime UI. The current linked captures
-cover the first three states; secured/live captures will be refreshed after the
-branch can be published and deployed. Please supply the focused forum fixture
-rather than another board. FacePlace is next; its exact feed-fixture, process,
-content-manifest, and evidence-route questions are consolidated in
-[`RUNTIME_FIXTURE_BACKLOG.md`](RUNTIME_FIXTURE_BACKLOG.md). The builder can
-replace provisional records without changing frozen state machines or layout
-contracts.
+ThreadIt is shipped and publicly verified; no new art blocks it. Please still
+supply its focused forum fixture rather than another board. FacePlace now runs
+end to end as an honest structural test and is the active response priority.
+Answer [`FACEPLACE_RUNTIME_REQUEST.md`](FACEPLACE_RUNTIME_REQUEST.md) with stable
+data and explicit decisions. The builder can replace every provisional record
+without changing the frozen six-unit state machine or semantic layout contract,
+while the current slot-3 test receipt remains unable to count or unlock final
+progress.
 
 ## Boundaries for design responses
 

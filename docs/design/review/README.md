@@ -1,9 +1,12 @@
 # Current implementation review captures
 
 These images are temporary design-review evidence for the executable Recovery
-Map, WikiWhy campaign, and ThreadIt structural-test branches. They are not
-runtime assets and should be replaced when a later milestone materially changes
-the corresponding screen.
+Map, WikiWhy campaign, and ThreadIt structural test. ThreadIt is now deployed on
+`main` at `f1b1bab` through PR #33; CI, Pages, and its complete public HTTPS
+diagnostic route passed. FacePlace is the active structural-test milestone, and
+its captures will be added after that branch is published and deployed. These
+files are not runtime assets and should be replaced when a later milestone
+materially changes the corresponding screen.
 
 - `recovery-map-current.jpg` — all ten sites, three Incoming Cases, Case File,
   persistent desktop rim, and Amy Support.
@@ -45,10 +48,18 @@ The ThreadIt forum copy is explicitly provisional while the canonical fixture
 request remains open. `Why Disagreement Matters` is a candidate passage and is
 not selectable or speech-scored in these screens.
 
-The implementation now also includes deterministic `threadit-trace-1`,
-`threadit-trace-2`, `threadit-secured`, and `threadit-evidence` preview routes.
-Their captures will be added after the branch is published and the deployed
-HTTPS build is available for final browser verification.
+The deployed implementation also includes deterministic `threadit-trace-1`,
+`threadit-trace-2`, `threadit-secured`, and `threadit-evidence` routes; all were
+verified on the public HTTPS build.
+
+The active FacePlace branch now includes deterministic corrupted, false-tracker
+1–3, Honest Zero, acknowledged, recovery 1–2, secured, evidence-open, and
+Recovery Map routes. Its six-card fixture and slot-3 receipt are explicitly
+provisional/test-only, remain excluded from canonical evidence counts, and
+cannot unlock the final incident. Review should focus on the semantic feed,
+Honest Zero transition, independent Reading Companion, and 1180 CSS-pixel
+left-rail drawer; record-level canon is requested in
+[`../FACEPLACE_RUNTIME_REQUEST.md`](../FACEPLACE_RUNTIME_REQUEST.md).
 
 Review requests and response protocol live in
 [`../DESIGN_REQUESTS.md`](../DESIGN_REQUESTS.md).

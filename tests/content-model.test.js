@@ -9,6 +9,7 @@ import {
 } from "../content/passage-catalog.js";
 import { PHOTOSYNTHESIS_PASSAGE } from "../content/wikiwhy/photosynthesis-passage.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "../content/threadit/why-disagreement-matters.js";
+import { A_SECOND_READING_PASSAGE } from "../content/faceplace/a-second-reading.js";
 import {
   WIKIWHY_DECK_A_IDS,
   WIKIWHY_DECK_B_IDS,
@@ -19,6 +20,12 @@ import {
   THREADIT_DECK_B_IDS,
   selectNextThreadItPassage,
 } from "../apps/internet-recovery/threadit-content.js";
+import {
+  FACEPLACE_CONTENT_READINESS,
+  FACEPLACE_DECK_A_IDS,
+  FACEPLACE_DECK_B_IDS,
+  selectNextFacePlacePassage,
+} from "../apps/internet-recovery/faceplace-content.js";
 
 const PASSED_REVIEW = Object.freeze({
   adaptationFidelity: "passed",
@@ -178,7 +185,7 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 2);
+  assert.equal(PASSAGE_CATALOG.length, 3);
   assert.equal(selectNextWikiWhyPassage({ completedPassageIds: [] }).passage.id, "photosynthesis-a01");
   const exhausted = selectNextWikiWhyPassage({ completedPassageIds: ["photosynthesis-a01"] });
   assert.equal(exhausted.passage, null);
@@ -224,6 +231,42 @@ test("ThreadIt owns two planned decks and selects no candidate content", () => {
   assert.equal(selection.reason, "no-selectable-passages");
   assert.equal(selection.selectableCount, 0);
   assert.equal(selection.unavailableCount, 10);
+});
+
+test("FacePlace candidate content is structured, review-gated, and never silently borrows Deck B", () => {
+  const passage = A_SECOND_READING_PASSAGE;
+  assert.equal(passage.id, "a-second-reading-a01");
+  assert.equal(passage.availability, "candidate");
+  assert.equal(passage.paragraphs.length, 5);
+  assert.equal(passage.comprehension.choices.length, 3);
+  assert.equal(passage.comprehension.choices.filter(({ correct }) => correct).length, 1);
+  assert.equal(passage.source.author, "Jane Austen");
+  assert.equal(passage.source.title, "Pride and Prejudice");
+  assert.equal(passage.source.ebookNumber, "1342");
+  assert.match(passage.source.sourceUrl, /gutenberg\.org\/ebooks\/1342/u);
+  assert.equal(passage.rights.basis, "public-domain");
+  assert.equal(passage.transcriptionReview.tested, false);
+  assert.equal(isSelectablePassage(passage), false);
+  assert.doesNotMatch(JSON.stringify(passage), /FacePlace|Internet Recovery|repair|reward/iu);
+
+  const ids = [...FACEPLACE_DECK_A_IDS, ...FACEPLACE_DECK_B_IDS];
+  assert.equal(new Set(ids).size, 10);
+  assert.equal(FACEPLACE_DECK_A_IDS[0], passage.id);
+  assert.deepEqual(FACEPLACE_CONTENT_READINESS, {
+    deckACount: 5,
+    deckBCount: 5,
+    plannedCount: 10,
+    requiredFirstRun: 6,
+    firstRunShortfall: 1,
+  });
+  const selection = selectNextFacePlacePassage({ completedPassageIds: [] });
+  assert.equal(selection.passage, null);
+  assert.equal(selection.reason, "no-selectable-passages");
+  assert.equal(selection.selectableCount, 0);
+  assert.equal(selection.plannedCount, 10);
+  assert.equal(selection.requiredFirstRun, 6);
+  assert.equal(selection.firstRunShortfall, 1);
+  assert.equal(selection.unavailableCount, 5);
 });
 
 test("theme-neutral content metadata contains no wrapper outcomes", () => {

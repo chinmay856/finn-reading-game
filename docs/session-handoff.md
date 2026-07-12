@@ -1,63 +1,49 @@
 # Session handoff
 
-## ThreadIt structural campaign foundation
+## FacePlace Honest Zero foundation
 
-- WikiWhy's production-aligned campaign foundation is authoritative on deployed
-  `main` at `17826e4` through PR #32. GitHub Actions and the GitHub Pages HTTPS
-  deployment passed, and the complete live diagnostic route was verified.
-- Active implementation continues on `agent/threadit-act-one-foundation`.
-  ThreadIt is runtime-available as an honest structural test build but remains
-  non-playable while its first Reading Companion passage is review-gated.
-- The wrapper now owns a versioned ThreadIt campaign model with exactly four Act
-  I units, an explicit midpoint acknowledgement, exactly three later trace
-  units, and permanent secured/evidence records. It deduplicates passage and
-  session IDs, reconciles stale tabs, and falls back safely when browser storage
-  is blocked without storing audio, transcript, score, or comprehension data.
-- The executable UI now covers `threadit_corrupted`, all four Act I repairs, the
-  reviewed midpoint card and explicit acknowledgement, `threadit_tracing`, all
-  three trace/containment units, and `threadit_secured`. It reorders semantic
-  forum posts, renders a nested text relationship outline and node-anchored
-  inline SVG connectors, preserves legitimate disagreement, and never reuses a
-  WikiWhy wipe or percentage meter.
-- The permanent structural ending keeps ten generated copies visible in
-  quarantine, separates three independent source branches, announces the one-
-  time `POSTING PAUSED: DUPLICATE SOURCE` result, exposes
-  `THREADIT_TRACE_01.LOG`, and writes the canonical test receipt to Case File
-  slot 2. The hub then rotates to FacePlace, Spotty-Fi, and Search-ish previews.
-- At 1440×900 the Recovery Browser and independent Reading Companion remain
-  side by side. At 1180 CSS pixels, the source panel opens and closes as a
-  browser-owned overlay, returns keyboard focus to its trigger, creates no page
-  overflow, and never overlaps Reading Companion.
-- `Why Disagreement Matters` is registered as a candidate Content Platform
-  record with comprehension/profile/provenance metadata. It is deliberately not
-  selectable until formal review and a real-microphone check are complete.
-- ThreadIt requires seven distinct first-run readings, but planned Deck A has
-  five slots. Passing the sampler alone cannot unlock scored play; two reviewed
-  additions or explicitly named Deck B overflows are still required, with no
-  silent repeat.
-- The neutral catalog now rejects availability-only promotion: an `approved`
-  record needs explicit passed review states, completed real-microphone review,
-  and rights-basis-specific evidence. The existing WikiWhy `prototype` lane
-  remains explicit and continues to validate separately.
-- The forum fixture is clearly marked provisional. The exact replacement fields
-  and current executable screenshots are published in
-  `docs/design/DESIGN_REQUESTS.md` for the parallel designer.
-- FacePlace is the prepared next milestone: exactly three lying-tracker units,
-  explicit Honest Zero acknowledgement, and exactly three honest-recovery
-  units. The exact feed fixture, evidence registry, remaining-site data
-  packets, content-manifest decisions, and final-breach questions are recorded
-  in `docs/design/RUNTIME_FIXTURE_BACKLOG.md`; no new full-board art is needed.
-- Preserved boundaries: ThreadIt strings, site assets, repair units, and campaign
-  persistence stay in the wrapper; generic passage records stay in Content
-  Platform; Reading Engine, speech, theme-neutral Game Rules, and real session
-  history are unchanged.
-- Validation: `npm run check`, `npm test` (107 passing), `npm run build`, 1440×900
-  Chrome visual captures, and the 1180 CSS-pixel source-drawer interaction all
-  pass without horizontal page overflow or Reading Companion overlap.
-- Final trace/finale runtime checks and the production build pass. Remaining
-  before this milestone is authoritative: publish the reviewed scope through a
-  pull request, run CI and live HTTPS verification, then replace the provisional
-  fixture and clear the passage review gates.
+- ThreadIt's complete structural campaign is authoritative on deployed `main`
+  at `f1b1bab` through PR #33. GitHub Actions and GitHub Pages passed, and its
+  corrupted, Act I, midpoint, trace, secured, evidence-open, and two-evidence
+  Recovery Map states were verified on the public HTTPS build.
+- Active implementation continues on
+  `agent/faceplace-honest-zero-foundation`. FacePlace is runtime-available as an
+  honest structural test build but remains non-playable with `MIC: OFF` while
+  all first-run content is review-gated. WikiWhy remains the only
+  speech-playable site.
+- The wrapper owns a six-unit FacePlace model: exactly three false-tracker
+  repairs, an explicit Honest Zero acknowledgement, and exactly three later
+  honest-recovery units. Unit four stays blocked until the acknowledgement;
+  Honest Zero remains the saved baseline while later percentages report only
+  the three honest recovery checks.
+- The executable, fictional six-card fixture includes relationship clusters,
+  ranked and chronological feed order, recommendation reasons, a duplicate
+  source group, `People You May Sort Of Know`, feed-order controls, a Why panel,
+  and one exact provisional card targeted by the final blocked boost.
+- The false tracker moves through the approved three-result shape and keeps a
+  separate list of saved repairs. The midpoint names zero as the honest answer
+  instead of turning another arbitrary number into progress.
+- The secured diagnostic route exposes a provisional blocked-write record and a
+  slot-3 test receipt. That receipt is explicitly noncanonical: it can appear in
+  diagnostics but is excluded from canonical Case File counts and can never
+  satisfy the ten-site final-unlock predicate.
+- The independent Reading Companion reports `10 planned / 0 selectable / 6
+  required`. `A Second Reading` is a structured candidate only; no sampler or
+  candidate text can be selected, speech-scored, or silently repeated.
+- The current people, posts, source graph, process IDs, evidence ID/filename,
+  writer/route, and blocked actor/target are deliberately replaceable
+  provisional fields. The focused designer request is
+  `docs/design/FACEPLACE_RUNTIME_REQUEST.md`; no state-machine or layout rewrite
+  is required when canonical data arrives.
+- The current state/view/hub tests preserve the distinction among displayed
+  test evidence, tab-only diagnostics, persisted noncanonical records, and real
+  canonical receipts. Reading Engine, Content Platform review rules,
+  theme-neutral Game Rules, speech, and real session history remain unchanged.
+- Validation on the active branch: `npm run check`, `npm test` (150 passing),
+  `npm run build`, and deterministic FacePlace state/view/DOM routes pass.
+  Remaining before this milestone is authoritative: finish accessibility and
+  browser QA, publish through PR/CI/Pages, verify public HTTPS, then replace the
+  provisional fixture and clear the six-record content gate.
 
 ## Recovery Map and multi-site preview shell
 

@@ -54,6 +54,27 @@ import {
   THREADIT_COPY_IDS,
   THREADIT_PROVISIONAL_FORUM_FIXTURE,
 } from "./apps/internet-recovery/threadit-copy.js";
+import {
+  FACEPLACE_FALSE_TRACKER_UNITS,
+  FACEPLACE_RECOVERY_UNITS,
+  calculateFacePlaceReadingOutcome,
+} from "./apps/internet-recovery/faceplace-rules.js";
+import {
+  FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD,
+  FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeFacePlaceMidpoint,
+  acknowledgeFacePlaceMidpointState,
+  advanceFacePlaceState,
+  readFacePlaceState,
+  setFacePlaceFeedMode,
+  setFacePlaceFeedModeState,
+} from "./apps/internet-recovery/faceplace-state.js";
+import { getFacePlaceCampaignView } from "./apps/internet-recovery/faceplace-view.js";
+import { selectNextFacePlacePassage } from "./apps/internet-recovery/faceplace-content.js";
+import {
+  FACEPLACE_PROVISIONAL_FEED_FIXTURE,
+} from "./apps/internet-recovery/faceplace-copy.js";
+import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
 let PARAGRAPHS = activePassage.paragraphs;
@@ -110,6 +131,16 @@ const state = {
   threaditDiagnosticMode: false,
   threaditDiagnosticState: readThreadItState(null),
   threaditEvidenceReceiptOpen: false,
+  faceplaceState: readFacePlaceState(localStateStorage),
+  faceplacePersisted: Boolean(localStateStorage),
+  faceplaceDiagnosticMode: false,
+  faceplaceDiagnosticState: readFacePlaceState(null),
+  faceplaceEvidenceReceiptOpen: false,
+  faceplaceProfilePanelOpen: false,
+  faceplaceSelectedReasonCardId: null,
+  faceplaceWhyOpen: false,
+  faceplaceShowActOneResult: false,
+  faceplaceTransitionTimer: null,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -263,32 +294,39 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
   const threadItScreen = name === "threadit";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen;
+  const facePlaceScreen = name === "faceplace";
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
       ? `${selectedSite.name.toUpperCase()} PREVIEW`
       : threadItScreen
         ? "THREADIT SOURCE TRACE"
+        : facePlaceScreen
+          ? "FACEPLACE FEED RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
   const securedThreadItTask = threadItScreen && visibleThreadItState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask;
+  const visibleFacePlaceState = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : state.faceplaceState;
+  const securedFacePlaceTask = facePlaceScreen && visibleFacePlaceState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
   } else if (securedThreadItTask) {
     $("taskSite").innerHTML = `<img src="${THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge]}" alt=""> <span>ThreadIt · SECURED</span>`;
+  } else if (securedFacePlaceTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("faceplace").markImage}" alt=""> <span>FacePlace · SECURED TEST</span>`;
   } else {
     $("taskSite").textContent = name === "hub" ? "□ No site open" : `□ ${wikiWhyScreen ? "WikiWhy" : selectedSite.name}`;
   }
@@ -296,6 +334,8 @@ function show(name) {
     ? "WikiWhy secured"
     : securedThreadItTask
       ? "ThreadIt secured"
+      : securedFacePlaceTask
+        ? "FacePlace secured test"
       : $("taskSite").textContent);
   document.querySelectorAll(".desktop-shortcut").forEach((button) => button.classList.toggle("active", button.dataset.action === "hub" && name === "hub"));
   if (screenChanged) requestAnimationFrame(() => $(name).focus({ preventScroll: true }));
@@ -305,10 +345,48 @@ function renderRecoveryHub() {
   const realWikiWhy = state.campaignState;
   const diagnosticWikiWhy = state.diagnosticMode ? state.diagnosticState : null;
   const diagnosticView = diagnosticWikiWhy ? campaignView(diagnosticWikiWhy) : null;
-  const diagnosticSecured = diagnosticWikiWhy?.phase === "secured";
-  const realSecured = realWikiWhy.phase === "secured" && realWikiWhy.evidenceId === WIKIWHY_EVIDENCE_RECORD.id;
-  const wikiWhySecured = diagnosticSecured || realSecured;
-  const durableWikiWhySecured = diagnosticSecured || (realSecured && state.campaignPersisted);
+  const realThreadIt = state.threaditState;
+  const diagnosticThreadIt = state.threaditDiagnosticMode ? state.threaditDiagnosticState : null;
+  const realFacePlace = state.faceplaceState;
+  const diagnosticFacePlace = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : null;
+  const evidenceSummary = summarizeHubEvidenceState({
+    requiredCanonicalSiteIds: RECOVERY_SITES.map(({ id }) => id),
+    sites: [
+      {
+        canonicalEvidenceId: WIKIWHY_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: WIKIWHY_EVIDENCE_RECORD,
+        diagnosticState: diagnosticWikiWhy,
+        evidenceRecord: WIKIWHY_EVIDENCE_RECORD,
+        persisted: state.campaignPersisted,
+        siteId: "wikiwhy",
+        state: realWikiWhy,
+      },
+      {
+        canonicalEvidenceId: THREADIT_EVIDENCE_ID,
+        diagnosticEvidenceRecord: THREADIT_EVIDENCE_RECORD,
+        diagnosticState: diagnosticThreadIt,
+        evidenceRecord: THREADIT_EVIDENCE_RECORD,
+        persisted: state.threaditPersisted,
+        siteId: "threadit",
+        state: realThreadIt,
+      },
+      {
+        canonicalEvidenceId: null,
+        diagnosticEvidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticFacePlace,
+        evidenceRecord: FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.faceplacePersisted,
+        siteId: "faceplace",
+        state: realFacePlace,
+      },
+    ],
+  });
+  const wikiWhyEvidence = evidenceSummary.bySiteId.wikiwhy;
+  const threadItEvidence = evidenceSummary.bySiteId.threadit;
+  const facePlaceEvidence = evidenceSummary.bySiteId.faceplace;
+  const diagnosticSecured = wikiWhyEvidence.testSecured;
+  const realSecured = wikiWhyEvidence.realSecured;
+  const wikiWhySecured = wikiWhyEvidence.displaySecured;
   const wikiWhyStatus = diagnosticSecured
     ? "SECURED · TEST"
     : realSecured
@@ -322,14 +400,11 @@ function renderRecoveryHub() {
       : realWikiWhy.stability > 0
         ? `SITE STABILITY ${realWikiWhy.stability}%`
         : "RECOVERY AVAILABLE";
-  const realThreadIt = state.threaditState;
-  const diagnosticThreadIt = state.threaditDiagnosticMode ? state.threaditDiagnosticState : null;
   const visibleThreadIt = diagnosticThreadIt ?? realThreadIt;
   const threadItView = getThreadItCampaignView(visibleThreadIt);
-  const diagnosticThreadItSecured = Boolean(diagnosticThreadIt?.secured);
-  const realThreadItSecured = realThreadIt.secured && realThreadIt.evidenceId === THREADIT_EVIDENCE_ID;
-  const threadItSecured = diagnosticThreadItSecured || realThreadItSecured;
-  const durableThreadItSecured = diagnosticThreadItSecured || (realThreadItSecured && state.threaditPersisted);
+  const diagnosticThreadItSecured = threadItEvidence.testSecured;
+  const realThreadItSecured = threadItEvidence.realSecured;
+  const threadItSecured = threadItEvidence.displaySecured;
   const threadItActOneCount = Math.min(
     THREADIT_ACT_ONE_UNITS.length,
     threadItView.progress.completedUnitCount,
@@ -352,23 +427,55 @@ function renderRecoveryHub() {
             : threadItActOneCount
               ? `RELATIONSHIPS ${threadItActOneCount}/4`
               : "CAMPAIGN TEST BUILD";
-  const incomingIds = getIncomingSiteIds({ threadItSecured, wikiWhySecured });
-  const securedCount = Number(durableWikiWhySecured) + Number(durableThreadItSecured);
+  const visibleFacePlace = diagnosticFacePlace ?? realFacePlace;
+  const facePlaceCompletedCount = visibleFacePlace.completedUnitIds?.length ?? 0;
+  const facePlaceRecoveryCount = Math.max(0, facePlaceCompletedCount - FACEPLACE_FALSE_TRACKER_UNITS.length);
+  const facePlaceSecured = facePlaceEvidence.displaySecured;
+  const facePlaceStatus = facePlaceEvidence.testSecured
+    ? "FEED RECOVERY VERIFIED · TEST"
+    : facePlaceEvidence.realSecured
+      ? facePlaceEvidence.persistedNonCanonical
+        ? "FEED RECOVERY VERIFIED · PROVISIONAL"
+        : state.faceplacePersisted
+          ? "FEED RECOVERY VERIFIED"
+          : "FEED RECOVERY VERIFIED · TAB ONLY"
+      : state.faceplaceDiagnosticMode
+        ? visibleFacePlace.midpointDiscovered
+          ? visibleFacePlace.midpointAcknowledged
+            ? `HONEST RECOVERY ${[0, 34, 67, 100][facePlaceRecoveryCount] ?? 0}% · TEST`
+            : "HONEST ZERO READY · TEST"
+          : `ACT I ${facePlaceCompletedCount}/3 · TEST`
+        : visibleFacePlace.midpointDiscovered
+          ? visibleFacePlace.midpointAcknowledged
+            ? `HONEST RECOVERY ${[0, 34, 67, 100][facePlaceRecoveryCount] ?? 0}%`
+            : "HONEST ZERO READY"
+          : facePlaceCompletedCount
+            ? `ACT I ${facePlaceCompletedCount}/3`
+            : "CAMPAIGN TEST BUILD";
+  const incomingIds = getIncomingSiteIds({ facePlaceSecured, threadItSecured, wikiWhySecured });
+  const securedCount = evidenceSummary.persistedCanonicalCount;
   $("securedSiteCount").textContent = String(securedCount);
-  $("evidenceCount").textContent = `${securedCount}/10`;
+  $("securedSiteCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
+  $("evidenceCount").textContent = `${securedCount}/10 canonical`;
+  $("evidenceCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
     const siteSecured = (site.id === "wikiwhy" && wikiWhySecured)
-      || (site.id === "threadit" && threadItSecured);
+      || (site.id === "threadit" && threadItSecured)
+      || (site.id === "faceplace" && facePlaceSecured);
     const siteStatus = site.id === "wikiwhy"
       ? wikiWhyStatus
       : site.id === "threadit"
         ? threadItStatus
+        : site.id === "faceplace"
+          ? facePlaceStatus
         : "DESIGN PREVIEW";
     const securedIcon = site.id === "wikiwhy"
       ? WIKIWHY_SECURED_SEAL_URL
-      : THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge];
+      : site.id === "threadit"
+        ? THREADIT_ASSETS[THREADIT_ASSET_IDS.sourceStableBadge]
+        : site.markImage;
     return `
-    <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" data-runtime="${Boolean(site.runtimeAvailable)}" data-secured="${siteSecured}" aria-label="${site.name}, ${siteSecured ? "secured" : siteStatus.toLowerCase()}" style="--site-accent:${site.accent}">
+    <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" data-runtime="${Boolean(site.runtimeAvailable)}" data-secured="${siteSecured}" aria-label="${site.name}, ${siteStatus.toLowerCase()}" style="--site-accent:${site.accent}">
       <img src="${site.previewImage}" alt="">
       <span aria-hidden="true">${siteSecured ? `<img src="${securedIcon}" alt="">` : site.mark}</span>
       <div><b>${site.name}</b><small>${siteSecured ? `✓ ${siteStatus}` : siteStatus}</small></div>
@@ -377,7 +484,13 @@ function renderRecoveryHub() {
   }).join("");
   $("incomingCases").innerHTML = incomingIds.map((siteId) => {
     const site = getRecoverySite(siteId);
-    const status = site.id === "wikiwhy" ? wikiWhyStatus : site.id === "threadit" ? threadItStatus : "DESIGN PREVIEW";
+    const status = site.id === "wikiwhy"
+      ? wikiWhyStatus
+      : site.id === "threadit"
+        ? threadItStatus
+        : site.id === "faceplace"
+          ? facePlaceStatus
+          : "DESIGN PREVIEW";
     return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span>${site.mark}</span><div><b>${site.name}</b><small>${status}</small></div></button>`;
   }).join("");
   $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
@@ -388,15 +501,32 @@ function renderRecoveryHub() {
       const persistenceLabel = diagnosticThreadItSecured ? " · TEST" : state.threaditPersisted ? "" : " · TAB ONLY";
       return `<li class="evidence-slot-recovered"><img src="${THREADIT_ASSETS[THREADIT_ASSET_IDS.duplicateSourceIcon]}" alt=""><div><b>ThreadIt — ${THREADIT_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${THREADIT_EVIDENCE_RECORD.filename}</span><span>What changed: ${THREADIT_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${THREADIT_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${THREADIT_EVIDENCE_RECORD.writerFingerprint}</span><span>Blocked write: POSTING PAUSED: DUPLICATE SOURCE</span></div></li>`;
     }
+    if (site.id === "faceplace" && facePlaceSecured) {
+      const persistenceLabel = facePlaceEvidence.testSecured
+        ? " · TEST"
+        : facePlaceEvidence.tabOnly
+          ? " · TAB ONLY"
+          : " · PROVISIONAL";
+      return `<li class="evidence-slot-recovered" data-provisional="true"><img src="${site.markImage}" alt=""><div><b>FacePlace — ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.label}${persistenceLabel}</b><span>${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename}</span><span>What changed: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.whatChanged}</span><span>AI behavior: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.aiBehavior}</span><span>Writer: ${FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint ?? "PENDING DESIGNER ID"}</span><span>TEST ONLY · not registered for the final evidence unlock</span></div></li>`;
+    }
     return `<li>${site.name} — awaiting evidence</li>`;
   }).join("");
   const support = $("amySupportMessage");
-  if (state.threaditDiagnosticMode) {
+  if (state.faceplaceDiagnosticMode) {
+    support.innerHTML = facePlaceEvidence.testSecured
+      ? "<b>FacePlace secured in TEST mode.</b> Slot 3 shows a provisional promoted-feed receipt. It is excluded from the final evidence unlock, and the next-case order still needs designer confirmation."
+      : `<b>FacePlace structural test.</b> ${facePlaceStatus}. Its sampler is review-only, so every advance is simulated and creates no reading score.`;
+  } else if (state.threaditDiagnosticMode) {
     support.innerHTML = diagnosticThreadItSecured
       ? "<b>ThreadIt secured in TEST mode.</b> Case File slot 2 shows the synthetic-consensus receipt. No reading score or real campaign save was created."
       : `<b>ThreadIt structural test.</b> ${threadItStatus}. Its candidate passage remains unavailable, so every advance is clearly simulated.`;
-  } else if (!state.diagnosticMode) {
-    if (realThreadItSecured && state.threaditPersisted && realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy and ThreadIt secured.</b> Two evidence files are in Finn’s Files. FacePlace, Spotty-Fi, and Search-ish remain honest design previews.";
+  } else if (state.diagnosticMode) {
+    support.innerHTML = diagnosticSecured
+      ? "<b>WikiWhy secured in TEST mode.</b> The displayed receipt is diagnostic; no reading score or real campaign save was created."
+      : `<b>WikiWhy diagnostic active.</b> ${wikiWhyStatus}. No voice recording or transcript is saved.`;
+  } else {
+    if (facePlaceEvidence.realSecured) support.innerHTML = "<b>FacePlace is structurally secured.</b> Its slot-3 receipt remains provisional and cannot count toward the final evidence unlock until the designer freezes the registry row.";
+    else if (realThreadItSecured && state.threaditPersisted && realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy and ThreadIt secured.</b> Two evidence files are in Finn’s Files. FacePlace is available as a content-gated campaign test.";
     else if (realThreadItSecured && state.threaditPersisted) support.innerHTML = "<b>ThreadIt secured.</b> Its synthetic-consensus evidence is in Finn’s Files. The candidate passage gate remains closed for new scored readings.";
     else if (realThreadItSecured) support.innerHTML = "<b>ThreadIt is secured in this tab.</b> This browser did not save the evidence for reload.";
     else if (realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy secured.</b> Its evidence file is in Finn’s Files. ThreadIt has a complete structural campaign test; its candidate passage remains under review.";
@@ -404,7 +534,7 @@ function renderRecoveryHub() {
     else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
     else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
     else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
-    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt’s semantic Act I test is available with MIC: OFF until its passage clears review.";
+    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt and FacePlace have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
   }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
@@ -716,6 +846,304 @@ function renderThreadItDiagnosticPanel(campaignState) {
   $("diagnosticAdvance").disabled = view.secured || midpointPending;
 }
 
+function facePlaceInitials(label) {
+  return String(label ?? "")
+    .replace(/\([^)]*\)/gu, "")
+    .trim()
+    .split(/\s+/u)
+    .slice(0, 2)
+    .map((word) => word[0] ?? "")
+    .join("")
+    .toUpperCase() || "?";
+}
+
+function syncFacePlaceProfileDrawer() {
+  const drawerMode = matchMedia("(max-width: 1279px)").matches;
+  const open = drawerMode && state.faceplaceProfilePanelOpen;
+  $("faceplacePage").dataset.profileOpen = String(open);
+  $("faceplaceProfileToggle").setAttribute("aria-expanded", String(open));
+  $("faceplaceProfileRail").setAttribute("aria-hidden", String(drawerMode && !open));
+  $("faceplaceProfileRail").inert = drawerMode && !open;
+}
+
+function renderFacePlaceFeedCard(card, sourceById, { blockedTarget = false } = {}) {
+  const source = sourceById.get(card.sourceOriginId);
+  const timestamp = card.timestamp
+    ? `<time datetime="${escapeMarkup(card.timestamp)}">${escapeMarkup(card.displayTimestamp)}</time>`
+    : `<span>${escapeMarkup(card.displayTimestamp)}</span>`;
+  const sourceLabel = card.cardTypeVisible
+    ? source?.kind === "generated"
+      ? "GENERATED ORIGIN · PROVISIONAL"
+      : "INDEPENDENT ORIGIN · PROVISIONAL"
+    : "ORIGIN UNLABELED";
+  const recommendationStatus = card.recommendation.applicable
+    ? card.recommendation.verified
+      ? "WHY VERIFIED"
+      : card.recommendation.controlAvailable
+        ? "WHY PENDING"
+        : "WHY HIDDEN"
+    : "CHRONOLOGICAL SOURCE";
+  const duplicateSummary = card.duplicateRepresentative
+    ? `<p class="faceplace-duplicate-summary">${card.collapsedDuplicateCardIds.length} repeated cards collapsed under one provisional generated origin. Source cards remain logged.</p>`
+    : "";
+  const whyControl = card.recommendation.applicable && card.recommendation.controlAvailable
+    ? `<button class="faceplace-card-why" type="button" data-faceplace-reason-card="${escapeMarkup(card.id)}" aria-controls="faceplaceWhyDetails">Inspect why</button>`
+    : "";
+  const blockedTargetLabel = blockedTarget
+    ? '<span class="faceplace-blocked-target-label">BLOCKED BOOST TARGET</span>'
+    : "";
+  const accessibleSummary = blockedTarget
+    ? `${card.accessibleSummary} This is the provisional card targeted by the blocked boost attempt.`
+    : card.accessibleSummary;
+  const focusTarget = blockedTarget ? ' tabindex="-1"' : "";
+  const visibleCardType = card.cardTypeVisible ? card.cardType : "unlabeled";
+  const visibleOriginKind = card.cardTypeVisible ? source?.kind ?? "unknown" : "unlabeled";
+  return `<li id="${escapeMarkup(card.id)}" class="faceplace-feed-card" data-card-type="${escapeMarkup(visibleCardType)}" data-duplicate="${Boolean(card.duplicateGroupId && !card.duplicateRepresentative)}" data-collapsed="${card.duplicateRepresentative}" data-blocked-target="${blockedTarget}" aria-label="${escapeMarkup(accessibleSummary)}"${focusTarget}>
+    <span class="faceplace-mini-avatar" aria-hidden="true">${escapeMarkup(facePlaceInitials(card.authorLabel))}</span>
+    <article><header><div><b>${escapeMarkup(card.authorLabel)}</b>${timestamp}</div><strong>${escapeMarkup(card.cardTypeLabel)}</strong></header><p>${escapeMarkup(card.body)}</p>${duplicateSummary}<footer class="faceplace-card-footer"><span>${card.reactions} reactions</span><span class="faceplace-card-source" data-origin="${escapeMarkup(visibleOriginKind)}">${escapeMarkup(sourceLabel)}</span><span class="faceplace-card-reason-status" data-secondary="true">${escapeMarkup(recommendationStatus)}</span>${whyControl}${blockedTargetLabel}</footer></article>
+  </li>`;
+}
+
+function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getFacePlaceCampaignView(campaignState, {
+    reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+    showActOneResult: state.faceplaceShowActOneResult,
+  });
+  const completed = new Set(view.progress.completedUnitIds);
+  const sourceById = new Map(FACEPLACE_PROVISIONAL_FEED_FIXTURE.sources.map((source) => [source.id, source]));
+
+  $("faceplacePage").dataset.stateId = view.stateId;
+  $("faceplacePage").dataset.secured = String(view.secured);
+  $("faceplacePage").dataset.motion = view.motion.mode;
+  $("faceplacePage").dataset.ruleRepaired = String(view.midpoint.discovered);
+  $("faceplacePage").dataset.feedMode = view.feedMode;
+  $("faceplacePage").setAttribute("aria-label", view.ariaDescription);
+  $("faceplaceHeaderStatus").textContent = view.headerStatus;
+  $("faceplaceRule").textContent = view.ruleLabel;
+  $("faceplaceRuleBody").textContent = view.ruleBody;
+  $("faceplaceFixtureStatus").title = view.fixture.notice;
+  $("faceplaceFixtureStatus").textContent = "PROVISIONAL FEED FIXTURE · DESIGNER REPLACEMENT PENDING";
+
+  $("faceplaceProfileName").textContent = view.profile.displayName;
+  $("faceplaceProfileHandle").textContent = `${view.profile.handle} · FIXTURE`;
+  $("faceplaceProfileAvatar").textContent = facePlaceInitials(view.profile.displayName);
+  $("faceplaceProfileSummary").textContent = view.profile.accessibleSummary;
+  $("faceplaceRelationshipHeading").textContent = view.relationshipClusters.every(({ revealed }) => revealed)
+    ? "Distinct people restored"
+    : "Relationship map scrambled";
+  $("faceplaceRelationshipList").innerHTML = view.relationshipClusters.map((cluster) => {
+    const summary = cluster.revealed
+      ? `${cluster.members.length} distinct fictional people`
+      : "Verified members hidden until Honest Zero";
+    const members = cluster.revealed
+      ? `<ul>${cluster.members.map((member) => `<li>${escapeMarkup(member.displayName)}</li>`).join("")}</ul>`
+      : "";
+    return `<li class="faceplace-relationship-cluster" data-revealed="${cluster.revealed}" aria-label="${escapeMarkup(cluster.accessibleSummary)}"><b>${escapeMarkup(cluster.label)}</b><span>${summary}</span>${members}</li>`;
+  }).join("");
+
+  const blockedTargetCardId = view.blockedWrite?.fixtureAttempt?.targetCardId ?? null;
+  $("faceplaceFeedList").innerHTML = view.feedCards.map((card) => renderFacePlaceFeedCard(card, sourceById, {
+    blockedTarget: card.id === blockedTargetCardId,
+  })).join("");
+  $("faceplaceRankedMode").setAttribute("aria-pressed", String(view.feedMode === "ranked"));
+  $("faceplaceChronologicalMode").setAttribute("aria-pressed", String(view.feedMode === "chronological"));
+  $("faceplaceRankedMode").disabled = !view.chronologyControl.available;
+  $("faceplaceChronologicalMode").disabled = !view.chronologyControl.available;
+
+  const tracker = $("faceplaceTracker");
+  const trackerMeter = $("faceplaceTrackerMeter");
+  for (const attribute of ["role", "aria-valuemin", "aria-valuemax", "aria-valuenow", "aria-valuetext"]) trackerMeter.removeAttribute(attribute);
+  tracker.dataset.trackerKind = view.tracker.isProgress ? "honest" : view.tracker.display ? "nonsense" : "pending";
+  $("faceplaceTrackerLabel").textContent = view.tracker.label;
+  $("faceplaceTrackerValue").textContent = view.tracker.display ?? "—";
+  $("faceplaceTrackerValue").toggleAttribute("aria-hidden", !view.tracker.isProgress);
+  $("faceplaceTrackerTechno").hidden = !view.tracker.transientActOneResult;
+  $("faceplaceTrackerTechno").alt = view.tracker.transientActOneResult
+    ? "Techno drops her ball beside the AVOCADO% nonsense tracker."
+    : "";
+  if (view.tracker.isProgress) {
+    trackerMeter.setAttribute("role", "progressbar");
+    trackerMeter.setAttribute("aria-valuemin", String(view.tracker.ariaValueMin));
+    trackerMeter.setAttribute("aria-valuemax", String(view.tracker.ariaValueMax));
+    trackerMeter.setAttribute("aria-valuenow", String(view.tracker.ariaValueNow));
+    trackerMeter.setAttribute("aria-valuetext", view.tracker.ariaValueText);
+    $("faceplaceTrackerTruth").textContent = view.tracker.ariaValueText;
+  } else if (view.tracker.transientActOneResult) {
+    $("faceplaceTrackerTruth").textContent = "LAST FALSE TRACKER OUTPUT · HONEST ZERO READY";
+  } else {
+    $("faceplaceTrackerTruth").textContent = view.tracker.display
+      ? "NONSENSE METER · NOT LEARNER PROGRESS"
+      : "VALUE PENDING DESIGNER · NO LEARNER SCORE";
+  }
+  const allUnits = [...FACEPLACE_FALSE_TRACKER_UNITS, ...FACEPLACE_RECOVERY_UNITS];
+  const honestChecksRevealed = view.midpoint.visible
+    || view.midpoint.acknowledged
+    || view.progress.honestRecoveryCompletedCount > 0
+    || view.secured;
+  const checklist = honestChecksRevealed
+    ? allUnits.map((unit) => ({ label: unit.visibleRepair, saved: completed.has(unit.unitId) }))
+    : [
+        ...FACEPLACE_FALSE_TRACKER_UNITS.map((unit, index) => completed.has(unit.unitId)
+          ? { label: unit.visibleRepair, saved: true }
+          : { label: `Corrupted signal ${index + 1} pending`, saved: false }),
+        ...(view.tracker.transientActOneResult
+          ? FACEPLACE_RECOVERY_UNITS.map((_, index) => ({
+              label: `Honest recovery signal ${index + 1} pending`,
+              saved: false,
+            }))
+          : []),
+      ];
+  $("faceplaceSavedRepairs").innerHTML = checklist.map(({ label, saved }) => `<li data-saved="${saved}"><span class="faceplace-repair-state">${saved ? "SAVED" : "PENDING"}</span><span>${escapeMarkup(label)}</span></li>`).join("");
+
+  $("faceplaceMidpointNotice").hidden = !view.midpoint.visible;
+  $("faceplaceMidpointHeading").textContent = view.midpoint.body.split("\n")[0] || view.midpoint.title;
+  $("faceplaceMidpointAction").hidden = !view.midpoint.actionRequired;
+  $("faceplaceMidpointAction").disabled = !view.midpoint.actionRequired;
+
+  const visibleSuggestions = view.truth.contextControlsRestored
+    ? view.peopleYouMaySortOfKnow
+    : [1, 2, 3].map((ordinal) => ({
+        accessibleSummary: `Repeated fictional appliance suggestion ${ordinal} of twelve.`,
+        displayName: `Countertop Timer ${String(ordinal).padStart(2, "0")}`,
+        handle: `same-appliance-copy-${ordinal}`,
+        id: `faceplace-corrupt-appliance-${ordinal}`,
+        relationshipHint: ordinal === 3 ? "+9 nearly identical appliances" : "same generated suggestion",
+      }));
+  $("faceplacePeopleList").innerHTML = visibleSuggestions.map((person) => `<li class="faceplace-person-suggestion" aria-label="${escapeMarkup(person.accessibleSummary)}"><span class="faceplace-mini-avatar" aria-hidden="true">${escapeMarkup(facePlaceInitials(person.displayName))}</span><div><b>${escapeMarkup(person.displayName)}</b><span>${escapeMarkup(person.relationshipHint ?? person.handle)}</span></div></li>`).join("");
+
+  if (!view.contextPanel.shellRestored) {
+    state.faceplaceWhyOpen = false;
+    state.faceplaceSelectedReasonCardId = null;
+  }
+  const selectedReason = view.contextPanel.reasons.find(({ cardId }) => cardId === state.faceplaceSelectedReasonCardId)
+    ?? view.contextPanel.reasons.find(({ cardId }) => cardId === view.contextPanel.selectedCardId)
+    ?? view.contextPanel.reasons.find(({ available }) => available)
+    ?? null;
+  state.faceplaceSelectedReasonCardId = selectedReason?.cardId ?? null;
+  const selectedCard = view.feedCards.find(({ id }) => id === selectedReason?.cardId)
+    ?? view.feedCards.find(({ recommendation }) => recommendation.applicable)
+    ?? null;
+  $("faceplaceWhyToggle").disabled = !view.contextPanel.shellRestored;
+  $("faceplaceWhyToggle").setAttribute("aria-expanded", String(view.contextPanel.shellRestored && state.faceplaceWhyOpen));
+  $("faceplaceWhyToggle").textContent = state.faceplaceWhyOpen ? "Close recommendation" : "Inspect recommendation";
+  $("faceplaceWhyDetails").hidden = !view.contextPanel.shellRestored || !state.faceplaceWhyOpen;
+  $("faceplaceWhyCard").textContent = selectedCard?.authorLabel ?? "Recommended card pending";
+  $("faceplaceWhyReason").textContent = selectedReason?.reasonText ?? "Recommendation reason pending verification.";
+  $("faceplaceWhyStatus").textContent = view.contextPanel.reasonsVerified ? "REASON VERIFIED" : view.contextPanel.shellRestored ? "VERIFICATION PENDING" : "CONTROL NOT RESTORED";
+  $("faceplaceFeedList").querySelectorAll("[data-faceplace-reason-card]").forEach((button) => {
+    button.onclick = () => {
+      state.faceplaceSelectedReasonCardId = button.dataset.faceplaceReasonCard;
+      state.faceplaceWhyOpen = true;
+      renderFacePlaceCampaign(campaignState, { diagnosticMode });
+      requestAnimationFrame(() => $("faceplaceWhyDetails").focus({ preventScroll: true }));
+    };
+  });
+
+  if (!view.secured) state.faceplaceEvidenceReceiptOpen = false;
+  $("faceplaceSecuredPayoff").hidden = !view.secured;
+  const blockedTargetCard = view.feedCards.find(({ id }) => id === blockedTargetCardId) ?? null;
+  $("faceplaceBlockedActor").textContent = view.blockedWrite?.process?.displayName
+    ? `${view.blockedWrite.process.displayName} · PROVISIONAL TARGET`
+    : "FEED AUTO-FIX AI · PROVISIONAL TARGET";
+  $("faceplaceBlockedTitle").textContent = view.blockedWrite?.title ?? FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD.title;
+  $("faceplaceBlockedBody").textContent = view.blockedWrite?.body ?? FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD.body;
+  $("faceplaceBlockedTarget").textContent = blockedTargetCard
+    ? `Target card: ${blockedTargetCard.authorLabel} · ${blockedTargetCard.id}`
+    : "Target card pending";
+  $("faceplaceBlockedTarget").href = blockedTargetCard ? `#${blockedTargetCard.id}` : "#faceplaceFeedList";
+  $("faceplaceBlockedTarget").onclick = blockedTargetCard
+    ? (event) => {
+        event.preventDefault();
+        const target = $(blockedTargetCard.id);
+        target?.scrollIntoView({ block: "nearest", behavior: view.motion.mode === "state-swap" ? "auto" : "smooth" });
+        target?.focus({ preventScroll: true });
+      }
+    : null;
+  $("faceplaceEvidenceTitle").textContent = view.evidence?.title ?? FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.title;
+  $("faceplaceEvidenceWhatChanged").textContent = view.evidence?.whatChanged ?? FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.whatChanged;
+  $("faceplaceEvidenceBehavior").textContent = view.evidence?.aiBehavior ?? FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.aiBehavior;
+  $("faceplaceEvidenceWriter").textContent = view.evidence?.fixtureDraft?.writerFingerprint
+    ?? view.evidence?.writerFingerprint
+    ?? "PENDING DESIGNER ID";
+  $("faceplaceEvidenceToggle").setAttribute("aria-expanded", String(view.secured && state.faceplaceEvidenceReceiptOpen));
+  $("faceplaceEvidenceToggle").textContent = state.faceplaceEvidenceReceiptOpen
+    ? "Close provisional FacePlace test receipt"
+    : "Open provisional FacePlace test receipt";
+  $("faceplaceEvidenceReceipt").hidden = !view.secured || !state.faceplaceEvidenceReceiptOpen;
+
+  $("faceplaceStatusStrip").textContent = view.secured
+    ? "FORCED DISTRIBUTION: OFF"
+    : view.tracker.isProgress
+      ? `HONEST FEED RECOVERY ${view.tracker.display}`
+      : "ACTIVE SORT: REACTIONS DESCENDING";
+  $("faceplaceUnitStatus").textContent = view.secured
+    ? "3 OF 3 HONEST CHECKS SAVED"
+    : view.midpoint.acknowledged
+      ? `${view.progress.honestRecoveryCompletedCount} OF 3 HONEST CHECKS SAVED`
+      : `${view.progress.actOneCompletedCount} OF 3 ACT I REPAIRS SAVED`;
+  $("faceplaceDiagnosticTruth").textContent = diagnosticMode ? "SIMULATED · NO READING SCORE" : "CONTENT REVIEW GATE · MIC OFF";
+  $("faceplaceLiveStatus").textContent = campaignState.lastReaction ?? view.lastRepairAnnouncement;
+  $("faceplaceBrowserTitle").textContent = view.secured
+    ? "FACEPLACE — FEED RECOVERY VERIFIED"
+    : view.midpoint.discovered
+      ? "FACEPLACE — HONEST FEED RECOVERY"
+      : "FACEPLACE — LYING TRACKER RECOVERY";
+  $("faceplaceSecurityStatus").textContent = view.secured
+    ? "FEED RECOVERY VERIFIED"
+    : diagnosticMode
+      ? "STRUCTURAL TEST"
+      : "CONTENT REVIEW GATE";
+
+  const selection = selectNextFacePlacePassage(state.faceplaceState);
+  $("faceplaceCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("faceplaceContentReason").textContent = selection.passage
+    ? "A reviewed FacePlace passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run, so one additional reviewed record is still required.`;
+
+  syncFacePlaceProfileDrawer();
+  return view;
+}
+
+function renderFacePlaceDiagnosticPanel(campaignState) {
+  const view = getFacePlaceCampaignView(campaignState, { showActOneResult: state.faceplaceShowActOneResult });
+  const midpointPending = view.midpoint.discovered && !view.midpoint.acknowledged;
+  if (view.secured) {
+    $("diagnosticPhase").textContent = "FACEPLACE · FEED RECOVERY VERIFIED";
+    $("diagnosticSummary").textContent = "Six simulated readings completed the authored campaign. Slot 3 remains explicitly provisional and test-only.";
+    $("diagnosticAdvance").textContent = "FacePlace ending reached";
+  } else if (midpointPending) {
+    $("diagnosticPhase").textContent = state.faceplaceShowActOneResult
+      ? "FACEPLACE · LAST FALSE TRACKER: AVOCADO%"
+      : "FACEPLACE · HONEST ZERO";
+    $("diagnosticSummary").textContent = state.faceplaceShowActOneResult
+      ? "Three real structural repairs are saved. The old nonsense output is being replaced with an honest tracker."
+      : "Three Act I repairs remain saved. Acknowledge Honest Zero before another simulated reading can advance.";
+    $("diagnosticAdvance").textContent = "Acknowledge Honest Zero first";
+  } else if (view.midpoint.acknowledged) {
+    const next = FACEPLACE_RECOVERY_UNITS[view.progress.honestRecoveryCompletedCount];
+    $("diagnosticPhase").textContent = `FACEPLACE HONEST RECOVERY · ${view.progress.honestRecoveryCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.completedUnitCount} simulated readings · next result ${next?.visibleRepair.toLowerCase() ?? "verifies the feed"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated FacePlace reading →";
+  } else {
+    const next = FACEPLACE_FALSE_TRACKER_UNITS[view.progress.actOneCompletedCount];
+    $("diagnosticPhase").textContent = `FACEPLACE ACT I · ${view.progress.actOneCompletedCount} OF 3`;
+    $("diagnosticSummary").textContent = `${view.progress.actOneCompletedCount} simulated reading${view.progress.actOneCompletedCount === 1 ? "" : "s"} · next result ${next?.visibleRepair.toLowerCase() ?? "reveals Honest Zero"}`;
+    $("diagnosticAdvance").textContent = "Skip simulated FacePlace reading →";
+  }
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+}
+
+function openFacePlaceExperience() {
+  state.selectedSiteId = "faceplace";
+  hideCharacterDialog();
+  const visibleState = state.faceplaceDiagnosticMode
+    ? state.faceplaceDiagnosticState
+    : state.faceplaceState;
+  renderFacePlaceCampaign(visibleState, { diagnosticMode: state.faceplaceDiagnosticMode });
+  renderFacePlaceDiagnosticPanel(visibleState);
+  show("faceplace");
+}
+
 function openThreadItExperience() {
   state.selectedSiteId = "threadit";
   hideCharacterDialog();
@@ -751,6 +1179,10 @@ function openRecoverySite(siteId) {
     openThreadItExperience();
     return;
   }
+  if (site.id === "faceplace" && site.runtimeAvailable) {
+    openFacePlaceExperience();
+    return;
+  }
   renderSitePreview(site);
 }
 
@@ -763,6 +1195,12 @@ function returnToHub() {
   }
   hideCharacterDialog();
   state.evidenceReceiptOpen = false;
+  state.faceplaceEvidenceReceiptOpen = false;
+  state.faceplaceProfilePanelOpen = false;
+  state.faceplaceSelectedReasonCardId = null;
+  state.faceplaceWhyOpen = false;
+  clearTimeout(state.faceplaceTransitionTimer);
+  state.faceplaceShowActOneResult = false;
   renderRecoveryHub();
   show("hub");
 }
@@ -1023,6 +1461,10 @@ function showCharacterDialog(dialogId, action = hideCharacterDialog) {
   $("dialogHeading").focus({ preventScroll: true });
 }
 
+function showWikiWhySecuredSequence() {
+  showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured", returnToHub));
+}
+
 function showRealRewriteSequence({ includeWarning = false } = {}) {
   const showRewrite = () => showCharacterDialog("reverse-hack-ready", () => {
     showCharacterDialog("reverse-hack-amy", beginRealShieldSequence);
@@ -1046,7 +1488,7 @@ function beginRealShieldSequence() {
   if (state.campaignState.phase === "secured") {
     $("readerState").textContent = "WIKIWHY SECURED · UNAUTHORIZED WRITE BLOCKED";
     $("progressText").textContent = "Evidence file recovered · return to the Recovery Map to inspect Case File slot 1";
-    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured", returnToHub));
+    showWikiWhySecuredSequence();
     return;
   }
   const remaining = 3 - state.campaignState.shieldPass;
@@ -1079,7 +1521,7 @@ function configurePostResultButton() {
 
 function handleRealCampaignEvents(events) {
   if (events.includes("site-secured")) {
-    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured", returnToHub));
+    showWikiWhySecuredSequence();
     return;
   }
   if (events.includes("shield-pass-complete")) {
@@ -1121,6 +1563,10 @@ function beginDiagnosticShield() {
 }
 
 async function advanceDiagnosticExperience() {
+  if (state.selectedSiteId === "faceplace") {
+    await advanceFacePlaceDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "threadit") {
     await advanceThreadItDiagnosticExperience();
     return;
@@ -1137,7 +1583,7 @@ async function advanceDiagnosticExperience() {
   });
   if (transition.event === "shield-pass-complete") showCharacterDialog(`shield-pass-${next.shieldPass}`);
   if (transition.event === "site-secured") {
-    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured"));
+    showWikiWhySecuredSequence();
   }
 }
 
@@ -1187,6 +1633,127 @@ function resetThreadItDiagnosticExperience() {
   state.threaditEvidenceReceiptOpen = false;
   applyThreadItDiagnosticState(readThreadItState(null));
   $("threaditLiveStatus").textContent = "THREADIT TEST RESET · NO READING SCORE CREATED";
+}
+
+function applyFacePlaceDiagnosticState(nextState) {
+  state.faceplaceDiagnosticMode = true;
+  state.faceplaceDiagnosticState = nextState;
+  renderFacePlaceCampaign(nextState, { diagnosticMode: true });
+  renderFacePlaceDiagnosticPanel(nextState);
+  renderRecoveryHub();
+  show("faceplace");
+}
+
+async function advanceFacePlaceDiagnosticExperience() {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const current = state.faceplaceDiagnosticState ?? readFacePlaceState(null);
+  const view = getFacePlaceCampaignView(current);
+  if (view.secured || (view.midpoint.discovered && !view.midpoint.acknowledged)) {
+    applyFacePlaceDiagnosticState(current);
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = advanceFacePlaceState(current, {
+    completedAt: new Date().toISOString(),
+    outcome: calculateFacePlaceReadingOutcome({ campaignState: current }),
+    passageId: `faceplace-diagnostic-passage-${ordinal}`,
+    sessionId: `faceplace-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? "FacePlace diagnostic did not advance");
+  if (transition.events.includes("site-secured")) state.faceplaceEvidenceReceiptOpen = false;
+  if (transition.events.includes("midpoint-discovered")) {
+    state.faceplaceShowActOneResult = true;
+    applyFacePlaceDiagnosticState(transition.state);
+    clearTimeout(state.faceplaceTransitionTimer);
+    const delay = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 900;
+    state.faceplaceTransitionTimer = setTimeout(() => {
+      if (!state.faceplaceDiagnosticMode || state.faceplaceDiagnosticState !== transition.state) return;
+      state.faceplaceShowActOneResult = false;
+      renderFacePlaceCampaign(transition.state, { diagnosticMode: true });
+      renderFacePlaceDiagnosticPanel(transition.state);
+      requestAnimationFrame(() => $("faceplaceMidpointAction").focus({ preventScroll: true }));
+    }, delay);
+  } else {
+    state.faceplaceShowActOneResult = false;
+    applyFacePlaceDiagnosticState(transition.state);
+  }
+  if (transition.events.includes("provisional-blocked-write-recorded")) {
+    $("faceplaceLiveStatus").textContent = "FEED RECOVERY VERIFIED. FORCED DISTRIBUTION: OFF. Provisional slot-3 test receipt available.";
+  }
+  diagnostic("faceplace-wrapper-diagnostic-advance", {
+    completedUnitIds: transition.state.completedUnitIds,
+    events: transition.events,
+    stateId: transition.state.stateId,
+  });
+}
+
+function resetFacePlaceDiagnosticExperience() {
+  clearTimeout(state.faceplaceTransitionTimer);
+  state.faceplaceDiagnosticMode = true;
+  state.faceplaceEvidenceReceiptOpen = false;
+  state.faceplaceWhyOpen = false;
+  state.faceplaceShowActOneResult = false;
+  applyFacePlaceDiagnosticState(readFacePlaceState(null));
+  $("faceplaceLiveStatus").textContent = "FACEPLACE TEST RESET · NO READING SCORE CREATED";
+}
+
+function buildFacePlacePreviewState(unitCount) {
+  let previewState = readFacePlaceState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === FACEPLACE_FALSE_TRACKER_UNITS.length && !previewState.midpointAcknowledged) {
+      previewState = acknowledgeFacePlaceMidpointState(previewState, {
+        acknowledgedAt: "2026-07-12T00:00:03.500Z",
+      }).state;
+    }
+    const transition = advanceFacePlaceState(previewState, {
+      completedAt: `2026-07-12T00:00:0${index}.000Z`,
+      outcome: calculateFacePlaceReadingOutcome({ campaignState: previewState }),
+      passageId: `faceplace-preview-passage-${index + 1}`,
+      sessionId: `faceplace-preview-session-${index + 1}`,
+    });
+    if (!transition.ok) throw new Error(transition.reason ?? "FacePlace preview state did not advance");
+    previewState = transition.state;
+  }
+  return previewState;
+}
+
+function acknowledgeFacePlaceHonestZero() {
+  const diagnostic = state.faceplaceDiagnosticMode;
+  const current = diagnostic ? state.faceplaceDiagnosticState : state.faceplaceState;
+  const transition = diagnostic
+    ? acknowledgeFacePlaceMidpointState(current, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeFacePlaceMidpoint(localStateStorage, {
+        acknowledgedAt: new Date().toISOString(),
+        currentState: current,
+      });
+  if (!transition.ok) return;
+  state.faceplaceShowActOneResult = false;
+  if (diagnostic) state.faceplaceDiagnosticState = transition.state;
+  else {
+    state.faceplaceState = transition.state;
+    state.faceplacePersisted = transition.ok;
+  }
+  renderFacePlaceCampaign(transition.state, { diagnosticMode: diagnostic });
+  renderFacePlaceDiagnosticPanel(transition.state);
+  renderRecoveryHub();
+  requestAnimationFrame(() => $("faceplaceTracker").focus?.({ preventScroll: true }));
+}
+
+function setFacePlaceFeedModeFromControl(feedMode) {
+  const diagnostic = state.faceplaceDiagnosticMode;
+  const current = diagnostic ? state.faceplaceDiagnosticState : state.faceplaceState;
+  const transition = diagnostic
+    ? setFacePlaceFeedModeState(current, feedMode)
+    : setFacePlaceFeedMode(localStateStorage, feedMode, { currentState: current });
+  if (!transition.ok) return;
+  if (diagnostic) state.faceplaceDiagnosticState = transition.state;
+  else {
+    state.faceplaceState = transition.state;
+    state.faceplacePersisted = transition.ok;
+  }
+  renderFacePlaceCampaign(transition.state, { diagnosticMode: diagnostic });
+  $(feedMode === "chronological" ? "faceplaceChronologicalMode" : "faceplaceRankedMode").focus({ preventScroll: true });
 }
 
 function buildThreadItPreviewState(unitCount) {
@@ -1748,6 +2315,11 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (state.selectedSiteId === "faceplace") {
+    await discardActiveReadingForDiagnostics();
+    resetFacePlaceDiagnosticExperience();
+    return;
+  }
   if (state.selectedSiteId === "threadit") {
     await discardActiveReadingForDiagnostics();
     resetThreadItDiagnosticExperience();
@@ -1796,6 +2368,8 @@ $("previewBack").onclick = returnToHub;
 $("previewReturn").onclick = returnToHub;
 $("threaditBack").onclick = returnToHub;
 $("threaditReturn").onclick = returnToHub;
+$("faceplaceBack").onclick = returnToHub;
+$("faceplaceReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
 $("threaditTraceTab").onclick = () => openThreadItView("trace");
 $("threaditTraceControl").onclick = () => openThreadItView("trace");
@@ -1827,8 +2401,48 @@ $("threaditEvidenceToggle").onclick = () => {
     requestAnimationFrame(() => $("threaditEvidenceReceipt").focus?.({ preventScroll: true }));
   }
 };
+$("faceplaceProfileToggle").onclick = () => {
+  state.faceplaceProfilePanelOpen = !state.faceplaceProfilePanelOpen;
+  syncFacePlaceProfileDrawer();
+  if (state.faceplaceProfilePanelOpen) requestAnimationFrame(() => $("faceplaceProfileHeading").focus({ preventScroll: true }));
+};
+$("faceplaceProfileClose").onclick = () => {
+  state.faceplaceProfilePanelOpen = false;
+  syncFacePlaceProfileDrawer();
+  $("faceplaceProfileToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !state.faceplaceProfilePanelOpen) return;
+  event.preventDefault();
+  state.faceplaceProfilePanelOpen = false;
+  syncFacePlaceProfileDrawer();
+  $("faceplaceProfileToggle").focus({ preventScroll: true });
+});
+$("faceplaceMidpointAction").onclick = acknowledgeFacePlaceHonestZero;
+$("faceplaceRankedMode").onclick = () => setFacePlaceFeedModeFromControl("ranked");
+$("faceplaceChronologicalMode").onclick = () => setFacePlaceFeedModeFromControl("chronological");
+$("faceplaceWhyToggle").onclick = () => {
+  if ($("faceplaceWhyToggle").disabled) return;
+  state.faceplaceWhyOpen = !state.faceplaceWhyOpen;
+  const visibleState = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : state.faceplaceState;
+  renderFacePlaceCampaign(visibleState, { diagnosticMode: state.faceplaceDiagnosticMode });
+  if (state.faceplaceWhyOpen) requestAnimationFrame(() => $("faceplaceWhyDetails").focus({ preventScroll: true }));
+  else $("faceplaceWhyToggle").focus({ preventScroll: true });
+};
+$("faceplaceEvidenceToggle").onclick = () => {
+  const visibleState = state.faceplaceDiagnosticMode ? state.faceplaceDiagnosticState : state.faceplaceState;
+  if (!visibleState.secured) return;
+  state.faceplaceEvidenceReceiptOpen = !state.faceplaceEvidenceReceiptOpen;
+  renderFacePlaceCampaign(visibleState, { diagnosticMode: state.faceplaceDiagnosticMode });
+  if (state.faceplaceEvidenceReceiptOpen) requestAnimationFrame(() => $("faceplaceEvidenceReceipt").focus({ preventScroll: true }));
+  else $("faceplaceEvidenceToggle").focus({ preventScroll: true });
+};
 window.addEventListener("resize", () => {
   if (state.activeScreen === "threadit") scheduleThreadItConnectors(threadItConnectorRelationships);
+  if (state.activeScreen === "faceplace") {
+    if (!matchMedia("(max-width: 1279px)").matches) state.faceplaceProfilePanelOpen = false;
+    syncFacePlaceProfileDrawer();
+  }
 });
 $("taskStart").onclick = returnToHub;
 $("taskHub").onclick = returnToHub;
@@ -1836,6 +2450,10 @@ $("taskSite").onclick = () => openRecoverySite(state.selectedSiteId);
 $("taskReader").onclick = () => {
   if (state.selectedSiteId === "threadit") {
     openThreadItExperience();
+    return;
+  }
+  if (state.selectedSiteId === "faceplace") {
+    openFacePlaceExperience();
     return;
   }
   if (state.result && !state.resultApplied) show("review");
@@ -1898,6 +2516,7 @@ document.querySelectorAll(".quiz button").forEach((button) => {
 window.addEventListener("pagehide", () => {
   clearInterval(state.monitor);
   clearTimeout(state.technoTimer);
+  clearTimeout(state.faceplaceTransitionTimer);
   if (capture.active) capture.stop();
   recognizer.close();
 });
@@ -1909,6 +2528,10 @@ hydrateInternetRecoveryCopy();
 if (uiPreview) {
   state.campaignState = readWikiWhyState(null);
   state.campaignPersisted = true;
+  state.threaditState = readThreadItState(null);
+  state.threaditPersisted = true;
+  state.faceplaceState = readFacePlaceState(null);
+  state.faceplacePersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -1923,6 +2546,8 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("wikiwhy");
 } else if (requestedLaunch === "threadit") {
   openRecoverySite("threadit");
+} else if (requestedLaunch === "faceplace") {
+  openRecoverySite("faceplace");
 } else if (requestedSite) {
   openRecoverySite(requestedSite);
 } else if (uiPreview === "hub") {
@@ -1954,6 +2579,41 @@ if (requestedLaunch === "wikiwhy") {
   }
   state.threaditEvidenceReceiptOpen = uiPreview === "threadit-evidence";
   openThreadItExperience();
+} else if ([
+  "faceplace",
+  "faceplace-corrupted",
+  "faceplace-false-1",
+  "faceplace-false-2",
+  "faceplace-false-3",
+  "faceplace-honest-zero",
+  "faceplace-honest-zero-acknowledged",
+  "faceplace-recovery-1",
+  "faceplace-recovery-2",
+  "faceplace-secured",
+  "faceplace-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "faceplace-evidence": 6,
+    "faceplace-secured": 6,
+    "faceplace-recovery-2": 5,
+    "faceplace-recovery-1": 4,
+    "faceplace-honest-zero-acknowledged": 3,
+    "faceplace-honest-zero": 3,
+    "faceplace-false-3": 3,
+    "faceplace-false-2": 2,
+    "faceplace-false-1": 1,
+  }[uiPreview] ?? 0;
+  state.faceplaceDiagnosticMode = true;
+  state.faceplaceDiagnosticState = buildFacePlacePreviewState(unitCount);
+  if (uiPreview === "faceplace-honest-zero-acknowledged") {
+    state.faceplaceDiagnosticState = acknowledgeFacePlaceMidpointState(state.faceplaceDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:03.500Z",
+    }).state;
+  }
+  state.faceplaceShowActOneResult = uiPreview === "faceplace-false-3";
+  state.faceplaceWhyOpen = ["faceplace-recovery-2", "faceplace-secured", "faceplace-evidence"].includes(uiPreview);
+  state.faceplaceEvidenceReceiptOpen = uiPreview === "faceplace-evidence";
+  openFacePlaceExperience();
 } else if (uiPreview === "read") {
   const previewCount = Math.round(tokenizeText(PASSAGE).length * 0.55);
   updateProgress({

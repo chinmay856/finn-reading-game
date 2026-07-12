@@ -1,5 +1,6 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./wikiwhy/photosynthesis-passage.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-matters.js";
+import { A_SECOND_READING_PASSAGE } from "./faceplace/a-second-reading.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
 const APPROVED_REVIEW_FIELDS = Object.freeze([
@@ -22,6 +23,7 @@ const PROTOTYPE_REVIEW_FIELDS = Object.freeze([
 export const PASSAGE_CATALOG = Object.freeze([
   PHOTOSYNTHESIS_PASSAGE,
   WHY_DISAGREEMENT_MATTERS_PASSAGE,
+  A_SECOND_READING_PASSAGE,
 ]);
 
 export function getPassageById(id, catalog = PASSAGE_CATALOG) {

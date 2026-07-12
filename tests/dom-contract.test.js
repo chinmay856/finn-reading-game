@@ -247,6 +247,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(app, /renderSitePreview/u);
   assert.match(app, /openWikiWhyExperience/u);
   assert.match(app, /openThreadItExperience/u);
+  assert.match(app, /openFacePlaceExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
   assert.match(app, /keepPreparationVisible/u);
@@ -256,7 +257,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
-  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 2);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 3);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
 });
@@ -313,7 +314,7 @@ test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", as
   assert.match(app, /threadit-source-quarantine/u);
   assert.match(app, /DUPLICATE-SOURCE QUARANTINE · 10 ACCOUNTS RETAINED/u);
   assert.match(app, /THREADIT_EVIDENCE_RECORD/u);
-  assert.match(app, /getIncomingSiteIds\(\{ threadItSecured, wikiWhySecured \}\)/u);
+  assert.match(app, /getIncomingSiteIds\(\{ facePlaceSecured, threadItSecured, wikiWhySecured \}\)/u);
   assert.match(app, /"threadit-evidence": 7/u);
   assert.match(app, /THREADIT_TRACE_01\.LOG saved to Case File slot 2/u);
   assert.match(app, /threaditMidpointAction[\s\S]+threaditTraceTab[^\n]+focus/u);
@@ -332,6 +333,74 @@ test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", as
   assert.match(hubCss, /@media \(max-width: 1279px\)[^{]+\{[^}]+desktop-shortcut-rail \{ width: 68px;/su);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
   assert.doesNotMatch(engine, /ThreadIt|threadit|source tree|Consensus Cascade/iu);
+});
+
+test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-safe", async () => {
+  const [app, copy, css, engine, html, hubState, state, view] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/faceplace-copy.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/faceplace.css", import.meta.url), "utf8"),
+    readFile(new URL("../reading-engine.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/recovery-hub-state.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/faceplace-state.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/faceplace-view.js", import.meta.url), "utf8"),
+    access(new URL("../apps/internet-recovery/art/site-assets/marks/faceplace-mark.svg", import.meta.url)),
+  ]);
+  const start = html.indexOf('<section id="faceplace"');
+  const end = html.indexOf('<section id="setup"', start);
+  const markup = html.slice(start, end);
+  assert.ok(start > -1 && end > start);
+  assert.match(html, /faceplace\.css/u);
+  assert.match(markup, /id="faceplaceProfileRail"[^>]+aria-labelledby="faceplaceProfileHeading"/u);
+  assert.match(markup, /id="faceplaceProfileToggle"[^>]+aria-controls="faceplaceProfileRail"[^>]+aria-expanded="false"/u);
+  assert.match(markup, /id="faceplaceFeedList"[^>]+aria-label="FacePlace feed cards"/u);
+  assert.match(markup, /id="faceplaceFeedList"[^>]+aria-describedby="faceplaceFeedInstructions"[^>]+tabindex="0"/u);
+  assert.match(markup, /id="faceplaceTracker"[^>]+data-tracker-kind="pending"/u);
+  assert.doesNotMatch(markup, /id="faceplaceTracker"[^>]+role="progressbar"/u);
+  assert.match(markup, /id="faceplaceTrackerMeter"[^>]+aria-labelledby="faceplaceTrackerLabel"/u);
+  assert.match(markup, /id="faceplaceWhyToggle"[^>]+aria-controls="faceplaceWhyDetails"/u);
+  assert.match(markup, /id="faceplaceMidpointNotice"[^>]+aria-labelledby="faceplaceMidpointHeading"/u);
+  assert.match(markup, /id="faceplaceEvidenceToggle"[^>]+aria-controls="faceplaceEvidenceReceipt"/u);
+  assert.match(markup, /id="faceplaceEvidenceReceipt"[^>]+tabindex="-1"/u);
+  assert.match(markup, /id="faceplaceBlockedTarget"[^>]+href="#faceplaceFeedList"/u);
+  assert.match(markup, /CASE FILE · SLOT 3 · PROVISIONAL TEST RECEIPT/u);
+  assert.match(markup, /TEST ONLY · NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK/u);
+  assert.match(markup, /MIC: OFF/u);
+  assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /10 planned · 0 selectable · 6 required/u);
+  assert.match(app, /getFacePlaceCampaignView/u);
+  assert.match(app, /advanceFacePlaceState/u);
+  assert.match(app, /state\.faceplaceDiagnosticMode = true/u);
+  assert.match(app, /"faceplace-false-3": 3/u);
+  assert.match(app, /"faceplace-honest-zero": 3/u);
+  assert.match(app, /"faceplace-evidence": 6/u);
+  assert.match(app, /faceplaceShowActOneResult = uiPreview === "faceplace-false-3"/u);
+  assert.match(app, /trackerMeter\.setAttribute\("role", "progressbar"\)/u);
+  assert.match(app, /for \(const attribute of \["role", "aria-valuemin"/u);
+  assert.match(app, /provisional-blocked-write-recorded/u);
+  assert.match(app, /const securedCount = evidenceSummary\.persistedCanonicalCount/u);
+  assert.match(app, /faceplace-repair-state/u);
+  assert.match(app, /visibleCardType = card\.cardTypeVisible/u);
+  assert.match(app, /visibleOriginKind = card\.cardTypeVisible/u);
+  assert.match(app, /aria-label="\$\{site\.name\}, \$\{siteStatus\.toLowerCase\(\)\}"/u);
+  assert.match(app, /faceplaceProfileRail[\s\S]+\.inert = drawerMode && !open/u);
+  assert.match(app, /event\.key !== "Escape"/u);
+  assert.match(app, /showWikiWhySecuredSequence/u);
+  assert.match(copy, /PROVISIONAL FACEPLACE FIXTURE - NOT CANONICAL/u);
+  assert.doesNotMatch(copy, /VIBESHIFT|Chinmay/iu);
+  assert.match(state, /faceplace_honest_zero/u);
+  assert.match(state, /canonical: false/u);
+  assert.match(view, /showActOneResult/u);
+  assert.match(view, /ariaValueText/u);
+  assert.match(view, /feedCards/u);
+  assert.match(hubState, /persistedCanonical/u);
+  assert.match(hubState, /displaySecuredCount/u);
+  assert.match(css, /grid-template-columns: minmax\(132px, 0\.52fr\) minmax\(260px, 1\.25fr\) minmax\(176px, 0\.68fr\)/u);
+  assert.match(css, /@media \(max-width: 1279px\)/u);
+  assert.match(css, /faceplace-page\[data-profile-open="true"\] \.faceplace-profile-rail/u);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/u);
+  assert.doesNotMatch(engine, /FacePlace|faceplace|Honest Zero|feed recovery/iu);
 });
 
 test("the rogue AI owns the overwrite while production portraits stay wrapper-owned", async () => {
