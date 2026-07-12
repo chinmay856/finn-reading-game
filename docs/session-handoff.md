@@ -8,6 +8,22 @@
 - It freezes the query/results, origin branches, evidence route, responsive
   inspector, passage-ID plan, and hub continuation without promoting content.
 
+## ViewTube evidence-track foundation
+
+- Active branch: `agent/viewtube-evidence-track-foundation`.
+- Integrated designer PR #40's canonical silent-video runtime contract and PR
+  #49's first-run manuscripts without touching stashes or `worktrees/`.
+- ViewTube now has a seven-unit structural runtime: four recording-context
+  restores, an explicit autoplay-loop acknowledgement, and three independently
+  verified evidence tracks. The runtime is silent, keeps the microphone off,
+  and cannot create a reading score while its manuscripts remain review-gated.
+- Canonical persisted evidence is reserved for Case File slot 6 as
+  `VIEWTUBE_DUPLICATE_MEDIA_HASHES.REC`; diagnostic state is still labeled test.
+- `npm run check`, all 268 tests, and `npm run build` pass locally.
+- The only outstanding ViewTube art dependency is the dedicated
+  `techno_clue_point` pose. A focused request is published on designer PR #40;
+  the paw-alert still remains the explicit temporary fallback.
+
 ## Yahuh channel-reconnect foundation
 
 - Deployed `main` is authoritative at `76e6f05` through MyCorner PR #45 and

@@ -121,6 +121,19 @@ import {
 } from "./apps/internet-recovery/yahuh-state.js";
 import { getYahuhCampaignView } from "./apps/internet-recovery/yahuh-view.js";
 import { selectNextYahuhPassage } from "./apps/internet-recovery/yahuh-content.js";
+import {
+  VIEWTUBE_RESTORE_UNITS,
+  calculateViewTubeReadingOutcome,
+} from "./apps/internet-recovery/viewtube-rules.js";
+import {
+  VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeViewTubeMidpoint,
+  acknowledgeViewTubeMidpointState,
+  advanceViewTubeState,
+  readViewTubeState,
+} from "./apps/internet-recovery/viewtube-state.js";
+import { getViewTubeCampaignView } from "./apps/internet-recovery/viewtube-view.js";
+import { selectNextViewTubePassage } from "./apps/internet-recovery/viewtube-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -207,6 +220,12 @@ const state = {
   yahuhDiagnosticState: readYahuhState(null),
   yahuhEvidenceReceiptOpen: false,
   yahuhSwitchboardOpen: false,
+  viewtubeState: readViewTubeState(localStateStorage),
+  viewtubePersisted: Boolean(localStateStorage),
+  viewtubeDiagnosticMode: false,
+  viewtubeDiagnosticState: readViewTubeState(null),
+  viewtubeDrawerOpen: false,
+  viewtubeEvidenceReceiptOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -360,7 +379,7 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
@@ -368,8 +387,9 @@ function show(name) {
   const facePlaceScreen = name === "faceplace";
   const myCornerScreen = name === "mycorner";
   const yahuhScreen = name === "yahuh";
+  const viewtubeScreen = name === "viewtube";
   const mapGuessScreen = name === "mapguess";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen;
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -382,12 +402,14 @@ function show(name) {
             ? "MYCORNER PROFILE RECOVERY"
           : yahuhScreen
             ? "YAHUH CATEGORY RECOVERY"
+          : viewtubeScreen
+            ? "VIEWTUBE EVIDENCE RECOVERY"
           : mapGuessScreen
             ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
@@ -446,6 +468,8 @@ function renderRecoveryHub() {
   const diagnosticMyCorner = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : null;
   const realYahuh = state.yahuhState;
   const diagnosticYahuh = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : null;
+  const realViewTube = state.viewtubeState;
+  const diagnosticViewTube = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : null;
   const realMapGuess = state.mapguessState;
   const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
@@ -504,6 +528,15 @@ function renderRecoveryHub() {
         persisted: state.yahuhPersisted,
         siteId: "yahuh",
         state: realYahuh,
+      },
+      {
+        canonicalEvidenceId: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticViewTube,
+        evidenceRecord: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.viewtubePersisted,
+        siteId: "viewtube",
+        state: realViewTube,
       },
     ],
   });
@@ -1437,6 +1470,59 @@ function setMapGuessInspectorDrawerOpen(open) {
   $("mapguessMapColumn").inert = state.mapguessInspectorOpen;
 }
 
+function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getViewTubeCampaignView(campaignState);
+  $("viewtubePage").dataset.secondaryDrawerOpen = String(state.viewtubeDrawerOpen);
+  $("viewtubeHeaderStatus").textContent = view.headerStatus;
+  $("viewtubeRule").textContent = view.ruleLabel;
+  $("viewtubeRuleBody").textContent = view.ruleBody;
+  $("viewtubeRecordingTitle").textContent = view.recording.title.display;
+  $("viewtubeRecordingMetadata").textContent = `${view.recording.creator.display} · ${view.recording.date.display} · ${view.recording.duration.display}`;
+  $("viewtubePlayerFrame").setAttribute("aria-label", view.recording.accessibleSummary);
+  $("viewtubeFrameList").innerHTML = view.frameStrip.map((frame) => `<li aria-label="${escapeMarkup(frame.accessibleSummary)}"><b>${frame.timestampSeconds ?? "—"}s</b><span>${escapeMarkup(frame.description)}</span></li>`).join("");
+  $("viewtubeTranscriptList").innerHTML = view.transcript.segments.map((item) => `<li><b>${item.timestampSeconds}s</b><span>${escapeMarkup(item.text)}</span></li>`).join("");
+  $("viewtubeSourceList").innerHTML = view.sourcePanel.records.map((item) => `<li><b>${escapeMarkup(item.label)}</b><span>${escapeMarkup(item.summary)}</span></li>`).join("");
+  $("viewtubeSponsorship").textContent = view.sponsorship?.label ?? "SPONSORSHIP HIDDEN";
+  $("viewtubeRecommendationList").innerHTML = view.recommendations.map((item) => `<li>${escapeMarkup(item.label)}</li>`).join("");
+  $("viewtubeCommentList").innerHTML = view.comments.map((item) => `<li>${escapeMarkup(item.text)}</li>`).join("");
+  $("viewtubeMidpoint").hidden = !view.midpoint.actionRequired;
+  $("viewtubeMidpointBody").textContent = view.midpoint.body;
+  $("viewtubeLoopProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
+  $("viewtubeMidpointAmy").textContent = `Amy: ${view.midpoint.amy}`;
+  $("viewtubeMidpointChinmay").textContent = `Chinmay: ${view.midpoint.chinmay}`;
+  $("viewtubeTimelineUnits").innerHTML = [...view.progress.restoreTimeline.map((unit) => ({ ...unit, phase: "restore" })), ...view.progress.evidenceTracks.map((unit) => ({ ...unit, phase: "track", saved: unit.verified }))].map((unit) => `<li class="viewtube-timeline-unit" data-phase="${unit.phase}" data-complete="${unit.saved}">${escapeMarkup(unit.label)}</li>`).join("");
+  $("viewtubeTrackList").innerHTML = view.progress.evidenceTracks.map((track) => `<li class="viewtube-evidence-track" data-verified="${track.verified}"><b>${escapeMarkup(track.label)}</b></li>`).join("");
+  $("viewtubeSecuredPayoff").hidden = !view.secured;
+  if (view.securedPayoff) {
+    $("viewtubeSecuredBody").textContent = view.securedPayoff.body;
+    $("viewtubeBlockedBody").textContent = view.securedPayoff.blockedWrite.body;
+    $("viewtubeEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior;
+  }
+  $("viewtubeEvidenceReceipt").hidden = !view.secured || !state.viewtubeEvidenceReceiptOpen;
+  $("viewtubeEvidenceToggle").setAttribute("aria-expanded", String(state.viewtubeEvidenceReceiptOpen));
+  const selection = selectNextViewTubePassage(state.viewtubeState);
+  $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("viewtubeLiveStatus").textContent = view.secured ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 VIEWTUBE UNITS SAVED`;
+}
+
+function openViewTubeExperience() {
+  state.selectedSiteId = "viewtube";
+  const current = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  renderViewTubeCampaign(current, { diagnosticMode: state.viewtubeDiagnosticMode });
+  show("viewtube");
+}
+
+function buildViewTubePreviewState(unitCount) {
+  let current = readViewTubeState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === VIEWTUBE_RESTORE_UNITS.length && !current.midpointAcknowledged) current = acknowledgeViewTubeMidpointState(current, { acknowledgedAt: "2026-07-12T00:00:04.500Z" }).state;
+    const transition = advanceViewTubeState(current, { completedAt: `2026-07-12T00:00:0${index}.000Z`, outcome: calculateViewTubeReadingOutcome({ campaignState: current }), passageId: `viewtube-preview-${index + 1}`, sessionId: `viewtube-preview-session-${index + 1}` });
+    if (!transition.ok) throw new Error(transition.reason ?? "ViewTube preview did not advance");
+    current = transition.state;
+  }
+  return current;
+}
+
 function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const view = getMapGuessCampaignView(campaignState, { reducedMotion });
@@ -2048,6 +2134,10 @@ function openRecoverySite(siteId) {
     openYahuhExperience();
     return;
   }
+  if (site.id === "viewtube" && site.runtimeAvailable) {
+    openViewTubeExperience();
+    return;
+  }
   if (site.id === "mapguess" && site.runtimeAvailable) {
     openMapGuessExperience();
     return;
@@ -2077,6 +2167,8 @@ function returnToHub() {
   state.mycornerComparisonView = "template";
   state.yahuhEvidenceReceiptOpen = false;
   state.yahuhSwitchboardOpen = false;
+  state.viewtubeDrawerOpen = false;
+  state.viewtubeEvidenceReceiptOpen = false;
   renderRecoveryHub();
   show("hub");
 }
@@ -3642,6 +3734,7 @@ $("faceplaceReturn").onclick = returnToHub;
 $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
 $("yahuhReturn").onclick = returnToHub;
+$("viewtubeReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
@@ -3759,6 +3852,47 @@ $("yahuhEvidenceToggle").onclick = () => {
   if (state.yahuhEvidenceReceiptOpen) requestAnimationFrame(() => $("yahuhEvidenceReceipt").focus({ preventScroll: true }));
   else $("yahuhEvidenceToggle").focus({ preventScroll: true });
 };
+function syncViewTubeDrawer() {
+  const open = state.viewtubeDrawerOpen && matchMedia("(max-width: 1279px)").matches;
+  $("viewtubePage").dataset.secondaryDrawerOpen = String(open);
+  $("viewtubeDrawerToggle").setAttribute("aria-expanded", String(open));
+  $("viewtubeSecondaryDrawer").setAttribute("aria-hidden", String(!open));
+  $("viewtubeSecondaryDrawer").inert = !open;
+}
+$("viewtubeDrawerToggle").onclick = () => {
+  state.viewtubeDrawerOpen = !state.viewtubeDrawerOpen;
+  syncViewTubeDrawer();
+  if (state.viewtubeDrawerOpen) requestAnimationFrame(() => $("viewtubeDrawerHeading").focus({ preventScroll: true }));
+};
+$("viewtubeDrawerClose").onclick = () => {
+  state.viewtubeDrawerOpen = false;
+  syncViewTubeDrawer();
+  $("viewtubeDrawerToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || state.activeScreen !== "viewtube" || !state.viewtubeDrawerOpen) return;
+  event.preventDefault();
+  state.viewtubeDrawerOpen = false;
+  syncViewTubeDrawer();
+  $("viewtubeDrawerToggle").focus({ preventScroll: true });
+});
+$("viewtubeMidpointAction").onclick = () => {
+  const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  const transition = state.viewtubeDiagnosticMode
+    ? acknowledgeViewTubeMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeViewTubeMidpoint(localStateStorage, { currentState: visible });
+  if (!transition.ok) return;
+  if (state.viewtubeDiagnosticMode) state.viewtubeDiagnosticState = transition.state;
+  else state.viewtubeState = transition.state;
+  renderViewTubeCampaign(transition.state, { diagnosticMode: state.viewtubeDiagnosticMode });
+};
+$("viewtubeEvidenceToggle").onclick = () => {
+  const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  if (!visible.secured) return;
+  state.viewtubeEvidenceReceiptOpen = !state.viewtubeEvidenceReceiptOpen;
+  renderViewTubeCampaign(visible, { diagnosticMode: state.viewtubeDiagnosticMode });
+  requestAnimationFrame(() => (state.viewtubeEvidenceReceiptOpen ? $("viewtubeEvidenceReceipt") : $("viewtubeEvidenceToggle")).focus({ preventScroll: true }));
+};
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -3795,6 +3929,7 @@ window.addEventListener("resize", () => {
   }
   if (state.activeScreen === "mycorner") syncMyCornerInspector();
   if (state.activeScreen === "yahuh") syncYahuhSwitchboard();
+  if (state.activeScreen === "viewtube") syncViewTubeDrawer();
   if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
@@ -3815,6 +3950,10 @@ $("taskReader").onclick = () => {
   }
   if (state.selectedSiteId === "yahuh") {
     openYahuhExperience();
+    return;
+  }
+  if (state.selectedSiteId === "viewtube") {
+    openViewTubeExperience();
     return;
   }
   if (state.selectedSiteId === "mapguess") {
@@ -3843,7 +3982,13 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       const mapGuessEvidenceSaved = state.mapguessState.secured && state.mapguessPersisted;
       const myCornerEvidenceSaved = state.mycornerState.secured && state.mycornerPersisted;
       const yahuhEvidenceSaved = state.yahuhState.secured && state.yahuhPersisted;
-      if (yahuhEvidenceSaved && state.selectedSiteId === "yahuh") {
+      const viewTubeEvidenceSaved = state.viewtubeState.secured && state.viewtubePersisted;
+      if (viewTubeEvidenceSaved && state.selectedSiteId === "viewtube") {
+        state.viewtubeDiagnosticMode = false;
+        state.viewtubeEvidenceReceiptOpen = true;
+        openViewTubeExperience();
+        requestAnimationFrame(() => $("viewtubeEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (yahuhEvidenceSaved && state.selectedSiteId === "yahuh") {
         state.yahuhDiagnosticMode = false;
         state.yahuhEvidenceReceiptOpen = true;
         state.yahuhSwitchboardOpen = true;
@@ -3929,6 +4074,8 @@ if (uiPreview) {
   state.mycornerPersisted = true;
   state.yahuhState = readYahuhState(null);
   state.yahuhPersisted = true;
+  state.viewtubeState = readViewTubeState(null);
+  state.viewtubePersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -3949,6 +4096,8 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("mycorner");
 } else if (requestedLaunch === "yahuh") {
   openRecoverySite("yahuh");
+} else if (requestedLaunch === "viewtube") {
+  openRecoverySite("viewtube");
 } else if (requestedLaunch === "mapguess") {
   openRecoverySite("mapguess");
 } else if (requestedSite) {
@@ -4102,6 +4251,43 @@ if (requestedLaunch === "wikiwhy") {
   if (uiPreview === "yahuh-evidence") {
     requestAnimationFrame(() => $("yahuhEvidenceReceipt").scrollIntoView({ block: "nearest" }));
   }
+} else if ([
+  "viewtube",
+  "viewtube-corrupted",
+  "viewtube-restore-1",
+  "viewtube-restore-2",
+  "viewtube-restore-3",
+  "viewtube-restore-4",
+  "viewtube-autoplay-loop",
+  "viewtube-acknowledged",
+  "viewtube-track-1",
+  "viewtube-track-2",
+  "viewtube-secured",
+  "viewtube-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "viewtube-evidence": 7,
+    "viewtube-secured": 7,
+    "viewtube-track-2": 6,
+    "viewtube-track-1": 5,
+    "viewtube-acknowledged": 4,
+    "viewtube-autoplay-loop": 4,
+    "viewtube-restore-4": 4,
+    "viewtube-restore-3": 3,
+    "viewtube-restore-2": 2,
+    "viewtube-restore-1": 1,
+  }[uiPreview] ?? 0;
+  state.viewtubeDiagnosticMode = uiPreview !== "viewtube";
+  state.viewtubeDiagnosticState = buildViewTubePreviewState(unitCount);
+  if (uiPreview === "viewtube-acknowledged") {
+    state.viewtubeDiagnosticState = acknowledgeViewTubeMidpointState(state.viewtubeDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:04.500Z",
+    }).state;
+  }
+  state.viewtubeEvidenceReceiptOpen = uiPreview === "viewtube-evidence";
+  openViewTubeExperience();
+  syncViewTubeDrawer();
+  if (uiPreview === "viewtube-evidence") requestAnimationFrame(() => $("viewtubeEvidenceReceipt").scrollIntoView({ block: "nearest" }));
 } else if ([
   "mapguess",
   "mapguess-corrupted",
