@@ -1,5 +1,9 @@
 # Project status
 
+## Shared visual fidelity — active 2026-07-12
+
+Desktop chrome and the final incident now more closely match the canonical boards through reusable portraits, semantic SVG route/vault art, subtle CRT depth, and reduced-motion-safe animation. No flattened board image was introduced.
+
 ## Visual fidelity — active 2026-07-12
 
 The Recovery Map has a size-conscious graphics upgrade and persistent animated Techno companion using existing optimized assets. Bundle architecture remains split; no flattened design board or large sprite sheet was added to runtime.

@@ -1,5 +1,11 @@
 # Session handoff
 
+## 2026-07-12 shared desktop and finale fidelity
+
+- Added subtle shared CRT scanlines, signal sweep, and window-title depth without changing semantic layout or pointer behavior.
+- Finale now uses the canonical Amy evidence portrait, Chinmay fluster portrait, containment route, evidence vault, live-file animation, contextual dialogue, and persistent Techno companion.
+- All new finale graphics reuse assets already present in the production bundle. Reduced motion disables the signal sweep and evidence-file float.
+
 ## 2026-07-12 visual-fidelity and persistent-Techno pass
 
 - Recovery Map now uses all ten production marks, richer network-depth CSS, stronger card focus/hover treatment, a visual evidence-vault watermark, and the existing optimized concept-board crops.
