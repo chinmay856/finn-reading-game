@@ -1,5 +1,13 @@
 # Session handoff
 
+## 2026-07-12 ViewTube and Amaze-On compact boards
+
+- Restored ViewTube's intended desktop grid instead of the later scrolling-block
+  override and compressed player/card/timeline chrome.
+- Compacted Amaze-On listing, parcels, bins, receipt, and progress strip.
+- At 1440×900 ViewTube is 706/706 and Amaze-On is 700/700 client/scroll
+  pixels; both right-side companions fit without changing their type scale.
+
 ## 2026-07-12 MapGuess illustrated board
 
 - Generated a fictional summer cartography layer from the canonical MapGuess

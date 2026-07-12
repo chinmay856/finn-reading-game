@@ -1,0 +1,39 @@
+/* Desktop-only board compression. Reading Companion typography is untouched. */
+@media (min-width:1280px) and (min-height:760px) {
+  .viewtube-surface,.amazeon-surface { gap:10px; padding-top:8px; padding-bottom:42px; }
+  #viewtube .viewtube-page { display:grid; grid-template-rows:auto minmax(0,1fr) auto; overflow:hidden; }
+  #viewtube .viewtube-content-layout { min-height:0; grid-template-rows:minmax(240px,1.1fr) minmax(125px,.52fr); gap:6px; padding:6px; }
+  .viewtube-titlebar,.amazeon-header { min-height:48px; padding-block:4px; }
+  #viewtube .viewtube-titlebar img,.amazeon-header img { width:42px; height:42px; padding:2px; }
+  .viewtube-identity h2 { font-size:23px; }
+  .viewtube-player-region,.viewtube-secondary-drawer,.viewtube-site-transcript,.viewtube-source-context { gap:4px; padding:5px; }
+  .viewtube-player-frame { width:min(78%,560px); }
+  .viewtube-frame { min-height:32px; padding:2px; }
+  .viewtube-recommendation,.viewtube-comment,.viewtube-transcript-line,.viewtube-meta-list>div,.viewtube-source-record>div { padding:3px; }
+  .viewtube-thumbnail { min-height:32px; }
+  .viewtube-timeline { gap:3px; margin:0 6px 5px; padding:4px; }
+  .viewtube-timeline-heading h3 { display:none; }
+  .viewtube-timeline-unit { min-height:28px; padding:3px; font-size:8px; }
+
+  .amazeon-page { display:grid; grid-template-rows:auto auto minmax(0,1fr) auto auto; overflow:hidden; font-size:12px; }
+  .amazeon-header h2 { font-size:24px; }
+  .amazeon-listing,.amazeon-midpoint,.amazeon-timeline,.amazeon-secured-payoff { margin:6px 8px; padding:6px 8px; }
+  .amazeon-listing h3 { font-size:17px; }
+  .amazeon-listing dl { grid-template-columns:1fr 1fr; margin:4px 0; }
+  .amazeon-listing dl div,.amazeon-receipt dl div { grid-template-columns:95px 1fr; padding:3px; }
+  .amazeon-layout { min-height:0; gap:6px; padding-inline:8px; overflow:hidden; }
+  .amazeon-layout>section,.amazeon-receipt { min-height:0; overflow:hidden; }
+  .amazeon-parcel-list { gap:5px; }
+  .amazeon-parcel { min-height:76px; padding:13px 5px 5px; }
+  .amazeon-parcel span { margin-top:2px; font-size:9px; }
+  .amazeon-bins { gap:3px; margin:4px 0; }
+  .amazeon-bins div { min-height:30px; padding:3px; font-size:8px; }
+  .amazeon-recommendation-list li { padding:4px; }
+  .amazeon-recommendation-list li::after { margin-top:3px; }
+  .amazeon-receipt { padding:5px; }
+  .amazeon-receipt dl { gap:2px; margin:4px 0; }
+  .amazeon-timeline { align-self:end; }
+  .amazeon-timeline h3 { display:none; }
+  .amazeon-timeline li { min-height:28px; padding:3px; font-size:8px; }
+  #amazeonLiveStatus { margin:0 8px 4px; font-size:10px; }
+}
