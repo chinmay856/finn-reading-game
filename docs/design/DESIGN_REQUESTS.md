@@ -1,14 +1,14 @@
 # Parallel design requests
 
 This is the durable implementation-to-design handoff for Internet Recovery 98.
-The parallel designer can answer the two remaining decisions here or publish a
-focused follow-up on `agent/campaign-spine-content`.
+The parallel designer can answer the three remaining decisions here or publish
+a focused follow-up on `agent/campaign-spine-content`.
 
 ## Current synchronization point
 
-- Implementation branch: `agent/wikiwhy-campaign-foundation`
+- Implementation branch: `agent/threadit-act-one-foundation`
 - Last integrated design tip: `1f843bc` (`Add ten-site production overview board`)
-- Deployed `main`: `270c63d` through PR #30
+- Deployed `main`: `17826e4` through PR #32
 - Designer response consumed:
   [`BUILDER_RESPONSE_2026-07-12.md`](BUILDER_RESPONSE_2026-07-12.md)
 - Production index:
@@ -58,6 +58,26 @@ drafts remain fail-closed.
 
 ## Outstanding designer decisions
 
+### P0 — Canonical ThreadIt forum fixture
+
+The ThreadIt state, semantic source-tree layout, repair-unit order, tokens,
+copy IDs, and approved SVG assets are sufficient for implementation. The one
+missing runtime artifact is the actual forum post dataset. Please provide a
+compact canonical fixture with:
+
+- the original question title/body, author label, and timestamp;
+- four to six reply records with author labels, timestamps, vote counts, and
+  parent relationships;
+- the exact citation/source text introduced by one reply;
+- the exact two replies that form the disclosed duplicate group;
+- the reply that appears above the displaced question in the corrupted state;
+- concise accessible relationship summaries for the source-tree nodes.
+
+Do not create another board or background image. Plain Markdown, JSON, or a
+small table is ideal. The builder will use clearly labeled provisional
+wrapper-owned fixture text so this request does not block the semantic runtime,
+then replace it without changing the frozen state IDs or repair units.
+
 ### P0 — First-run passage 11
 
 The minimum 10% Act I advance can require eight Act I readings plus exactly
@@ -88,10 +108,10 @@ WikiWhy, with a separate replay cursor and no campaign-state writes.
 
 ## Next designer checkpoint
 
-No new art is currently blocking WikiWhy publication or the first ThreadIt
-vertical slice. The next useful design review should respond to an executable
-ThreadIt corrupted/source-tree screen, not create another full-board mockup in
-advance.
+No new art is currently blocking the first ThreadIt vertical slice. The
+designer can supply the focused forum fixture above while the builder produces
+the executable corrupted/source-tree screen. The next visual review should
+respond to that running screen, not create another full-board mockup in advance.
 
 ## Boundaries for design responses
 

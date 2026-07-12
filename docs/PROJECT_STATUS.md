@@ -8,14 +8,13 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/wikiwhy-campaign-foundation`
+- **Active implementation branch:** `agent/threadit-act-one-foundation`
 - **Repository:** `chinmay856/finn-reading-game`
 - **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
-- **Deployed main:** `270c63d` through PR #30
+- **Deployed main:** `17826e4` through PR #32
 - **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
-- **Current stage:** Publish the production-aligned WikiWhy campaign foundation,
-  then promote enough reviewed passages to make the complete route playable
-  without fake repetition
+- **Current stage:** Build ThreadIt's semantic Act I/source-tree foundation
+  without scoring its review-only passage or borrowing WikiWhy's mechanic
 
 ## Deployed implementation
 
@@ -30,8 +29,23 @@ product and architecture source of truth is
   session history.
 - The Reading Engine, Content Platform, theme-neutral strength calculation,
   wrapper rules, and Internet Recovery presentation remain separated.
+- WikiWhy now has versioned campaign state, the 70–79% route clue, saved-versus-
+  AI comparison, exactly three Shield passes, permanent secured navigation, and
+  canonical `AI WRITE ROUTE / 01` evidence. This shipped through PR #32.
 
-## Current branch implementation
+## Current ThreadIt branch
+
+- The production handoff is sufficient for a semantic structural slice. No new
+  art, layout, state, or interaction decision blocks implementation.
+- The branch will add versioned non-audio ThreadIt state, four fixed Act I
+  relationship units, an objective diagnostic route, and a DOM/inline-SVG
+  source-tree view with no site percentage meter.
+- `Why Disagreement Matters` remains review-only and must stay fail-closed until
+  its structured content, provenance, review, and microphone gate are complete.
+- The exact canonical forum fixture is the only open ThreadIt copy artifact;
+  it is requested in [`design/DESIGN_REQUESTS.md`](design/DESIGN_REQUESTS.md).
+
+## Deployed WikiWhy implementation
 
 - Integrated the complete production design package through design tip
   `1f843bc`, including the WikiWhy campaign pack, approved ThreadIt handoff,
@@ -117,11 +131,12 @@ product and architecture source of truth is
 
 ## Immediate next milestone
 
-1. Publish this branch, run CI, merge, deploy, and smoke-check live HTTPS.
-2. Promote the lowest-risk WikiWhy candidates only after the documented content
-   gate; begin with A02, A05, A07, A08, and A09.
-3. Build ThreadIt's unique Act I source-tree browser consequence without
-   borrowing WikiWhy's wipe, state, or content.
+1. Build and test ThreadIt's four-unit Act I state and semantic source-tree
+   browser consequence without borrowing WikiWhy's wipe, state, or content.
+2. Publish an executable corrupted/untangle screen for designer review while
+   keeping provisional forum fixture copy explicitly replaceable.
+3. Promote content only after the documented provenance, review, comprehension,
+   profile, and real-microphone gates.
 
 Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
 template, or start the final breach before enough real campaigns exist.
