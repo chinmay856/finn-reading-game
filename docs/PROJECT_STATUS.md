@@ -1,5 +1,13 @@
 # Project status
 
+## ThreadIt structured content — active 2026-07-12
+
+ThreadIt's complete seven-record first-run manuscript roster is now represented
+as theme-neutral Content Platform candidate records. The stale `5A + 5B`
+wrapper declaration is corrected to the frozen `7A + 3B` plan. A02–A07 remain
+fail-closed pending independent review evidence and real-microphone testing; the
+implementation does not make ThreadIt speech-playable yet.
+
 ## ThreadIt graphics — 2026-07-12
 
 ThreadIt has received its first board-matching visual fidelity pass with no new image payload and no change to its content-review or canonical-evidence gates.

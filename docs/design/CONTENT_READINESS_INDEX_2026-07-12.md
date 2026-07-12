@@ -14,7 +14,7 @@ accessibility, comprehension, reading-profile, rights, and real-microphone gates
 | Site | Required | Manuscript evidence | Status |
 | --- | ---: | --- | --- |
 | WikiWhy | up to 11 first run | 10 Deck A + `printing-press-b01` overflow in [`content/wikiwhy/PASSAGE_DECKS.md`](../../content/wikiwhy/PASSAGE_DECKS.md); 10 additional Deck B replay texts | manuscript complete; A01 alone currently encoded/selectable |
-| ThreadIt | 7 | A01 structured candidate on `main`; A02–A07 in [PR #55](https://github.com/chinmay856/finn-reading-game/pull/55) | manuscript complete; review-gated |
+| ThreadIt | 7 | A01 plus A02–A07 structured candidate records; frozen manuscripts originated in [PR #55](https://github.com/chinmay856/finn-reading-game/pull/55) | manuscript complete and encoded; review-gated |
 | FacePlace | 6 | A01 structured candidate on `main`; A02–A06 in [PR #56](https://github.com/chinmay856/finn-reading-game/pull/56) | manuscript complete; review-gated |
 | MyCorner | 7 | A01 structured candidate on `main`; A02–A07 in [PR #57](https://github.com/chinmay856/finn-reading-game/pull/57) | manuscript complete; review-gated |
 | Yahuh! Portal | 6 | A01 structured candidate on `main`; A02–A06 in [PR #48](https://github.com/chinmay856/finn-reading-game/pull/48) | manuscript complete; review-gated |

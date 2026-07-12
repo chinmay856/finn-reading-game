@@ -179,6 +179,33 @@ MapGuess has local 1440 and 1180 captures, but its branch is not yet published
 or deployed. Only `photosynthesis-a01` is speech-playable; review-only and
 candidate passage records remain fail-closed.
 
+## Current builder request — ThreadIt content review packet
+
+ThreadIt's complete seven-record first-run Deck A is now encoded as structured
+candidate data. The runtime contract has been corrected from the stale `5A +
+5B` declaration to the manuscript packet's frozen `7A + 3B` plan. No new record
+is selectable, and none should be described as approved yet.
+
+Please review the six original A02–A07 records in
+`content/threadit/first-run-passages.js` against their frozen manuscript source
+in `content/threadit/FIRST_RUN_MANUSCRIPTS_A02_A07.md` and answer these focused
+questions:
+
+1. Does each structured record preserve the exact frozen prose, prompt, and
+   three answer choices?
+2. Are the shared correct/incorrect feedback lines acceptable for all six, or
+   should any record receive passage-specific feedback? Return exact replacement
+   copy where needed.
+3. Are any phrases likely to create avoidable accessibility, sensitivity, or
+   microphone-transcription problems? Name the exact passage ID and token.
+4. Confirm that A06 and A07 belong in first-run Deck A and that only B01–B03
+   remain in ThreadIt's planned replay Deck B.
+
+Acceptance evidence should be a committed Markdown review under
+`docs/design/review/` naming the reviewed commit and each passage ID. This can
+resolve design/editorial questions, but it must not claim a real-microphone run
+or promote `availability`; those gates remain independent.
+
 ## Outstanding designer decisions
 
 ### P0 — Canonical MapGuess runtime fixture and eight-reading manifest

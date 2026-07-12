@@ -1,5 +1,6 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./wikiwhy/photosynthesis-passage.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-matters.js";
+import { THREADIT_FIRST_RUN_PASSAGES } from "./threadit/first-run-passages.js";
 import { A_SECOND_READING_PASSAGE } from "./faceplace/a-second-reading.js";
 import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "./mapguess/a-map-is-not-a-photograph.js";
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "./mycorner/a-cabin-with-a-purpose.js";
@@ -29,6 +30,7 @@ const PROTOTYPE_REVIEW_FIELDS = Object.freeze([
 export const PASSAGE_CATALOG = Object.freeze([
   PHOTOSYNTHESIS_PASSAGE,
   WHY_DISAGREEMENT_MATTERS_PASSAGE,
+  ...THREADIT_FIRST_RUN_PASSAGES,
   A_SECOND_READING_PASSAGE,
   A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
   A_CABIN_WITH_A_PURPOSE_PASSAGE,
