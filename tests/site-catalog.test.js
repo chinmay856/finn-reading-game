@@ -16,11 +16,11 @@ test("the recovery map exposes ten unique wrapper-owned site identities", () => 
   assert.ok(RECOVERY_SITES.every(({ archetype, belief, previewImage }) => archetype && belief && previewImage));
 });
 
-test("only WikiWhy is speech-playable while nine sites expose honest structural runtimes", () => {
+test("only WikiWhy is speech-playable while all ten sites expose honest structural runtimes", () => {
   const playable = RECOVERY_SITES.filter(({ playable }) => playable);
   const runtimeAvailable = RECOVERY_SITES.filter(({ runtimeAvailable }) => runtimeAvailable);
   assert.deepEqual(playable.map(({ id }) => id), ["wikiwhy"]);
-  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "mapguess"]);
+  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess"]);
   assert.equal(getRecoverySite("threadit").playable, false);
   assert.equal(getRecoverySite("threadit").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.equal(getRecoverySite("faceplace").playable, false);
@@ -41,6 +41,8 @@ test("only WikiWhy is speech-playable while nine sites expose honest structural 
   assert.match(getRecoverySite("searchish").markImage, /searchish-mark\.svg/u);
   assert.equal(getRecoverySite("amazeon").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.match(getRecoverySite("amazeon").markImage, /amazeon-mark\.svg/u);
+  assert.equal(getRecoverySite("spottyfi").runtimeLabel, "CAMPAIGN TEST BUILD");
+  assert.match(getRecoverySite("spottyfi").markImage, /spottyfi-mark\.svg/u);
   assert.equal(getRecoverySite("mapguess").playable, false);
   assert.equal(getRecoverySite("mapguess").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.match(getRecoverySite("mapguess").markImage, /mapguess-mark\.svg/u);

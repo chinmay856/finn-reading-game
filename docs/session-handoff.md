@@ -1,5 +1,17 @@
 # Session handoff
 
+## Spotty-Fi listener-control foundation
+
+- Active branch: `agent/spottyfi-history-proof-foundation`.
+- Integrated designer PR #43's canonical silent library; the complete A01-A08
+  manuscript roster is already on `main`.
+- Spotty-Fi restores five disclosure proofs, saves the pre-account predicted
+  history midpoint, and verifies three listener-control units. Its authored
+  five-track queue is silent and contains no audio, lyrics, or real artists.
+- Canonical persisted evidence is reserved for Case File slot 9 as
+  `SPOTTYFI_PREDICTED_HISTORY_LOOP.REC`. Techno guards the manual queue while
+  the unrequested predicted insert remains blocked.
+
 ## Amaze-On consent-ledger foundation
 
 - Active branch: `agent/amazeon-consent-ledger-foundation`.

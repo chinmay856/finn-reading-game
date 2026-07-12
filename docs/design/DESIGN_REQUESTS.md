@@ -1,5 +1,12 @@
 # Parallel design requests
 
+## Spotty-Fi integration status
+
+- Runtime response PR #43 and the complete A01-A08 manuscript roster are
+  integrated on `agent/spottyfi-history-proof-foundation`.
+- No visual or asset question is outstanding. The runtime uses only the frozen
+  mark, DOM/CSS covers, shared character crops, and Techno queue-guard asset.
+
 ## Amaze-On integration status
 
 - Runtime response PR #42 and the complete A01-A07 roster from PR #53 are
