@@ -45,6 +45,18 @@ product and architecture source of truth is
   #36. CI and Pages passed, and the public HTTPS route was verified at
   `65368e8`, including a saved SCENIC route-goal interaction.
 
+## Current Search-ish branch
+
+- `agent/searchish-origin-proof-foundation` implements the frozen four-origin
+  restore, Five Costumes midpoint, three source branches, top-placement denial,
+  and canonical Case File slot 7 evidence contract.
+- Search-ish is an honest structural campaign test build, not speech-playable.
+  Seven manuscripts are frozen in the repository but remain unselectable until
+  independent content and real-microphone review passes.
+- Designer PRs #41 and #51 are integrated. Commit `47c25bf` maps the canonical
+  Search-ish Techno alert to the existing paw-alert still; no art dependency
+  remains open.
+
 ## Current ViewTube branch
 
 - `agent/viewtube-evidence-track-foundation` implements the canonical fictional
