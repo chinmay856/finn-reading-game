@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">MyCorner personalized page corners</title>
+  <desc id="desc">Three nested corners with a small owner star.</desc>
+  <path d="M18 102V24h80" fill="none" stroke="#244A88" stroke-width="12" stroke-linecap="square"/>
+  <path d="M42 102V48h56" fill="none" stroke="#C4478C" stroke-width="12" stroke-linecap="square"/>
+  <path d="M66 102V72h32" fill="none" stroke="#E7BF45" stroke-width="12" stroke-linecap="square"/>
+  <path d="m103 18 5 11 12 2-9 8 3 12-11-6-11 6 3-12-9-8 12-2Z" fill="#2C7A57" stroke="#17212B" stroke-width="3" stroke-linejoin="round"/>
+</svg>

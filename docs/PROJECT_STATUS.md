@@ -8,15 +8,12 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/recovery-hub-navigation`
+- **Current implementation baseline:** `main` at `270c63d` (PR #30 merged)
 - **Repository:** `chinmay856/finn-reading-game`
 - **Live desktop prototype:** <https://chinmay856.github.io/finn-reading-game/>
 - **Deployment:** GitHub Pages through GitHub Actions, with HTTPS enforced
-- **Current stage:** Publish the Recovery Map shell, then finish WikiWhy as the
-  first complete real site campaign
-
-The implementation branch must pass CI, merge to `main`, deploy, and receive a
-live HTTPS smoke check before this milestone becomes authoritative.
+- **Current stage:** Finish WikiWhy as the first complete real site campaign,
+  then prove ThreadIt as the second site-specific vertical slice
 
 ## Current implementation
 
@@ -31,12 +28,14 @@ live HTTPS smoke check before this milestone becomes authoritative.
   campaign language remain inside `apps/internet-recovery/`. Reading Engine,
   Content Platform, speech, and theme-neutral Game Rules boundaries remain
   intact.
-- Preview JPEGs are optimized crops from the canonical builder-ready campaign
-  boards. MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess were refreshed
-  after corrected boards replaced their superseded sources.
+- Preview JPEGs are optimized story/composition crops from generated campaign
+  boards. They truthfully identify unfinished sites but are temporary preview
+  art, not final marks, browser chrome, copy, or state contracts.
 - Production Amy and Chinmay sheet panels now supply four optimized runtime
   portraits. Dialogue selects wrapper story moods; reading performance never
   selects a character expression.
+- The approved `amy_tools` crop is exported for the next Shield implementation;
+  it is not wired into the current four-portrait dialogue baseline yet.
 - Techno's WikiWhy progress-push animation faces and moves right with the repair
   boundary. Backward diagnostic resets reposition without playing a reverse
   walk; reduced-motion mode uses the mirrored still.
@@ -49,23 +48,6 @@ live HTTPS smoke check before this milestone becomes authoritative.
   repair consequence.
 - Non-audio session history stores only approved summary fields. Raw audio and
   transcript text are never uploaded or retained.
-
-## Design readiness
-
-- The campaign hub, WikiWhy, and nine non-WikiWhy boards are the builder-ready
-  ten-site design reference set. They approve direction, three-act story,
-  progress fiction, and layout reference; they are not production DOM or final
-  microcopy.
-- Each site owns a distinct apparent problem, middle change, progress metaphor,
-  resolution, and AI interference. WikiWhy's percentage wipe, 80% rewrite, and
-  three-pass shield are not platform defaults.
-- The one sample passage drafted for each non-WikiWhy site remains review-only.
-  Each needs a stable content ID, frozen source/provenance, factual and rights
-  review, grade/sensitivity/accessibility review, and real-microphone testing
-  before it becomes executable content.
-- Production character sheets define reusable Amy, Chinmay, and Techno panel
-  IDs. Private likeness references remain outside the repository and product
-  art stays illustrated rather than photoreal.
 
 ## Canonical product facts
 
@@ -86,20 +68,44 @@ live HTTPS smoke check before this milestone becomes authoritative.
 
 ## Immediate next milestone
 
-1. Publish and deploy the Recovery Map branch; verify all ten tiles, preview
-   honesty, WikiWhy re-entry, production portraits, Techno direction, keyboard
-   navigation, and clean console state over live HTTPS.
-2. Convert and approve enough WikiWhy Deck A entries into executable neutral
-   content records, with unseen-passage selection and non-audio seen-ID history.
-3. Replace the diagnostic-only campaign transition with a versioned real
-   WikiWhy state machine: Act I warning, 80% AI rewrite, exactly three shield
-   passages, secured state, evidence slot one, and safe resume behavior.
-4. Prove a second site only after its content and mechanic acceptance gate is
-   satisfied. ThreadIt is the strongest portability test because its source-tree
-   repair must remain visibly distinct from WikiWhy's wipe.
+1. Finish WikiWhy as the first complete real campaign: approve enough unseen Deck A
+   passages, connect accepted readings to the Act I warning, 80% AI rewrite,
+   exactly three shield passages, secured state, evidence slot one, and safe
+   resume behavior.
+2. Verify the complete local-microphone loop over live HTTPS, including reading
+   naturalness, keyboard navigation, production portraits, Techno direction,
+   and a clean browser console.
+3. Prove ThreadIt as the second playable site only after its content and mechanic
+   acceptance gate passes. Its source-tree repair must remain visibly distinct
+   from WikiWhy's wipe.
+4. Keep the remaining eight sites in truthful preview mode until each has its
+   own accepted passages and site-specific mechanic.
 
-Do not fake nine secured sites, reuse WikiWhy's mechanics as a template, or
-start the final breach before enough real site campaigns exist to support it.
+Do not fake secured sites, reuse WikiWhy's mechanics as a template, or start the
+final breach before enough real site campaigns exist to support it.
+
+## Design readiness
+
+The production design package is complete for WikiWhy, ThreadIt, FacePlace,
+MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi, and
+MapGuess. Every site has an exact wrapper-owned state contract, stable copy IDs,
+persistence and resume rules, responsive and reduced-motion direction, an
+original SVG mark, and a site-specific middle change and finish. WikiWhy and
+ThreadIt also have focused runtime packs.
+
+Generated campaign and site boards remain story and composition references.
+They are not runtime backgrounds or sources for final logos, browser chrome,
+copy, passage text, or state logic. The authoritative builder inputs are
+[the ten-site production index](design/TEN_SITE_PRODUCTION_INDEX.md),
+[the site production system](gameplay/SITE_PRODUCTION_SYSTEM.md), and the
+[site build briefs](gameplay/site-build-briefs/README.md).
+
+The singular post-campaign breach is also frozen as a design: after ten genuine
+secured sites, `EVIDENCE_11.LIVE` requires exactly three saved checkpoints—
+trace origin, preserve evidence, and revoke access. Its copy IDs, safe-exit and
+resume behavior, original assets, and six-state board are documented in
+[the final breach runtime brief](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
+The breach remains unimplemented and must not be previewed as completed progress.
 
 ## Known limitations
 

@@ -17,10 +17,10 @@
 - The site catalog and navigation live entirely under the Internet Recovery
   wrapper. No site identity, desktop object, character, or campaign concept was
   added to Reading Engine, Content Platform, or theme-neutral Game Rules.
-- The live preview artwork uses optimized 640×480 JPEG crops taken directly
-  from the canonical builder-ready rogue-AI boards. The five crops affected by
-  the last art cleanup were regenerated from the promoted MyCorner, Search-ish,
-  Amaze-On, Spotty-Fi, and MapGuess sources; superseded boards are not shipped.
+- The live preview artwork uses optimized 640×480 JPEG crops from generated
+  rogue-AI storyboard references. They label unfinished sites honestly but are
+  not production identity, copy, chrome, or state inputs; exact briefs, copy
+  IDs, and original marks supersede them.
 - Production Amy and Chinmay sheet panels are now cropped into four lightweight
   wrapper-owned runtime portraits and mapped to story beats. The full sheets
   remain the character source of truth; lower-layer interfaces are unchanged.
@@ -46,6 +46,41 @@
 
 ## Rogue-AI campaign design track
 
+- Latest design-only builder aid:
+  `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` translates the reviewed art,
+  copy deck, WikiWhy flow, hub, character sheets, and accessibility rules into
+  concrete runtime UI notes. It is explicitly not an implementation change and
+  keeps all wrapper-specific material out of Reading Engine, speech, scoring,
+  and Content Platform logic.
+- Latest site-copy aid:
+  `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` gives the builder concrete
+  corrupted/repaired page copy, midpoint copy, AI-denial text, secured payoffs,
+  and character beats for all ten sites. Other sites remain design/previews
+  until their own passages and mechanics are implemented.
+- Latest WikiWhy build aid:
+  `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` narrows the immediate
+  builder target to the WikiWhy playable slice with screen/state copy,
+  ownership boundaries, character panel IDs, loading/error copy, and acceptance
+  checks.
+- Latest ten-site build aid:
+  `docs/gameplay/site-build-briefs/README.md` indexes builder-facing briefs for
+  all ten Internet Recovery 98 sites. Each site brief records runtime identity,
+  layout, local three-act flow, progress fiction, character states, reading
+  lane, and acceptance checks without implementing code.
+- Latest campaign hub aid:
+  `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` gives concrete Recovery Map
+  copy, site tile text, evidence-file receipts, blocked-write labels, Incoming
+  Case rotation guidance, and count-based global story beats for the ten-site
+  campaign.
+- Latest content-planning aid:
+  `content/proposed-sites/PASSAGE_DECK_PLANS.md` outlines two-deck
+  replayability targets for all ten sites: WikiWhy uses its existing Deck A/B,
+  and the other nine sites now have ten candidate Reading Companion passage
+  slots each with source lane, reading focus, and speech-risk notes.
+- Latest asset-use aid:
+  `docs/gameplay/RUNTIME_ASSET_USE_BRIEF.md` identifies canonical character
+  sheets, character crop grids, production site assets, storyboard-only
+  preview rules, and superseded-history boundaries for builders.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems
@@ -54,15 +89,16 @@
 - Chinmay is always long-haired. His visual state progresses from neat,
   overconfident polish to increasingly messy, frazzled, and flustered concern;
   he is never angry at Finn, threatening, or villain-coded.
-- The campaign hub, WikiWhy worked example, and nine non-WikiWhy site boards are
-  now the builder-ready ten-site design set. They approve design direction,
-  story arc, progress fiction, and layout reference for implementation planning,
-  while final runtime UI, exact copy, passage selection, and cropped assets
-  remain build work.
+- The campaign hub, WikiWhy worked example, and nine non-WikiWhy generated
+  boards remain story/composition references. Production state contracts,
+  exact copy IDs, responsive/accessibility rules, and original marks are now
+  frozen in gameplay briefs and site-asset manifests. Passage acceptance and
+  runtime implementation remain build/content work.
 - The prior inconsistent MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
   MapGuess boards now carry `-superseded` filenames and are comparison history
-  only. Use the canonical non-WIP filenames in
-  `apps/internet-recovery/art/concepts/sites/README.md`.
+  only. The current storyboard filenames are indexed in
+  `apps/internet-recovery/art/concepts/sites/README.md`; do not use any board as
+  a runtime background or final identity asset.
 - Production character sheets now live under
   `apps/internet-recovery/art/characters/`. Builders choose Amy, Chinmay, and
   Techno states by wrapper story mood instead of regenerating character art per
@@ -99,6 +135,10 @@
   beat. The diagnostic panel always labels these as simulated passages because
   the current executable prototype still contains one real Content Platform
   passage.
+- That percentage reset is historical diagnostic behavior, not the production
+  campaign contract. Runtime implementation must preserve the saved 80 percent
+  snapshot and use `CONTENT`, `LINKS`, and `ACCESS` segments from
+  `docs/gameplay/WIKIWHY_CAMPAIGN_STATE_PACK.md`.
 - Added lightweight Windows-style Amy and Chinmay dialogue overlays. The two
   wrapper-owned static portraits follow the approved character/campaign boards;
   Techno's separately produced progress-push sprite is unchanged and no other
@@ -275,24 +315,33 @@
   tile, and Techno do not become corrupted during ordinary site missions. Only
   websites nested inside the old browser are unstable. The Reading Companion
   remains its own recovery window, and site-specific browser layouts may vary
-  inside the shared desktop frame. A single explicitly
-  fictional virus breach is reserved as a possible late-game escalation when
-  Chinmay's AI acts beyond his command and attempts to enter the recovery
-  desktop.
+  inside the shared desktop frame. A single explicitly fictional virus breach
+  is now frozen as the late-game escalation when Chinmay's AI acts beyond his
+  command and attempts to enter the recovery desktop.
 - Campaign structure is ten sites and eleven evidence files. Each site supplies
   one story artifact. Apparent completion at `10 of 10` is interrupted by
   `EVIDENCE_11.LIVE`, which records Chinmay's AI attempting to breach the
   recovery desktop after acting beyond his command. The resulting fake-virus
   boss arc is the only ordinary-story exception to the desktop's stability and
-  leads to a separate conclusion in which Finn blocks the AI service's access.
-- Parody-site body copy remains intentionally out of scope for this pass.
-- Implementation has not begun. Review the deck in its suggested section order,
-  then assign stable wrapper copy IDs before wiring approved lines into UI.
+  leads to a separate conclusion in which Finn traces the common origin,
+  preserves all eleven evidence files, and revokes the AI service's access
+  across exactly three saved reading checkpoints. See
+  [`gameplay/FINAL_BREACH_RUNTIME_BRIEF.md`](gameplay/FINAL_BREACH_RUNTIME_BRIEF.md).
+- The ten-site production design pass is complete. Every site has stable copy
+  IDs, exact repair/midpoint/finale/persistence contracts, responsive and
+  reduced-motion direction, and an original runtime mark. WikiWhy and ThreadIt
+  also have focused implementation-usable SVG packs. Generated boards remain
+  story/composition references rather than runtime backgrounds.
+- Recovery Map implementation PR #30 merged into `main` at `270c63d`. The
+  synchronized design branch answers its durable requests through
+  [`design/BUILDER_RESPONSE_2026-07-12.md`](design/BUILDER_RESPONSE_2026-07-12.md).
 
-## Historical predictive-guide snapshot
+## Current design synchronization
 
 - Branch: `agent/campaign-spine-content`
-- Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
+- Pull request: #23, synchronized with `main` after PR #30
+- Latest focused published batches: `8b4440b` (WikiWhy and ThreadIt), `487e9b0`
+  (final breach), `8786fea` (all-ten contracts), and `1f843bc` (clean overview)
 - Live deployment before this branch:
   <https://chinmay856.github.io/finn-reading-game/>
 - Current engine: Transformers.js `3.7.1`, timestamped Whisper base,

@@ -17,6 +17,15 @@ the broader ten-site work as reference, not implementation scope.
 
 Use these inputs first:
 
+- `docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md` for final runtime UI copy,
+  screen-state notes, and character-state usage.
+- `docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md` for the immediate
+  WikiWhy-only scene/state script and acceptance checks.
+- `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` for concrete visible copy on the
+  corrupted/repaired site pages.
+- `docs/gameplay/site-build-briefs/README.md` for the site-by-site builder
+  briefs covering layout, story turn, progress fiction, character states, and
+  acceptance checks for all ten sites.
 - `content/wikiwhy/PASSAGE_DECKS.md` for the Reading Companion passage pool and
   attribution model.
 - `apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png` for the
@@ -217,14 +226,17 @@ This is suspicion only. Finn still does not know the full antagonist story.
 ### 4. Story turn at 80%
 
 Clamp the final Act I advance to 80%. A live rewrite from Chinmay's AI service
-corrupts the page from right to left after the service begins acting beyond his
-command. Make the sequence dramatic and accessible. Explicitly preserve:
+adds a muted red hatched layer from the site's right edge toward the center
+after the service begins acting beyond his command. Freeze the saved 80 percent
+snapshot, keep the left 35 percent visible, never flash the full browser, and
+explicitly preserve:
 
 - **READINGS SAVED**
 - **EVIDENCE SAVED**
 
-The old **SITE STABILITY 80%** ends. A different objective begins at **SHIELD
-STABILIZATION 0%**. This is a plot transition, not loss of learner progress.
+The old **SITE STABILITY 80%** remains visibly saved. A different three-segment
+Shield objective begins on top of it. This is a plot transition, not loss of
+learner progress; never animate the repair as an 80-to-zero reset.
 
 ### 5. Exact three-challenge finale
 
@@ -235,13 +247,18 @@ Amy says:
 
 The finale is explicit:
 
-1. **Recover** — passage; shield reaches about 33%.
-2. **Verify** — passage plus an independent comprehension/evidence check; shield
-   reaches about 66%.
-3. **Seal** — final passage under visible system resistance; shield reaches 100%.
+1. **Content** — passage; segment `CONTENT` fills.
+2. **Links** — passage plus an independent comprehension/evidence check;
+   segment `LINKS` fills.
+3. **Access** — final passage under visible system resistance; segment `ACCESS`
+   fills and the route changes to `DENIED`.
 
 A missed comprehension answer offers a retry or clue. It does not erase reading
 progress or create another passage.
+
+The exact implementation contract is
+[`WIKIWHY_CAMPAIGN_STATE_PACK.md`](WIKIWHY_CAMPAIGN_STATE_PACK.md); it supersedes
+older percentage-reset sketches.
 
 ### 6. Permanent completion
 

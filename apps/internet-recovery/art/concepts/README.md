@@ -1,10 +1,10 @@
 # Internet Recovery OS concept boards
 
-These generated boards capture visual direction for the wrapper. The campaign
-hub, WikiWhy board, and nine non-WikiWhy site boards are the current
-builder-ready design references. They are approved direction for prototype and
-implementation planning, not final runtime UI, exact production copy, or
-cropped sprite exports.
+These generated boards preserve visual/story exploration for the wrapper. They
+are composition references, not runtime backgrounds or sources of exact logos,
+browser chrome, copy, passages, or state logic. Production inputs now live in
+the site build briefs, runtime copy pack, production system, character
+manifests, site-asset manifests, and final-breach pack.
 
 Production-ready wrapper images derived from this direction are kept separately
 under [`../site-assets/`](../site-assets/README.md). This prevents the live
@@ -32,6 +32,9 @@ pass are recorded in [`ROGUE_AI_PROMPT_NOTES.md`](ROGUE_AI_PROMPT_NOTES.md).
   count-based ten-site campaign hub: Finn's inset remote desktop, Case File
   mystery, genuine `10 OF 10` apparent finish, and the rogue AI's separate
   eleventh breach.
+- `../endgame/final-breach-containment-board.svg` — **production state board:**
+  canonical six-state Evidence 11 sequence: genuine finish, arrival/safety,
+  trace, preserve, revoke, and restored epilogue.
 - `wikiwhy-three-act-rogue-ai.png` — **review-ready:** preferred
   WikiWhy-specific three-act example with dynamic Act I repair, an 80%
   rogue-AI rewrite, and an exact three-pass finale.
@@ -70,9 +73,14 @@ middle-change, site-specific-resolution rhythm.
 
 Nine additional site directions are indexed under [`sites/`](sites/README.md).
 They deliberately use different progress metaphors and midpoint changes. The
-canonical non-WIP filenames there are the builder inputs; files renamed with
-`-superseded` remain comparison history only. Final Amy, Chinmay, and Techno
-production character sheets are available in
+current filenames there are the clearest storyboard references; they are not
+runtime inputs. Builders use the exact contracts in
+[`docs/gameplay/site-build-briefs/`](../../../../docs/gameplay/site-build-briefs/README.md),
+the original marks under [`../site-assets/marks/`](../site-assets/marks/README.md),
+and the clean
+[`ten-site-production-overview.svg`](../site-assets/ten-site-production-overview.svg).
+Files renamed with `-superseded` remain comparison history only. Final Amy,
+Chinmay, and Techno production character sheets are available in
 [`../characters`](../characters/README.md).
 
 The campaign-spine board accompanies

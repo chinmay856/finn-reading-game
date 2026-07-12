@@ -27,3 +27,20 @@ speech recognition, scoring, or Game Rules.
 The Recovery Map and unfinished-site preview windows use optimized crops taken
 directly from the preferred rogue-AI concept boards. See
 [`previews/README.md`](previews/README.md) for the derivation and scope boundary.
+These previews are temporary implementation references, not final site marks,
+browser chrome, copy, or state contracts.
+
+## Production site identity
+
+- [`marks/`](marks/README.md) contains the nine standalone original SVG marks;
+  ThreadIt's mark is part of its focused pack.
+- [`ten-site-production-overview.svg`](ten-site-production-overview.svg) is the
+  clean final review board for all ten identities and exact local arcs.
+- [`threadit/`](threadit/README.md) contains ThreadIt's focused runtime SVG pack
+  and asset manifest.
+- [`wikiwhy-campaign/`](wikiwhy-campaign/README.md) contains the focused
+  campaign-state deltas and first evidence-route artifact for WikiWhy.
+
+The generated concept-board crops above may continue to label honest preview
+windows until a site is implemented. New runtime work should take exact logic
+and copy from the production briefs, and identity from these original assets.
