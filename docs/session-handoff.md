@@ -677,6 +677,24 @@ pending language is superseded by PR #36 and deployed `65368e8`.
 - No newer designer PR or fetch delta was present. The existing canonical
   Search-ish runtime response remains sufficient for this CSS-only milestone.
 
+## Amaze-On visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/amazeon-visual-fidelity`, based on deployed Search-ish
+  PR #80 / `main` at `6f51a17`.
+- `amazeon.css` now adds the canonical warehouse/receipt personality through a
+  state-aware act ribbon, fictional/no-purchase badge, taped evidence parcels,
+  five colored destinations, recommendation warnings, receipt paper, and a
+  negative-purchasing rewind treatment.
+- No transactional or external-commerce capability and no raster asset was
+  added. The exact four-sort plus three-receipt state machine, consent/evidence
+  boundaries, content gate, independent Reading Companion, and reduced-motion
+  behavior remain unchanged.
+- Local corrupted-state QA found four parcels, five evidence bins, the safety
+  badge, fixed Techno, and no horizontal overflow. `npm test` (310 tests),
+  `npm run check`, `npm run build`, and `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The existing canonical
+  Amaze-On runtime response is sufficient for this CSS-only milestone.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:

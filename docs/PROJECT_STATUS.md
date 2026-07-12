@@ -378,6 +378,20 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   canonical state/evidence contracts and independent Reading Companion remain
   unchanged.
 
+### Amaze-On graphics fidelity (2026-07-12)
+
+- Amaze-On now carries its canonical fictional warehouse/receipt direction via
+  a state-aware act ribbon, an explicit no-purchase listing badge, taped
+  evidence parcels, five color-coded semantic bins, suggested-not-chosen labels,
+  receipt paper, and a negative-purchase rewind treatment.
+- No purchase, payment, address, account, real checkout, external commerce, or
+  new raster payload was introduced. All decorative movement stops under
+  reduced motion.
+- Desktop QA confirmed four parcels, five evidence bins, the fictional-listing
+  safety badge, persistent fixed Techno, and no horizontal page overflow. The
+  canonical seven-unit consent/receipt contract and independent Reading
+  Companion remain unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock
