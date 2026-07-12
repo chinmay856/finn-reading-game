@@ -1,5 +1,11 @@
 # Session handoff
 
+## 2026-07-12 deployment runtime hygiene
+
+- Split the production bundle along the existing Content Platform and Internet Recovery wrapper boundaries. The former 506.59 kB main chunk is now approximately 190.75 kB, with separate 51.34 kB content and 268.58 kB wrapper chunks; the Vite oversize warning is gone.
+- Updated checkout and Node setup actions from v4 to v6, whose official releases use the Node 24 action runtime. The workflows continue to run the repository itself on Node 24.
+- GitHub's current major tags for several Pages-specific composite/deploy actions may still emit upstream Node-runtime annotations; do not replace those actions with an unreviewed custom upload path.
+
 ## 2026-07-12 revision-bound review manifests
 
 - Each final-incident passage now owns a stable `contentRevision`, and the validator compares submitted evidence directly to that canonical revision.
