@@ -10,8 +10,13 @@
   of `ai_repair_service`, which is the upstream antagonist service.
 - Version one uses responsive DOM/CSS/inline-SVG abstract frames, thumbnails,
   timeline, and hash badges. No raster media pack and no site audio.
-- Existing `amy_evidence`, `chinmay_fluster_1`,
-  `techno_suspicious_file`, and `techno_clue_point` assets are sufficient.
+- Existing `amy_evidence`, `chinmay_fluster_1`, and
+  `techno_suspicious_file` assets are sufficient. The secured Techno mapping is
+  explicitly `viewtube.techno.secured-ball-pin`, resolving to repository file
+  `apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp`.
+  Accessible meaning: `Techno pins her orange-and-blue ball beside the original
+  media hash while the duplicate playbacks remain quarantined.` This replaces
+  the nonexistent `techno_clue_point` name; no new character asset is required.
 
 ## Canonical silent-video fixture
 
