@@ -258,6 +258,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(app, /openFacePlaceExperience/u);
   assert.match(app, /openMyCornerExperience/u);
   assert.match(app, /openYahuhExperience/u);
+  assert.match(app, /openViewTubeExperience/u);
   assert.match(app, /openMapGuessExperience/u);
   assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
@@ -268,7 +269,7 @@ test("the recovery hub is clickable while only WikiWhy is speech-playable", asyn
   assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
-  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 6);
+  assert.equal((catalog.match(/runtimeAvailable: true/gu) ?? []).length, 8);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
   assert.doesNotMatch(engine, /WikiWhy|ThreadIt|FacePlace|Recovery Map|Chinmay|Techno/iu);
 });

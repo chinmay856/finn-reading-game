@@ -121,6 +121,23 @@ import {
 } from "./apps/internet-recovery/yahuh-state.js";
 import { getYahuhCampaignView } from "./apps/internet-recovery/yahuh-view.js";
 import { selectNextYahuhPassage } from "./apps/internet-recovery/yahuh-content.js";
+import {
+  VIEWTUBE_RESTORE_UNITS,
+  calculateViewTubeReadingOutcome,
+} from "./apps/internet-recovery/viewtube-rules.js";
+import {
+  VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+  acknowledgeViewTubeMidpoint,
+  acknowledgeViewTubeMidpointState,
+  advanceViewTubeState,
+  readViewTubeState,
+} from "./apps/internet-recovery/viewtube-state.js";
+import { getViewTubeCampaignView } from "./apps/internet-recovery/viewtube-view.js";
+import { selectNextViewTubePassage } from "./apps/internet-recovery/viewtube-content.js";
+import { calculateSearchishReadingOutcome, SEARCHISH_RESTORE_UNITS } from "./apps/internet-recovery/searchish-rules.js";
+import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
+import { getSearchishCampaignView } from "./apps/internet-recovery/searchish-view.js";
+import { selectNextSearchishPassage } from "./apps/internet-recovery/searchish-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
 
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
@@ -207,6 +224,18 @@ const state = {
   yahuhDiagnosticState: readYahuhState(null),
   yahuhEvidenceReceiptOpen: false,
   yahuhSwitchboardOpen: false,
+  viewtubeState: readViewTubeState(localStateStorage),
+  viewtubePersisted: Boolean(localStateStorage),
+  viewtubeDiagnosticMode: false,
+  viewtubeDiagnosticState: readViewTubeState(null),
+  viewtubeDrawerOpen: false,
+  viewtubeEvidenceReceiptOpen: false,
+  searchishState: readSearchishState(localStateStorage),
+  searchishPersisted: Boolean(localStateStorage),
+  searchishDiagnosticMode: false,
+  searchishDiagnosticState: readSearchishState(null),
+  searchishInspectorOpen: false,
+  searchishEvidenceReceiptOpen: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -360,7 +389,7 @@ function openWikiWhyExperience({ showEvidence = false } = {}) {
 
 function show(name) {
   const screenChanged = state.activeScreen !== name;
-  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
+  for (const id of ["hub", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const wikiWhyScreen = ["setup", "read", "review"].includes(name);
@@ -368,8 +397,10 @@ function show(name) {
   const facePlaceScreen = name === "faceplace";
   const myCornerScreen = name === "mycorner";
   const yahuhScreen = name === "yahuh";
+  const viewtubeScreen = name === "viewtube";
+  const searchishScreen = name === "searchish";
   const mapGuessScreen = name === "mapguess";
-  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen;
+  const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
     : name === "sitePreview"
@@ -382,12 +413,16 @@ function show(name) {
             ? "MYCORNER PROFILE RECOVERY"
           : yahuhScreen
             ? "YAHUH CATEGORY RECOVERY"
+          : viewtubeScreen
+            ? "VIEWTUBE EVIDENCE RECOVERY"
+          : searchishScreen
+            ? "SEARCH-ISH ORIGIN RECOVERY"
           : mapGuessScreen
             ? "MAPGUESS ROUTE RECOVERY"
         : "WIKIWHY REPAIR";
   $("taskHub").classList.toggle("active", name === "hub");
   $("taskSite").classList.toggle("active", activeSiteScreen);
-  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || mapGuessScreen);
+  $("taskReader").classList.toggle("active", name === "read" || name === "review" || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || mapGuessScreen);
   const visibleCampaignState = state.diagnosticMode && state.diagnosticState ? state.diagnosticState : state.campaignState;
   const securedWikiWhyTask = wikiWhyScreen && visibleCampaignState.phase === "secured";
   const visibleThreadItState = state.threaditDiagnosticMode ? state.threaditDiagnosticState : state.threaditState;
@@ -400,7 +435,11 @@ function show(name) {
   const securedMyCornerTask = myCornerScreen && visibleMyCornerState.secured;
   const visibleYahuhState = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
   const securedYahuhTask = yahuhScreen && visibleYahuhState.secured;
-  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedMapGuessTask;
+  const visibleViewTubeState = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  const securedViewTubeTask = viewtubeScreen && visibleViewTubeState.secured;
+  const visibleSearchishState = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
+  const securedSearchishTask = searchishScreen && visibleSearchishState.secured;
+  const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedMapGuessTask;
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -412,6 +451,10 @@ function show(name) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mycorner").markImage}" alt=""> <span>MyCorner · SECURED TEST</span>`;
   } else if (securedYahuhTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("yahuh").markImage}" alt=""> <span>Yahuh! Portal · SECURED TEST</span>`;
+  } else if (securedViewTubeTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("viewtube").markImage}" alt=""> <span>ViewTube · SECURED TEST</span>`;
+  } else if (securedSearchishTask) {
+    $("taskSite").innerHTML = `<img src="${getRecoverySite("searchish").markImage}" alt=""> <span>Search-ish · SECURED TEST</span>`;
   } else if (securedMapGuessTask) {
     $("taskSite").innerHTML = `<img src="${getRecoverySite("mapguess").markImage}" alt=""> <span>MapGuess · SECURED TEST</span>`;
   } else {
@@ -427,6 +470,10 @@ function show(name) {
           ? "MyCorner secured test"
         : securedYahuhTask
           ? "Yahuh Portal secured test"
+        : securedViewTubeTask
+          ? "ViewTube secured test"
+        : securedSearchishTask
+          ? "Search-ish secured test"
         : securedMapGuessTask
           ? "MapGuess secured test"
       : $("taskSite").textContent);
@@ -446,6 +493,10 @@ function renderRecoveryHub() {
   const diagnosticMyCorner = state.mycornerDiagnosticMode ? state.mycornerDiagnosticState : null;
   const realYahuh = state.yahuhState;
   const diagnosticYahuh = state.yahuhDiagnosticMode ? state.yahuhDiagnosticState : null;
+  const realViewTube = state.viewtubeState;
+  const diagnosticViewTube = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : null;
+  const realSearchish = state.searchishState;
+  const diagnosticSearchish = state.searchishDiagnosticMode ? state.searchishDiagnosticState : null;
   const realMapGuess = state.mapguessState;
   const diagnosticMapGuess = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : null;
   const evidenceSummary = summarizeHubEvidenceState({
@@ -504,6 +555,24 @@ function renderRecoveryHub() {
         persisted: state.yahuhPersisted,
         siteId: "yahuh",
         state: realYahuh,
+      },
+      {
+        canonicalEvidenceId: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+        diagnosticState: diagnosticViewTube,
+        evidenceRecord: VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD,
+        persisted: state.viewtubePersisted,
+        siteId: "viewtube",
+        state: realViewTube,
+      },
+      {
+        canonicalEvidenceId: SEARCHISH_EVIDENCE_RECORD.id,
+        diagnosticEvidenceRecord: SEARCHISH_EVIDENCE_RECORD,
+        diagnosticState: diagnosticSearchish,
+        evidenceRecord: SEARCHISH_EVIDENCE_RECORD,
+        persisted: state.searchishPersisted,
+        siteId: "searchish",
+        state: realSearchish,
       },
     ],
   });
@@ -1437,6 +1506,104 @@ function setMapGuessInspectorDrawerOpen(open) {
   $("mapguessMapColumn").inert = state.mapguessInspectorOpen;
 }
 
+function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getViewTubeCampaignView(campaignState);
+  $("viewtubePage").dataset.secondaryDrawerOpen = String(state.viewtubeDrawerOpen);
+  $("viewtubeHeaderStatus").textContent = view.headerStatus;
+  $("viewtubeRule").textContent = view.ruleLabel;
+  $("viewtubeRuleBody").textContent = view.ruleBody;
+  $("viewtubeRecordingTitle").textContent = view.recording.title.display;
+  $("viewtubeRecordingMetadata").textContent = `${view.recording.creator.display} · ${view.recording.date.display} · ${view.recording.duration.display}`;
+  $("viewtubePlayerFrame").setAttribute("aria-label", view.recording.accessibleSummary);
+  $("viewtubeFrameList").innerHTML = view.frameStrip.map((frame) => `<li aria-label="${escapeMarkup(frame.accessibleSummary)}"><b>${frame.timestampSeconds ?? "—"}s</b><span>${escapeMarkup(frame.description)}</span></li>`).join("");
+  $("viewtubeTranscriptList").innerHTML = view.transcript.segments.map((item) => `<li><b>${item.timestampSeconds}s</b><span>${escapeMarkup(item.text)}</span></li>`).join("");
+  $("viewtubeSourceList").innerHTML = view.sourcePanel.records.map((item) => `<li><b>${escapeMarkup(item.label)}</b><span>${escapeMarkup(item.summary)}</span></li>`).join("");
+  $("viewtubeSponsorship").textContent = view.sponsorship?.label ?? "SPONSORSHIP HIDDEN";
+  $("viewtubeRecommendationList").innerHTML = view.recommendations.map((item) => `<li>${escapeMarkup(item.label)}</li>`).join("");
+  $("viewtubeCommentList").innerHTML = view.comments.map((item) => `<li>${escapeMarkup(item.text)}</li>`).join("");
+  $("viewtubeMidpoint").hidden = !view.midpoint.actionRequired;
+  $("viewtubeMidpointBody").textContent = view.midpoint.body;
+  $("viewtubeLoopProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
+  $("viewtubeMidpointAmy").textContent = `Amy: ${view.midpoint.amy}`;
+  $("viewtubeMidpointChinmay").textContent = `Chinmay: ${view.midpoint.chinmay}`;
+  $("viewtubeTimelineUnits").innerHTML = [...view.progress.restoreTimeline.map((unit) => ({ ...unit, phase: "restore" })), ...view.progress.evidenceTracks.map((unit) => ({ ...unit, phase: "track", saved: unit.verified }))].map((unit) => `<li class="viewtube-timeline-unit" data-phase="${unit.phase}" data-complete="${unit.saved}">${escapeMarkup(unit.label)}</li>`).join("");
+  $("viewtubeTrackList").innerHTML = view.progress.evidenceTracks.map((track) => `<li class="viewtube-evidence-track" data-verified="${track.verified}"><b>${escapeMarkup(track.label)}</b></li>`).join("");
+  $("viewtubeSecuredPayoff").hidden = !view.secured;
+  if (view.securedPayoff) {
+    $("viewtubeSecuredBody").textContent = view.securedPayoff.body;
+    $("viewtubeBlockedBody").textContent = view.securedPayoff.blockedWrite.body;
+    $("viewtubeEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior;
+  }
+  $("viewtubeEvidenceReceipt").hidden = !view.secured || !state.viewtubeEvidenceReceiptOpen;
+  $("viewtubeEvidenceToggle").setAttribute("aria-expanded", String(state.viewtubeEvidenceReceiptOpen));
+  const selection = selectNextViewTubePassage(state.viewtubeState);
+  $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("viewtubeLiveStatus").textContent = view.secured ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 VIEWTUBE UNITS SAVED`;
+}
+
+function openViewTubeExperience() {
+  state.selectedSiteId = "viewtube";
+  const current = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  renderViewTubeCampaign(current, { diagnosticMode: state.viewtubeDiagnosticMode });
+  show("viewtube");
+}
+
+function buildViewTubePreviewState(unitCount) {
+  let current = readViewTubeState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === VIEWTUBE_RESTORE_UNITS.length && !current.midpointAcknowledged) current = acknowledgeViewTubeMidpointState(current, { acknowledgedAt: "2026-07-12T00:00:04.500Z" }).state;
+    const transition = advanceViewTubeState(current, { completedAt: `2026-07-12T00:00:0${index}.000Z`, outcome: calculateViewTubeReadingOutcome({ campaignState: current }), passageId: `viewtube-preview-${index + 1}`, sessionId: `viewtube-preview-session-${index + 1}` });
+    if (!transition.ok) throw new Error(transition.reason ?? "ViewTube preview did not advance");
+    current = transition.state;
+  }
+  return current;
+}
+
+function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {}) {
+  const view = getSearchishCampaignView(campaignState);
+  $("searchishPage").dataset.inspectorOpen = String(state.searchishInspectorOpen);
+  $("searchishHeaderStatus").textContent = view.headerStatus;
+  $("searchishQueryText").textContent = view.query.text;
+  $("searchishQueryTerms").innerHTML = view.query.terms.map((term) => `<li>${escapeMarkup(term)}</li>`).join("");
+  $("searchishAnswerLabel").textContent = view.answer.label;
+  $("searchishAnswerText").textContent = view.answer.text;
+  $("searchishResultList").innerHTML = view.results.map((result) => `<li class="searchish-result-card" data-sponsored="${result.sponsored}"><h4>${escapeMarkup(result.title)}</h4><p>${escapeMarkup(result.snippet)}</p><div class="searchish-result-meta"><span>${escapeMarkup(result.domainDisplay)}</span><span>${escapeMarkup(result.dateDisplay)}</span><span>${escapeMarkup(result.authorDisplay)}</span><span>${escapeMarkup(result.sponsorshipDisplay)}</span></div><p>QUERY MATCH: ${escapeMarkup(result.matchDisplay)}</p><p class="searchish-result-origin">ORIGIN: ${escapeMarkup(result.originId ?? result.cacheId ?? "ORIGIN HIDDEN")}</p></li>`).join("");
+  $("searchishBranchList").innerHTML = view.branches.map((branch) => `<li data-open="${branch.open}"><b>${escapeMarkup(branch.label)}</b><p>${escapeMarkup(branch.open ? branch.summary : "BRANCH LOCKED")}</p></li>`).join("");
+  $("searchishMidpoint").hidden = !view.midpoint.actionRequired;
+  $("searchishMidpointBody").textContent = view.midpoint.body;
+  $("searchishMidpointProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
+  $("searchishTimelineUnits").innerHTML = [...view.progress.restoreUnits, ...view.progress.branchUnits].map((unit) => `<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");
+  $("searchishSecuredPayoff").hidden = !view.secured;
+  if (view.securedPayoff) {
+    $("searchishBlockedBody").textContent = view.securedPayoff.blockedWrite.label;
+    $("searchishEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior;
+  }
+  $("searchishEvidenceReceipt").hidden = !view.secured || !state.searchishEvidenceReceiptOpen;
+  $("searchishEvidenceToggle").setAttribute("aria-expanded", String(state.searchishEvidenceReceiptOpen));
+  const selection = selectNextSearchishPassage(state.searchishState);
+  $("searchishCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("searchishLiveStatus").textContent = view.secured ? `SOURCE ORIGINS VERIFIED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 SEARCH-ISH UNITS SAVED`;
+}
+
+function openSearchishExperience() {
+  state.selectedSiteId = "searchish";
+  const current = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
+  renderSearchishCampaign(current, { diagnosticMode: state.searchishDiagnosticMode });
+  show("searchish");
+  syncSearchishInspector();
+}
+
+function buildSearchishPreviewState(unitCount) {
+  let current = readSearchishState(null);
+  for (let index = 0; index < unitCount; index += 1) {
+    if (index === SEARCHISH_RESTORE_UNITS.length && !current.midpointAcknowledged) current = acknowledgeSearchishMidpointState(current, { acknowledgedAt: "2026-07-12T00:00:04.500Z" }).state;
+    const transition = advanceSearchishState(current, { completedAt: `2026-07-12T00:00:0${index}.000Z`, outcome: calculateSearchishReadingOutcome({ campaignState: current }), passageId: `searchish-preview-${index + 1}`, sessionId: `searchish-preview-session-${index + 1}` });
+    if (!transition.ok) throw new Error(transition.reason ?? "Search-ish preview did not advance");
+    current = transition.state;
+  }
+  return current;
+}
+
 function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const view = getMapGuessCampaignView(campaignState, { reducedMotion });
@@ -2048,6 +2215,14 @@ function openRecoverySite(siteId) {
     openYahuhExperience();
     return;
   }
+  if (site.id === "viewtube" && site.runtimeAvailable) {
+    openViewTubeExperience();
+    return;
+  }
+  if (site.id === "searchish" && site.runtimeAvailable) {
+    openSearchishExperience();
+    return;
+  }
   if (site.id === "mapguess" && site.runtimeAvailable) {
     openMapGuessExperience();
     return;
@@ -2077,6 +2252,10 @@ function returnToHub() {
   state.mycornerComparisonView = "template";
   state.yahuhEvidenceReceiptOpen = false;
   state.yahuhSwitchboardOpen = false;
+  state.viewtubeDrawerOpen = false;
+  state.viewtubeEvidenceReceiptOpen = false;
+  state.searchishInspectorOpen = false;
+  state.searchishEvidenceReceiptOpen = false;
   renderRecoveryHub();
   show("hub");
 }
@@ -3642,6 +3821,8 @@ $("faceplaceReturn").onclick = returnToHub;
 $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
 $("yahuhReturn").onclick = returnToHub;
+$("viewtubeReturn").onclick = returnToHub;
+$("searchishReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
@@ -3759,6 +3940,91 @@ $("yahuhEvidenceToggle").onclick = () => {
   if (state.yahuhEvidenceReceiptOpen) requestAnimationFrame(() => $("yahuhEvidenceReceipt").focus({ preventScroll: true }));
   else $("yahuhEvidenceToggle").focus({ preventScroll: true });
 };
+function syncViewTubeDrawer() {
+  const open = state.viewtubeDrawerOpen && matchMedia("(max-width: 1279px)").matches;
+  $("viewtubePage").dataset.secondaryDrawerOpen = String(open);
+  $("viewtubeDrawerToggle").setAttribute("aria-expanded", String(open));
+  $("viewtubeSecondaryDrawer").setAttribute("aria-hidden", String(!open));
+  $("viewtubeSecondaryDrawer").inert = !open;
+}
+$("viewtubeDrawerToggle").onclick = () => {
+  state.viewtubeDrawerOpen = !state.viewtubeDrawerOpen;
+  syncViewTubeDrawer();
+  if (state.viewtubeDrawerOpen) requestAnimationFrame(() => $("viewtubeDrawerHeading").focus({ preventScroll: true }));
+};
+$("viewtubeDrawerClose").onclick = () => {
+  state.viewtubeDrawerOpen = false;
+  syncViewTubeDrawer();
+  $("viewtubeDrawerToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || state.activeScreen !== "viewtube" || !state.viewtubeDrawerOpen) return;
+  event.preventDefault();
+  state.viewtubeDrawerOpen = false;
+  syncViewTubeDrawer();
+  $("viewtubeDrawerToggle").focus({ preventScroll: true });
+});
+$("viewtubeMidpointAction").onclick = () => {
+  const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  const transition = state.viewtubeDiagnosticMode
+    ? acknowledgeViewTubeMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeViewTubeMidpoint(localStateStorage, { currentState: visible });
+  if (!transition.ok) return;
+  if (state.viewtubeDiagnosticMode) state.viewtubeDiagnosticState = transition.state;
+  else state.viewtubeState = transition.state;
+  renderViewTubeCampaign(transition.state, { diagnosticMode: state.viewtubeDiagnosticMode });
+};
+$("viewtubeEvidenceToggle").onclick = () => {
+  const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
+  if (!visible.secured) return;
+  state.viewtubeEvidenceReceiptOpen = !state.viewtubeEvidenceReceiptOpen;
+  renderViewTubeCampaign(visible, { diagnosticMode: state.viewtubeDiagnosticMode });
+  requestAnimationFrame(() => (state.viewtubeEvidenceReceiptOpen ? $("viewtubeEvidenceReceipt") : $("viewtubeEvidenceToggle")).focus({ preventScroll: true }));
+};
+function syncSearchishInspector() {
+  const drawer = matchMedia("(max-width: 1279px)").matches;
+  const open = drawer && state.searchishInspectorOpen;
+  $("searchishPage").dataset.inspectorOpen = String(open);
+  $("searchishInspectorToggle").setAttribute("aria-expanded", String(open));
+  $("searchishInspector").setAttribute("aria-hidden", String(drawer && !open));
+  $("searchishInspector").inert = drawer && !open;
+}
+$("searchishInspectorToggle").onclick = () => {
+  state.searchishInspectorOpen = !state.searchishInspectorOpen;
+  syncSearchishInspector();
+  if (state.searchishInspectorOpen) requestAnimationFrame(() => $("searchishInspectorHeading").focus({ preventScroll: true }));
+};
+$("searchishInspectorClose").onclick = () => {
+  state.searchishInspectorOpen = false;
+  syncSearchishInspector();
+  $("searchishInspectorToggle").focus({ preventScroll: true });
+};
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || state.activeScreen !== "searchish" || !state.searchishInspectorOpen) return;
+  event.preventDefault();
+  state.searchishInspectorOpen = false;
+  syncSearchishInspector();
+  $("searchishInspectorToggle").focus({ preventScroll: true });
+});
+$("searchishMidpointAction").onclick = () => {
+  const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
+  const transition = state.searchishDiagnosticMode
+    ? acknowledgeSearchishMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
+    : acknowledgeSearchishMidpoint(localStateStorage, { currentState: visible });
+  if (!transition.ok) return;
+  if (state.searchishDiagnosticMode) state.searchishDiagnosticState = transition.state;
+  else state.searchishState = transition.state;
+  state.searchishInspectorOpen = true;
+  renderSearchishCampaign(transition.state, { diagnosticMode: state.searchishDiagnosticMode });
+  syncSearchishInspector();
+};
+$("searchishEvidenceToggle").onclick = () => {
+  const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
+  if (!visible.secured) return;
+  state.searchishEvidenceReceiptOpen = !state.searchishEvidenceReceiptOpen;
+  renderSearchishCampaign(visible, { diagnosticMode: state.searchishDiagnosticMode });
+  requestAnimationFrame(() => (state.searchishEvidenceReceiptOpen ? $("searchishEvidenceReceipt") : $("searchishEvidenceToggle")).focus({ preventScroll: true }));
+};
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -3795,6 +4061,8 @@ window.addEventListener("resize", () => {
   }
   if (state.activeScreen === "mycorner") syncMyCornerInspector();
   if (state.activeScreen === "yahuh") syncYahuhSwitchboard();
+  if (state.activeScreen === "viewtube") syncViewTubeDrawer();
+  if (state.activeScreen === "searchish") syncSearchishInspector();
   if (state.activeScreen === "mapguess") syncMapGuessInspector();
 });
 $("taskStart").onclick = returnToHub;
@@ -3815,6 +4083,14 @@ $("taskReader").onclick = () => {
   }
   if (state.selectedSiteId === "yahuh") {
     openYahuhExperience();
+    return;
+  }
+  if (state.selectedSiteId === "viewtube") {
+    openViewTubeExperience();
+    return;
+  }
+  if (state.selectedSiteId === "searchish") {
+    openSearchishExperience();
     return;
   }
   if (state.selectedSiteId === "mapguess") {
@@ -3843,7 +4119,19 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
       const mapGuessEvidenceSaved = state.mapguessState.secured && state.mapguessPersisted;
       const myCornerEvidenceSaved = state.mycornerState.secured && state.mycornerPersisted;
       const yahuhEvidenceSaved = state.yahuhState.secured && state.yahuhPersisted;
-      if (yahuhEvidenceSaved && state.selectedSiteId === "yahuh") {
+      const viewTubeEvidenceSaved = state.viewtubeState.secured && state.viewtubePersisted;
+      const searchishEvidenceSaved = state.searchishState.secured && state.searchishPersisted;
+      if (searchishEvidenceSaved && state.selectedSiteId === "searchish") {
+        state.searchishDiagnosticMode = false;
+        state.searchishEvidenceReceiptOpen = true;
+        openSearchishExperience();
+        requestAnimationFrame(() => $("searchishEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (viewTubeEvidenceSaved && state.selectedSiteId === "viewtube") {
+        state.viewtubeDiagnosticMode = false;
+        state.viewtubeEvidenceReceiptOpen = true;
+        openViewTubeExperience();
+        requestAnimationFrame(() => $("viewtubeEvidenceReceipt").focus({ preventScroll: true }));
+      } else if (yahuhEvidenceSaved && state.selectedSiteId === "yahuh") {
         state.yahuhDiagnosticMode = false;
         state.yahuhEvidenceReceiptOpen = true;
         state.yahuhSwitchboardOpen = true;
@@ -3929,6 +4217,10 @@ if (uiPreview) {
   state.mycornerPersisted = true;
   state.yahuhState = readYahuhState(null);
   state.yahuhPersisted = true;
+  state.viewtubeState = readViewTubeState(null);
+  state.viewtubePersisted = true;
+  state.searchishState = readSearchishState(null);
+  state.searchishPersisted = true;
 }
 selectCampaignPassage();
 renderRecoveryHub();
@@ -3949,6 +4241,10 @@ if (requestedLaunch === "wikiwhy") {
   openRecoverySite("mycorner");
 } else if (requestedLaunch === "yahuh") {
   openRecoverySite("yahuh");
+} else if (requestedLaunch === "viewtube") {
+  openRecoverySite("viewtube");
+} else if (requestedLaunch === "searchish") {
+  openRecoverySite("searchish");
 } else if (requestedLaunch === "mapguess") {
   openRecoverySite("mapguess");
 } else if (requestedSite) {
@@ -4102,6 +4398,76 @@ if (requestedLaunch === "wikiwhy") {
   if (uiPreview === "yahuh-evidence") {
     requestAnimationFrame(() => $("yahuhEvidenceReceipt").scrollIntoView({ block: "nearest" }));
   }
+} else if ([
+  "viewtube",
+  "viewtube-corrupted",
+  "viewtube-restore-1",
+  "viewtube-restore-2",
+  "viewtube-restore-3",
+  "viewtube-restore-4",
+  "viewtube-autoplay-loop",
+  "viewtube-acknowledged",
+  "viewtube-track-1",
+  "viewtube-track-2",
+  "viewtube-secured",
+  "viewtube-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "viewtube-evidence": 7,
+    "viewtube-secured": 7,
+    "viewtube-track-2": 6,
+    "viewtube-track-1": 5,
+    "viewtube-acknowledged": 4,
+    "viewtube-autoplay-loop": 4,
+    "viewtube-restore-4": 4,
+    "viewtube-restore-3": 3,
+    "viewtube-restore-2": 2,
+    "viewtube-restore-1": 1,
+  }[uiPreview] ?? 0;
+  state.viewtubeDiagnosticMode = uiPreview !== "viewtube";
+  state.viewtubeDiagnosticState = buildViewTubePreviewState(unitCount);
+  if (uiPreview === "viewtube-acknowledged") {
+    state.viewtubeDiagnosticState = acknowledgeViewTubeMidpointState(state.viewtubeDiagnosticState, {
+      acknowledgedAt: "2026-07-12T00:00:04.500Z",
+    }).state;
+  }
+  state.viewtubeEvidenceReceiptOpen = uiPreview === "viewtube-evidence";
+  openViewTubeExperience();
+  syncViewTubeDrawer();
+  if (uiPreview === "viewtube-evidence") requestAnimationFrame(() => $("viewtubeEvidenceReceipt").scrollIntoView({ block: "nearest" }));
+} else if ([
+  "searchish",
+  "searchish-corrupted",
+  "searchish-origin-1",
+  "searchish-origin-2",
+  "searchish-origin-3",
+  "searchish-origin-4",
+  "searchish-five-costumes",
+  "searchish-acknowledged",
+  "searchish-primary-branch",
+  "searchish-independent-branch",
+  "searchish-secured",
+  "searchish-evidence",
+].includes(uiPreview)) {
+  const unitCount = {
+    "searchish-evidence": 7,
+    "searchish-secured": 7,
+    "searchish-independent-branch": 6,
+    "searchish-primary-branch": 5,
+    "searchish-acknowledged": 4,
+    "searchish-five-costumes": 4,
+    "searchish-origin-4": 4,
+    "searchish-origin-3": 3,
+    "searchish-origin-2": 2,
+    "searchish-origin-1": 1,
+  }[uiPreview] ?? 0;
+  state.searchishDiagnosticMode = uiPreview !== "searchish";
+  state.searchishDiagnosticState = buildSearchishPreviewState(unitCount);
+  if (uiPreview === "searchish-acknowledged") state.searchishDiagnosticState = acknowledgeSearchishMidpointState(state.searchishDiagnosticState, { acknowledgedAt: "2026-07-12T00:00:04.500Z" }).state;
+  state.searchishInspectorOpen = ["searchish-acknowledged", "searchish-primary-branch", "searchish-independent-branch", "searchish-secured", "searchish-evidence"].includes(uiPreview);
+  state.searchishEvidenceReceiptOpen = uiPreview === "searchish-evidence";
+  openSearchishExperience();
+  if (uiPreview === "searchish-evidence") requestAnimationFrame(() => $("searchishEvidenceReceipt").scrollIntoView({ block: "nearest" }));
 } else if ([
   "mapguess",
   "mapguess-corrupted",

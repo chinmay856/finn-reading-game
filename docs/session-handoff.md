@@ -8,6 +8,38 @@
 - Every first-run site arc and the final breach has a complete manuscript roster.
   Runtime encoding and independent review/microphone gates remain outstanding.
 
+## Search-ish origin-proof foundation
+
+- Active branch: `agent/searchish-origin-proof-foundation`.
+- Integrated designer PR #41's canonical Search-ish runtime response and PR
+  #51's complete A01-A07 first-run manuscript roster.
+- Search-ish now renders four apparent result cards, preserves the generated
+  answer, restores four exact origin-label units, saves the Five Costumes
+  midpoint before acknowledgement, and opens three semantic source branches.
+- The responsive Source branch inspector is Recovery Browser-owned, supports
+  focus transfer and Escape/close return, and never overlaps the Reading
+  Companion. Content remains fail-closed with MIC OFF and no reading score.
+- Canonical persisted evidence is reserved for Case File slot 7 as
+  `SEARCHISH_GENERATED_CACHE_REDIRECT.REC`.
+- Designer commit `47c25bf` resolves the Techno asset: canonical wrapper ID
+  `searchish.techno.generated-cache-alert` maps to the paw-alert still.
+
+## ViewTube evidence-track foundation
+
+- Active branch: `agent/viewtube-evidence-track-foundation`.
+- Integrated designer PR #40's canonical silent-video runtime contract and PR
+  #49's first-run manuscripts without touching stashes or `worktrees/`.
+- ViewTube now has a seven-unit structural runtime: four recording-context
+  restores, an explicit autoplay-loop acknowledgement, and three independently
+  verified evidence tracks. The runtime is silent, keeps the microphone off,
+  and cannot create a reading score while its manuscripts remain review-gated.
+- Canonical persisted evidence is reserved for Case File slot 6 as
+  `VIEWTUBE_DUPLICATE_MEDIA_HASHES.REC`; diagnostic state is still labeled test.
+- `npm run check`, all 268 tests, and `npm run build` pass locally.
+- ViewTube's former `techno_clue_point` dependency is resolved by designer PR
+  #40: `viewtube.techno.secured-ball-pin` maps to the approved Techno
+  alert-ball-pin still.
+
 ## Yahuh channel-reconnect foundation
 
 - Deployed `main` is authoritative at `76e6f05` through MyCorner PR #45 and

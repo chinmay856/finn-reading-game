@@ -16,11 +16,11 @@ test("the recovery map exposes ten unique wrapper-owned site identities", () => 
   assert.ok(RECOVERY_SITES.every(({ archetype, belief, previewImage }) => archetype && belief && previewImage));
 });
 
-test("only WikiWhy is speech-playable while six sites expose honest structural runtimes", () => {
+test("only WikiWhy is speech-playable while eight sites expose honest structural runtimes", () => {
   const playable = RECOVERY_SITES.filter(({ playable }) => playable);
   const runtimeAvailable = RECOVERY_SITES.filter(({ runtimeAvailable }) => runtimeAvailable);
   assert.deepEqual(playable.map(({ id }) => id), ["wikiwhy"]);
-  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "mapguess"]);
+  assert.deepEqual(runtimeAvailable.map(({ id }) => id), ["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "mapguess"]);
   assert.equal(getRecoverySite("threadit").playable, false);
   assert.equal(getRecoverySite("threadit").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.equal(getRecoverySite("faceplace").playable, false);
@@ -34,6 +34,11 @@ test("only WikiWhy is speech-playable while six sites expose honest structural r
   assert.equal(getRecoverySite("yahuh").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.equal(getRecoverySite("yahuh").description, "All information has been blended into homepage paste.");
   assert.match(getRecoverySite("yahuh").markImage, /yahuh-mark\.svg/u);
+  assert.equal(getRecoverySite("viewtube").playable, false);
+  assert.equal(getRecoverySite("viewtube").runtimeLabel, "CAMPAIGN TEST BUILD");
+  assert.match(getRecoverySite("viewtube").markImage, /viewtube-mark\.svg/u);
+  assert.equal(getRecoverySite("searchish").runtimeLabel, "CAMPAIGN TEST BUILD");
+  assert.match(getRecoverySite("searchish").markImage, /searchish-mark\.svg/u);
   assert.equal(getRecoverySite("mapguess").playable, false);
   assert.equal(getRecoverySite("mapguess").runtimeLabel, "CAMPAIGN TEST BUILD");
   assert.match(getRecoverySite("mapguess").markImage, /mapguess-mark\.svg/u);
