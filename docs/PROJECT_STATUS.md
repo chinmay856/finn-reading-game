@@ -8,130 +8,132 @@ product and architecture source of truth is
 
 - **Primary workspace:** Codex app
 - **Authoritative branch:** `main`
-- **Active implementation branch:** `agent/recovery-hub-navigation`
+- **Active implementation branch:** `agent/wikiwhy-campaign-foundation`
 - **Repository:** `chinmay856/finn-reading-game`
-- **Live desktop prototype:** <https://chinmay856.github.io/finn-reading-game/>
-- **Deployment:** GitHub Pages through GitHub Actions, with HTTPS enforced
-- **Current stage:** Publish the Recovery Map shell, then finish WikiWhy as the
-  first complete real site campaign
+- **Live prototype:** <https://chinmay856.github.io/finn-reading-game/>
+- **Deployed main:** `270c63d` through PR #30
+- **Deployment:** GitHub Pages through GitHub Actions, HTTPS enforced
+- **Current stage:** Publish the real WikiWhy campaign foundation, then promote
+  enough reviewed passages to make the complete route playable without fake
+  repetition
 
-The implementation branch must pass CI, merge to `main`, deploy, and receive a
-live HTTPS smoke check before this milestone becomes authoritative.
+## Deployed implementation
 
-## Current implementation
+- Internet Recovery 98 opens on a Recovery Map with all ten sites, exactly
+  three Incoming Cases, ten Case File slots, Amy Support, persistent desktop
+  chrome, and the approved shortcut rail.
+- WikiWhy is the only playable site. The other nine open explicit
+  **DESIGN PREVIEW / VIEW ONLY** windows with `MIC: OFF` and no borrowed passage,
+  scoring, or WikiWhy mechanic.
+- The live WikiWhy reader uses local Whisper processing, forgiving alignment, a
+  250 WPM predictive guide, independent optional comprehension, and non-audio
+  session history.
+- The Reading Engine, Content Platform, theme-neutral strength calculation,
+  wrapper rules, and Internet Recovery presentation remain separated.
 
-- The Internet Recovery 98 desktop opens on a real Recovery Map with all ten
-  wrapper-owned sites, exactly three Incoming Cases, ten Case File evidence
-  slots, Amy Support, persistent taskbar/status chrome, and a restrained desktop
-  shortcut rail.
-- WikiWhy is the only playable site. The other nine entries open explicit
-  **DESIGN PREVIEW / VIEW ONLY** windows with an inactive Reading Companion and
-  no microphone, transcript, score, or borrowed WikiWhy rules.
-- The site catalog, navigation, desktop objects, characters, preview art, and
-  campaign language remain inside `apps/internet-recovery/`. Reading Engine,
-  Content Platform, speech, and theme-neutral Game Rules boundaries remain
-  intact.
-- Preview JPEGs are optimized crops from the canonical builder-ready campaign
-  boards. MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess were refreshed
-  after corrected boards replaced their superseded sources.
-- Production Amy and Chinmay sheet panels now supply four optimized runtime
-  portraits. Dialogue selects wrapper story moods; reading performance never
-  selects a character expression.
-- Techno's WikiWhy progress-push animation faces and moves right with the repair
-  boundary. Backward diagnostic resets reposition without playing a reverse
-  walk; reduced-motion mode uses the mirrored still.
-- Wrapper-only diagnostics can exercise WikiWhy's `0 → 80%` story turn and exact
-  three-pass Shield Protocol without creating a reading score or modifying real
-  repair history.
-- The real WikiWhy loop currently uses one executable attributed Content
-  Platform record, local Whisper transcription, forgiving alignment, a 250 WPM
-  predictive guide, independent comprehension, and a persistent 10–20% Act I
-  repair consequence.
-- Non-audio session history stores only approved summary fields. Raw audio and
-  transcript text are never uploaded or retained.
+## Current branch implementation
+
+- Integrated the complete runtime design package through design tip `40f961e`.
+- Upgraded real WikiWhy persistence to version 3 with safe v1/v2 migration,
+  bounded all-session deduplication, completed passage IDs, explicit phases,
+  one-time warning/rewrite events, Shield progress, secured state, and evidence
+  ID. Malformed or blocked browser storage never interrupts a reading result.
+- Real state now follows `act-one → reverse-hack → shield 0/3 → 1/3 → 2/3 →
+  secured`. A jump that crosses both 70% and 80% emits the warning before the
+  rewrite, and the Act I reading never also counts as Shield pass 1.
+- Shield Protocol consumes exactly three accepted readings. Metrics still render
+  plainly, but cannot add or remove Shield passes. A fourth/post-secured result
+  is a no-op for campaign progress.
+- Securing WikiWhy writes evidence ID
+  `wikiwhy.active-write-after-command-end`, changes the hub to `1 OF 10
+  SECURED`, fills Case File slot 1, displays the blocked AI write, and persists
+  across reloads.
+- The nested browser now has accessible phase overlays, a reduced-motion-safe
+  right-to-left rewrite treatment, the exact three-item Shield checklist, a
+  permanent evidence receipt, and production-sheet crops for Amy, Chinmay, and
+  Techno story beats. The trusted desktop and Reading Companion stay stable.
+- Campaign visuals rest on persisted campaign progress. Live transcript progress
+  projects only toward the next possible campaign step instead of falsely
+  repainting the whole site from 0 to 100 for every passage.
+- Added a theme-neutral passage catalog and wrapper-owned Deck A/B ID lists.
+  Candidate records are never selected. The UI shows an explicit content-review
+  gate when no unseen executable passage remains.
+- Hardened the current photosynthesis record with a reviewed revision link,
+  modification notice, CC BY-SA 4.0 metadata, and visible source/license links
+  outside the speech-scored text.
+- Published executable warning, rewrite, Shield, and secured screenshots plus
+  focused questions in [`design/DESIGN_REQUESTS.md`](design/DESIGN_REQUESTS.md)
+  for the parallel designer.
+
+## Content readiness
+
+- `photosynthesis-a01` is the only executable record and remains prototype
+  content, not final production-approved content.
+- The other 19 WikiWhy deck drafts are candidates only. They need structured
+  three-choice comprehension/feedback, permanent provenance, rights notice,
+  factual review, grade/sensitivity review, a reading profile, and real
+  microphone testing before promotion.
+- Candidate selection is fail-closed: the runtime will not score a draft or
+  silently reuse one passage to imply campaign depth.
+- Worst case requires eleven readings (up to eight 10% Act I advances plus
+  three Shield passes), while Deck A has ten. Design must explicitly approve
+  one Deck B overflow or one repeat policy; content review remains independent.
 
 ## Design readiness
 
-- The campaign hub, WikiWhy, and nine non-WikiWhy boards are the builder-ready
-  ten-site design reference set. They approve direction, three-act story,
-  progress fiction, and layout reference; they are not production DOM or final
-  microcopy.
-- Each site owns a distinct apparent problem, middle change, progress metaphor,
-  resolution, and AI interference. WikiWhy's percentage wipe, 80% rewrite, and
-  three-pass shield are not platform defaults.
-- The one sample passage drafted for each non-WikiWhy site remains review-only.
-  Each needs a stable content ID, frozen source/provenance, factual and rights
-  review, grade/sensitivity/accessibility review, and real-microphone testing
-  before it becomes executable content.
-- Production character sheets define reusable Amy, Chinmay, and Techno panel
-  IDs. Private likeness references remain outside the repository and product
-  art stays illustrated rather than photoreal.
+- The hub, WikiWhy, and nine other site boards plus their runtime briefs are the
+  builder-ready design reference. They guide implementation but are not final
+  runtime screenshots or speech content.
+- Remaining contract questions are durable in
+  [`design/DESIGN_REQUESTS.md`](design/DESIGN_REQUESTS.md): Incoming Case count,
+  AI writer IDs, copy precedence, exact panel sequence, Shield Pass 2
+  comprehension semantics, uncertain-reading continuation, evidence asset,
+  replay location, site 2 order, and eleven-reading overflow.
+- ThreadIt remains the recommended second-site portability proof unless the
+  designer identifies a materially more complete MapGuess pack.
 
-## Canonical product facts
+## Validation
 
-- Finn is the player character and protagonist.
-- Chinmay is Finn's long-haired uncle and the overconfident developer whose
-  irresponsible rushed deployment caused the collapse. He sincerely tries to
-  help, becomes increasingly messy and frazzled, and is never a secret saboteur
-  or villain-coded.
-- Chinmay's VibeShift AI is the antagonist. It first optimizes the wrong proxy,
-  then continues rewriting after Chinmay's command ends.
-- Amy is Finn's trusted engineering partner; Techno is an optional, mostly
-  visual desktop companion. Neither can affect reading, scoring, comprehension,
-  or required navigation.
-- Faster reading is beneficial when accuracy and independent comprehension stay
-  sound. There is no maximum-WPM penalty and no forced retry.
-- Ordinary corruption stays inside the inset Recovery Browser. The desktop and
-  Reading Companion remain trustworthy until the singular final breach.
-
-## Immediate next milestone
-
-1. Publish and deploy the Recovery Map branch; verify all ten tiles, preview
-   honesty, WikiWhy re-entry, production portraits, Techno direction, keyboard
-   navigation, and clean console state over live HTTPS.
-2. Convert and approve enough WikiWhy Deck A entries into executable neutral
-   content records, with unseen-passage selection and non-audio seen-ID history.
-3. Replace the diagnostic-only campaign transition with a versioned real
-   WikiWhy state machine: Act I warning, 80% AI rewrite, exactly three shield
-   passages, secured state, evidence slot one, and safe resume behavior.
-4. Prove a second site only after its content and mechanic acceptance gate is
-   satisfied. ThreadIt is the strongest portability test because its source-tree
-   repair must remain visibly distinct from WikiWhy's wipe.
-
-Do not fake nine secured sites, reuse WikiWhy's mechanics as a template, or
-start the final breach before enough real site campaigns exist to support it.
+- `npm run check` — passed
+- `npm test` — 78 tests passed
+- `npm run build` — passed
+- Browser QA — full diagnostic route clicked through at desktop scale: warning,
+  rewrite, Amy contradiction, Shield 0/3 through 3/3, secured payoff, source and
+  license links, content gate, keyboard-addressable controls, and clean current
+  console
 
 ## Known limitations
 
-- A complete real microphone run from the newly deployed Recovery Map build is
-  still required. Browser automation cannot substitute for Finn's read-aloud
-  naturalness test.
-- The production Whisper path remains Transformers.js `3.7.1`, timestamped
-  Whisper base, WebAssembly/q8. First load is roughly 77 MB and latency varies
-  by browser and hardware.
-- WebGPU/q4 is not trusted on the development computer. Do not change the
-  production adapter without a maintained-reference spike and objective local
-  acceptance evidence.
-- The real WikiWhy campaign currently stops at the Act I boundary; rewrite,
-  shield, secured evidence, replay, and multi-site campaign state remain to be
-  implemented.
+- A complete real microphone run is still required. Browser automation cannot
+  judge Finn's read-aloud naturalness.
+- Only one executable passage exists, so the real campaign intentionally stops
+  at the content-review gate after that unseen record. The full state route is
+  objective-testable through wrapper-only diagnostics without creating a score.
+- The production speech path remains Transformers.js `3.7.1`, timestamped
+  Whisper base, WebAssembly/q8. First load is roughly 77 MB; WebGPU/q4 remains
+  untrusted on the development computer.
+- Post-secured Deck B replay is not designed or implemented.
+- ThreadIt and the other eight non-WikiWhy sites remain honest previews.
+
+## Immediate next milestone
+
+1. Publish this branch, run CI, merge, deploy, and smoke-check live HTTPS.
+2. Promote the lowest-risk WikiWhy candidates only after the documented content
+   gate; begin with A02, A05, A07, A08, and A09.
+3. Integrate the designer's answers and exact evidence asset when published.
+4. Build ThreadIt's unique Act I source-tree browser consequence without
+   borrowing WikiWhy's wipe, state, or content.
+
+Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
+template, or start the final breach before enough real campaigns exist.
 
 ## Repository workflow
 
 1. Start from synchronized `main`.
 2. Use one scoped `agent/<description>` branch per task.
-3. Keep implementation, tests, and truth-changing documentation together.
+3. Keep implementation, tests, assets, and truth-changing docs together.
 4. Merge only after checks pass.
 5. Return local `main` to the merged, deployed state.
 
 Preserve the historical mobile prototype and its branches as side-test
 reference; do not resume mobile optimization unless the user reprioritizes it.
-
-## Validation commands
-
-```text
-npm run check
-npm test
-npm run build
-npm run dev
-```

@@ -6,11 +6,13 @@ Engine, Content Platform, or Game Rules.
 
 - `amy-supportive.jpg` is panel 4, `amy_supportive`.
 - `amy-evidence.jpg` is panel 5, `amy_evidence`.
+- `amy-skeptical.jpg` is panel 2, `amy_skeptical`.
+- `amy-tools.jpg` is panel 6, `amy_tools`.
 - `chinmay-fluster-1.jpg` is panel 3, `chinmay_fluster_1`.
 - `chinmay-fluster-2.jpg` is panel 4, `chinmay_fluster_2`.
 
 Each file is the corresponding 512 by 512 sheet cell resized to 384 by 384,
-stripped of metadata, and encoded as JPEG quality 86. No character was
+stripped of metadata, and encoded as JPEG quality 86–88. No character was
 regenerated or redrawn during runtime extraction. Dialogue chooses a portrait
 by wrapper story beat; reading performance never selects a character mood.
 

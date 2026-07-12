@@ -33,6 +33,7 @@ designed to support many future themes.
 - Current implementation-to-design requests: [`docs/design/DESIGN_REQUESTS.md`](docs/design/DESIGN_REQUESTS.md)
 - Non-WikiWhy source research: [`docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md`](docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md)
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
+- WikiWhy passage review queue: [`docs/content/WIKIWHY_PASSAGE_REVIEW_QUEUE.md`](docs/content/WIKIWHY_PASSAGE_REVIEW_QUEUE.md)
 - WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)
 - Nine-site sample passage sampler: [`content/proposed-sites/SAMPLE_PASSAGES.md`](content/proposed-sites/SAMPLE_PASSAGES.md)
 - Ten-site passage deck plans: [`content/proposed-sites/PASSAGE_DECK_PLANS.md`](content/proposed-sites/PASSAGE_DECK_PLANS.md)

@@ -1,4 +1,5 @@
 export const PHOTOSYNTHESIS_PASSAGE = Object.freeze({
+  availability: "prototype",
   id: "photosynthesis-a01",
   title: "How Plants Store Sunlight",
   paragraphs: Object.freeze([
@@ -33,11 +34,28 @@ export const PHOTOSYNTHESIS_PASSAGE = Object.freeze({
     targetWpm: Object.freeze({ comfortable: 150, stretch: 250 }),
   }),
   source: Object.freeze({
+    articleUrl: "https://en.wikipedia.org/wiki/Photosynthesis",
     attribution: "Adapted and modified from “Photosynthesis,” English Wikipedia contributors.",
     basis: "cc-by-sa-4.0-adaptation",
     domain: "science",
     historyUrl: "https://en.wikipedia.org/w/index.php?title=Photosynthesis&action=history",
+    modificationNotice: "Adapted and modified for length, reading level, and microphone use.",
+    reviewedRevisionUrl: "https://en.wikipedia.org/w/index.php?title=Photosynthesis&oldid=1358838651",
     sourceType: "licensed-adaptation",
     sourceUrl: "https://en.wikipedia.org/wiki/Photosynthesis",
+  }),
+  rights: Object.freeze({
+    basis: "license",
+    creditLine: "English Wikipedia contributors, “Photosynthesis,” adapted and modified under CC BY-SA 4.0.",
+    licenseId: "CC-BY-SA-4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    verifiedOn: "2026-07-12",
+  }),
+  review: Object.freeze({
+    factual: "prototype",
+    grade: "prototype",
+    reviewedAgainstRevision: "1358838651",
+    sensitivity: "prototype",
+    transcription: "prototype",
   }),
 });

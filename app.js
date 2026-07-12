@@ -1,12 +1,18 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./content/wikiwhy/photosynthesis-passage.js";
+import { describePassageRights } from "./content/passage-catalog.js";
 import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
-import { readWikiWhyState, recordWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-state.js";
-import { calculateWikiWhyRepair } from "./apps/internet-recovery/wikiwhy-rules.js";
+import {
+  WIKIWHY_EVIDENCE_RECORD,
+  applyWikiWhyReading,
+  beginWikiWhyShield,
+  readWikiWhyState,
+} from "./apps/internet-recovery/wikiwhy-state.js";
+import { calculateWikiWhyReadingOutcome } from "./apps/internet-recovery/wikiwhy-rules.js";
 import {
   advanceWikiWhyDiagnostic,
   beginWikiWhyShieldProtocol,
@@ -14,16 +20,23 @@ import {
   resetWikiWhyDiagnosticState,
   saveWikiWhyDiagnosticState,
 } from "./apps/internet-recovery/wikiwhy-diagnostics.js";
-import { WIKIWHY_DIALOGUES } from "./apps/internet-recovery/wikiwhy-dialogues.js";
+import {
+  WIKIWHY_DIALOGUES,
+  isWikiWhyDialogDismissible,
+} from "./apps/internet-recovery/wikiwhy-dialogues.js";
 import { getRecoverySite, INCOMING_SITE_IDS, RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
+import { selectNextWikiWhyPassage } from "./apps/internet-recovery/wikiwhy-content.js";
 
-const PARAGRAPHS = PHOTOSYNTHESIS_PASSAGE.paragraphs;
-const PASSAGE = PARAGRAPHS.join(" ");
-const PROFILE = PHOTOSYNTHESIS_PASSAGE.profile;
+let activePassage = PHOTOSYNTHESIS_PASSAGE;
+let PARAGRAPHS = activePassage.paragraphs;
+let PASSAGE = PARAGRAPHS.join(" ");
+let PROFILE = activePassage.profile;
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
 const SPEECH_LEVEL = 0.009;
 const TECHNO_PROGRESS_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-progress-push-loop.webp", import.meta.url).href;
 const TECHNO_PROGRESS_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp", import.meta.url).href;
+const TECHNO_ALERT_BALL_PIN_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp", import.meta.url).href;
+const TECHNO_CELEBRATE_SPIN_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-celebrate-spin.webp", import.meta.url).href;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
@@ -54,8 +67,11 @@ const state = {
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
   sessionId: null, startedAt: 0, technoTimer: null,
-  diagnosticMode: false, diagnosticState: null, dialogAction: null,
+  diagnosticMode: false, diagnosticState: null, dialogAction: null, dialogDismissible: true, dialogReturnFocus: null,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
+  campaignEligible: true, campaignState: readWikiWhyState(localStateStorage),
+  campaignPersisted: Boolean(localStateStorage), contentAvailabilityReason: null,
+  contentCandidateCount: 0, resultApplied: false,
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -70,16 +86,139 @@ function diagnostic(type, details = {}) {
 
 function hydratePassage() {
   const wordCount = tokenizeText(PASSAGE).length;
-  $("fileTitle").textContent = PHOTOSYNTHESIS_PASSAGE.title;
-  $("fileMeta").textContent = `${wordCount} words · science · grades 10–12`;
-  $("fileSource").textContent = PHOTOSYNTHESIS_PASSAGE.source.attribution;
-  $("passageTitle").textContent = PHOTOSYNTHESIS_PASSAGE.title;
-  $("quizQuestion").textContent = PHOTOSYNTHESIS_PASSAGE.comprehension.prompt;
+  $("fileTitle").textContent = activePassage.title;
+  const [firstGrade, lastGrade = firstGrade] = activePassage.profile.targetGrades;
+  $("fileMeta").textContent = `${wordCount} words · ${activePassage.source.domain} · grades ${firstGrade}–${lastGrade}`;
+  $("fileSource").textContent = activePassage.source.attribution;
+  $("fileSourceLink").href = activePassage.source.reviewedRevisionUrl ?? activePassage.source.sourceUrl;
+  const rightsView = describePassageRights(activePassage);
+  $("fileLicenseLink").href = rightsView.url;
+  $("fileLicenseLink").textContent = rightsView.label;
+  $("fileModificationNotice").textContent = rightsView.modificationNotice ? ` · ${rightsView.modificationNotice}` : "";
+  $("fileRights").hidden = false;
+  $("passageTitle").textContent = activePassage.title;
+  $("quizQuestion").textContent = activePassage.comprehension.prompt;
   document.querySelectorAll(".quiz button[data-choice]").forEach((button) => {
-    const choice = PHOTOSYNTHESIS_PASSAGE.comprehension.choices[Number(button.dataset.choice)];
+    const choice = activePassage.comprehension.choices[Number(button.dataset.choice)];
     button.textContent = choice.text;
     button.dataset.answer = choice.correct ? "1" : "0";
   });
+}
+
+function setActivePassage(passage) {
+  activePassage = passage;
+  PARAGRAPHS = activePassage.paragraphs;
+  PASSAGE = PARAGRAPHS.join(" ");
+  PROFILE = activePassage.profile;
+  state.guideWpm = PROFILE.guide.defaultWpm;
+  hydratePassage();
+}
+
+function selectCampaignPassage() {
+  const selection = selectNextWikiWhyPassage(state.campaignState);
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function renderContentAvailabilityGate() {
+  state.campaignEligible = false;
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "Next recovered file is still under review.";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "Your WikiWhy campaign progress is safe. The remaining passage drafts will stay unavailable until their source, comprehension, and microphone checks are complete.";
+  $("begin").disabled = true;
+  $("fileTitle").textContent = "NEXT RECOVERED FILE PENDING REVIEW";
+  $("fileMeta").textContent = `${state.contentCandidateCount} candidate passage${state.contentCandidateCount === 1 ? "" : "s"} · not speech-scored yet`;
+  $("fileSource").textContent = "The campaign state is ready, but the next passage is still completing source, comprehension, and microphone review.";
+  $("fileRights").hidden = true;
+  $("modelProgress").textContent = "No draft passage will be presented as playable content. Your saved WikiWhy progress is safe.";
+  show("setup");
+}
+
+function resetReadingAttempt() {
+  state.busy = false;
+  state.confirmedMatches = new Set();
+  state.confirmedProgress = 0;
+  state.confirmedTokenIndex = 0;
+  state.comprehension = "not-attempted";
+  state.diagnostics = [];
+  state.finalText = "";
+  state.finishing = false;
+  state.guidePausedUntil = 0;
+  state.guideProgress = 0;
+  state.guideSpeechMs = 0;
+  state.lastCheckpointAt = 0;
+  state.lastMonitorAt = 0;
+  state.lastSpeechAt = 0;
+  state.listening = false;
+  state.processedThroughMs = 0;
+  state.repairPercent = 0;
+  state.result = null;
+  state.resultApplied = false;
+  state.sessionId = null;
+  state.startedAt = 0;
+  state.transcriptDiagnostics = [];
+  $("begin").disabled = false;
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = INTERNET_RECOVERY_COPY["mission.preparation.title"];
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = INTERNET_RECOVERY_COPY["mission.preparation.body"];
+  $("continueResult").disabled = false;
+  $("continueResult").textContent = "Continue";
+  $("again").disabled = false;
+  $("again").textContent = "Try this passage again";
+  $("listen").disabled = false;
+  $("listen").textContent = "Finish now";
+  $("repairOutcome").hidden = true;
+  $("payoff").hidden = true;
+  $("quizFeedback").textContent = "Answer for a stronger repair, or continue without it.";
+  document.querySelectorAll(".quiz button").forEach((button) => button.classList.remove("right", "wrong"));
+  $("fileRights").hidden = false;
+  $("modelProgress").textContent = "Your browser will ask for microphone permission next.";
+  $("progressText").textContent = "0% confirmed by local transcript";
+  $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
+  $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · 0%`;
+  renderPassage(0);
+  renderCampaignMeter(state.campaignState);
+}
+
+function openNextCampaignReading() {
+  hideCharacterDialog();
+  const selection = selectCampaignPassage();
+  if (!selection.passage) {
+    renderContentAvailabilityGate();
+    return false;
+  }
+  resetReadingAttempt();
+  show("setup");
+  return true;
+}
+
+function openWikiWhyExperience() {
+  renderCampaignMeter(state.campaignState);
+  if (state.campaignState.phase === "secured") {
+    show("read");
+    $("readerState").textContent = "WIKIWHY SECURED · UNAUTHORIZED WRITE BLOCKED";
+    $("progressText").textContent = "Evidence file recovered · return to the Recovery Map to inspect Case File slot 1";
+    $("listen").disabled = true;
+    $("listen").textContent = "Secured";
+    return;
+  }
+  if (state.campaignState.phase === "reverse-hack") {
+    show("read");
+    $("readerState").textContent = state.campaignPersisted
+      ? "READINGS SAVED · EVIDENCE SAVED · BACKGROUND WRITE ISOLATED"
+      : "READINGS PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD";
+    $("progressText").textContent = "Shield Protocol is ready to begin";
+    $("listen").disabled = true;
+    $("listen").textContent = "Write isolated";
+    showRealRewriteSequence();
+    return;
+  }
+  if (state.result && !state.resultApplied) {
+    show("review");
+    return;
+  }
+  openNextCampaignReading();
 }
 
 function show(name) {
@@ -102,24 +241,29 @@ function show(name) {
 }
 
 function renderRecoveryHub() {
-  const realWikiWhy = readWikiWhyState(localStateStorage);
+  const realWikiWhy = state.campaignState;
   const diagnosticWikiWhy = state.diagnosticMode ? state.diagnosticState : null;
   const diagnosticView = diagnosticWikiWhy ? campaignView(diagnosticWikiWhy) : null;
   const diagnosticSecured = diagnosticWikiWhy?.phase === "secured";
-  const realSecured = realWikiWhy.stability >= 100;
+  const realSecured = realWikiWhy.phase === "secured" && realWikiWhy.evidenceId === WIKIWHY_EVIDENCE_RECORD.id;
   const wikiWhySecured = diagnosticSecured || realSecured;
+  const durableWikiWhySecured = diagnosticSecured || (realSecured && state.campaignPersisted);
   const wikiWhyStatus = diagnosticSecured
     ? "SECURED · TEST"
     : realSecured
-      ? "SECURED"
+      ? state.campaignPersisted ? "SECURED" : "SECURED · TAB ONLY"
     : diagnosticView
       ? `${diagnosticView.label} ${diagnosticView.percent}% · TEST`
+      : realWikiWhy.phase === "shield"
+        ? `SHIELD ${realWikiWhy.shieldPass}/3`
+        : realWikiWhy.phase === "reverse-hack"
+          ? "BACKGROUND WRITE DETECTED"
       : realWikiWhy.stability > 0
         ? `SITE STABILITY ${realWikiWhy.stability}%`
         : "RECOVERY AVAILABLE";
   const incomingIds = wikiWhySecured ? ["threadit", "mapguess", "viewtube"] : INCOMING_SITE_IDS;
-  $("securedSiteCount").textContent = wikiWhySecured ? "1" : "0";
-  $("evidenceCount").textContent = wikiWhySecured ? "1/10" : "0/10";
+  $("securedSiteCount").textContent = durableWikiWhySecured ? "1" : "0";
+  $("evidenceCount").textContent = durableWikiWhySecured ? "1/10" : "0/10";
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => `
     <button class="site-card" type="button" data-site-id="${site.id}" data-playable="${site.playable}" style="--site-accent:${site.accent}">
       <img src="${site.previewImage}" alt="">
@@ -133,8 +277,16 @@ function renderRecoveryHub() {
   }).join("");
   $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
     if (site.id !== "wikiwhy" || !wikiWhySecured) return `<li>${site.name} — awaiting evidence</li>`;
-    return `<li>${diagnosticSecured ? "WikiWhy — autonomous write log saved (TEST)" : "WikiWhy — repair record saved"}</li>`;
+    return `<li>${diagnosticSecured ? "WikiWhy — autonomous write log saved (TEST)" : `${WIKIWHY_EVIDENCE_RECORD.title}${state.campaignPersisted ? "" : " · TAB ONLY"}`}</li>`;
   }).join("");
+  if (!state.diagnosticMode) {
+    const support = $("amySupportMessage");
+    if (realSecured && state.campaignPersisted) support.innerHTML = "<b>WikiWhy secured.</b> Its evidence file is in Finn’s Files. ThreadIt, MapGuess, and ViewTube remain honest design previews.";
+    else if (realSecured) support.innerHTML = "<b>WikiWhy is secured in this tab.</b> This browser did not save the evidence for reload, so Finn’s Files remains unavailable.";
+    else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
+    else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
+    else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
+  }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
   });
@@ -172,7 +324,7 @@ function openRecoverySite(siteId) {
   const site = getRecoverySite(siteId);
   state.selectedSiteId = site.id;
   if (site.playable) {
-    show(state.result ? "review" : "setup");
+    openWikiWhyExperience();
     return;
   }
   renderSitePreview(site);
@@ -236,6 +388,48 @@ function campaignView(campaignState) {
   };
 }
 
+function renderWikiWhyCampaignOverlay(campaignState) {
+  const phase = campaignState.phase ?? "act-one";
+  const overlay = $("wikiwhyCampaignOverlay");
+  const technoState = $("campaignTechnoState");
+  overlay.hidden = phase === "act-one";
+  $("technoRepairSprite").hidden = phase === "reverse-hack" || phase === "secured";
+  if (phase === "act-one") return;
+  const checklist = $("shieldChecklist");
+  const evidence = $("wikiwhyEvidenceReceipt");
+  checklist.hidden = phase === "reverse-hack";
+  evidence.hidden = phase !== "secured";
+  technoState.hidden = phase === "shield";
+  if (phase === "reverse-hack") {
+    technoState.src = TECHNO_ALERT_BALL_PIN_URL;
+    technoState.alt = "Techno pins her orange-and-blue ball while watching the unexpected automated write.";
+  } else if (phase === "secured") {
+    technoState.src = TECHNO_CELEBRATE_SPIN_URL;
+    technoState.alt = "Techno spins beneath her orange-and-blue ball while the access-denied log stays visible.";
+  }
+  const shieldLabels = ["Recover content layer", "Verify citations and history", "Seal edit permissions"];
+  checklist.querySelectorAll("li").forEach((item, index) => {
+    const complete = phase === "secured" || index < campaignState.shieldPass;
+    item.classList.toggle("complete", complete);
+    item.textContent = `${complete ? "Complete" : "Pending"} — ${shieldLabels[index]}`;
+  });
+  if (phase === "reverse-hack") {
+    $("campaignOverlayEyebrow").textContent = state.campaignPersisted
+      ? "READINGS SAVED · EVIDENCE SAVED"
+      : "PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD";
+    $("campaignOverlayHeading").textContent = "AUTOMATIC VERIFICATION CONTINUES";
+    $("campaignOverlayBody").textContent = "Writer: wiki_auto_fix_ai · Service: ai_repair_service · Command: ended · Write status: active";
+  } else if (phase === "shield") {
+    $("campaignOverlayEyebrow").textContent = `SHIELD PROTOCOL · ${campaignState.shieldPass} OF 3`;
+    $("campaignOverlayHeading").textContent = "Hold the write path. Seal each layer.";
+    $("campaignOverlayBody").textContent = `${3 - campaignState.shieldPass} accepted reading${3 - campaignState.shieldPass === 1 ? "" : "s"} remain. No hidden fourth pass.`;
+  } else {
+    $("campaignOverlayEyebrow").textContent = "WIKIWHY SECURED";
+    $("campaignOverlayHeading").textContent = "Unauthorized AI write blocked.";
+    $("campaignOverlayBody").textContent = "Contributions stay open. Evidence checks stay required.";
+  }
+}
+
 function renderCampaignMeter(campaignState, { diagnosticMode = false } = {}) {
   const view = campaignView(campaignState);
   const phase = campaignState.phase ?? "act-one";
@@ -245,19 +439,36 @@ function renderCampaignMeter(campaignState, { diagnosticMode = false } = {}) {
   $("campaignMeter").dataset.phase = phase;
   $("campaignMeter").setAttribute("aria-label", view.label.toLowerCase());
   $("campaignMeter").setAttribute("aria-valuenow", String(view.percent));
-  if (!diagnosticMode) return;
-
+  $("campaignMeter").setAttribute("aria-valuetext", phase === "shield"
+    ? `${campaignState.shieldPass} of 3 shield repairs sealed`
+    : phase === "secured"
+      ? "3 of 3 shield repairs sealed; WikiWhy secured"
+      : `${view.percent}% WikiWhy site stability`);
   const repairStage = document.querySelector(".repair-stage");
   repairStage.classList.toggle("live-corruption", phase === "reverse-hack");
   repairStage.classList.toggle("shield-mode", phase === "shield");
   repairStage.classList.toggle("site-secured", phase === "secured");
+  repairStage.setAttribute("aria-label", phase === "secured"
+    ? "WikiWhy secured. Techno celebrates beside the access-denied log."
+    : phase === "reverse-hack"
+      ? "A right-to-left automated rewrite appears over the saved WikiWhy repair."
+      : phase === "shield"
+        ? `WikiWhy Shield Protocol ${campaignState.shieldPass} of 3.`
+        : "WikiWhy page repairing from corrupted to evidence-based as confirmed reading progress advances.");
+  renderWikiWhyCampaignOverlay(campaignState);
   $("siteStatus").textContent = view.status;
   $("siteStatus").style.color = phase === "reverse-hack" ? "#a6231d" : phase === "secured" ? "#246b3c" : "#173968";
   $("repairFill").style.width = `${view.percent}%`;
   $("repairEdge").style.left = `${view.percent}%`;
-  positionTechnoAtRepair(view.percent);
-  $("repairPercent").textContent = `${view.percent}% campaign test`;
-  $("latency").textContent = "SIMULATED · no speech engine used";
+  positionTechnoAtRepair(view.percent, { animate: diagnosticMode });
+  $("repairPercent").textContent = diagnosticMode
+    ? `${view.percent}% campaign test`
+    : phase === "shield"
+      ? `${campaignState.shieldPass} of 3 shield repairs sealed`
+      : phase === "secured"
+        ? "Unauthorized write blocked"
+        : `${view.percent}% site stability`;
+  if (diagnosticMode) $("latency").textContent = "SIMULATED · no speech engine used";
 }
 
 function renderDiagnosticPanel(campaignState) {
@@ -276,26 +487,123 @@ function renderDiagnosticPanel(campaignState) {
 }
 
 function hideCharacterDialog() {
-  $("characterDialogLayer").hidden = true;
+  const layer = $("characterDialogLayer");
+  layer.hidden = true;
+  for (const child of document.querySelector(".recovery-desktop").children) {
+    if (child !== layer) child.inert = false;
+  }
   state.dialogAction = null;
+  state.dialogDismissible = true;
+  const returnFocus = state.dialogReturnFocus;
+  state.dialogReturnFocus = null;
+  if (returnFocus?.isConnected && !returnFocus.disabled) returnFocus.focus({ preventScroll: true });
 }
 
 function showCharacterDialog(dialogId, action = hideCharacterDialog) {
   const dialogue = WIKIWHY_DIALOGUES[dialogId];
   if (!dialogue) return;
+  let body = dialogue.body;
+  let eyebrow = dialogue.eyebrow;
+  let heading = dialogue.heading;
+  let meta = dialogue.meta;
+  if (!state.campaignPersisted && dialogId === "reverse-hack-amy") {
+    body = "Good news: Finn’s work is preserved in this tab. Bad news: the browser did not save it for reload, and your shortcut is still typing.";
+    eyebrow = "PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD";
+  }
+  if (!state.campaignPersisted && dialogId === "site-secured-amy") {
+    eyebrow = "WIKIWHY SECURED · TAB ONLY";
+    heading = "Evidence recovered for this tab.";
+    meta = "Browser storage unavailable · not saved for reload";
+  }
+  const layer = $("characterDialogLayer");
+  if (layer.hidden) state.dialogReturnFocus = document.activeElement;
   $("characterDialog").dataset.speaker = dialogue.speaker;
   $("dialogTitle").textContent = dialogue.title;
   $("dialogPortrait").src = dialogue.portrait;
   $("dialogPortrait").alt = `${dialogue.speaker === "amy" ? "Amy" : "Chinmay"} portrait`;
-  $("dialogEyebrow").textContent = dialogue.eyebrow;
-  $("dialogHeading").textContent = dialogue.heading;
-  $("dialogBody").textContent = dialogue.body;
-  $("dialogMeta").hidden = !dialogue.meta;
-  $("dialogMeta").textContent = dialogue.meta ?? "";
+  $("dialogEyebrow").textContent = eyebrow;
+  $("dialogHeading").textContent = heading;
+  $("dialogBody").textContent = body;
+  $("dialogMeta").hidden = !meta;
+  $("dialogMeta").textContent = meta ?? "";
   $("dialogAction").textContent = dialogue.action;
   state.dialogAction = action;
-  $("characterDialogLayer").hidden = false;
-  $("dialogAction").focus();
+  state.dialogDismissible = isWikiWhyDialogDismissible(dialogId);
+  for (const child of document.querySelector(".recovery-desktop").children) {
+    if (child !== layer) child.inert = true;
+  }
+  layer.hidden = false;
+  $("dialogHeading").focus({ preventScroll: true });
+}
+
+function showRealRewriteSequence({ includeWarning = false } = {}) {
+  const showRewrite = () => showCharacterDialog("reverse-hack-ready", () => {
+    showCharacterDialog("reverse-hack-amy", beginRealShieldSequence);
+  });
+  if (includeWarning) showCharacterDialog("amy-warning", showRewrite);
+  else showRewrite();
+}
+
+function beginRealShieldSequence() {
+  hideCharacterDialog();
+  const transition = beginWikiWhyShield(localStateStorage, {
+    currentState: state.campaignState,
+    startedAt: new Date().toISOString(),
+  });
+  state.campaignState = transition.state;
+  state.campaignPersisted = transition.ok;
+  renderCampaignMeter(state.campaignState);
+  renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
+  renderRecoveryHub();
+  show("read");
+  if (state.campaignState.phase === "secured") {
+    $("readerState").textContent = "WIKIWHY SECURED · UNAUTHORIZED WRITE BLOCKED";
+    $("progressText").textContent = "Evidence file recovered · return to the Recovery Map to inspect Case File slot 1";
+    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured", returnToHub));
+    return;
+  }
+  const remaining = 3 - state.campaignState.shieldPass;
+  $("readerState").textContent = state.campaignState.shieldPass
+    ? `SHIELD PROTOCOL RESUMED · ${remaining} REPAIR${remaining === 1 ? "" : "S"} REMAIN`
+    : "SHIELD PROTOCOL READY · EXACTLY THREE REPAIRS REMAIN";
+  $("progressText").textContent = "Reading metrics remain visible; each accepted Shield reading seals one pass";
+  if (state.campaignState.shieldPass) {
+    showCharacterDialog(`shield-pass-${state.campaignState.shieldPass}`, openNextCampaignReading);
+  } else {
+    showCharacterDialog("shield-intro", openNextCampaignReading);
+  }
+}
+
+function configurePostResultButton() {
+  $("continueResult").disabled = false;
+  $("again").disabled = true;
+  $("again").textContent = "Passage already counted";
+  if (state.campaignState.phase === "secured") {
+    $("continueResult").textContent = "Return to Recovery Map";
+    return;
+  }
+  if (state.campaignState.phase === "reverse-hack") {
+    $("continueResult").textContent = "Review background write";
+    return;
+  }
+  const next = selectNextWikiWhyPassage(state.campaignState);
+  $("continueResult").textContent = next.passage ? "Load next recovered file" : "View content status";
+}
+
+function handleRealCampaignEvents(events) {
+  if (events.includes("site-secured")) {
+    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured", returnToHub));
+    return;
+  }
+  if (events.includes("shield-pass-complete")) {
+    showCharacterDialog(`shield-pass-${state.campaignState.shieldPass}`, openNextCampaignReading);
+    return;
+  }
+  if (events.includes("reverse-hack-ready")) {
+    showRealRewriteSequence({ includeWarning: events.includes("amy-warning") });
+    return;
+  }
+  if (events.includes("amy-warning")) showCharacterDialog("amy-warning");
 }
 
 async function discardActiveReadingForDiagnostics() {
@@ -333,34 +641,65 @@ async function advanceDiagnosticExperience() {
   const next = applyDiagnosticState(transition.state);
   diagnostic("wrapper-diagnostic-advance", { event: transition.event, phase: next.phase, simulatedPassages: next.simulatedPassages });
   if (transition.event === "amy-warning") showCharacterDialog("amy-warning");
-  if (transition.event === "reverse-hack-ready") showCharacterDialog("reverse-hack-ready", beginDiagnosticShield);
+  if (transition.event === "reverse-hack-ready") showCharacterDialog("reverse-hack-ready", () => {
+    showCharacterDialog("reverse-hack-amy", beginDiagnosticShield);
+  });
   if (transition.event === "shield-pass-complete") showCharacterDialog(`shield-pass-${next.shieldPass}`);
-  if (transition.event === "site-secured") showCharacterDialog("site-secured");
+  if (transition.event === "site-secured") {
+    showCharacterDialog("site-secured-amy", () => showCharacterDialog("site-secured"));
+  }
 }
 
-function renderSavedRepair(savedState) {
+function renderSavedRepair(savedState, { persisted = state.campaignPersisted } = {}) {
   if (savedState.repairCount < 1) return;
-  $("recoveredFilesShortcut").disabled = false;
-  $("recoveredFilesCount").textContent = `${savedState.repairCount} repair${savedState.repairCount === 1 ? "" : "s"} saved`;
+  $("recoveredFilesShortcut").disabled = !persisted;
+  $("recoveredFilesCount").textContent = persisted
+    ? `${savedState.repairCount} repair${savedState.repairCount === 1 ? "" : "s"} saved`
+    : "Tab only · not saved";
   $("savedRepairReceipt").hidden = false;
-  $("savedStability").textContent = `${savedState.stability}%`;
-  $("savedRepairCount").textContent = `${savedState.repairCount} saved repair${savedState.repairCount === 1 ? "" : "s"}`;
+  $("savedRepairEyebrow").textContent = persisted ? "LASTING REPAIR FOUND" : "TAB-ONLY REPAIR";
+  $("savedStability").textContent = savedState.phase === "shield"
+    ? `${savedState.shieldPass}/3`
+    : `${savedState.stability}%`;
+  $("savedRepairMode").textContent = savedState.phase === "shield" ? "SHIELD PROTOCOL" : savedState.phase === "secured" ? "SITE SECURED" : "SITE STABILITY";
+  $("savedRepairCount").textContent = persisted
+    ? `${savedState.repairCount} saved repair${savedState.repairCount === 1 ? "" : "s"}`
+    : `${savedState.repairCount} tab-only repair${savedState.repairCount === 1 ? "" : "s"}`;
   $("savedReaction").textContent = savedState.lastReaction || "That held.";
   $("savedRepairStatus").hidden = false;
-  $("savedRepairStatus").textContent = `WikiWhy is ${savedState.stability}% stable on this device. Audio and transcript text were not saved.`;
+  $("savedRepairStatus").textContent = !persisted
+    ? "This result is available in the current tab, but the browser did not save it for reload. Audio and transcript text were not saved."
+    : savedState.phase === "secured"
+    ? "WikiWhy is secured on this device. The unauthorized write was blocked and evidence slot 1 is available."
+    : savedState.phase === "shield"
+      ? `Shield Protocol is ${savedState.shieldPass} of 3 on this device. Audio and transcript text were not saved.`
+      : savedState.phase === "reverse-hack"
+        ? "Readings saved. Evidence saved. A background automated write was detected at 80% site stability."
+        : `WikiWhy is ${savedState.stability}% stable on this device. Audio and transcript text were not saved.`;
 }
 
 function renderRepairOutcome(repairState, persisted) {
-  const previousStability = Math.max(0, repairState.stability - repairState.lastAdvance);
   $("repairOutcome").hidden = false;
-  $("stabilityBefore").textContent = `${previousStability}%`;
-  $("stabilityAfter").textContent = `${repairState.stability}%`;
-  $("stabilityGain").textContent = `+${repairState.lastAdvance}%`;
-  $("stabilityFill").style.width = `${repairState.stability}%`;
-  $("stabilityMeter").setAttribute("aria-valuenow", String(repairState.stability));
+  const shieldResult = repairState.phase === "shield" || repairState.phase === "secured";
+  const previousStability = Math.max(0, repairState.stability - repairState.lastAdvance);
+  const previousShieldPass = Math.max(0, repairState.shieldPass - 1);
+  $("stabilityBefore").textContent = shieldResult ? `${previousShieldPass}/3` : `${previousStability}%`;
+  $("stabilityAfter").textContent = shieldResult ? `${repairState.shieldPass}/3` : `${repairState.stability}%`;
+  $("stabilityGain").textContent = shieldResult ? "+1 PASS" : `+${repairState.lastAdvance}%`;
+  const meterValue = shieldResult ? repairState.shieldProgress : repairState.stability;
+  $("stabilityFill").style.width = `${meterValue}%`;
+  $("stabilityMeter").setAttribute("aria-label", shieldResult ? "Shield Protocol progress" : "WikiWhy site stability");
+  $("stabilityMeter").setAttribute("aria-valuenow", String(meterValue));
+  $("stabilityMeter").setAttribute("aria-valuetext", shieldResult
+    ? `${repairState.shieldPass} of 3 shield repairs sealed`
+    : `${repairState.stability}% WikiWhy site stability`);
   $("repairReaction").textContent = repairState.lastReaction;
   $("repairPersistence").textContent = persisted
-    ? "Reading saved · evidence saved · available after reload"
+    ? repairState.phase === "reverse-hack"
+      ? "READINGS SAVED · EVIDENCE SAVED · background write isolated"
+      : repairState.phase === "secured"
+        ? "READING SAVED · EVIDENCE FILE RECOVERED · available after reload"
+        : "Reading saved · repair state saved · available after reload"
     : "Repair applied for this tab. This browser did not save it for reload.";
 }
 
@@ -422,20 +761,41 @@ function updateReadingGuide() {
   $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · ${Math.round(state.guideProgress * 100)}%`;
 }
 
+function projectedCampaignPercent(readingProgress) {
+  const progress = Math.min(1, Math.max(0, Number(readingProgress) || 0));
+  const campaign = state.campaignState;
+  if (campaign.phase === "secured") return 100;
+  if (campaign.phase === "reverse-hack") return 80;
+  if (campaign.phase === "shield") {
+    const checkpoints = [0, 33, 66, 100];
+    const start = checkpoints[campaign.shieldPass] ?? 0;
+    const finish = checkpoints[Math.min(3, campaign.shieldPass + 1)] ?? start;
+    return Math.round(start + ((finish - start) * progress));
+  }
+  const start = campaign.stability;
+  const finish = Math.min(80, start + 20);
+  return Math.round(start + ((finish - start) * progress));
+}
+
 function updateProgress(alignment, latencyMs = null) {
   alignment.matchedTokenIndexes.forEach((index) => state.confirmedMatches.add(index));
   state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
   state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
-  const previousPercent = state.repairPercent;
+  const previousProjected = projectedCampaignPercent(state.repairPercent / 100);
   state.repairPercent = Math.max(state.repairPercent, percent);
-  $("repairFill").style.width = `${percent}%`;
-  $("repairEdge").style.left = `${percent}%`;
-  positionTechnoAtRepair(percent, { animate: percent > previousPercent });
-  $("repairPercent").textContent = `${percent}% repaired`;
-  $("siteStatus").textContent = percent >= 100 ? "STATUS: REPAIR COMPLETE" : percent > 0 ? `STATUS: RECOVERING · ${percent}%` : "STATUS: CORRUPTED";
-  $("siteStatus").classList.toggle("complete", percent >= 100);
-  $("siteStatus").style.color = percent >= 100 ? "#246b3c" : "#a6231d";
+  const projected = projectedCampaignPercent(state.repairPercent / 100);
+  $("repairFill").style.width = `${projected}%`;
+  $("repairEdge").style.left = `${projected}%`;
+  positionTechnoAtRepair(projected, { animate: projected > previousProjected });
+  $("repairPercent").textContent = `${percent}% reading confirmed`;
+  $("siteStatus").textContent = state.campaignState.phase === "shield"
+    ? `SHIELD · ${state.campaignState.shieldPass} OF 3`
+    : percent > 0
+      ? "STATUS: RECOVERING"
+      : campaignView(state.campaignState).status;
+  $("siteStatus").classList.remove("complete");
+  $("siteStatus").style.color = "#a6231d";
   $("progressText").textContent = `${percent}% confirmed by local transcript`;
   $("latency").textContent = latencyMs == null ? "Waiting for first checkpoint" : `Last checkpoint: ${(latencyMs / 1000).toFixed(1)}s`;
   renderPassage();
@@ -586,7 +946,7 @@ async function finishReading() {
   const completedAt = new Date().toISOString();
   const storedSession = saveSessionSummary(localStateStorage, {
     completedAt,
-    passageId: PHOTOSYNTHESIS_PASSAGE.id,
+    passageId: activePassage.id,
     result: state.result,
     sessionId: state.sessionId,
   });
@@ -610,7 +970,7 @@ async function finishReading() {
 
 function sessionReport() {
   return {
-    appVersion: "wikiwhy-batched-2",
+    appVersion: "wikiwhy-campaign-v3",
     browser: navigator.userAgent,
     checkpoints: state.diagnostics.filter(({ type }) => type.startsWith("checkpoint")),
     completedAt: new Date().toISOString(),
@@ -638,6 +998,10 @@ async function exportReport() {
 
 async function prepare() {
   if (state.preparing) return;
+  if (!state.campaignEligible) {
+    renderContentAvailabilityGate();
+    return;
+  }
   state.preparing = true;
   $("begin").disabled = true;
   try {
@@ -672,37 +1036,92 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
-  const current = readWikiWhyState(localStateStorage);
-  const outcome = calculateWikiWhyRepair({
+  if (state.resultApplied) {
+    if (state.campaignState.phase === "secured") returnToHub();
+    else if (state.campaignState.phase === "reverse-hack") showRealRewriteSequence();
+    else openNextCampaignReading();
+    return;
+  }
+  if (!state.campaignEligible) {
+    renderContentAvailabilityGate();
+    return;
+  }
+  const outcome = calculateWikiWhyReadingOutcome({
+    campaignState: state.campaignState,
     comprehension: state.comprehension,
-    previousStability: current.stability,
     readingResult: state.result,
   });
-  const repair = uiPreview
+  let previewValue = JSON.stringify(state.campaignState);
+  const campaignStorage = uiPreview
     ? {
-        ok: true,
-        state: {
-          ...current,
-          lastAdvance: outcome.advance,
-          lastReaction: outcome.reaction,
-          repairCount: current.repairCount + 1,
-          stability: outcome.stability,
-        },
+        getItem: () => previewValue,
+        setItem: (_key, value) => { previewValue = value; },
       }
-    : recordWikiWhyRepair(localStateStorage, {
-        ...outcome,
-        passageId: PHOTOSYNTHESIS_PASSAGE.id,
-        repairedAt: new Date().toISOString(),
-        sessionId: state.sessionId,
-      });
-  renderRepairOutcome(repair.state, repair.ok);
-  renderCampaignMeter(repair.state);
-  if (repair.ok) renderSavedRepair(repair.state);
+    : localStateStorage;
+  const repair = applyWikiWhyReading(campaignStorage, {
+    currentState: state.campaignState,
+    outcome,
+    passageId: activePassage.id,
+    repairedAt: new Date().toISOString(),
+    sessionId: state.sessionId,
+  });
+  if (!repair.state) {
+    $("reportStatus").textContent = "This reading is saved, but the campaign is waiting for its next explicit story step.";
+    return;
+  }
+  state.campaignState = repair.state;
+  const repairEvents = repair.events ?? [];
+  if (repair.reason === "invalid-outcome" || repair.reason === "shield-not-started") {
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    renderCampaignMeter(state.campaignState);
+    renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
+    renderRecoveryHub();
+    configurePostResultButton();
+    $("reportStatus").textContent = "Campaign progress changed in another tab. This reading result is ready, but it did not consume the newer story step.";
+    if (state.campaignState.phase === "reverse-hack") showRealRewriteSequence();
+    else if (["shield", "secured"].includes(state.campaignState.phase)) beginRealShieldSequence();
+    return;
+  }
+  state.campaignPersisted = repair.ok || Boolean(uiPreview);
+  state.resultApplied = true;
+  if (repairEvents.includes("already-secured")) {
+    $("repairOutcome").hidden = true;
+    renderCampaignMeter(state.campaignState);
+    renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
+    renderRecoveryHub();
+    configurePostResultButton();
+    $("reportStatus").textContent = "WikiWhy was already secured in another tab. This reading result did not add campaign progress.";
+    beginRealShieldSequence();
+    return;
+  }
+  if (repair.duplicate || repair.duplicatePassage) {
+    $("repairOutcome").hidden = true;
+    renderCampaignMeter(state.campaignState);
+    renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
+    renderRecoveryHub();
+    configurePostResultButton();
+    $("reportStatus").textContent = repair.duplicatePassage
+      ? "Reading result is ready. This passage already counted toward WikiWhy, so campaign progress did not change."
+      : "Reading result is ready. This session already counted toward WikiWhy, so campaign progress did not change.";
+    return;
+  }
+  renderRepairOutcome(state.campaignState, state.campaignPersisted);
+  renderCampaignMeter(state.campaignState);
+  renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
   renderRecoveryHub();
-  diagnostic("wrapper-repair-persistence", { advance: outcome.advance, saved: repair.ok });
-  $("continueResult").disabled = true;
-  $("continueResult").textContent = "Repair applied";
-  $("reportStatus").textContent = `${outcome.reaction} WikiWhy is ${outcome.stability}% stable for now.`;
+  diagnostic("wrapper-repair-persistence", { advance: outcome.advance, events: repair.events, saved: repair.ok });
+  configurePostResultButton();
+  $("reportStatus").textContent = !state.campaignPersisted
+    ? "The repair is active in this tab, but this browser did not save it for reload."
+    : state.campaignState.phase === "secured"
+    ? "WikiWhy secured. The unauthorized AI write was blocked and evidence slot 1 was saved."
+    : state.campaignState.phase === "shield"
+      ? `${state.campaignState.lastReaction} Shield Protocol is ${state.campaignState.shieldPass} of 3.`
+      : state.campaignState.phase === "reverse-hack"
+        ? "Readings saved. Evidence saved. The automated verifier is still writing after its command ended."
+        : `${state.campaignState.lastReaction} WikiWhy is ${state.campaignState.stability}% stable for now.`;
+  handleRealCampaignEvents(repairEvents);
 };
 $("export").onclick = exportReport;
 $("diagnosticToggle").onclick = () => {
@@ -735,15 +1154,35 @@ $("diagnosticReset").onclick = async () => {
   $("progressText").textContent = "Diagnostic mode · no reading score created";
 };
 $("dialogAction").onclick = () => (state.dialogAction ?? hideCharacterDialog)();
+$("characterDialog").addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    if (state.dialogDismissible) hideCharacterDialog();
+    else $("dialogAction").focus({ preventScroll: true });
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const focusable = [...$("characterDialog").querySelectorAll("button:not(:disabled), a[href], [tabindex]:not([tabindex='-1'])")];
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable.at(-1);
+  const active = document.activeElement;
+  if (!focusable.includes(active) || (!event.shiftKey && active === last) || (event.shiftKey && active === first)) {
+    event.preventDefault();
+    (event.shiftKey ? last : first).focus();
+  }
+});
 $("previewBack").onclick = returnToHub;
 $("previewReturn").onclick = returnToHub;
 $("taskStart").onclick = returnToHub;
 $("taskHub").onclick = returnToHub;
 $("taskSite").onclick = () => openRecoverySite(state.selectedSiteId);
 $("taskReader").onclick = () => {
-  if (state.result) show("review");
+  if (state.result && !state.resultApplied) show("review");
   else if (state.listening) show("read");
   else if (state.preparing) show("setup");
+  else if (state.campaignState.phase === "shield") beginRealShieldSequence();
+  else if (["reverse-hack", "secured"].includes(state.campaignState.phase)) openWikiWhyExperience();
   else showDesktopMessage("Reading Companion opens automatically beside an active recovery. No passage is running yet.");
 };
 document.querySelectorAll(".desktop-shortcut").forEach((button) => {
@@ -772,8 +1211,8 @@ document.querySelectorAll(".quiz button").forEach((button) => {
       choice.classList.toggle("wrong", choice === button && !correct);
     });
     $("quizFeedback").textContent = correct
-      ? PHOTOSYNTHESIS_PASSAGE.comprehension.correctFeedback
-      : PHOTOSYNTHESIS_PASSAGE.comprehension.incorrectFeedback;
+      ? activePassage.comprehension.correctFeedback
+      : activePassage.comprehension.incorrectFeedback;
     $("payoff").hidden = !correct;
     state.comprehension = correct ? "supported" : "retry-offered";
     if (state.sessionId) {
@@ -796,11 +1235,14 @@ function updateDesktopClock() {
 }
 
 hydrateInternetRecoveryCopy();
-hydratePassage();
+if (uiPreview) {
+  state.campaignState = readWikiWhyState(null);
+  state.campaignPersisted = true;
+}
+selectCampaignPassage();
 renderRecoveryHub();
-const previousWikiWhyState = readWikiWhyState(localStateStorage);
-renderSavedRepair(previousWikiWhyState);
-renderCampaignMeter(previousWikiWhyState);
+renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
+renderCampaignMeter(state.campaignState);
 state.diagnosticState = readWikiWhyDiagnosticState(localStateStorage);
 renderDiagnosticPanel(state.diagnosticState);
 updateDesktopClock();

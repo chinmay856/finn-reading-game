@@ -1,5 +1,45 @@
 # Session handoff
 
+## WikiWhy real campaign foundation
+
+- The deployed Recovery Map milestone is authoritative on `main` at `270c63d`
+  through PR #30. Active work continues on
+  `agent/wikiwhy-campaign-foundation`.
+- Integrated the parallel designer's runtime build package through design tip
+  `40f961e`, including the hub, runtime UI, asset-use, site-copy, passage-plan,
+  WikiWhy first-slice, and all ten site briefs. The one overlapping character
+  document was reconciled without dropping either side.
+- Replaced the real WikiWhy `stability only` save with version 3 campaign state.
+  It migrates v1/v2, persists explicit phase, warning/rewrite timing, Shield
+  pass, completed passage IDs, a bounded set of applied session IDs, secured
+  time, and final evidence ID. A prior session cannot count twice even after
+  later sessions or reloads.
+- Real transitions now support Act I warning, ordered 70/80 crossing, the 80%
+  autonomous write, explicit Shield start, exactly three accepted Shield
+  readings at 33/66/100, permanent secured state, blocked AI write, and Case
+  File evidence slot 1. Evidence is absent before Shield pass 3.
+- The nested WikiWhy page renders persisted campaign progress at rest and only
+  projects toward the next possible step while a reading is active. It has a
+  right-to-left rewrite layer, three-item Shield checklist, permanent evidence
+  receipt, production Amy/Chinmay crops, and exact Techno alert/celebration
+  sheet crops. Reduced-motion mode keeps state understandable without the
+  rewrite animation.
+- Added a neutral executable-content catalog and wrapper-owned WikiWhy deck
+  order. Only `photosynthesis-a01` is selectable. The other 19 deck drafts are
+  candidates and cannot be speech-scored until their content gate is complete.
+  When no unseen executable passage remains, the UI disables microphone setup
+  and explains that progress is safe instead of silently repeating content.
+- The photosynthesis record now exposes a reviewed revision, modification
+  notice, license metadata, and visible source/contributor plus CC BY-SA 4.0
+  links outside the scored passage.
+- Full browser diagnostic QA covered the warning, rewrite, Amy/Chinmay sequence,
+  Shield 0/3 through 3/3, final evidence receipt, content gate, and clean current
+  console. Review images and unresolved visual/game-design questions are in
+  `docs/design/DESIGN_REQUESTS.md` for the parallel designer.
+- Validation: `npm run check`, `npm test` (78 passing), and `npm run build` pass.
+- Next: publish/merge/deploy this foundation, promote reviewed WikiWhy content,
+  then build ThreadIt's distinct source-tree Act I slice.
+
 ## Recovery Map and multi-site preview shell
 
 - Integrated the latest rogue-AI campaign/design branch with the current live

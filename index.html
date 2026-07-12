@@ -78,7 +78,7 @@
             <p data-copy-id="mission.preparation.body">Read continuously at a comfortable pace. Pause when you need to. Correct yourself whenever you want. The repair only moves forward.</p>
             <div class="file-card">
               <div class="file-icon" aria-hidden="true">TXT</div>
-              <div><b id="fileTitle">How Plants Store Sunlight</b><span id="fileMeta">About 170 words · science · grades 10–12</span><span id="fileSource">Adapted and modified from English Wikipedia contributors.</span><span>Audio upload: none · Forced retries: absolutely not</span></div>
+              <div><b id="fileTitle">How Plants Store Sunlight</b><span id="fileMeta">About 170 words · science · grades 10–12</span><span id="fileSource">Adapted and modified from English Wikipedia contributors.</span><span id="fileRights"><a id="fileSourceLink" href="https://en.wikipedia.org/wiki/Photosynthesis" target="_blank" rel="noreferrer">Source and contributors</a> · <a id="fileLicenseLink" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a><span id="fileModificationNotice"> · Adapted and modified for length, reading level, and microphone use.</span></span><span>Audio upload: none · Forced retries: absolutely not</span></div>
             </div>
             <label class="guide-setting">Reading guide pace<select id="guideWpm"><option value="150">150 WPM</option><option value="200">200 WPM</option><option value="250" selected>250 WPM</option><option value="300">300 WPM</option></select></label>
             <p class="privacy-truth" data-copy-id="privacy.microphone.truth">Your voice is processed on this device. The game does not upload or save your audio or transcript.</p>
@@ -86,9 +86,9 @@
             <p id="modelProgress" class="model-progress" role="status">Your browser will ask for microphone permission next.</p>
             <p id="savedRepairStatus" class="model-progress" role="status" hidden></p>
             <section id="savedRepairReceipt" class="saved-repair-receipt" hidden>
-              <small>LASTING REPAIR FOUND</small>
+              <small id="savedRepairEyebrow">LASTING REPAIR FOUND</small>
               <div><b>WikiWhy</b><strong id="savedStability">0%</strong></div>
-              <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span>SITE STABILITY</span></div>
+              <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span id="savedRepairMode">SITE STABILITY</span></div>
               <p id="savedReaction">That held.</p>
             </section>
             <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
@@ -131,6 +131,18 @@
             </div>
             <div id="repairEdge" class="repair-edge" aria-hidden="true"></div>
             <div id="technoRepairSprite" class="techno-repair-sprite" aria-hidden="true"><img id="technoRepairSpriteImage" src="/apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp" alt=""></div>
+            <aside id="wikiwhyCampaignOverlay" class="wikiwhy-campaign-overlay" aria-live="polite" hidden>
+              <small id="campaignOverlayEyebrow">CAMPAIGN STATE</small>
+              <h3 id="campaignOverlayHeading">WikiWhy repair</h3>
+              <img id="campaignTechnoState" class="campaign-techno-state" src="/apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp" alt="" hidden>
+              <p id="campaignOverlayBody"></p>
+              <ol id="shieldChecklist" hidden>
+                <li>Recover content layer</li>
+                <li>Verify citations and history</li>
+                <li>Seal edit permissions</li>
+              </ol>
+              <section id="wikiwhyEvidenceReceipt" hidden><b>WIKIWHY / ACTIVE WRITE AFTER COMMAND END</b><span>People can contribute, but evidence earns trust.</span><span>Automated verifier write attempt: ACCESS DENIED.</span></section>
+            </aside>
           </div>
           <footer class="browser-status">
             <b id="siteStatus">STATUS: CORRUPTED</b>
@@ -195,11 +207,11 @@
       </aside>
 
       <div id="characterDialogLayer" class="character-dialog-layer" hidden>
-        <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogBody">
+        <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogEyebrow dialogBody dialogMeta">
           <div class="window-titlebar"><span id="dialogTitle">AMY // ENGINEER CHANNEL</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="character-dialog-body">
             <img id="dialogPortrait" src="/apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg" alt="">
-            <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
+            <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading" tabindex="-1">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
           </div>
         </article>
       </div>

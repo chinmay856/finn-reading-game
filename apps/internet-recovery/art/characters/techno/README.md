@@ -18,6 +18,17 @@ Use the corresponding `*-still.webp` asset when
 currently visible state. Techno remains wrapper presentation: these assets must
 not influence reading accuracy, scoring, comprehension, or saved progress.
 
+## Campaign-state crops
+
+These exact production-sheet crops support the authored WikiWhy story states:
+
+- `techno-alert-ball-pin.webp` is `techno_alert_ball_pin` (row 1, column 2).
+- `techno-celebrate-spin.webp` is `techno_celebrate_spin` (row 2, column 3).
+
+Each 384 by 512 source cell is resized to 288 by 384 and shown as a small state
+panel. The drawn motion lines carry the action when reduced motion is preferred;
+the runtime does not rotate or flash the panel.
+
 The source poses were generated with the built-in image-generation workflow
 from the reviewed Techno concept board. Flat chroma-key backgrounds were removed
 locally, and every encoded loop was decoded into a six-frame review strip to

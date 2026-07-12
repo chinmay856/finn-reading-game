@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { isWikiWhyDialogDismissible } from "../apps/internet-recovery/wikiwhy-dialogues.js";
 
 test("every app DOM reference exists in the prototype HTML", async () => {
   const [app, html] = await Promise.all([
@@ -63,7 +64,9 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(html, /id="repairEdge"/u);
   assert.match(html, /id="repairOutcome"/u);
   assert.match(html, /id="savedRepairReceipt"/u);
-  assert.match(app, /calculateWikiWhyRepair/u);
+  assert.match(html, /id="fileSourceLink"/u);
+  assert.match(html, /id="fileLicenseLink"/u);
+  assert.match(app, /calculateWikiWhyReadingOutcome/u);
 });
 
 test("implemented wrapper copy uses stable IDs outside the Reading Engine", async () => {
@@ -101,11 +104,14 @@ test("Techno progress animation is optional wrapper presentation", async () => {
     readFile(new URL("../index.html", import.meta.url), "utf8"),
     access(new URL("../apps/internet-recovery/art/characters/techno/techno-progress-push-loop.webp", import.meta.url)),
     access(new URL("../apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/techno/techno-celebrate-spin.webp", import.meta.url)),
   ]);
   assert.match(html, /id="technoRepairSprite"/u);
   assert.match(app, /animateTechnoProgress/u);
   assert.match(app, /prefers-reduced-motion: reduce/u);
   assert.match(app, /2_050/u);
+  assert.match(html, /id="campaignTechnoState"/u);
   assert.doesNotMatch(engine, /Techno|techno-progress|technoRepairSprite/iu);
 });
 
@@ -117,6 +123,8 @@ test("campaign diagnostics stay in the wrapper and expose honest test controls",
     readFile(new URL("../index.html", import.meta.url), "utf8"),
     access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg", import.meta.url)),
     access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-evidence.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-skeptical.jpg", import.meta.url)),
+    access(new URL("../apps/internet-recovery/art/characters/dialogue/amy-tools.jpg", import.meta.url)),
     access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url)),
     access(new URL("../apps/internet-recovery/art/characters/dialogue/chinmay-fluster-2.jpg", import.meta.url)),
   ]);
@@ -126,6 +134,16 @@ test("campaign diagnostics stay in the wrapper and expose honest test controls",
   assert.match(app, /advanceDiagnosticExperience/u);
   assert.match(diagnostics, /internet-recovery-98\.wikiwhy\.diagnostics\.v1/u);
   assert.doesNotMatch(engine, /diagnostic|Amy|Chinmay|Shield Protocol/iu);
+});
+
+test("transition-critical Shield dialogs cannot strand the campaign on Escape", async () => {
+  const app = await readFile(new URL("../app.js", import.meta.url), "utf8");
+  assert.equal(isWikiWhyDialogDismissible("shield-intro"), false);
+  assert.equal(isWikiWhyDialogDismissible("shield-pass-1"), false);
+  assert.equal(isWikiWhyDialogDismissible("shield-pass-2"), false);
+  assert.equal(isWikiWhyDialogDismissible("amy-warning"), true);
+  assert.match(app, /if \(state\.dialogDismissible\) hideCharacterDialog\(\)/u);
+  assert.match(app, /state\.campaignState\.phase === "shield"\) beginRealShieldSequence\(\)/u);
 });
 
 test("the recovery hub is clickable without pretending unfinished sites are playable", async () => {
@@ -141,11 +159,14 @@ test("the recovery hub is clickable without pretending unfinished sites are play
   assert.match(html, /MECHANICS NOT CONNECTED/u);
   assert.match(app, /renderRecoveryHub/u);
   assert.match(app, /renderSitePreview/u);
-  assert.match(app, /show\(state\.result \? "review" : "setup"\)/u);
+  assert.match(app, /openWikiWhyExperience/u);
+  assert.match(app, /renderContentAvailabilityGate/u);
   assert.match(app, /state\.preparing/u);
   assert.match(app, /keepPreparationVisible/u);
-  assert.match(app, /if \(repair\.ok\) renderSavedRepair\(repair\.state\)/u);
-  assert.match(app, /renderSavedRepair\(repair\.state\)/u);
+  assert.match(app, /applyWikiWhyReading/u);
+  assert.match(app, /state\.campaignState = repair\.state/u);
+  assert.match(app, /renderSavedRepair\(state\.campaignState, \{ persisted: state\.campaignPersisted \}\)/u);
+  assert.match(html, /id="wikiwhyCampaignOverlay"/u);
   assert.match(catalog, /playable: true/u);
   assert.equal((catalog.match(/playable: true/gu) ?? []).length, 1);
   assert.match(html, /aria-label="Back to Recovery Map"/u);
@@ -161,6 +182,8 @@ test("the rogue AI owns the overwrite while production portraits stay wrapper-ow
   assert.doesNotMatch(`${css}\n${dialogues}`, /CHINMAY WAS HERE|chinmay_admin/iu);
   assert.match(dialogues, /ai_repair_service/u);
   assert.match(dialogues, /amy-evidence\.jpg/u);
+  assert.match(dialogues, /amy-skeptical\.jpg/u);
+  assert.match(dialogues, /amy-tools\.jpg/u);
   assert.match(dialogues, /chinmay-fluster-1\.jpg/u);
   assert.match(dialogues, /chinmay-fluster-2\.jpg/u);
   assert.match(html, /amy-supportive\.jpg/u);

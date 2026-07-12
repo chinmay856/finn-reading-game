@@ -1,7 +1,14 @@
 const AMY_SUPPORTIVE_URL = new URL("./art/characters/dialogue/amy-supportive.jpg", import.meta.url).href;
 const AMY_EVIDENCE_URL = new URL("./art/characters/dialogue/amy-evidence.jpg", import.meta.url).href;
+const AMY_SKEPTICAL_URL = new URL("./art/characters/dialogue/amy-skeptical.jpg", import.meta.url).href;
+const AMY_TOOLS_URL = new URL("./art/characters/dialogue/amy-tools.jpg", import.meta.url).href;
 const CHINMAY_FLUSTER_1_URL = new URL("./art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url).href;
 const CHINMAY_FLUSTER_2_URL = new URL("./art/characters/dialogue/chinmay-fluster-2.jpg", import.meta.url).href;
+const NON_DISMISSIBLE_DIALOGUES = new Set(["shield-intro", "shield-pass-1", "shield-pass-2"]);
+
+export function isWikiWhyDialogDismissible(dialogId) {
+  return !NON_DISMISSIBLE_DIALOGUES.has(dialogId);
+}
 
 export const WIKIWHY_DIALOGUES = Object.freeze({
   "amy-warning": Object.freeze({
@@ -14,21 +21,30 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     title: "AMY // ENGINEER CHANNEL",
   }),
   "reverse-hack-ready": Object.freeze({
-    action: "Compare versions",
-    body: "I asked it to clean things up, not rewrite the sources. That command should have ended.",
-    eyebrow: "AUTOMATIC IMPROVEMENT CONTINUES",
-    heading: "CHINMAY: The AI is still running.",
-    meta: "Writer: ai_repair_service · Command: ENDED · Write status: ACTIVE",
+    action: "Check the write log",
+    body: "Okay, tiny clarification. My AI is not supposed to keep editing after the command ends, which is why this is technically very educational.",
+    eyebrow: "AUTOMATIC VERIFICATION CONTINUES",
+    heading: "The AI service is still writing.",
+    meta: "Writer: wiki_auto_fix_ai · Service: ai_repair_service · Command: ENDED · Write status: ACTIVE",
     portrait: CHINMAY_FLUSTER_1_URL,
     speaker: "chinmay",
     title: "CEO BROADCAST // LIVE",
   }),
+  "reverse-hack-amy": Object.freeze({
+    action: "Start Shield Protocol",
+    body: "Good news: Finn’s work is saved. Bad news: your shortcut is still typing.",
+    eyebrow: "READINGS SAVED · EVIDENCE SAVED",
+    heading: "The background write is isolated.",
+    portrait: AMY_SKEPTICAL_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
   "shield-intro": Object.freeze({
     action: "Start repair 1 of 3",
-    body: "Okay. I caught the AI's change. Give me three clean repair passes and I can seal this site around it. Three. No surprise fourth one.",
+    body: "I can hold the write path open for three clean repairs. Do those, and I can seal WikiWhy so this one stays fixed.",
     eyebrow: "NEW OBJECTIVE",
     heading: "Shield Protocol is ready.",
-    portrait: AMY_SUPPORTIVE_URL,
+    portrait: AMY_TOOLS_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
@@ -43,18 +59,28 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
   }),
   "shield-pass-2": Object.freeze({
     action: "Continue to final repair",
-    body: "Connections verified. One repair remains. The AI service is pushing against the boundary.",
+    body: "Citations and history verified. One repair remains. The AI service is pushing against the boundary.",
     eyebrow: "SHIELD PASS 2 OF 3",
-    heading: "Its write access is almost boxed out.",
+    heading: "Citations and history are sealed.",
+    portrait: AMY_SUPPORTIVE_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }),
+  "site-secured-amy": Object.freeze({
+    action: "Open blocked-write log",
+    body: "Nice work, Finn. That site is not just cleaner. It has a lock the shortcut cannot write through.",
+    eyebrow: "WIKIWHY SECURED",
+    heading: "Evidence file recovered.",
+    meta: "WIKIWHY / ACTIVE WRITE AFTER COMMAND END",
     portrait: AMY_SUPPORTIVE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
   "site-secured": Object.freeze({
-    action: "Return to the secured site",
-    body: "I told it to help. I didn't tell it to keep writing.",
+    action: "Return to Recovery Map",
+    body: "ai_repair_service tried to modify WikiWhy and was denied. I would like the record to show that I am also upset with my AI, although I did name the deployment ‘Definitely Fine.’",
     eyebrow: "ACCESS DENIED",
-    heading: "ai_repair_service attempted to modify this site.",
+    heading: "Unauthorized AI write blocked.",
     meta: "AUTONOMOUS AI WRITE: ACCESS DENIED",
     portrait: CHINMAY_FLUSTER_2_URL,
     speaker: "chinmay",

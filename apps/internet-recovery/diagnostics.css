@@ -73,16 +73,33 @@
 .dialog-meta { padding: 8px; border: 1px dotted #555; background: #fff; color: #555; font: 11px/1.35 "Courier New", monospace !important; }
 
 .repair-stage.live-corruption { animation: nested-page-breach .7s steps(4, end) 2; }
-.repair-stage.live-corruption::after { content: "VIBESHIFT AUTO-FIX AI · WRITE STILL ACTIVE"; position: absolute; z-index: 12; inset: 14px 14px auto auto; padding: 8px 12px; border: 2px solid #ff5b4e; background: #3b0505; color: #ffdf55; font-weight: 700; box-shadow: 4px 4px 0 #4d0000; }
+.repair-stage.live-corruption::before { content: ""; position: absolute; z-index: 11; inset: 0; pointer-events: none; background: repeating-linear-gradient(135deg, #8b080822 0 12px, #ff3f2a30 12px 16px); clip-path: inset(0 0 0 100%); animation: rogue-write-sweep 1.1s steps(8, end) forwards; }
+.repair-stage.live-corruption::after { content: "WIKI_AUTO_FIX_AI / AI_REPAIR_SERVICE · WRITE ACTIVE"; position: absolute; z-index: 12; inset: 14px 14px auto auto; padding: 8px 12px; border: 2px solid #ff5b4e; background: #3b0505; color: #ffdf55; font-weight: 700; box-shadow: 4px 4px 0 #4d0000; }
 .repair-stage.shield-mode { outline: 4px solid #2d78a8; outline-offset: -6px; }
 .repair-stage.site-secured { outline: 5px solid #3b9d56; outline-offset: -7px; }
 
+.wikiwhy-campaign-overlay { position: absolute; z-index: 14; right: 16px; bottom: 16px; width: min(360px, calc(100% - 32px)); padding: 12px; border: 3px double #2d78a8; background: #eef7f8f2; box-shadow: 5px 5px 0 #102f4580; color: #173968; }
+.wikiwhy-campaign-overlay[hidden] { display: none; }
+.wikiwhy-campaign-overlay > small { color: #a6231d; font-weight: 700; letter-spacing: .1em; }
+.wikiwhy-campaign-overlay h3 { margin: 5px 0 7px; font: 700 18px/1.1 Georgia, serif; }
+.wikiwhy-campaign-overlay p { margin: 0; font-size: 11px; line-height: 1.4; }
+.wikiwhy-campaign-overlay .campaign-techno-state { float: right; width: 68px; margin: 0 0 7px 10px; border: 1px solid #71828b; background: #f5f1e7; }
+.wikiwhy-campaign-overlay .campaign-techno-state[hidden] { display: none; }
+.wikiwhy-campaign-overlay ol { margin: 9px 0 0; padding: 8px 8px 8px 29px; border: 1px solid #6a8b9c; background: #fff; font-size: 11px; line-height: 1.6; }
+.wikiwhy-campaign-overlay li.complete { color: #246b3c; font-weight: 700; text-decoration: line-through; }
+.wikiwhy-campaign-overlay li.complete::marker { content: "✓  "; }
+.wikiwhy-campaign-overlay section { display: grid; gap: 5px; margin-top: 9px; padding: 9px; border: 2px solid #246b3c; background: #e7f1e5; font-size: 10px; line-height: 1.35; }
+.wikiwhy-campaign-overlay section[hidden] { display: none; }
+.wikiwhy-campaign-overlay section b { color: #174f2c; }
+
 @keyframes dialog-arrive { from { opacity: 0; transform: translate(14px, 10px); } to { opacity: 1; transform: none; } }
 @keyframes nested-page-breach { 0%, 100% { filter: none; } 30% { filter: contrast(1.5) sepia(1) hue-rotate(310deg); } 55% { transform: translateX(-4px); filter: invert(.14) contrast(1.8); } }
+@keyframes rogue-write-sweep { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 20%); } }
 
 @media (max-width: 900px) {
   .campaign-meter { min-width: 180px; grid-template-columns: auto minmax(55px, 1fr) 30px; }
   .browser-status #latency { display: none; }
+  .wikiwhy-campaign-overlay { width: min(310px, calc(100% - 24px)); right: 12px; bottom: 12px; }
 }
 
 @media (max-width: 680px) {
@@ -96,4 +113,5 @@
 @media (prefers-reduced-motion: reduce) {
   .campaign-meter > i > em, .character-dialog { transition: none; animation: none; }
   .repair-stage.live-corruption { animation: none; border-color: #a6231d; }
+  .repair-stage.live-corruption::before { animation: none; clip-path: inset(0 0 0 20%); }
 }
