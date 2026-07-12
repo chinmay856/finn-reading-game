@@ -10,21 +10,20 @@
 - Chinmay is always long-haired. His visual state progresses from neat,
   overconfident polish to increasingly messy, frazzled, and flustered concern;
   he is never angry at Finn, threatening, or villain-coded.
-- The campaign hub and WikiWhy worked example are review-ready. The nine
-  non-WikiWhy site directions are explicitly WIP/art-direction-under-review and
-  remain exploratory rather than approved production chrome, copy, or assets.
-  They explore the same presentation grammar: an inset site browser inside
-  Finn's fictional remote desktop tunnel, a visible stable desktop rim with
-  restrained old-computer Easter eggs, and a separate trustworthy Reading
-  Companion.
-- Version-two WIP boards now replace the rejected or inconsistent character
-  treatments for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess. The
-  version-one files remain comparison history only and are not builder inputs.
-- `chinmay-portrait-exploration-wip.png` defines six reusable illustrated
-  message states: neutral, confident, three escalating fluster levels, and
-  relieved/cooperative. Builders choose these by wrapper story mood instead of
-  regenerating Chinmay per message. `Chinmay` is the only canonical spelling;
-  alternate transcriptions never enter assets, copy, or filenames.
+- The campaign hub, WikiWhy worked example, and nine non-WikiWhy site boards are
+  now the builder-ready ten-site design set. They approve design direction,
+  story arc, progress fiction, and layout reference for implementation planning,
+  while final runtime UI, exact copy, passage selection, and cropped assets
+  remain build work.
+- The prior inconsistent MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
+  MapGuess boards now carry `-superseded` filenames and are comparison history
+  only. Use the canonical non-WIP filenames in
+  `apps/internet-recovery/art/concepts/sites/README.md`.
+- Production character sheets now live under
+  `apps/internet-recovery/art/characters/`. Builders choose Amy, Chinmay, and
+  Techno states by wrapper story mood instead of regenerating character art per
+  message. `Chinmay` is the only canonical spelling; alternate transcriptions
+  never enter assets, copy, or filenames.
 - Current revised boards carry the `rogue-ai` filename; the earlier unsuffixed
   boards remain only as superseded layout-history references. Generation
   provenance and the final shared prompt direction are recorded in
@@ -34,9 +33,7 @@
   illustrated editorial-cartoon treatment. Techno remains ball-obsessed;
   long-haired Chinmay becomes progressively messier and more frazzled without
   angry or villain coding.
-- WIP site boards are exploratory wrapper designs, not implementation
-  specifications.
-  Each site owns its own three-act story, middle change, progress fiction,
+- Each site owns its own three-act story, middle change, progress fiction,
   reading lane, and resolution; the reusable Reading Engine does not know about
   Chinmay, the AI, the desktop shell, or any site mechanic.
 - Publication target: draft PR #23 on `agent/campaign-spine-content`, stacked on

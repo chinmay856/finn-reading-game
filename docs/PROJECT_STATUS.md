@@ -194,23 +194,18 @@ Use that evidence to choose the next smallest Reading Engine improvement.
 The private Amy/Chinmay and Techno references remain outside the repository.
 Generated concept boards are cataloged under
 [`apps/internet-recovery/art/concepts`](../apps/internet-recovery/art/concepts/README.md).
-The campaign hub and WikiWhy example are review-ready. All nine proposed
-non-WikiWhy site directions remain WIP/art-direction-under-review: they are
-exploratory and do not approve production chrome, copy, or character assets.
-Version-two WIP boards now replace the rejected or inconsistent character art
-for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and MapGuess. The earlier files
-remain explicit comparison history and are not builder inputs. The current WIP
-boards explore the rogue-AI visual canon: an inset browser within Finn's remote
-desktop, restrained retro desktop Easter eggs, a separate stable Reading
-Companion, a visibly nonhuman AI process, and long-haired Chinmay becoming
-frazzled rather than villainous. Unsuffixed earlier boards are retained only as
-superseded composition history.
+The campaign hub, WikiWhy example, and nine non-WikiWhy site boards are now the
+builder-ready ten-site design set. They approve site direction, story arc,
+progress fiction, and layout reference for implementation planning; they do not
+freeze final runtime UI, exact production copy, passage selection, or cropped
+runtime assets. Earlier inconsistent boards have `-superseded` filenames and
+remain comparison history only, not builder inputs.
 
-The WIP Chinmay portrait sheet defines six reusable wrapper states—neutral,
-confident, fluster levels one through three, and relieved/cooperative—so builders
-select a stable illustrated expression by story mood instead of regenerating a
-new portrait for every message. `Chinmay` is the only canonical spelling; an
-alternate transcription must never enter copy, assets, or filenames.
+Production character sheets now live under
+[`apps/internet-recovery/art/characters`](../apps/internet-recovery/art/characters/README.md).
+They define reusable Amy, Chinmay, and Techno panel IDs for builders to crop or
+reference. `Chinmay` is the only canonical spelling; an alternate transcription
+must never enter copy, assets, or filenames.
 
 The wrapper design also includes original broken-web parody missions and a
 dial-up-inspired interstitial that masks genuine between-page loading without
@@ -248,12 +243,12 @@ the first-run pool and Deck B is reserved for unseen replay content. Only the
 Reading Companion passage is expected speech; corrupted/repaired WikiWhy page
 copy is wrapper-owned decorative visual content.
 
-The broader design library now proposes a ten-site roster: WikiWhy, ThreadIt,
-FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On, Spotty-Fi,
-and MapGuess. The nine non-WikiWhy sites each have a review-only three-act board,
+The broader design library now defines the done ten-site roster: WikiWhy,
+ThreadIt, FacePlace, MyCorner, Yahuh! Portal, ViewTube, Search-ish, Amaze-On,
+Spotty-Fi, and MapGuess. The nine non-WikiWhy sites each have a three-act board,
 unique progress fiction and midpoint, and a researched reading-source lane.
-These are design proposals awaiting site-by-site review; they are not current
-prototype implementation scope.
+They are ready for implementation planning, while the current prototype should
+still begin with the smallest useful WikiWhy slice.
 
 The proposed campaign spine now connects those ten independent site stories
 without imposing one global progress mechanic. WikiWhy is the onboarding case;

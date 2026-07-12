@@ -1,10 +1,10 @@
 # Internet Recovery OS concept boards
 
 These generated boards capture visual direction for the wrapper. The campaign
-hub and WikiWhy boards are review-ready design references. The nine non-WikiWhy
-site directions are explicitly WIP and remain under art-direction review; they
-are exploratory boards, not production UI, approved chrome/copy, or final
-sprite exports.
+hub, WikiWhy board, and nine non-WikiWhy site boards are the current
+builder-ready design references. They are approved direction for prototype and
+implementation planning, not final runtime UI, exact production copy, or
+cropped sprite exports.
 
 The final shared prompt direction and per-board deltas for the current canon
 pass are recorded in [`ROGUE_AI_PROMPT_NOTES.md`](ROGUE_AI_PROMPT_NOTES.md).
@@ -64,13 +64,11 @@ reset story details are no longer canonical. WikiWhy's numbers and mechanics are
 not platform defaults. Other sites share only the apparent-problem,
 middle-change, site-specific-resolution rhythm.
 
-Nine additional proposed site directions are indexed under
-[`sites/`](sites/README.md). They are WIP/art-direction-under-review and
-deliberately explore different progress metaphors and midpoint changes.
-Version-two WIP cleanup boards now replace the rejected or inconsistent
-character treatments for MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
-MapGuess. The earlier files remain only as explicit comparison history. Final
-Amy, Chinmay, and Techno production character sheets are available in
+Nine additional site directions are indexed under [`sites/`](sites/README.md).
+They deliberately use different progress metaphors and midpoint changes. The
+canonical non-WIP filenames there are the builder inputs; files renamed with
+`-superseded` remain comparison history only. Final Amy, Chinmay, and Techno
+production character sheets are available in
 [`../characters`](../characters/README.md).
 
 The campaign-spine board accompanies

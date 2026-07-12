@@ -25,8 +25,8 @@ Use these inputs first:
   the stable remote-desktop framing and campaign-hub tone.
 - `apps/internet-recovery/art/characters/README.md` for production Amy,
   Chinmay, and Techno character sheet IDs.
-- `apps/internet-recovery/art/concepts/sites/README.md` only to understand which
-  non-WikiWhy boards are WIP or superseded.
+- `apps/internet-recovery/art/concepts/sites/README.md` for the done
+  non-WikiWhy site-board set and superseded-history notes.
 
 The buildable screen should contain one stable recovery desktop, one inset
 Recovery Browser showing WikiWhy corruption/repair, and one separate Reading
