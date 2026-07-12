@@ -1,5 +1,21 @@
 # Session handoff
 
+## Search-ish origin-proof foundation
+
+- Active branch: `agent/searchish-origin-proof-foundation`.
+- Integrated designer PR #41's canonical Search-ish runtime response and PR
+  #51's complete A01-A07 first-run manuscript roster.
+- Search-ish now renders four apparent result cards, preserves the generated
+  answer, restores four exact origin-label units, saves the Five Costumes
+  midpoint before acknowledgement, and opens three semantic source branches.
+- The responsive Source branch inspector is Recovery Browser-owned, supports
+  focus transfer and Escape/close return, and never overlaps the Reading
+  Companion. Content remains fail-closed with MIC OFF and no reading score.
+- Canonical persisted evidence is reserved for Case File slot 7 as
+  `SEARCHISH_GENERATED_CACHE_REDIRECT.REC`.
+- Designer commit `47c25bf` resolves the Techno asset: canonical wrapper ID
+  `searchish.techno.generated-cache-alert` maps to the paw-alert still.
+
 ## ViewTube evidence-track foundation
 
 - Active branch: `agent/viewtube-evidence-track-foundation`.

@@ -2,8 +2,18 @@
 
 ## 2026-07-12 current builder queue
 
-- Seven structural site runtimes are now on `main`: WikiWhy, ThreadIt,
-  FacePlace, MapGuess, MyCorner, Yahuh, and ViewTube. WikiWhy is the only
+## Search-ish focused follow-up
+
+- Runtime contract and A01-A07 manuscripts are integrated from designer PRs
+  #41 and #51.
+- Resolved by designer commit `47c25bf`: canonical wrapper asset ID
+  `searchish.techno.generated-cache-alert` maps to
+  `techno-paw-alert-still.webp`; no new raster is required.
+
+## ViewTube focused follow-up
+
+- Seven structural site runtimes are on deployed `main`; Search-ish is complete
+  on `agent/searchish-origin-proof-foundation` pending publication. WikiWhy is the only
   speech-playable site; the other integrated sites remain honestly gated until
   their content records pass independent review and real-microphone checks.
 - ViewTube's former `techno_clue_point` request is closed. PR #40 freezes
