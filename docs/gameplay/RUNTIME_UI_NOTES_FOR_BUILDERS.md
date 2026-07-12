@@ -44,6 +44,8 @@ Use these as source-of-truth design inputs:
 - `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md` - full wrapper copy library.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` - concrete visible copy for the
   ten corrupted/repaired site pages.
+- `docs/gameplay/site-build-briefs/README.md` - per-site runtime design briefs
+  for all ten sites.
 - `apps/internet-recovery/art/characters/README.md` - production character
   sheet panel IDs.
 - `apps/internet-recovery/art/concepts/sites/README.md` - done site-board set

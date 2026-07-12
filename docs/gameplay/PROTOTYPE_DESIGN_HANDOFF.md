@@ -23,6 +23,9 @@ Use these inputs first:
   WikiWhy-only scene/state script and acceptance checks.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` for concrete visible copy on the
   corrupted/repaired site pages.
+- `docs/gameplay/site-build-briefs/README.md` for the site-by-site builder
+  briefs covering layout, story turn, progress fiction, character states, and
+  acceptance checks for all ten sites.
 - `content/wikiwhy/PASSAGE_DECKS.md` for the Reading Companion passage pool and
   attribution model.
 - `apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png` for the

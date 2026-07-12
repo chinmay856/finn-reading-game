@@ -18,6 +18,11 @@
   builder target to the WikiWhy playable slice with screen/state copy,
   ownership boundaries, character panel IDs, loading/error copy, and acceptance
   checks.
+- Latest ten-site build aid:
+  `docs/gameplay/site-build-briefs/README.md` indexes builder-facing briefs for
+  all ten Internet Recovery 98 sites. Each site brief records runtime identity,
+  layout, local three-act flow, progress fiction, character states, reading
+  lane, and acceptance checks without implementing code.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems
