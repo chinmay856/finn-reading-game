@@ -22,6 +22,7 @@ designed to support many future themes.
 - Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
 - Internet Recovery player-facing copy deck: [`docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md`](docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md)
 - Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
+- Runtime UI notes for builders: [`docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md`](docs/gameplay/RUNTIME_UI_NOTES_FOR_BUILDERS.md)
 - Ten-site design library: [`docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md`](docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md)
 - Campaign spine and recovery hub: [`docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md`](docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md)
 - Non-WikiWhy source research: [`docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md`](docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md)
