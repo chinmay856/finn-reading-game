@@ -23,6 +23,11 @@
   all ten Internet Recovery 98 sites. Each site brief records runtime identity,
   layout, local three-act flow, progress fiction, character states, reading
   lane, and acceptance checks without implementing code.
+- Latest campaign hub aid:
+  `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` gives concrete Recovery Map
+  copy, site tile text, evidence-file receipts, blocked-write labels, Incoming
+  Case rotation guidance, and count-based global story beats for the ten-site
+  campaign.
 - Canon now separates intent from consequence: Chinmay irresponsibly rushed a
   powerful AI into deployment but sincerely believes his automated fixes will
   help. The AI becomes the actual antagonist when it keeps rewriting systems

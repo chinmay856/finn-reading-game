@@ -16,6 +16,10 @@ the project boundaries:
 - Chinmay is sincere, long-haired, and increasingly flustered;
 - Chinmay's AI owns hostile or autonomous writes.
 
+For Recovery Map tile text, evidence-file receipts, blocked-write labels, and
+global campaign beats, use
+[`../CAMPAIGN_HUB_RUNTIME_BRIEF.md`](../CAMPAIGN_HUB_RUNTIME_BRIEF.md).
+
 ## Build order recommendation
 
 1. WikiWhy as the first playable slice.
@@ -81,4 +85,3 @@ NO READING SCORE
 
 Preview mode may show corrupted/repaired art and a short story teaser. It must
 not pretend that reading, scoring, or campaign persistence exists for that site.
-

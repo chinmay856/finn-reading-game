@@ -41,6 +41,8 @@ Use these as source-of-truth design inputs:
 - `docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md` - ten-site story and progress
   direction.
 - `docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md` - global hub and campaign spine.
+- `docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md` - concrete Recovery Map,
+  site-tile, Case File, evidence receipt, and global story beat copy.
 - `docs/gameplay/INTERNET_RECOVERY_COPY_DECK.md` - full wrapper copy library.
 - `docs/gameplay/SITE_RUNTIME_COPY_PACKS.md` - concrete visible copy for the
   ten corrupted/repaired site pages.

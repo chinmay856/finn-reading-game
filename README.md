@@ -26,6 +26,7 @@ designed to support many future themes.
 - Site runtime copy packs: [`docs/gameplay/SITE_RUNTIME_COPY_PACKS.md`](docs/gameplay/SITE_RUNTIME_COPY_PACKS.md)
 - WikiWhy first-slice build brief: [`docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md`](docs/gameplay/WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md)
 - Ten-site build briefs: [`docs/gameplay/site-build-briefs/README.md`](docs/gameplay/site-build-briefs/README.md)
+- Campaign hub runtime brief: [`docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md`](docs/gameplay/CAMPAIGN_HUB_RUNTIME_BRIEF.md)
 - Ten-site design library: [`docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md`](docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md)
 - Campaign spine and recovery hub: [`docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md`](docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md)
 - Non-WikiWhy source research: [`docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md`](docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md)
