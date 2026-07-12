@@ -12,6 +12,7 @@ test("the three frozen final-incident passages are exact, ordered Content Platfo
   assert.equal(new Set(ENDGAME_PASSAGES.map(({ id }) => id)).size, 3);
   for (const passage of ENDGAME_PASSAGES) {
     assert.equal(passage.availability, "candidate");
+    assert.match(passage.contentRevision, new RegExp(`^${passage.id.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}@`, "u"));
     assert.equal(passage.rights.basis, "original");
     assert.equal(passage.paragraphs.length, 4);
     assert.equal(passage.comprehension.choices.filter(({ correct }) => correct).length, 1);

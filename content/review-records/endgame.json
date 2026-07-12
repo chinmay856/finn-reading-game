@@ -1,0 +1,29 @@
+[
+  {
+    "passageId": "endgame-common-origin-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "endgame-common-origin-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": { "acceptedTranscriptForms": [], "tokenResolutions": [] }
+  },
+  {
+    "passageId": "endgame-preserve-provenance-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "endgame-preserve-provenance-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": { "acceptedTranscriptForms": [], "tokenResolutions": [] }
+  },
+  {
+    "passageId": "endgame-human-oversight-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "endgame-human-oversight-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": { "acceptedTranscriptForms": [], "tokenResolutions": [] }
+  }
+]

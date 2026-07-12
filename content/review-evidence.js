@@ -62,8 +62,9 @@ export function assessPassageReviewEvidence(passage, evidence = {}) {
   const microphonePassed = microphoneRuns.length > 0 && microphoneRuns.every(microphoneRunComplete);
   const tokensResolved = transcriptionTokensResolved(passage, evidence);
   const passageMatches = text(passage?.id) && evidence.passageId === passage.id;
-  const contentRevisionMatches = text(evidence.contentRevision)
-    && evidence.contentRevision === evidence.reviewedContentRevision;
+  const contentRevisionMatches = text(passage?.contentRevision)
+    && evidence.contentRevision === passage.contentRevision
+    && evidence.reviewedContentRevision === passage.contentRevision;
   const reviewPassed = REQUIRED_REVIEW_DIMENSIONS.every((dimension) => dimensions[dimension]);
   const approved = passageMatches
     && contentRevisionMatches

@@ -1,5 +1,11 @@
 # Session handoff
 
+## 2026-07-12 revision-bound review manifests
+
+- Each final-incident passage now owns a stable `contentRevision`, and the validator compares submitted evidence directly to that canonical revision.
+- `content/review-records/endgame.json` contains one honest pending manifest per passage. `npm run review:status` reports every missing review, microphone run, and token resolution without changing approval state.
+- Current truth is 0/3 approved. Reviewers can now publish durable evidence without editing passage or wrapper code.
+
 ## 2026-07-12 passage review evidence gate
 
 - Added a theme-neutral evidence validator for accessibility, comprehension, editorial, factual, grade, profile, rights, sensitivity, transcription, exact content revision, and real-microphone runs.

@@ -12,7 +12,7 @@ import { isSelectablePassage } from "../content/passage-catalog.js";
 function completeEvidence() {
   return {
     authorId: "author-1",
-    contentRevision: "sha256:final-content-revision",
+    contentRevision: ENDGAME_COMMON_ORIGIN_PASSAGE.contentRevision,
     microphoneRuns: [{
       audioRetained: false,
       audioUploaded: false,
@@ -26,7 +26,7 @@ function completeEvidence() {
       testedAt: "2026-07-12T20:30:00.000Z",
     }],
     passageId: ENDGAME_COMMON_ORIGIN_PASSAGE.id,
-    reviewedContentRevision: "sha256:final-content-revision",
+    reviewedContentRevision: ENDGAME_COMMON_ORIGIN_PASSAGE.contentRevision,
     reviews: Object.fromEntries(REQUIRED_REVIEW_DIMENSIONS.map((dimension) => [dimension, {
       decision: "passed",
       evidence: `docs/reviews/${dimension}.md`,

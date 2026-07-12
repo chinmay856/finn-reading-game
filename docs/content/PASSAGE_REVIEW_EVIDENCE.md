@@ -9,3 +9,5 @@ Real-microphone evidence must record at least one complete-passage run with brow
 Changing passage text changes `contentRevision`. Every review must then be repeated against that revision; copying decisions from an earlier revision cannot promote the passage.
 
 The validator in `content/review-evidence.js` creates an approved projection only when all evidence is complete. It never edits the candidate record, invents reviewer decisions, or treats automated tests as human or microphone review.
+
+Run `npm run review:status` for an exact blocker report. Endgame reviewers update `content/review-records/endgame.json`; each record is already bound to the passage's own `contentRevision`. Do not change `reviewedContentRevision` until every attached decision reviewed that exact revision.

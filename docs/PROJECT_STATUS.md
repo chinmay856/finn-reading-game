@@ -1,5 +1,9 @@
 # Project status
 
+## Review manifests — 2026-07-12
+
+All three final-incident candidates have revision-bound pending manifests and an exact status command. Current result: 0/3 approved, with every human-review, real-microphone, and transcription-token blocker listed explicitly.
+
 ## Independent review evidence workflow — 2026-07-12
 
 The Content Platform now has a fail-closed review evidence validator and durable protocol. It can safely promote a candidate projection only after independent reviews, exact-revision matching, a complete local real-microphone run, privacy confirmation, and unstable-token resolution. No candidate has been falsely promoted; collecting genuine evidence remains outstanding.
