@@ -16,6 +16,7 @@ import {
 } from "../apps/internet-recovery/mycorner-content.js";
 import { MYCORNER_PROVISIONAL_EVIDENCE_RECORD } from "../apps/internet-recovery/mycorner-state.js";
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "../content/mycorner/a-cabin-with-a-purpose.js";
+import { MYCORNER_FIRST_RUN_PASSAGES } from "../content/mycorner/first-run-passages.js";
 import { isSelectablePassage } from "../content/passage-catalog.js";
 
 function assertDeepFrozen(value) {
@@ -178,10 +179,10 @@ test("MyCorner owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.deepEqual(MYCORNER_CONTENT_READINESS, {
     deckACount: 7,
     deckBCount: 3,
-    firstRunShortfall: 7,
+    firstRunShortfall: 0,
     plannedCount: 10,
     requiredFirstRun: 7,
-    structuredCandidateCount: 1,
+    structuredCandidateCount: 7,
   });
 
   const gated = selectNextMyCornerPassage({ completedPassageIds: [] });
@@ -190,7 +191,16 @@ test("MyCorner owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.equal(gated.selectableCount, 0);
   assert.equal(gated.plannedCount, 10);
   assert.equal(gated.requiredFirstRun, 7);
-  assert.equal(gated.firstRunShortfall, 7);
+  assert.equal(gated.firstRunShortfall, 0);
+  assert.deepEqual(MYCORNER_FIRST_RUN_PASSAGES.map(({ id }) => id), MYCORNER_DECK_A_IDS.slice(1));
+  for (const candidate of MYCORNER_FIRST_RUN_PASSAGES) {
+    assert.equal(candidate.availability, "candidate");
+    assert.equal(candidate.paragraphs.length, 5);
+    assert.equal(candidate.comprehension.choices.length, 3);
+    assert.equal(candidate.rights.basis, "original");
+    assert.equal(candidate.transcriptionReview.tested, false);
+    assert.equal(isSelectablePassage(candidate), false);
+  }
 
   const approvedA = approvedRecord(MYCORNER_DECK_A_IDS[1]);
   const approvedB = approvedRecord(MYCORNER_DECK_B_IDS[0]);

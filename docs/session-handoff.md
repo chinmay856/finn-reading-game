@@ -1,5 +1,13 @@
 # Session handoff
 
+## 2026-07-12 MyCorner structured first-run deck
+
+- Encoded frozen manuscripts A02–A07 as six theme-neutral candidate records.
+- Reconciled readiness metadata from one structured candidate and a seven-item
+  shortfall to seven structured candidates and no manuscript shortfall.
+- The complete roster remains fail-closed; the designer request covers exact
+  content fidelity and editorial risks, while microphone evidence stays separate.
+
 ## 2026-07-12 FacePlace structured first-run deck
 
 - Encoded frozen manuscripts A02–A06 as five theme-neutral candidate records

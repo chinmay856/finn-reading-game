@@ -1,5 +1,12 @@
 # Project status
 
+## MyCorner structured content — active 2026-07-12
+
+MyCorner's full seven-record first-run roster is represented as theme-neutral
+Content Platform candidates. The former seven-record shortfall now reads zero;
+A02–A07 remain unselectable pending independent review and real-microphone
+evidence.
+
 ## FacePlace structured content — active 2026-07-12
 
 FacePlace's full six-record first-run roster is represented as theme-neutral
