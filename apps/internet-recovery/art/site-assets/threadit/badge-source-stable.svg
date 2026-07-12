@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 96" role="img" aria-labelledby="title desc">
+  <title id="title">ThreadIt source tree stable badge</title>
+  <desc id="desc">Green secured badge showing independent branches and the words Source Tree Stable.</desc>
+  <rect x="3" y="3" width="454" height="90" rx="10" fill="#E4F2EA" stroke="#287A55" stroke-width="6"/>
+  <circle cx="46" cy="48" r="22" fill="#287A55"/>
+  <path d="M34 48l8 8 17-19" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M80 48h30M110 48v-18M110 48v18M110 30h24M110 66h24" fill="none" stroke="#287A55" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="42" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#287A55">THREADIT SECURED</text>
+  <text x="150" y="67" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#17212B">SOURCE TREE STABLE</text>
+</svg>

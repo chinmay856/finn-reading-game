@@ -5,6 +5,8 @@
 WikiWhy is the first playable Internet Recovery 98 slice. The detailed
 scene-by-scene brief is
 [`../WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md`](../WIKIWHY_FIRST_SLICE_BUILD_BRIEF.md).
+Campaign-only warning, rewrite, Shield, secured, and evidence layers are frozen
+in [`../WIKIWHY_CAMPAIGN_STATE_PACK.md`](../WIKIWHY_CAMPAIGN_STATE_PACK.md).
 This file exists so the ten-site package has one consistent entry per site.
 
 ## Core promise
@@ -57,4 +59,3 @@ unseen replay content. Only the assigned passage is speech-scored.
 - Does the midpoint preserve saved reading and evidence?
 - Does the final Shield Protocol honor exactly three final repairs?
 - Does the ending show `ACCESS DENIED` for the AI write path?
-

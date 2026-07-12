@@ -1,5 +1,20 @@
 # Internet Recovery 98 runtime asset use brief
 
+## Production site-state assets
+
+The first focused production packs live under
+`apps/internet-recovery/art/site-assets/`:
+
+- `threadit/` contains the original ThreadIt mark, account/process assets,
+  duplicate-source badge, secured badge, and an explicit DOM/SVG ownership
+  manifest.
+- `wikiwhy-campaign/` contains the canonical WikiWhy evidence-route artifact and
+  permanent secured seal.
+
+These assets take precedence over generated board microcopy or real-product
+chrome. The canonical boards remain composition/story references; meaningful
+runtime trees, statuses, controls, and evidence content must be DOM-native.
+
 ## Purpose
 
 This is a design-only asset-use brief for the builder. It identifies which
@@ -144,4 +159,3 @@ For a playable site:
   plain earlier boards?
 - Does preview mode clearly disclose that reading/scoring is not connected?
 - Is all site text implemented accessibly rather than only embedded in an image?
-
