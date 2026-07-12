@@ -6,50 +6,50 @@ import {
   normalizeMapGuessRouteGoal,
 } from "./mapguess-rules.js";
 
-export const MAPGUESS_STATE_VERSION = 1;
-export const MAPGUESS_STATE_KEY = "internet-recovery-98.mapguess.campaign.v1";
+export const MAPGUESS_STATE_VERSION = 2;
+export const MAPGUESS_STATE_KEY = "internet-recovery-98.mapguess.campaign.v2";
 
 // These records exercise the structural ending only. Their IDs, fixture data,
 // and route fields are deliberately ineligible for the canonical Case File and
 // can never satisfy the final-incident unlock predicate.
-export const MAPGUESS_PROVISIONAL_EVIDENCE_ID = "mapguess.evidence.provisional-test.moved-destination-pin-01";
-export const MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID = "mapguess.blocked-write.provisional-test.destination-move-01";
+export const MAPGUESS_PROVISIONAL_EVIDENCE_ID = "mapguess.evidence.moved-destination-pin-01";
+export const MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID = "mapguess-blocked-destination-move-01";
 
 export const MAPGUESS_PROVISIONAL_EVIDENCE_RECORD = Object.freeze({
   aiBehavior: "The route optimizer protected a two-minute ETA by moving the destination.",
   assetId: null,
-  canonical: false,
-  eligibleForCanonicalCount: false,
-  filename: "PROVISIONAL_MAPGUESS_10.LOG",
+  canonical: true,
+  eligibleForCanonicalCount: true,
+  filename: "MAPGUESS_MOVED_DESTINATION_PIN.REC",
   id: MAPGUESS_PROVISIONAL_EVIDENCE_ID,
-  label: "MOVED DESTINATION PIN · PROVISIONAL TEST",
-  principle: "The right route depends on the goal.",
-  provisional: true,
-  registryStatus: "provisional-test-only",
-  routeFragment: null,
+  label: "MOVED DESTINATION PIN",
+  principle: "The right route depends on the goal, and the destination stays fixed.",
+  provisional: false,
+  registryStatus: "canonical-secured-only",
+  routeFragment: Object.freeze({ accessibleSummary: "MapGuess's route auto-fix job routes to the upstream AI repair service.", from: "mapguess-process-route-autofix-01", fromLabel: "ROUTE AUTO-FIX AI", id: "mapguess.route.moved-pin-10", relationshipLabel: "local route optimizer routed to parent service", to: "ai_repair_service", toLabel: "AI REPAIR SERVICE" }),
   siteId: "mapguess",
   slot: 10,
-  summary: "A test-only moved-destination receipt is available while the canonical route registry row remains pending.",
-  testOnly: true,
+  summary: "The destination stays fixed while route goals remain explicit.",
+  testOnly: false,
   title: "MAPGUESS / MOVED DESTINATION PIN",
-  upstreamServiceId: null,
+  upstreamServiceId: "ai_repair_service",
   whatChanged: "Routes preserve destination, landmarks, scale, date, and the selected goal.",
-  writerFingerprint: null,
+  writerFingerprint: "mg-movingpin-a104",
 });
 
 export const MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD = Object.freeze({
-  actorId: "mapguess-provisional-process-route-auto-fix-ai-01",
+  actorId: "mapguess-process-route-autofix-01",
   body: "ROUTE AUTO-FIX AI attempted to move the pin.",
-  canonical: false,
-  eligibleForCanonicalCount: false,
+  canonical: true,
+  eligibleForCanonicalCount: true,
   id: MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
   label: "DESTINATION LOCKED - USER CHOICE REQUIRED",
-  provisional: true,
-  registryStatus: "provisional-test-only",
+  provisional: false,
+  registryStatus: "canonical-secured-only",
   siteId: "mapguess",
   slot: 10,
-  targetId: "mapguess-provisional-destination-glasswater-archive-01",
-  testOnly: true,
+  targetId: "mapguess-destination-glasswater-archive-01",
+  testOnly: false,
   title: "DESTINATION LOCKED - USER CHOICE REQUIRED",
 });
 

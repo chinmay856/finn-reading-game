@@ -377,8 +377,8 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(markup, /id="faceplaceEvidenceToggle"[^>]+aria-controls="faceplaceEvidenceReceipt"/u);
   assert.match(markup, /id="faceplaceEvidenceReceipt"[^>]+tabindex="-1"/u);
   assert.match(markup, /id="faceplaceBlockedTarget"[^>]+href="#faceplaceFeedList"/u);
-  assert.match(markup, /CASE FILE · SLOT 3 · PROVISIONAL TEST RECEIPT/u);
-  assert.match(markup, /TEST ONLY · NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK/u);
+  assert.match(markup, /CASE FILE · SLOT 3/u);
+  assert.match(markup, /REGISTERED AFTER SIX REVIEW-APPROVED READINGS/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
   assert.match(markup, /10 planned · 0 selectable · 6 required/u);
@@ -404,7 +404,7 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(copy, /PROVISIONAL FACEPLACE FIXTURE - NOT CANONICAL/u);
   assert.doesNotMatch(copy, /VIBESHIFT|Chinmay/iu);
   assert.match(state, /faceplace_honest_zero/u);
-  assert.match(state, /canonical: false/u);
+  assert.match(state, /canonical: true/u);
   assert.match(view, /showActOneResult/u);
   assert.match(view, /ariaValueText/u);
   assert.match(view, /feedCards/u);
@@ -488,17 +488,17 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /\[data-mapguess-goal\]:not\(:disabled\)/u);
   assert.match(app, /ROUTE GOAL SELECTED · PRESERVED IN THIS TAB · NOT SAVED FOR RELOAD/u);
 
-  assert.match(markup, /CASE FILE[^<]+SLOT 10[^<]+PROVISIONAL TEST RECEIPT/u);
-  assert.match(markup, /id="mapguessEvidenceFilename">PROVISIONAL_MAPGUESS_10\.LOG/u);
-  assert.match(markup, /TEST ONLY[^<]+NOT REGISTERED FOR THE FINAL EVIDENCE UNLOCK/u);
+  assert.match(markup, /CASE FILE[^<]+SLOT 10/u);
+  assert.match(markup, /id="mapguessEvidenceFilename">MAPGUESS_MOVED_DESTINATION_PIN\.REC/u);
+  assert.match(markup, /REGISTERED AFTER EIGHT REVIEW-APPROVED READINGS AND A SAVED ROUTE GOAL/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
   assert.match(markup, /10 planned[^<]+0 selectable[^<]+8 required/u);
   assert.match(content, /requiredFirstRun: 8/u);
   assert.match(content, /structuredCandidateCount: 1/u);
   assert.match(copy, /PROVISIONAL MAPGUESS FIXTURE - NOT CANONICAL/u);
-  assert.match(state, /eligibleForCanonicalCount: false/u);
-  assert.match(state, /registryStatus: "provisional-test-only"/u);
+  assert.match(state, /eligibleForCanonicalCount: true/u);
+  assert.match(state, /registryStatus: "canonical-secured-only"/u);
   assert.match(view, /externalTileService/u);
   assert.match(view, /usesRealLocation/u);
 
@@ -511,7 +511,7 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /"mapguess-anchor-2": 7/u);
   assert.match(app, /"mapguess-secured": 8/u);
   assert.match(app, /provisional-blocked-write-recorded/u);
-  assert.match(app, /slot 10 is excluded from the final evidence unlock/u);
+  assert.match(app, /canonicalEvidenceId: MAPGUESS_PROVISIONAL_EVIDENCE_RECORD\.id,[\s\S]+siteId: "mapguess"/u);
   assert.match(app, /mapguessMapColumn[\s\S]+\.inert = state\.mapguessInspectorOpen/u);
   assert.doesNotMatch(engine, /MapGuess|mapguess|Moving Target|route goal/iu);
 });

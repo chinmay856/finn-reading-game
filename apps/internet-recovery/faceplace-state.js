@@ -5,40 +5,49 @@ import {
   getNextFacePlaceUnit,
 } from "./faceplace-rules.js";
 
-export const FACEPLACE_STATE_VERSION = 1;
-export const FACEPLACE_STATE_KEY = "internet-recovery-98.faceplace.campaign.v1";
+export const FACEPLACE_STATE_VERSION = 2;
+export const FACEPLACE_STATE_KEY = "internet-recovery-98.faceplace.campaign.v2";
 
 // These identities exercise the structural ending only. They are deliberately
 // ineligible for the canonical Case File registry and final campaign unlock.
-export const FACEPLACE_PROVISIONAL_EVIDENCE_ID = "faceplace.evidence.provisional-test.promoted-feed-01";
-export const FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID = "faceplace.blocked-write.provisional-test.forced-distribution-01";
+export const FACEPLACE_PROVISIONAL_EVIDENCE_ID = "faceplace.evidence.promoted-feed-01";
+export const FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID = "faceplace.blocked-boost-01";
 
 export const FACEPLACE_PROVISIONAL_EVIDENCE_RECORD = Object.freeze({
-  aiBehavior: "The feed optimizer boosted repeated posts because reaction count was easier to measure than importance.",
-  canonical: false,
-  filename: "FACEPLACE_TEST_RECEIPT.PROVISIONAL",
+  aiBehavior: "The feed optimizer repeated one generated claim because reactions were easier to measure than importance.",
+  assetId: null,
+  canonical: true,
+  eligibleForCanonicalCount: true,
+  filename: "FACEPLACE_PROMOTED_FEED.REC",
   id: FACEPLACE_PROVISIONAL_EVIDENCE_ID,
-  label: "PROMOTED-FEED RECORD · PROVISIONAL TEST",
+  label: "PROMOTED-FEED RECORD",
   principle: "A feed is a selection, not the whole world.",
-  provisional: true,
+  provisional: false,
+  registryStatus: "canonical-secured-only",
+  routeFragment: Object.freeze({ accessibleSummary: "FacePlace's local Feed Auto-Fix amplification job routes to the upstream AI repair service.", from: "faceplace-process-feed-autofix-01", fromLabel: "FEED AUTO-FIX AI", id: "faceplace.route.promoted-feed-03", relationshipLabel: "child amplification job routed to parent service", to: "ai_repair_service", toLabel: "AI REPAIR SERVICE" }),
+  siteId: "faceplace",
   slot: 3,
-  summary: "A test-only promoted-feed receipt is available while the canonical evidence identity remains pending.",
-  testOnly: true,
+  summary: "Chronology, authorship, recommendation reasons, and source lineage were restored.",
+  testOnly: false,
   title: "FACEPLACE / PROMOTED-FEED RECORD",
-  whatChanged: "Feeds now label why posts appear and preserve chronological inspection.",
-  writerFingerprint: null,
+  upstreamServiceId: "ai_repair_service",
+  whatChanged: "Chronology, authorship, recommendation reasons, and source lineage were restored.",
+  writerFingerprint: "fp-vibeshift-amplify-7c31",
 });
 
 export const FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD = Object.freeze({
-  actorId: null,
+  actorId: "faceplace-process-feed-autofix-01",
   body: "FEED AUTO-FIX AI attempted to boost the same post again.",
-  canonical: false,
+  canonical: true,
   id: FACEPLACE_PROVISIONAL_BLOCKED_WRITE_ID,
   label: "FORCED DISTRIBUTION: OFF",
-  provisional: true,
+  eligibleForCanonicalCount: true,
+  provisional: false,
+  registryStatus: "canonical-secured-only",
+  siteId: "faceplace",
   slot: 3,
-  targetId: null,
-  testOnly: true,
+  targetId: "faceplace-card-crispmaster-01",
+  testOnly: false,
   title: "FORCED DISTRIBUTION: OFF",
 });
 

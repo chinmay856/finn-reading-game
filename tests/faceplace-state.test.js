@@ -71,7 +71,7 @@ function reachHonestZero(storage) {
 
 test("empty FacePlace state is versioned, non-audio, and has no invented tracker value", () => {
   const state = readFacePlaceState(null);
-  assert.equal(state.version, 1);
+  assert.equal(state.version, 2);
   assert.equal(state.siteId, "faceplace");
   assert.equal(state.act, "false-tracker");
   assert.equal(state.stateId, "faceplace_corrupted");
@@ -232,18 +232,18 @@ test("three recovery units secure FacePlace with test-only provisional records",
   assert.equal(secured.repairCount, 6);
 });
 
-test("provisional slot-three identities can never masquerade as canonical records", () => {
+test("canonical slot-three records match the frozen registry response", () => {
   for (const record of [
     FACEPLACE_PROVISIONAL_EVIDENCE_RECORD,
     FACEPLACE_PROVISIONAL_BLOCKED_WRITE_RECORD,
   ]) {
     assert.equal(record.slot, 3);
-    assert.equal(record.canonical, false);
-    assert.equal(record.provisional, true);
-    assert.equal(record.testOnly, true);
-    assert.match(record.id, /provisional-test/u);
+    assert.equal(record.canonical, true);
+    assert.equal(record.provisional, false);
+    assert.equal(record.testOnly, false);
   }
-  assert.match(FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename, /PROVISIONAL/u);
+  assert.equal(FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.filename, "FACEPLACE_PROMOTED_FEED.REC");
+  assert.equal(FACEPLACE_PROVISIONAL_EVIDENCE_RECORD.writerFingerprint, "fp-vibeshift-amplify-7c31");
 });
 
 test("secured state is permanent and does not consume another passage", () => {

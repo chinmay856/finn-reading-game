@@ -1,5 +1,12 @@
 # Parallel design requests
 
+## Canonical evidence reconciliation
+
+- FacePlace PR #37 and MapGuess PR #44 are now fully consumed for their exact
+  evidence registry rows and blocked-write routes.
+- No designer decision is outstanding for slots 3 or 10. The remaining finale
+  blocker is content/runtime approval, not evidence identity.
+
 ## Spotty-Fi integration status
 
 - Runtime response PR #43 and the complete A01-A08 manuscript roster are
