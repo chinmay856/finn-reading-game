@@ -1,5 +1,11 @@
 # Session handoff
 
+## 2026-07-12 passage review evidence gate
+
+- Added a theme-neutral evidence validator for accessibility, comprehension, editorial, factual, grade, profile, rights, sensitivity, transcription, exact content revision, and real-microphone runs.
+- Reviewers cannot equal the declared author; every pass requires an evidence reference and timestamp. Audio must remain local and unretained, and every declared unstable token needs an evidenced resolution.
+- Only a complete record can create an approved selectable projection. Candidate source records are never mutated, and automated tests do not count as human or microphone approval.
+
 ## 2026-07-12 final-incident Content Platform records
 
 - The three frozen PR #46 passages now exist as exact 218-, 236-, and 239-word Content Platform records with stable IDs, original-work rights metadata, comprehension choices, reading profiles, and transcription-risk tokens.
