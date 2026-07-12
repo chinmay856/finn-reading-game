@@ -608,6 +608,24 @@ pending language is superseded by PR #36 and deployed `65368e8`.
   canonical fixture request in `design/FACEPLACE_RUNTIME_REQUEST.md` remains
   unanswered; do not promote the current test receipt.
 
+## MyCorner visual-fidelity handoff (2026-07-12)
+
+- Active branch: `agent/mycorner-visual-fidelity`, based on deployed FacePlace
+  PR #76 / `main` at `fe384b6`.
+- `mycorner.css` now matches the canonical three-act direction more closely via
+  state-aware act labeling, layered profile texture, taped modules, tacky hover
+  depth, `AUTO-PERSONA` corruption labeling, animated template scan, and a
+  stronger saved-profile scrapbook.
+- No new raster asset is loaded. The canonical Mara Vale data, exact seven-unit
+  state machine, evidence contract, silence/autoplay rules, responsive drawer,
+  and platform separation remain unchanged.
+- Local corrupted-state browser QA found eleven semantic modules, fixed Techno,
+  and no horizontal overflow. `npm test` (310 tests), `npm run check`,
+  `npm run build`, and `git diff --check` all pass.
+- No newer designer PR or fetch delta was present. The designer's existing
+  MyCorner runtime response remains the canonical data source and does not
+  require another art packet for this CSS-only pass.
+
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
 - Live deployment before this branch:

@@ -326,6 +326,18 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
 - The semantic feed, provisional-data boundary, independent Reading Companion,
   and wrapper/platform separation are unchanged.
 
+### MyCorner graphics fidelity (2026-07-12)
+
+- MyCorner now carries its canonical scrapbook/profile personality through a
+  state-aware act ribbon, owner-magenta branding, taped semantic modules,
+  dimensional cards, an animated template-overwrite pattern, and a clearer
+  saved-profile scrapbook treatment.
+- The pass adds no raster payload and preserves the canonical Mara Vale fixture,
+  seven-unit owner-control contract, silent autoplay boundary, independent
+  Reading Companion, and reduced-motion fallback.
+- Desktop visual QA confirmed the act treatment, eleven semantic modules,
+  persistent fixed Techno, and no horizontal page overflow.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock
