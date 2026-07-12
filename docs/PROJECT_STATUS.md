@@ -1,5 +1,9 @@
 # Project status
 
+## Final incident runtime — in progress 2026-07-12
+
+The canonical `EVIDENCE_11.LIVE` persistence and UI foundation is implemented on `agent/evidence-11-live-finale`. It remains locked behind ten distinct persisted canonical site receipts. The real containment path stops honestly at checkpoint 1 until the three frozen original passages receive independent editorial, grade, sensitivity, comprehension, accessibility, transcription-profile, and real-microphone approval.
+
 ## Canonical completion integrity — 2026-07-12
 
 FacePlace and MapGuess now use the approved designer evidence contracts. Hub completion fails closed unless each exact evidence ID and blocked-write ID is persisted; MapGuess also requires the player's route goal to be locked. Preview/diagnostic state never counts toward the ten-site completion predicate.
