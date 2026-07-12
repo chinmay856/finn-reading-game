@@ -1,0 +1,7 @@
+import assert from "node:assert/strict";import test from "node:test";
+import {AMAZEON_CAMPAIGN_UNITS,calculateAmazeOnReadingOutcome} from "../apps/internet-recovery/amazeon-rules.js";
+import {acknowledgeAmazeOnMidpointState,advanceAmazeOnState,normalizeAmazeOnState} from "../apps/internet-recovery/amazeon-state.js";
+function run(count){let state=normalizeAmazeOnState();for(let i=0;i<count;i+=1){if(i===4)state=acknowledgeAmazeOnMidpointState(state).state;state=advanceAmazeOnState(state,{outcome:calculateAmazeOnReadingOutcome({campaignState:state}),passageId:`p${i}`,sessionId:`s${i}`}).state;}return state;}
+test("Amaze-On freezes four parcels plus three consent-ledger units",()=>assert.deepEqual(AMAZEON_CAMPAIGN_UNITS.map(x=>x.unitId),["specification_sorted","review_sorted","advertisement_sorted","unknown_sorted","item_seller_receipt","price_return_receipt","human_choice_gate"]));
+test("Negative Purchasing saves before explicit acknowledgement",()=>{const state=run(4);assert.equal(state.stateId,"amazeon_negative_purchasing");assert.equal(calculateAmazeOnReadingOutcome({campaignState:state}).accepted,false);assert.equal(acknowledgeAmazeOnMidpointState(state).state.midpointAcknowledged,true);});
+test("seven units secure canonical slot-eight evidence",()=>{const state=run(7);assert.equal(state.secured,true);assert.equal(state.evidenceId,"amazeon.evidence.auto-decide-permission-01");assert.equal(state.blockedWriteId,"amazeon-blocked-purchase-techno-ball-01");});

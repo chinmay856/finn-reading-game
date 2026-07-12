@@ -8,6 +8,20 @@
 - It freezes the silent library, fake/real history proof, eight units, evidence,
   content-ID plan, responsive behavior, and continuation without promoting content.
 
+## Amaze-On consent-ledger foundation
+
+- Active branch: `agent/amazeon-consent-ledger-foundation`.
+- Integrated designer PR #42's canonical fictional commerce fixture; the full
+  A01-A07 manuscript roster is already on `main` from PR #53.
+- Amaze-On now sorts four evidence parcels, saves Negative Purchasing before
+  acknowledgement, restores a three-unit receipt trace, removes AUTO-DECIDE,
+  and permanently requires human confirmation.
+- The Orbit Bounce Ball remains `SUGGESTED — NOT CHOSEN`; the canonical Techno
+  ball-pin asset marks the blocked purchase without creating a transaction.
+- Canonical persisted evidence is reserved for Case File slot 8 as
+  `AMAZEON_AUTO_DECIDE_PERMISSION.REC`. No real retailer, product, payment,
+  address, account, or checkout data exists.
+
 ## Complete manuscript inventory
 
 - Branch: `agent/content-readiness-index`.
