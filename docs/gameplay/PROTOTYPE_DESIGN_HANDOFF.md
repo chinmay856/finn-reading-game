@@ -10,6 +10,29 @@ The first prototype target is **one WikiWhy campaign slice with one or a few
 passages**. It is a design proof, not the full eight-to-ten-session campaign and
 not a template whose page content should be copied into every future mission.
 
+## Builder quick start
+
+For the next prototype iteration, build only the reviewed WikiWhy slice and use
+the broader ten-site work as reference, not implementation scope.
+
+Use these inputs first:
+
+- `content/wikiwhy/PASSAGE_DECKS.md` for the Reading Companion passage pool and
+  attribution model.
+- `apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png` for the
+  reviewed WikiWhy story beats.
+- `apps/internet-recovery/art/concepts/campaign-spine-and-hub-rogue-ai.png` for
+  the stable remote-desktop framing and campaign-hub tone.
+- `apps/internet-recovery/art/characters/README.md` for production Amy,
+  Chinmay, and Techno character sheet IDs.
+- `apps/internet-recovery/art/concepts/sites/README.md` for the done
+  non-WikiWhy site-board set and superseded-history notes.
+
+The buildable screen should contain one stable recovery desktop, one inset
+Recovery Browser showing WikiWhy corruption/repair, and one separate Reading
+Companion window. The Reading Companion supplies the only expected speech text.
+The browser page is the visual consequence layer.
+
 ## What is shared across sites
 
 The shared design pattern is a flexible three-act story rhythm, not a fixed
@@ -73,6 +96,15 @@ frazzled or flustered expressions as his AI stops obeying. He may look startled,
 embarrassed, or exhausted, but never angry at Finn, threatening, or villain-coded.
 These are wrapper-owned art variants driven by campaign story state, not by
 reading performance.
+
+Do not generate a fresh Chinmay portrait for each message. Select one of the
+six reusable wrapper states documented in
+[`INTERNET_RECOVERY_CHARACTERS.md`](INTERNET_RECOVERY_CHARACTERS.md):
+`chinmay_neutral`, `chinmay_confident`, `chinmay_fluster_1`,
+`chinmay_fluster_2`, `chinmay_fluster_3`, or `chinmay_relieved`. Amy likewise
+uses her reviewed neutral, skeptical, dryly amused, and supportive portraits;
+Techno uses her small ball-centered sprite set. This keeps character identity
+stable and makes message mood a simple presentation choice.
 
 ## Ownership map — what comes from where
 

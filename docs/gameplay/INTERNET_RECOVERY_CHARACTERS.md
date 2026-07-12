@@ -128,29 +128,48 @@ escalation is communicated through progressively messier grooming, a rumpled CEO
 presentation, anxious gestures, and flustered expressions—never anger,
 villainous lighting, or threatening body language.
 
-## Character exploration set
+## Production character sheets
 
-After the private reference photos are reattached, create and review these
-wrapper-only explorations before selecting production art:
+Builder-ready production sheets live under
+[`apps/internet-recovery/art/characters`](../../apps/internet-recovery/art/characters/README.md).
+They are wrapper-owned art references that may be cropped into runtime assets by
+panel order.
 
-1. **Amy portrait sheet:** neutral, skeptical, amused, and focused expressions;
-   chat-avatar crop plus waist-up engineer-support pose.
-2. **Amy cutscene poses:** annotating evidence, holding a cable, and reacting to
-   a suspicious timestamp without taking over Finn's task.
-3. **Chinmay escalation sheet:** the same long-haired silhouette across polished
-   CEO confidence, anxious reassurance, messy/frazzled explanation, genuine
-   alarm, and humbled collaboration. Exclude angry and villainous poses.
-4. **Techno sprite sheet:** idle, alert, suspicious-file discovery, bark,
-   CEO-broadcast nap, and proud USB delivery. Explore both orange-dominant and
-   blue-dominant versions of her grooved fetch ball. The idle state should show
-   Techno tossing or bouncing the ball with her mouth; most other states retain
-   the ball somewhere in the pose.
-5. **Pair scale test:** Amy at support-window scale with Techno as desktop pet,
-   checked at both phone and desktop widths.
+The current production set includes:
 
-Private references must stay outside the public repository. Generated art must
-be reviewed by the user before it is committed. Exploration filenames should
-live under `apps/internet-recovery/art/characters/` only after approval.
+1. **Amy portrait sheet:** neutral, skeptical, amused, supportive, evidence, and
+   tools poses.
+2. **Chinmay escalation sheet:** the same long-haired silhouette across neutral
+   focus, polished CEO confidence, three escalating fluster levels, and relieved
+   collaboration. Excludes angry and villainous poses.
+3. **Techno sprite sheet:** idle ball bounce, alert ball pin, suspicious-file
+   discovery, bark, CEO-broadcast nap, USB delivery, celebration spin, and clue
+   point. The ball appears in most poses in both orange-dominant and
+   blue-dominant treatments.
+
+Private references must stay outside the public repository and guide likeness
+only; never paste them into boards or ship photo-real character panels. Earlier
+WIP exploration boards remain under `apps/internet-recovery/art/concepts/` for
+history only.
+
+### Reusable Chinmay portrait states
+
+Builders should select from the canonical portrait states below instead of
+regenerating Chinmay for each message. State choice follows wrapper story mood,
+never reading accuracy or performance.
+
+| Asset ID | Intended message mood |
+| --- | --- |
+| `chinmay_neutral` | focused explanation or listening |
+| `chinmay_confident` | sincere “I can fix this faster” reassurance |
+| `chinmay_fluster_1` | first puzzling contradiction |
+| `chinmay_fluster_2` | visible frazzle while troubleshooting the AI |
+| `chinmay_fluster_3` | genuine alarm after the AI ignores him |
+| `chinmay_relieved` | humbled cooperation after Finn restores control |
+
+All six keep the same identity, glasses, shoulder-length black hair, outfit
+palette, line weight, and illustrated medium. Only expression, gesture, hair
+disorder, and collar/tie polish may change.
 
 ## Gameplay placements
 
@@ -259,13 +278,13 @@ Comprehension questions, when present, refer only to the Reading Companion
 passage. The wrapper must never ask a learner to infer an answer from decorative
 page text that was not part of the assigned reading.
 
-#### Simple repair wipe
+#### Site-specific repair progress
 
-Use one implementation pattern across all parody sites. The site begins in its
-corrupted state. A left-to-right vertical reveal boundary moves across the page
-as normalized passage progress increases, replacing the corrupted rendering
-with the repaired rendering behind it. Each horizontal slice therefore maps to
-a stable amount of reading progress.
+WikiWhy uses the economical left-to-right repair wipe proven by the current
+prototype. Its page begins in a corrupted state and a vertical reveal boundary
+moves across the page as normalized passage progress increases, replacing the
+corrupted rendering with the repaired rendering behind it. Each horizontal
+slice maps to a stable amount of reading progress.
 
 ```text
 corrupted site          repair edge          repaired site
@@ -273,11 +292,18 @@ XXXXXXXXXXXXXXXXXXXXXXXX|-----------------------------------
 <----- remaining ------>|<---------- completed ------------>
 ```
 
-The wipe may pause briefly at semantic checkpoints so a heading, image, or panel
-finishes as one unit, but it should not require bespoke word-by-word DOM repairs.
-A subtle scan line, pixel cleanup, or unscramble effect at the boundary can sell
-the fiction. Reduced-motion mode uses stepped region swaps. The final passage
-completion snaps the last region into place and triggers the larger payoff.
+The WikiWhy wipe may pause briefly at semantic checkpoints so a heading, image,
+or panel finishes as one unit, but it should not require bespoke word-by-word
+DOM repairs. A subtle scan line, pixel cleanup, or unscramble effect at the
+boundary can sell the fiction. Reduced-motion mode uses stepped region swaps.
+The final passage completion snaps the last region into place and triggers the
+larger payoff.
+
+Other sites must implement the distinct progress fiction and middle change in
+their approved design. ThreadIt restores source branches, FacePlace replaces a
+lying tracker, MapGuess rebuilds a route, and so on. They may reuse neutral
+progress events and shared window primitives, but they do not inherit
+WikiWhy's wipe, percentages, thresholds, or finale.
 
 The Reading Companion remains a compact continuous-scroll box with previous
 context, a stable highlighted current line, and upcoming context. The website

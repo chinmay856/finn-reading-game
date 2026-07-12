@@ -18,11 +18,12 @@
   wrapper. No site identity, desktop object, character, or campaign concept was
   added to Reading Engine, Content Platform, or theme-neutral Game Rules.
 - The live preview artwork uses optimized 640×480 JPEG crops taken directly
-  from the preferred rogue-AI concept boards. This preserves the approved
-  visual source without shipping the multi-megabyte review boards to every page.
-- Character dialogue now uses a neutral `PORTRAIT PACK PENDING` placeholder.
-  The upcoming designer-authored expression pack can replace it without
-  changing dialogue behavior or lower-layer interfaces.
+  from the canonical builder-ready rogue-AI boards. The five crops affected by
+  the last art cleanup were regenerated from the promoted MyCorner, Search-ish,
+  Amaze-On, Spotty-Fi, and MapGuess sources; superseded boards are not shipped.
+- Production Amy and Chinmay sheet panels are now cropped into four lightweight
+  wrapper-owned runtime portraits and mapped to story beats. The full sheets
+  remain the character source of truth; lower-layer interfaces are unchanged.
 - Corrected Techno's repair interaction: the existing progress-push frames are
   mirrored to face right, the ball is aligned to the repair edge, diagnostic
   advances now play the push, and objective resets snap back without making her
@@ -31,13 +32,17 @@
   owns the continuing write. Removed `CHINMAY WAS HERE` and `chinmay_admin`
   sabotage framing.
 - Validation on the implementation branch: `npm run check`, `npm test` (58
-  passing), `npm run build`, and 1440×900 headless Chrome screenshots of the
-  hub, ThreadIt preview, and WikiWhy reading view.
-- Recommended next step: deploy and click through the map, two or three design
-  previews, WikiWhy setup, and the diagnostic campaign once. Judge browser
-  proportions, desktop atmosphere, preview honesty, and Techno's direction;
-  wait for the incoming portrait/site packs before implementing additional site
-  mechanics.
+  passing), `npm run build`, an automated click-through of all nine view-only
+  previews, WikiWhy setup/re-entry and diagnostic dialogue checks, production
+  portrait screenshots, Techno direction review, and a clean browser console.
+- Published implementation screenshots and focused requests for the parallel
+  designer under `docs/design/`; future design answers should update that
+  handoff and its synchronization commit instead of relying on chat history.
+- Recommended next step after publication: finish WikiWhy as the first complete
+  real campaign by selecting unseen approved passages and connecting accepted
+  readings to the warning, 80% rewrite, exact three-pass shield, secured site,
+  and first Case File evidence record. Keep other sites as previews until their
+  own content and mechanics pass the implementation gate.
 
 ## Rogue-AI campaign design track
 
@@ -49,14 +54,29 @@
 - Chinmay is always long-haired. His visual state progresses from neat,
   overconfident polish to increasingly messy, frazzled, and flustered concern;
   he is never angry at Finn, threatening, or villain-coded.
-- The campaign hub, WikiWhy worked example, and all nine proposed site boards
-  now use the same presentation grammar: an inset site browser inside Finn's
-  fictional remote desktop tunnel, a visible stable desktop rim with restrained
-  old-computer Easter eggs, and a separate trustworthy Reading Companion.
-- Preferred boards carry the `rogue-ai` filename; the earlier unsuffixed boards
-  remain only as superseded layout-history references. Generation provenance
-  and the final shared prompt direction are recorded in
+- The campaign hub, WikiWhy worked example, and nine non-WikiWhy site boards are
+  now the builder-ready ten-site design set. They approve design direction,
+  story arc, progress fiction, and layout reference for implementation planning,
+  while final runtime UI, exact copy, passage selection, and cropped assets
+  remain build work.
+- The prior inconsistent MyCorner, Search-ish, Amaze-On, Spotty-Fi, and
+  MapGuess boards now carry `-superseded` filenames and are comparison history
+  only. Use the canonical non-WIP filenames in
+  `apps/internet-recovery/art/concepts/sites/README.md`.
+- Production character sheets now live under
+  `apps/internet-recovery/art/characters/`. Builders choose Amy, Chinmay, and
+  Techno states by wrapper story mood instead of regenerating character art per
+  message. `Chinmay` is the only canonical spelling; alternate transcriptions
+  never enter assets, copy, or filenames.
+- Current revised boards carry the `rogue-ai` filename; the earlier unsuffixed
+  boards remain only as superseded layout-history references. Generation
+  provenance and the final shared prompt direction are recorded in
   `apps/internet-recovery/art/concepts/ROGUE_AI_PROMPT_NOTES.md`.
+- Private photos guide likeness only: never paste one into a board or use a
+  photoreal character panel. Amy, Chinmay, and Techno share one consistent
+  illustrated editorial-cartoon treatment. Techno remains ball-obsessed;
+  long-haired Chinmay becomes progressively messier and more frazzled without
+  angry or villain coding.
 - These are wrapper design inputs. Each site still owns its own three-act story,
   middle change, progress fiction, reading lane, and resolution; the reusable
   Reading Engine does not know about Chinmay, the AI, the desktop shell, or any
@@ -269,7 +289,7 @@
 - Implementation has not begun. Review the deck in its suggested section order,
   then assign stable wrapper copy IDs before wiring approved lines into UI.
 
-## Current state
+## Historical predictive-guide snapshot
 
 - Branch: `agent/campaign-spine-content`
 - Base for this stacked design PR: `agent/multi-site-design-library` at `f62d04d`
@@ -279,7 +299,7 @@
   WebAssembly/q8
 - Privacy: all recognition remains local; transcript diagnostics are ephemeral
 
-## Latest user evidence
+### Latest user evidence
 
 The corrected engine appears to recognize the full reading, but confirmed
 progress arrives after the reader reaches the bottom of the viewport. Paragraph
@@ -291,7 +311,7 @@ navigation clock even when its final accuracy is acceptable. Current graphics
 are inexpensive and inference runs in a worker; the dominant problem is waiting
 for checkpoint transcription before scrolling, not site artwork.
 
-## Implemented response
+### Implemented response
 
 - Added a theme-neutral predictive guide under `reading-guide.js`.
 - The guide advances from active speaking time and a selectable 150, 200, 250,
@@ -306,7 +326,7 @@ for checkpoint transcription before scrolling, not site artwork.
 - Voice activity and guide position never participate in completion, accuracy,
   scoring, or repair. End detection still requires actual final-token evidence.
 
-## Research
+### Research
 
 The maintained Hugging Face Moonshine Web example is the next engine candidate
 if UI decoupling is insufficient. It uses the same Transformers.js `3.7.1`,
@@ -314,7 +334,7 @@ Moonshine Base, Silero VAD, WebGPU with WASM fallback, and serialized inference.
 It is designed for live recognition but has a substantially larger model and
 must be benchmarked before integration. See `docs/engine/SPEECH_TECH_RESEARCH.md`.
 
-## Validation
+### Validation
 
 - `npm run check` — passed
 - `npm test` — passed, 28 tests
@@ -323,12 +343,12 @@ must be benchmarked before integration. See `docs/engine/SPEECH_TECH_RESEARCH.md
   grid present, transcript panel present, no console warnings/errors
 - Real microphone naturalness test remains required
 
-## Preserved state
+### Preserved state
 
 `tests/audio-capture.test.js` retains a pre-existing line-ending-only status
 with no content diff. It remains unstaged and undiscarded.
 
-## Recommended next step
+### Recommended next step at that time
 
 Publish and test the 250 WPM guide once. Read without waiting for confirmed
 highlighting and judge only whether upcoming text remains comfortably visible.

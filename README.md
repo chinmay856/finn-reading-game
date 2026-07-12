@@ -24,6 +24,7 @@ designed to support many future themes.
 - Prototype design handoff: [`docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md`](docs/gameplay/PROTOTYPE_DESIGN_HANDOFF.md)
 - Ten-site design library: [`docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md`](docs/gameplay/TEN_SITE_DESIGN_LIBRARY.md)
 - Campaign spine and recovery hub: [`docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md`](docs/gameplay/CAMPAIGN_SPINE_AND_HUB.md)
+- Current implementation-to-design requests: [`docs/design/DESIGN_REQUESTS.md`](docs/design/DESIGN_REQUESTS.md)
 - Non-WikiWhy source research: [`docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md`](docs/content/NON_WIKIWHY_SOURCE_RESEARCH.md)
 - Prototype passage authoring: [`docs/content/PASSAGE_AUTHORING.md`](docs/content/PASSAGE_AUTHORING.md)
 - WikiWhy passage decks: [`content/wikiwhy/PASSAGE_DECKS.md`](content/wikiwhy/PASSAGE_DECKS.md)

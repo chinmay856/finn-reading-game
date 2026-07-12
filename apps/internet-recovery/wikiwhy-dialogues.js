@@ -1,4 +1,7 @@
-const PORTRAIT_PLACEHOLDER_URL = new URL("./art/characters/dialogue/portrait-pack-pending.svg", import.meta.url).href;
+const AMY_SUPPORTIVE_URL = new URL("./art/characters/dialogue/amy-supportive.jpg", import.meta.url).href;
+const AMY_EVIDENCE_URL = new URL("./art/characters/dialogue/amy-evidence.jpg", import.meta.url).href;
+const CHINMAY_FLUSTER_1_URL = new URL("./art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url).href;
+const CHINMAY_FLUSTER_2_URL = new URL("./art/characters/dialogue/chinmay-fluster-2.jpg", import.meta.url).href;
 
 export const WIKIWHY_DIALOGUES = Object.freeze({
   "amy-warning": Object.freeze({
@@ -6,7 +9,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     body: "Hold on. You are fixing it—but something is still rewriting the page behind you. Keep going. I think I can trace the next change.",
     eyebrow: "BACKGROUND WRITE DETECTED",
     heading: "The repair is holding. Something else is still moving.",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: AMY_EVIDENCE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
@@ -16,7 +19,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     eyebrow: "AUTOMATIC IMPROVEMENT CONTINUES",
     heading: "CHINMAY: The AI is still running.",
     meta: "Writer: ai_repair_service · Command: ENDED · Write status: ACTIVE",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: CHINMAY_FLUSTER_1_URL,
     speaker: "chinmay",
     title: "CEO BROADCAST // LIVE",
   }),
@@ -25,7 +28,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     body: "Okay. I caught the AI's change. Give me three clean repair passes and I can seal this site around it. Three. No surprise fourth one.",
     eyebrow: "NEW OBJECTIVE",
     heading: "Shield Protocol is ready.",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: AMY_SUPPORTIVE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
@@ -34,7 +37,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     body: "Content verified. Two repairs remain.",
     eyebrow: "SHIELD PASS 1 OF 3",
     heading: "The recovered facts are sealed in place.",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: AMY_EVIDENCE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
@@ -43,7 +46,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     body: "Connections verified. One repair remains. The AI service is pushing against the boundary.",
     eyebrow: "SHIELD PASS 2 OF 3",
     heading: "Its write access is almost boxed out.",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: AMY_SUPPORTIVE_URL,
     speaker: "amy",
     title: "AMY // ENGINEER CHANNEL",
   }),
@@ -53,7 +56,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     eyebrow: "ACCESS DENIED",
     heading: "ai_repair_service attempted to modify this site.",
     meta: "AUTONOMOUS AI WRITE: ACCESS DENIED",
-    portrait: PORTRAIT_PLACEHOLDER_URL,
+    portrait: CHINMAY_FLUSTER_2_URL,
     speaker: "chinmay",
     title: "HIDDEN ADMIN WINDOW",
   }),

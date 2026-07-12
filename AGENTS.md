@@ -16,6 +16,10 @@ Before making architectural, gameplay, content-model, speech, scoring, progressi
   state after publication.
 - Do not create parallel chat-handoff systems unless the user explicitly changes
   this working model.
+- Coordinate parallel art work through `docs/design/DESIGN_REQUESTS.md`. Keep its
+  synchronization commit, focused questions, acceptance criteria, and current
+  executable screenshots updated so design agents can answer through GitHub
+  without relying on chat history.
 
 ## Non-negotiable project rule
 
@@ -50,6 +54,9 @@ The first wrapper is **Internet Recovery OS**. Do not embed its terminology, vis
   explicitly requests a change. Treat transcripts that make Chinmay a secret
   saboteur, or assign the protagonist/antagonist roles to other people, as
   transcription errors.
+- `Chinmay` is the only canonical spelling of his name. Treat phonetically
+  similar alternatives as transcription errors and never introduce them into
+  copy, assets, or filenames.
 
 ## Current product priority
 

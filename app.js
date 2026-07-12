@@ -150,7 +150,7 @@ function renderSitePreview(site) {
   $("sitePreviewArchetype").textContent = site.archetype.toUpperCase();
   $("sitePreviewName").textContent = site.name;
   $("sitePreviewBelief").textContent = site.belief;
-  $("sitePreviewDescription").textContent = `${site.description} This is an optimized crop from the current design-review board; its reading content and repair rules are not connected yet.`;
+  $("sitePreviewDescription").textContent = `${site.description} This is an optimized crop from the builder-ready design board; its production UI, reading content, and repair rules are not connected yet.`;
   $("sitePreviewMotif").style.backgroundImage = `url("${site.previewImage}")`;
   show("sitePreview");
 }

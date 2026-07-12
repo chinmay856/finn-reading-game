@@ -2,9 +2,13 @@
 
 ## Purpose
 
-This is the first broad design pass for ten Internet Recovery OS sites. WikiWhy
-is the reviewed worked example. The remaining nine are proposals for later
-one-by-one review, not implementation commitments.
+This is the builder-ready design pass for ten Internet Recovery OS sites. It
+defines the approved site roster, story arcs, progress fiction, reading lanes,
+and concept-board references that prototype/build agents may start from.
+
+Done means approved as design direction for implementation planning. It does
+not mean final runtime UI, cropped art exports, final copy, or final passage
+selection.
 
 Every site uses the same theme-neutral Reading Engine and a visually separate
 Reading Companion. Only the assigned passage is speech-scored. Decorative page
@@ -25,6 +29,11 @@ irresponsible and cause new problems, but his intent is sincere and he is not
 secretly sabotaging the repairs.
 The AI optimizes a visible proxy instead of the human goal, expands beyond the
 task Chinmay gave it, and gradually reveals itself as the rogue antagonist.
+
+Current user review signal: the reviewed site directions are good enough to
+promote as the ten-site done design set. Final implementation still needs exact
+runtime copy, responsive UI, accessibility treatment, passage selection, and
+cropped production assets.
 
 ## Shared presentation grammar
 
@@ -54,14 +63,16 @@ relieved, but never angry at Finn, threatening, or villain-coded. Site boards ma
 stage different jokes around him while selecting the art variant that matches
 the current global story beat.
 
-Preferred revised visual examples for this grammar are indexed in the
-[`site concept-board catalog`](../../apps/internet-recovery/art/concepts/sites/README.md),
-including the
-[`WikiWhy`](../../apps/internet-recovery/art/concepts/wikiwhy-three-act-rogue-ai.png),
-[`ThreadIt`](../../apps/internet-recovery/art/concepts/sites/threadit-rogue-ai-campaign.png),
-[`MyCorner`](../../apps/internet-recovery/art/concepts/sites/mycorner-rogue-ai-campaign.png),
-and [`Yahuh! Portal`](../../apps/internet-recovery/art/concepts/sites/yahuh-portal-rogue-ai-campaign.png)
-boards. Earlier unsuffixed boards are superseded composition references only.
+Private photos guide likeness only; they must never be pasted into a board or
+turned into photoreal character panels. Amy, Chinmay, and Techno use one
+consistent illustrated editorial-cartoon treatment across the campaign.
+Techno's visual comedy remains ball-obsessed, and Chinmay follows the
+long-haired, increasingly frazzled arc above.
+
+Visual examples for this grammar are indexed in the
+[`site concept-board catalog`](../../apps/internet-recovery/art/concepts/sites/README.md).
+Use the canonical non-WIP site-board filenames listed there as builder inputs.
+Files carrying `-superseded` in their names are comparison history only.
 
 ## Roster
 
@@ -332,6 +343,11 @@ original product-analysis essays.
 
 ## 9. Spotty-Fi — taste and manual choice
 
+**Board status:** `spotty-fi-rogue-ai-campaign.png` is the done design
+reference for this site. The superseded board remains only as comparison
+history because it pasted photo-real reference imagery into an otherwise cartoon
+board and rendered the characters inconsistently.
+
 **Recognizable direction:** Charcoal, acid green, magenta accent; an original
 offset cassette/signal-ring mark; playlists, queue, credits, and geometric album
 art. No audio while the microphone is active.
@@ -416,6 +432,10 @@ USGS maps, Library of Congress map collections, and original survival stories.
   deliberately plants evidence, impersonates users, or sabotages Finn's work.
 - Keep Chinmay's hair long in every appearance and show escalation through
   growing messiness and fluster, never anger or villain visual language.
+- Treat private photos as likeness reference only. Never paste them into a
+  board or create photoreal character panels; keep Amy, Chinmay, and Techno in
+  one consistent illustrated editorial-cartoon treatment, with Techno's humor
+  still centered on her obsession with the ball.
 - The AI is the intentional antagonist. Its site-specific proxy optimization
   should become visibly autonomous over time without making every site's
   corruption, midpoint, meter, or resolution identical.
