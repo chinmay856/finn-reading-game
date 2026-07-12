@@ -1,5 +1,18 @@
 # Parallel design requests
 
+## ViewTube focused follow-up
+
+- Runtime contract and first-run manuscripts are integrated from designer PRs
+  #40 and #49.
+- Outstanding asset: provide the dedicated `techno_clue_point` wrapper asset,
+  with a transparent background, clear pointing silhouette at compact desktop
+  size, and an accessible intent that reads as “Techno identifies the duplicate
+  media hash evidence.” If an existing approved asset is canonical instead,
+  explicitly map the contract to `techno-paw-alert-still.webp` or
+  `techno-alert-ball-pin.webp`.
+- The same request is published on PR #40 so the parallel designer can answer
+  without depending on this local branch.
+
 ## 2026-07-12 builder reconciliation
 
 - Designer PR #38 answered the complete MyCorner runtime packet. The active

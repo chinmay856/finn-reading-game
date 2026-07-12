@@ -45,6 +45,19 @@ product and architecture source of truth is
   #36. CI and Pages passed, and the public HTTPS route was verified at
   `65368e8`, including a saved SCENIC route-goal interaction.
 
+## Current ViewTube branch
+
+- `agent/viewtube-evidence-track-foundation` implements the canonical fictional
+  silent-video fixture, four context restores, saved autoplay-loop discovery,
+  explicit acknowledgement, three evidence tracks, and canonical Case File
+  slot 6 registration.
+- ViewTube is a clickable structural campaign test build, not speech-playable.
+  Its reading companion remains fail-closed at zero selectable passages.
+- Designer PRs #40 and #49 are integrated. The dedicated Techno clue-point art
+  remains outstanding and is published back to the designer with acceptance
+  criteria; the approved paw-alert still is the temporary fallback.
+- Local validation: `npm run check`, 268 tests, and production build pass.
+
 ## Current MyCorner branch
 
 - Designer PR #38 froze `mycorner-profile-fixture-01`, the seven-plus-three
