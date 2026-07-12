@@ -1,5 +1,13 @@
 # Session handoff
 
+## Amaze-On design response
+
+- Branch: `agent/amazeon-runtime-design-response`.
+- Builder packet:
+  [`design/AMAZEON_RUNTIME_RESPONSE_2026-07-12.md`](design/AMAZEON_RUNTIME_RESPONSE_2026-07-12.md).
+- It freezes products, parcels, receipt/consent data, evidence, responsive
+  behavior, passage-ID plan, and hub continuation without promoting content.
+
 ## MapGuess moving-target foundation
 
 - Deployed `main` is authoritative at `e776471` through FacePlace PR #34 and

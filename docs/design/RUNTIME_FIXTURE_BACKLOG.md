@@ -166,6 +166,10 @@ return to its opener.
 
 ### Amaze-On
 
+**Answered:** See
+[`AMAZEON_RUNTIME_RESPONSE_2026-07-12.md`](AMAZEON_RUNTIME_RESPONSE_2026-07-12.md).
+Passage eligibility remains independently review-gated.
+
 Freeze the fictional product/listing IDs, titles/descriptions, recommendation
 carousel, and four evidence parcels with their claims and source types. The
 review parcel needs exact author, date, and context because unit two restores all
