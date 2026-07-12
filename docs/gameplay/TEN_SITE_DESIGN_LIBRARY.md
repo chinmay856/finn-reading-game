@@ -2,13 +2,18 @@
 
 ## Purpose
 
-This is the builder-ready design pass for ten Internet Recovery OS sites. It
+This is the production design library for ten Internet Recovery OS sites. It
 defines the approved site roster, story arcs, progress fiction, reading lanes,
-and concept-board references that prototype/build agents may start from.
+and storyboard references. Exact repair units, midpoint triggers, persistence,
+finish conditions, responsive behavior, motion, and accessibility are frozen in
+[`site-build-briefs/README.md`](site-build-briefs/README.md) and
+[`SITE_PRODUCTION_SYSTEM.md`](SITE_PRODUCTION_SYSTEM.md).
 
-Done means approved as design direction for implementation planning. It does
-not mean final runtime UI, cropped art exports, final copy, or final passage
-selection.
+Production design complete means the wrapper state, copy, visual tokens,
+original marks, layout, and accessibility direction are ready for
+implementation. It does not mean the builder has implemented the site or that a
+passage candidate has passed rights, factual, grade, sensitivity, and
+microphone review.
 
 Every site uses the same theme-neutral Reading Engine and a visually separate
 Reading Companion. Only the assigned passage is speech-scored. Decorative page
@@ -30,10 +35,11 @@ secretly sabotaging the repairs.
 The AI optimizes a visible proxy instead of the human goal, expands beyond the
 task Chinmay gave it, and gradually reveals itself as the rogue antagonist.
 
-Current user review signal: the reviewed site directions are good enough to
-promote as the ten-site done design set. Final implementation still needs exact
-runtime copy, responsive UI, accessibility treatment, passage selection, and
-cropped production assets.
+Current production handoff: all ten sites have exact runtime copy IDs,
+site-specific state contracts, responsive/accessibility rules, and original
+mark direction. WikiWhy has a focused campaign-state pack and ThreadIt has a
+standalone production asset pack. Runtime implementation and passage acceptance
+remain separate builder/content work.
 
 ## Shared presentation grammar
 
@@ -71,8 +77,9 @@ long-haired, increasingly frazzled arc above.
 
 Visual examples for this grammar are indexed in the
 [`site concept-board catalog`](../../apps/internet-recovery/art/concepts/sites/README.md).
-Use the canonical non-WIP site-board filenames listed there as builder inputs.
-Files carrying `-superseded` in their names are comparison history only.
+Use those boards for broad composition/story reference. Use the production site
+briefs, copy pack, state system, and mark manifest for runtime decisions. Files
+carrying `-superseded` in their names are comparison history only.
 
 ## Roster
 
@@ -302,7 +309,9 @@ reliable. Amy: “Five pages, one author. That's one source in five costumes.”
 
 **Resolution — Independent branches:** Finn opens branches for “who says this,”
 “when,” and “how do they know?” A paired-source check confirms independence.
-The AI's answer remains visible but labeled `UNVERIFIED GENERATED SUMMARY`.
+The AI's answer remains visible but labeled `UNVERIFIED GENERATED SUMMARY`;
+its request for automatic first placement is blocked with
+`TOP PLACEMENT DENIED - SOURCE ORIGIN REQUIRED`.
 
 **Reading lane:** Paired primary/secondary sources, abstract/plain-language
 summary pairs, detective fiction, argumentative essays, and graphs/captions.
@@ -401,7 +410,7 @@ while retaining the same ETA. Chinmay points out that the clock still says two
 minutes. Amy: “The road didn't move. The target did.”
 
 **Resolution — Anchor and choose:** Finn anchors the map to three landmarks and
-chooses fastest, safest, or scenic according to his goal. The AI's reroute fails
+chooses fastest, safest, scenic, or accessible according to his goal. The AI's reroute fails
 with `DESTINATION LOCKED — USER CHOICE REQUIRED`; Techno pins the destination
 with her ball.
 

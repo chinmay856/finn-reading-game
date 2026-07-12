@@ -6,6 +6,8 @@
   box-shadow: inset 0 0 0 2px #fff;
 }
 
+.file-card #fileRights[hidden] { display: none; }
+
 .saved-repair-receipt > small {
   color: var(--green);
   font-weight: 700;

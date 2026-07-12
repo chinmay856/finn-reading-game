@@ -90,7 +90,7 @@ test("WikiWhy repair state stays wrapper-specific and tolerates blocked storage"
   });
   const second = recordWikiWhyRepair(storage, {
     advance: 17,
-    passageId: "wikiwhy.photosynthesis.a01",
+    passageId: "plate-tectonics-a02",
     reaction: "The page is clearing faster.",
     repairedAt: "2026-07-11T00:01:00Z",
     sessionId: "session-2",
@@ -99,7 +99,7 @@ test("WikiWhy repair state stays wrapper-specific and tolerates blocked storage"
   assert.equal(first.ok, true);
   assert.equal(second.state.repairCount, 2);
   assert.equal(second.state.stability, 32);
-  assert.equal(readWikiWhyState(storage).status, "stable-for-now");
+  assert.equal(readWikiWhyState(storage).phase, "act-one");
   assert.equal(recordWikiWhyRepair(new MemoryStorage({ failWrites: true }), {
     advance: 10,
     passageId: "passage",
@@ -139,5 +139,5 @@ test("legacy repair counts migrate to the minimum earned stability", () => {
   const migrated = readWikiWhyState(storage);
   assert.equal(migrated.repairCount, 2);
   assert.equal(migrated.stability, 20);
-  assert.equal(migrated.version, 2);
+  assert.equal(migrated.version, 3);
 });

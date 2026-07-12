@@ -85,6 +85,9 @@
 .site-card b { font-size: 12px; }
 .site-card small { margin-top: 2px; color: #dce9ef; font-size: 7px; text-transform: uppercase; }
 .site-card[data-playable="true"] { outline: 3px solid #63b86b; outline-offset: -5px; }
+.site-card[data-secured="true"] { outline: 4px solid #69d078; outline-offset: -6px; }
+.site-card[data-secured="true"] > span { border-radius: 5px; background: #e4f2ea; }
+.site-card[data-secured="true"] > span img { width: 24px; height: 24px; }
 .site-card:hover,.site-card:focus-visible { filter: brightness(1.12); outline: 3px solid #ffd94a; outline-offset: -4px; }
 
 .incoming-cases { display: grid; grid-template-columns: 155px 1fr; gap: 10px; align-items: center; margin-top: 11px; padding: 9px; border: 2px inset #d6d6ce; background: #fff; }
@@ -102,6 +105,10 @@
 .case-file-body ol { margin: 8px 0; padding-left: 28px; }
 .case-file-body li { min-height: 23px; padding: 4px; border-bottom: 1px dotted #999; font-size: 9px; }
 .case-file-body li::marker { color: #173968; font-weight: 700; }
+.case-file-body .evidence-slot-recovered { display: grid; grid-template-columns: 54px 1fr; gap: 7px; border: 1px solid #246b3c; background: #eef8ed; }
+.evidence-slot-recovered > img { width: 52px; align-self: center; border: 1px solid #78907e; background: #fff; }
+.evidence-slot-recovered b,.evidence-slot-recovered span { display: block; margin-bottom: 2px; }
+.evidence-slot-recovered span { color: #4a5650; font-size: 7px; overflow-wrap: anywhere; }
 .case-file-body > small { display: block; color: #555; font-size: 8px; }
 .amy-support-window > div:last-child { display: grid; grid-template-columns: 68px 1fr; gap: 8px; padding: 8px; border: 1px inset #d6d6ce; background: #f2e7ba; }
 .amy-support-window img { width: 68px; aspect-ratio: 1; object-fit: cover; border: 2px inset #d6d6ce; }
@@ -139,6 +146,8 @@
 .review-surface { padding-top: 18px; padding-right: 18px; padding-bottom: 20px; }
 .taskbar .task-button { border: 2px outset #d6d6ce; color: #111; text-align: left; }
 .taskbar .task-button.active { border-style: inset; background: #b8c6cf; }
+.taskbar .task-button.secured { border-color: #246b3c; background: #dff0df; color: #174f2c; }
+.taskbar .task-button.secured img { width: 20px; height: 20px; margin-right: 5px; }
 .tunnel-tray { display: flex; align-items: center; gap: 4px; color: #246b3c; font-weight: 700; }
 .tunnel-tray i { width: 8px; height: 8px; border-radius: 50%; background: #54cc62; box-shadow: 0 0 5px #54cc62; }
 

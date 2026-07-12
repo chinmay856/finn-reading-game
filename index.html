@@ -78,7 +78,7 @@
             <p data-copy-id="mission.preparation.body">Read continuously at a comfortable pace. Pause when you need to. Correct yourself whenever you want. The repair only moves forward.</p>
             <div class="file-card">
               <div class="file-icon" aria-hidden="true">TXT</div>
-              <div><b id="fileTitle">How Plants Store Sunlight</b><span id="fileMeta">About 170 words · science · grades 10–12</span><span id="fileSource">Adapted and modified from English Wikipedia contributors.</span><span>Audio upload: none · Forced retries: absolutely not</span></div>
+              <div><b id="fileTitle">How Plants Store Sunlight</b><span id="fileMeta">About 170 words · science · grades 10–12</span><span id="fileSource">Adapted and modified from English Wikipedia contributors.</span><span id="fileRights"><a id="fileSourceLink" href="https://en.wikipedia.org/wiki/Photosynthesis" target="_blank" rel="noreferrer">Source and contributors</a> · <a id="fileLicenseLink" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a><span id="fileModificationNotice"> · Adapted and modified for length, reading level, and microphone use.</span></span><span>Audio upload: none · Forced retries: absolutely not</span></div>
             </div>
             <label class="guide-setting">Reading guide pace<select id="guideWpm"><option value="150">150 WPM</option><option value="200">200 WPM</option><option value="250" selected>250 WPM</option><option value="300">300 WPM</option></select></label>
             <p class="privacy-truth" data-copy-id="privacy.microphone.truth">Your voice is processed on this device. The game does not upload or save your audio or transcript.</p>
@@ -86,9 +86,9 @@
             <p id="modelProgress" class="model-progress" role="status">Your browser will ask for microphone permission next.</p>
             <p id="savedRepairStatus" class="model-progress" role="status" hidden></p>
             <section id="savedRepairReceipt" class="saved-repair-receipt" hidden>
-              <small>LASTING REPAIR FOUND</small>
+              <small id="savedRepairEyebrow">LASTING REPAIR FOUND</small>
               <div><b>WikiWhy</b><strong id="savedStability">0%</strong></div>
-              <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span>SITE STABILITY</span></div>
+              <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span id="savedRepairMode">SITE STABILITY</span></div>
               <p id="savedReaction">That held.</p>
             </section>
             <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
@@ -102,8 +102,8 @@
 
       <section id="read" class="screen desktop-surface mission-surface" tabindex="-1">
         <article class="os-window browser-window">
-          <div class="window-titlebar danger"><span>WIKIWHY — INTERNET ENCYCLOPEDIA</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
-          <div class="browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span class="address">http://wikiwhy.recovered/evidence</span><span class="browser-security">CONNECTION: QUESTIONABLE</span></div>
+          <div class="window-titlebar danger"><span id="wikiwhyBrowserTitle">WIKIWHY — INTERNET ENCYCLOPEDIA</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span class="address">http://wikiwhy.recovered/evidence</span><span id="wikiwhySecurityStatus" class="browser-security">CONNECTION: QUESTIONABLE</span></div>
           <div class="repair-stage" aria-label="WikiWhy page repairing from corrupted to evidence-based as confirmed reading progress advances">
             <div class="wiki-page broken-page">
               <header class="wiki-masthead">
@@ -126,11 +126,36 @@
                 <strong class="wiki-integrity good">EVIDENCE CONNECTED</strong>
               </header>
               <aside class="wiki-nav"><b>WIK<br>WHY?</b><a>Main page</a><a>Contents</a><a>Random article</a><a>About WikiWhy</a><a>Contact page</a></aside>
-              <div class="wiki-article"><div class="wiki-tabs"><span>Article</span><span>Talk</span><span class="selected">Read</span><span>View source</span><span>History</span></div><small>FROM WIKIWHY, THE FREE ENCYCLOPEDIA</small><h2>PEOPLE CAN CONTRIBUTE; EVIDENCE EARNS TRUST</h2><p>People share ideas and information every day, but not everything is accurate. Strong claims explain their evidence, limits, and uncertainty.</p><ul><li>Claims can be checked against observations. <i>[1]</i></li><li>Alternative explanations deserve attention. <i>[2]</i></li><li>Replication helps reveal dependable patterns. <i>[3]</i></li></ul><section class="wiki-evidence"><b>What the evidence actually shows</b><p>Good questions lead to better answers. Sources reconnect claims with the work underneath them.</p></section><h3>References</h3><p class="references">[1] Methods and measurements<br>[2] Limits and alternatives<br>[3] Replication record</p></div>
+              <div class="wiki-article"><div class="wiki-tabs"><span>Article</span><span>Talk</span><span class="selected">Read</span><span>View source</span><span>History</span></div><small>FROM WIKIWHY, THE FREE ENCYCLOPEDIA</small><h2>PEOPLE CAN CONTRIBUTE; EVIDENCE EARNS TRUST</h2><p>People share ideas and information every day, but not everything is accurate. Strong claims explain their evidence, limits, and uncertainty.</p><ul><li>Claims can be checked against observations. <i>[1]</i></li><li>Alternative explanations deserve attention. <i>[2]</i></li><li>Replication helps reveal dependable patterns. <i>[3]</i></li></ul><ul id="wikiwhySourceConnections" class="wikiwhy-source-connections" aria-label="Source origins pending connection" hidden><li><span>Claim: observations</span><b>MISSING LINK</b><span data-source-label>Source origin pending</span></li><li><span>Claim: alternatives</span><b>MISSING LINK</b><span data-source-label>Source origin pending</span></li><li><span>Claim: replication</span><b>MISSING LINK</b><span data-source-label>Source origin pending</span></li></ul><section class="wiki-evidence"><b>What the evidence actually shows</b><p>Good questions lead to better answers. Sources reconnect claims with the work underneath them.</p></section><h3>References</h3><p class="references">[1] Methods and measurements<br>[2] Limits and alternatives<br>[3] Replication record</p></div>
               <aside class="wiki-card verified"><figure class="evidence-photo"><img src="/apps/internet-recovery/art/site-assets/wikiwhy-toast-evidence.png" alt="Buttered toast on a plate"><figcaption>Trusted toast evidence</figcaption></figure><b>AT A GLANCE</b><span>Confidence: Measured</span><span>Evidence: Verified</span><span>Sources: 12</span><span>Updated: Today</span></aside>
             </div>
             <div id="repairEdge" class="repair-edge" aria-hidden="true"></div>
             <div id="technoRepairSprite" class="techno-repair-sprite" aria-hidden="true"><img id="technoRepairSpriteImage" src="/apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp" alt=""></div>
+            <aside id="wikiwhyBackgroundReplacement" class="wikiwhy-background-replacement" aria-label="Blocked generated replacement" hidden><small>GENERATED REPLACEMENT ATTEMPT</small><del>Confidence is enough. Source review complete.</del></aside>
+            <aside id="wikiwhyAiRewriteLayer" class="wikiwhy-ai-rewrite-layer" aria-label="Active AI rewrite replacing decorative WikiWhy content" hidden><small>AI REWRITE STILL ACTIVE</small><h4>Confidence replaces evidence</h4><ul><li>Source summary: generated</li><li>Origin: hidden behind synthesis</li><li>Publish approval: optimized away</li></ul></aside>
+            <aside id="wikiwhyCampaignOverlay" class="wikiwhy-campaign-overlay" aria-live="polite" hidden>
+              <small id="campaignOverlayEyebrow">CAMPAIGN STATE</small>
+              <h3 id="campaignOverlayHeading">WikiWhy repair</h3>
+              <img id="wikiwhySecuredSeal" class="wikiwhy-secured-seal" src="/apps/internet-recovery/art/site-assets/wikiwhy-campaign/wikiwhy-secured-seal.svg" alt="WikiWhy secured seal" hidden>
+              <img id="campaignTechnoState" class="campaign-techno-state" src="/apps/internet-recovery/art/characters/techno/techno-alert-ball-pin.webp" alt="" hidden>
+              <p id="campaignOverlayBody"></p>
+              <ol id="shieldChecklist" hidden>
+                <li>Recover content layer</li>
+                <li>Verify citations and history</li>
+                <li>Seal edit permissions</li>
+              </ol>
+              <button id="openWikiWhyEvidence" class="evidence-toggle" type="button" aria-controls="wikiwhyEvidenceReceipt" aria-expanded="false" hidden>Open WIKIWHY_TRACE_01.LOG</button>
+              <section id="wikiwhyEvidenceReceipt" class="wikiwhy-evidence-receipt" tabindex="-1" hidden>
+                <img src="/apps/internet-recovery/art/site-assets/wikiwhy-campaign/evidence-route-fragment-01.svg" alt="Route from generated summary to the WikiWhy publish gate, active after the command ended.">
+                <b>AI WRITE ROUTE / 01</b>
+                <code>WIKIWHY_TRACE_01.LOG</code>
+                <span>WIKIWHY / ENDED COMMAND, ACTIVE WRITER</span>
+                <span>Writer: ai_repair_service · Command: ENDED</span>
+                <span>Write state: ACTIVE UNTIL SHIELD · Current route: DENIED</span>
+                <span>generated_summary → site_publish_gate</span>
+                <span>Finn restored the approval check the AI optimized away.</span>
+              </section>
+            </aside>
           </div>
           <footer class="browser-status">
             <b id="siteStatus">STATUS: CORRUPTED</b>
@@ -195,11 +220,11 @@
       </aside>
 
       <div id="characterDialogLayer" class="character-dialog-layer" hidden>
-        <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogBody">
+        <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogEyebrow dialogBody">
           <div class="window-titlebar"><span id="dialogTitle">AMY // ENGINEER CHANNEL</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="character-dialog-body">
             <img id="dialogPortrait" src="/apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg" alt="">
-            <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
+            <div><small id="dialogEyebrow">ENGINEER CHANNEL</small><h2 id="dialogHeading" tabindex="-1">Incoming message</h2><p id="dialogBody"></p><p id="dialogMeta" class="dialog-meta" hidden></p><section id="dialogComparison" class="dialog-comparison" aria-label="Finn's saved repair compared with the active AI rewrite" hidden><table><thead><tr><th scope="col">FINN'S SAVED REPAIR</th><th scope="col">AI REWRITE STILL ACTIVE</th></tr></thead><tbody><tr><td>Claim includes evidence</td><td>Confidence replaces evidence</td></tr><tr><td>Source origin visible</td><td>Source summary generated</td></tr><tr><td>Publish approval restored</td><td>Approval optimized away</td></tr></tbody></table></section><button id="dialogAction" class="os-button primary" type="button">Continue</button></div>
           </div>
         </article>
       </div>

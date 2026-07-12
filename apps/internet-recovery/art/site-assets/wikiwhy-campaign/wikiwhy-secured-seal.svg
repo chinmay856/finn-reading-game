@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">WikiWhy secured seal</title>
+  <desc id="desc">A shield with three labeled segments for content, links, and access.</desc>
+  <path d="M64 8 108 24v34c0 29-17 50-44 62C37 108 20 87 20 58V24L64 8Z" fill="#E4F2EA" stroke="#1D3557" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M31 32h66v22H31Z" fill="#287A55"/>
+  <path d="M31 59h66v20H31Z" fill="#3B8F6B"/>
+  <path d="M37 84h54c-7 12-16 20-27 26-11-6-20-14-27-26Z" fill="#56A982"/>
+  <path d="m45 61 12 12 28-31" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Spotty-Fi cassette signal dial</title>
+  <desc id="desc">An original cassette is offset against a magenta and acid-green tuning dial.</desc>
+  <circle cx="82" cy="48" r="32" fill="none" stroke="#D04A86" stroke-width="10" stroke-dasharray="35 14"/>
+  <circle cx="82" cy="48" r="19" fill="none" stroke="#B7D438" stroke-width="8" stroke-dasharray="18 10"/>
+  <rect x="14" y="45" width="86" height="62" rx="9" fill="#272D34" stroke="#F4F1E8" stroke-width="6"/>
+  <rect x="26" y="57" width="62" height="22" rx="4" fill="#F4F1E8" stroke="#191D22" stroke-width="4"/>
+  <circle cx="42" cy="68" r="7" fill="#B7D438" stroke="#191D22" stroke-width="3"/>
+  <circle cx="72" cy="68" r="7" fill="#D04A86" stroke="#191D22" stroke-width="3"/>
+  <path d="M32 96h50l-8-13H40Z" fill="#3C98A0" stroke="#191D22" stroke-width="4" stroke-linejoin="round"/>
+</svg>

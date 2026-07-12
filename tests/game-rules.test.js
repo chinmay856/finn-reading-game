@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { calculateWikiWhyRepair, WIKIWHY_ACT_ONE_LIMIT } from "../apps/internet-recovery/wikiwhy-rules.js";
+import {
+  WIKIWHY_ACT_ONE_LIMIT,
+  calculateWikiWhyReadingOutcome,
+  calculateWikiWhyRepair,
+  calculateWikiWhySiteVisualPercent,
+  describeWikiWhyRepairAdvance,
+  describeWikiWhyShieldPass,
+} from "../apps/internet-recovery/wikiwhy-rules.js";
 import { measureReadingSessionStrength } from "../game-rules/reading-session-strength.js";
 
 test("reading strength remains theme-neutral and rewards comprehension", () => {
@@ -51,4 +58,48 @@ test("the final Act I repair clamps to the documented story turn", () => {
   });
   assert.equal(repair.stability, WIKIWHY_ACT_ONE_LIMIT);
   assert.equal(repair.advance, 5);
+});
+
+test("Shield Protocol maps every accepted reading to exactly one pass", () => {
+  const outcome = calculateWikiWhyReadingOutcome({
+    campaignState: { phase: "shield", shieldPass: 1, stability: 80 },
+    comprehension: "retry-offered",
+    readingResult: { accuracy: 10, progress: 0.1, wpm: 40 },
+  });
+  assert.equal(outcome.kind, "shield-pass");
+  assert.equal(outcome.shieldAdvance, 1);
+  assert.equal(outcome.advance, 0);
+  assert.match(outcome.reaction, /one repair remains/iu);
+  assert.equal(outcome.reaction, describeWikiWhyShieldPass(2));
+});
+
+test("WikiWhy reaction copy is derived from the progress actually applied", () => {
+  assert.match(describeWikiWhyRepairAdvance(19), /clearing faster/iu);
+  assert.match(describeWikiWhyRepairAdvance(5), /held/iu);
+  assert.match(describeWikiWhyShieldPass(3), /locked out/iu);
+});
+
+test("live Shield projection never erases the preserved 80 percent repair", () => {
+  for (const campaignPercent of [0, 17, 33, 66, 79]) {
+    assert.equal(calculateWikiWhySiteVisualPercent({
+      campaignPercent,
+      campaignState: { phase: "shield" },
+    }), 80);
+  }
+  assert.equal(calculateWikiWhySiteVisualPercent({
+    campaignPercent: 91,
+    campaignState: { phase: "shield" },
+  }), 91);
+  assert.equal(calculateWikiWhySiteVisualPercent({
+    campaignPercent: 38,
+    campaignState: { phase: "act-one" },
+  }), 38);
+});
+
+test("the rewrite and secured phases cannot silently consume another reading", () => {
+  for (const phase of ["reverse-hack", "secured"]) {
+    const outcome = calculateWikiWhyReadingOutcome({ campaignState: { phase, stability: 80 } });
+    assert.equal(outcome.kind, "no-progress");
+    assert.equal(outcome.shieldAdvance, 0);
+  }
 });
