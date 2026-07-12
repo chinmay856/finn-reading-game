@@ -364,6 +364,20 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   persistent fixed Techno, and no horizontal page overflow. The canonical
   seven-unit timeline and independent Reading Companion remain unchanged.
 
+### Search-ish graphics fidelity (2026-07-12)
+
+- Search-ish now uses its canonical indigo/teal/amber/coral source-evaluation
+  system through a state-aware act ribbon, query-trail colors, a prominent
+  generated-origin warning, dimensional result cards, semantic branch wiring,
+  and a stronger seven-unit trail.
+- Corrupted certainty drifts visually while open independent branches pulse;
+  both stop under reduced motion. No external search service, iframe, remote
+  content, or new raster payload was introduced.
+- Desktop QA confirmed one generated answer, four result cards, three semantic
+  branch gates, persistent fixed Techno, and no horizontal page overflow. The
+  canonical state/evidence contracts and independent Reading Companion remain
+  unchanged.
+
 1. Review the complete MapGuess diff, then publish through PR, CI, merge, Pages
    deployment, and public HTTPS verification.
 2. Keep slot 10 excluded from canonical evidence counts and the final unlock
