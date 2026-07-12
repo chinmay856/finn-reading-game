@@ -1,0 +1,5 @@
+import assert from "node:assert/strict";import test from "node:test";
+import {calculateAmazeOnReadingOutcome} from "../apps/internet-recovery/amazeon-rules.js";import {acknowledgeAmazeOnMidpointState,advanceAmazeOnState,normalizeAmazeOnState} from "../apps/internet-recovery/amazeon-state.js";import {getAmazeOnCampaignView} from "../apps/internet-recovery/amazeon-view.js";
+function preview(n){let s=normalizeAmazeOnState();for(let i=0;i<n;i++){if(i===4)s=acknowledgeAmazeOnMidpointState(s).state;s=advanceAmazeOnState(s,{outcome:calculateAmazeOnReadingOutcome({campaignState:s}),passageId:`p${i}`,sessionId:`s${i}`}).state;}return getAmazeOnCampaignView(s);}
+test("corrupted fixture keeps four claims and the ball only suggested",()=>{const v=preview(0);assert.equal(v.parcels.length,4);assert.equal(v.recommendations[0].status,"SUGGESTED — NOT CHOSEN");assert.equal(v.listing.priceDisplay,"PRICE HIDDEN");});
+test("secured receipt removes auto-decide and requires human confirmation",()=>{const v=preview(7);assert.equal(v.receipt.consent,"REMOVED");assert.equal(v.receipt.confirmation,"HUMAN CONFIRMATION REQUIRED");assert.equal(v.securedPayoff.evidence.slot,8);});
