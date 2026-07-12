@@ -1,5 +1,13 @@
 # Parallel design requests
 
+## Search-ish focused follow-up
+
+- Runtime contract and A01-A07 manuscripts are integrated from designer PRs
+  #41 and #51.
+- Resolved by designer commit `47c25bf`: canonical wrapper asset ID
+  `searchish.techno.generated-cache-alert` maps to
+  `techno-paw-alert-still.webp`; no new raster is required.
+
 ## ViewTube focused follow-up
 
 - Runtime contract and first-run manuscripts are integrated from designer PRs
