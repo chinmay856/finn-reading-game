@@ -192,6 +192,56 @@ export function isSelectablePassage(passage) {
   );
 }
 
+// Playtest eligibility proves only that a candidate has a complete passage
+// shape and source/rights record. It never changes availability, review
+// evidence, or canonical eligibility. Production selection must continue to
+// use isSelectablePassage/selectNextPassage.
+export function isPlaytestPassage(passage) {
+  if (passage?.availability !== "candidate") return false;
+  const structuralProjection = {
+    ...passage,
+    availability: "approved",
+    review: Object.freeze({
+      accessibility: "passed",
+      adaptationFidelity: "passed",
+      comprehension: "passed",
+      editorial: "passed",
+      factual: "passed",
+      grade: "passed",
+      profile: "passed",
+      rights: "passed",
+      sensitivity: "passed",
+      transcription: "passed",
+    }),
+    transcriptionReview: Object.freeze({
+      ...passage.transcriptionReview,
+      tested: true,
+    }),
+  };
+  return isSelectablePassage(structuralProjection);
+}
+
+export function selectNextPlaytestPassage({
+  catalog = PASSAGE_CATALOG,
+  completedPassageIds = [],
+  preferredIds = catalog.map(({ id }) => id),
+} = {}) {
+  const completed = new Set(completedPassageIds);
+  const eligible = preferredIds
+    .map((id) => getPassageById(id, catalog))
+    .filter(isPlaytestPassage);
+  const unseen = eligible.find(({ id }) => !completed.has(id));
+  return Object.freeze({
+    canonicalEligible: false,
+    lane: "playtest",
+    passage: unseen ?? null,
+    reason: unseen ? "unseen-playtest-candidate" : eligible.length ? "no-unseen-playtest-candidates" : "no-playtest-candidates",
+    reviewPending: true,
+    selectableCount: eligible.length,
+    unavailableCount: Math.max(0, preferredIds.length - eligible.length),
+  });
+}
+
 export function selectNextPassage({
   allowRepeat = false,
   catalog = PASSAGE_CATALOG,

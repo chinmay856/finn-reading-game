@@ -761,6 +761,14 @@ For every feature, ask:
 
 ## 12. Architecture decisions
 
+### ADR-003 — Separate playtest eligibility from production approval
+
+Structurally complete candidate passages may be selected through an explicit
+noncanonical playtest lane so the whole game can be reviewed in context. This
+does not change candidate availability, review evidence, production selection,
+or canonical evidence eligibility. See
+[`decisions/0003-explicit-playtest-content-lane.md`](decisions/0003-explicit-playtest-content-lane.md).
+
 ### ADR-001 — Separate the Reading Engine from game wrappers
 
 **Status:** Accepted

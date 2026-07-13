@@ -1,5 +1,13 @@
 # Project status
 
+## Full-playthrough content lane — active 2026-07-12
+
+The Content Platform now has an explicit `playtest` selector for structurally
+complete candidate passages. It is candidate-only, unseen-first, review-pending,
+and always noncanonical; it does not mutate availability or manifests and
+cannot satisfy production selection. ThreadIt is the first planned end-to-end
+wrapper integration using this lane.
+
 ## Campaign review manifests — active 2026-07-12
 
 All 85 candidate passages now have exact revision-bound pending review
