@@ -1,5 +1,6 @@
 export const A_CABIN_WITH_A_PURPOSE_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "a-cabin-with-a-purpose-a01@2026-07-12.1",
   id: "a-cabin-with-a-purpose-a01",
   title: "A Cabin with a Purpose",
   paragraphs: Object.freeze([

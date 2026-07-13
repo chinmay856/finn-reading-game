@@ -28,6 +28,7 @@ const SHARED_RIGHTS = Object.freeze({
 export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   Object.freeze({
     availability: "candidate",
+    contentRevision: "plate-tectonics-a02@2026-07-12.1",
     id: "plate-tectonics-a02",
     title: "A Moving Surface",
     paragraphs: Object.freeze([
@@ -57,6 +58,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "sleep-a03@2026-07-12.1",
     id: "sleep-a03",
     title: "Sleep Is Active",
     paragraphs: Object.freeze([
@@ -86,6 +88,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "memory-a04@2026-07-12.1",
     id: "memory-a04",
     title: "Memory Rebuilds",
     paragraphs: Object.freeze([
@@ -115,6 +118,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "habit-a05@2026-07-12.1",
     id: "habit-a05",
     title: "When Actions Become Automatic",
     paragraphs: Object.freeze([
@@ -144,6 +148,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "placebo-a06@2026-07-12.1",
     id: "placebo-a06",
     title: "Why Trials Use Placebos",
     paragraphs: Object.freeze([
@@ -173,6 +178,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "urban-heat-island-a07@2026-07-12.1",
     id: "urban-heat-island-a07",
     title: "Why Cities Hold Heat",
     paragraphs: Object.freeze([
@@ -202,6 +208,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "pollination-a08@2026-07-12.1",
     id: "pollination-a08",
     title: "A Partnership Written in Pollen",
     paragraphs: Object.freeze([
@@ -231,6 +238,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "scientific-method-a09@2026-07-12.1",
     id: "scientific-method-a09",
     title: "Science Is Not One Recipe",
     paragraphs: Object.freeze([
@@ -260,6 +268,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "cognitive-bias-a10@2026-07-12.1",
     id: "cognitive-bias-a10",
     title: "Useful Shortcuts, Predictable Errors",
     paragraphs: Object.freeze([
@@ -289,6 +298,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "printing-press-b01@2026-07-12.1",
     id: "printing-press-b01",
     title: "The Machine That Multiplied Pages",
     paragraphs: Object.freeze([
@@ -318,6 +328,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "encryption-b02@2026-07-12.1",
     id: "encryption-b02",
     title: "A Message Others Cannot Read",
     paragraphs: Object.freeze([
@@ -347,6 +358,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "internet-b03@2026-07-12.1",
     id: "internet-b03",
     title: "The Internet Is a Network of Networks",
     paragraphs: Object.freeze([
@@ -376,6 +388,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "public-library-b04@2026-07-12.1",
     id: "public-library-b04",
     title: "What a Public Library Provides",
     paragraphs: Object.freeze([
@@ -405,6 +418,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "renewable-energy-b05@2026-07-12.1",
     id: "renewable-energy-b05",
     title: "Renewable Does Not Mean Impact-Free",
     paragraphs: Object.freeze([
@@ -434,6 +448,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "coral-reef-b06@2026-07-12.1",
     id: "coral-reef-b06",
     title: "A City Built by Tiny Animals",
     paragraphs: Object.freeze([
@@ -463,6 +478,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "probability-b07@2026-07-12.1",
     id: "probability-b07",
     title: "Probability Describes Uncertainty",
     paragraphs: Object.freeze([
@@ -492,6 +508,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "music-b08@2026-07-12.1",
     id: "music-b08",
     title: "Music Organizes Sound and Time",
     paragraphs: Object.freeze([
@@ -521,6 +538,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "architecture-b09@2026-07-12.1",
     id: "architecture-b09",
     title: "Buildings Make Arguments",
     paragraphs: Object.freeze([
@@ -550,6 +568,7 @@ export const WIKIWHY_FIRST_RUN_PASSAGES = Object.freeze([
   }),
   Object.freeze({
     availability: "candidate",
+    contentRevision: "map-b10@2026-07-12.1",
     id: "map-b10",
     title: "Every Map Chooses",
     paragraphs: Object.freeze([

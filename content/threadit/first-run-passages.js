@@ -43,6 +43,7 @@ const SHARED_REVIEW = Object.freeze({
 function candidate({ id, title, paragraphs, prompt, correct, distractors, skills, unstableTokens = [] }) {
   return Object.freeze({
     availability: "candidate",
+    contentRevision: `${id}@2026-07-12.1`,
     id,
     title,
     paragraphs: Object.freeze(paragraphs),

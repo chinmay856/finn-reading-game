@@ -1,5 +1,6 @@
 export const THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "the-newspaper-that-found-people-on-the-moon-a01@2026-07-12.1",
   id: "the-newspaper-that-found-people-on-the-moon-a01",
   title: "The Newspaper That Found People on the Moon",
   paragraphs: Object.freeze([

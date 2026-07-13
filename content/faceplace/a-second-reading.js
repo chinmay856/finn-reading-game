@@ -1,5 +1,6 @@
 export const A_SECOND_READING_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "a-second-reading-a01@2026-07-12.1",
   id: "a-second-reading-a01",
   title: "A Second Reading",
   paragraphs: Object.freeze([

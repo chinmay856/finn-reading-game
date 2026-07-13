@@ -14,7 +14,7 @@ const REVIEW = Object.freeze({ accessibility: "candidate-pending-human-review", 
 
 function candidate(id, title, paragraphs, prompt, correct, distractors, skills) {
   return Object.freeze({
-    availability: "candidate", id, title, paragraphs: Object.freeze(paragraphs),
+    availability: "candidate", contentRevision: `${id}@2026-07-12.1`, id, title, paragraphs: Object.freeze(paragraphs),
     comprehension: Object.freeze({ prompt, choices: Object.freeze([Object.freeze({ correct: true, text: correct }), ...distractors.map((text) => Object.freeze({ correct: false, text }))]), correctFeedback: "That answer matches the distinction made in the passage.", incorrectFeedback: "That answer changes or overstates the passage. Recheck the evidence, then choose again or continue." }),
     profile: PROFILE, skills: Object.freeze(skills), source: SOURCE, rights: RIGHTS, review: REVIEW,
     transcriptionReview: Object.freeze({ acceptedTranscriptForms: Object.freeze([]), tested: false, unstableTokens: Object.freeze([]) }),

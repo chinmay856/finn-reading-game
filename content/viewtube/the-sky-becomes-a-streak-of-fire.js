@@ -1,5 +1,6 @@
 export const THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "the-sky-becomes-a-streak-of-fire-a01@2026-07-12.1",
   id: "the-sky-becomes-a-streak-of-fire-a01",
   title: "The Sky Becomes a Streak of Fire",
   paragraphs: Object.freeze([

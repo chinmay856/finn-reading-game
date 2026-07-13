@@ -1,5 +1,6 @@
 export const A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "a-map-is-not-a-photograph-a01@2026-07-12.1",
   id: "a-map-is-not-a-photograph-a01",
   title: "A Map Is Not a Photograph",
   paragraphs: Object.freeze([
