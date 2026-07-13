@@ -307,6 +307,8 @@ test("ThreadIt exposes its explicit candidate playtest lane without promoting co
 
 test("FacePlace candidate content is structured, review-gated, and never silently borrows Deck B", () => {
   const passage = A_SECOND_READING_PASSAGE;
+  assert.equal(passage.source.frozenRevision, "gutenberg-1342-html-2026-02-10T12:53:56.255684Z");
+  assert.equal(passage.source.reviewedRevisionUrl, "https://www.gutenberg.org/files/1342/1342-h/1342-h.htm");
   assert.equal(passage.id, "a-second-reading-a01");
   assert.equal(passage.availability, "candidate");
   assert.equal(passage.paragraphs.length, 5);
@@ -353,6 +355,27 @@ test("FacePlace candidate content is structured, review-gated, and never silentl
   assert.equal(selection.requiredFirstRun, 6);
   assert.equal(selection.firstRunShortfall, 0);
   assert.equal(selection.unavailableCount, 6);
+});
+
+test("FacePlace exposes six unseen candidate playtests without promoting them", () => {
+  const first = selectNextFacePlacePassage(
+    { completedPassageIds: [] },
+    { lane: "playtest" },
+  );
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.selectableCount, 6);
+  assert.equal(first.requiredFirstRun, 6);
+  assert.equal(first.passage?.id, "a-second-reading-a01");
+  assert.equal(first.passage?.availability, "candidate");
+
+  const next = selectNextFacePlacePassage(
+    { completedPassageIds: [first.passage.id] },
+    { lane: "playtest" },
+  );
+  assert.equal(next.passage?.id, "the-photograph-outside-the-frame-a02");
+  assert.equal(next.canonicalEligible, false);
 });
 
 test("theme-neutral content metadata contains no wrapper outcomes", () => {

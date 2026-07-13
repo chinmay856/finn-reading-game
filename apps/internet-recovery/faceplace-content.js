@@ -1,4 +1,4 @@
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import { PASSAGE_CATALOG, selectNextPassage, selectNextPlaytestPassage } from "../../content/passage-catalog.js";
 
 export const FACEPLACE_DECK_A_IDS = Object.freeze([
   "a-second-reading-a01",
@@ -25,9 +25,9 @@ export const FACEPLACE_CONTENT_READINESS = Object.freeze({
 });
 
 export function selectNextFacePlacePassage(campaignState, options = {}) {
-  const selection = selectNextPassage({
-    ...options,
-    allowRepeat: false,
+  const selector = options.lane === "playtest" ? selectNextPlaytestPassage : selectNextPassage;
+  const selection = selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? PASSAGE_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: FACEPLACE_DECK_A_IDS,

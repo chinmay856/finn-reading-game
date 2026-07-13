@@ -1,5 +1,17 @@
 # Project status
 
+## FacePlace candidate playthrough — active 2026-07-12
+
+FacePlace now exposes all six complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into its three false-tracker and three honest-recovery units. Progress
+is tab-only, so the provisional slot-three receipt cannot become persisted
+canonical evidence or unlock the finale. A01's public-domain source freeze is
+now bound to Project Gutenberg eBook 1342's official HTML file modified
+2026-02-10T12:53:56.255684Z; editorial, adaptation, accessibility, sensitivity,
+profile, and real-microphone reviews remain pending. No Reading Engine code
+changed.
+
 ## ThreadIt playtest integration — active 2026-07-12
 
 ThreadIt's wrapper-owned content selector now exposes the neutral candidate
