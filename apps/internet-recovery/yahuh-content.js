@@ -1,5 +1,5 @@
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "../../content/yahuh/the-newspaper-that-found-people-on-the-moon.js";
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import { PASSAGE_CATALOG, selectNextPassage, selectNextPlaytestPassage } from "../../content/passage-catalog.js";
 
 export const YAHUH_DECK_A_IDS = Object.freeze([
   "the-newspaper-that-found-people-on-the-moon-a01",
@@ -33,9 +33,9 @@ const DEFAULT_YAHUH_CATALOG = Object.freeze(
 );
 
 export function selectNextYahuhPassage(campaignState, options = {}) {
-  const selection = selectNextPassage({
-    ...options,
-    allowRepeat: false,
+  const selector = options.lane === "playtest" ? selectNextPlaytestPassage : selectNextPassage;
+  const selection = selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? DEFAULT_YAHUH_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: YAHUH_DECK_A_IDS,
