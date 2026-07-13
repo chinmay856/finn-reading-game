@@ -2,6 +2,11 @@
 
 ## 2026-07-12 MapGuess candidate playthrough
 
+- Follow-up browser QA found that a persisted MapGuess campaign could exhaust
+  or secure the state used to derive the playtest button, leaving a click on
+  `Playtest candidate passage` on the MapGuess screen. The playtest now owns a
+  fresh tab-only state separate from canonical persisted MapGuess progress, and
+  the button-to-handler-to-setup route has an explicit source contract test.
 - Added the explicit playtest selector and Reading Companion route for all
   eight MapGuess first-run candidates while production selection remains
   fail-closed.
