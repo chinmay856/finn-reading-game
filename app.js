@@ -134,6 +134,7 @@ import {
   acknowledgeViewTubeMidpoint,
   acknowledgeViewTubeMidpointState,
   advanceViewTubeState,
+  applyViewTubeReading,
   readViewTubeState,
 } from "./apps/internet-recovery/viewtube-state.js";
 import { getViewTubeCampaignView } from "./apps/internet-recovery/viewtube-view.js";
@@ -252,6 +253,7 @@ const state = {
   viewtubeState: readViewTubeState(localStateStorage),
   viewtubePersisted: Boolean(localStateStorage),
   viewtubeDiagnosticMode: false,
+  viewtubePlaytestMode: false,
   viewtubeDiagnosticState: readViewTubeState(null),
   viewtubeDrawerOpen: false,
   viewtubeEvidenceReceiptOpen: false,
@@ -442,6 +444,36 @@ function openYahuhPlaytestReading() {
   return true;
 }
 
+function selectViewTubePlaytestPassage() {
+  const selection = selectNextViewTubePassage(state.viewtubeState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "viewtube";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openViewTubePlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "viewtube";
+  state.viewtubePlaytestMode = true;
+  state.viewtubePersisted = false;
+  const selection = selectViewTubePlaytestPassage();
+  if (!selection.passage) {
+    renderViewTubeCampaign(state.viewtubeState);
+    $("viewtubeContentReason").textContent = "Every structured ViewTube playtest passage has been used. Production content remains review-gated.";
+    show("viewtube");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "VIEWTUBE CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local ViewTube test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
 function renderContentAvailabilityGate() {
   state.campaignEligible = false;
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "Next recovered file is still under review.";
@@ -609,7 +641,7 @@ function show(name) {
   const facePlaceScreen = name === "faceplace" || (readingScreen && state.readingSiteId === "faceplace");
   const myCornerScreen = name === "mycorner" || (readingScreen && state.readingSiteId === "mycorner");
   const yahuhScreen = name === "yahuh" || (readingScreen && state.readingSiteId === "yahuh");
-  const viewtubeScreen = name === "viewtube";
+  const viewtubeScreen = name === "viewtube" || (readingScreen && state.readingSiteId === "viewtube");
   const searchishScreen = name === "searchish";
   const amazeonScreen = name === "amazeon";
   const spottyfiScreen = name === "spottyfi";
@@ -1802,9 +1834,18 @@ function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) 
   }
   $("viewtubeEvidenceReceipt").hidden = !view.secured || !state.viewtubeEvidenceReceiptOpen;
   $("viewtubeEvidenceToggle").setAttribute("aria-expanded", String(state.viewtubeEvidenceReceiptOpen));
-  const selection = selectNextViewTubePassage(state.viewtubeState);
+  const selection = selectNextViewTubePassage(state.viewtubeState, { lane: "playtest" });
   $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
   $("viewtubeLiveStatus").textContent = view.secured ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 VIEWTUBE UNITS SAVED`;
+  $("viewtubeContentReason").textContent = selection.passage
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("viewtubePlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("viewtubePlaytest").textContent = view.secured
+    ? "ViewTube playtest complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Review saved autoplay first"
+      : "Playtest candidate passage";
 }
 
 function openViewTubeExperience() {
@@ -3994,7 +4035,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace", "mycorner", "yahuh"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -4005,6 +4046,31 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "viewtube") {
+    if (state.resultApplied) {
+      openViewTubeExperience();
+      return;
+    }
+    const outcome = calculateViewTubeReadingOutcome({ accepted: Boolean(state.result), campaignState: state.viewtubeState });
+    const repair = applyViewTubeReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.viewtubeState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.viewtubeState = repair.state;
+    state.viewtubePersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to ViewTube";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.viewtubeState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderViewTubeCampaign(state.viewtubeState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "yahuh") {
     if (state.resultApplied) {
       openYahuhExperience();
@@ -4294,6 +4360,7 @@ $("mycornerPlaytest").onclick = openMyCornerPlaytestReading;
 $("yahuhReturn").onclick = returnToHub;
 $("yahuhPlaytest").onclick = openYahuhPlaytestReading;
 $("viewtubeReturn").onclick = returnToHub;
+$("viewtubePlaytest").onclick = openViewTubePlaytestReading;
 $("searchishReturn").onclick = returnToHub;
 $("amazeonReturn").onclick = returnToHub;
 $("spottyfiReturn").onclick = returnToHub;
@@ -4439,13 +4506,17 @@ document.addEventListener("keydown", (event) => {
   $("viewtubeDrawerToggle").focus({ preventScroll: true });
 });
 $("viewtubeMidpointAction").onclick = () => {
+  const playtestMode = state.viewtubePlaytestMode;
   const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
-  const transition = state.viewtubeDiagnosticMode
+  const transition = state.viewtubeDiagnosticMode || playtestMode
     ? acknowledgeViewTubeMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeViewTubeMidpoint(localStateStorage, { currentState: visible });
   if (!transition.ok) return;
   if (state.viewtubeDiagnosticMode) state.viewtubeDiagnosticState = transition.state;
-  else state.viewtubeState = transition.state;
+  else {
+    state.viewtubeState = transition.state;
+    state.viewtubePersisted = playtestMode ? false : transition.ok;
+  }
   renderViewTubeCampaign(transition.state, { diagnosticMode: state.viewtubeDiagnosticMode });
 };
 $("viewtubeEvidenceToggle").onclick = () => {
