@@ -104,3 +104,17 @@ test("Yahuh owns the frozen six-plus-four plan, selects Deck A only, and reports
   assert.equal(exhausted.reason, "no-unseen-passages");
   assert.equal(exhausted.selectableCount, 1);
 });
+
+test("Yahuh exposes six candidate playtests without promoting content", () => {
+  const first = selectNextYahuhPassage({ completedPassageIds: [] }, { lane: "playtest" });
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.selectableCount, 6);
+  assert.equal(first.requiredFirstRun, 6);
+  assert.equal(first.passage?.id, YAHUH_DECK_A_IDS[0]);
+  assert.equal(first.passage?.availability, "candidate");
+  const next = selectNextYahuhPassage({ completedPassageIds: [first.passage.id] }, { lane: "playtest" });
+  assert.equal(next.passage?.id, YAHUH_DECK_A_IDS[1]);
+  assert.equal(next.canonicalEligible, false);
+});

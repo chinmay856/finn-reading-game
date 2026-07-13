@@ -651,6 +651,7 @@ test("Yahuh switchboard runtime is semantic, six-module exact, content-gated, an
   assert.match(markup, /NO READING SCORE/u);
   assert.match(markup, /10 planned · 1 structured candidate · 0 selectable · 6 required/u);
   assert.match(markup, /class="yahuh-directory-button"[^>]+disabled/u);
+  assert.match(markup, /id="yahuhPlaytest"/u);
   assert.match(markup, /id="yahuhTechnoImage"/u);
   assert.doesNotMatch(markup, /role="progressbar"|\d+%/u);
 
@@ -658,6 +659,9 @@ test("Yahuh switchboard runtime is semantic, six-module exact, content-gated, an
   assert.match(app, /advanceYahuhState/u);
   assert.match(app, /acknowledgeYahuhMidpoint/u);
   assert.match(app, /selectNextYahuhPassage/u);
+  assert.match(app, /selectNextYahuhPassage\(state\.yahuhState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /applyYahuhReading\(null/u);
+  assert.match(app, /state\.yahuhPersisted = false/u);
   assert.match(app, /yahuhModuleGrid[^\r\n]+view\.activeModules/u);
   assert.match(app, /yahuhSwitchboard[^\r\n]+inert = drawerMode && !open/u);
   assert.match(app, /yahuhPortalRegion[^\r\n]+inert = open/u);

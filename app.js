@@ -120,6 +120,7 @@ import {
   acknowledgeYahuhMidpoint,
   acknowledgeYahuhMidpointState,
   advanceYahuhState,
+  applyYahuhReading,
   readYahuhState,
 } from "./apps/internet-recovery/yahuh-state.js";
 import { getYahuhCampaignView } from "./apps/internet-recovery/yahuh-view.js";
@@ -244,6 +245,7 @@ const state = {
   yahuhState: readYahuhState(localStateStorage),
   yahuhPersisted: Boolean(localStateStorage),
   yahuhDiagnosticMode: false,
+  yahuhPlaytestMode: false,
   yahuhDiagnosticState: readYahuhState(null),
   yahuhEvidenceReceiptOpen: false,
   yahuhSwitchboardOpen: false,
@@ -405,6 +407,36 @@ function openMyCornerPlaytestReading() {
   resetReadingAttempt();
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MYCORNER CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MyCorner test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function selectYahuhPlaytestPassage() {
+  const selection = selectNextYahuhPassage(state.yahuhState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "yahuh";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openYahuhPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "yahuh";
+  state.yahuhPlaytestMode = true;
+  state.yahuhPersisted = false;
+  const selection = selectYahuhPlaytestPassage();
+  if (!selection.passage) {
+    renderYahuhCampaign(state.yahuhState);
+    $("yahuhContentReason").textContent = "Every structured Yahuh playtest passage has been used. Production content remains review-gated.";
+    show("yahuh");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "YAHUH CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Yahuh test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
   show("setup");
   return true;
@@ -576,7 +608,7 @@ function show(name) {
   const threadItScreen = name === "threadit" || (readingScreen && state.readingSiteId === "threadit");
   const facePlaceScreen = name === "faceplace" || (readingScreen && state.readingSiteId === "faceplace");
   const myCornerScreen = name === "mycorner" || (readingScreen && state.readingSiteId === "mycorner");
-  const yahuhScreen = name === "yahuh";
+  const yahuhScreen = name === "yahuh" || (readingScreen && state.readingSiteId === "yahuh");
   const viewtubeScreen = name === "viewtube";
   const searchishScreen = name === "searchish";
   const amazeonScreen = name === "amazeon";
@@ -2371,11 +2403,17 @@ function renderYahuhCampaign(campaignState, { diagnosticMode = false } = {}) {
         ? `${view.progress.completedUnitCount} OF 6 YAHUH UNITS SAVED${diagnosticMode ? " · TEST" : ""}`
         : "No accepted Yahuh repair is running.";
 
-  const selection = selectNextYahuhPassage(state.yahuhState);
+  const selection = selectNextYahuhPassage(state.yahuhState, { lane: "playtest" });
   $("yahuhCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
   $("yahuhContentReason").textContent = selection.passage
-    ? "A reviewed Yahuh passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
     : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed record is still required.`;
+  $("yahuhPlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("yahuhPlaytest").textContent = view.secured
+    ? "Yahuh playtest complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Review Single Source first"
+      : "Playtest candidate passage";
   syncYahuhSwitchboard();
   return view;
 }
@@ -3384,8 +3422,9 @@ function buildYahuhPreviewState(unitCount) {
 
 function acknowledgeYahuhSingleStream() {
   const diagnosticMode = state.yahuhDiagnosticMode;
+  const playtestMode = state.yahuhPlaytestMode;
   const current = diagnosticMode ? state.yahuhDiagnosticState : state.yahuhState;
-  const transition = diagnosticMode
+  const transition = diagnosticMode || playtestMode
     ? acknowledgeYahuhMidpointState(current, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeYahuhMidpoint(localStateStorage, {
         acknowledgedAt: new Date().toISOString(),
@@ -3395,7 +3434,7 @@ function acknowledgeYahuhSingleStream() {
   if (diagnosticMode) state.yahuhDiagnosticState = transition.state;
   else {
     state.yahuhState = transition.state;
-    state.yahuhPersisted = transition.ok;
+    state.yahuhPersisted = playtestMode ? false : transition.ok;
   }
   state.yahuhSwitchboardOpen = true;
   renderYahuhCampaign(transition.state, { diagnosticMode });
@@ -3955,7 +3994,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace", "mycorner"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner", "yahuh"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -3966,6 +4005,31 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "yahuh") {
+    if (state.resultApplied) {
+      openYahuhExperience();
+      return;
+    }
+    const outcome = calculateYahuhReadingOutcome({ accepted: Boolean(state.result), campaignState: state.yahuhState });
+    const repair = applyYahuhReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.yahuhState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.yahuhState = repair.state;
+    state.yahuhPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to Yahuh";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.yahuhState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderYahuhCampaign(state.yahuhState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "mycorner") {
     if (state.resultApplied) {
       openMyCornerExperience();
@@ -4228,6 +4292,7 @@ $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
 $("mycornerPlaytest").onclick = openMyCornerPlaytestReading;
 $("yahuhReturn").onclick = returnToHub;
+$("yahuhPlaytest").onclick = openYahuhPlaytestReading;
 $("viewtubeReturn").onclick = returnToHub;
 $("searchishReturn").onclick = returnToHub;
 $("amazeonReturn").onclick = returnToHub;
