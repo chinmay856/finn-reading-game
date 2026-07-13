@@ -8,6 +8,7 @@ import {
   selectNextPassage,
 } from "../content/passage-catalog.js";
 import { PHOTOSYNTHESIS_PASSAGE } from "../content/wikiwhy/photosynthesis-passage.js";
+import { WIKIWHY_FIRST_RUN_PASSAGES } from "../content/wikiwhy/first-run-passages.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "../content/threadit/why-disagreement-matters.js";
 import { THREADIT_FIRST_RUN_PASSAGES } from "../content/threadit/first-run-passages.js";
 import { A_SECOND_READING_PASSAGE } from "../content/faceplace/a-second-reading.js";
@@ -201,7 +202,22 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 29 + ENDGAME_PASSAGES.length);
+  assert.equal(PASSAGE_CATALOG.length, 48 + ENDGAME_PASSAGES.length);
+  assert.equal(WIKIWHY_FIRST_RUN_PASSAGES.length, 19);
+  assert.deepEqual(WIKIWHY_FIRST_RUN_PASSAGES.map(({ id }) => id), ids.slice(1));
+  for (const passage of WIKIWHY_FIRST_RUN_PASSAGES) {
+    assert.equal(passage.availability, "candidate");
+    assert.equal(passage.paragraphs.length, 3);
+    assert.equal(passage.comprehension.choices.length, 3);
+    assert.equal(passage.comprehension.choices.filter(({ correct }) => correct).length, 1);
+    assert.equal(passage.source.basis, "cc-by-sa-4.0-adaptation");
+    assert.match(passage.source.sourceUrl, /wikipedia\.org\/wiki\//u);
+    assert.match(passage.source.historyUrl, /wikipedia\.org\/w\/index\.php/u);
+    assert.equal(passage.source.reviewedRevisionUrl, null);
+    assert.equal(passage.rights.licenseId, "CC-BY-SA-4.0");
+    assert.equal(passage.transcriptionReview.tested, false);
+    assert.equal(isSelectablePassage(passage), false);
+  }
   assert.ok(PASSAGE_CATALOG.includes(A_CABIN_WITH_A_PURPOSE_PASSAGE));
   assert.ok(PASSAGE_CATALOG.includes(THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE));
   assert.equal(isSelectablePassage(A_CABIN_WITH_A_PURPOSE_PASSAGE), false);

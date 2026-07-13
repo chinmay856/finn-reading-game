@@ -1,4 +1,5 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./wikiwhy/photosynthesis-passage.js";
+import { WIKIWHY_FIRST_RUN_PASSAGES } from "./wikiwhy/first-run-passages.js";
 import { WHY_DISAGREEMENT_MATTERS_PASSAGE } from "./threadit/why-disagreement-matters.js";
 import { THREADIT_FIRST_RUN_PASSAGES } from "./threadit/first-run-passages.js";
 import { A_SECOND_READING_PASSAGE } from "./faceplace/a-second-reading.js";
@@ -32,6 +33,7 @@ const PROTOTYPE_REVIEW_FIELDS = Object.freeze([
 
 export const PASSAGE_CATALOG = Object.freeze([
   PHOTOSYNTHESIS_PASSAGE,
+  ...WIKIWHY_FIRST_RUN_PASSAGES,
   WHY_DISAGREEMENT_MATTERS_PASSAGE,
   ...THREADIT_FIRST_RUN_PASSAGES,
   A_SECOND_READING_PASSAGE,

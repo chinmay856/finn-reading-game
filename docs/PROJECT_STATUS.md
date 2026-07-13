@@ -1,5 +1,15 @@
 # Project status
 
+## WikiWhy structured content — active 2026-07-12
+
+WikiWhy's complete twenty-record A/B roster is now represented in the reusable
+Content Platform: the existing A01 prototype plus nineteen licensed-adaptation
+candidates generated deterministically from the canonical manuscript deck.
+Every candidate includes three paragraphs, a three-choice comprehension check,
+reading profile, Wikipedia article/history attribution, CC BY-SA 4.0 rights,
+and explicit pending independent-review and real-microphone evidence. Candidate
+selection remains fail-closed, so A01 is still the only executable record.
+
 ## ViewTube and Amaze-On compact boards — active 2026-07-12
 
 The final two overflowing site simulations now fit at 1440×900. ViewTube's
