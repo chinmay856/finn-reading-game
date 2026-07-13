@@ -9,6 +9,15 @@
 - All playtest progress and slot-eight evidence remain tab-only and cannot
   satisfy canonical or finale gates. Reading Engine internals were not changed.
 
+## 2026-07-12 ViewTube candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  ViewTube Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 silent-media campaign; saved autoplay
+  acknowledgement remains a wrapper-owned interaction.
+- All progress and slot-six evidence remain tab-only. No audio, video, iframe,
+  canonical evidence, finale gate, or Reading Engine behavior changed.
+
 ## 2026-07-12 Yahuh candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
