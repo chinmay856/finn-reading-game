@@ -881,3 +881,16 @@ If the guide still lags, select 300 WPM or increase look-ahead. If navigation is
 comfortable but confirmed repair remains distractingly delayed, run the exact
 maintained Moonshine Web example as an isolated benchmark before changing the
 production speech adapter.
+
+## ThreadIt desktop-density handoff (2026-07-12)
+
+- Active branch: `agent/threadit-dense-desktop-board`, based on deployed
+  ViewTube/Amaze-On PR #92 / `main` at `f613a03`.
+- `compact-sites.css` now renders the ThreadIt feed as a desktop-only
+  two-column scan board with compact metadata and two-line excerpts. The
+  Reading Companion is untouched.
+- Local browser QA at 1440x900 measured all 6 posts fully visible (previously
+  2), page client/scroll height 612/612, and thread-column height 453/487 with
+  every card inside the visible column bounds.
+- Next: run repository checks, publish through PR/CI/merge/Pages, then audit
+  FacePlace, MyCorner, and Yahuh for meaningful first-screen content density.
