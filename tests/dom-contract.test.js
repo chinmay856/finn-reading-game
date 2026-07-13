@@ -323,10 +323,15 @@ test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", as
   assert.match(markup, /PROVISIONAL FORUM FIXTURE/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /id="threaditPlaytest"/u);
   assert.doesNotMatch(markup, /role="progressbar"/u);
   assert.match(app, /getThreadItCampaignView/u);
   assert.match(app, /advanceThreadItState/u);
   assert.match(app, /selectNextThreadItPassage/u);
+  assert.match(app, /selectNextThreadItPassage\(state\.threaditState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /applyThreadItReading\(null/u);
+  assert.match(app, /Candidate playtest progress is active in this tab only/u);
+  assert.match(app, /state\.threaditPersisted = false/u);
   assert.match(app, /threaditDiagnosticMode/u);
   assert.match(app, /state\.threaditDiagnosticMode = uiPreview !== "threadit"/u);
   assert.match(app, /relationship\.fromNodeId/u);

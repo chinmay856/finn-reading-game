@@ -285,6 +285,26 @@ test("ThreadIt owns two planned decks and selects no candidate content", () => {
   assert.equal(selection.unavailableCount, 10);
 });
 
+test("ThreadIt exposes its explicit candidate playtest lane without promoting content", () => {
+  const first = selectNextThreadItPassage(
+    { completedPassageIds: [] },
+    { lane: "playtest" },
+  );
+
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.passage?.id, "why-disagreement-matters-a01");
+  assert.equal(first.passage?.availability, "candidate");
+
+  const next = selectNextThreadItPassage(
+    { completedPassageIds: [first.passage.id] },
+    { lane: "playtest" },
+  );
+  assert.equal(next.passage?.id, "the-strongest-version-a02");
+  assert.equal(next.canonicalEligible, false);
+});
+
 test("FacePlace candidate content is structured, review-gated, and never silently borrows Deck B", () => {
   const passage = A_SECOND_READING_PASSAGE;
   assert.equal(passage.id, "a-second-reading-a01");

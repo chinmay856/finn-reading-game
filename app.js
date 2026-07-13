@@ -39,6 +39,7 @@ import {
   acknowledgeThreadItMidpoint,
   acknowledgeThreadItMidpointState,
   advanceThreadItState,
+  applyThreadItReading,
   THREADIT_EVIDENCE_ID,
   THREADIT_EVIDENCE_RECORD,
   readThreadItState,
@@ -203,12 +204,14 @@ const state = {
   diagnosticMode: false, diagnosticState: null, dialogAction: null, dialogDismissible: true, dialogReturnFocus: null,
   evidenceReceiptOpen: false,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
+  readingSiteId: "wikiwhy",
   campaignEligible: true, campaignState: readWikiWhyState(localStateStorage),
   campaignPersisted: Boolean(localStateStorage), contentAvailabilityReason: null,
   contentCandidateCount: 0, resultApplied: false,
   threaditState: readThreadItState(localStateStorage),
   threaditPersisted: Boolean(localStateStorage),
   threaditDiagnosticMode: false,
+  threaditPlaytestMode: false,
   threaditDiagnosticState: readThreadItState(null),
   threaditEvidenceReceiptOpen: false,
   faceplaceState: readFacePlaceState(localStateStorage),
@@ -304,12 +307,43 @@ function setActivePassage(passage) {
 }
 
 function selectCampaignPassage() {
+  state.readingSiteId = "wikiwhy";
   const selection = selectNextWikiWhyPassage(state.campaignState);
   state.contentAvailabilityReason = selection.reason;
   state.contentCandidateCount = selection.unavailableCount;
   state.campaignEligible = Boolean(selection.passage);
   if (selection.passage) setActivePassage(selection.passage);
   return selection;
+}
+
+function selectThreadItPlaytestPassage() {
+  const selection = selectNextThreadItPassage(state.threaditState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "threadit";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openThreadItPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "threadit";
+  state.threaditPlaytestMode = true;
+  state.threaditPersisted = false;
+  const selection = selectThreadItPlaytestPassage();
+  if (!selection.passage) {
+    renderThreadItCampaign(state.threaditState);
+    $("threaditContentReason").textContent = "Every structured ThreadIt playtest passage has been used. Production content remains review-gated.";
+    show("threadit");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "THREADIT CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the local ThreadIt test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
 }
 
 function renderContentAvailabilityGate() {
@@ -383,6 +417,7 @@ function openNextCampaignReading() {
 }
 
 function openWikiWhyExperience({ showEvidence = false } = {}) {
+  state.readingSiteId = "wikiwhy";
   renderDiagnosticPanel(state.diagnosticState ?? readWikiWhyDiagnosticState(localStateStorage));
   if (state.campaignState.phase === "secured") state.evidenceReceiptOpen = showEvidence;
   renderCampaignMeter(state.campaignState);
@@ -472,8 +507,9 @@ function show(name) {
         ? "READING SUPPORT DOG ON DUTY"
         : "INSPECTING THIS SITE";
   const selectedSite = getRecoverySite(state.selectedSiteId);
-  const wikiWhyScreen = ["setup", "read", "review"].includes(name);
-  const threadItScreen = name === "threadit";
+  const readingScreen = ["setup", "read", "review"].includes(name);
+  const wikiWhyScreen = readingScreen && state.readingSiteId === "wikiwhy";
+  const threadItScreen = name === "threadit" || (readingScreen && state.readingSiteId === "threadit");
   const facePlaceScreen = name === "faceplace";
   const myCornerScreen = name === "mycorner";
   const yahuhScreen = name === "yahuh";
@@ -1266,11 +1302,17 @@ function renderThreadItCampaign(campaignState, { diagnosticMode = false } = {}) 
     : "Open THREADIT_TRACE_01.LOG";
   $("threaditEvidenceReceipt").hidden = !view.secured || !state.threaditEvidenceReceiptOpen;
 
-  const selection = selectNextThreadItPassage(state.threaditState);
-  $("threaditCandidateCount").textContent = `${selection.unavailableCount} planned record${selection.unavailableCount === 1 ? "" : "s"} · ${selection.selectableCount} selectable`;
+  const selection = selectNextThreadItPassage(state.threaditState, { lane: "playtest" });
+  $("threaditCandidateCount").textContent = `${selection.selectableCount} structured playtest candidate${selection.selectableCount === 1 ? "" : "s"} · production approval pending`;
   $("threaditContentReason").textContent = selection.passage
-    ? "A reviewed ThreadIt passage is available, but this structural milestone has not connected it to the Reading Companion yet."
-    : "This candidate passage has provenance and comprehension metadata, but it remains unavailable until formal review and a real-microphone check are complete.";
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("threaditPlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("threaditPlaytest").textContent = view.secured
+    ? "ThreadIt playtest complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Open Trace View first"
+      : "Playtest candidate passage";
   return view;
 }
 
@@ -3368,17 +3410,18 @@ function buildThreadItPreviewState(unitCount) {
 
 function openThreadItView(viewName) {
   const diagnostic = state.threaditDiagnosticMode;
+  const playtest = state.threaditPlaytestMode;
   const current = diagnostic ? state.threaditDiagnosticState : state.threaditState;
   let transition;
   if (viewName === "trace" && current.midpointDiscovered && !current.midpointAcknowledged) {
-    transition = diagnostic
+    transition = diagnostic || playtest
       ? acknowledgeThreadItMidpointState(current, { acknowledgedAt: new Date().toISOString() })
       : acknowledgeThreadItMidpoint(localStateStorage, {
           acknowledgedAt: new Date().toISOString(),
           currentState: current,
         });
   } else {
-    transition = diagnostic
+    transition = diagnostic || playtest
       ? setThreadItOpenViewState(current, viewName)
       : setThreadItOpenView(localStateStorage, viewName, { currentState: current });
   }
@@ -3386,7 +3429,7 @@ function openThreadItView(viewName) {
   if (diagnostic) state.threaditDiagnosticState = transition.state;
   else {
     state.threaditState = transition.state;
-    state.threaditPersisted = transition.ok;
+    state.threaditPersisted = playtest ? false : transition.ok;
   }
   renderThreadItCampaign(transition.state, { diagnosticMode: diagnostic });
   renderThreadItDiagnosticPanel(transition.state);
@@ -3833,12 +3876,45 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
+  if (state.readingSiteId === "threadit") {
+    resetReadingAttempt();
+    show("setup");
+    return;
+  }
   const url = new URL(location.href);
   url.search = "";
   url.searchParams.set("launch", "wikiwhy");
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "threadit") {
+    if (state.resultApplied) {
+      openThreadItExperience();
+      return;
+    }
+    const outcome = calculateThreadItReadingOutcome({
+      accepted: Boolean(state.result),
+      campaignState: state.threaditState,
+    });
+    const repair = applyThreadItReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.threaditState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.threaditState = repair.state;
+    state.threaditPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to ThreadIt";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.threaditState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderThreadItCampaign(state.threaditState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.resultApplied) {
     if (state.campaignState.phase === "secured") returnToHub();
     else if (state.campaignState.phase === "reverse-hack") showRealRewriteSequence();
@@ -4012,6 +4088,7 @@ $("previewBack").onclick = returnToHub;
 $("previewReturn").onclick = returnToHub;
 $("threaditBack").onclick = returnToHub;
 $("threaditReturn").onclick = returnToHub;
+$("threaditPlaytest").onclick = openThreadItPlaytestReading;
 $("faceplaceBack").onclick = returnToHub;
 $("faceplaceReturn").onclick = returnToHub;
 $("mycornerBack").onclick = returnToHub;
