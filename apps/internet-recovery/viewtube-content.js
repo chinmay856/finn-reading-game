@@ -1,5 +1,5 @@
 import { THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE } from "../../content/viewtube/the-sky-becomes-a-streak-of-fire.js";
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import { PASSAGE_CATALOG, selectNextPassage, selectNextPlaytestPassage } from "../../content/passage-catalog.js";
 
 export const VIEWTUBE_DECK_A_IDS = Object.freeze([
   "the-sky-becomes-a-streak-of-fire-a01",
@@ -33,9 +33,9 @@ const DEFAULT_VIEWTUBE_CATALOG = Object.freeze(
 );
 
 export function selectNextViewTubePassage(campaignState, options = {}) {
-  const selection = selectNextPassage({
-    ...options,
-    allowRepeat: false,
+  const selector = options.lane === "playtest" ? selectNextPlaytestPassage : selectNextPassage;
+  const selection = selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? DEFAULT_VIEWTUBE_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: VIEWTUBE_DECK_A_IDS,
