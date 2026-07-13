@@ -1,5 +1,17 @@
 # Session handoff
 
+## 2026-07-12 ThreadIt candidate playtest selector
+
+- Added an explicit wrapper-level `playtest` option to
+  `selectNextThreadItPassage`; normal production calls still use the approved
+  selector and fail closed.
+- Playtest results remain candidate-only, review-pending, unseen-first, and
+  noncanonical. No passage availability, review evidence, microphone claim, or
+  finale eligibility is changed.
+- Next implementation step: connect the playtest projection to the existing
+  Reading Companion and ThreadIt state transition. The separate reading-engine
+  agent retains ownership of speech/alignment changes.
+
 ## 2026-07-12 ViewTube and Amaze-On compact boards
 
 - Restored ViewTube's intended desktop grid instead of the later scrolling-block

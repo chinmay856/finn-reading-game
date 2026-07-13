@@ -1,4 +1,8 @@
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import {
+  PASSAGE_CATALOG,
+  selectNextPassage,
+  selectNextPlaytestPassage,
+} from "../../content/passage-catalog.js";
 
 export const THREADIT_DECK_A_IDS = Object.freeze([
   "why-disagreement-matters-a01",
@@ -17,8 +21,11 @@ export const THREADIT_DECK_B_IDS = Object.freeze([
 ]);
 
 export function selectNextThreadItPassage(campaignState, options = {}) {
-  return selectNextPassage({
-    allowRepeat: false,
+  const selector = options.lane === "playtest"
+    ? selectNextPlaytestPassage
+    : selectNextPassage;
+  return selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? PASSAGE_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: [...THREADIT_DECK_A_IDS, ...THREADIT_DECK_B_IDS],
