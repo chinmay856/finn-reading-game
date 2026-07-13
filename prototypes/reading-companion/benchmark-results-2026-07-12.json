@@ -1,0 +1,20 @@
+{
+  "date": "2026-07-12",
+  "engine": "sherpa-onnx-v1.13.2-streaming-zipformer-en",
+  "sampleRate": 16000,
+  "referenceWordCount": 32,
+  "visibleGuidance": { "kind": "authored-line", "latencyLookAheadMs": 1000, "minimumLeadWords": 2, "maximumLeadWords": 4 },
+  "fixtures": [
+    { "id": "natural-154", "effectiveWpm": 154, "firstEvidenceMs": 1200, "longestEvidenceGapMs": 1291, "worstDecodeMs": 111, "finalEvidenceWords": 32, "finalLine": 4, "finalMatchedWords": 32 },
+    { "id": "fast-200", "effectiveWpm": 200, "firstEvidenceMs": 835, "longestEvidenceGapMs": 559, "worstDecodeMs": 129, "finalEvidenceWords": 31, "finalLine": 4, "finalMatchedWords": 31 },
+    { "id": "fast-250", "effectiveWpm": 250, "firstEvidenceMs": 896, "longestEvidenceGapMs": 402, "worstDecodeMs": 111, "finalEvidenceWords": 30, "finalLine": 4, "finalMatchedWords": 29 },
+    { "id": "mid-pause", "effectiveWpm": 137, "firstEvidenceMs": 1130, "longestEvidenceGapMs": 1352, "worstDecodeMs": 133, "finalEvidenceWords": 32, "finalLine": 4, "finalMatchedWords": 32 },
+    { "id": "room-noise", "effectiveWpm": 154, "firstEvidenceMs": 1456, "longestEvidenceGapMs": 1441, "worstDecodeMs": 208, "finalEvidenceWords": 32, "finalLine": 4, "finalMatchedWords": 32 },
+    { "id": "restart", "effectiveWpm": 136, "firstEvidenceMs": 1122, "longestEvidenceGapMs": 1344, "worstDecodeMs": 104, "finalEvidenceWords": 32, "finalLine": 4, "finalMatchedWords": 32 }
+  ],
+  "caveats": [
+    "The natural 154 WPM fixture is a real LibriSpeech recording.",
+    "The 200 and 250 WPM fixtures accelerate the same samples and are compute and tracking stress tests, not substitutes for naturally fast human recordings.",
+    "One adult recording does not establish performance for Finn's voice or room conditions."
+  ]
+}

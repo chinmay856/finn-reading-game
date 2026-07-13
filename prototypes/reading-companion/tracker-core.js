@@ -16,6 +16,15 @@ export function tokenize(value) {
   }));
 }
 
+export function anticipatedLineIndex({ confirmedIndex, effectiveWpm, lineEndIndexes, latencyMs = 1_000 }) {
+  if (!lineEndIndexes?.length) return 0;
+  const wordsPerSecond = Math.max(0, Number(effectiveWpm) || 0) / 60;
+  const leadWords = Math.max(2, Math.min(4, Math.round(wordsPerSecond * (latencyMs / 1_000))));
+  const anticipatedWordIndex = Math.max(0, confirmedIndex + leadWords);
+  const found = lineEndIndexes.findIndex((endIndex) => anticipatedWordIndex <= endIndex);
+  return found < 0 ? lineEndIndexes.length - 1 : found;
+}
+
 function editDistance(left, right) {
   const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
   for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {

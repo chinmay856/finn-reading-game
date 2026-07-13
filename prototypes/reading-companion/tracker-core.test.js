@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { alignKnownText, EvidenceLockedTracker, tokenize } from "./tracker-core.js";
+import { alignKnownText, anticipatedLineIndex, EvidenceLockedTracker, tokenize } from "./tracker-core.js";
 
 const reference = "The quick brown fox jumps over the lazy dog.";
 
@@ -36,4 +36,12 @@ test("a recognizer cannot jump beyond the amount of spoken evidence", () => {
   const tracker = new EvidenceLockedTracker("one two three four five six seven eight nine ten");
   const result = tracker.observe("one ten");
   assert.ok(result.confirmedIndex <= 3);
+});
+
+test("visible guidance anticipates roughly one second while staying line based", () => {
+  const lineEndIndexes = [10, 18, 26, 31];
+  assert.equal(anticipatedLineIndex({ confirmedIndex: 6, effectiveWpm: 200, lineEndIndexes }), 0);
+  assert.equal(anticipatedLineIndex({ confirmedIndex: 8, effectiveWpm: 200, lineEndIndexes }), 1);
+  assert.equal(anticipatedLineIndex({ confirmedIndex: 25, effectiveWpm: 250, lineEndIndexes }), 3);
+  assert.equal(anticipatedLineIndex({ confirmedIndex: 28, effectiveWpm: 250, lineEndIndexes }), 3);
 });

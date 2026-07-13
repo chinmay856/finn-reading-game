@@ -1,12 +1,18 @@
-import { EvidenceLockedTracker, tokenize } from "./tracker-core.js";
+import { anticipatedLineIndex, EvidenceLockedTracker, tokenize } from "./tracker-core.js";
+import { buildFixtureSamples, FIXTURE_DEFINITIONS, fixtureWordsPerMinute } from "./fixture-suite.js";
 
 const SAMPLE_RATE = 16_000;
 const FEED_INTERVAL_MS = 80;
-const REFERENCE = "He tells us that at this festive season of the year, with Christmas and roast beef looming before us, similes drawn from eating and its results occur most readily to the mind.";
+const REFERENCE_LINES = Object.freeze([
+  "He tells us that at this festive season of the year,",
+  "with Christmas and roast beef looming before us,",
+  "similes drawn from eating and its results occur",
+  "most readily to the mind.",
+]);
+const REFERENCE = REFERENCE_LINES.join(" ");
 
 const elements = {
   copyButton: document.querySelector("#copyButton"),
-  cursor: document.querySelector("#cursor"),
   downloadDetail: document.querySelector("#downloadDetail"),
   eventTrace: document.querySelector("#eventTrace"),
   metrics: document.querySelector("#metrics"),
@@ -16,24 +22,31 @@ const elements = {
   sampleAudio: document.querySelector("#sampleAudio"),
   status: document.querySelector("#status"),
   statusDot: document.querySelector("#statusDot"),
+  suiteButton: document.querySelector("#suiteButton"),
+  suiteResults: document.querySelector("#suiteResults"),
   transcript: document.querySelector("#transcript"),
 };
 
 const words = tokenize(REFERENCE);
 const tracker = new EvidenceLockedTracker(REFERENCE);
-const wordElements = words.map((word) => {
-  const span = document.createElement("span");
-  span.className = "word";
-  span.dataset.wordIndex = String(word.index);
-  span.textContent = `${word.display} `;
-  elements.passage.append(span);
-  return span;
+let runningWordCount = 0;
+const lineEndIndexes = [];
+const lineElements = REFERENCE_LINES.map((line, lineIndex) => {
+  runningWordCount += tokenize(line).length;
+  lineEndIndexes.push(runningWordCount - 1);
+  const element = document.createElement("div");
+  element.className = "reader-line";
+  element.dataset.lineIndex = String(lineIndex);
+  element.textContent = line;
+  elements.passage.append(element);
+  return element;
 });
-elements.passage.append(elements.cursor);
 
 let engineReady = false;
 let recognizer = null;
 let runState = null;
+let suiteRunning = false;
+let suiteSummaries = [];
 const runtimeStartedAt = performance.now();
 
 function setStatus(message, state = "loading") {
@@ -49,37 +62,35 @@ function record(type, detail = {}) {
 }
 
 function moveCursor(index) {
-  const bounded = Math.max(0, Math.min(index, wordElements.length - 1));
-  wordElements.forEach((word, wordIndex) => {
-    word.classList.toggle("complete", wordIndex < bounded);
-    word.classList.toggle("current", wordIndex === bounded);
+  const bounded = Math.max(0, Math.min(index, words.length - 1));
+  const lineIndex = anticipatedLineIndex({
+    confirmedIndex: bounded,
+    effectiveWpm: runState?.effectiveWpm,
+    lineEndIndexes,
   });
-  const target = wordElements[bounded];
-  const targetRect = target.getBoundingClientRect();
-  elements.cursor.style.width = `${targetRect.width}px`;
-  elements.cursor.style.height = `${targetRect.height}px`;
-  elements.cursor.style.transform = `translate(${target.offsetLeft}px, ${target.offsetTop}px)`;
-  elements.cursor.classList.add("visible");
+  lineElements.forEach((line, candidateIndex) => {
+    line.classList.toggle("complete", candidateIndex < lineIndex);
+    line.classList.toggle("current", candidateIndex === lineIndex);
+  });
+  const target = lineElements[lineIndex];
   target.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
-  elements.positionLabel.textContent = `Evidence locked through word ${bounded + 1} of ${words.length}`;
+  elements.positionLabel.textContent = `Guiding line ${lineIndex + 1} of ${lineElements.length} · hidden evidence through word ${bounded + 1}`;
 }
 
 function animateAdvance(fromIndex, toIndex) {
   if (toIndex <= fromIndex) return;
-  const distance = toIndex - fromIndex;
-  const stepMs = Math.max(28, Math.min(75, 280 / distance));
-  for (let step = 1; step <= distance; step += 1) {
-    window.setTimeout(() => moveCursor(fromIndex + step), step * stepMs);
-  }
+  moveCursor(toIndex);
 }
 
 function renderMetrics() {
   if (!runState) return;
   const values = {
+    "Fixture": runState.fixtureLabel,
+    "Effective delivery": `${runState.effectiveWpm} WPM`,
     "Model load": `${Math.round(runState.modelLoadMs)} ms`,
     "Audio duration": runState.audioDurationMs ? `${runState.audioDurationMs} ms` : "—",
     "First partial": runState.firstPartialMs == null ? "—" : `${runState.firstPartialMs} ms`,
-    "First cursor move": runState.firstEvidenceMs == null ? "—" : `${runState.firstEvidenceMs} ms`,
+    "First line evidence": runState.firstEvidenceMs == null ? "—" : `${runState.firstEvidenceMs} ms`,
     "Partial revisions": String(runState.partialUpdates),
     "Cursor advances": String(runState.cursorAdvances),
     "Longest evidence gap": `${runState.longestEvidenceGapMs} ms`,
@@ -146,32 +157,55 @@ async function decodeFixture() {
   const context = new AudioContext({ sampleRate: SAMPLE_RATE });
   try {
     const buffer = await context.decodeAudioData(bytes.slice(0));
-    const samples = new Float32Array(buffer.getChannelData(0));
-    runState.audioDurationMs = Math.round((samples.length / SAMPLE_RATE) * 1_000);
-    renderMetrics();
-    return samples;
+    return new Float32Array(buffer.getChannelData(0));
   } finally {
     await context.close();
   }
 }
 
-async function runSample() {
-  if (!engineReady || runState?.running) return;
+function renderSuiteResults() {
+  if (!suiteSummaries.length) return;
+  elements.suiteResults.replaceChildren(...suiteSummaries.map((summary) => {
+    const row = document.createElement("tr");
+    const values = [
+      summary.label,
+      String(summary.effectiveWpm),
+      `${summary.firstEvidenceMs} ms`,
+      `${summary.longestEvidenceGapMs} ms`,
+      `${summary.worstDecodeMs} ms`,
+      `${summary.finalPosition}/${words.length}`,
+      `${summary.finalLine}/${lineElements.length}`,
+      `${summary.finalMatched}/${words.length}`,
+    ];
+    row.replaceChildren(...values.map((value) => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      return cell;
+    }));
+    return row;
+  }));
+}
+
+async function runFixture(fixture, baseSamples) {
+  if (!engineReady || runState?.running) return null;
+  const samples = buildFixtureSamples(baseSamples, fixture, SAMPLE_RATE);
   tracker.reset();
-  elements.cursor.classList.remove("visible");
-  wordElements.forEach((word) => word.classList.remove("complete", "current"));
+  lineElements.forEach((line) => line.classList.remove("complete", "current"));
   elements.transcript.textContent = "Listening to the local stream…";
   elements.positionLabel.textContent = "Waiting for speech evidence";
   elements.eventTrace.textContent = "[]";
   runState = {
-    audioDurationMs: 0,
+    audioDurationMs: Math.round((samples.length / SAMPLE_RATE) * 1_000),
     committedTranscript: "",
     cursorAdvances: 0,
     decodeTotalMs: 0,
+    effectiveWpm: fixtureWordsPerMinute(words.length, samples.length, SAMPLE_RATE),
     events: [],
     finalMatched: 0,
     firstEvidenceMs: null,
     firstPartialMs: null,
+    fixtureId: fixture.id,
+    fixtureLabel: fixture.label,
     lastEvidenceAtMs: null,
     lastTranscript: "",
     longestEvidenceGapMs: 0,
@@ -182,11 +216,12 @@ async function runSample() {
     worstDecodeMs: 0,
   };
   elements.runButton.disabled = true;
-  setStatus("Replaying the fixed sample through local streaming ASR…", "running");
+  elements.suiteButton.disabled = true;
+  renderMetrics();
+  setStatus(`Running ${fixture.label}…`, "running");
 
   let stream;
   try {
-    const samples = await decodeFixture();
     stream = recognizer.createStream();
     const startedAt = performance.now();
     record("playback-start", { sampleCount: samples.length });
@@ -216,7 +251,7 @@ async function runSample() {
     decodeAvailable(stream);
     processResult(recognizer.getResult(stream).text, true);
     record("playback-complete", { finalTranscript: runState.lastTranscript });
-    setStatus("Replay complete. The engine is ready for another identical run.", "ready");
+    setStatus(`${fixture.label} complete.`, "ready");
   } catch (error) {
     console.error(error);
     setStatus(error?.message ?? String(error), "error");
@@ -224,8 +259,56 @@ async function runSample() {
   } finally {
     stream?.free();
     runState.running = false;
-    elements.runButton.disabled = false;
+    if (!suiteRunning) {
+      elements.runButton.disabled = false;
+      elements.suiteButton.disabled = false;
+    }
     renderMetrics();
+  }
+
+  return Object.freeze({
+    effectiveWpm: runState.effectiveWpm,
+    finalMatched: runState.finalMatched,
+    finalLine: anticipatedLineIndex({
+      confirmedIndex: tracker.confirmedIndex,
+      effectiveWpm: runState.effectiveWpm,
+      lineEndIndexes,
+    }) + 1,
+    finalPosition: tracker.confirmedIndex + 1,
+    firstEvidenceMs: runState.firstEvidenceMs ?? runState.audioDurationMs,
+    id: fixture.id,
+    label: fixture.label,
+    longestEvidenceGapMs: runState.longestEvidenceGapMs,
+    partialUpdates: runState.partialUpdates,
+    transcript: runState.lastTranscript,
+    worstDecodeMs: Math.round(runState.worstDecodeMs),
+  });
+}
+
+async function runSample() {
+  if (!engineReady || runState?.running || suiteRunning) return;
+  const baseSamples = await decodeFixture();
+  await runFixture(FIXTURE_DEFINITIONS[0], baseSamples);
+}
+
+async function runSuite() {
+  if (!engineReady || runState?.running || suiteRunning) return;
+  suiteRunning = true;
+  suiteSummaries = [];
+  elements.runButton.disabled = true;
+  elements.suiteButton.disabled = true;
+  try {
+    const baseSamples = await decodeFixture();
+    for (const fixture of FIXTURE_DEFINITIONS) {
+      const summary = await runFixture(fixture, baseSamples);
+      if (summary) suiteSummaries.push(summary);
+      renderSuiteResults();
+    }
+    setStatus("Tough fixture suite complete.", "ready");
+  } finally {
+    suiteRunning = false;
+    elements.runButton.disabled = false;
+    elements.suiteButton.disabled = false;
   }
 }
 
@@ -247,6 +330,7 @@ window.addEventListener("sherpa-ready", () => {
     recognizer = globalThis.createOnlineRecognizer(globalThis.Module);
     engineReady = true;
     elements.runButton.disabled = false;
+    elements.suiteButton.disabled = false;
     elements.downloadDetail.textContent = "All recognition runs locally. No audio or transcript is uploaded or retained.";
     setStatus("Local streaming recognizer ready", "ready");
   } catch (error) {
@@ -255,6 +339,7 @@ window.addEventListener("sherpa-ready", () => {
 });
 
 elements.runButton.addEventListener("click", runSample);
+elements.suiteButton.addEventListener("click", runSuite);
 elements.copyButton.addEventListener("click", async () => {
   await navigator.clipboard.writeText(elements.eventTrace.textContent);
   elements.copyButton.textContent = "Copied";

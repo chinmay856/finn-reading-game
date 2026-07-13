@@ -1,17 +1,20 @@
 # Evidence-locked reading companion spike
 
-This standalone page tests a theme-neutral live reading cursor without changing
+This standalone page tests a theme-neutral live reading guide without changing
 the production application. It replays one fixed, licensed recording through a
-real streaming recognizer and moves the visible cursor only when recognition
-evidence aligns with the known passage.
+real streaming recognizer and changes the visible authored line only when local
+recognition evidence aligns with the known passage.
 
 ## Why this is different
 
 - Live progress and final scoring are separate jobs.
 - The live engine is allowed to produce an ugly, revisable transcript.
-- The cursor is monotonic and evidence-locked; elapsed time alone cannot move it.
-- Cursor catch-up is animated across intervening words rather than jumping.
+- Hidden word evidence is monotonic; elapsed time alone cannot move it.
+- The visible guide highlights one centered authored line and anticipates 2-4
+  words to cover approximately one second of recognition latency.
 - The same audio can be replayed repeatedly, producing comparable event traces.
+- The tough fixture suite compares natural 154 WPM audio, accelerated 200 and
+  250 WPM delivery, a long pause, light noise, and a repeated phrase.
 
 ## Proven upstream inputs
 
@@ -47,10 +50,12 @@ powershell -ExecutionPolicy Bypass -File prototypes/reading-companion/fetch-sher
 The helper downloads the exact official GitHub release artifact. The large
 generated `vendor/` directory is deliberately not committed.
 
+Use **Run tough fixture suite** for the roughly one-minute comparative run.
+
 ## Checks
 
 ```text
-node --test prototypes/reading-companion/tracker-core.test.js
+node --test prototypes/reading-companion/tracker-core.test.js prototypes/reading-companion/fixture-suite.test.js
 ```
 
 ## Acceptance gate
@@ -58,9 +63,9 @@ node --test prototypes/reading-companion/tracker-core.test.js
 Continue with this engine only when the fixture and later consented real-reader
 tests show:
 
-- first useful cursor evidence in roughly one second;
+- first useful line evidence in roughly one second;
 - partial revisions frequent enough to avoid multi-second frozen highlighting;
-- monotonic cursor movement without timer-led drift;
+- monotonic line movement without timer-led drift;
 - final reference coverage comparable to the fixed transcript;
 - model load, CPU blocking, and memory acceptable on the target desktop.
 
