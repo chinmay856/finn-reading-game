@@ -2,7 +2,9 @@ import { PHOTOSYNTHESIS_PASSAGE } from "./content/wikiwhy/photosynthesis-passage
 import { describePassageRights } from "./content/passage-catalog.js";
 import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
-import { approachScrollTop, centeredGuideScrollTop, estimateGuideWordIndex } from "./reading-guide.js";
+import { approachScrollTop, centeredGuideScrollTop } from "./reading-guide.js";
+import { KnownTextLineGuide } from "./reading-companion/known-text-line-guide.js";
+import { derivePassageDisplayLines } from "./reading-companion/passage-display-lines.js";
 import { LocalAudioCapture } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
@@ -164,6 +166,7 @@ import {
 let activePassage = PHOTOSYNTHESIS_PASSAGE;
 let PARAGRAPHS = activePassage.paragraphs;
 let PASSAGE = PARAGRAPHS.join(" ");
+let DISPLAY_LINES = derivePassageDisplayLines(activePassage);
 let PROFILE = activePassage.profile;
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
 const SPEECH_LEVEL = 0.009;
@@ -201,6 +204,7 @@ const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
   diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
   guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
+  guide: null, guideTranscriptText: "", guideVisibleLineIndex: 0,
   guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
@@ -309,6 +313,7 @@ function setActivePassage(passage) {
   activePassage = passage;
   PARAGRAPHS = activePassage.paragraphs;
   PASSAGE = PARAGRAPHS.join(" ");
+  DISPLAY_LINES = derivePassageDisplayLines(activePassage);
   PROFILE = activePassage.profile;
   state.guideWpm = PROFILE.guide.defaultWpm;
   hydratePassage();
@@ -499,6 +504,9 @@ function resetReadingAttempt() {
   state.guidePausedUntil = 0;
   state.guideProgress = 0;
   state.guideSpeechMs = 0;
+  state.guide = null;
+  state.guideTranscriptText = "";
+  state.guideVisibleLineIndex = 0;
   state.lastCheckpointAt = 0;
   state.lastMonitorAt = 0;
   state.lastSpeechAt = 0;
@@ -527,7 +535,7 @@ function resetReadingAttempt() {
   $("modelProgress").textContent = "Your browser will ask for microphone permission next.";
   $("progressText").textContent = "0% confirmed by local transcript";
   $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
-  $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · 0%`;
+  $("guideStatus").textContent = "Transcript guide - waiting for local speech evidence";
   renderPassage(0);
   renderCampaignMeter(state.campaignState);
 }
@@ -3682,44 +3690,45 @@ function renderPassage(progress = state.confirmedProgress) {
   const allTokens = tokenizeText(PASSAGE);
   const confirmed = Math.round(progress * allTokens.length);
   let cursor = 0;
-  passage.innerHTML = PARAGRAPHS.map((paragraph, paragraphIndex) => {
-    const words = paragraph.split(/([\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*)/gu).map((part) => {
+  passage.innerHTML = DISPLAY_LINES.map((line, lineIndex) => {
+    const words = line.split(/([\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*)/gu).map((part) => {
       if (!/^[\p{L}\p{N}]/u.test(part)) return part;
       const className = cursor < confirmed ? "confirmed" : "";
       cursor += 1;
       return `<span class="word ${className}">${part}</span>`;
     }).join("");
-    const paragraphStart = cursor - tokenizeText(paragraph).length;
-    const active = confirmed >= paragraphStart && confirmed < cursor;
-    return `<p class="reading-paragraph ${active ? "active" : ""}" data-paragraph="${paragraphIndex}">${words}</p>`;
+    const active = lineIndex === state.guideVisibleLineIndex;
+    return `<p class="reading-paragraph ${active ? "active" : ""}" data-guide-line="${lineIndex}">${words}</p>`;
   }).join("");
   passage.scrollTop = previousScrollTop;
 }
 
-function updateReadingGuide() {
-  const totalWords = tokenizeText(PASSAGE).length;
-  const wordIndex = estimateGuideWordIndex({
-    activeSpeechMs: state.guideSpeechMs,
-    totalWords,
-    wordsPerMinute: state.guideWpm,
-  });
-  state.guideProgress = Math.max(state.guideProgress, (wordIndex + 1) / totalWords);
+function updateReadingGuide(event) {
+  if (!event) return;
+  state.guideVisibleLineIndex = Math.max(state.guideVisibleLineIndex, event.visibleLineIndex);
+  state.guideProgress = Math.max(state.guideProgress, event.matchedWordCount / Math.max(1, event.totalWordCount));
+  renderPassage();
   if (performance.now() < state.guidePausedUntil) return;
   const passage = $("passage");
-  const firstSegmentWords = tokenizeText(PARAGRAPHS[0]).length;
-  if (wordIndex >= firstSegmentWords) {
-    const word = passage.querySelectorAll(".word")[wordIndex];
-    if (word) {
-      const target = centeredGuideScrollTop({
-        maximumScrollTop: passage.scrollHeight - passage.clientHeight,
-        viewportHeight: passage.clientHeight,
-        wordHeight: word.offsetHeight,
-        wordOffsetTop: word.offsetTop,
-      });
-      passage.scrollTop = approachScrollTop(passage.scrollTop, target);
-    }
+  const line = passage.querySelector(`[data-guide-line="${state.guideVisibleLineIndex}"]`);
+  if (line) {
+    const target = centeredGuideScrollTop({
+      maximumScrollTop: passage.scrollHeight - passage.clientHeight,
+      viewportHeight: passage.clientHeight,
+      wordHeight: line.offsetHeight,
+      wordOffsetTop: line.offsetTop,
+    });
+    passage.scrollTop = approachScrollTop(passage.scrollTop, target, 96);
   }
-  $("guideStatus").textContent = `Reading guide: ${state.guideWpm} WPM · ${Math.round(state.guideProgress * 100)}%`;
+  $("guideStatus").textContent = `Transcript guide - line ${state.guideVisibleLineIndex + 1} of ${DISPLAY_LINES.length}`;
+}
+
+function observeGuideTranscript(text, observedAtMs = performance.now(), { replace = false } = {}) {
+  if (!text || !state.guide) return;
+  state.guideTranscriptText = replace
+    ? text
+    : `${state.guideTranscriptText} ${text}`.trim();
+  updateReadingGuide(state.guide.observePartial(state.guideTranscriptText, observedAtMs));
 }
 
 function projectedCampaignPercent(readingProgress) {
@@ -3787,6 +3796,7 @@ async function checkpoint(reason) {
     if (!text || !state.listening) return;
     state.transcriptDiagnostics.push({ reason, text });
     state.finalText = text;
+    observeGuideTranscript(text, performance.now());
     const startIndex = Math.max(0, state.confirmedTokenIndex - PROFILE.checkpoint.tokenOverlap);
     const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24, startIndex });
     const latencyMs = Math.round(performance.now() - requestedAt);
@@ -3815,7 +3825,6 @@ function monitorSpeech() {
   if (speaking) {
     state.lastSpeechAt = now;
     state.guideSpeechMs += elapsedMs;
-    updateReadingGuide();
   }
   const totalWords = tokenizeText(PASSAGE).length;
   if (!speaking && !state.busy && !state.finishing
@@ -3844,6 +3853,11 @@ async function startReading() {
   state.lastCheckpointAt = state.startedAt;
   state.lastMonitorAt = state.startedAt;
   state.processedThroughMs = 0;
+  state.guide = new KnownTextLineGuide({
+    passageId: activePassage.id,
+    lines: DISPLAY_LINES,
+    wordsPerMinute: state.guideWpm,
+  });
   state.monitor = setInterval(monitorSpeech, 100);
   $("listen").textContent = "Finish now";
   $("listen").disabled = false;
@@ -3893,6 +3907,7 @@ async function finishReading() {
     clearInterval(finalizationTimer);
   }
   state.finalText = text;
+  observeGuideTranscript(text, performance.now(), { replace: true });
   const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24 });
   const finalLatencyMs = Math.round(performance.now() - requestedAt);
   updateProgress(alignment, finalLatencyMs);
@@ -4734,7 +4749,7 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
   $("passage").addEventListener(eventName, () => {
     state.guidePausedUntil = performance.now() + 5_000;
-    $("guideStatus").textContent = `Manual scroll — guide resumes at ${state.guideWpm} WPM`;
+    $("guideStatus").textContent = "Manual scroll - transcript guide resumes after the next local checkpoint";
   }, { passive: true });
 }
 document.querySelectorAll(".quiz button").forEach((button) => {

@@ -1,5 +1,21 @@
 # Session handoff
 
+## 2026-07-12 Evidence-driven Reading Companion app integration
+
+- Integration branch: `agent/reading-companion-app-integration`, based on main
+  after ViewTube PR #104.
+- The active app now uses `KnownTextLineGuide` with stable display lines derived
+  before microphone capture. Checkpoint transcript evidence is accumulated only
+  in memory for the current attempt and drives a monotonic centered line.
+- Existing local Whisper checkpoints and final scoring are unchanged; Game
+  Rules still receive only the final theme-neutral reading result.
+- The streaming recognizer contract, spike, ADR, licensed fixture, and benchmark
+  evidence are present. Sherpa remains behind its hosting gate and is not loaded
+  by the production app on GitHub Pages.
+- Validation completed: `npm run check`, 330 tests, `npm run build`, and desktop
+  browser inspection of the reading screen. A natural consenting-reader run at
+  180–220 WPM remains required before declaring streaming UX complete.
+
 ## 2026-07-12 ViewTube candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all seven

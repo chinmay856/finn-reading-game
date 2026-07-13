@@ -1,5 +1,23 @@
 # Project status
 
+## Evidence-driven Reading Companion integration — active 2026-07-12
+
+- The deployed Whisper scoring lane remains the final result authority.
+- The Reading Companion now derives stable sentence/line ranges before capture
+  and advances its centered highlight only from local checkpoint transcript
+  evidence. Silence and elapsed time cannot move the guide forward, and later
+  transcript revisions cannot move it backward.
+- Manual scrolling pauses automatic centering until another checkpoint arrives
+  after the quiet interval. The guide retains no transcript beyond the active
+  attempt, and saved session records remain transcript- and audio-free.
+- The replaceable streaming recognizer contract and sherpa proof are included,
+  but sherpa is not shipped in the deployed path: its 203 MB runtime still
+  requires a host or isolation strategy that can provide the proven security
+  headers. A streaming failure must never disable Whisper scoring or Continue.
+- Local validation: syntax checks passed; 330 tests passed; production build
+  passed; desktop browser QA confirmed one active authored line, no horizontal
+  overflow, and the existing independent Reading Companion layout.
+
 ## ViewTube candidate playthrough — active 2026-07-12
 
 ViewTube now exposes all seven complete Deck A candidates through the explicit
