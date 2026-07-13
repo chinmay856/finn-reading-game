@@ -1,5 +1,23 @@
 # Project status
 
+## Evidence-driven Reading Companion integration — active 2026-07-12
+
+- The deployed Whisper scoring lane remains the final result authority.
+- The Reading Companion now derives stable sentence/line ranges before capture
+  and advances its centered highlight only from local checkpoint transcript
+  evidence. Silence and elapsed time cannot move the guide forward, and later
+  transcript revisions cannot move it backward.
+- Manual scrolling pauses automatic centering until another checkpoint arrives
+  after the quiet interval. The guide retains no transcript beyond the active
+  attempt, and saved session records remain transcript- and audio-free.
+- The replaceable streaming recognizer contract and sherpa proof are included,
+  but sherpa is not shipped in the deployed path: its 203 MB runtime still
+  requires a host or isolation strategy that can provide the proven security
+  headers. A streaming failure must never disable Whisper scoring or Continue.
+- Combined ten-site validation: syntax checks passed; 339 tests passed; production build
+  passed; desktop browser QA confirmed one active authored line, no horizontal
+  overflow, and the existing independent Reading Companion layout.
+
 ## MapGuess candidate playthrough — active 2026-07-12
 
 MapGuess now exposes all eight complete first-run candidates through the
@@ -32,6 +50,21 @@ three evidence tracks. The site remains silent and media-free. Progress is
 tab-only, so slot-six evidence cannot become persisted canonical evidence or
 unlock the finale. Production selection and independent review remain
 fail-closed. No Reading Engine code changed.
+
+## Reading Companion integration kit — ready for integration 2026-07-12
+
+- A theme-neutral, evidence-locked line guide is packaged under
+  `reading-companion/` on `agent/reading-companion-integration-kit`.
+- The isolated sherpa-onnx spike and repeatable 154-250 WPM fixture results are
+  under `prototypes/reading-companion/`; the deployed app is unchanged.
+- The existing local Whisper path remains the final scoring authority. The new
+  lane is only for low-latency visual position.
+- Exact wiring, hosting headers, fallback behavior, privacy boundaries, and
+  acceptance checks are in
+  `docs/engine/READING_COMPANION_INTEGRATION_HANDOFF.md`.
+- Next action: integrate the neutral contract behind a feature flag after the
+  production host proves cross-origin isolation and one natural 180-220 WPM
+  reader fixture passes.
 
 ## Search-ish candidate playthrough — active 2026-07-12
 

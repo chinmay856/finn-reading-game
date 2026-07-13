@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evidence-Locked Reading Companion Spike</title>
+    <link rel="stylesheet" href="./prototype.css" />
+  </head>
+  <body>
+    <main>
+      <header class="intro">
+        <p class="eyebrow">Isolated Reading Engine experiment</p>
+        <h1>Evidence-locked line guide</h1>
+        <p>
+          A local streaming recognizer supplies rough position evidence. The UI
+          follows that evidence smoothly; it does not need a polished live transcript
+          and it never advances from elapsed time alone.
+        </p>
+      </header>
+
+      <section class="status-card" aria-live="polite">
+        <div>
+          <span class="status-dot" id="statusDot"></span>
+          <strong id="status">Preparing the local engine…</strong>
+        </div>
+        <span id="downloadDetail">First load downloads about 202 MB of open-source model/runtime files.</span>
+      </section>
+
+      <section class="reader-card" aria-labelledby="passageHeading">
+        <div class="reader-heading">
+          <div>
+            <p class="eyebrow">Fixed replay fixture</p>
+            <h2 id="passageHeading">LibriSpeech sample 1272-128104-0002</h2>
+          </div>
+          <div class="actions">
+            <button id="runButton" disabled>Run sample</button>
+            <button id="suiteButton" class="secondary" disabled>Run tough fixture suite</button>
+          </div>
+        </div>
+
+        <div class="passage" id="passage" aria-label="Reference passage"></div>
+
+        <div class="playback-row">
+          <audio id="sampleAudio" controls preload="auto" src="./assets/1272-128104-0002.flac"></audio>
+          <span id="positionLabel">Waiting for speech evidence</span>
+        </div>
+      </section>
+
+      <section class="diagnostics-grid">
+        <article>
+          <h2>Live evidence</h2>
+          <p id="transcript" class="transcript">No partial transcript yet.</p>
+        </article>
+        <article>
+          <h2>Replay measurements</h2>
+          <dl id="metrics"></dl>
+        </article>
+      </section>
+
+      <section class="event-card">
+        <div class="event-heading">
+          <div>
+            <p class="eyebrow">Comparable local replays</p>
+            <h2>Fixture suite results</h2>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Fixture</th><th>WPM</th><th>First evidence</th><th>Worst gap</th><th>Worst block</th><th>Evidence</th><th>Line</th><th>Coverage</th></tr>
+            </thead>
+            <tbody id="suiteResults"><tr><td colspan="8">Run the suite to compare all conditions.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="event-card">
+        <div class="event-heading">
+          <h2>Event trace</h2>
+          <button id="copyButton" class="secondary">Copy JSON</button>
+        </div>
+        <pre id="eventTrace">[]</pre>
+      </section>
+
+      <footer>
+        Audio: LibriSpeech, CC BY 4.0. Speech recognition stays in this browser;
+        only the model/runtime files are downloaded.
+      </footer>
+    </main>
+
+    <script>
+      const SHERPA_ASSET_BASE =
+        new URL("./vendor/", document.baseURI).href;
+      window.Module = {
+        locateFile(path) {
+          return `${SHERPA_ASSET_BASE}${path}`;
+        },
+        setStatus(message) {
+          window.dispatchEvent(new CustomEvent("sherpa-status", { detail: message }));
+        },
+        onRuntimeInitialized() {
+          window.dispatchEvent(new Event("sherpa-ready"));
+        },
+      };
+    </script>
+    <script src="./vendor/sherpa-onnx-asr.js"></script>
+    <script type="module" src="./prototype.js"></script>
+    <script src="./vendor/sherpa-onnx-wasm-main-asr.js"></script>
+  </body>
+</html>

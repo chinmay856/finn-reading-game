@@ -1,5 +1,21 @@
 # Session handoff
 
+## 2026-07-12 Evidence-driven Reading Companion app integration
+
+- Integration branch: `agent/reading-companion-app-integration`, reconciled with
+  ten-site main through MapGuess PR #108 (`80682ba`).
+- The active app now uses `KnownTextLineGuide` with stable display lines derived
+  before microphone capture. Checkpoint transcript evidence is accumulated only
+  in memory for the current attempt and drives a monotonic centered line.
+- Existing local Whisper checkpoints and final scoring are unchanged; Game
+  Rules still receive only the final theme-neutral reading result.
+- The streaming recognizer contract, spike, ADR, licensed fixture, and benchmark
+  evidence are present. Sherpa remains behind its hosting gate and is not loaded
+  by the production app on GitHub Pages.
+- Validation completed: `npm run check`, 339 tests, `npm run build`, and desktop
+  browser inspection of the reading screen. A natural consenting-reader run at
+  180–220 WPM remains required before declaring streaming UX complete.
+
 ## 2026-07-12 MapGuess candidate playthrough
 
 - Follow-up browser QA found that a persisted MapGuess campaign could exhaust
@@ -45,6 +61,22 @@
   acknowledgement remains a wrapper-owned interaction.
 - All progress and slot-six evidence remain tab-only. No audio, video, iframe,
   canonical evidence, finale gate, or Reading Engine behavior changed.
+
+## 2026-07-12 Reading Companion integration kit
+
+- Branch: `agent/reading-companion-integration-kit`
+- Deliverable: `docs/engine/READING_COMPANION_INTEGRATION_HANDOFF.md`
+- Reusable code: `reading-companion/known-text-line-guide.js` and
+  `reading-companion/live-reading-companion.js`
+- Evidence: `prototypes/reading-companion/` and
+  `docs/engine/READING_COMPANION_PROGRESS_SPIKE.md`
+- Decision: live streaming line guidance and final Whisper assessment are
+  independent local lanes; see `docs/decisions/0004-dual-lane-reading-companion.md`.
+- Integration boundary: content/view owns authored lines; engine emits neutral
+  guide indexes; wrapper owns centered highlighting; Game Rules only consume
+  the final reading result.
+- Production code was not edited. The integrating agent should follow the exact
+  seven-step sequence and acceptance gate in the handoff document.
 
 ## 2026-07-12 Search-ish candidate playthrough
 
