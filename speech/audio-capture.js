@@ -1,5 +1,20 @@
 const TARGET_SAMPLE_RATE = 16_000;
 const SILENCE_THRESHOLD = 0.008;
+const PREFERRED_MICROPHONE_CONSTRAINTS = Object.freeze({
+  autoGainControl: true,
+  channelCount: 1,
+  echoCancellation: true,
+  noiseSuppression: true,
+  sampleRate: TARGET_SAMPLE_RATE,
+});
+
+export function buildLocalMicrophoneConstraints(supported = {}) {
+  const audio = {};
+  for (const [name, value] of Object.entries(PREFERRED_MICROPHONE_CONSTRAINTS)) {
+    if (supported[name]) audio[name] = value;
+  }
+  return Object.keys(audio).length ? audio : true;
+}
 
 function frameHasSpeech(audio, start, frameSize) {
   const end = Math.min(audio.length, start + frameSize);
@@ -102,7 +117,8 @@ export class LocalAudioCapture {
     this.previewChunks = [];
     this.previewTail = new Float32Array();
     try {
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const supported = navigator.mediaDevices.getSupportedConstraints?.() ?? {};
+      this.stream = await navigator.mediaDevices.getUserMedia({ audio: buildLocalMicrophoneConstraints(supported) });
       const AudioContextApi = window.AudioContext || window.webkitAudioContext;
       this.audioContext = new AudioContextApi();
       const source = this.audioContext.createMediaStreamSource(this.stream);

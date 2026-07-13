@@ -1,5 +1,31 @@
 # Session handoff
 
+## 2026-07-13 Tomorrow playtest polish and speech evidence
+
+- Working branch: `agent/tomorrow-playtest-polish`, created from authoritative
+  `main` at `8d06fb2` in a clean worktree. The older dirty primary checkout was
+  preserved untouched.
+- Ten-site full-screen browser QA at 1440×900 now reports one Techno and no page
+  or nested-panel scrollers on each initial site board. The candidate reading
+  preview reports one active sentence, one site-correct stage, one Techno, and
+  no horizontal or page overflow.
+- The shared reader no longer hardcodes WikiWhy for ThreadIt through MapGuess.
+  The visible unit is a complete sentence by default; authored line limits can
+  still opt into bounded chunks where content explicitly requires them.
+- Techno's state is mutually exclusive across page idle, reading ball-push,
+  completion, alert-dialog, and sixty-second sleep states. No new sprite payload
+  was added.
+- The included LibriSpeech clip was replayed through the exact production
+  Whisper worker at 154, 200, and accelerated 250 WPM. Metrics and the reusable
+  benchmark page are documented in
+  `docs/engine/WHISPER_FIXTURE_BENCHMARK_2026-07-13.md`.
+- The measured 4.2–4.6 second rolling-window decode cost means checkpoint
+  shortening would not create true low-latency highlighting. Keep Sherpa behind
+  its hosting gate and keep Whisper as the final scoring lane.
+- Pending external evidence remains honest: a consenting reader's natural
+  180–220 WPM microphone run and independent review of all 85 candidates are
+  still required for production approval.
+
 ## 2026-07-12 Evidence-driven Reading Companion app integration
 
 - Integration branch: `agent/reading-companion-app-integration`, reconciled with

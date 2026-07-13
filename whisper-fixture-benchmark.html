@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Whisper Fixture Benchmark</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/moonshine-benchmark.css">
+</head>
+<body>
+  <main class="benchmark-shell">
+    <header><div><small>READING ENGINE LAB</small><h1>Production Whisper fixture</h1></div><a class="back-link" href="./">Back to game</a></header>
+    <section class="panel benchmark-intro">
+      <small>LICENSED, REPEATABLE, LOCAL</small>
+      <h2>One voice clip. Three reading speeds.</h2>
+      <p>This runs the production in-browser Whisper worker against the included LibriSpeech fixture at natural, 200, and 250 WPM. It also checks shorter rolling windows before any checkpoint timing changes ship.</p>
+      <p id="benchmarkStatus" class="benchmark-status" role="status">Ready to load the local model.</p>
+      <div class="benchmark-actions"><button id="runBenchmark" class="primary">Run fixture benchmark</button></div>
+      <p class="fine">The public-domain-style test workflow uses a CC BY 4.0 LibriSpeech clip. Audio and transcript results stay in this tab and are not uploaded or saved.</p>
+    </section>
+    <section class="benchmark-grid">
+      <article class="panel benchmark-reader"><small>REFERENCE</small><h2>32 words</h2><p id="referenceText"></p><audio id="fixtureAudio" controls></audio></article>
+      <aside class="panel benchmark-results"><small>MEASURED RESULTS</small><h2>Transcript and alignment</h2><pre id="benchmarkResults">No run yet.</pre></aside>
+    </section>
+  </main>
+  <script type="module" src="/whisper-fixture-benchmark.js"></script>
+</body>
+</html>

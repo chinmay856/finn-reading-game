@@ -177,6 +177,14 @@ const TECHNO_ALERT_BALL_PIN_URL = new URL("./apps/internet-recovery/art/characte
 const TECHNO_BARK_BALL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-bark-ball.webp", import.meta.url).href;
 const TECHNO_CELEBRATE_SPIN_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-celebrate-spin.webp", import.meta.url).href;
 const TECHNO_SUSPICIOUS_FILE_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-suspicious-file.webp", import.meta.url).href;
+const TECHNO_IDLE_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-loop.webp", import.meta.url).href;
+const TECHNO_IDLE_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-still.webp", import.meta.url).href;
+const TECHNO_SLEEP_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-sleep-idle-loop.webp", import.meta.url).href;
+const TECHNO_SLEEP_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-sleep-idle-still.webp", import.meta.url).href;
+const TECHNO_ALERT_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-bark-alert-loop.webp", import.meta.url).href;
+const TECHNO_ALERT_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-bark-alert-still.webp", import.meta.url).href;
+const TECHNO_CELEBRATE_LOOP_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-tail-wag-celebration-loop.webp", import.meta.url).href;
+const TECHNO_CELEBRATE_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-tail-wag-celebration-still.webp", import.meta.url).href;
 const WIKIWHY_EVIDENCE_ROUTE_URL = new URL("./apps/internet-recovery/art/site-assets/wikiwhy-campaign/evidence-route-fragment-01.svg", import.meta.url).href;
 const WIKIWHY_SECURED_SEAL_URL = new URL("./apps/internet-recovery/art/site-assets/wikiwhy-campaign/wikiwhy-secured-seal.svg", import.meta.url).href;
 const $ = (id) => document.getElementById(id);
@@ -185,6 +193,8 @@ const requestedDevice = new URLSearchParams(location.search).get("speechDevice")
 const uiPreview = new URLSearchParams(location.search).get("uiPreview");
 const requestedSite = new URLSearchParams(location.search).get("site");
 const requestedLaunch = new URLSearchParams(location.search).get("launch");
+const requestedReadingSite = new URLSearchParams(location.search).get("readingSite");
+const TECHNO_IDLE_DELAY_MS = uiPreview === "techno-sleep" ? 250 : 60_000;
 
 function availableLocalStorage() {
   try {
@@ -209,7 +219,7 @@ const state = {
   guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
-  sessionId: null, startedAt: 0, technoTimer: null,
+  sessionId: null, startedAt: 0, technoTimer: null, technoIdleTimer: null, technoSleeping: false, technoMode: "idle",
   diagnosticMode: false, diagnosticState: null, dialogAction: null, dialogDismissible: true, dialogReturnFocus: null,
   evidenceReceiptOpen: false,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
@@ -322,6 +332,7 @@ function setActivePassage(passage) {
   PROFILE = activePassage.profile;
   state.guideWpm = PROFILE.guide.defaultWpm;
   hydratePassage();
+  if ($("siteReadingStage")) syncReadingStage();
 }
 
 function selectCampaignPassage() {
@@ -661,6 +672,8 @@ function resetReadingAttempt() {
   $("progressText").textContent = "0% confirmed by local transcript";
   $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
   $("guideStatus").textContent = "Transcript guide - waiting for local speech evidence";
+  syncReadingStage();
+  updateGenericReadingProgress(0);
   renderPassage(0);
   renderCampaignMeter(state.campaignState);
 }
@@ -755,18 +768,94 @@ function openEndgame({ canonicalComplete = false } = {}) {
   show("endgame");
 }
 
+const TECHNO_MODES = Object.freeze({
+  alert: { loop: TECHNO_ALERT_LOOP_URL, still: TECHNO_ALERT_STILL_URL, alt: "Techno alerts Finn to a new recovery message" },
+  celebrate: { loop: TECHNO_CELEBRATE_LOOP_URL, still: TECHNO_CELEBRATE_STILL_URL, alt: "Techno celebrates a completed recovery" },
+  idle: { loop: TECHNO_IDLE_LOOP_URL, still: TECHNO_IDLE_STILL_URL, alt: "Techno plays with her orange-and-blue ball" },
+  inspect: { loop: TECHNO_SUSPICIOUS_FILE_URL, still: TECHNO_SUSPICIOUS_FILE_URL, alt: "Techno inspects the current recovery site" },
+  sleep: { loop: TECHNO_SLEEP_LOOP_URL, still: TECHNO_SLEEP_STILL_URL, alt: "Techno sleeps beside her orange-and-blue ball" },
+});
+
+function setTechnoMode(mode, status) {
+  const resolvedMode = TECHNO_MODES[mode] ? mode : "idle";
+  const asset = TECHNO_MODES[resolvedMode];
+  state.technoMode = resolvedMode;
+  $("technoPet").dataset.mode = resolvedMode;
+  $("technoPetImage").src = matchMedia("(prefers-reduced-motion: reduce)").matches ? asset.still : asset.loop;
+  $("technoPetImage").alt = asset.alt;
+  $("technoPetReducedSource").srcset = asset.still;
+  if (status) $("technoPetStatus").textContent = status;
+}
+
+function technoModeForScreen(name, secured = false) {
+  if (secured || name === "review") return ["celebrate", "REPAIR HELD. TAIL PROTOCOL ACTIVE."];
+  if (name === "endgame") return ["alert", "GUARDING EVIDENCE 11"];
+  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "sitePreview"].includes(name)) return ["inspect", "INSPECTING THIS SITE"];
+  if (["read", "setup"].includes(name)) return ["idle", "READING SUPPORT DOG ON DUTY"];
+  return ["idle", "SNIFFING FOR SUSPICIOUS FILES"];
+}
+
+function scheduleTechnoSleep() {
+  clearTimeout(state.technoIdleTimer);
+  state.technoIdleTimer = setTimeout(() => {
+    if (state.listening || state.activeScreen === "read" || !$("characterDialogLayer").hidden) return;
+    state.technoSleeping = true;
+    setTechnoMode("sleep", "ONE-MINUTE NAP. STILL ON CALL.");
+  }, TECHNO_IDLE_DELAY_MS);
+}
+
+function wakeTechno() {
+  if (state.technoSleeping) {
+    state.technoSleeping = false;
+    const [mode, status] = technoModeForScreen(state.activeScreen);
+    setTechnoMode(mode, status);
+  }
+  scheduleTechnoSleep();
+}
+
+function syncReadingStage() {
+  const isWikiWhy = state.readingSiteId === "wikiwhy";
+  $("wikiwhyReadingStage").hidden = !isWikiWhy;
+  $("siteReadingStage").hidden = isWikiWhy;
+  $("read").dataset.siteId = state.readingSiteId;
+  if (isWikiWhy) return;
+  const site = getRecoverySite(state.readingSiteId);
+  $("siteReadingStage").style.setProperty("--reading-site-accent", site.accent);
+  $("siteReadingWindowTitle").textContent = `${site.name.toUpperCase()} — LIVE RECOVERY`;
+  $("siteReadingAddress").textContent = `http://${site.id}.recovered/live-reading`;
+  $("siteReadingPreview").src = site.previewImage;
+  $("siteReadingPreview").alt = `${site.name} recovery board connected to the current reading`;
+  $("siteReadingMark").textContent = site.mark;
+  $("siteReadingArchetype").textContent = site.archetype.toUpperCase();
+  $("siteReadingName").textContent = site.name;
+  $("siteReadingBelief").textContent = site.belief;
+  $("siteReadingMission").textContent = activePassage.title;
+  $("siteReadingConsequence").textContent = `Confirmed words restore ${site.name}'s current evidence route. ${site.description}`;
+  $("siteReadingStatus").textContent = `${site.name.toUpperCase()} LINK READY`;
+}
+
+function updateGenericReadingProgress(percent) {
+  const value = Math.min(100, Math.max(0, Math.round(Number(percent) || 0)));
+  const stage = $("siteReadingStage");
+  stage.style.setProperty("--reading-progress", String(value / 100));
+  $("siteReadingProgressFill").style.width = `${value}%`;
+  $("siteReadingProgressText").textContent = `${value}% confirmed`;
+  const progress = stage.querySelector(".site-reading-progress");
+  progress.setAttribute("aria-valuenow", String(value));
+  const techno = $("siteReadingTechno");
+  techno.style.left = `clamp(38px, ${value}%, calc(100% - 38px))`;
+  techno.src = value >= 100
+    ? TECHNO_CELEBRATE_LOOP_URL
+    : value > 0
+      ? TECHNO_PROGRESS_LOOP_URL
+      : TECHNO_PROGRESS_STILL_URL;
+}
+
 function show(name) {
   const screenChanged = state.activeScreen !== name;
   for (const id of ["hub", "endgame", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
   $("technoPet").dataset.screen = name;
-  $("technoPetStatus").textContent = name === "hub"
-    ? "SNIFFING FOR SUSPICIOUS FILES"
-    : name === "endgame"
-      ? "GUARDING EVIDENCE 11"
-      : ["read", "review", "setup"].includes(name)
-        ? "READING SUPPORT DOG ON DUTY"
-        : "INSPECTING THIS SITE";
   const selectedSite = getRecoverySite(state.selectedSiteId);
   const readingScreen = ["setup", "read", "review"].includes(name);
   const wikiWhyScreen = readingScreen && state.readingSiteId === "wikiwhy";
@@ -832,6 +921,11 @@ function show(name) {
   const securedAmazeOnTask = amazeonScreen && visibleAmazeOnState.secured;
   const visibleSpottyFiState=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;const securedSpottyFiTask=spottyfiScreen&&visibleSpottyFiState.secured;
   const securedSiteTask = securedWikiWhyTask || securedThreadItTask || securedFacePlaceTask || securedMyCornerTask || securedYahuhTask || securedViewTubeTask || securedSearchishTask || securedAmazeOnTask || securedSpottyFiTask || securedMapGuessTask;
+  if (name === "read") syncReadingStage();
+  state.technoSleeping = false;
+  const [technoMode, technoStatus] = technoModeForScreen(name, securedSiteTask);
+  setTechnoMode(technoMode, technoStatus);
+  scheduleTechnoSleep();
   $("taskSite").classList.toggle("secured", securedSiteTask);
   if (securedWikiWhyTask) {
     $("taskSite").innerHTML = `<img src="${WIKIWHY_SECURED_SEAL_URL}" alt=""> <span>WikiWhy · SECURED</span>`;
@@ -1134,6 +1228,22 @@ function renderRecoveryHub() {
           : yahuhView.progress.sortCompletedCount
             ? `SORT CIRCUITS ${yahuhView.progress.sortCompletedCount}/3${yahuhTestSuffix}`
             : "CAMPAIGN TEST BUILD";
+  const viewTubeView = getViewTubeCampaignView(diagnosticViewTube ?? realViewTube);
+  const searchishView = getSearchishCampaignView(diagnosticSearchish ?? realSearchish);
+  const amazeOnView = getAmazeOnCampaignView(diagnosticAmazeOn ?? realAmazeOn);
+  const spottyFiView = getSpottyFiCampaignView(diagnosticSpottyFi ?? realSpottyFi);
+  const runtimeStatusBySiteId = Object.freeze({
+    wikiwhy: wikiWhyStatus,
+    threadit: threadItStatus,
+    faceplace: facePlaceStatus,
+    mycorner: myCornerStatus,
+    yahuh: yahuhStatus,
+    viewtube: viewTubeView.secured ? "EVIDENCE TRACK RESTORED · TEST" : viewTubeView.progress.completedUnitCount ? `EVIDENCE ${viewTubeView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
+    searchish: searchishView.secured ? "SOURCE ORIGINS VERIFIED · TEST" : searchishView.progress.completedUnitCount ? `ORIGINS ${searchishView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
+    amazeon: amazeOnView.secured ? "HUMAN CONFIRMATION RESTORED · TEST" : amazeOnView.progress.completedUnitCount ? `CONSENT ${amazeOnView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
+    spottyfi: spottyFiView.secured ? "LISTENER CONTROL RESTORED · TEST" : spottyFiView.progress.completedUnitCount ? `CONTROL ${spottyFiView.progress.completedUnitCount}/8 · TEST` : "CAMPAIGN TEST BUILD",
+    mapguess: mapGuessStatus,
+  });
   // Never offer a completed case again. Until design freezes a replacement
   // rotation, an honest shorter list is safer than inventing a third case.
   const securedIncomingSiteIds = new Set([
@@ -1159,25 +1269,8 @@ function renderRecoveryHub() {
       ? "EVIDENCE_11.LIVE locked"
       : "Open EVIDENCE_11.LIVE";
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
-    const siteSecured = (site.id === "wikiwhy" && wikiWhySecured)
-      || (site.id === "threadit" && threadItSecured)
-      || (site.id === "faceplace" && facePlaceSecured)
-      || (site.id === "mycorner" && myCornerSecured)
-      || (site.id === "yahuh" && yahuhSecured)
-      || (site.id === "mapguess" && mapGuessSecured);
-    const siteStatus = site.id === "wikiwhy"
-      ? wikiWhyStatus
-      : site.id === "threadit"
-        ? threadItStatus
-        : site.id === "faceplace"
-          ? facePlaceStatus
-          : site.id === "mycorner"
-            ? myCornerStatus
-          : site.id === "yahuh"
-            ? yahuhStatus
-          : site.id === "mapguess"
-            ? mapGuessStatus
-        : "DESIGN PREVIEW";
+    const siteSecured = Boolean(evidenceSummary.bySiteId[site.id]?.displaySecured);
+    const siteStatus = runtimeStatusBySiteId[site.id] ?? site.runtimeLabel;
     const securedIcon = site.id === "wikiwhy"
       ? WIKIWHY_SECURED_SEAL_URL
       : site.id === "threadit"
@@ -1193,19 +1286,7 @@ function renderRecoveryHub() {
   }).join("");
   $("incomingCases").innerHTML = incomingIds.map((siteId) => {
     const site = getRecoverySite(siteId);
-    const status = site.id === "wikiwhy"
-      ? wikiWhyStatus
-      : site.id === "threadit"
-        ? threadItStatus
-        : site.id === "faceplace"
-          ? facePlaceStatus
-          : site.id === "mycorner"
-            ? myCornerStatus
-          : site.id === "yahuh"
-            ? yahuhStatus
-          : site.id === "mapguess"
-            ? mapGuessStatus
-          : "DESIGN PREVIEW";
+    const status = runtimeStatusBySiteId[site.id] ?? site.runtimeLabel;
     return `<button class="incoming-case" type="button" data-site-id="${site.id}" style="--site-accent:${site.accent}"><span><img src="${site.markImage}" alt=""></span><div><b>${site.name}</b><small>${status}</small></div></button>`;
   }).join("");
   $("evidenceSlots").innerHTML = RECOVERY_SITES.map((site) => {
@@ -1686,7 +1767,7 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
   $("faceplaceRule").textContent = view.ruleLabel;
   $("faceplaceRuleBody").textContent = view.ruleBody;
   $("faceplaceFixtureStatus").title = view.fixture.notice;
-  $("faceplaceFixtureStatus").textContent = "PROVISIONAL FEED FIXTURE · DESIGNER REPLACEMENT PENDING";
+  $("faceplaceFixtureStatus").textContent = "PROVISIONAL FEED FIXTURE · PLAYTEST LANE";
 
   $("faceplaceProfileName").textContent = view.profile.displayName;
   $("faceplaceProfileHandle").textContent = `${view.profile.handle} · FIXTURE`;
@@ -1923,6 +2004,38 @@ function mapGuessSvgPoint(point) {
   return `${(point.column - 0.5) * 10},${(point.row - 0.5) * 10}`;
 }
 
+function mapGuessSvgCoordinates(point) {
+  if (!point || !Number.isFinite(point.column) || !Number.isFinite(point.row)) return null;
+  return { x: (point.column - 0.5) * 10, y: (point.row - 0.5) * 10 };
+}
+
+function smoothMapGuessRoadPath(points) {
+  const coordinates = points.map(mapGuessSvgCoordinates).filter(Boolean);
+  if (coordinates.length < 2) return "";
+  let path = `M ${coordinates[0].x} ${coordinates[0].y}`;
+  for (let index = 1; index < coordinates.length - 1; index += 1) {
+    const current = coordinates[index];
+    const next = coordinates[index + 1];
+    path += ` Q ${current.x} ${current.y} ${(current.x + next.x) / 2} ${(current.y + next.y) / 2}`;
+  }
+  const last = coordinates.at(-1);
+  return `${path} T ${last.x} ${last.y}`;
+}
+
+function smoothMapGuessRoutePath(fromPoint, toPoint, index) {
+  const from = mapGuessSvgCoordinates(fromPoint);
+  const to = mapGuessSvgCoordinates(toPoint);
+  if (!from || !to) return "";
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const direction = index % 2 === 0 ? 1 : -1;
+  const bend = Math.min(7, Math.hypot(dx, dy) * 0.13) * direction;
+  const length = Math.max(1, Math.hypot(dx, dy));
+  const controlX = ((from.x + to.x) / 2) - ((dy / length) * bend);
+  const controlY = ((from.y + to.y) / 2) + ((dx / length) * bend);
+  return `M ${from.x} ${from.y} Q ${controlX} ${controlY} ${to.x} ${to.y}`;
+}
+
 function syncMapGuessInspector() {
   const drawerMode = getComputedStyle($("mapguessInspectorToggle")).display !== "none";
   if (!drawerMode) state.mapguessInspectorOpen = false;
@@ -2113,7 +2226,7 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
   page.dataset.midpointPending = String(view.midpoint.actionRequired);
   page.setAttribute("aria-label", view.ariaDescription);
   $("mapguessHeaderStatus").textContent = view.headerStatus;
-  $("mapguessFixtureStatus").textContent = "PROVISIONAL FICTIONAL GRID · DESIGNER REPLACEMENT PENDING";
+  $("mapguessFixtureStatus").textContent = "PROVISIONAL MORROW GRID · LOCAL PLAYTEST";
   $("mapguessFixtureStatus").title = view.fixture.notice;
   $("mapguessRule").textContent = view.ruleLabel;
   $("mapguessRuleBody").textContent = view.ruleBody;
@@ -2160,15 +2273,14 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
   }).join("");
 
   const roadMarkup = view.fixedRoadGeometry.roads.map((road) => {
-    const points = road.geometryPoints.map(mapGuessSvgPoint).filter(Boolean).join(" ");
-    if (!points) return "";
-    return `<polyline class="mapguess-road" points="${points}"></polyline><polyline class="mapguess-road-center" points="${points}"></polyline>`;
+    const path = smoothMapGuessRoadPath(road.geometryPoints);
+    if (!path) return "";
+    return `<path class="mapguess-road" d="${path}"></path><path class="mapguess-road-center" d="${path}"></path>`;
   }).join("");
-  const routeMarkup = view.routeSegments.filter(({ visible }) => visible).map((segment) => {
-    const from = mapGuessSvgPoint(segment.fromPoint);
-    const to = mapGuessSvgPoint(segment.toPoint);
-    if (!from || !to) return "";
-    return `<polyline class="mapguess-route-segment" data-connected="${segment.connected}" data-selected-goal="${segment.selectedForGoal}" points="${from} ${to}"></polyline>`;
+  const routeMarkup = view.routeSegments.filter(({ visible }) => visible).map((segment, index) => {
+    const path = smoothMapGuessRoutePath(segment.fromPoint, segment.toPoint, index);
+    if (!path) return "";
+    return `<path class="mapguess-route-segment" data-connected="${segment.connected}" data-selected-goal="${segment.selectedForGoal}" d="${path}"></path>`;
   }).join("");
   $("mapguessRouteLayer").innerHTML = roadMarkup + routeMarkup;
 
@@ -3014,6 +3126,7 @@ function renderDiagnosticPanel(campaignState) {
 function hideCharacterDialog() {
   const layer = $("characterDialogLayer");
   layer.hidden = true;
+  document.querySelector(".recovery-desktop").dataset.popupActive = "false";
   for (const child of document.querySelector(".recovery-desktop").children) {
     if (child !== layer) child.inert = false;
   }
@@ -3021,6 +3134,7 @@ function hideCharacterDialog() {
   state.dialogDismissible = true;
   const returnFocus = state.dialogReturnFocus;
   state.dialogReturnFocus = null;
+  wakeTechno();
   if (returnFocus?.isConnected && !returnFocus.disabled) returnFocus.focus({ preventScroll: true });
 }
 
@@ -3062,6 +3176,8 @@ function showCharacterDialog(dialogId, action = hideCharacterDialog) {
   for (const child of document.querySelector(".recovery-desktop").children) {
     if (child !== layer) child.inert = true;
   }
+  clearTimeout(state.technoIdleTimer);
+  document.querySelector(".recovery-desktop").dataset.popupActive = "true";
   layer.hidden = false;
   $("dialogHeading").focus({ preventScroll: true });
 }
@@ -3947,6 +4063,14 @@ function updateProgress(alignment, latencyMs = null) {
   state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
   state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
   const percent = Math.round(state.confirmedProgress * 100);
+  if (state.readingSiteId !== "wikiwhy") {
+    state.repairPercent = Math.max(state.repairPercent, percent);
+    updateGenericReadingProgress(state.repairPercent);
+    $("repairPercent").textContent = `${percent}% reading confirmed`;
+    $("progressText").textContent = `${percent}% confirmed by local transcript`;
+    renderPassage();
+    return;
+  }
   const previousProjected = projectedCampaignPercent(state.repairPercent / 100);
   state.repairPercent = Math.max(state.repairPercent, percent);
   const projected = projectedCampaignPercent(state.repairPercent / 100);
@@ -5077,10 +5201,14 @@ document.querySelectorAll(".quiz button").forEach((button) => {
 window.addEventListener("pagehide", () => {
   clearInterval(state.monitor);
   clearTimeout(state.technoTimer);
+  clearTimeout(state.technoIdleTimer);
   clearTimeout(state.faceplaceTransitionTimer);
   if (capture.active) capture.stop();
   recognizer.close();
 });
+for (const eventName of ["pointerdown", "keydown", "focusin"]) {
+  window.addEventListener(eventName, wakeTechno, { passive: true });
+}
 function updateDesktopClock() {
   $("desktopClock").textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 }
@@ -5108,6 +5236,23 @@ if (uiPreview) {
   state.spottyfiState=readSpottyFiState(null);state.spottyfiPersisted=true;
 }
 selectCampaignPassage();
+if (uiPreview === "read" && requestedReadingSite) {
+  const selectPreviewPassage = {
+    threadit: selectThreadItPlaytestPassage,
+    faceplace: selectFacePlacePlaytestPassage,
+    mycorner: selectMyCornerPlaytestPassage,
+    yahuh: selectYahuhPlaytestPassage,
+    viewtube: selectViewTubePlaytestPassage,
+    searchish: selectSearchishPlaytestPassage,
+    amazeon: selectAmazeOnPlaytestPassage,
+    spottyfi: selectSpottyFiPlaytestPassage,
+    mapguess: selectMapGuessPlaytestPassage,
+  }[requestedReadingSite];
+  if (selectPreviewPassage) {
+    state.selectedSiteId = requestedReadingSite;
+    selectPreviewPassage();
+  }
+}
 renderRecoveryHub();
 renderSavedRepair(state.campaignState, { persisted: state.campaignPersisted });
 renderCampaignMeter(state.campaignState);
@@ -5468,4 +5613,9 @@ if (requestedLaunch === "wikiwhy") {
   $("finalizationStatus").className = "finalization-status ready";
   show("review");
   $("continueResult").click();
+} else if (uiPreview === "techno-alert") {
+  show("hub");
+  showCharacterDialog("amy-warning");
+} else {
+  show("hub");
 }

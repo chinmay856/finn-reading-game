@@ -1,5 +1,26 @@
 # Project status
 
+## Tomorrow playtest release pass — active 2026-07-13
+
+- All ten site boards and companion panels fit the 1440×900 desktop without
+  page or nested-panel scrolling in their initial playtest state. ThreadIt,
+  MyCorner, ViewTube, Search-ish, and MapGuess received targeted overflow and
+  artwork corrections; stale Design Preview labels were removed.
+- Every candidate reading now keeps the owning site on the left. WikiWhy is no
+  longer shown beside another site's passage. Long sentences remain one stable
+  semantic guide unit instead of being cut after an arbitrary word count.
+- Techno now uses one mutually exclusive state at a time: idle/inspect,
+  ball-push reading progress, celebration, popup alert, or sleep after sixty
+  seconds without activity. Existing optimized sprites are reused.
+- The production Whisper fixture test measured 31/32 matches at 154 and 200 WPM
+  and 29/32 at accelerated 250 WPM. Full-pass decode took 5.5–5.8 seconds;
+  six-second rolling windows still took 4.2–4.6 seconds. This confirms Whisper
+  remains the final assessment lane and must not be described as truly live.
+- Microphone capture now requests only browser-supported single-channel 16 kHz
+  speech cleanup constraints. Audio and transcript text remain in memory only.
+- Content approval truth is unchanged: all 85 candidate/finale records still
+  require independent review and real-microphone evidence.
+
 ## Evidence-driven Reading Companion integration — active 2026-07-12
 
 - The deployed Whisper scoring lane remains the final result authority.

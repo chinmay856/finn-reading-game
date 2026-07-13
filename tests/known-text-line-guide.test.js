@@ -32,6 +32,23 @@ test("recognizer revisions and restarts never move the visible line backward", (
   assert.equal(revised.confirmedWordIndex, forward.confirmedWordIndex);
 });
 
+test("production Whisper overlap and 250 WPM errors still reach the final fixture line", () => {
+  const fixtureLines = [
+    "He tells us that at this festive season of the year,",
+    "with Christmas and roast beef looming before us,",
+    "similes drawn from eating and its results occur",
+    "most readily to the mind.",
+  ];
+  const guide = new KnownTextLineGuide({ passageId: "librispeech-fixture", lines: fixtureLines, wordsPerMinute: 250 });
+  const first = guide.observePartial("He tells us that at this festive season of the year, with Christmas and Rose Beaf,");
+  const overlap = guide.observePartial("He tells us that at this festive season of the year, with Christmas and Rose Beaf, Christmas and roast beef looming before us. Similarly, it is drawn from eating and its results occur");
+  const final = guide.observePartial("He tells us that at this festive season of the year, with Christmas and Rose beef looming before us, similarly turned from eating and its results occur most readily to the mind.");
+  assert.ok(first.visibleLineIndex <= overlap.visibleLineIndex);
+  assert.ok(overlap.visibleLineIndex <= final.visibleLineIndex);
+  assert.equal(final.visibleLineIndex, 3);
+  assert.ok(final.matchedWordCount >= 29);
+});
+
 test("silence cannot advance the guide because no transcript is observed", () => {
   const guide = new KnownTextLineGuide({ passageId: "passage-1", lines });
   const before = guide.observePartial("the quick");

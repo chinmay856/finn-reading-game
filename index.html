@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/apps/internet-recovery/spottyfi.css">
   <link rel="stylesheet" href="/apps/internet-recovery/spottyfi-fidelity.css">
   <link rel="stylesheet" href="/apps/internet-recovery/screen-visibility.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/tomorrow-playtest-polish.css">
 </head>
 <body>
   <div class="page-frame">
@@ -41,8 +42,8 @@
         <button class="desktop-shortcut" type="button" data-action="recycle"><span class="shortcut-art bin" aria-hidden="true"></span><b>Recycle<br>Byte</b></button>
       </nav>
 
-      <aside id="technoPet" class="techno-desktop-pet" data-screen="hub" aria-label="Techno, Finn's animated recovery companion">
-        <picture><source media="(prefers-reduced-motion: reduce)" srcset="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-still.webp"><img src="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-loop.webp" alt="Techno plays with her orange-and-blue ball"></picture>
+      <aside id="technoPet" class="techno-desktop-pet" data-screen="hub" data-mode="idle" aria-label="Techno, Finn's animated recovery companion">
+        <picture><source id="technoPetReducedSource" media="(prefers-reduced-motion: reduce)" srcset="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-still.webp"><img id="technoPetImage" src="/apps/internet-recovery/art/characters/techno/techno-ball-drop-idle-loop.webp" alt="Techno plays with her orange-and-blue ball"></picture>
         <span id="technoPetStatus">SNIFFING FOR SUSPICIOUS FILES</span>
       </aside>
 
@@ -53,7 +54,7 @@
           <div class="recovery-map-body">
             <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 CANONICAL</span></div></header>
             <div id="siteGrid" class="site-grid" aria-label="Recovery sites"></div>
-            <section class="incoming-cases"><div class="incoming-case-heading"><img src="/apps/internet-recovery/art/characters/techno/techno-suspicious-file.webp" alt="Techno studies a suspicious recovered file"><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div></div><div id="incomingCases" class="incoming-case-list"></div></section>
+            <section class="incoming-cases"><div class="incoming-case-heading"><span class="incoming-case-folder" aria-hidden="true">IN</span><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div></div><div id="incomingCases" class="incoming-case-list"></div></section>
           </div>
         </article>
         <div class="hub-side-windows">
@@ -114,7 +115,7 @@
             </nav>
             <div class="threadit-layout">
               <section class="threadit-thread-column" aria-labelledby="threaditRule">
-                <header><small id="threaditFixtureStatus">PROVISIONAL FORUM FIXTURE · DESIGNER REPLACEMENT PENDING</small><h3 id="threaditRule">MOST VOTES WINS REALITY</h3><p id="threaditRuleBody">The highest number is the truest answer. Replies may appear before questions if they are popular enough.</p></header>
+                <header><small id="threaditFixtureStatus">PROVISIONAL FORUM FIXTURE · PLAYTEST LANE</small><h3 id="threaditRule">MOST VOTES WINS REALITY</h3><p id="threaditRuleBody">The highest number is the truest answer. Replies may appear before questions if they are popular enough.</p></header>
                 <ol id="threaditPostList" class="threadit-post-list" aria-label="ThreadIt question and replies">
                   <li class="threadit-post" data-node-type="reply" data-origin="generated-copy"><b>TOP ANSWER: I agree with the summary I have not read.</b><span>SOURCE: The number next to my name</span></li>
                   <li class="threadit-post" data-node-type="question" data-origin="original"><b>QUESTION: [moved below because it was less viral]</b><span>MOD NOTE: Chronology has been deprecated for engagement.</span></li>
@@ -191,7 +192,7 @@
               </aside>
 
               <section class="faceplace-feed-column" aria-labelledby="faceplaceRule">
-                <header><small id="faceplaceFixtureStatus">PROVISIONAL FEED FIXTURE · DESIGNER REPLACEMENT PENDING</small><h3 id="faceplaceRule">THE FEED IS WHAT HAPPENED</h3><p id="faceplaceRuleBody">If the feed repeats it, it must be important. If the feed hides it, it probably did not matter.</p></header>
+                <header><small id="faceplaceFixtureStatus">PROVISIONAL FEED FIXTURE · PLAYTEST LANE</small><h3 id="faceplaceRule">THE FEED IS WHAT HAPPENED</h3><p id="faceplaceRuleBody">If the feed repeats it, it must be important. If the feed hides it, it probably did not matter.</p></header>
                 <div class="faceplace-feed-controls" role="group" aria-label="Feed order"><button id="faceplaceRankedMode" type="button" aria-pressed="true">RANKED</button><button id="faceplaceChronologicalMode" type="button" aria-pressed="false" disabled>CHRONOLOGICAL</button></div>
                 <p id="faceplaceFeedInstructions" class="faceplace-visually-hidden">Scrollable feed. Use arrow keys or Page Up and Page Down while the feed is focused.</p>
                 <ol id="faceplaceFeedList" class="faceplace-feed-list" aria-label="FacePlace feed cards" aria-describedby="faceplaceFeedInstructions" tabindex="0"></ol>
@@ -421,7 +422,7 @@
             <div class="mapguess-layout">
               <aside class="mapguess-directions-rail" aria-label="Route directions and recovery controls">
                 <section class="mapguess-panel" aria-labelledby="mapguessRule">
-                  <small id="mapguessFixtureStatus" class="mapguess-panel-label">PROVISIONAL FICTIONAL GRID · DESIGNER REPLACEMENT PENDING</small>
+                  <small id="mapguessFixtureStatus" class="mapguess-panel-label">PROVISIONAL MORROW GRID · LOCAL PLAYTEST</small>
                   <h3 id="mapguessRule">THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE</h3>
                   <p id="mapguessRuleBody">The route promises a two-minute arrival by changing the destination whenever the road becomes inconvenient.</p>
                 </section>
@@ -508,7 +509,7 @@
               <div class="saved-repair-meta"><span id="savedRepairCount">0 saved repairs</span><span id="savedRepairMode">SITE STABILITY</span></div>
               <p id="savedReaction">That held.</p>
             </section>
-            <details class="engine-lab"><summary>Speech engine lab</summary><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
+            <details class="engine-lab"><summary>Speech engine lab</summary><a href="./whisper-fixture-benchmark.html">Run the production Whisper fixture</a><br><a href="./moonshine-benchmark.html">Open the experimental Moonshine comparison</a></details>
           </div>
         </article>
 
@@ -518,7 +519,7 @@
       </section>
 
       <section id="read" class="screen desktop-surface mission-surface" tabindex="-1">
-        <article class="os-window browser-window">
+        <article id="wikiwhyReadingStage" class="os-window browser-window">
           <div class="window-titlebar danger"><span id="wikiwhyBrowserTitle">WIKIWHY — INTERNET ENCYCLOPEDIA</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span class="address">http://wikiwhy.recovered/evidence</span><span id="wikiwhySecurityStatus" class="browser-security">CONNECTION: QUESTIONABLE</span></div>
           <div class="repair-stage" aria-label="WikiWhy page repairing from corrupted to evidence-based as confirmed reading progress advances">
@@ -583,6 +584,22 @@
           </footer>
         </article>
 
+        <article id="siteReadingStage" class="os-window browser-window site-reading-stage" hidden aria-labelledby="siteReadingName">
+          <div class="window-titlebar"><span id="siteReadingWindowTitle">SITE RECOVERY — LIVE READ</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
+          <div class="site-reading-toolbar"><span id="siteReadingAddress">recovery://site/live-reading</span><strong>LOCAL LINK ACTIVE</strong></div>
+          <div id="siteReadingVisual" class="site-reading-visual">
+            <img id="siteReadingPreview" alt="" src="/apps/internet-recovery/art/site-assets/previews/threadit-act-one.jpg">
+            <div class="site-reading-vignette" aria-hidden="true"></div>
+            <header class="site-reading-identity"><span id="siteReadingMark" aria-hidden="true">T</span><div><small id="siteReadingArchetype">FORUM / SOURCE LINEAGE</small><h2 id="siteReadingName">ThreadIt</h2><p id="siteReadingBelief">MOST VOTES WINS REALITY</p></div></header>
+            <section class="site-reading-mission"><small>RECOVERED FILE CONNECTED</small><h3 id="siteReadingMission">Read to repair this site</h3><p id="siteReadingConsequence">Confirmed words restore the current evidence route.</p></section>
+            <div class="site-reading-progress" role="progressbar" aria-label="Current site reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="siteReadingProgressFill"></span>
+              <img id="siteReadingTechno" src="/apps/internet-recovery/art/characters/techno/techno-progress-push-still.webp" alt="Techno pushes her orange-and-blue ball along the repair track">
+            </div>
+          </div>
+          <footer class="browser-status"><b id="siteReadingStatus">SITE LINK READY</b><span id="siteReadingProgressText">0% confirmed</span><span>VOICE STAYS ON THIS DEVICE</span></footer>
+        </article>
+
         <aside class="os-window reader-window">
           <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
           <div class="reader-head"><div><small>CONTINUOUS READER</small><h2 id="passageTitle">How Plants Store Sunlight</h2></div><div id="voicePulse" class="voice-pulse" aria-hidden="true"></div></div>
@@ -637,6 +654,7 @@
       </aside>
 
       <div id="characterDialogLayer" class="character-dialog-layer" hidden>
+        <div class="dialog-techno-alert" aria-hidden="true"><img src="/apps/internet-recovery/art/characters/techno/techno-bark-alert-loop.webp" alt=""></div>
         <article id="characterDialog" class="os-window character-dialog" data-speaker="amy" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogEyebrow dialogBody">
           <div class="window-titlebar"><span id="dialogTitle">AMY // ENGINEER CHANNEL</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="character-dialog-body">

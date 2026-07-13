@@ -10,7 +10,7 @@ function chunkSentence(sentence, maximumWords) {
   return chunks;
 }
 
-export function derivePassageDisplayLines(passage, { maximumWords = 18 } = {}) {
+export function derivePassageDisplayLines(passage, { maximumWords = Number.POSITIVE_INFINITY } = {}) {
   if (Array.isArray(passage?.displayLines) && passage.displayLines.length) {
     return Object.freeze(passage.displayLines.map((line) => String(line).trim()).filter(Boolean));
   }

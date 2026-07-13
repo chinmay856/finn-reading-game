@@ -18,7 +18,9 @@ const MARKS = Object.freeze({
   mycorner: new URL("./art/site-assets/marks/mycorner-mark.svg", import.meta.url).href,
   searchish: new URL("./art/site-assets/marks/searchish-mark.svg", import.meta.url).href,
   spottyfi: new URL("./art/site-assets/marks/spottyfi-mark.svg", import.meta.url).href,
+  threadit: new URL("./art/site-assets/threadit/threadit-mark.svg", import.meta.url).href,
   viewtube: new URL("./art/site-assets/marks/viewtube-mark.svg", import.meta.url).href,
+  wikiwhy: new URL("./art/site-assets/marks/wikiwhy-mark.svg", import.meta.url).href,
   yahuh: new URL("./art/site-assets/marks/yahuh-mark.svg", import.meta.url).href,
 });
 
@@ -26,12 +28,12 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "wikiwhy", name: "WikiWhy", mark: "W", archetype: "Internet encyclopedia",
     belief: "USERS ARE ALWAYS RIGHT", description: "Confident claims, missing context, and citations pointing nowhere.",
-    accent: "#8b1f1a", playable: true, runtimeAvailable: true, runtimeLabel: "RECOVERY AVAILABLE", previewImage: PREVIEWS.wikiwhy,
+    accent: "#8b1f1a", markImage: MARKS.wikiwhy, playable: true, runtimeAvailable: true, runtimeLabel: "RECOVERY AVAILABLE", previewImage: PREVIEWS.wikiwhy,
   }),
   Object.freeze({
     id: "threadit", name: "ThreadIt", mark: "T", archetype: "Forum / source lineage",
     belief: "MOST VOTES WINS REALITY", description: "Replies outrank questions while one automated source repeats itself.",
-    accent: "#e35a16", playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.threadit,
+    accent: "#e35a16", markImage: MARKS.threadit, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.threadit,
   }),
   Object.freeze({
     id: "faceplace", name: "FacePlace", mark: "F", archetype: "Ranked social feed",

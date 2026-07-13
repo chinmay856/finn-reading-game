@@ -1,10 +1,27 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { summarizeSignal, trimSilence } from "../speech/audio-capture.js";
+import { buildLocalMicrophoneConstraints, summarizeSignal, trimSilence } from "../speech/audio-capture.js";
 import { DEFAULT_SPEECH_DEVICE } from "../speech/local-whisper-recognizer.js";
 
 test("uses the proven WebAssembly speech path by default", () => {
   assert.equal(DEFAULT_SPEECH_DEVICE, "wasm");
+});
+
+test("requests supported single-channel speech cleanup without inventing browser constraints", () => {
+  assert.deepEqual(buildLocalMicrophoneConstraints({
+    autoGainControl: true,
+    channelCount: true,
+    echoCancellation: true,
+    noiseSuppression: true,
+    sampleRate: true,
+  }), {
+    autoGainControl: true,
+    channelCount: 1,
+    echoCancellation: true,
+    noiseSuppression: true,
+    sampleRate: 16_000,
+  });
+  assert.equal(buildLocalMicrophoneConstraints({}), true);
 });
 
 test("drops silent microphone input instead of sending it to Whisper", () => {
