@@ -104,6 +104,7 @@ import {
   acknowledgeMyCornerMidpoint,
   acknowledgeMyCornerMidpointState,
   advanceMyCornerState,
+  applyMyCornerReading,
   readMyCornerState,
 } from "./apps/internet-recovery/mycorner-state.js";
 import { getMyCornerCampaignView } from "./apps/internet-recovery/mycorner-view.js";
@@ -235,6 +236,7 @@ const state = {
   mycornerState: readMyCornerState(localStateStorage),
   mycornerPersisted: Boolean(localStateStorage),
   mycornerDiagnosticMode: false,
+  mycornerPlaytestMode: false,
   mycornerDiagnosticState: readMyCornerState(null),
   mycornerEvidenceReceiptOpen: false,
   mycornerInspectorOpen: false,
@@ -373,6 +375,36 @@ function openFacePlacePlaytestReading() {
   resetReadingAttempt();
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "FACEPLACE CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local FacePlace test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function selectMyCornerPlaytestPassage() {
+  const selection = selectNextMyCornerPassage(state.mycornerState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "mycorner";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openMyCornerPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "mycorner";
+  state.mycornerPlaytestMode = true;
+  state.mycornerPersisted = false;
+  const selection = selectMyCornerPlaytestPassage();
+  if (!selection.passage) {
+    renderMyCornerCampaign(state.mycornerState);
+    $("mycornerContentReason").textContent = "Every structured MyCorner playtest passage has been used. Production content remains review-gated.";
+    show("mycorner");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MYCORNER CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MyCorner test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
   show("setup");
   return true;
@@ -543,7 +575,7 @@ function show(name) {
   const wikiWhyScreen = readingScreen && state.readingSiteId === "wikiwhy";
   const threadItScreen = name === "threadit" || (readingScreen && state.readingSiteId === "threadit");
   const facePlaceScreen = name === "faceplace" || (readingScreen && state.readingSiteId === "faceplace");
-  const myCornerScreen = name === "mycorner";
+  const myCornerScreen = name === "mycorner" || (readingScreen && state.readingSiteId === "mycorner");
   const yahuhScreen = name === "yahuh";
   const viewtubeScreen = name === "viewtube";
   const searchishScreen = name === "searchish";
@@ -2050,6 +2082,12 @@ function syncMyCornerInspector() {
 
 function setMyCornerInspectorOpen(open) {
   state.mycornerInspectorOpen = Boolean(open);
+  $("mycornerPlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("mycornerPlaytest").textContent = view.secured
+    ? "MyCorner playtest complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Review Apply to Everyone first"
+      : "Playtest candidate passage";
   syncMyCornerInspector();
 }
 
@@ -2205,10 +2243,10 @@ function renderMyCornerCampaign(campaignState, { diagnosticMode = false } = {}) 
       : "MYCORNER — PROFILE RECOVERY";
   $("mycornerSecurityStatus").textContent = view.secured ? "OWNER CONTROLS RESTORED" : diagnosticMode ? "STRUCTURAL TEST" : "CONTENT REVIEW GATE";
 
-  const selection = selectNextMyCornerPassage(state.mycornerState);
+  const selection = selectNextMyCornerPassage(state.mycornerState, { lane: "playtest" });
   $("mycornerCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
   $("mycornerContentReason").textContent = selection.passage
-    ? "A reviewed MyCorner passage is available, but this structural milestone has not connected it to the Reading Companion yet."
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
     : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed records are still required.`;
 
   syncMyCornerInspector();
@@ -3230,8 +3268,9 @@ function buildMyCornerPreviewState(unitCount) {
 
 function acknowledgeMyCornerTemplateReveal() {
   const diagnosticMode = state.mycornerDiagnosticMode;
+  const playtestMode = state.mycornerPlaytestMode;
   const current = diagnosticMode ? state.mycornerDiagnosticState : state.mycornerState;
-  const transition = diagnosticMode
+  const transition = diagnosticMode || playtestMode
     ? acknowledgeMyCornerMidpointState(current, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeMyCornerMidpoint(localStateStorage, {
         acknowledgedAt: new Date().toISOString(),
@@ -3241,7 +3280,7 @@ function acknowledgeMyCornerTemplateReveal() {
   if (diagnosticMode) state.mycornerDiagnosticState = transition.state;
   else {
     state.mycornerState = transition.state;
-    state.mycornerPersisted = transition.ok;
+    state.mycornerPersisted = playtestMode ? false : transition.ok;
   }
   state.mycornerComparisonView = "template";
   state.mycornerInspectorOpen = true;
@@ -3916,7 +3955,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -3927,6 +3966,31 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "mycorner") {
+    if (state.resultApplied) {
+      openMyCornerExperience();
+      return;
+    }
+    const outcome = calculateMyCornerReadingOutcome({ accepted: Boolean(state.result), campaignState: state.mycornerState });
+    const repair = applyMyCornerReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.mycornerState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.mycornerState = repair.state;
+    state.mycornerPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to MyCorner";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.mycornerState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderMyCornerCampaign(state.mycornerState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "faceplace") {
     if (state.resultApplied) {
       openFacePlaceExperience();
@@ -4162,6 +4226,7 @@ $("faceplaceReturn").onclick = returnToHub;
 $("faceplacePlaytest").onclick = openFacePlacePlaytestReading;
 $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
+$("mycornerPlaytest").onclick = openMyCornerPlaytestReading;
 $("yahuhReturn").onclick = returnToHub;
 $("viewtubeReturn").onclick = returnToHub;
 $("searchishReturn").onclick = returnToHub;

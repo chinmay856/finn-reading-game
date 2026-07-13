@@ -573,6 +573,7 @@ test("MyCorner owner-control runtime preserves saved DOM, stays content-gated, a
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
   assert.match(markup, /10 planned · 1 structured candidate · 0 selectable · 7 required/u);
+  assert.match(markup, /id="mycornerPlaytest"/u);
   assert.doesNotMatch(markup, /role="progressbar"|\d+%/u);
   assert.doesNotMatch(markup, /mycorner\.recovered\/mara-vale/u);
 
@@ -580,6 +581,9 @@ test("MyCorner owner-control runtime preserves saved DOM, stays content-gated, a
   assert.match(app, /advanceMyCornerState/u);
   assert.match(app, /acknowledgeMyCornerMidpoint/u);
   assert.match(app, /selectNextMyCornerPassage/u);
+  assert.match(app, /selectNextMyCornerPassage\(state\.mycornerState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /applyMyCornerReading\(null/u);
+  assert.match(app, /state\.mycornerPersisted = false/u);
   assert.match(app, /const profile = view\.midpoint\.discovered \? view\.comparison\.savedProfile : live/u);
   assert.match(app, /mycornerPostList[\s\S]+profile\.posts/u);
   assert.match(app, /mycornerTemplateOverlay[^\r\n]+hidden = !comparisonAvailable/u);

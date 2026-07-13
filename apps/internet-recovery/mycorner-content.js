@@ -1,5 +1,5 @@
 import { A_CABIN_WITH_A_PURPOSE_PASSAGE } from "../../content/mycorner/a-cabin-with-a-purpose.js";
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import { PASSAGE_CATALOG, selectNextPassage, selectNextPlaytestPassage } from "../../content/passage-catalog.js";
 
 export const MYCORNER_DECK_A_IDS = Object.freeze([
   "a-cabin-with-a-purpose-a01",
@@ -33,9 +33,9 @@ const DEFAULT_MYCORNER_CATALOG = Object.freeze(
 );
 
 export function selectNextMyCornerPassage(campaignState, options = {}) {
-  const selection = selectNextPassage({
-    ...options,
-    allowRepeat: false,
+  const selector = options.lane === "playtest" ? selectNextPlaytestPassage : selectNextPassage;
+  const selection = selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? DEFAULT_MYCORNER_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: MYCORNER_DECK_A_IDS,
