@@ -1,5 +1,33 @@
 # Session handoff
 
+## 2026-07-12 MapGuess candidate playthrough
+
+- Follow-up browser QA found that a persisted MapGuess campaign could exhaust
+  or secure the state used to derive the playtest button, leaving a click on
+  `Playtest candidate passage` on the MapGuess screen. The playtest now owns a
+  fresh tab-only state separate from canonical persisted MapGuess progress, and
+  the button-to-handler-to-setup route has an explicit source contract test.
+- Added the explicit playtest selector and Reading Companion route for all
+  eight MapGuess first-run candidates while production selection remains
+  fail-closed.
+- Froze A01's cited NOAA page to its visible 2026-06-22 update, verified
+  2026-07-12, so provenance is concrete without changing any pending content
+  review status.
+- Reading results drive the existing exact 5+3 campaign; Moving Target
+  acknowledgement and the four valid route goals remain wrapper-owned
+  interactions outside speech scoring.
+- All playtest progress and slot-ten evidence remain tab-only. No canonical
+  evidence, finale gate, external map service, or Reading Engine behavior
+  changed.
+- After merging authoritative `main` at `33b8cdb`, `npm run check`, all 329
+  tests, and `npm run build` pass together with the Search-ish, Amaze-On, and
+  Spotty-Fi playtest lanes. The local MapGuess launch route returns HTTP 200.
+- Final production-bundle browser QA found the playtest button could sit beneath
+  the fixed taskbar at a 712px-high desktop viewport. The compact-height layout
+  now keeps both MapGuess actions visibly inside the companion window. Browser
+  recheck confirmed the primary button opens `A Map Is Not a Photograph` in the
+  shared setup screen and the page has no horizontal overflow.
+
 ## 2026-07-12 Amaze-On candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all seven

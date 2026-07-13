@@ -11,6 +11,10 @@ import {
   normalizeMapGuessRouteGoal,
 } from "../apps/internet-recovery/mapguess-rules.js";
 import {
+  MAPGUESS_DECK_A_IDS,
+  selectNextMapGuessPassage,
+} from "../apps/internet-recovery/mapguess-content.js";
+import {
   MAPGUESS_PROVISIONAL_BLOCKED_WRITE_ID,
   MAPGUESS_PROVISIONAL_BLOCKED_WRITE_RECORD,
   MAPGUESS_PROVISIONAL_EVIDENCE_ID,
@@ -116,6 +120,53 @@ test("the campaign contains exactly five rebuild units and three anchor units", 
   );
   assert.equal(MAPGUESS_CAMPAIGN_UNITS.length, 8);
   assert.deepEqual(MAPGUESS_ROUTE_GOALS, ["fastest", "safest", "scenic", "accessible"]);
+});
+
+test("eight candidate playtests traverse the exact campaign without becoming persisted production progress", () => {
+  let campaignState = readMapGuessState(null);
+  const playedIds = [];
+
+  for (let index = 0; index < MAPGUESS_CAMPAIGN_UNITS.length; index += 1) {
+    if (index === MAPGUESS_REBUILD_UNITS.length) {
+      campaignState = acknowledgeMapGuessMidpointState(campaignState, {
+        acknowledgedAt: "playtest-midpoint",
+      }).state;
+    }
+    if (index === MAPGUESS_CAMPAIGN_UNITS.length - 1) {
+      campaignState = setMapGuessRouteGoalState(campaignState, "scenic", {
+        selectedAt: "playtest-goal",
+      }).state;
+    }
+
+    const selection = selectNextMapGuessPassage(campaignState, { lane: "playtest" });
+    assert.equal(selection.passage?.id, MAPGUESS_DECK_A_IDS[index]);
+    assert.equal(selection.canonicalEligible, false);
+    playedIds.push(selection.passage.id);
+
+    const transition = applyMapGuessReading(null, {
+      completedAt: `playtest-${index + 1}`,
+      currentState: campaignState,
+      outcome: calculateMapGuessReadingOutcome({ campaignState }),
+      passageId: selection.passage.id,
+      sessionId: `playtest-session-${index + 1}`,
+    });
+    assert.equal(transition.ok, false);
+    assert.equal(transition.reason, "unavailable");
+    campaignState = transition.state;
+
+    if (index === MAPGUESS_REBUILD_UNITS.length - 1) {
+      assert.equal(campaignState.midpointDiscovered, true);
+      assert.equal(campaignState.midpointAcknowledged, false);
+    }
+  }
+
+  assert.deepEqual(playedIds, MAPGUESS_DECK_A_IDS);
+  assert.deepEqual(campaignState.completedPassageIds, MAPGUESS_DECK_A_IDS);
+  assert.equal(campaignState.secured, true);
+  assert.equal(campaignState.routeGoal, "scenic");
+  assert.equal(campaignState.routeGoalLocked, true);
+  assert.equal(selectNextMapGuessPassage(campaignState, { lane: "playtest" }).passage, null);
+  assert.equal(selectNextMapGuessPassage(campaignState).passage, null);
 });
 
 test("route goals normalize canonical display casing without accepting invented goals", () => {

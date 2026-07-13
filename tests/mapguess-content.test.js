@@ -158,6 +158,7 @@ test("A Map Is Not a Photograph is a structured NOAA candidate that fails closed
   assert.match(passage.source.sourceUrl, /oceanservice\.noaa\.gov/u);
   assert.equal(passage.rights.basis, "public-domain");
   assert.match(passage.rights.jurisdiction, /pending/iu);
+  assert.equal(passage.source.frozenRevision, "NOAA page last updated 2026-06-22; verified 2026-07-12");
   assert.equal(passage.transcriptionReview.tested, false);
   assert.ok(Object.values(passage.review).every((value) => /candidate|pending/u.test(value)));
   assert.equal(isSelectablePassage(passage), false);
@@ -198,4 +199,22 @@ test("MapGuess owns an eight-record first-run deck plus replay deck and reports 
   );
   assert.equal(exhausted.passage, null);
   assert.equal(exhausted.reason, "no-unseen-passages");
+});
+
+test("MapGuess exposes eight candidate playtests without promoting content", () => {
+  const first = selectNextMapGuessPassage({ completedPassageIds: [] }, { lane: "playtest" });
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.selectableCount, 8);
+  assert.equal(first.requiredFirstRun, 8);
+  assert.equal(first.passage?.id, MAPGUESS_DECK_A_IDS[0]);
+  assert.equal(first.passage?.availability, "candidate");
+
+  const next = selectNextMapGuessPassage(
+    { completedPassageIds: [first.passage.id] },
+    { lane: "playtest" },
+  );
+  assert.equal(next.passage?.id, MAPGUESS_DECK_A_IDS[1]);
+  assert.equal(next.canonicalEligible, false);
 });

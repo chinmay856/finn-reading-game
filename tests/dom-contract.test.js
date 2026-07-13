@@ -463,7 +463,11 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   const start = html.indexOf('<section id="mapguess"');
   const end = html.indexOf('<section id="setup"', start);
   const markup = html.slice(start, end);
+  const playtestRouteStart = app.indexOf("function openMapGuessPlaytestReading()");
+  const playtestRouteEnd = app.indexOf("function openSpottyFiPlaytestReading()", playtestRouteStart);
+  const mapguessPlaytestRoute = app.slice(playtestRouteStart, playtestRouteEnd);
   assert.ok(start > -1 && end > start);
+  assert.ok(playtestRouteStart > -1 && playtestRouteEnd > playtestRouteStart);
   assert.match(html, /mapguess\.css/u);
 
   assert.deepEqual(MAPGUESS_REBUILD_UNITS.map(({ unitId }) => unitId), [
@@ -491,6 +495,7 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(markup, /id="mapguessMidpointNotice"[^>]+aria-labelledby="mapguessMidpointHeading"/u);
   assert.match(markup, /id="mapguessMidpointProof"/u);
   assert.match(markup, /id="mapguessMidpointAction"/u);
+  assert.match(markup, /id="mapguessPlaytest"[^>]*>Playtest candidate passage/u);
   assert.doesNotMatch(markup, /\d+\s*%/u);
   assert.doesNotMatch(markup, /role="progressbar"/u);
 
@@ -513,9 +518,9 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(markup, /CASE FILE[^<]+SLOT 10/u);
   assert.match(markup, /id="mapguessEvidenceFilename">MAPGUESS_MOVED_DESTINATION_PIN\.REC/u);
   assert.match(markup, /REGISTERED AFTER EIGHT REVIEW-APPROVED READINGS AND A SAVED ROUTE GOAL/u);
-  assert.match(markup, /MIC: OFF/u);
-  assert.match(markup, /NO READING SCORE/u);
-  assert.match(markup, /13 planned[^<]+8 structured candidates[^<]+0 selectable[^<]+8 required/u);
+  assert.match(markup, /MIC: OFF UNTIL PLAYTEST/u);
+  assert.match(markup, /PROGRESS: TAB ONLY/u);
+  assert.match(markup, /13 planned[^<]+8 structured playtest candidates[^<]+8 available[^<]+8 required/u);
   assert.match(content, /requiredFirstRun: 8/u);
   assert.match(content, /structuredCandidateCount: 8/u);
   assert.match(copy, /PROVISIONAL MAPGUESS FIXTURE - NOT CANONICAL/u);
@@ -529,6 +534,18 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /acknowledgeMapGuessMidpoint/u);
   assert.match(app, /setMapGuessRouteGoal/u);
   assert.match(app, /selectNextMapGuessPassage/u);
+  assert.match(app, /applyMapGuessReading\(null,/u);
+  assert.match(app, /\$\("mapguessPlaytest"\)\.onclick = openMapGuessPlaytestReading;/u);
+  const mapguessOpenStart = app.indexOf("function openMapGuessExperience()");
+  const mapguessOpenEnd = app.indexOf("function openFacePlaceExperience()", mapguessOpenStart);
+  const mapguessOpenRoute = app.slice(mapguessOpenStart, mapguessOpenEnd);
+  assert.match(mapguessOpenRoute, /\$\("mapguessPlaytest"\)\.onclick = openMapGuessPlaytestReading;/u);
+  assert.match(mapguessPlaytestRoute, /state\.mapguessPlaytestState = readMapGuessState\(null\)/u);
+  assert.match(mapguessPlaytestRoute, /selectMapGuessPlaytestPassage\(\)/u);
+  assert.match(mapguessPlaytestRoute, /show\("setup"\);/u);
+  assert.match(app, /selectNextMapGuessPassage\(state\.mapguessPlaytestState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /state\.mapguessPlaytestState = repair\.state/u);
+  assert.match(app, /content approval, canonical evidence, and the finale gate remain unchanged/u);
   assert.match(app, /"mapguess-moving-target": 5/u);
   assert.match(app, /"mapguess-anchor-2": 7/u);
   assert.match(app, /"mapguess-secured": 8/u);

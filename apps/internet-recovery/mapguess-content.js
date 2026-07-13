@@ -1,5 +1,5 @@
 import { A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE } from "../../content/mapguess/a-map-is-not-a-photograph.js";
-import { PASSAGE_CATALOG, selectNextPassage } from "../../content/passage-catalog.js";
+import { PASSAGE_CATALOG, selectNextPassage, selectNextPlaytestPassage } from "../../content/passage-catalog.js";
 
 export const MAPGUESS_DECK_A_IDS = Object.freeze([
   "a-map-is-not-a-photograph-a01",
@@ -36,9 +36,9 @@ const DEFAULT_MAPGUESS_CATALOG = Object.freeze(
 );
 
 export function selectNextMapGuessPassage(campaignState, options = {}) {
-  const selection = selectNextPassage({
-    ...options,
-    allowRepeat: false,
+  const selector = options.lane === "playtest" ? selectNextPlaytestPassage : selectNextPassage;
+  const selection = selector({
+    ...(options.lane === "playtest" ? {} : { allowRepeat: false }),
     catalog: options.catalog ?? DEFAULT_MAPGUESS_CATALOG,
     completedPassageIds: campaignState?.completedPassageIds ?? [],
     preferredIds: MAPGUESS_DECK_A_IDS,

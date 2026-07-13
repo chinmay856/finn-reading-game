@@ -1,5 +1,18 @@
 # Project status
 
+## MapGuess candidate playthrough — active 2026-07-12
+
+MapGuess now exposes all eight complete first-run candidates through the
+explicit noncanonical playtest lane and routes them through the shared Reading
+Companion into five map rebuilds, the saved Moving Target acknowledgement and
+route-goal choice, and three destination anchors. Progress is tab-only, so the
+slot-ten receipt cannot be persisted as canonical evidence or unlock the
+finale. Production selection and independent review remain fail-closed. No
+Reading Engine code changed. Production-bundle browser QA at desktop size
+confirmed the primary playtest control remains visible above the taskbar and
+opens `A Map Is Not a Photograph` in the shared setup screen with no horizontal
+overflow.
+
 ## Amaze-On candidate playthrough — active 2026-07-12
 
 Amaze-On now exposes all seven complete Deck A candidates through the explicit
