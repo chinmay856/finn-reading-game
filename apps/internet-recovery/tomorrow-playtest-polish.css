@@ -1,0 +1,544 @@
+/* Tomorrow playtest release pass.
+   This file is intentionally last in the cascade: it replaces the earlier
+   screenshot-oriented compression with a stable, no-page-scroll game board. */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-frame {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(1600px, 100%);
+  height: 100vh;
+  min-height: 0;
+  padding: 6px;
+}
+
+.recovery-desktop {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.screen.on {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.incoming-case-folder {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 40px;
+  border: 2px outset #d8d5c8;
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(#f7cf57 0 24%, #d8a72e 25% 100%);
+  color: #173968;
+  font: 900 12px/1 "Courier New", monospace;
+  box-shadow: 3px 3px 0 #17396833;
+}
+
+/* Techno is one character, not a repeating badge. Site payoff copy remains,
+   while the persistent sprite changes pose for the current state. */
+.faceplace-secured-banner img,
+.yahuh-techno-label img,
+.viewtube-secured-payoff img[src*="techno"],
+.searchish-techno-alert img,
+.amazeon-techno img,
+.spottyfi-techno img,
+.mapguess-secured-banner img {
+  display: none !important;
+}
+
+.mycorner-techno-proof img {
+  display: none !important;
+}
+
+.techno-desktop-pet[data-screen="read"],
+.recovery-desktop[data-popup-active="true"] .techno-desktop-pet,
+.recovery-desktop[data-popup-active="true"] .techno-repair-sprite,
+.recovery-desktop[data-popup-active="true"] .campaign-techno-state,
+.recovery-desktop[data-popup-active="true"] .site-reading-progress img {
+  visibility: hidden;
+}
+
+.techno-desktop-pet[data-mode="sleep"] {
+  animation: none;
+  filter: drop-shadow(3px 5px 2px #06202c55) saturate(.82);
+}
+
+.dialog-techno-alert {
+  position: fixed;
+  z-index: 2;
+  right: max(24px, calc(50vw - 430px));
+  bottom: max(64px, calc(50vh - 310px));
+  width: 116px;
+  pointer-events: none;
+  filter: drop-shadow(4px 6px 2px #081b2d77);
+}
+
+.dialog-techno-alert img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Live reading always displays the site that owns the passage. */
+.mission-surface {
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 365px);
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.mission-surface > .browser-window,
+.mission-surface > .reader-window {
+  height: 100%;
+}
+
+.site-reading-stage {
+  --reading-site-accent: #e35a16;
+  --reading-progress: 0;
+  grid-template-rows: 30px 36px minmax(0, 1fr) 28px;
+  overflow: hidden;
+}
+
+.site-reading-stage[hidden] {
+  display: none !important;
+}
+
+#wikiwhyReadingStage[hidden] {
+  display: none !important;
+}
+
+.site-reading-stage .window-titlebar {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--reading-site-accent) 72%, #fff), color-mix(in srgb, var(--reading-site-accent) 78%, #071d36));
+}
+
+.site-reading-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-bottom: 2px ridge #fff;
+  background: linear-gradient(#efefe9, #cfd2cf);
+  font-size: 10px;
+}
+
+.site-reading-toolbar span {
+  flex: 1;
+  padding: 5px 8px;
+  overflow: hidden;
+  border: 2px inset #d6d6ce;
+  background: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-reading-toolbar strong {
+  color: #246b3c;
+}
+
+.site-reading-visual {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: #071623;
+  isolation: isolate;
+}
+
+.site-reading-visual > #siteReadingPreview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(calc(1 - var(--reading-progress))) contrast(calc(1.15 - (var(--reading-progress) * .1))) brightness(calc(.7 + (var(--reading-progress) * .3)));
+  transform: scale(1.025);
+  transition: filter .35s ease, transform .35s ease;
+}
+
+.site-reading-vignette {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, #071623e8 0 27%, transparent 58%), linear-gradient(0deg, #071623db, transparent 44%);
+}
+
+.site-reading-identity {
+  position: absolute;
+  z-index: 2;
+  top: clamp(20px, 4vh, 48px);
+  left: clamp(18px, 2vw, 34px);
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  width: min(520px, calc(100% - 50px));
+  color: #fff;
+  text-shadow: 2px 2px 0 #071623;
+}
+
+.site-reading-identity::before {
+  position: absolute;
+  z-index: -1;
+  inset: -13px -22px;
+  border-left: 6px solid var(--reading-site-accent);
+  background: linear-gradient(90deg, #071623ed 0 76%, #07162366 92%, transparent);
+  box-shadow: 0 8px 18px #07162355;
+  content: "";
+}
+
+.site-reading-identity > span {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background: var(--reading-site-accent);
+  box-shadow: 5px 6px 0 #07162399;
+  font: 900 22px/1 Arial, sans-serif;
+}
+
+.site-reading-identity small {
+  color: #bdefff;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+
+.site-reading-identity h2 {
+  margin: 3px 0;
+  font: 900 clamp(32px, 4vw, 58px)/.95 "Arial Narrow", Arial, sans-serif;
+}
+
+.site-reading-identity p {
+  margin: 0;
+  color: #ffe188;
+  font-weight: 800;
+}
+
+.site-reading-mission {
+  position: absolute;
+  z-index: 2;
+  left: clamp(18px, 2vw, 34px);
+  bottom: 74px;
+  width: min(560px, calc(100% - 50px));
+  padding: 13px 15px;
+  border: 2px solid color-mix(in srgb, var(--reading-site-accent) 70%, #fff);
+  border-left-width: 8px;
+  background: #f8fbf5f2;
+  color: #15202a;
+  box-shadow: 7px 8px 0 #07162388;
+}
+
+.site-reading-mission small {
+  color: var(--reading-site-accent);
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.site-reading-mission h3 {
+  margin: 5px 0;
+  font: 800 clamp(20px, 2.2vw, 31px)/1.05 Georgia, serif;
+}
+
+.site-reading-mission p {
+  margin: 0;
+  font: 13px/1.35 Arial, sans-serif;
+}
+
+.site-reading-progress {
+  position: absolute;
+  z-index: 3;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  height: 24px;
+  border: 3px inset #d6d6ce;
+  border-radius: 14px;
+  background: #071623cc;
+  box-shadow: 0 0 0 2px #fff7;
+}
+
+.site-reading-progress > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--reading-site-accent) 78%, #fff), #75e59d);
+  box-shadow: 0 0 14px #75e59daa;
+  transition: width .35s ease;
+}
+
+.site-reading-progress img {
+  position: absolute;
+  left: 38px;
+  bottom: -12px;
+  width: 96px;
+  height: auto;
+  transform: translateX(-48%) scaleX(-1);
+  filter: drop-shadow(2px 3px 1px #071623aa);
+  transition: left .35s ease;
+}
+
+/* The WikiWhy repair reveal is a soft recovery field, not a hard screen wipe. */
+#wikiwhyReadingStage .repaired-page {
+  border-right: 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 0 calc(100% - 34px), #000b calc(100% - 14px), transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0 calc(100% - 34px), #000b calc(100% - 14px), transparent 100%);
+  box-shadow: 10px 0 28px #55cf8c3d;
+}
+
+#wikiwhyReadingStage .repair-edge {
+  width: 22px;
+  translate: -11px 0;
+  opacity: .28;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #dffff0 0, #75e59d99 32%, transparent 72%);
+  box-shadow: none;
+}
+
+.reader-window {
+  overflow: hidden;
+}
+
+.reader-head h2 {
+  font-size: clamp(20px, 1.65vw, 26px);
+}
+
+.passage.continuous {
+  padding-top: clamp(74px, 10vh, 104px);
+}
+
+.reading-paragraph {
+  margin-bottom: 18px;
+  font-size: clamp(17px, 1.32vw, 20px);
+  line-height: 1.55;
+}
+
+/* Every desktop site gets the same usable allocation. Secondary inspectors
+   stay present, but never steal a third of the game from the primary board. */
+@media (min-width: 1280px) and (min-height: 760px) {
+  #threadit,
+  #faceplace,
+  #mycorner,
+  #yahuh,
+  #viewtube,
+  #searchish,
+  #amazeon,
+  #spottyfi,
+  #mapguess {
+    grid-template-columns: minmax(0, 1fr) minmax(284px, 306px) !important;
+    gap: 8px !important;
+    padding: 8px 8px 42px 68px !important;
+  }
+
+  :is(.threadit-companion-gate,.faceplace-companion-gate,.mycorner-companion-gate,.yahuh-companion-gate,.viewtube-companion-gate,.searchish-companion-gate,.amazeon-companion-gate,.spottyfi-companion-gate,.mapguess-companion-gate) {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  :is(.threadit-gate-body,.faceplace-gate-body,.mycorner-gate-body,.yahuh-gate-body,.viewtube-gate-body,.searchish-companion-gate>div,.amazeon-companion-gate>div,.spottyfi-companion-gate>div,.mapguess-gate-body) {
+    gap: 8px !important;
+    padding: 12px !important;
+    overflow: hidden !important;
+  }
+
+  :is(.threadit-gate-body,.faceplace-gate-body,.mycorner-gate-body,.yahuh-gate-body,.viewtube-gate-body,.searchish-companion-gate>div,.amazeon-companion-gate>div,.spottyfi-companion-gate>div,.mapguess-gate-body) h2 {
+    margin: 3px 0 6px !important;
+    font-size: 22px !important;
+    line-height: 1.08 !important;
+  }
+
+  :is(.threadit-gate-body,.faceplace-gate-body,.mycorner-gate-body,.yahuh-gate-body,.viewtube-gate-body,.searchish-companion-gate>div,.amazeon-companion-gate>div,.spottyfi-companion-gate>div,.mapguess-gate-body) p {
+    margin: 4px 0 !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+
+  #threadit .threadit-layout {
+    grid-template-columns: minmax(0, 1.58fr) minmax(300px, .82fr);
+  }
+
+  #threadit .threadit-post-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #threadit .threadit-post {
+    grid-template-columns: 34px 26px minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  #threadit .threadit-post-body {
+    min-height: 30px;
+    -webkit-line-clamp: 2;
+  }
+
+  #threadit .threadit-source-panel,
+  #threadit .threadit-thread-column,
+  #threadit .threadit-source-tree {
+    overflow: hidden;
+  }
+
+  #threadit .threadit-source-tree {
+    transform: scale(.91);
+    transform-origin: top left;
+    width: 110%;
+  }
+
+  #mycorner .mycorner-layout {
+    grid-template-columns: minmax(190px, .62fr) minmax(390px, 1.38fr) minmax(230px, .78fr);
+  }
+
+  #mycorner .mycorner-profile-rail,
+  #mycorner .mycorner-owner-inspector {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #mycorner .mycorner-module,
+  #mycorner .mycorner-rule,
+  #mycorner .mycorner-owner-log {
+    padding: 5px;
+  }
+
+  #viewtube .viewtube-page {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+  }
+
+  #viewtube .viewtube-content-layout {
+    grid-template-rows: minmax(285px, 1fr) 142px !important;
+    min-height: 0 !important;
+  }
+
+  #viewtube .viewtube-player-region {
+    grid-template-rows: auto auto auto minmax(126px, 1fr) auto;
+    gap: 4px;
+    padding: 6px;
+  }
+
+  #viewtube .viewtube-silent-player {
+    min-height: 110px;
+  }
+
+  #viewtube .viewtube-player-frame {
+    width: min(68%, 500px);
+    max-height: 126px;
+  }
+
+  #viewtube .viewtube-frame-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 8px;
+    margin: 0;
+    padding-left: 18px;
+    overflow: hidden;
+    font-size: 10px;
+    line-height: 1.12;
+  }
+
+  #viewtube .viewtube-frame-list li:nth-child(n + 5) {
+    display: none;
+  }
+
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(170px, .8fr) minmax(260px, 1.2fr) auto;
+    gap: 6px 10px;
+    align-items: center;
+    margin: 0 8px 6px;
+    padding: 6px 8px;
+  }
+
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) > h3,
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) > p,
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) .viewtube-blocked-write {
+    margin: 0;
+  }
+
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) > h3 {
+    font-size: 13px;
+  }
+
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) > p,
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) .viewtube-blocked-write {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  #viewtube #viewtubeSecuredPayoff:not([hidden]) > button {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  #searchish .searchish-answer {
+    grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+    overflow: hidden;
+  }
+
+  #searchish .searchish-network-art {
+    width: 100%;
+    height: 118px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #searchish .searchish-layout {
+    min-height: 220px;
+  }
+
+  #mapguess .mapguess-road {
+    stroke: #b7a77f;
+    stroke-width: 4.5;
+    opacity: .62;
+    filter: drop-shadow(0 1px 1px #5a4b283d);
+  }
+
+  #mapguess .mapguess-road-center {
+    stroke-width: 1.5;
+    stroke-dasharray: 7 8;
+    opacity: .85;
+  }
+
+  #mapguess .mapguess-route-segment {
+    stroke: #c24c43;
+    stroke-width: 3;
+    filter: drop-shadow(0 1px 1px #5a171744);
+  }
+
+  #mapguess .mapguess-route-segment[data-connected="false"] {
+    stroke-dasharray: 6 9;
+  }
+
+  #mapguess .mapguess-goal-selector:not([data-goal-required="true"]),
+  #mapguess .mapguess-progress-ledger {
+    display: none;
+  }
+
+  #mapguess .mapguess-directions-rail,
+  #mapguess .mapguess-inspector {
+    overflow: hidden;
+  }
+
+  #mapguess .mapguess-inspector > section:nth-of-type(n + 3) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-reading-visual > #siteReadingPreview,
+  .site-reading-progress > span,
+  .site-reading-progress img {
+    transition: none;
+  }
+}

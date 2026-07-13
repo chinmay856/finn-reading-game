@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, "index.html"),
         moonshineBenchmark: resolve(import.meta.dirname, "moonshine-benchmark.html"),
+        whisperFixtureBenchmark: resolve(import.meta.dirname, "whisper-fixture-benchmark.html"),
       },
       output: {
         manualChunks(id) {

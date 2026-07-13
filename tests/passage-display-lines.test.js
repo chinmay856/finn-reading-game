@@ -12,6 +12,15 @@ test("derives stable sentence lines before capture instead of reading DOM wrappi
   assert.deepEqual(derivePassageDisplayLines(passage), ["One short sentence.", "A second short sentence!", "Last one?"]);
 });
 
+test("keeps a long sentence together by default so the guide never cuts a thought in half", () => {
+  const passage = {
+    paragraphs: [
+      "Its lines are clean, its labels are confident, and its symbols seem to declare that the world has been measured and settled.",
+    ],
+  };
+  assert.deepEqual(derivePassageDisplayLines(passage), passage.paragraphs);
+});
+
 test("chunks long authored prose into bounded view-owned lines", () => {
   const passage = { paragraphs: ["one two three four five six seven eight nine ten"] };
   assert.deepEqual(derivePassageDisplayLines(passage, { maximumWords: 4 }), [
