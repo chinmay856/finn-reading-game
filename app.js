@@ -1659,7 +1659,7 @@ function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) 
   $("viewtubeEvidenceReceipt").hidden = !view.secured || !state.viewtubeEvidenceReceiptOpen;
   $("viewtubeEvidenceToggle").setAttribute("aria-expanded", String(state.viewtubeEvidenceReceiptOpen));
   const selection = selectNextViewTubePassage(state.viewtubeState);
-  $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidate · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
   $("viewtubeLiveStatus").textContent = view.secured ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 VIEWTUBE UNITS SAVED`;
 }
 
@@ -1915,10 +1915,12 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
   $("mapguessSecurityStatus").textContent = view.secured ? "DESTINATION LOCKED" : diagnosticMode ? "STRUCTURAL TEST" : "CONTENT REVIEW GATE";
 
   const selection = selectNextMapGuessPassage(state.mapguessState);
-  $("mapguessCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("mapguessCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
   $("mapguessContentReason").textContent = selection.passage
     ? "A reviewed MapGuess passage is available, but this structural milestone has not connected it to the Reading Companion yet."
-    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for an ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed records are still required.`;
+    : selection.firstRunShortfall
+      ? `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for an ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional manuscripts are still required.`
+      : `The complete ${selection.requiredFirstRun}-record first-run roster is structured but remains unavailable pending independent review and real-microphone evidence.`;
 
   syncMapGuessInspector();
   return view;

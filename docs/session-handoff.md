@@ -925,3 +925,20 @@ production speech adapter.
   pending independent review, and `transcriptionReview.tested: false`.
 - Focused content-model QA confirms 19/19 candidate records, exact deck ID
   order, and zero candidate selectability. WikiWhy still selects only A01.
+
+## Remaining candidate-rosters handoff (2026-07-12)
+
+- Active branch: `agent/remaining-candidate-rosters`, based on merged WikiWhy
+  roster PR #95 / `main` at `2899eba`.
+- `scripts/generate-original-site-candidates.mjs` converts the canonical
+  Search-ish (7), Amaze-On (7), Spotty-Fi (8), MapGuess A02-A08 (7), and
+  ViewTube A02-A07 (6) manuscript packets into 35 Content Platform candidates.
+- The catalog also retains MapGuess A01 and ViewTube A01, producing complete
+  eight- and seven-record first-run rosters respectively.
+- Each generated record has at least three prose paragraphs, exactly three
+  authored comprehension choices, the shared local reading profile,
+  original-work rights, pending independent review, and an untested microphone
+  record. None is selectable.
+- Campaign readiness now reports zero manuscript shortfall. MapGuess Deck A is
+  reconciled to its newer frozen A01-A08 manuscript packet; its five B records
+  remain replay-only, for thirteen planned records total.

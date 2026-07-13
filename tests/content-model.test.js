@@ -202,7 +202,7 @@ test("original approved content does not require a fabricated external source UR
 test("WikiWhy deck IDs remain wrapper-owned while unavailable drafts stay unselectable", () => {
   const ids = [...WIKIWHY_DECK_A_IDS, ...WIKIWHY_DECK_B_IDS];
   assert.equal(new Set(ids).size, 20);
-  assert.equal(PASSAGE_CATALOG.length, 48 + ENDGAME_PASSAGES.length);
+  assert.equal(PASSAGE_CATALOG.length, 83 + ENDGAME_PASSAGES.length);
   assert.equal(WIKIWHY_FIRST_RUN_PASSAGES.length, 19);
   assert.deepEqual(WIKIWHY_FIRST_RUN_PASSAGES.map(({ id }) => id), ids.slice(1));
   for (const passage of WIKIWHY_FIRST_RUN_PASSAGES) {

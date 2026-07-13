@@ -10,6 +10,11 @@ import { MYCORNER_FIRST_RUN_PASSAGES } from "./mycorner/first-run-passages.js";
 import { THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE } from "./yahuh/the-newspaper-that-found-people-on-the-moon.js";
 import { YAHUH_FIRST_RUN_PASSAGES } from "./yahuh/first-run-passages.js";
 import { THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE } from "./viewtube/the-sky-becomes-a-streak-of-fire.js";
+import { FIRST_RUN_PASSAGES as VIEWTUBE_FIRST_RUN_PASSAGES } from "./viewtube/first-run-passages.js";
+import { FIRST_RUN_PASSAGES as SEARCHISH_FIRST_RUN_PASSAGES } from "./searchish/first-run-passages.js";
+import { FIRST_RUN_PASSAGES as AMAZEON_FIRST_RUN_PASSAGES } from "./amazeon/first-run-passages.js";
+import { FIRST_RUN_PASSAGES as SPOTTYFI_FIRST_RUN_PASSAGES } from "./spottyfi/first-run-passages.js";
+import { FIRST_RUN_PASSAGES as MAPGUESS_FIRST_RUN_PASSAGES } from "./mapguess/first-run-passages.js";
 import { ENDGAME_PASSAGES } from "./endgame/final-incident-passages.js";
 
 const SELECTABLE_AVAILABILITY = new Set(["approved", "prototype"]);
@@ -44,6 +49,11 @@ export const PASSAGE_CATALOG = Object.freeze([
   THE_NEWSPAPER_THAT_FOUND_PEOPLE_ON_THE_MOON_PASSAGE,
   ...YAHUH_FIRST_RUN_PASSAGES,
   THE_SKY_BECOMES_A_STREAK_OF_FIRE_PASSAGE,
+  ...VIEWTUBE_FIRST_RUN_PASSAGES,
+  ...SEARCHISH_FIRST_RUN_PASSAGES,
+  ...AMAZEON_FIRST_RUN_PASSAGES,
+  ...SPOTTYFI_FIRST_RUN_PASSAGES,
+  ...MAPGUESS_FIRST_RUN_PASSAGES,
   ...ENDGAME_PASSAGES,
 ]);
 

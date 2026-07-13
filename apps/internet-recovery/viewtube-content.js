@@ -20,10 +20,10 @@ export const VIEWTUBE_DECK_B_IDS = Object.freeze([
 export const VIEWTUBE_CONTENT_READINESS = Object.freeze({
   deckACount: VIEWTUBE_DECK_A_IDS.length,
   deckBCount: VIEWTUBE_DECK_B_IDS.length,
-  firstRunShortfall: 7,
+  firstRunShortfall: 0,
   plannedCount: VIEWTUBE_DECK_A_IDS.length + VIEWTUBE_DECK_B_IDS.length,
   requiredFirstRun: 7,
-  structuredCandidateCount: 1,
+  structuredCandidateCount: 7,
 });
 
 const DEFAULT_VIEWTUBE_CATALOG = Object.freeze(

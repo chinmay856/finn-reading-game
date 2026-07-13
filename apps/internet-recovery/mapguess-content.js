@@ -7,6 +7,9 @@ export const MAPGUESS_DECK_A_IDS = Object.freeze([
   "scale-changes-the-story-a03",
   "a-river-edits-the-map-a04",
   "fastest-safest-scenic-a05",
+  "landmarks-anchor-a-route-a06",
+  "when-directions-cross-water-a07",
+  "the-goal-before-the-route-a08",
 ]);
 
 export const MAPGUESS_DECK_B_IDS = Object.freeze([
@@ -20,10 +23,10 @@ export const MAPGUESS_DECK_B_IDS = Object.freeze([
 export const MAPGUESS_CONTENT_READINESS = Object.freeze({
   deckACount: MAPGUESS_DECK_A_IDS.length,
   deckBCount: MAPGUESS_DECK_B_IDS.length,
-  firstRunShortfall: 3,
+  firstRunShortfall: 0,
   plannedCount: MAPGUESS_DECK_A_IDS.length + MAPGUESS_DECK_B_IDS.length,
   requiredFirstRun: 8,
-  structuredCandidateCount: 1,
+  structuredCandidateCount: 8,
 });
 
 const DEFAULT_MAPGUESS_CATALOG = Object.freeze(
