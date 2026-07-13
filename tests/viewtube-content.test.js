@@ -74,10 +74,10 @@ test("ViewTube owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.deepEqual(VIEWTUBE_CONTENT_READINESS, {
     deckACount: 7,
     deckBCount: 3,
-    firstRunShortfall: 7,
+    firstRunShortfall: 0,
     plannedCount: 10,
     requiredFirstRun: 7,
-    structuredCandidateCount: 1,
+    structuredCandidateCount: 7,
   });
 
   const gated = selectNextViewTubePassage({ completedPassageIds: [] });
@@ -86,7 +86,7 @@ test("ViewTube owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.equal(gated.selectableCount, 0);
   assert.equal(gated.plannedCount, 10);
   assert.equal(gated.requiredFirstRun, 7);
-  assert.equal(gated.firstRunShortfall, 7);
+  assert.equal(gated.firstRunShortfall, 0);
 
   const approvedA = approvedRecord(VIEWTUBE_DECK_A_IDS[1]);
   const approvedB = approvedRecord(VIEWTUBE_DECK_B_IDS[0]);

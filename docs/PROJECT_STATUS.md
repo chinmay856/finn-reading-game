@@ -1,5 +1,16 @@
 # Project status
 
+## Remaining first-run content rosters — active 2026-07-12
+
+Search-ish, Amaze-On, Spotty-Fi, MapGuess, and ViewTube now have complete
+theme-neutral first-run candidate rosters generated from their canonical
+manuscript packets: 35 newly structured original-prose records in total. Each
+record has authored prose, exactly three comprehension choices, a reading
+profile, original-work rights metadata, and explicit pending independent-review
+and real-microphone evidence. MapGuess now follows its newer frozen eight-record
+first-run manuscript roster while retaining five separate replay records. No
+new candidate is selectable; every campaign continues to fail closed.
+
 ## WikiWhy structured content — active 2026-07-12
 
 WikiWhy's complete twenty-record A/B roster is now represented in the reusable

@@ -163,26 +163,26 @@ test("A Map Is Not a Photograph is a structured NOAA candidate that fails closed
   assert.equal(isSelectablePassage(passage), false);
 });
 
-test("MapGuess owns two five-record decks, selects Deck A only, and reports the eight-reading gate", () => {
-  assert.equal(MAPGUESS_DECK_A_IDS.length, 5);
+test("MapGuess owns an eight-record first-run deck plus replay deck and reports the eight-reading gate", () => {
+  assert.equal(MAPGUESS_DECK_A_IDS.length, 8);
   assert.equal(MAPGUESS_DECK_B_IDS.length, 5);
-  assert.equal(new Set([...MAPGUESS_DECK_A_IDS, ...MAPGUESS_DECK_B_IDS]).size, 10);
+  assert.equal(new Set([...MAPGUESS_DECK_A_IDS, ...MAPGUESS_DECK_B_IDS]).size, 13);
   assert.deepEqual(MAPGUESS_CONTENT_READINESS, {
-    deckACount: 5,
+    deckACount: 8,
     deckBCount: 5,
-    firstRunShortfall: 3,
-    plannedCount: 10,
+    firstRunShortfall: 0,
+    plannedCount: 13,
     requiredFirstRun: 8,
-    structuredCandidateCount: 1,
+    structuredCandidateCount: 8,
   });
 
   const gated = selectNextMapGuessPassage({ completedPassageIds: [] });
   assert.equal(gated.passage, null);
   assert.equal(gated.reason, "no-selectable-passages");
   assert.equal(gated.selectableCount, 0);
-  assert.equal(gated.plannedCount, 10);
+  assert.equal(gated.plannedCount, 13);
   assert.equal(gated.requiredFirstRun, 8);
-  assert.equal(gated.firstRunShortfall, 3);
+  assert.equal(gated.firstRunShortfall, 0);
 
   const approvedA = approvedRecord(MAPGUESS_DECK_A_IDS[1]);
   const approvedB = approvedRecord(MAPGUESS_DECK_B_IDS[0]);

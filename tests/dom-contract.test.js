@@ -505,9 +505,9 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(markup, /REGISTERED AFTER EIGHT REVIEW-APPROVED READINGS AND A SAVED ROUTE GOAL/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
-  assert.match(markup, /10 planned[^<]+0 selectable[^<]+8 required/u);
+  assert.match(markup, /13 planned[^<]+8 structured candidates[^<]+0 selectable[^<]+8 required/u);
   assert.match(content, /requiredFirstRun: 8/u);
-  assert.match(content, /structuredCandidateCount: 1/u);
+  assert.match(content, /structuredCandidateCount: 8/u);
   assert.match(copy, /PROVISIONAL MAPGUESS FIXTURE - NOT CANONICAL/u);
   assert.match(state, /eligibleForCanonicalCount: true/u);
   assert.match(state, /registryStatus: "canonical-secured-only"/u);

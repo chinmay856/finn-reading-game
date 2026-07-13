@@ -11,8 +11,8 @@ export const SEARCHISH_DECK_B_IDS = Object.freeze([
   "synthesis-without-certainty-b03",
 ]);
 export const SEARCHISH_CONTENT_READINESS = Object.freeze({
-  deckACount: 7, deckBCount: 3, firstRunShortfall: 7,
-  plannedCount: 10, requiredFirstRun: 7, structuredCandidateCount: 0,
+  deckACount: 7, deckBCount: 3, firstRunShortfall: 0,
+  plannedCount: 10, requiredFirstRun: 7, structuredCandidateCount: 7,
 });
 
 export function selectNextSearchishPassage(campaignState, options = {}) {
