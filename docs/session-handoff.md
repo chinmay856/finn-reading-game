@@ -1,5 +1,20 @@
 # Session handoff
 
+## 2026-07-12 MapGuess candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all
+  eight MapGuess first-run candidates while production selection remains
+  fail-closed.
+- Froze A01's cited NOAA page to its visible 2026-06-22 update, verified
+  2026-07-12, so provenance is concrete without changing any pending content
+  review status.
+- Reading results drive the existing exact 5+3 campaign; Moving Target
+  acknowledgement and the four valid route goals remain wrapper-owned
+  interactions outside speech scoring.
+- All playtest progress and slot-ten evidence remain tab-only. No canonical
+  evidence, finale gate, external map service, or Reading Engine behavior
+  changed.
+
 ## 2026-07-12 ViewTube candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all seven

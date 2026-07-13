@@ -87,6 +87,7 @@ import {
   acknowledgeMapGuessMidpoint,
   acknowledgeMapGuessMidpointState,
   advanceMapGuessState,
+  applyMapGuessReading,
   readMapGuessState,
   setMapGuessRouteGoal,
   setMapGuessRouteGoalState,
@@ -232,6 +233,7 @@ const state = {
   mapguessState: readMapGuessState(localStateStorage),
   mapguessPersisted: Boolean(localStateStorage),
   mapguessDiagnosticMode: false,
+  mapguessPlaytestMode: false,
   mapguessDiagnosticState: readMapGuessState(null),
   mapguessEvidenceReceiptOpen: false,
   mapguessInspectorOpen: false,
@@ -474,6 +476,36 @@ function openViewTubePlaytestReading() {
   return true;
 }
 
+function selectMapGuessPlaytestPassage() {
+  const selection = selectNextMapGuessPassage(state.mapguessState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "mapguess";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openMapGuessPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "mapguess";
+  state.mapguessPlaytestMode = true;
+  state.mapguessPersisted = false;
+  const selection = selectMapGuessPlaytestPassage();
+  if (!selection.passage) {
+    renderMapGuessCampaign(state.mapguessState);
+    $("mapguessContentReason").textContent = "Every structured MapGuess playtest passage has been used. Production content remains review-gated.";
+    show("mapguess");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MAPGUESS CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MapGuess test campaign, but it cannot approve content, persist slot-ten evidence, or unlock the finale.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
 function renderContentAvailabilityGate() {
   state.campaignEligible = false;
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "Next recovered file is still under review.";
@@ -645,7 +677,7 @@ function show(name) {
   const searchishScreen = name === "searchish";
   const amazeonScreen = name === "amazeon";
   const spottyfiScreen = name === "spottyfi";
-  const mapGuessScreen = name === "mapguess";
+  const mapGuessScreen = name === "mapguess" || (readingScreen && state.readingSiteId === "mapguess");
   const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || spottyfiScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
     ? "RECOVERY MAP"
@@ -2090,7 +2122,11 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
     : view.midpoint.acknowledged
       ? `${view.progress.anchorCompletedCount} OF 3 DESTINATION ANCHORS SAVED`
       : `${view.progress.rebuildCompletedCount} OF 5 REBUILD UNITS SAVED`;
-  $("mapguessDiagnosticTruth").textContent = diagnosticMode ? "SIMULATED · NO READING SCORE" : "CONTENT REVIEW GATE · MIC OFF";
+  $("mapguessDiagnosticTruth").textContent = diagnosticMode
+    ? "SIMULATED · NO READING SCORE"
+    : state.mapguessPlaytestMode
+      ? "CANDIDATE PLAYTEST · TAB ONLY"
+      : "CONTENT REVIEW GATE · MIC OFF";
   $("mapguessLiveStatus").textContent = campaignState.lastReaction ?? view.lastRepairAnnouncement;
   $("mapguessBrowserTitle").textContent = view.secured
     ? "MAPGUESS — DESTINATION LOCKED"
@@ -2099,13 +2135,27 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
       : "MAPGUESS — ROUTE RECOVERY";
   $("mapguessSecurityStatus").textContent = view.secured ? "DESTINATION LOCKED" : diagnosticMode ? "STRUCTURAL TEST" : "CONTENT REVIEW GATE";
 
-  const selection = selectNextMapGuessPassage(state.mapguessState);
-  $("mapguessCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
-  $("mapguessContentReason").textContent = selection.passage
-    ? "A reviewed MapGuess passage is available, but this structural milestone has not connected it to the Reading Companion yet."
-    : selection.firstRunShortfall
-      ? `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for an ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional manuscripts are still required.`
-      : `The complete ${selection.requiredFirstRun}-record first-run roster is structured but remains unavailable pending independent review and real-microphone evidence.`;
+  const selection = selectNextMapGuessPassage(state.mapguessState, { lane: "playtest" });
+  $("mapguessCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured playtest candidates · ${selection.selectableCount} available · ${selection.requiredFirstRun} required`;
+  $("mapguessCandidateTitle").textContent = selection.passage?.title ?? "MapGuess candidate playtest complete";
+  $("mapguessContentReason").textContent = view.midpoint.actionRequired
+    ? "Five candidate readings are preserved in this tab. Review and acknowledge Moving Target before the first destination anchor."
+    : view.goals.goalRequired
+      ? "Seven candidate readings are preserved in this tab. Choose fastest, safest, scenic, or accessible before the final anchor reading."
+      : selection.passage
+        ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content, persist slot-ten evidence, or unlock the finale."
+        : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("mapguessPlaytest").disabled = !selection.passage || view.midpoint.actionRequired || view.goals.goalRequired || view.secured;
+  $("mapguessPlaytest").textContent = view.secured
+    ? "MapGuess playtest complete"
+    : view.midpoint.actionRequired
+      ? "Review Moving Target first"
+      : view.goals.goalRequired
+        ? "Choose a route goal first"
+        : "Playtest candidate passage";
+  $("mapguessEvidenceTruth").textContent = state.mapguessPlaytestMode
+    ? "CANDIDATE PLAYTEST ONLY · TAB-LOCAL · NOT CANONICAL EVIDENCE"
+    : "REGISTERED AFTER EIGHT REVIEW-APPROVED READINGS AND A SAVED ROUTE GOAL";
 
   syncMapGuessInspector();
   return view;
@@ -3213,8 +3263,9 @@ function canContinueMapGuessInTab(transition) {
 
 function acknowledgeMapGuessMovingTarget() {
   const diagnosticMode = state.mapguessDiagnosticMode;
+  const playtestMode = state.mapguessPlaytestMode;
   const current = diagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
-  const transition = diagnosticMode
+  const transition = diagnosticMode || playtestMode
     ? acknowledgeMapGuessMidpointState(current, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeMapGuessMidpoint(localStateStorage, {
         acknowledgedAt: new Date().toISOString(),
@@ -3224,7 +3275,7 @@ function acknowledgeMapGuessMovingTarget() {
   if (diagnosticMode) state.mapguessDiagnosticState = transition.state;
   else {
     state.mapguessState = transition.state;
-    state.mapguessPersisted = transition.ok;
+    state.mapguessPersisted = playtestMode ? false : transition.ok;
   }
   renderMapGuessCampaign(transition.state, { diagnosticMode });
   renderMapGuessDiagnosticPanel(transition.state);
@@ -3241,8 +3292,9 @@ function acknowledgeMapGuessMovingTarget() {
 
 function setMapGuessGoalFromControl(routeGoal) {
   const diagnosticMode = state.mapguessDiagnosticMode;
+  const playtestMode = state.mapguessPlaytestMode;
   const current = diagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
-  const transition = diagnosticMode
+  const transition = diagnosticMode || playtestMode
     ? setMapGuessRouteGoalState(current, routeGoal, { selectedAt: new Date().toISOString() })
     : setMapGuessRouteGoal(localStateStorage, routeGoal, {
         currentState: current,
@@ -3252,7 +3304,7 @@ function setMapGuessGoalFromControl(routeGoal) {
   if (diagnosticMode) state.mapguessDiagnosticState = transition.state;
   else {
     state.mapguessState = transition.state;
-    state.mapguessPersisted = transition.ok;
+    state.mapguessPersisted = playtestMode ? false : transition.ok;
   }
   renderMapGuessCampaign(transition.state, { diagnosticMode });
   renderMapGuessDiagnosticPanel(transition.state);
@@ -4035,7 +4087,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "mapguess"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -4046,6 +4098,31 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "mapguess") {
+    if (state.resultApplied) {
+      openMapGuessExperience();
+      return;
+    }
+    const outcome = calculateMapGuessReadingOutcome({ accepted: Boolean(state.result), campaignState: state.mapguessState });
+    const repair = applyMapGuessReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.mapguessState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.mapguessState = repair.state;
+    state.mapguessPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to MapGuess";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.mapguessState.lastReaction} Candidate playtest progress is active in this tab only; content approval, canonical evidence, and the finale gate remain unchanged.`;
+    renderMapGuessCampaign(state.mapguessState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "viewtube") {
     if (state.resultApplied) {
       openViewTubeExperience();
@@ -4366,6 +4443,7 @@ $("amazeonReturn").onclick = returnToHub;
 $("spottyfiReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
+$("mapguessPlaytest").onclick = openMapGuessPlaytestReading;
 $("threaditThreadTab").onclick = () => openThreadItView("thread");
 $("threaditTraceTab").onclick = () => openThreadItView("trace");
 $("threaditTraceControl").onclick = () => openThreadItView("trace");
