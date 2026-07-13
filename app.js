@@ -66,6 +66,7 @@ import {
   acknowledgeFacePlaceMidpoint,
   acknowledgeFacePlaceMidpointState,
   advanceFacePlaceState,
+  applyFacePlaceReading,
   readFacePlaceState,
   setFacePlaceFeedMode,
   setFacePlaceFeedModeState,
@@ -217,6 +218,7 @@ const state = {
   faceplaceState: readFacePlaceState(localStateStorage),
   faceplacePersisted: Boolean(localStateStorage),
   faceplaceDiagnosticMode: false,
+  faceplacePlaytestMode: false,
   faceplaceDiagnosticState: readFacePlaceState(null),
   faceplaceEvidenceReceiptOpen: false,
   faceplaceProfilePanelOpen: false,
@@ -341,6 +343,36 @@ function openThreadItPlaytestReading() {
   resetReadingAttempt();
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "THREADIT CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the local ThreadIt test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function selectFacePlacePlaytestPassage() {
+  const selection = selectNextFacePlacePassage(state.faceplaceState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "faceplace";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openFacePlacePlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "faceplace";
+  state.faceplacePlaytestMode = true;
+  state.faceplacePersisted = false;
+  const selection = selectFacePlacePlaytestPassage();
+  if (!selection.passage) {
+    renderFacePlaceCampaign(state.faceplaceState);
+    $("faceplaceContentReason").textContent = "Every structured FacePlace playtest passage has been used. Production content remains review-gated.";
+    show("faceplace");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "FACEPLACE CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local FacePlace test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
   show("setup");
   return true;
@@ -510,7 +542,7 @@ function show(name) {
   const readingScreen = ["setup", "read", "review"].includes(name);
   const wikiWhyScreen = readingScreen && state.readingSiteId === "wikiwhy";
   const threadItScreen = name === "threadit" || (readingScreen && state.readingSiteId === "threadit");
-  const facePlaceScreen = name === "faceplace";
+  const facePlaceScreen = name === "faceplace" || (readingScreen && state.readingSiteId === "faceplace");
   const myCornerScreen = name === "mycorner";
   const yahuhScreen = name === "yahuh";
   const viewtubeScreen = name === "viewtube";
@@ -1592,11 +1624,17 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
       ? "STRUCTURAL TEST"
       : "CONTENT REVIEW GATE";
 
-  const selection = selectNextFacePlacePassage(state.faceplaceState);
-  $("faceplaceCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  const selection = selectNextFacePlacePassage(state.faceplaceState, { lane: "playtest" });
+  $("faceplaceCandidateCount").textContent = `${selection.selectableCount} structured playtest candidate${selection.selectableCount === 1 ? "" : "s"} · ${selection.requiredFirstRun} required`;
   $("faceplaceContentReason").textContent = selection.passage
-    ? "A reviewed FacePlace passage is available, but this structural milestone has not connected it to the Reading Companion yet."
-    : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run, so one additional reviewed record is still required.`;
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("faceplacePlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("faceplacePlaytest").textContent = view.secured
+    ? "FacePlace playtest complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Acknowledge Honest Zero first"
+      : "Playtest candidate passage";
 
   syncFacePlaceProfileDrawer();
   return view;
@@ -3353,8 +3391,9 @@ function buildFacePlacePreviewState(unitCount) {
 
 function acknowledgeFacePlaceHonestZero() {
   const diagnostic = state.faceplaceDiagnosticMode;
+  const playtest = state.faceplacePlaytestMode;
   const current = diagnostic ? state.faceplaceDiagnosticState : state.faceplaceState;
-  const transition = diagnostic
+  const transition = diagnostic || playtest
     ? acknowledgeFacePlaceMidpointState(current, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeFacePlaceMidpoint(localStateStorage, {
         acknowledgedAt: new Date().toISOString(),
@@ -3365,7 +3404,7 @@ function acknowledgeFacePlaceHonestZero() {
   if (diagnostic) state.faceplaceDiagnosticState = transition.state;
   else {
     state.faceplaceState = transition.state;
-    state.faceplacePersisted = transition.ok;
+    state.faceplacePersisted = playtest ? false : transition.ok;
   }
   renderFacePlaceCampaign(transition.state, { diagnosticMode: diagnostic });
   renderFacePlaceDiagnosticPanel(transition.state);
@@ -3375,15 +3414,16 @@ function acknowledgeFacePlaceHonestZero() {
 
 function setFacePlaceFeedModeFromControl(feedMode) {
   const diagnostic = state.faceplaceDiagnosticMode;
+  const playtest = state.faceplacePlaytestMode;
   const current = diagnostic ? state.faceplaceDiagnosticState : state.faceplaceState;
-  const transition = diagnostic
+  const transition = diagnostic || playtest
     ? setFacePlaceFeedModeState(current, feedMode)
     : setFacePlaceFeedMode(localStateStorage, feedMode, { currentState: current });
   if (!transition.ok) return;
   if (diagnostic) state.faceplaceDiagnosticState = transition.state;
   else {
     state.faceplaceState = transition.state;
-    state.faceplacePersisted = transition.ok;
+    state.faceplacePersisted = playtest ? false : transition.ok;
   }
   renderFacePlaceCampaign(transition.state, { diagnosticMode: diagnostic });
   $(feedMode === "chronological" ? "faceplaceChronologicalMode" : "faceplaceRankedMode").focus({ preventScroll: true });
@@ -3876,7 +3916,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (state.readingSiteId === "threadit") {
+  if (["threadit", "faceplace"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -3887,6 +3927,34 @@ $("again").onclick = () => {
   location.href = url.href;
 };
 $("continueResult").onclick = () => {
+  if (state.readingSiteId === "faceplace") {
+    if (state.resultApplied) {
+      openFacePlaceExperience();
+      return;
+    }
+    const outcome = calculateFacePlaceReadingOutcome({
+      accepted: Boolean(state.result),
+      campaignState: state.faceplaceState,
+    });
+    const repair = applyFacePlaceReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.faceplaceState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.faceplaceState = repair.state;
+    state.faceplacePersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to FacePlace";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.faceplaceState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderFacePlaceCampaign(state.faceplaceState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "threadit") {
     if (state.resultApplied) {
       openThreadItExperience();
@@ -4091,6 +4159,7 @@ $("threaditReturn").onclick = returnToHub;
 $("threaditPlaytest").onclick = openThreadItPlaytestReading;
 $("faceplaceBack").onclick = returnToHub;
 $("faceplaceReturn").onclick = returnToHub;
+$("faceplacePlaytest").onclick = openFacePlacePlaytestReading;
 $("mycornerBack").onclick = returnToHub;
 $("mycornerReturn").onclick = returnToHub;
 $("yahuhReturn").onclick = returnToHub;

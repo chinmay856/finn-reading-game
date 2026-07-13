@@ -398,9 +398,14 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(markup, /REGISTERED AFTER SIX REVIEW-APPROVED READINGS/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
+  assert.match(markup, /id="faceplacePlaytest"/u);
   assert.match(markup, /10 planned · 0 selectable · 6 required/u);
   assert.match(app, /getFacePlaceCampaignView/u);
   assert.match(app, /advanceFacePlaceState/u);
+  assert.match(app, /selectNextFacePlacePassage\(state\.faceplaceState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /applyFacePlaceReading\(null/u);
+  assert.match(app, /Candidate playtest progress is active in this tab only/u);
+  assert.match(app, /state\.faceplacePersisted = false/u);
   assert.match(app, /state\.faceplaceDiagnosticMode = true/u);
   assert.match(app, /"faceplace-false-3": 3/u);
   assert.match(app, /"faceplace-honest-zero": 3/u);

@@ -1,5 +1,16 @@
 # Session handoff
 
+## 2026-07-12 FacePlace candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all six
+  FacePlace Deck A candidates while production selection remains fail-closed.
+- Bound A01 to the official Project Gutenberg 1342 HTML artifact and its RDF
+  modified timestamp (`2026-02-10T12:53:56.255684Z`), replacing the placeholder
+  source-revision freeze without claiming editorial or microphone approval.
+- Playtest progress, Honest Zero acknowledgement, and feed-mode changes remain
+  tab-only. They cannot create persisted canonical evidence or satisfy finale
+  gates. The separate reading-engine agent retains speech/alignment ownership.
+
 ## 2026-07-12 ThreadIt candidate playtest selector
 
 - Added an explicit wrapper-level `playtest` option to
