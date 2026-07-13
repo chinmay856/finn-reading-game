@@ -1,0 +1,986 @@
+[
+  {
+    "passageId": "plate-tectonics-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "plate-tectonics-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "sleep-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "sleep-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "memory-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "memory-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "habit-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "habit-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "placebo-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "placebo-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "urban-heat-island-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "urban-heat-island-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "pollination-a08",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "pollination-a08@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "scientific-method-a09",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "scientific-method-a09@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "cognitive-bias-a10",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "cognitive-bias-a10@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "printing-press-b01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "printing-press-b01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "encryption-b02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "encryption-b02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "internet-b03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "internet-b03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "public-library-b04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "public-library-b04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "renewable-energy-b05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "renewable-energy-b05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "coral-reef-b06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "coral-reef-b06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "probability-b07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "probability-b07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "music-b08",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "music-b08@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "architecture-b09",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "architecture-b09@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "map-b10",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "map-b10@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "why-disagreement-matters-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "why-disagreement-matters-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-strongest-version-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-strongest-version-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-vote-is-not-a-measurement-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-vote-is-not-a-measurement-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-objection-that-improved-the-plan-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-objection-that-improved-the-plan-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "when-the-crowd-is-partly-right-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "when-the-crowd-is-partly-right-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-source-behind-the-agreement-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-source-behind-the-agreement-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "when-a-reply-is-a-copy-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "when-a-reply-is-a-copy-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-second-reading-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-second-reading-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-photograph-outside-the-frame-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-photograph-outside-the-frame-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-letter-reread-later-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-letter-reread-later-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-the-feed-repeats-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-the-feed-repeats-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "memory-with-edits-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "memory-with-edits-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "why-this-appeared-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "why-this-appeared-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-map-is-not-a-photograph-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-map-is-not-a-photograph-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-cabin-with-a-purpose-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-cabin-with-a-purpose-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-page-you-choose-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-page-you-choose-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-room-that-explains-its-owner-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-room-that-explains-its-owner-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-costume-and-the-person-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-costume-and-the-person-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-a-profile-leaves-out-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-a-profile-leaves-out-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "autoplay-is-not-personality-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "autoplay-is-not-personality-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-template-problem-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-template-problem-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-newspaper-that-found-people-on-the-moon-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-newspaper-that-found-people-on-the-moon-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-front-page-choice-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-front-page-choice-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "weather-is-not-a-mood-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "weather-is-not-a-mood-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "reading-a-public-ledger-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "reading-a-public-ledger-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-label-on-the-ad-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-label-on-the-ad-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-counts-as-news-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-counts-as-news-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-sky-becomes-a-streak-of-fire-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-sky-becomes-a-streak-of-fire-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-frame-before-the-crash-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-frame-before-the-crash-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-transcript-and-the-clip-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-transcript-and-the-clip-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-the-camera-did-not-see-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-the-camera-did-not-see-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-speech-in-its-moment-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-speech-in-its-moment-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "one-scene-three-cuts-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "one-scene-three-cuts-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-duplicate-frame-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-duplicate-frame-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "two-results-one-suspicious-message-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "two-results-one-suspicious-message-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-primary-source-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-primary-source-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-independent-witness-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-independent-witness-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-sponsored-answer-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-sponsored-answer-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-a-snippet-leaves-out-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-a-snippet-leaves-out-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-domain-clue-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-domain-clue-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "when-results-disagree-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "when-results-disagree-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-five-star-mirage-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-five-star-mirage-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-specification-card-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-specification-card-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-review-in-context-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-review-in-context-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-sponsored-claim-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-sponsored-claim-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-return-that-multiplied-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-return-that-multiplied-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-free-sample-problem-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-free-sample-problem-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-seller-behind-the-listing-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-seller-behind-the-listing-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-city-that-learned-to-improvise-a01",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-city-that-learned-to-improvise-a01@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "how-a-rhythm-changes-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "how-a-rhythm-changes-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-credit-line-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-credit-line-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "what-listening-history-means-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "what-listening-history-means-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-manual-mixtape-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-manual-mixtape-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "silence-between-notes-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "silence-between-notes-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "who-chose-the-next-track-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "who-chose-the-next-track-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-prediction-before-the-person-a08",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-prediction-before-the-person-a08@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-destination-moved-a02",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-destination-moved-a02@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "scale-changes-the-story-a03",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "scale-changes-the-story-a03@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "a-river-edits-the-map-a04",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "a-river-edits-the-map-a04@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "fastest-safest-scenic-a05",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "fastest-safest-scenic-a05@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "landmarks-anchor-a-route-a06",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "landmarks-anchor-a-route-a06@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "when-directions-cross-water-a07",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "when-directions-cross-water-a07@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  },
+  {
+    "passageId": "the-goal-before-the-route-a08",
+    "authorId": "game-for-finn-content-team",
+    "contentRevision": "the-goal-before-the-route-a08@2026-07-12.1",
+    "reviewedContentRevision": null,
+    "reviews": {},
+    "microphoneRuns": [],
+    "transcription": {
+      "acceptedTranscriptForms": [],
+      "tokenResolutions": []
+    }
+  }
+]

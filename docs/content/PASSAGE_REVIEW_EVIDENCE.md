@@ -10,4 +10,14 @@ Changing passage text changes `contentRevision`. Every review must then be repea
 
 The validator in `content/review-evidence.js` creates an approved projection only when all evidence is complete. It never edits the candidate record, invents reviewer decisions, or treats automated tests as human or microphone review.
 
-Run `npm run review:status` for an exact blocker report. Endgame reviewers update `content/review-records/endgame.json`; each record is already bound to the passage's own `contentRevision`. Do not change `reviewedContentRevision` until every attached decision reviewed that exact revision.
+Run `npm run review:status` for an exact blocker report. Campaign reviewers
+update `content/review-records/campaign.json`; final-incident reviewers update
+`content/review-records/endgame.json`. Each record is already bound to the
+passage's own `contentRevision`. Do not change `reviewedContentRevision` until
+every attached decision reviewed that exact revision.
+
+Run `npm run generate:review-manifests` only after adding a new candidate or
+changing its declared revision. The generator deliberately creates pending
+records; it never carries approvals, reviewer identities, or microphone runs
+forward. Preserve genuine evidence manually when intentionally revising an
+existing reviewed passage.

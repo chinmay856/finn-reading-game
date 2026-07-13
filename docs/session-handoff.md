@@ -942,3 +942,18 @@ production speech adapter.
 - Campaign readiness now reports zero manuscript shortfall. MapGuess Deck A is
   reconciled to its newer frozen A01-A08 manuscript packet; its five B records
   remain replay-only, for thirteen planned records total.
+
+## Campaign review-manifest handoff (2026-07-12)
+
+- Active branch: `agent/campaign-review-manifests`, based on merged roster PR
+  #96 / `main` at `c6045fa`.
+- Every candidate now declares an exact `contentRevision`; generated and manual
+  passage modules use the same `<passage-id>@2026-07-12.1` convention.
+- `content/review-records/campaign.json` contains 82 pending campaign records;
+  together with three endgame records it covers all 85 candidates exactly once.
+- `npm run review:status` now audits the whole candidate catalog and currently
+  reports 0/85 approved with exact blockers. This is truthful external-work
+  inventory, not a promotion mechanism.
+- `npm run generate:review-manifests` preserves unchanged evidence, rejects
+  unknown IDs, and fails if a revised passage already has review or microphone
+  evidence that would otherwise be overwritten.

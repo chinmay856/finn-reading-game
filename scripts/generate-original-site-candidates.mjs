@@ -39,5 +39,10 @@ for (const config of configs) {
       throw new Error(`${config.folder}/${record.id}: incomplete manuscript structure (${record.paragraphs.length} paragraphs, prompt=${Boolean(record.prompt)}, correct=${Boolean(record.correct)}, distractors=${record.distractors.length}).`);
     }
   }
-  await writeFile(output, renderModule(records, config.domain, `content/${config.folder}/${config.source}`), "utf8");
+  const moduleSource = renderModule(records, config.domain, `content/${config.folder}/${config.source}`);
+  const revisionBoundModule = moduleSource.replace(
+    '    availability: "candidate", id, title,',
+    '    availability: "candidate", contentRevision: `${id}@2026-07-12.1`, id, title,',
+  );
+  await writeFile(output, revisionBoundModule, "utf8");
 }

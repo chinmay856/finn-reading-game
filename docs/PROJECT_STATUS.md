@@ -1,5 +1,14 @@
 # Project status
 
+## Campaign review manifests — active 2026-07-12
+
+All 85 candidate passages now have exact revision-bound pending review
+manifests: 82 campaign records plus the existing three final-incident records.
+The campaign generator preserves evidence for unchanged revisions, rejects
+unknown IDs, and refuses to overwrite evidence after revision drift. The status
+command reports 0/85 approved with exact independent-review, microphone, and
+token blockers; no automated check self-certifies a passage.
+
 ## Remaining first-run content rosters — active 2026-07-12
 
 Search-ish, Amaze-On, Spotty-Fi, MapGuess, and ViewTube now have complete

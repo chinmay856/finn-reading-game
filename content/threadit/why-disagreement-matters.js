@@ -1,5 +1,6 @@
 export const WHY_DISAGREEMENT_MATTERS_PASSAGE = Object.freeze({
   availability: "candidate",
+  contentRevision: "why-disagreement-matters-a01@2026-07-12.1",
   id: "why-disagreement-matters-a01",
   title: "Why Disagreement Matters",
   paragraphs: Object.freeze([
