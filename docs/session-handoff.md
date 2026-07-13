@@ -908,3 +908,20 @@ production speech adapter.
 - Secondary copy stays in the semantic DOM and is clamped only in desktop
   overview mode. Shared real-button action halos continue to distinguish
   interactables from decorative, button-like site artwork.
+
+## WikiWhy candidate-roster handoff (2026-07-12)
+
+- Active branch: `agent/wikiwhy-candidate-roster`, based on deployed desktop
+  density PR #94 / `main` at `960ffb1`.
+- `content/wikiwhy/first-run-passages.js` adds the nineteen missing WikiWhy
+  A02-B10 records as complete, theme-neutral Content Platform candidates.
+- `scripts/generate-wikiwhy-candidates.mjs` deterministically derives prose,
+  prompts, correct answers, article/history URLs, and titles from the canonical
+  `PASSAGE_DECKS.md`; passage-specific distractors and the fail-closed review
+  contract remain generator-owned. Run `npm run generate:wikiwhy` after editing
+  either source.
+- Every candidate has three paragraphs, exactly three comprehension choices,
+  CC BY-SA 4.0 attribution, a local reading profile, null frozen revision,
+  pending independent review, and `transcriptionReview.tested: false`.
+- Focused content-model QA confirms 19/19 candidate records, exact deck ID
+  order, and zero candidate selectability. WikiWhy still selects only A01.
