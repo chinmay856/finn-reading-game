@@ -957,3 +957,15 @@ production speech adapter.
 - `npm run generate:review-manifests` preserves unchanged evidence, rejects
   unknown IDs, and fails if a revised passage already has review or microphone
   evidence that would otherwise be overwritten.
+
+## Full-playthrough playtest-lane handoff (2026-07-12)
+
+- Active branch: `agent/playtest-content-lane`, based on merged review-manifest
+  PR #97 / `main` at `40c8387`.
+- The user will review content during a future full playthrough rather than as
+  a separate manuscript pass. ADR-003 therefore permits structurally complete
+  candidates in an explicit `PLAYTEST · REVIEW PENDING` lane.
+- `selectNextPlaytestPassage` is candidate-only, unseen-first, noncanonical,
+  and does not mutate passage availability or review manifests.
+- Production `isSelectablePassage` and `selectNextPassage` behavior is
+  unchanged. ThreadIt is the next wrapper to connect end to end.
