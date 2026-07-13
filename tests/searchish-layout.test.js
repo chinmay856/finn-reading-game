@@ -12,11 +12,15 @@ test("Search-ish exposes semantic results, branches, evidence, and an independen
   const [app, css, html] = await files;
   assert.match(html, /id="searchish"/u);
   assert.match(html, /id="searchishResultList"/u);
+  assert.match(html, /id="searchishPlaytest"/u);
   assert.match(html, /id="searchishInspector"[^>]+aria-labelledby/u);
   assert.match(html, /CASE FILE · SLOT 7/u);
   assert.match(html, /MIC: OFF · NO READING SCORE/u);
   assert.match(app, /openSearchishExperience/u);
   assert.match(app, /acknowledgeSearchishMidpoint/u);
+  assert.match(app, /selectNextSearchishPassage\(state\.searchishState, \{ lane: "playtest" \}\)/u);
+  assert.match(app, /applySearchishReading\(null/u);
+  assert.match(app, /state\.searchishPersisted = false/u);
   assert.match(css, /@media \(max-width:1279px\)/u);
   assert.match(css, /data-inspector-open="true"/u);
 });

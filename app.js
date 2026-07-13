@@ -141,15 +141,15 @@ import {
 import { getViewTubeCampaignView } from "./apps/internet-recovery/viewtube-view.js";
 import { selectNextViewTubePassage } from "./apps/internet-recovery/viewtube-content.js";
 import { calculateSearchishReadingOutcome, SEARCHISH_RESTORE_UNITS } from "./apps/internet-recovery/searchish-rules.js";
-import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
+import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, applySearchishReading, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
 import { getSearchishCampaignView } from "./apps/internet-recovery/searchish-view.js";
 import { selectNextSearchishPassage } from "./apps/internet-recovery/searchish-content.js";
 import { AMAZEON_SORT_UNITS, calculateAmazeOnReadingOutcome } from "./apps/internet-recovery/amazeon-rules.js";
-import { AMAZEON_EVIDENCE_RECORD, acknowledgeAmazeOnMidpoint, acknowledgeAmazeOnMidpointState, advanceAmazeOnState, readAmazeOnState } from "./apps/internet-recovery/amazeon-state.js";
+import { AMAZEON_EVIDENCE_RECORD, acknowledgeAmazeOnMidpoint, acknowledgeAmazeOnMidpointState, advanceAmazeOnState, applyAmazeOnReading, readAmazeOnState } from "./apps/internet-recovery/amazeon-state.js";
 import { getAmazeOnCampaignView } from "./apps/internet-recovery/amazeon-view.js";
 import { selectNextAmazeOnPassage } from "./apps/internet-recovery/amazeon-content.js";
 import { SPOTTYFI_DISCLOSURE_UNITS, calculateSpottyFiReadingOutcome } from "./apps/internet-recovery/spottyfi-rules.js";
-import { SPOTTYFI_EVIDENCE_RECORD, acknowledgeSpottyFiMidpoint, acknowledgeSpottyFiMidpointState, advanceSpottyFiState, readSpottyFiState } from "./apps/internet-recovery/spottyfi-state.js";
+import { SPOTTYFI_EVIDENCE_RECORD, acknowledgeSpottyFiMidpoint, acknowledgeSpottyFiMidpointState, advanceSpottyFiState, applySpottyFiReading, readSpottyFiState } from "./apps/internet-recovery/spottyfi-state.js";
 import { getSpottyFiCampaignView } from "./apps/internet-recovery/spottyfi-view.js";
 import { selectNextSpottyFiPassage } from "./apps/internet-recovery/spottyfi-content.js";
 import { summarizeHubEvidenceState } from "./apps/internet-recovery/recovery-hub-state.js";
@@ -262,16 +262,18 @@ const state = {
   searchishState: readSearchishState(localStateStorage),
   searchishPersisted: Boolean(localStateStorage),
   searchishDiagnosticMode: false,
+  searchishPlaytestMode: false,
   searchishDiagnosticState: readSearchishState(null),
   searchishInspectorOpen: false,
   searchishEvidenceReceiptOpen: false,
   amazeonState: readAmazeOnState(localStateStorage),
   amazeonPersisted: Boolean(localStateStorage),
   amazeonDiagnosticMode: false,
+  amazeonPlaytestMode: false,
   amazeonDiagnosticState: readAmazeOnState(null),
   amazeonReceiptOpen: false,
   amazeonEvidenceReceiptOpen: false,
-  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
+  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiPlaytestMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
   endgameState: readEndgameState(localStateStorage),
   endgameStorageAvailable: null,
 };
@@ -446,12 +448,62 @@ function openYahuhPlaytestReading() {
   return true;
 }
 
+function selectAmazeOnPlaytestPassage() {
+  const selection = selectNextAmazeOnPassage(state.amazeonState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "amazeon";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
 function selectViewTubePlaytestPassage() {
   const selection = selectNextViewTubePassage(state.viewtubeState, { lane: "playtest" });
   state.contentAvailabilityReason = selection.reason;
   state.contentCandidateCount = selection.unavailableCount;
   state.campaignEligible = Boolean(selection.passage);
   state.readingSiteId = "viewtube";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function openAmazeOnPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "amazeon";
+  state.amazeonPlaytestMode = true;
+  state.amazeonPersisted = false;
+  const selection = selectAmazeOnPlaytestPassage();
+  if (!selection.passage) {
+    renderAmazeOnCampaign(state.amazeonState);
+    $("amazeonContentReason").textContent = "Every structured Amaze-On playtest passage has been used. Production content remains review-gated.";
+    show("amazeon");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "AMAZE-ON CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Amaze-On test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function selectSpottyFiPlaytestPassage() {
+  const selection = selectNextSpottyFiPassage(state.spottyfiState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "spottyfi";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
+function selectSearchishPlaytestPassage() {
+  const selection = selectNextSearchishPassage(state.searchishState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "searchish";
   if (selection.passage) setActivePassage(selection.passage);
   return selection;
 }
@@ -501,6 +553,46 @@ function openMapGuessPlaytestReading() {
   resetReadingAttempt();
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MAPGUESS CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MapGuess test campaign, but it cannot approve content, persist slot-ten evidence, or unlock the finale.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function openSpottyFiPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "spottyfi";
+  state.spottyfiPlaytestMode = true;
+  state.spottyfiPersisted = false;
+  const selection = selectSpottyFiPlaytestPassage();
+  if (!selection.passage) {
+    renderSpottyFiCampaign(state.spottyfiState);
+    $("spottyfiContentReason").textContent = "Every structured Spotty-Fi playtest passage has been used. Production content remains review-gated.";
+    show("spottyfi");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "SPOTTY-FI CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Spotty-Fi test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function openSearchishPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "searchish";
+  state.searchishPlaytestMode = true;
+  state.searchishPersisted = false;
+  const selection = selectSearchishPlaytestPassage();
+  if (!selection.passage) {
+    renderSearchishCampaign(state.searchishState);
+    $("searchishContentReason").textContent = "Every structured Search-ish playtest passage has been used. Production content remains review-gated.";
+    show("searchish");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "SEARCH-ISH CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Search-ish test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
   show("setup");
   return true;
@@ -674,9 +766,9 @@ function show(name) {
   const myCornerScreen = name === "mycorner" || (readingScreen && state.readingSiteId === "mycorner");
   const yahuhScreen = name === "yahuh" || (readingScreen && state.readingSiteId === "yahuh");
   const viewtubeScreen = name === "viewtube" || (readingScreen && state.readingSiteId === "viewtube");
-  const searchishScreen = name === "searchish";
-  const amazeonScreen = name === "amazeon";
-  const spottyfiScreen = name === "spottyfi";
+  const searchishScreen = name === "searchish" || (readingScreen && state.readingSiteId === "searchish");
+  const amazeonScreen = name === "amazeon" || (readingScreen && state.readingSiteId === "amazeon");
+  const spottyfiScreen = name === "spottyfi" || (readingScreen && state.readingSiteId === "spottyfi");
   const mapGuessScreen = name === "mapguess" || (readingScreen && state.readingSiteId === "mapguess");
   const activeSiteScreen = name === "sitePreview" || wikiWhyScreen || threadItScreen || facePlaceScreen || myCornerScreen || yahuhScreen || viewtubeScreen || searchishScreen || amazeonScreen || spottyfiScreen || mapGuessScreen;
   $("desktopContext").textContent = name === "hub"
@@ -1919,8 +2011,17 @@ function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {})
   }
   $("searchishEvidenceReceipt").hidden = !view.secured || !state.searchishEvidenceReceiptOpen;
   $("searchishEvidenceToggle").setAttribute("aria-expanded", String(state.searchishEvidenceReceiptOpen));
-  const selection = selectNextSearchishPassage(state.searchishState);
+  const selection = selectNextSearchishPassage(state.searchishState, { lane: "playtest" });
   $("searchishCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("searchishContentReason").textContent = selection.passage
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("searchishPlaytest").disabled = !selection.passage || view.midpoint.actionRequired || view.secured;
+  $("searchishPlaytest").textContent = view.secured
+    ? "Search-ish playtest complete"
+    : view.midpoint.actionRequired
+      ? "Review Five Costumes first"
+      : "Playtest candidate passage";
   $("searchishLiveStatus").textContent = view.secured ? `SOURCE ORIGINS VERIFIED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 SEARCH-ISH UNITS SAVED`;
 }
 
@@ -1966,13 +2067,22 @@ function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
   if (view.securedPayoff) { $("amazeonBlockedBody").textContent = view.securedPayoff.blockedWrite.body; $("amazeonEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior; }
   $("amazeonEvidenceReceipt").hidden = !view.secured || !state.amazeonEvidenceReceiptOpen;
   $("amazeonEvidenceToggle").setAttribute("aria-expanded", String(state.amazeonEvidenceReceiptOpen));
-  const selection = selectNextAmazeOnPassage(state.amazeonState);
+  const selection = selectNextAmazeOnPassage(state.amazeonState, { lane: "playtest" });
   $("amazeonCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("amazeonContentReason").textContent = selection.passage
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "Every structured Amaze-On playtest passage has been used. Production content remains review-gated.";
+  $("amazeonPlaytest").disabled = !selection.passage || view.midpoint.actionRequired || view.secured;
+  $("amazeonPlaytest").textContent = view.secured
+    ? "Amaze-On playtest complete"
+    : view.midpoint.actionRequired
+      ? "Trace Negative Purchasing first"
+      : "Playtest candidate passage";
   $("amazeonLiveStatus").textContent = view.secured ? `HUMAN CONFIRMATION REQUIRED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 AMAZE-ON UNITS SAVED`;
 }
 function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});show("amazeon");syncAmazeOnReceipt();}
 function buildAmazeOnPreviewState(unitCount){let current=readAmazeOnState(null);for(let index=0;index<unitCount;index+=1){if(index===AMAZEON_SORT_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeAmazeOnMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;const transition=advanceAmazeOnState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateAmazeOnReadingOutcome({campaignState:current}),passageId:`amazeon-preview-${index+1}`,sessionId:`amazeon-preview-session-${index+1}`});if(!transition.ok)throw new Error(transition.reason??"Amaze-On preview did not advance");current=transition.state;}return current;}
-function renderSpottyFiCampaign(campaignState,{diagnosticMode=false}={}){const view=getSpottyFiCampaignView(campaignState);$("spottyfiPage").dataset.detailOpen=String(state.spottyfiDetailOpen);$("spottyfiHeaderStatus").textContent=view.headerStatus;$("spottyfiQueueOwner").textContent=view.queueOwner;$("spottyfiTrackList").innerHTML=view.tracks.map((track,index)=>`<li><div class="spottyfi-cover" aria-hidden="true"></div><b>${escapeMarkup(track.title)}</b><span>${escapeMarkup(track.creator)} · ${track.duration}</span><span>${escapeMarkup(track.genreDisplay)}</span><span>${escapeMarkup(track.creditsDisplay)}</span></li>`).join("");$("spottyfiQueueList").innerHTML=view.tracks.map((track,index)=>`<li><b>${track.queuePosition??"—"}</b><span>${escapeMarkup(track.title)} — ${escapeMarkup(track.creator)}</span><span>${track.duration}</span></li>`).join("");$("spottyfiAccountCreated").textContent=view.history.accountCreated;$("spottyfiPredictedHistory").textContent=view.history.fakeHistoryStarted;$("spottyfiQueueSource").textContent=view.history.queueSource;$("spottyfiSuggestionList").innerHTML=view.suggestions.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiMidpoint").hidden=!view.midpoint.actionRequired;$("spottyfiMidpointBody").textContent=view.midpoint.body;$("spottyfiMidpointProof").innerHTML=view.midpoint.proof.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiTimelineUnits").innerHTML=[...view.progress.disclosureUnits,...view.progress.controlUnits].map(unit=>`<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");$("spottyfiSecuredPayoff").hidden=!view.secured;if(view.securedPayoff){$("spottyfiBlockedBody").textContent=`${view.securedPayoff.blockedWrite.label}: ${view.securedPayoff.blockedWrite.body}`;$("spottyfiEvidenceSummary").textContent=view.securedPayoff.evidence.aiBehavior}$("spottyfiEvidenceReceipt").hidden=!view.secured||!state.spottyfiEvidenceReceiptOpen;$("spottyfiEvidenceToggle").setAttribute("aria-expanded",String(state.spottyfiEvidenceReceiptOpen));const selection=selectNextSpottyFiPassage(state.spottyfiState);$("spottyfiCandidateCount").textContent=`${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;$("spottyfiLiveStatus").textContent=view.secured?`LISTENER CONTROL RESTORED${diagnosticMode?" · TEST":""}`:`${view.progress.completedUnitCount} OF 8 SPOTTY-FI UNITS SAVED`}
+function renderSpottyFiCampaign(campaignState,{diagnosticMode=false}={}){const view=getSpottyFiCampaignView(campaignState);$("spottyfiPage").dataset.detailOpen=String(state.spottyfiDetailOpen);$("spottyfiHeaderStatus").textContent=view.headerStatus;$("spottyfiQueueOwner").textContent=view.queueOwner;$("spottyfiTrackList").innerHTML=view.tracks.map((track,index)=>`<li><div class="spottyfi-cover" aria-hidden="true"></div><b>${escapeMarkup(track.title)}</b><span>${escapeMarkup(track.creator)} · ${track.duration}</span><span>${escapeMarkup(track.genreDisplay)}</span><span>${escapeMarkup(track.creditsDisplay)}</span></li>`).join("");$("spottyfiQueueList").innerHTML=view.tracks.map((track,index)=>`<li><b>${track.queuePosition??"—"}</b><span>${escapeMarkup(track.title)} — ${escapeMarkup(track.creator)}</span><span>${track.duration}</span></li>`).join("");$("spottyfiAccountCreated").textContent=view.history.accountCreated;$("spottyfiPredictedHistory").textContent=view.history.fakeHistoryStarted;$("spottyfiQueueSource").textContent=view.history.queueSource;$("spottyfiSuggestionList").innerHTML=view.suggestions.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiMidpoint").hidden=!view.midpoint.actionRequired;$("spottyfiMidpointBody").textContent=view.midpoint.body;$("spottyfiMidpointProof").innerHTML=view.midpoint.proof.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiTimelineUnits").innerHTML=[...view.progress.disclosureUnits,...view.progress.controlUnits].map(unit=>`<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");$("spottyfiSecuredPayoff").hidden=!view.secured;if(view.securedPayoff){$("spottyfiBlockedBody").textContent=`${view.securedPayoff.blockedWrite.label}: ${view.securedPayoff.blockedWrite.body}`;$("spottyfiEvidenceSummary").textContent=view.securedPayoff.evidence.aiBehavior}$("spottyfiEvidenceReceipt").hidden=!view.secured||!state.spottyfiEvidenceReceiptOpen;$("spottyfiEvidenceToggle").setAttribute("aria-expanded",String(state.spottyfiEvidenceReceiptOpen));const selection=selectNextSpottyFiPassage(state.spottyfiState,{lane:"playtest"});$("spottyfiCandidateCount").textContent=`${selection.selectableCount} structured playtest candidate${selection.selectableCount===1?"":"s"} · ${selection.requiredFirstRun} required`;$("spottyfiContentReason").textContent=selection.passage?"A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence.":"No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";$("spottyfiPlaytest").disabled=!selection.passage||view.midpoint.actionRequired;$("spottyfiPlaytest").textContent=view.secured?"Spotty-Fi playtest complete":view.midpoint.actionRequired?"Review predicted history first":"Playtest candidate passage";$("spottyfiLiveStatus").textContent=view.secured?`LISTENER CONTROL RESTORED${diagnosticMode?" · TEST":""}`:`${view.progress.completedUnitCount} OF 8 SPOTTY-FI UNITS SAVED`}
 function openSpottyFiExperience(){state.selectedSiteId="spottyfi";const current=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;renderSpottyFiCampaign(current,{diagnosticMode:state.spottyfiDiagnosticMode});show("spottyfi");syncSpottyFiDetail()}
 function buildSpottyFiPreviewState(unitCount){let current=readSpottyFiState(null);for(let index=0;index<unitCount;index++){if(index===SPOTTYFI_DISCLOSURE_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeSpottyFiMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:05.500Z"}).state;const t=advanceSpottyFiState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateSpottyFiReadingOutcome({campaignState:current}),passageId:`spottyfi-preview-${index+1}`,sessionId:`spottyfi-preview-session-${index+1}`});if(!t.ok)throw new Error(t.reason??"Spotty-Fi preview did not advance");current=t.state}return current}
 
@@ -4087,7 +4197,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "mapguess"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -4123,6 +4233,31 @@ $("continueResult").onclick = () => {
     renderRecoveryHub();
     return;
   }
+  if (state.readingSiteId === "amazeon") {
+    if (state.resultApplied) {
+      openAmazeOnExperience();
+      return;
+    }
+    const outcome = calculateAmazeOnReadingOutcome({ accepted: Boolean(state.result), campaignState: state.amazeonState });
+    const repair = applyAmazeOnReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.amazeonState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.amazeonState = repair.state;
+    state.amazeonPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to Amaze-On";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `${state.amazeonState.lastReaction ?? "Amaze-On test unit saved."} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderAmazeOnCampaign(state.amazeonState);
+    renderRecoveryHub();
+    return;
+  }
   if (state.readingSiteId === "viewtube") {
     if (state.resultApplied) {
       openViewTubeExperience();
@@ -4145,6 +4280,56 @@ $("continueResult").onclick = () => {
     $("again").textContent = "Passage already counted";
     $("reportStatus").textContent = `${state.viewtubeState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderViewTubeCampaign(state.viewtubeState);
+    renderRecoveryHub();
+    return;
+  }
+  if (state.readingSiteId === "spottyfi") {
+    if (state.resultApplied) {
+      openSpottyFiExperience();
+      return;
+    }
+    const outcome = calculateSpottyFiReadingOutcome({ accepted: Boolean(state.result), campaignState: state.spottyfiState });
+    const repair = applySpottyFiReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.spottyfiState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.spottyfiState = repair.state;
+    state.spottyfiPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to Spotty-Fi";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = `Spotty-Fi saved ${state.spottyfiState.completedUnitIds.length} of 8 units. Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
+    renderSpottyFiCampaign(state.spottyfiState);
+    renderRecoveryHub();
+    return;
+  }
+  if (state.readingSiteId === "searchish") {
+    if (state.resultApplied) {
+      openSearchishExperience();
+      return;
+    }
+    const outcome = calculateSearchishReadingOutcome({ accepted: Boolean(state.result), campaignState: state.searchishState });
+    const repair = applySearchishReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.searchishState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.searchishState = repair.state;
+    state.searchishPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to Search-ish";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = "Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.";
+    renderSearchishCampaign(state.searchishState);
     renderRecoveryHub();
     return;
   }
@@ -4436,10 +4621,13 @@ $("mycornerReturn").onclick = returnToHub;
 $("mycornerPlaytest").onclick = openMyCornerPlaytestReading;
 $("yahuhReturn").onclick = returnToHub;
 $("yahuhPlaytest").onclick = openYahuhPlaytestReading;
+$("spottyfiPlaytest").onclick = openSpottyFiPlaytestReading;
 $("viewtubeReturn").onclick = returnToHub;
 $("viewtubePlaytest").onclick = openViewTubePlaytestReading;
 $("searchishReturn").onclick = returnToHub;
+$("searchishPlaytest").onclick = openSearchishPlaytestReading;
 $("amazeonReturn").onclick = returnToHub;
+$("amazeonPlaytest").onclick = openAmazeOnPlaytestReading;
 $("spottyfiReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
 $("mapguessReturn").onclick = returnToHub;
@@ -4631,12 +4819,15 @@ document.addEventListener("keydown", (event) => {
 });
 $("searchishMidpointAction").onclick = () => {
   const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
-  const transition = state.searchishDiagnosticMode
+  const transition = state.searchishDiagnosticMode || state.searchishPlaytestMode
     ? acknowledgeSearchishMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeSearchishMidpoint(localStateStorage, { currentState: visible });
   if (!transition.ok) return;
   if (state.searchishDiagnosticMode) state.searchishDiagnosticState = transition.state;
-  else state.searchishState = transition.state;
+  else {
+    state.searchishState = transition.state;
+    state.searchishPersisted = state.searchishPlaytestMode ? false : transition.ok;
+  }
   state.searchishInspectorOpen = true;
   renderSearchishCampaign(transition.state, { diagnosticMode: state.searchishDiagnosticMode });
   syncSearchishInspector();
@@ -4652,7 +4843,7 @@ function syncAmazeOnReceipt(){const drawer=matchMedia("(max-width: 1279px)").mat
 $("amazeonReceiptToggle").onclick=()=>{state.amazeonReceiptOpen=!state.amazeonReceiptOpen;syncAmazeOnReceipt();if(state.amazeonReceiptOpen)requestAnimationFrame(()=>$("amazeonReceiptHeading").focus({preventScroll:true}));};
 $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});};
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
-$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const transition=state.amazeonDiagnosticMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else state.amazeonState=transition.state;state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
+$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
 function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
 $("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});
