@@ -2,12 +2,27 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { SEARCHISH_CAMPAIGN_UNITS, calculateSearchishReadingOutcome } from "../apps/internet-recovery/searchish-rules.js";
 import { acknowledgeSearchishMidpointState, advanceSearchishState, normalizeSearchishState } from "../apps/internet-recovery/searchish-state.js";
+import { SEARCHISH_DECK_A_IDS, selectNextSearchishPassage } from "../apps/internet-recovery/searchish-content.js";
 
 test("Search-ish freezes four result origins plus three source branches", () => {
   assert.deepEqual(SEARCHISH_CAMPAIGN_UNITS.map(({ unitId }) => unitId), [
     "result_1_origin", "result_2_origin", "result_3_origin", "result_4_origin",
     "primary_branch", "independent_branch", "placement_origin_gate",
   ]);
+});
+
+test("Search-ish exposes seven candidate playtests without promoting content", () => {
+  const first = selectNextSearchishPassage({ completedPassageIds: [] }, { lane: "playtest" });
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.selectableCount, 7);
+  assert.equal(first.requiredFirstRun, 7);
+  assert.equal(first.passage?.id, SEARCHISH_DECK_A_IDS[0]);
+  assert.equal(first.passage?.availability, "candidate");
+  const next = selectNextSearchishPassage({ completedPassageIds: [first.passage.id] }, { lane: "playtest" });
+  assert.equal(next.passage?.id, SEARCHISH_DECK_A_IDS[1]);
+  assert.equal(next.canonicalEligible, false);
 });
 
 test("Search-ish saves Five Costumes and requires explicit acknowledgement", () => {

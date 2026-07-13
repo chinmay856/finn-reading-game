@@ -9,6 +9,20 @@
 - All progress and slot-six evidence remain tab-only. No audio, video, iframe,
   canonical evidence, finale gate, or Reading Engine behavior changed.
 
+## 2026-07-12 Search-ish candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  Search-ish Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 origin/branch campaign; Five Costumes
+  acknowledgement and the semantic source inspector remain wrapper-owned
+  interactions.
+- All playtest progress and slot-seven evidence remain tab-only and cannot
+  satisfy canonical or finale gates. The separate reading-engine agent retains
+  speech/alignment ownership.
+- `npm run check`, all 323 tests, and `npm run build` pass. The local Vite route
+  returned HTTP 200; visual browser automation was unavailable in this task's
+  runtime, so desktop visual inspection remains the publication gate.
+
 ## 2026-07-12 Yahuh candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
