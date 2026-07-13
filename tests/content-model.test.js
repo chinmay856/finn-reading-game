@@ -181,6 +181,12 @@ test("approved content cannot bypass pending review, microphone, or rights gates
   assert.equal(isSelectablePassage(approvedPassage(
     A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE,
     "placeholder-revision-passage",
+    {
+      source: {
+        ...A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE.source,
+        frozenRevision: "candidate-pending-source-revision-freeze",
+      },
+    },
   )), false);
 });
 

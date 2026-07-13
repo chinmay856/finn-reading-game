@@ -14,9 +14,32 @@
   but sherpa is not shipped in the deployed path: its 203 MB runtime still
   requires a host or isolation strategy that can provide the proven security
   headers. A streaming failure must never disable Whisper scoring or Continue.
-- Local validation: syntax checks passed; 330 tests passed; production build
+- Combined ten-site validation: syntax checks passed; 339 tests passed; production build
   passed; desktop browser QA confirmed one active authored line, no horizontal
   overflow, and the existing independent Reading Companion layout.
+
+## MapGuess candidate playthrough — active 2026-07-12
+
+MapGuess now exposes all eight complete first-run candidates through the
+explicit noncanonical playtest lane and routes them through the shared Reading
+Companion into five map rebuilds, the saved Moving Target acknowledgement and
+route-goal choice, and three destination anchors. Progress is tab-only, so the
+slot-ten receipt cannot be persisted as canonical evidence or unlock the
+finale. Production selection and independent review remain fail-closed. No
+Reading Engine code changed. Production-bundle browser QA at desktop size
+confirmed the primary playtest control remains visible above the taskbar and
+opens `A Map Is Not a Photograph` in the shared setup screen with no horizontal
+overflow.
+
+## Amaze-On candidate playthrough — active 2026-07-12
+
+Amaze-On now exposes all seven complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into four evidence-parcel sorts, the Negative Purchasing
+acknowledgement, and three consent-ledger repairs. Progress is intentionally
+tab-only, so the slot-eight receipt cannot become persisted canonical evidence
+or unlock the finale. Production selection and every independent content-review
+gate remain fail-closed. No Reading Engine code changed.
 
 ## ViewTube candidate playthrough — active 2026-07-12
 
@@ -42,6 +65,16 @@ fail-closed. No Reading Engine code changed.
 - Next action: integrate the neutral contract behind a feature flag after the
   production host proves cross-origin isolation and one natural 180-220 WPM
   reader fixture passes.
+
+## Search-ish candidate playthrough — active 2026-07-12
+
+Search-ish now exposes all seven complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into four origin restores, the Five Costumes acknowledgement, and
+three independent-source branch gates. Progress is intentionally tab-only, so
+the slot-seven receipt cannot become persisted canonical evidence or unlock the
+finale. Production selection and every independent content-review gate remain
+fail-closed. No Reading Engine code changed.
 
 ## Yahuh candidate playthrough — active 2026-07-12
 
@@ -653,3 +686,15 @@ reference; do not resume mobile optimization unless the user reprioritizes it.
 - Browser QA at 1440x900 measured all primary cards visible and exact outer
   client/scroll-height matches (756/756) for all three sites. Secondary detail
   remains in semantic DOM but is visually clamped in overview mode.
+## Spotty-Fi candidate playthrough — active 2026-07-12
+
+Spotty-Fi now exposes all eight complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion. Accepted results advance the wrapper-owned five-disclosure plus
+three-listener-control campaign. The saved predicted-history interruption still
+requires Finn's explicit acknowledgement before the sixth passage can begin.
+Playtest progress and slot-nine evidence remain tab-only; production selection,
+content review, canonical evidence, and finale gates remain fail-closed. No
+Reading Engine code changed. `npm run check`, all 325 tests, and `npm run build`
+pass. Automated browser control was unavailable for this worktree, so live
+desktop click-through remains the publication smoke check.

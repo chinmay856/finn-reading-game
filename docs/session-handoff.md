@@ -2,8 +2,8 @@
 
 ## 2026-07-12 Evidence-driven Reading Companion app integration
 
-- Integration branch: `agent/reading-companion-app-integration`, based on main
-  after ViewTube PR #104.
+- Integration branch: `agent/reading-companion-app-integration`, reconciled with
+  ten-site main through MapGuess PR #108 (`80682ba`).
 - The active app now uses `KnownTextLineGuide` with stable display lines derived
   before microphone capture. Checkpoint transcript evidence is accumulated only
   in memory for the current attempt and drives a monotonic centered line.
@@ -12,9 +12,46 @@
 - The streaming recognizer contract, spike, ADR, licensed fixture, and benchmark
   evidence are present. Sherpa remains behind its hosting gate and is not loaded
   by the production app on GitHub Pages.
-- Validation completed: `npm run check`, 330 tests, `npm run build`, and desktop
+- Validation completed: `npm run check`, 339 tests, `npm run build`, and desktop
   browser inspection of the reading screen. A natural consenting-reader run at
   180–220 WPM remains required before declaring streaming UX complete.
+
+## 2026-07-12 MapGuess candidate playthrough
+
+- Follow-up browser QA found that a persisted MapGuess campaign could exhaust
+  or secure the state used to derive the playtest button, leaving a click on
+  `Playtest candidate passage` on the MapGuess screen. The playtest now owns a
+  fresh tab-only state separate from canonical persisted MapGuess progress, and
+  the button-to-handler-to-setup route has an explicit source contract test.
+- Added the explicit playtest selector and Reading Companion route for all
+  eight MapGuess first-run candidates while production selection remains
+  fail-closed.
+- Froze A01's cited NOAA page to its visible 2026-06-22 update, verified
+  2026-07-12, so provenance is concrete without changing any pending content
+  review status.
+- Reading results drive the existing exact 5+3 campaign; Moving Target
+  acknowledgement and the four valid route goals remain wrapper-owned
+  interactions outside speech scoring.
+- All playtest progress and slot-ten evidence remain tab-only. No canonical
+  evidence, finale gate, external map service, or Reading Engine behavior
+  changed.
+- After merging authoritative `main` at `33b8cdb`, `npm run check`, all 329
+  tests, and `npm run build` pass together with the Search-ish, Amaze-On, and
+  Spotty-Fi playtest lanes. The local MapGuess launch route returns HTTP 200.
+- Final production-bundle browser QA found the playtest button could sit beneath
+  the fixed taskbar at a 712px-high desktop viewport. The compact-height layout
+  now keeps both MapGuess actions visibly inside the companion window. Browser
+  recheck confirmed the primary button opens `A Map Is Not a Photograph` in the
+  shared setup screen and the page has no horizontal overflow.
+
+## 2026-07-12 Amaze-On candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  Amaze-On Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 sort/consent campaign; Negative
+  Purchasing acknowledgement and the receipt trace remain wrapper-owned.
+- All playtest progress and slot-eight evidence remain tab-only and cannot
+  satisfy canonical or finale gates. Reading Engine internals were not changed.
 
 ## 2026-07-12 ViewTube candidate playthrough
 
@@ -40,6 +77,20 @@
   the final reading result.
 - Production code was not edited. The integrating agent should follow the exact
   seven-step sequence and acceptance gate in the handoff document.
+
+## 2026-07-12 Search-ish candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  Search-ish Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 origin/branch campaign; Five Costumes
+  acknowledgement and the semantic source inspector remain wrapper-owned
+  interactions.
+- All playtest progress and slot-seven evidence remain tab-only and cannot
+  satisfy canonical or finale gates. The separate reading-engine agent retains
+  speech/alignment ownership.
+- `npm run check`, all 323 tests, and `npm run build` pass. The local Vite route
+  returned HTTP 200; visual browser automation was unavailable in this task's
+  runtime, so desktop visual inspection remains the publication gate.
 
 ## 2026-07-12 Yahuh candidate playthrough
 
@@ -1057,3 +1108,17 @@ production speech adapter.
   and does not mutate passage availability or review manifests.
 - Production `isSelectablePassage` and `selectNextPassage` behavior is
   unchanged. ThreadIt is the next wrapper to connect end to end.
+## 2026-07-12 Spotty-Fi candidate playthrough
+
+- Added the explicit playtest selector and shared Reading Companion route for
+  all eight Spotty-Fi Deck A candidates while production selection remains
+  fail-closed.
+- Reading results advance the existing five disclosure and three listener-
+  control units. The predicted-history midpoint remains an explicit player
+  acknowledgement and blocks the sixth reading until reviewed.
+- Playtest progress, the blocked insert, and slot-nine evidence are tab-only;
+  they cannot approve content, become persisted canonical evidence, or satisfy
+  the finale gate.
+- No Reading Engine code changed. `npm run check`, all 325 tests, and
+  `npm run build` pass. The local build served successfully over HTTP, but no
+  in-app browser backend was available for automated desktop interaction.

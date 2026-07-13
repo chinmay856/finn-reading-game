@@ -56,7 +56,7 @@ export const A_MAP_IS_NOT_A_PHOTOGRAPH_PASSAGE = Object.freeze({
     author: "NOAA National Ocean Service",
     basis: "us-government-source-adaptation",
     domain: "science-and-technology",
-    frozenRevision: "candidate-pending-source-revision-freeze",
+    frozenRevision: "NOAA page last updated 2026-06-22; verified 2026-07-12",
     modificationNotice: "Newly written and reorganized for length, reading level, and microphone use; NOAA images, marks, page layout, and wording are not reproduced.",
     sourceType: "government-source-adaptation",
     sourceUrl: "https://oceanservice.noaa.gov/education/tutorial_nautical_charts/nautical_charts03_cartography.html",
