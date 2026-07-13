@@ -10,7 +10,7 @@
     <main>
       <header class="intro">
         <p class="eyebrow">Isolated Reading Engine experiment</p>
-        <h1>Evidence-locked reading cursor</h1>
+        <h1>Evidence-locked line guide</h1>
         <p>
           A local streaming recognizer supplies rough position evidence. The UI
           follows that evidence smoothly; it does not need a polished live transcript
@@ -32,11 +32,13 @@
             <p class="eyebrow">Fixed replay fixture</p>
             <h2 id="passageHeading">LibriSpeech sample 1272-128104-0002</h2>
           </div>
-          <button id="runButton" disabled>Run sample</button>
+          <div class="actions">
+            <button id="runButton" disabled>Run sample</button>
+            <button id="suiteButton" class="secondary" disabled>Run tough fixture suite</button>
+          </div>
         </div>
 
         <div class="passage" id="passage" aria-label="Reference passage"></div>
-        <div class="cursor" id="cursor" aria-hidden="true"></div>
 
         <div class="playback-row">
           <audio id="sampleAudio" controls preload="auto" src="./assets/1272-128104-0002.flac"></audio>
@@ -53,6 +55,23 @@
           <h2>Replay measurements</h2>
           <dl id="metrics"></dl>
         </article>
+      </section>
+
+      <section class="event-card">
+        <div class="event-heading">
+          <div>
+            <p class="eyebrow">Comparable local replays</p>
+            <h2>Fixture suite results</h2>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Fixture</th><th>WPM</th><th>First evidence</th><th>Worst gap</th><th>Worst block</th><th>Evidence</th><th>Line</th><th>Coverage</th></tr>
+            </thead>
+            <tbody id="suiteResults"><tr><td colspan="8">Run the suite to compare all conditions.</td></tr></tbody>
+          </table>
+        </div>
       </section>
 
       <section class="event-card">
