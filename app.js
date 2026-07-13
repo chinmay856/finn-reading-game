@@ -140,7 +140,7 @@ import {
 import { getViewTubeCampaignView } from "./apps/internet-recovery/viewtube-view.js";
 import { selectNextViewTubePassage } from "./apps/internet-recovery/viewtube-content.js";
 import { calculateSearchishReadingOutcome, SEARCHISH_RESTORE_UNITS } from "./apps/internet-recovery/searchish-rules.js";
-import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
+import { SEARCHISH_EVIDENCE_RECORD, acknowledgeSearchishMidpoint, acknowledgeSearchishMidpointState, advanceSearchishState, applySearchishReading, readSearchishState } from "./apps/internet-recovery/searchish-state.js";
 import { getSearchishCampaignView } from "./apps/internet-recovery/searchish-view.js";
 import { selectNextSearchishPassage } from "./apps/internet-recovery/searchish-content.js";
 import { AMAZEON_SORT_UNITS, calculateAmazeOnReadingOutcome } from "./apps/internet-recovery/amazeon-rules.js";
@@ -260,6 +260,7 @@ const state = {
   searchishState: readSearchishState(localStateStorage),
   searchishPersisted: Boolean(localStateStorage),
   searchishDiagnosticMode: false,
+  searchishPlaytestMode: false,
   searchishDiagnosticState: readSearchishState(null),
   searchishInspectorOpen: false,
   searchishEvidenceReceiptOpen: false,
@@ -454,6 +455,16 @@ function selectViewTubePlaytestPassage() {
   return selection;
 }
 
+function selectSearchishPlaytestPassage() {
+  const selection = selectNextSearchishPassage(state.searchishState, { lane: "playtest" });
+  state.contentAvailabilityReason = selection.reason;
+  state.contentCandidateCount = selection.unavailableCount;
+  state.campaignEligible = Boolean(selection.passage);
+  state.readingSiteId = "searchish";
+  if (selection.passage) setActivePassage(selection.passage);
+  return selection;
+}
+
 function openViewTubePlaytestReading() {
   hideCharacterDialog();
   state.selectedSiteId = "viewtube";
@@ -469,6 +480,26 @@ function openViewTubePlaytestReading() {
   resetReadingAttempt();
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "VIEWTUBE CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local ViewTube test campaign, but it cannot approve content or unlock final evidence.";
+  $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
+  show("setup");
+  return true;
+}
+
+function openSearchishPlaytestReading() {
+  hideCharacterDialog();
+  state.selectedSiteId = "searchish";
+  state.searchishPlaytestMode = true;
+  state.searchishPersisted = false;
+  const selection = selectSearchishPlaytestPassage();
+  if (!selection.passage) {
+    renderSearchishCampaign(state.searchishState);
+    $("searchishContentReason").textContent = "Every structured Search-ish playtest passage has been used. Production content remains review-gated.";
+    show("searchish");
+    return false;
+  }
+  resetReadingAttempt();
+  document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "SEARCH-ISH CANDIDATE PLAYTEST";
+  document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Search-ish test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
   show("setup");
   return true;
@@ -642,7 +673,7 @@ function show(name) {
   const myCornerScreen = name === "mycorner" || (readingScreen && state.readingSiteId === "mycorner");
   const yahuhScreen = name === "yahuh" || (readingScreen && state.readingSiteId === "yahuh");
   const viewtubeScreen = name === "viewtube" || (readingScreen && state.readingSiteId === "viewtube");
-  const searchishScreen = name === "searchish";
+  const searchishScreen = name === "searchish" || (readingScreen && state.readingSiteId === "searchish");
   const amazeonScreen = name === "amazeon";
   const spottyfiScreen = name === "spottyfi";
   const mapGuessScreen = name === "mapguess";
@@ -1887,8 +1918,17 @@ function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {})
   }
   $("searchishEvidenceReceipt").hidden = !view.secured || !state.searchishEvidenceReceiptOpen;
   $("searchishEvidenceToggle").setAttribute("aria-expanded", String(state.searchishEvidenceReceiptOpen));
-  const selection = selectNextSearchishPassage(state.searchishState);
+  const selection = selectNextSearchishPassage(state.searchishState, { lane: "playtest" });
   $("searchishCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
+  $("searchishContentReason").textContent = selection.passage
+    ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
+    : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
+  $("searchishPlaytest").disabled = !selection.passage || view.midpoint.actionRequired || view.secured;
+  $("searchishPlaytest").textContent = view.secured
+    ? "Search-ish playtest complete"
+    : view.midpoint.actionRequired
+      ? "Review Five Costumes first"
+      : "Playtest candidate passage";
   $("searchishLiveStatus").textContent = view.secured ? `SOURCE ORIGINS VERIFIED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 SEARCH-ISH UNITS SAVED`;
 }
 
@@ -4035,7 +4075,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
-  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube"].includes(state.readingSiteId)) {
+  if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish"].includes(state.readingSiteId)) {
     resetReadingAttempt();
     show("setup");
     return;
@@ -4068,6 +4108,31 @@ $("continueResult").onclick = () => {
     $("again").textContent = "Passage already counted";
     $("reportStatus").textContent = `${state.viewtubeState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderViewTubeCampaign(state.viewtubeState);
+    renderRecoveryHub();
+    return;
+  }
+  if (state.readingSiteId === "searchish") {
+    if (state.resultApplied) {
+      openSearchishExperience();
+      return;
+    }
+    const outcome = calculateSearchishReadingOutcome({ accepted: Boolean(state.result), campaignState: state.searchishState });
+    const repair = applySearchishReading(null, {
+      completedAt: new Date().toISOString(),
+      currentState: state.searchishState,
+      outcome,
+      passageId: activePassage.id,
+      sessionId: state.sessionId,
+    });
+    state.searchishState = repair.state;
+    state.searchishPersisted = false;
+    state.resultApplied = true;
+    $("repairOutcome").hidden = true;
+    $("continueResult").textContent = "Return to Search-ish";
+    $("again").disabled = true;
+    $("again").textContent = "Passage already counted";
+    $("reportStatus").textContent = "Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.";
+    renderSearchishCampaign(state.searchishState);
     renderRecoveryHub();
     return;
   }
@@ -4362,6 +4427,7 @@ $("yahuhPlaytest").onclick = openYahuhPlaytestReading;
 $("viewtubeReturn").onclick = returnToHub;
 $("viewtubePlaytest").onclick = openViewTubePlaytestReading;
 $("searchishReturn").onclick = returnToHub;
+$("searchishPlaytest").onclick = openSearchishPlaytestReading;
 $("amazeonReturn").onclick = returnToHub;
 $("spottyfiReturn").onclick = returnToHub;
 $("mapguessBack").onclick = returnToHub;
@@ -4553,12 +4619,15 @@ document.addEventListener("keydown", (event) => {
 });
 $("searchishMidpointAction").onclick = () => {
   const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
-  const transition = state.searchishDiagnosticMode
+  const transition = state.searchishDiagnosticMode || state.searchishPlaytestMode
     ? acknowledgeSearchishMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeSearchishMidpoint(localStateStorage, { currentState: visible });
   if (!transition.ok) return;
   if (state.searchishDiagnosticMode) state.searchishDiagnosticState = transition.state;
-  else state.searchishState = transition.state;
+  else {
+    state.searchishState = transition.state;
+    state.searchishPersisted = state.searchishPlaytestMode ? false : transition.ok;
+  }
   state.searchishInspectorOpen = true;
   renderSearchishCampaign(transition.state, { diagnosticMode: state.searchishDiagnosticMode });
   syncSearchishInspector();

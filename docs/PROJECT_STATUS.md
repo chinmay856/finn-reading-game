@@ -10,6 +10,16 @@ tab-only, so slot-six evidence cannot become persisted canonical evidence or
 unlock the finale. Production selection and independent review remain
 fail-closed. No Reading Engine code changed.
 
+## Search-ish candidate playthrough — active 2026-07-12
+
+Search-ish now exposes all seven complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into four origin restores, the Five Costumes acknowledgement, and
+three independent-source branch gates. Progress is intentionally tab-only, so
+the slot-seven receipt cannot become persisted canonical evidence or unlock the
+finale. Production selection and every independent content-review gate remain
+fail-closed. No Reading Engine code changed.
+
 ## Yahuh candidate playthrough — active 2026-07-12
 
 Yahuh now exposes all six complete Deck A candidates through the explicit
