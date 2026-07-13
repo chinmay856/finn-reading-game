@@ -1,5 +1,20 @@
 # Project status
 
+## Reading Companion integration kit — ready for integration 2026-07-12
+
+- A theme-neutral, evidence-locked line guide is packaged under
+  `reading-companion/` on `agent/reading-companion-integration-kit`.
+- The isolated sherpa-onnx spike and repeatable 154-250 WPM fixture results are
+  under `prototypes/reading-companion/`; the deployed app is unchanged.
+- The existing local Whisper path remains the final scoring authority. The new
+  lane is only for low-latency visual position.
+- Exact wiring, hosting headers, fallback behavior, privacy boundaries, and
+  acceptance checks are in
+  `docs/engine/READING_COMPANION_INTEGRATION_HANDOFF.md`.
+- Next action: integrate the neutral contract behind a feature flag after the
+  production host proves cross-origin isolation and one natural 180-220 WPM
+  reader fixture passes.
+
 ## Yahuh candidate playthrough — active 2026-07-12
 
 Yahuh now exposes all six complete Deck A candidates through the explicit

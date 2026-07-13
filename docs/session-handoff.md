@@ -1,5 +1,21 @@
 # Session handoff
 
+## 2026-07-12 Reading Companion integration kit
+
+- Branch: `agent/reading-companion-integration-kit`
+- Deliverable: `docs/engine/READING_COMPANION_INTEGRATION_HANDOFF.md`
+- Reusable code: `reading-companion/known-text-line-guide.js` and
+  `reading-companion/live-reading-companion.js`
+- Evidence: `prototypes/reading-companion/` and
+  `docs/engine/READING_COMPANION_PROGRESS_SPIKE.md`
+- Decision: live streaming line guidance and final Whisper assessment are
+  independent local lanes; see `docs/decisions/0004-dual-lane-reading-companion.md`.
+- Integration boundary: content/view owns authored lines; engine emits neutral
+  guide indexes; wrapper owns centered highlighting; Game Rules only consume
+  the final reading result.
+- Production code was not edited. The integrating agent should follow the exact
+  seven-step sequence and acceptance gate in the handoff document.
+
 ## 2026-07-12 Yahuh candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
