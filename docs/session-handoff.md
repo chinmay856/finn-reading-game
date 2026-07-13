@@ -894,3 +894,17 @@ production speech adapter.
   every card inside the visible column bounds.
 - Next: run repository checks, publish through PR/CI/merge/Pages, then audit
   FacePlace, MyCorner, and Yahuh for meaningful first-screen content density.
+
+## Remaining campaign density handoff (2026-07-12)
+
+- Active branch: `agent/remaining-site-density`, based on merged ThreadIt PR
+  #93 / `main` at `f5fb516`.
+- Desktop-only rules in `compact-sites.css` convert FacePlace, MyCorner, and
+  Yahuh into glanceable overview boards without changing the Reading Engine,
+  campaign state, content records, or Reading Companion typography.
+- 1440x900 browser QA: FacePlace 6/6 feed cards visible, MyCorner 5/5 profile
+  modules visible, Yahuh 6/6 portal modules visible; every outer site page is
+  756/756 client/scroll height.
+- Secondary copy stays in the semantic DOM and is clamped only in desktop
+  overview mode. Shared real-button action halos continue to distinguish
+  interactables from decorative, button-like site artwork.

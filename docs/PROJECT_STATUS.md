@@ -519,3 +519,14 @@ reference; do not resume mobile optimization unless the user reprioritizes it.
 - Browser QA at 1440x900 measured 6 of 6 posts fully visible, a 612px page
   client/scroll height match, and no page overflow. Interactive controls retain
   the shared cyan action halo and reduced-motion-safe treatment.
+
+### Remaining campaign desktop scanability (2026-07-12)
+
+- FacePlace, MyCorner, and Yahuh now use desktop-only overview layouts for
+  their site-side content while leaving Reading Companion typography intact.
+- FacePlace presents all six feed cards in a two-column board; MyCorner shows
+  all five profile modules as compact scrapbook covers; Yahuh presents all six
+  portal modules in a three-column switchboard.
+- Browser QA at 1440x900 measured all primary cards visible and exact outer
+  client/scroll-height matches (756/756) for all three sites. Secondary detail
+  remains in semantic DOM but is visually clamped in overview mode.

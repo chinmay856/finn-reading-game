@@ -20,6 +20,76 @@
   #threadit .threadit-duplicate-group article>ul li { padding-top:2px; }
   #threadit .threadit-status-strip { padding:4px 8px; font-size:9px; }
 
+  /* FacePlace keeps its feed readable while turning the two reference rails
+     into glanceable dashboards instead of narrow scrolling documents. */
+  #faceplace .faceplace-layout { gap:6px; padding:6px; }
+  #faceplace .faceplace-profile-rail,#faceplace .faceplace-context-rail { gap:4px; padding:5px; overflow:hidden; font-size:10px; line-height:1.2; }
+  #faceplace .faceplace-profile-card { grid-template-columns:28px minmax(0,1fr); gap:4px; padding:4px; }
+  #faceplace .faceplace-avatar { width:27px; height:27px; font-size:9px; }
+  #faceplace .faceplace-profile-rail section,#faceplace .faceplace-context-rail section { padding:4px; }
+  #faceplace .faceplace-profile-rail h3,#faceplace .faceplace-profile-rail h4,#faceplace .faceplace-context-rail h3,#faceplace .faceplace-context-rail h4 { margin:1px 0; font-size:10px; }
+  #faceplace .faceplace-profile-rail p,#faceplace .faceplace-context-rail p { display:-webkit-box; margin:2px 0; overflow:hidden; -webkit-box-orient:vertical; -webkit-line-clamp:1; }
+  #faceplace .faceplace-feed-column>header { padding:5px 6px; }
+  #faceplace .faceplace-feed-column>header h3 { margin:2px 0; font-size:12px; }
+  #faceplace .faceplace-feed-column>header p { font-size:9px; line-height:1.2; }
+  #faceplace .faceplace-feed-controls { padding-top:3px; }
+  #faceplace .faceplace-feed-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; padding:4px 0; overflow:hidden; }
+  #faceplace .faceplace-feed-card { grid-template-columns:22px minmax(0,1fr); gap:4px; padding:5px; }
+  #faceplace .faceplace-feed-card header b { font-size:10px; }
+  #faceplace .faceplace-feed-card header time,#faceplace .faceplace-feed-card header span,#faceplace .faceplace-feed-card header strong,#faceplace .faceplace-card-source,#faceplace .faceplace-card-reason-status { font-size:8px; line-height:1.15; }
+  #faceplace .faceplace-feed-card p { display:-webkit-box; margin:3px 0 0; overflow:hidden; font-size:9px; line-height:1.2; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+  #faceplace .faceplace-card-footer { gap:2px 4px; margin-top:3px; font-size:8px; }
+  #faceplace #faceplaceSavedRepairs,#faceplace #faceplacePeopleList { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px; margin-top:3px; }
+  #faceplace #faceplaceSavedRepairs li,#faceplace .faceplace-person-suggestion { gap:2px; padding:2px; font-size:8px; }
+  #faceplace .faceplace-mini-avatar { width:18px; height:18px; font-size:7px; }
+  #faceplace .faceplace-tracker-meter>strong { font-size:18px; }
+  #faceplace #faceplaceTrackerTechno { width:28px; height:28px; margin:-22px 0 1px 3px; }
+
+  /* MyCorner is a profile scrapbook, so desktop overview mode presents module
+     covers in small grids. Detail remains in the semantic DOM and later states. */
+  #mycorner .mycorner-header { gap:6px; padding:5px 8px; }
+  #mycorner .mycorner-mark { width:34px; height:34px; }
+  #mycorner .mycorner-identity h2 { font-size:21px; }
+  #mycorner .mycorner-layout { gap:5px; padding:5px; }
+  #mycorner .mycorner-profile-rail,#mycorner .mycorner-profile-column,#mycorner .mycorner-owner-inspector { gap:3px; overflow:hidden; font-size:9px; line-height:1.2; scrollbar-gutter:auto; }
+  #mycorner .mycorner-profile-rail,#mycorner .mycorner-owner-inspector { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #mycorner .mycorner-profile-rail>header,#mycorner .mycorner-owner-inspector>header { grid-column:1/-1; }
+  #mycorner .mycorner-module,#mycorner .mycorner-rule,#mycorner .mycorner-owner-log { min-height:0; padding:4px; overflow:hidden; }
+  #mycorner .mycorner-module h3,#mycorner .mycorner-module h4,#mycorner .mycorner-rule h3 { margin:1px 0; font-size:10px; line-height:1.15; }
+  #mycorner .mycorner-module p,#mycorner .mycorner-rule p,#mycorner .mycorner-owner-log p { display:-webkit-box; margin:2px 0; overflow:hidden; -webkit-box-orient:vertical; -webkit-line-clamp:1; }
+  #mycorner .mycorner-owner-card { grid-template-columns:24px minmax(0,1fr); gap:3px; }
+  #mycorner .mycorner-owner-avatar,#mycorner .mycorner-friend-avatar { width:22px; height:22px; font-size:8px; }
+  #mycorner .mycorner-post-list>li,#mycorner .mycorner-comment-list li { padding:3px; font-size:8px; }
+  #mycorner .mycorner-owner-fields,#mycorner .mycorner-friend-list,#mycorner .mycorner-group-list,#mycorner .mycorner-media-row { gap:2px; margin-top:2px; font-size:8px; }
+  #mycorner .mycorner-owner-fields>div,#mycorner .mycorner-friend-list>li,#mycorner .mycorner-group-list>li { padding:2px; }
+  #mycorner .mycorner-theme-swatches { gap:2px; margin-top:2px; }
+  #mycorner .mycorner-theme-swatch { min-height:22px; font-size:7px; box-shadow:inset 0 -10px 0 #fffffff0; }
+  #mycorner .mycorner-scrapbook { gap:5px; margin:0 5px 4px; padding:4px; }
+  #mycorner .mycorner-scrapbook-slot { min-height:30px; padding:3px; font-size:8px; }
+
+  /* Yahuh's six modules and routing circuits should read as one portal board. */
+  #yahuh .yahuh-directory-bar { padding:3px 6px; }
+  #yahuh .yahuh-directory-bar input { min-height:24px; padding:2px 5px; }
+  #yahuh .yahuh-layout { grid-template-columns:minmax(0,1fr) minmax(190px,.38fr); gap:5px; padding:5px; }
+  #yahuh .yahuh-portal-region { gap:4px; overflow:hidden; }
+  #yahuh .yahuh-rule { padding:4px; }
+  #yahuh .yahuh-rule h3 { font-size:12px; }
+  #yahuh .yahuh-rule p { display:-webkit-box; margin:2px 0; overflow:hidden; font-size:9px; line-height:1.2; -webkit-box-orient:vertical; -webkit-line-clamp:1; }
+  #yahuh .yahuh-module-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; }
+  #yahuh .yahuh-module { min-height:0; padding:4px; border-top-width:4px; }
+  #yahuh .yahuh-module h3 { min-height:0; font-size:10px; line-height:1.15; }
+  #yahuh .yahuh-module p { display:-webkit-box; margin:2px 0; overflow:hidden; font-size:8px; line-height:1.15; -webkit-box-orient:vertical; -webkit-line-clamp:1; }
+  #yahuh .yahuh-module-meta { gap:2px; margin-top:2px; }
+  #yahuh .yahuh-module-meta>div { padding:2px; }
+  #yahuh .yahuh-module-meta dt,#yahuh .yahuh-module-meta dd { font-size:7px; line-height:1.1; }
+  #yahuh .yahuh-switchboard { gap:4px; padding:4px; overflow:hidden; }
+  #yahuh .yahuh-switchboard>header { gap:4px; padding-bottom:3px; }
+  #yahuh .yahuh-circuit-list,#yahuh .yahuh-route-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px; }
+  #yahuh .yahuh-circuit,#yahuh .yahuh-route { padding:3px; font-size:8px; }
+  #yahuh .yahuh-source-log { margin:0 5px 4px; padding:4px; }
+  #yahuh .yahuh-source-log-list { gap:3px; margin-top:2px; }
+  #yahuh .yahuh-source-log-list li { padding:3px; font-size:8px; }
+
   .viewtube-surface,.amazeon-surface { gap:10px; padding-top:8px; padding-bottom:42px; }
   #viewtube .viewtube-page { display:grid; grid-template-rows:auto minmax(0,1fr) auto; overflow:hidden; }
   #viewtube .viewtube-content-layout { min-height:0; grid-template-rows:minmax(240px,1.1fr) minmax(125px,.52fr); gap:6px; padding:6px; }
