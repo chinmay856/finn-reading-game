@@ -60,12 +60,16 @@ body {
   display: none !important;
 }
 
-.techno-desktop-pet[data-screen="read"],
 .recovery-desktop[data-popup-active="true"] .techno-desktop-pet,
 .recovery-desktop[data-popup-active="true"] .techno-repair-sprite,
 .recovery-desktop[data-popup-active="true"] .campaign-techno-state,
 .recovery-desktop[data-popup-active="true"] .site-reading-progress img {
   visibility: hidden;
+}
+
+/* The reading stage owns Techno while she pushes the progress ball. */
+.techno-desktop-pet[data-screen="read"] {
+  display: none;
 }
 
 .techno-desktop-pet[data-mode="sleep"] {
