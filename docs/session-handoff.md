@@ -8,9 +8,13 @@
 - Playtest results remain candidate-only, review-pending, unseen-first, and
   noncanonical. No passage availability, review evidence, microphone claim, or
   finale eligibility is changed.
-- Next implementation step: connect the playtest projection to the existing
-  Reading Companion and ThreadIt state transition. The separate reading-engine
-  agent retains ownership of speech/alignment changes.
+- Connected the projection to the existing Reading Companion and ThreadIt state
+  transition. Candidate playtest progress is deliberately tab-only so a full
+  structural playthrough cannot manufacture persisted canonical evidence.
+- Browser QA at 1440×900 confirmed the ThreadIt gate, explicit playtest warning,
+  A01 title/source metadata, local-processing notice, and setup-screen route.
+  The separate reading-engine agent retains ownership of speech/alignment
+  changes.
 
 ## 2026-07-12 ViewTube and Amaze-On compact boards
 

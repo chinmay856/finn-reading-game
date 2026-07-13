@@ -4,11 +4,11 @@
 
 ThreadIt's wrapper-owned content selector now exposes the neutral candidate
 `playtest` lane explicitly while leaving its production selector fail-closed.
-The projection remains noncanonical, review-pending, unseen-first, and cannot
-promote passage availability or satisfy evidence/finale gates. The next step is
-to route this selector through the existing Reading Companion and apply an
-accepted result to ThreadIt's seven-unit wrapper state without changing the
-Reading Engine.
+The site can load an unseen candidate into the existing Reading Companion and
+apply an accepted result to its seven-unit wrapper campaign. Playtest progress
+is intentionally tab-only: it remains noncanonical and review-pending, cannot
+promote passage availability, cannot persist canonical evidence, and cannot
+satisfy finale gates. No Reading Engine code changed.
 
 ## Full-playthrough content lane — active 2026-07-12
 
