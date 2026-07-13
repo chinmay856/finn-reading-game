@@ -1039,3 +1039,17 @@ production speech adapter.
   and does not mutate passage availability or review manifests.
 - Production `isSelectablePassage` and `selectNextPassage` behavior is
   unchanged. ThreadIt is the next wrapper to connect end to end.
+## 2026-07-12 Spotty-Fi candidate playthrough
+
+- Added the explicit playtest selector and shared Reading Companion route for
+  all eight Spotty-Fi Deck A candidates while production selection remains
+  fail-closed.
+- Reading results advance the existing five disclosure and three listener-
+  control units. The predicted-history midpoint remains an explicit player
+  acknowledgement and blocks the sixth reading until reviewed.
+- Playtest progress, the blocked insert, and slot-nine evidence are tab-only;
+  they cannot approve content, become persisted canonical evidence, or satisfy
+  the finale gate.
+- No Reading Engine code changed. `npm run check`, all 325 tests, and
+  `npm run build` pass. The local build served successfully over HTTP, but no
+  in-app browser backend was available for automated desktop interaction.
