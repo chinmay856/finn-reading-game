@@ -2687,6 +2687,10 @@ function openMapGuessExperience() {
       : state.mapguessState;
   renderMapGuessCampaign(visibleState, { diagnosticMode: state.mapguessDiagnosticMode });
   renderMapGuessDiagnosticPanel(visibleState);
+  // Renderers may refresh site-owned controls while the route is opening.
+  // Rebind the primary transition at the route boundary so the visible button
+  // always enters the separate tab-only playtest state.
+  $("mapguessPlaytest").onclick = openMapGuessPlaytestReading;
   show("mapguess");
 }
 

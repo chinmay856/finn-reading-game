@@ -536,6 +536,10 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(app, /selectNextMapGuessPassage/u);
   assert.match(app, /applyMapGuessReading\(null,/u);
   assert.match(app, /\$\("mapguessPlaytest"\)\.onclick = openMapGuessPlaytestReading;/u);
+  const mapguessOpenStart = app.indexOf("function openMapGuessExperience()");
+  const mapguessOpenEnd = app.indexOf("function openFacePlaceExperience()", mapguessOpenStart);
+  const mapguessOpenRoute = app.slice(mapguessOpenStart, mapguessOpenEnd);
+  assert.match(mapguessOpenRoute, /\$\("mapguessPlaytest"\)\.onclick = openMapGuessPlaytestReading;/u);
   assert.match(mapguessPlaytestRoute, /state\.mapguessPlaytestState = readMapGuessState\(null\)/u);
   assert.match(mapguessPlaytestRoute, /selectMapGuessPlaytestPassage\(\)/u);
   assert.match(mapguessPlaytestRoute, /show\("setup"\);/u);

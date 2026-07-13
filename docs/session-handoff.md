@@ -22,9 +22,11 @@
 - After merging authoritative `main` at `33b8cdb`, `npm run check`, all 329
   tests, and `npm run build` pass together with the Search-ish, Amaze-On, and
   Spotty-Fi playtest lanes. The local MapGuess launch route returns HTTP 200.
-- The in-app browser reported no available browser backend, so rendered desktop
-  visual inspection remains an honest PR review gate rather than a claimed
-  automated pass.
+- Final production-bundle browser QA found the playtest button could sit beneath
+  the fixed taskbar at a 712px-high desktop viewport. The compact-height layout
+  now keeps both MapGuess actions visibly inside the companion window. Browser
+  recheck confirmed the primary button opens `A Map Is Not a Photograph` in the
+  shared setup screen and the page has no horizontal overflow.
 
 ## 2026-07-12 Amaze-On candidate playthrough
 
