@@ -620,3 +620,15 @@ reference; do not resume mobile optimization unless the user reprioritizes it.
 - Browser QA at 1440x900 measured all primary cards visible and exact outer
   client/scroll-height matches (756/756) for all three sites. Secondary detail
   remains in semantic DOM but is visually clamped in overview mode.
+## Spotty-Fi candidate playthrough — active 2026-07-12
+
+Spotty-Fi now exposes all eight complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion. Accepted results advance the wrapper-owned five-disclosure plus
+three-listener-control campaign. The saved predicted-history interruption still
+requires Finn's explicit acknowledgement before the sixth passage can begin.
+Playtest progress and slot-nine evidence remain tab-only; production selection,
+content review, canonical evidence, and finale gates remain fail-closed. No
+Reading Engine code changed. `npm run check`, all 324 tests, and `npm run build`
+pass. Automated browser control was unavailable for this worktree, so live
+desktop click-through remains the publication smoke check.
