@@ -1,5 +1,15 @@
 # Project status
 
+## MyCorner candidate playthrough — active 2026-07-12
+
+MyCorner now exposes all seven complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into four profile restores, the Apply to Everyone acknowledgement,
+and three owner-control locks. Playtest progress is intentionally tab-only, so
+the slot-four receipt cannot become persisted canonical evidence or unlock the
+finale. Production selection and every independent content-review gate remain
+fail-closed. No Reading Engine code changed.
+
 ## FacePlace candidate playthrough — active 2026-07-12
 
 FacePlace now exposes all six complete Deck A candidates through the explicit

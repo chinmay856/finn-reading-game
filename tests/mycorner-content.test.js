@@ -218,3 +218,21 @@ test("MyCorner owns the frozen seven-plus-three plan, selects Deck A only, and r
   assert.equal(exhausted.reason, "no-unseen-passages");
   assert.equal(exhausted.selectableCount, 1);
 });
+
+test("MyCorner exposes seven candidate playtests without promoting content", () => {
+  const first = selectNextMyCornerPassage({ completedPassageIds: [] }, { lane: "playtest" });
+  assert.equal(first.lane, "playtest");
+  assert.equal(first.canonicalEligible, false);
+  assert.equal(first.reviewPending, true);
+  assert.equal(first.selectableCount, 7);
+  assert.equal(first.requiredFirstRun, 7);
+  assert.equal(first.passage?.id, MYCORNER_DECK_A_IDS[0]);
+  assert.equal(first.passage?.availability, "candidate");
+
+  const next = selectNextMyCornerPassage(
+    { completedPassageIds: [first.passage.id] },
+    { lane: "playtest" },
+  );
+  assert.equal(next.passage?.id, MYCORNER_DECK_A_IDS[1]);
+  assert.equal(next.canonicalEligible, false);
+});

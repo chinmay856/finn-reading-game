@@ -1,5 +1,15 @@
 # Session handoff
 
+## 2026-07-12 MyCorner candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  MyCorner Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 owner-control campaign; Apply to
+  Everyone acknowledgement and comparison remain wrapper-owned interactions.
+- All playtest progress and slot-four evidence remain tab-only and cannot
+  satisfy canonical or finale gates. The separate reading-engine agent retains
+  speech/alignment ownership.
+
 ## 2026-07-12 FacePlace candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
