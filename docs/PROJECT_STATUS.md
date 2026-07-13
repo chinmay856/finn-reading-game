@@ -1,5 +1,15 @@
 # Project status
 
+## Amaze-On candidate playthrough — active 2026-07-12
+
+Amaze-On now exposes all seven complete Deck A candidates through the explicit
+noncanonical playtest lane and routes them through the existing Reading
+Companion into four evidence-parcel sorts, the Negative Purchasing
+acknowledgement, and three consent-ledger repairs. Progress is intentionally
+tab-only, so the slot-eight receipt cannot become persisted canonical evidence
+or unlock the finale. Production selection and every independent content-review
+gate remain fail-closed. No Reading Engine code changed.
+
 ## Yahuh candidate playthrough — active 2026-07-12
 
 Yahuh now exposes all six complete Deck A candidates through the explicit

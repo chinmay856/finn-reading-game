@@ -1,5 +1,14 @@
 # Session handoff
 
+## 2026-07-12 Amaze-On candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  Amaze-On Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 sort/consent campaign; Negative
+  Purchasing acknowledgement and the receipt trace remain wrapper-owned.
+- All playtest progress and slot-eight evidence remain tab-only and cannot
+  satisfy canonical or finale gates. Reading Engine internals were not changed.
+
 ## 2026-07-12 Yahuh candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
