@@ -18,6 +18,20 @@
 - All progress and slot-six evidence remain tab-only. No audio, video, iframe,
   canonical evidence, finale gate, or Reading Engine behavior changed.
 
+## 2026-07-12 Search-ish candidate playthrough
+
+- Added the explicit playtest selector and Reading Companion route for all seven
+  Search-ish Deck A candidates while production selection remains fail-closed.
+- Reading results drive the existing 4+3 origin/branch campaign; Five Costumes
+  acknowledgement and the semantic source inspector remain wrapper-owned
+  interactions.
+- All playtest progress and slot-seven evidence remain tab-only and cannot
+  satisfy canonical or finale gates. The separate reading-engine agent retains
+  speech/alignment ownership.
+- `npm run check`, all 323 tests, and `npm run build` pass. The local Vite route
+  returned HTTP 200; visual browser automation was unavailable in this task's
+  runtime, so desktop visual inspection remains the publication gate.
+
 ## 2026-07-12 Yahuh candidate playthrough
 
 - Added the explicit playtest selector and Reading Companion route for all six
@@ -1034,3 +1048,17 @@ production speech adapter.
   and does not mutate passage availability or review manifests.
 - Production `isSelectablePassage` and `selectNextPassage` behavior is
   unchanged. ThreadIt is the next wrapper to connect end to end.
+## 2026-07-12 Spotty-Fi candidate playthrough
+
+- Added the explicit playtest selector and shared Reading Companion route for
+  all eight Spotty-Fi Deck A candidates while production selection remains
+  fail-closed.
+- Reading results advance the existing five disclosure and three listener-
+  control units. The predicted-history midpoint remains an explicit player
+  acknowledgement and blocks the sixth reading until reviewed.
+- Playtest progress, the blocked insert, and slot-nine evidence are tab-only;
+  they cannot approve content, become persisted canonical evidence, or satisfy
+  the finale gate.
+- No Reading Engine code changed. `npm run check`, all 325 tests, and
+  `npm run build` pass. The local build served successfully over HTTP, but no
+  in-app browser backend was available for automated desktop interaction.
