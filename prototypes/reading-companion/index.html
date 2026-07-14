@@ -38,12 +38,16 @@
           </div>
         </div>
 
-        <div class="passage" id="passage" aria-label="Reference passage"></div>
+        <div class="passage" id="passage" aria-label="Reference passage">
+          <div id="passageLines"></div>
+          <div id="passageTail" aria-hidden="true"></div>
+        </div>
 
         <div class="playback-row">
           <audio id="sampleAudio" controls preload="auto" src="./assets/1272-128104-0002.flac"></audio>
           <span id="positionLabel">Waiting for speech evidence</span>
         </div>
+        <p class="interaction-note">The active line stays at the top reading anchor. Scroll forward manually to move the visual guide without changing recognition evidence or scoring.</p>
       </section>
 
       <section class="diagnostics-grid">

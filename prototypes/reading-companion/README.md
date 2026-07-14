@@ -10,8 +10,11 @@ recognition evidence aligns with the known passage.
 - Live progress and final scoring are separate jobs.
 - The live engine is allowed to produce an ugly, revisable transcript.
 - Hidden word evidence is monotonic; elapsed time alone cannot move it.
-- The visible guide highlights one centered authored line and anticipates 2-4
-  words to cover approximately one second of recognition latency.
+- The visible guide highlights one top-anchored authored line and anticipates
+  2-4 words to cover approximately one second of recognition latency.
+- Reserved tail space lets even the final line reach the same top anchor.
+- Forward manual scrolling advances only the visual line at the anchor; hidden
+  speech evidence and final scoring remain unchanged.
 - The same audio can be replayed repeatedly, producing comparable event traces.
 - The tough fixture suite compares natural 154 WPM audio, accelerated 200 and
   250 WPM delivery, a long pause, light noise, and a repeated phrase.
@@ -56,6 +59,8 @@ Use **Run tough fixture suite** for the roughly one-minute comparative run.
 
 ```text
 node --test prototypes/reading-companion/tracker-core.test.js prototypes/reading-companion/fixture-suite.test.js
+node --test prototypes/reading-companion/viewport-policy.test.js
+node prototypes/reading-companion/viewport-policy-benchmark.mjs
 ```
 
 ## Acceptance gate

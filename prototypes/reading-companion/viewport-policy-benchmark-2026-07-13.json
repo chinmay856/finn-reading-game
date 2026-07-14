@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-07-13",
+  "scenario": {
+    "anchorOffset": 18,
+    "lineCount": 4,
+    "viewportHeight": 300
+  },
+  "oldCenteredWithoutTailSpace": [
+    {
+      "lineOffsetTop": 30,
+      "topInViewport": 30
+    },
+    {
+      "lineOffsetTop": 96,
+      "topInViewport": 96
+    },
+    {
+      "lineOffsetTop": 162,
+      "topInViewport": 162
+    },
+    {
+      "lineOffsetTop": 228,
+      "topInViewport": 228
+    }
+  ],
+  "topAnchoredWithTailSpace": [
+    {
+      "lineIndex": 0,
+      "scrollTop": 12,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 1,
+      "scrollTop": 78,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 2,
+      "scrollTop": 144,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 3,
+      "scrollTop": 210,
+      "topInViewport": 18
+    }
+  ],
+  "manualForwardScroll": {
+    "confirmedSpeechLineIndex": 0,
+    "viewportLineAtAnchor": 2,
+    "visibleLineIndex": 2,
+    "scoringPositionChanged": false
+  }
+}

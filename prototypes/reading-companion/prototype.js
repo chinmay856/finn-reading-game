@@ -1,5 +1,12 @@
 import { anticipatedLineIndex, EvidenceLockedTracker, tokenize } from "./tracker-core.js";
 import { buildFixtureSamples, FIXTURE_DEFINITIONS, fixtureWordsPerMinute } from "./fixture-suite.js";
+import {
+  anchoredScrollTop,
+  DEFAULT_READING_ANCHOR_PX,
+  lineAtReadingAnchor,
+  reconcileManualLine,
+  requiredTailSpace,
+} from "./viewport-policy.js";
 
 const SAMPLE_RATE = 16_000;
 const FEED_INTERVAL_MS = 80;
@@ -17,6 +24,8 @@ const elements = {
   eventTrace: document.querySelector("#eventTrace"),
   metrics: document.querySelector("#metrics"),
   passage: document.querySelector("#passage"),
+  passageLines: document.querySelector("#passageLines"),
+  passageTail: document.querySelector("#passageTail"),
   positionLabel: document.querySelector("#positionLabel"),
   runButton: document.querySelector("#runButton"),
   sampleAudio: document.querySelector("#sampleAudio"),
@@ -38,9 +47,73 @@ const lineElements = REFERENCE_LINES.map((line, lineIndex) => {
   element.className = "reader-line";
   element.dataset.lineIndex = String(lineIndex);
   element.textContent = line;
-  elements.passage.append(element);
+  elements.passageLines.append(element);
   return element;
 });
+
+let visibleLineIndex = 0;
+let manualInteractionUntil = 0;
+let programmaticScrollUntil = 0;
+
+function lineGeometry() {
+  return lineElements.map((line) => ({ height: line.offsetHeight, offsetTop: line.offsetTop }));
+}
+
+function updateTailSpace() {
+  const lastLine = lineElements.at(-1);
+  if (!lastLine) return;
+  elements.passageTail.style.height = `${requiredTailSpace({
+    anchorOffset: DEFAULT_READING_ANCHOR_PX,
+    lastLineHeight: lastLine.offsetHeight,
+    viewportHeight: elements.passage.clientHeight,
+  })}px`;
+}
+
+function paintVisibleLine(lineIndex) {
+  visibleLineIndex = Math.max(visibleLineIndex, lineIndex);
+  lineElements.forEach((line, candidateIndex) => {
+    line.classList.toggle("complete", candidateIndex < visibleLineIndex);
+    line.classList.toggle("current", candidateIndex === visibleLineIndex);
+  });
+}
+
+function scrollVisibleLineToAnchor() {
+  const target = lineElements[visibleLineIndex];
+  if (!target) return;
+  updateTailSpace();
+  programmaticScrollUntil = performance.now() + 450;
+  elements.passage.scrollTo({
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    top: anchoredScrollTop({
+      anchorOffset: DEFAULT_READING_ANCHOR_PX,
+      lineOffsetTop: target.offsetTop,
+      maximumScrollTop: elements.passage.scrollHeight - elements.passage.clientHeight,
+    }),
+  });
+}
+
+for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
+  elements.passage.addEventListener(eventName, () => {
+    manualInteractionUntil = performance.now() + 1_200;
+  }, { passive: true });
+}
+
+elements.passage.addEventListener("scroll", () => {
+  const now = performance.now();
+  if (now < programmaticScrollUntil || now > manualInteractionUntil) return;
+  const lineAtAnchor = lineAtReadingAnchor({
+    anchorOffset: DEFAULT_READING_ANCHOR_PX,
+    lines: lineGeometry(),
+    scrollTop: elements.passage.scrollTop,
+  });
+  const nextLine = reconcileManualLine({ currentVisibleLineIndex: visibleLineIndex, lineAtAnchor });
+  if (nextLine <= visibleLineIndex) return;
+  paintVisibleLine(nextLine);
+  elements.positionLabel.textContent = `Manual guide · line ${visibleLineIndex + 1} of ${lineElements.length} · speech evidence unchanged`;
+  record("manual-guide-advance", { visibleLineIndex });
+}, { passive: true });
+
+window.addEventListener("resize", updateTailSpace);
 
 let engineReady = false;
 let recognizer = null;
@@ -68,13 +141,9 @@ function moveCursor(index) {
     effectiveWpm: runState?.effectiveWpm,
     lineEndIndexes,
   });
-  lineElements.forEach((line, candidateIndex) => {
-    line.classList.toggle("complete", candidateIndex < lineIndex);
-    line.classList.toggle("current", candidateIndex === lineIndex);
-  });
-  const target = lineElements[lineIndex];
-  target.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
-  elements.positionLabel.textContent = `Guiding line ${lineIndex + 1} of ${lineElements.length} · hidden evidence through word ${bounded + 1}`;
+  paintVisibleLine(lineIndex);
+  scrollVisibleLineToAnchor();
+  elements.positionLabel.textContent = `Guiding line ${visibleLineIndex + 1} of ${lineElements.length} · hidden evidence through word ${bounded + 1}`;
 }
 
 function animateAdvance(fromIndex, toIndex) {
@@ -190,6 +259,8 @@ async function runFixture(fixture, baseSamples) {
   if (!engineReady || runState?.running) return null;
   const samples = buildFixtureSamples(baseSamples, fixture, SAMPLE_RATE);
   tracker.reset();
+  visibleLineIndex = 0;
+  elements.passage.scrollTop = 0;
   lineElements.forEach((line) => line.classList.remove("complete", "current"));
   elements.transcript.textContent = "Listening to the local stream…";
   elements.positionLabel.textContent = "Waiting for speech evidence";
