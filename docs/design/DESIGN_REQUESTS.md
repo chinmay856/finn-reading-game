@@ -1,5 +1,16 @@
 # Parallel design requests
 
+## Screenshot-reviewed design match correction — 2026-07-13
+
+ThreadIt and FacePlace now match their approved generated compositions nearly
+edge-to-edge: cream source-tree tool for ThreadIt and blue six-card social board
+for FacePlace. Dense legacy columns, clipped mini cards, washed-out artwork,
+and dead space were rejected during executable screenshot review and removed.
+MapGuess adds a player-visible lake-crossing route plus original and moved
+destination pins. Future site-art acceptance must include screenshot inspection
+for hierarchy, legibility, obvious next action, clipping, and dead space—not
+only asset presence, aspect-ratio checks, or automated tests.
+
 ## Ten-site visual completion — 2026-07-13
 
 The six remaining locked-frame builds are implemented. ThreadIt, FacePlace,

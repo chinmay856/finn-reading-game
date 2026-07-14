@@ -951,6 +951,200 @@
 #mapguess .mapguess-map-tile[data-terrain="land"] { background:#d9e99a22; }
 #mapguess .mapguess-map-tile[data-restored="false"] { background:repeating-linear-gradient(135deg,#efe4c7b8 0 12px,#dbd0b5b8 12px 24px); }
 
+/* The failure must read on the map itself, not only in the status bar. */
+#mapguess .mapguess-map-canvas::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 16%;
+  top: 59%;
+  width: 67%;
+  height: 12px;
+  transform: rotate(-12deg);
+  transform-origin: left center;
+  border: 3px solid #fff7d6;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, #d53631 0 18px, #fff 18px 27px);
+  box-shadow: 0 0 0 3px #a62420, 0 3px 8px #132b3a88;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-map-canvas::after {
+  content: "2 MIN ROUTE  →  THROUGH GLASSWATER LAKE";
+  position: absolute;
+  z-index: 6;
+  left: 34%;
+  top: 48%;
+  padding: 5px 8px;
+  transform: rotate(-5deg);
+  border: 2px solid #941f1b;
+  background: #fff4c9;
+  color: #941f1b;
+  font: 900 11px/1.15 "Lucida Console", Consolas, monospace;
+  box-shadow: 3px 3px 0 #132b3a55;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-secured="true"] .mapguess-map-canvas::before,
+#mapguess .mapguess-page[data-secured="true"] .mapguess-map-canvas::after {
+  display: none;
+}
+
+/* D7 is the moved sponsored stop; H4 is the requested destination. */
+#mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-map-overlay::before,
+#mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-map-overlay::before {
+  content: "ORIGINAL\A H4";
+  position: absolute;
+  z-index: 7;
+  left: 75%;
+  top: 35%;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  transform: translate(-50%, -100%);
+  border: 3px dashed #173e64;
+  border-radius: 50% 50% 50% 5px;
+  background: #eff8ffcc;
+  color: #173e64;
+  font: 900 9px/1.1 "Lucida Console", Consolas, monospace;
+  text-align: center;
+  white-space: pre;
+  box-shadow: 0 0 0 5px #fff9, 0 4px 12px #132b3a66;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-map-overlay::after,
+#mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-map-overlay::after {
+  content: "TARGET MOVED  H4  ⇢  D7";
+  position: absolute;
+  z-index: 6;
+  left: 35%;
+  top: 50%;
+  width: 48%;
+  height: 8px;
+  transform: rotate(-37deg);
+  transform-origin: left center;
+  border-top: 4px dashed #d53631;
+  color: #9d201d;
+  font: 900 10px/1 "Lucida Console", Consolas, monospace;
+  text-align: center;
+  text-shadow: 0 1px #fff, 0 -1px #fff, 1px 0 #fff, -1px 0 #fff;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-destination[data-location="moved"],
+#mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-destination[data-location="moved"] {
+  min-width: 62px;
+  min-height: 62px;
+  border-width: 4px;
+  background: #d53631;
+  box-shadow: 0 0 0 8px #fff9, 0 0 0 13px #d5363144, 0 8px 16px #132b3a88;
+  font-size: 10px;
+}
+
+/* The shipping 4:3 illustrated frame owns the player-visible proof. */
+#mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-illustrated-frame::before,
+#mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-illustrated-frame::before {
+  content: "YOU ASKED FOR\A H4";
+  position: absolute;
+  z-index: 5;
+  left: 60%;
+  top: 33%;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 50px;
+  transform: translate(-50%, -100%);
+  border: 3px dashed #174f83;
+  border-radius: 50% 50% 50% 6px;
+  background: #e9f7ffe8;
+  color: #12335d;
+  font: 900 clamp(8px, .72vw, 11px)/1.08 "Comic Sans MS", cursive;
+  text-align: center;
+  white-space: pre;
+  box-shadow: 0 0 0 3px #fff9, 0 4px 0 #102b4666;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-illustrated-frame::after,
+#mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-illustrated-frame::after {
+  content: "▶";
+  position: absolute;
+  z-index: 5;
+  left: 60%;
+  top: 35%;
+  width: 27%;
+  height: 5px;
+  transform: rotate(31deg);
+  transform-origin: left center;
+  border-top: 4px dashed #c72d27;
+  color: #9e211d;
+  font: 900 18px/0 "Arial", sans-serif;
+  text-align: right;
+  text-shadow: 0 0 3px #fff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-secured="true"] .mapguess-illustrated-frame::before,
+#mapguess .mapguess-page[data-secured="true"] .mapguess-illustrated-frame::after {
+  display: none;
+}
+
+/* Player-visible nonsense route: the old path must visibly enter the lake. */
+#mapguess .mapguess-lake-route-proof {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-lake-route-proof path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#mapguess .mapguess-lake-route-shadow {
+  stroke: #fff8dc;
+  stroke-width: 18;
+}
+
+#mapguess .mapguess-lake-route-line {
+  stroke: #d32f2a;
+  stroke-width: 11;
+  stroke-dasharray: 24 8;
+}
+
+#mapguess .mapguess-lake-route-proof circle {
+  fill: #55b8df;
+  stroke: #d32f2a;
+  stroke-width: 8;
+}
+
+#mapguess .mapguess-lake-warning {
+  position: absolute;
+  z-index: 6;
+  left: 49%;
+  top: 47%;
+  padding: 4px 7px;
+  transform: rotate(-8deg);
+  border: 2px solid #8f1d19;
+  background: #fff5bf;
+  color: #8f1d19;
+  font: 900 clamp(8px, .72vw, 11px)/1.1 "Comic Sans MS", cursive;
+  box-shadow: 2px 3px 0 #102b4655;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-page[data-secured="true"] .mapguess-lake-route-proof,
+#mapguess .mapguess-page[data-secured="true"] .mapguess-lake-warning {
+  display: none;
+}
+
 @media (min-width:1280px) and (min-height:760px) {
   .mapguess-surface { gap:10px; padding-top:8px; padding-bottom:42px; }
   #mapguess .mapguess-header { min-height:48px; padding-block:4px; }

@@ -31,6 +31,13 @@ test("FacePlace uses text-free image-led art while AVOCADO and six repairs stay 
   assert.match(css, /faceplace-feed-base-v1\.webp/u);
   assert.match(css, /\.faceplace-layout::before/u);
   assert.match(css, /pointer-events:\s*none/u);
+  assert.match(css, /opacity:\s*\.94/u);
+  assert.match(css, /\.faceplace-profile-rail\s*\{\s*display:\s*none/u);
+  assert.match(css, /grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/u);
+  assert.match(css, /\.faceplace-header,[\s\S]*\.faceplace-browser-window \.browser-security[\s\S]*display:\s*none/u);
+  assert.match(css, /#faceplaceMidpointAction[\s\S]*background:\s*#ffd65a/u);
+  assert.match(css, /HONEST FEED STARTS AT 0%/u);
+  assert.doesNotMatch(css, /background-color:\s*#f3f6fad9/u);
   assert.match(copy, /AVOCADO%/u);
   assert.match(view, /totalUnitCount:\s*FACEPLACE_CAMPAIGN_UNITS\.length/u);
   assert.match(view, /amy:\s*copy\(FACEPLACE_COPY_IDS\.completionAmy\)/u);

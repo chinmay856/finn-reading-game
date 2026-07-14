@@ -1437,3 +1437,318 @@
     display: none;
   }
 }
+
+/*
+ * Playtest correction: the source-tree illustration is the ThreadIt stage,
+ * not low-opacity wallpaper behind the old two-panel forum. The forum remains
+ * live and readable as a compact evidence slip while the semantic source nodes
+ * are pinned directly over the illustrated corkboard.
+ */
+.threadit-layout,
+.threadit-page:is(
+  [data-active-view="trace"],
+  [data-view="trace"],
+  [data-state-id="threadit_tracing"],
+  [data-state-id="threadit_secured"],
+  [data-threadit-state="threadit_tracing"],
+  [data-threadit-state="threadit_secured"]
+) .threadit-layout,
+.threadit-page[data-secured="true"] .threadit-layout,
+.threadit-page[data-state-id="threadit_secured"] .threadit-layout {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.threadit-layout::before,
+.threadit-page:is(
+  [data-active-view="trace"],
+  [data-view="trace"],
+  [data-state-id="threadit_tracing"],
+  [data-state-id="threadit_secured"]
+) .threadit-layout::before {
+  opacity: 1;
+  background-color: #dfce9f;
+  background-position: center;
+  background-size: contain;
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.threadit-layout::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(#fff7db0a, #22150a0d);
+  pointer-events: none;
+}
+
+.threadit-header {
+  display: none;
+}
+
+.threadit-page {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.threadit-header::after,
+.threadit-header > div:first-of-type > small,
+.threadit-header > div:first-of-type > p,
+.threadit-tagline {
+  display: none;
+}
+
+.threadit-header > img,
+.threadit-mark {
+  width: 34px;
+  height: 34px;
+}
+
+.threadit-header > div:nth-child(2) h2,
+.threadit-wordmark {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.threadit-header > strong,
+.threadit-header-status {
+  max-width: 210px;
+  font-size: 10px;
+}
+
+.threadit-tabs {
+  position: absolute;
+  z-index: 8;
+  top: 9px;
+  right: 10px;
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.threadit-tabset {
+  display: none;
+}
+
+.threadit-source-toggle {
+  min-height: 28px;
+  margin: 0;
+  padding: 4px 8px;
+  border: 2px solid #3d291c;
+  background: #f5e8bded;
+  box-shadow: 2px 3px 0 #2b1b1247;
+  font-size: 9px;
+}
+
+.threadit-browser-window .browser-security {
+  font-size: 0;
+}
+
+.threadit-browser-window .browser-security::after {
+  content: "RECOVERY LIVE";
+  color: var(--threadit-secure);
+  font: 700 9px/1 "Lucida Console", Consolas, monospace;
+}
+
+#threaditDiagnosticTruth {
+  display: none;
+}
+
+.threadit-thread-column,
+.threadit-source-panel {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.threadit-thread-column {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 15.5%;
+  width: min(184px, 34%);
+  max-height: none;
+  padding: 0;
+  overflow: visible;
+  border: 2px solid #3f2b1d;
+  border-radius: 4px;
+  background: #fffaf0ed;
+  box-shadow: 5px 7px 0 #39241452, 0 14px 28px #1f130c4d;
+  transform: rotate(-.45deg);
+}
+
+.threadit-thread-column > header {
+  position: static;
+  border: 0;
+  min-height: 76px;
+  padding: 10px 11px;
+  border-bottom: 0;
+  background: #fffaf0f5;
+  box-shadow: none;
+}
+
+.threadit-thread-column > header > * {
+  display: none !important;
+}
+
+.threadit-thread-column > header::before {
+  content: "CORRUPTION FOUND";
+  display: block;
+  color: var(--threadit-trace);
+  font: 700 9px/1.25 "Lucida Console", Consolas, monospace;
+  letter-spacing: .06em;
+}
+
+.threadit-thread-column > header::after {
+  content: "MOST VOTES WINS REALITY";
+  display: block;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 2px dashed var(--threadit-duplicate);
+  color: var(--threadit-duplicate);
+  font: 800 13px/1.15 "Lucida Console", Consolas, monospace;
+}
+
+#threadit #threaditPostList,
+#threadit .threadit-post-list,
+.threadit-moderator-note {
+  display: none !important;
+}
+
+.threadit-post {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 6px 7px;
+  border-radius: 2px;
+  background: #fffef9f2;
+  box-shadow: 2px 3px 0 #3a281d2e;
+}
+
+.threadit-post > img,
+.threadit-post-votes {
+  display: none;
+}
+
+.threadit-post-main > p,
+.threadit-post-body,
+.threadit-post-meta-secondary {
+  display: none;
+}
+
+.threadit-source-panel {
+  position: absolute;
+  z-index: 4;
+  inset: 10% 6% 14% auto;
+  width: 43%;
+  overflow: auto;
+  scrollbar-gutter: auto;
+  box-shadow: none;
+}
+
+.threadit-page[data-source-open="false"] .threadit-source-panel {
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(108%);
+}
+
+.threadit-page[data-source-open="true"] .threadit-source-panel,
+.threadit-page:is(
+  [data-active-view="trace"],
+  [data-view="trace"],
+  [data-state-id="threadit_tracing"],
+  [data-state-id="threadit_secured"],
+  [data-threadit-state="threadit_tracing"],
+  [data-threadit-state="threadit_secured"]
+) .threadit-source-panel {
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+#threaditPage[data-source-open] .threadit-source-panel {
+  inset: 10% 3% 14% auto;
+  width: 54%;
+}
+
+.threadit-source-panel > header {
+  position: relative;
+  z-index: 3;
+  width: max-content;
+  max-width: calc(100% - 18px);
+  margin: 3px 0 5px auto;
+  padding: 7px 11px;
+  border: 2px solid #332215;
+  background: #f5e8bded;
+  box-shadow: 3px 4px 0 #3322154a;
+  transform: rotate(.55deg);
+}
+
+.threadit-source-canvas {
+  min-height: 240px;
+  padding: 8px;
+}
+
+#threaditSourceTree,
+.threadit-source-tree {
+  min-height: 220px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  align-content: center;
+}
+
+.threadit-source-node {
+  position: relative;
+  z-index: 2;
+  padding: 9px;
+  border: 2px solid #49301f;
+  border-radius: 2px;
+  background: #fff9eaf0;
+  box-shadow: 3px 4px 0 #3822174a;
+}
+
+.threadit-source-node:nth-child(2n) {
+  transform: rotate(.65deg);
+}
+
+.threadit-source-node:nth-child(2n + 1) {
+  transform: rotate(-.55deg);
+}
+
+#threaditSourceSummary {
+  position: relative;
+  z-index: 2;
+  margin: -4px 18px 12px auto;
+  width: min(410px, calc(100% - 36px));
+  border: 2px dashed #6655a6;
+  background: #f5f0ffec;
+  box-shadow: 3px 4px 0 #2e214333;
+}
+
+@media (max-width: 760px) {
+  .threadit-layout,
+  .threadit-page:is(
+    [data-active-view="trace"],
+    [data-view="trace"],
+    [data-state-id="threadit_tracing"],
+    [data-state-id="threadit_secured"]
+  ) .threadit-layout {
+    display: block;
+    min-height: 430px;
+  }
+
+  .threadit-thread-column {
+    top: 18%;
+    left: 14%;
+    width: 42%;
+    max-height: 58%;
+    transform: none;
+  }
+
+  .threadit-source-panel {
+    inset: 8% 4% 12% auto;
+    width: 48%;
+  }
+}
