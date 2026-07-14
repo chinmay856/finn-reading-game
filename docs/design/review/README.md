@@ -116,3 +116,17 @@ Review requests and response protocol live in
   auto-decide permission, and required human confirmation.
 - `amazeon-completion-chinmay-v1.png` — Chinmay closes the site and admits the
   store must now wait for a person to press Buy.
+
+## ViewTube approved-toast-video correction
+
+- `viewtube-act-one-entry-v2.png` — the approved toast-video interface, silent
+  CRT player, repeated recommendations, transcript/source panels, four compact
+  in-world repairs, and Chinmay's Video Auto-Fix pitch.
+- `viewtube-autoplay-chinmay-v2.png` — Chinmay mistakes ten costumed copies of
+  one clip for ten agreeing documentaries.
+- `viewtube-autoplay-amy-v2.png` — Amy checks the shared media hash and explains
+  the actual Act II job: separate footage, transcript, and sources.
+- `viewtube-act-two-v2.png` — the approved `10 COSTUMES — 1 CLIP` board with ten
+  toast costumes, one visible file hash, and three evidence-track checks.
+- `viewtube-completion-v2.png` — the editing bay with the duplicate AI write
+  blocked while Amy states exactly what Finn fixed and closes the site.

@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const CSS_URL = new URL("../apps/internet-recovery/viewtube.css", import.meta.url);
+const APP_URL = new URL("../app.js", import.meta.url);
+const FRAME_CSS_URL = new URL("../apps/internet-recovery/viewtube-frame.css", import.meta.url);
 
 test("ViewTube reserves a distinct 1440 browser and 340-370 companion composition", async () => {
   const css = await readFile(CSS_URL, "utf8");
@@ -85,4 +87,23 @@ test("ViewTube layout keeps keyboard focus and alternate display modes explicit"
   assert.match(css, /@media \(forced-colors: active\)/u);
   assert.match(css, /outline-color:\s*Highlight/u);
   assert.match(css, /border-color:\s*CanvasText/u);
+});
+
+test("ViewTube's image-led frame exposes the authored 4 plus 3 flow without a raw counter", async () => {
+  const [app, frameCss] = await Promise.all([
+    readFile(APP_URL, "utf8"),
+    readFile(FRAME_CSS_URL, "utf8"),
+  ]);
+  assert.match(app, /page\.dataset\.midpointDiscovered/u);
+  assert.match(app, /page\.dataset\.secured/u);
+  assert.match(app, /renderSimpleDiagnosticPanel\("viewtube", transition\.state\)/u);
+  for (const label of ["RECORDING ID", "DISTINCT FRAMES", "TRANSCRIPT", "SOURCE + CONTEXT"]) {
+    assert.ok(app.includes(label));
+  }
+  assert.doesNotMatch(app, /OF 7 VIEWTUBE UNITS SAVED/u);
+  assert.match(frameCss, /RESTORE THE RECORDING/u);
+  assert.match(frameCss, /grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/u);
+  assert.match(frameCss, /grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/u);
+  assert.match(frameCss, /SEPARATE THE EVIDENCE/u);
+  assert.match(frameCss, /EVIDENCE TRACKS RESTORED/u);
 });

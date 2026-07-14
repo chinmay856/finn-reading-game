@@ -1,5 +1,22 @@
 # Parallel design requests
 
+## ViewTube approved-toast-video correction — 2026-07-14
+
+The generic winter-sky editor has been retired. ViewTube now derives all three
+1024x768 WebP frames directly from the approved toast-video concept boards:
+the silent toast CRT and repeated recommendation rail in Act I, the `10
+COSTUMES — 1 CLIP` hash reveal at midpoint/Act II, and the footage/transcript/
+evidence editing bay at completion. No new unrelated retro aesthetic was
+invented.
+
+The visible progress UI now matches the story rather than advertising a raw
+passage count: four compact recording repairs in Act I, then three evidence-
+track checks in Act II. The entry, midpoint, and completion cut scenes follow
+the ViewTube designer notes naturally—Chinmay pitches Auto-Fix, Amy disproves
+the ten-witness claim with one media hash, and Amy closes the site by naming
+Finn's restored tracks and blocked clone. Five executable 1440x900 captures are
+listed in `docs/design/review/README.md`.
+
 ## Screenshot-reviewed design match correction — 2026-07-13
 
 ThreadIt and FacePlace now match their approved generated compositions nearly

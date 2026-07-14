@@ -1,5 +1,22 @@
 # Project status
 
+## ViewTube approved-toast-video correction — 2026-07-14
+
+- Replaced the generic winter-sky editor with three optimized frames composited
+  from the approved ViewTube concept boards: toast-video Act I, `10 COSTUMES —
+  1 CLIP` Act II, and the final evidence editing bay.
+- Four concise recording checks replace the detached seven-box strip in Act I;
+  three footage/transcript/source checks replace them after the midpoint. Full
+  repair descriptions remain available to assistive technology.
+- ViewTube now uses an authored story sequence rather than the generic fixed
+  speaker template: Chinmay pitches Video Auto-Fix, his ten-witness joke leads
+  into Amy's one-hash explanation, and Amy's completion names Finn's repair and
+  closes the site.
+- Browser QA at 1440x900 covered entry, both midpoint messages, clean Act II,
+  and completion. The screenshots are recorded in `docs/design/review/`.
+- No Reading Engine, speech, scoring, microphone, or passage content changed in
+  this visual correction.
+
 ## Visual acceptance correction — 2026-07-13
 
 - ThreadIt and FacePlace were rebuilt after the first image-led pass failed
@@ -20,9 +37,10 @@
   FacePlace, MyCorner, Yahuh, ViewTube, and Amaze-On have joined Search-ish,
   Spotty-Fi, and MapGuess with image-led locked frames and semantic repair
   overlays; WikiWhy retains its established campaign presentation.
-- Every post-WikiWhy site now has Amy/Chinmay entry, midpoint, and completion
-  exchanges. Midpoints explain the change between the first and second repair
-  problem; completions say what Finn fixed and explicitly finish the site.
+- Every post-WikiWhy site has visible cut scenes between repair acts and at
+  completion. The speaker order follows each site's authored notes instead of a
+  fixed Amy/Chinmay template; midpoints explain the new problem and completions
+  say what Finn fixed before explicitly finishing the site.
 - Progress geometry matches each authored flow: ThreadIt 4+3, FacePlace 3+3,
   MyCorner 4+3, Yahuh 3+3, ViewTube 4+3, Search-ish 4+3, Amaze-On 4+3,
   Spotty-Fi 5+3, and MapGuess 5+3. Search-ish therefore shows four initial

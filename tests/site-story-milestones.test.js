@@ -19,8 +19,8 @@ const SITES = [
   "mapguess",
 ];
 
-test("every post-WikiWhy site has midpoint and completion dialogue for Amy and Chinmay", () => {
-  for (const siteId of SITES) {
+test("default post-WikiWhy sites retain midpoint and completion dialogue", () => {
+  for (const siteId of SITES.filter((siteId) => siteId !== "viewtube")) {
     const start = app.indexOf(`${siteId}: Object.freeze({ midpoint:`);
     assert.notEqual(start, -1, `${siteId} milestone copy is missing`);
     const slice = app.slice(start, start + 900);
@@ -29,6 +29,21 @@ test("every post-WikiWhy site has midpoint and completion dialogue for Amy and C
     assert.match(slice, /completion: \{ amy:/u, `${siteId} completion Amy copy is missing`);
     assert.match(slice, /is finished\./u, `${siteId} completion does not clearly end the site`);
   }
+});
+
+test("ViewTube follows its authored story order instead of forcing the default speaker template", () => {
+  const start = app.indexOf("const VIEWTUBE_STORY_FLOW");
+  assert.notEqual(start, -1);
+  const slice = app.slice(start, start + 2400);
+  assert.match(slice, /entry: Object\.freeze\(\[/u);
+  assert.match(slice, /midpoint: Object\.freeze\(\[/u);
+  assert.match(slice, /CEO BROADCAST · CONFIRMATION SPIKE/u);
+  assert.match(slice, /AMY · HASH CHECK/u);
+  assert.ok(slice.indexOf("CONFIRMATION SPIKE") < slice.indexOf("HASH CHECK"));
+  assert.match(slice, /Ten copies of one clip are still one source/u);
+  assert.match(slice, /ViewTube is finished\./u);
+  assert.match(app, /showAuthoredSiteSequence\(VIEWTUBE_STORY_FLOW\.entry\)/u);
+  assert.match(app, /showAuthoredSiteSequence\(VIEWTUBE_STORY_FLOW\[milestone\], onDone\)/u);
 });
 
 test("site transitions open milestone dialogue from diagnostic and reading paths", () => {

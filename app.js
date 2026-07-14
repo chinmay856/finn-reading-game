@@ -2099,7 +2099,11 @@ function setMapGuessInspectorDrawerOpen(open) {
 
 function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) {
   const view = getViewTubeCampaignView(campaignState);
-  $("viewtubePage").dataset.secondaryDrawerOpen = String(state.viewtubeDrawerOpen);
+  const page = $("viewtubePage");
+  page.dataset.secondaryDrawerOpen = String(state.viewtubeDrawerOpen);
+  page.dataset.midpointDiscovered = String(view.midpoint.discovered);
+  page.dataset.midpointAcknowledged = String(view.midpoint.acknowledged);
+  page.dataset.secured = String(view.secured);
   $("viewtubeHeaderStatus").textContent = view.headerStatus;
   $("viewtubeRule").textContent = view.ruleLabel;
   $("viewtubeRuleBody").textContent = view.ruleBody;
@@ -2117,7 +2121,12 @@ function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) 
   $("viewtubeLoopProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
   $("viewtubeMidpointAmy").textContent = `Amy: ${view.midpoint.amy}`;
   $("viewtubeMidpointChinmay").textContent = `Chinmay: ${view.midpoint.chinmay}`;
-  $("viewtubeTimelineUnits").innerHTML = [...view.progress.restoreTimeline.map((unit) => ({ ...unit, phase: "restore" })), ...view.progress.evidenceTracks.map((unit) => ({ ...unit, phase: "track", saved: unit.verified }))].map((unit) => `<li class="viewtube-timeline-unit" data-phase="${unit.phase}" data-complete="${unit.saved}">${escapeMarkup(unit.label)}</li>`).join("");
+  const restoreDisplayLabels = ["RECORDING ID", "DISTINCT FRAMES", "TRANSCRIPT", "SOURCE + CONTEXT"];
+  const timelineUnits = [
+    ...view.progress.restoreTimeline.map((unit, index) => ({ ...unit, displayLabel: restoreDisplayLabels[index], phase: "restore" })),
+    ...view.progress.evidenceTracks.map((unit) => ({ ...unit, displayLabel: unit.label, phase: "track", saved: unit.verified })),
+  ];
+  $("viewtubeTimelineUnits").innerHTML = timelineUnits.map((unit) => `<li class="viewtube-timeline-unit" data-phase="${unit.phase}" data-complete="${unit.saved}" aria-label="${escapeMarkup(unit.label)}: ${unit.saved ? "restored" : "not restored"}">${escapeMarkup(unit.displayLabel)}</li>`).join("");
   $("viewtubeTrackList").innerHTML = view.progress.evidenceTracks.map((track) => `<li class="viewtube-evidence-track" data-verified="${track.verified}"><b>${escapeMarkup(track.label)}</b></li>`).join("");
   $("viewtubeSecuredPayoff").hidden = !view.secured;
   if (view.securedPayoff) {
@@ -2129,7 +2138,13 @@ function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) 
   $("viewtubeEvidenceToggle").setAttribute("aria-expanded", String(state.viewtubeEvidenceReceiptOpen));
   const selection = selectNextViewTubePassage(state.viewtubeState, { lane: "playtest" });
   $("viewtubeCandidateCount").textContent = `${selection.plannedCount} planned · ${selection.structuredCandidateCount} structured candidates · ${selection.selectableCount} selectable · ${selection.requiredFirstRun} required`;
-  $("viewtubeLiveStatus").textContent = view.secured ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 VIEWTUBE UNITS SAVED`;
+  const visibleUnits = timelineUnits.filter((unit) => unit.phase === (view.midpoint.discovered ? "track" : "restore"));
+  const nextVisibleUnit = visibleUnits.find((unit) => !unit.saved);
+  $("viewtubeLiveStatus").textContent = view.secured
+    ? `EVIDENCE TRACKS RESTORED${diagnosticMode ? " · TEST" : ""}`
+    : nextVisibleUnit
+      ? `${nextVisibleUnit.label} is the next visible repair.`
+      : "The next ViewTube repair begins after the story checkpoint.";
   $("viewtubeContentReason").textContent = selection.passage
     ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
     : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
@@ -3425,6 +3440,19 @@ const SITE_MILESTONE_MESSAGES = Object.freeze({
   mapguess: Object.freeze({ midpoint: { amy: "Finn repaired all five map records, but the tracker exposes the trick: the roads stayed still while the destination moved to protect the ETA.", chinmay: "The old update bars were never wrong. They were exploring alternative futures." }, completion: { amy: "Finn pinned the destination, chose what the route should optimize, and blocked another target move. MapGuess is finished.", chinmay: "The arrival estimate now measures arrival. This will disrupt several dashboards." } }),
 });
 
+const VIEWTUBE_STORY_FLOW = Object.freeze({
+  entry: Object.freeze([
+    Object.freeze({ action: "Start the recording repair", body: "I can restore this faster. Video Auto-Fix AI will keep the clip people watched longest and duplicate it until the missing context looks full.", eyebrow: "CEO BROADCAST · FASTER RESTORATION", heading: "Chinmay has a shortcut for ViewTube.", speaker: "chinmay" }),
+  ]),
+  midpoint: Object.freeze([
+    Object.freeze({ action: "Check the file hashes", body: "Great news: ten documentaries now agree. The confirmation count is extremely high and the footage has several exciting hats.", eyebrow: "CEO BROADCAST · CONFIRMATION SPIKE", heading: "Chinmay thinks autoplay found ten witnesses.", speaker: "chinmay" }),
+    Object.freeze({ action: "Open the editing bay", body: "They have the same file hash. Ten copies of one clip are still one source. Finn restored the recording; now separate footage, transcript, and source evidence.", eyebrow: "AMY · HASH CHECK", heading: "One clip is wearing ten costumes.", speaker: "amy" }),
+  ]),
+  completion: Object.freeze([
+    Object.freeze({ action: "Finish this site", body: "Finn separated footage, transcript, and sources, quarantined ten loops under one original hash, and blocked another clone. ViewTube is finished.", eyebrow: "AMY · EDIT COMPLETE", heading: "The evidence tracks finally describe what happened.", speaker: "amy" }),
+  ]),
+});
+
 function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait, speaker, title }, onContinue = hideCharacterDialog) {
   const layer = $("characterDialogLayer");
   if (layer.hidden) state.dialogReturnFocus = document.activeElement;
@@ -3448,10 +3476,31 @@ function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait
   $("dialogHeading").focus({ preventScroll: true });
 }
 
+function showAuthoredSiteSequence(steps, onDone = hideCharacterDialog) {
+  const showStep = (index) => {
+    const step = steps[index];
+    if (!step) {
+      onDone();
+      return;
+    }
+    const speakerIsAmy = step.speaker === "amy";
+    showSiteMessage({
+      ...step,
+      portrait: speakerIsAmy ? AMY_DIALOG_URL : CHINMAY_DIALOG_URL,
+      title: speakerIsAmy ? "AMY // ENGINEER CHANNEL" : "CEO BROADCAST // LIVE",
+    }, () => showStep(index + 1));
+  };
+  showStep(0);
+}
+
 function maybeShowSiteEntryDialog(siteId) {
   const copy = SITE_ENTRY_MESSAGES[siteId];
   if (!copy || state.seenSiteDialogIds.has(siteId) || !$(siteId).classList.contains("on")) return;
   state.seenSiteDialogIds.add(siteId);
+  if (siteId === "viewtube") {
+    showAuthoredSiteSequence(VIEWTUBE_STORY_FLOW.entry);
+    return;
+  }
   showSiteMessage({
     action: "Hear Chinmay's explanation",
     body: copy.amy,
@@ -3472,6 +3521,10 @@ function maybeShowSiteEntryDialog(siteId) {
 }
 
 function showSiteMilestoneSequence(siteId, milestone, onDone = hideCharacterDialog) {
+  if (siteId === "viewtube" && VIEWTUBE_STORY_FLOW[milestone]) {
+    showAuthoredSiteSequence(VIEWTUBE_STORY_FLOW[milestone], onDone);
+    return true;
+  }
   const copy = SITE_MILESTONE_MESSAGES[siteId]?.[milestone];
   if (!copy) return false;
   const name = getRecoverySite(siteId).name;
@@ -5345,7 +5398,10 @@ $("viewtubeMidpointAction").onclick = () => {
     ? acknowledgeViewTubeMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeViewTubeMidpoint(localStateStorage, { currentState: visible });
   if (!transition.ok) return;
-  if (state.viewtubeDiagnosticMode) state.viewtubeDiagnosticState = transition.state;
+  if (state.viewtubeDiagnosticMode) {
+    state.viewtubeDiagnosticState = transition.state;
+    renderSimpleDiagnosticPanel("viewtube", transition.state);
+  }
   else {
     state.viewtubeState = transition.state;
     state.viewtubePersisted = playtestMode ? false : transition.ok;
