@@ -1,5 +1,26 @@
 # Playtest review handoff — 2026-07-13
 
+## Completion update — 2026-07-13
+
+The gameplay, story, layout, and visual TODOs in this handoff are implemented
+in the ten-site completion candidate. The six missing image-led frames are in
+place; every site has honest phase counts plus Amy/Chinmay midpoint and ending
+payoffs; site-correct routing, stale popup cancellation, result return, map
+counts, FacePlace AVOCADO, and one-Techno behavior have automated regressions.
+The integrated suite now passes 360 tests.
+
+Browser QA at 1280x720 covered entry, midpoint, and secured states across all
+ten sites (WikiWhy through its entry route and the other nine through their
+diagnostic previews). The nine fixed site frames measured exactly 4:3, with no
+document or active-screen overflow and exactly one visible Techno. MapGuess's
+bottom tracker visibly moves H4 to D7 while its vintage ETA remains stuck at
+two minutes.
+
+The only deliberately unclosed items below are not site-mechanics TODOs:
+independent content approval and real-microphone/latency evidence. The user
+explicitly excluded speech-engine work from this pass. Do not reopen those
+areas as part of visual or gameplay polish.
+
 ## Start here
 
 - Authority: GitHub `main` at `5b5613d` (PR #113).

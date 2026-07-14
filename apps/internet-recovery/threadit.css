@@ -1396,3 +1396,44 @@
     outline-color: Highlight;
   }
 }
+
+/*
+ * Image-led 4:3 stage. The raster is deliberately text-free: every label,
+ * relationship, repair count, and focus target remains live semantic DOM.
+ */
+.threadit-layout {
+  isolation: isolate;
+  position: relative;
+}
+
+.threadit-layout::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: url("./art/site-assets/threadit/threadit-source-tree-base-v1.webp") center / cover no-repeat;
+  opacity: .38;
+  pointer-events: none;
+}
+
+.threadit-thread-column,
+.threadit-source-panel {
+  background-color: #f4f1eadb;
+  backdrop-filter: blur(1.5px);
+}
+
+.threadit-page:is(
+  [data-active-view="trace"],
+  [data-view="trace"],
+  [data-state-id="threadit_tracing"],
+  [data-state-id="threadit_secured"]
+) .threadit-layout::before {
+  opacity: .46;
+  filter: saturate(1.08);
+}
+
+@media (forced-colors: active) {
+  .threadit-layout::before {
+    display: none;
+  }
+}
