@@ -299,14 +299,16 @@ function buildSecuredRecords(state) {
       fixtureDraft: { ...fixture.evidence },
     },
     securedPayoff: {
+      amyLine: copy(MYCORNER_COPY_IDS.completionAmy),
       bodyLines: copy(MYCORNER_COPY_IDS.secureBody).split("\n").filter(Boolean),
       canonical: true,
+      chinmayLine: copy(MYCORNER_COPY_IDS.completionChinmay),
       denial: copy(MYCORNER_COPY_IDS.secureDenial),
       evidenceTitle: copy(MYCORNER_COPY_IDS.evidenceTitle),
       provisional: false,
       status: copy(MYCORNER_COPY_IDS.secureStatus),
       testOnly: false,
-      title: copy(MYCORNER_COPY_IDS.secureTitle),
+      title: copy(MYCORNER_COPY_IDS.completionTitle),
     },
   };
 }
@@ -386,6 +388,10 @@ export function getMyCornerCampaignView(currentState, {
       restoreCompletedCount: Math.min(completedCount, MYCORNER_RESTORE_UNITS.length),
       restoreTotal: MYCORNER_RESTORE_UNITS.length,
       totalUnitCount: MYCORNER_CAMPAIGN_UNITS.length,
+      visibleCountLabel: `${completedCount} / ${MYCORNER_CAMPAIGN_UNITS.length} PROFILE REPAIRS`,
+      phase: completedCount < MYCORNER_RESTORE_UNITS.length
+        ? { completed: completedCount, label: "SAVE PROFILE SECTIONS", total: MYCORNER_RESTORE_UNITS.length }
+        : { completed: Math.max(0, completedCount - MYCORNER_RESTORE_UNITS.length), label: "LOCK OWNER CONTROLS", total: MYCORNER_OWNER_LOCK_UNITS.length },
     },
     readingGate: {
       firstRunShortfall: 0,

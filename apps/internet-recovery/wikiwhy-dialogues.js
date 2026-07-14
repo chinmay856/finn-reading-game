@@ -31,7 +31,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
   }),
   "reverse-hack-ready": Object.freeze({
     action: "Compare versions",
-    body: "Okay, tiny clarification. My AI is not supposed to keep editing after the command ends, which is why this is technically very educational.",
+    body: "Okay, tiny clarification. Your first repairs are saved, but my AI kept editing after the command ended. The second half is apparently the part where we stop it doing that.",
     eyebrow: "AUTOMATIC WRITE DETECTED · SAVED REPAIR PRESERVED",
     heading: "The AI service is still writing.",
     meta: "Writer: ai_repair_service · Command: ENDED · Write status: ACTIVE",
@@ -41,7 +41,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
   }),
   "reverse-hack-amy": Object.freeze({
     action: "Start Shield Protocol",
-    body: "Finn, your saved repair is intact. The comparison proves a separate AI write is still active, so we seal the content, links, and write access next.",
+    body: "Finn, the first half restored the page and exposed the hidden writer. Your saved repair is intact. In the second half, three Shield repairs seal the content, citations, history, and write access.",
     comparison: true,
     eyebrow: "READINGS SAVED · EVIDENCE SAVED",
     heading: "Your repair is preserved. The AI rewrite is not.",
@@ -78,7 +78,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
   }),
   "site-secured-amy": Object.freeze({
     action: "Open blocked-write log",
-    body: "Nice work, Finn. That site is not just cleaner. It has a lock the shortcut cannot write through.",
+    body: "Nice work, Finn. You restored the page, sealed its facts, citations, history, and write access, and blocked the hidden writer. WikiWhy is fixed; this site is complete.",
     eyebrow: "SHIELD PROTOCOL 3 OF 3 · WRITE ACCESS",
     heading: "Write access sealed. Evidence file recovered.",
     meta: "WIKIWHY_TRACE_01.LOG · AI WRITE ROUTE / 01",
@@ -90,7 +90,7 @@ export const WIKIWHY_DIALOGUES = Object.freeze({
     action: "Return to Recovery Map",
     body: "ai_repair_service tried to modify WikiWhy and was denied because Finn restored the approval check the AI optimized away. I would like the record to show that I am also upset with my AI, although I did name the deployment ‘Definitely Fine.’",
     eyebrow: "ACCESS DENIED",
-    heading: "Unauthorized AI write blocked.",
+    heading: "WikiWhy fixed. This site is complete.",
     meta: "AUTONOMOUS AI WRITE: ACCESS DENIED",
     portrait: CHINMAY_FLUSTER_2_URL,
     speaker: "chinmay",

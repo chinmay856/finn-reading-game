@@ -4,6 +4,7 @@ import {
   normalizeThreadItState,
 } from "./threadit-state.js";
 import { THREADIT_ACT_ONE_UNITS, THREADIT_CAMPAIGN_UNITS } from "./threadit-rules.js";
+import { getThreadItCopy, THREADIT_COPY_IDS } from "./threadit-copy.js";
 
 const DUPLICATE_GROUP_ID = "consensus-cascade-01";
 const CLONE_VOTE_COUNTS = Object.freeze([184, 167, 151, 138, 124, 109, 93, 78, 64, 51]);
@@ -310,7 +311,13 @@ export function getThreadItCampaignView(currentState, { reducedMotion = false } 
     midpoint: Object.freeze({
       acknowledged: state.midpointAcknowledged,
       banner: traceVisible ? "CONSENSUS CASCADE" : null,
+      body: traceVisible ? getThreadItCopy(THREADIT_COPY_IDS.midpointBody) : null,
+      chinmay: traceVisible ? getThreadItCopy(THREADIT_COPY_IDS.midpointChinmay) : null,
       discovered: state.midpointDiscovered,
+      amy: traceVisible ? getThreadItCopy(THREADIT_COPY_IDS.midpointAmy) : null,
+      nextUnitCount: THREADIT_CAMPAIGN_UNITS.length - THREADIT_ACT_ONE_UNITS.length,
+      repairedUnitCount: THREADIT_ACT_ONE_UNITS.length,
+      title: traceVisible ? getThreadItCopy(THREADIT_COPY_IDS.midpointTitle) : null,
       truthLine: traceVisible ? "TEN ACCOUNTS · ONE SOURCE" : null,
     }),
     motion: Object.freeze({
@@ -321,11 +328,18 @@ export function getThreadItCampaignView(currentState, { reducedMotion = false } 
     progress: Object.freeze({
       completedUnitCount: state.completedUnitIds.length,
       completedUnitIds: Object.freeze([...state.completedUnitIds]),
+      display: `${state.completedUnitIds.length} / ${THREADIT_CAMPAIGN_UNITS.length} REPAIRS`,
       totalUnitCount: THREADIT_CAMPAIGN_UNITS.length,
     }),
     relationships: freezeItems(relationships),
     ruleLabel: actOneComplete ? "VOTES RANK ATTENTION, NOT TRUTH" : "MOST VOTES WINS REALITY",
     secured: state.secured,
+    securedPayoff: state.secured ? Object.freeze({
+      amy: getThreadItCopy(THREADIT_COPY_IDS.completionAmy),
+      chinmay: getThreadItCopy(THREADIT_COPY_IDS.completionChinmay),
+      endOfSite: true,
+      title: getThreadItCopy(THREADIT_COPY_IDS.completionTitle),
+    }) : null,
     siteId: "threadit",
     stateId: state.stateId,
   });

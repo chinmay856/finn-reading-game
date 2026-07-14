@@ -732,3 +732,25 @@ content review, canonical evidence, and finale gates remain fail-closed. No
 Reading Engine code changed. `npm run check`, all 325 tests, and `npm run build`
 pass. Automated browser control was unavailable for this worktree, so live
 desktop click-through remains the publication smoke check.
+
+## Ten-site mechanics refinement — active 2026-07-13
+
+- Every site now has an explicit Amy plus Chinmay midpoint exchange explaining
+  what Finn fixed in the first half and what changes in the second half.
+- Every site has an explicit two-character completion payoff naming Finn's
+  repair and clearly ending that site before returning to the Recovery Map.
+- Site view models expose honest completed/total and half-boundary data instead
+  of deriving progress from decorative art. FacePlace retains its AVOCADO beat.
+- Search-ish now shows exactly four source-route bullets in its first half;
+  all four clear together before the three answer/source checks replace them.
+- MapGuess now has a semantic bottom tracker that shows the target moving from
+  H4 to D7 while `2 MINUTES REMAINING` refuses to change, including the vintage
+  software-update joke and a reduced-motion text fallback.
+- All site stages use one forced 4:3 calibration boundary at 100% browser zoom;
+  unused space is letterboxed outside the stage instead of independently
+  scaling image and overlay layers.
+- Browser QA at 1280x720 confirmed 4:3 Search-ish and MapGuess frames, exact
+  document client/scroll dimensions, four initial Search-ish rows, and a
+  non-overlapping MapGuess moving-target tracker.
+- Speech, scoring, microphone, and Reading Engine files were intentionally not
+  changed. `npm.cmd run check`, all 354 tests, and `npm.cmd run build` pass.

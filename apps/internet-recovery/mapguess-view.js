@@ -460,13 +460,16 @@ function buildSecuredRecords(state, { directions, goals }) {
     blockedWrite,
     evidence,
     securedPayoff: {
+      amyLine: "Finn anchored the real destination, checked the landmarks, and chose a route goal. The map now estimates the trip instead of relocating the finish line.",
       bodyLines: copy(MAPGUESS_COPY_IDS.secureBody).split("\n").filter(Boolean),
       canonical: true,
+      chinmayLine: "The new estimate is longer, but it does have the bold advantage of arriving at the place you picked.",
       denial: copy(MAPGUESS_COPY_IDS.secureDenial),
       provisional: false,
       status: copy(MAPGUESS_COPY_IDS.secureStatus),
       testOnly: false,
       title: copy(MAPGUESS_COPY_IDS.secureTitle),
+      endOfSite: true,
     },
   };
 }
@@ -553,6 +556,26 @@ export function getMapGuessCampaignView(currentState, { reducedMotion = false } 
       proofAvailable: destinationComparison.visible,
       title: copy(MAPGUESS_COPY_IDS.midpointTitle),
       visible: state.midpointDiscovered && !state.midpointAcknowledged,
+    },
+    bottomTracker: {
+      accessibleSummary: state.secured
+        ? "Destination locked at Glasswater Archive, H4. Honest ETA uses the selected route."
+        : state.midpointDiscovered
+          ? "Moving target detected: the requested destination jumps from H4 to sponsored stop D7 while the ETA remains two minutes."
+          : "Old-style update estimate: two minutes remaining; destination verification is still pending.",
+      destinationChanged: state.midpointDiscovered && !state.secured,
+      destinationFrames: state.midpointDiscovered
+        ? [
+            { coordinate: "H4", label: "YOU ASKED FOR", state: "requested" },
+            { coordinate: state.secured ? "H4" : "D7", label: state.secured ? "DESTINATION LOCKED" : "TARGET MOVED HERE", state: state.secured ? "locked" : "moved" },
+          ]
+        : [{ coordinate: "?", label: "DESTINATION VERIFYING", state: "unknown" }],
+      etaDisplay: state.secured ? directions.etaDisplay : "2 MINUTES REMAINING",
+      etaJoke: state.secured
+        ? "Estimate recalculated from the route instead of from pure confidence."
+        : "Like a vintage software update: two minutes remaining since several minutes ago.",
+      position: "bottom",
+      state: state.secured ? "honest" : state.midpointDiscovered ? "moving-target" : "stalled-estimate",
     },
     motion: {
       destinationMoveMode: reducedMotion ? "before-after-coordinate-cards" : "pin-jump-plus-coordinate-cards",

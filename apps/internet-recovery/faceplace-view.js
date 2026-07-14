@@ -277,9 +277,12 @@ function buildHonestZero(state, { completedCount, transientActOneResult }) {
     actionRequired: visible && !state.midpointAcknowledged,
     amyLine: copy(FACEPLACE_COPY_IDS.midpointAmy),
     body: copy(FACEPLACE_COPY_IDS.midpointBody),
+    chinmayLine: copy(FACEPLACE_COPY_IDS.midpointChinmay),
     discovered: state.midpointDiscovered,
     preservedUnitIds: FACEPLACE_FALSE_TRACKER_UNITS.map(({ unitId }) => unitId),
     recoveredPostsSaved: state.midpointDiscovered,
+    nextUnitCount: FACEPLACE_CAMPAIGN_UNITS.length - FACEPLACE_FALSE_TRACKER_UNITS.length,
+    repairedUnitCount: FACEPLACE_FALSE_TRACKER_UNITS.length,
     title: copy(FACEPLACE_COPY_IDS.midpointTitle),
     visible,
   };
@@ -303,14 +306,17 @@ function buildSecuredRecords(state) {
     blockedWrite,
     evidence,
     securedPayoff: {
+      amy: copy(FACEPLACE_COPY_IDS.completionAmy),
       bodyLines: copy(FACEPLACE_COPY_IDS.secureBody).split("\n").filter(Boolean),
       canonical: true,
+      chinmay: copy(FACEPLACE_COPY_IDS.completionChinmay),
       denial: copy(FACEPLACE_COPY_IDS.secureDenial),
+      endOfSite: true,
       evidenceTitle: copy(FACEPLACE_COPY_IDS.evidenceTitle),
       provisional: false,
       status: copy(FACEPLACE_COPY_IDS.secureStatus),
       testOnly: false,
-      title: copy(FACEPLACE_COPY_IDS.secureTitle),
+      title: copy(FACEPLACE_COPY_IDS.completionTitle),
     },
   };
 }
@@ -397,6 +403,7 @@ export function getFacePlaceCampaignView(currentState, {
       actOneCompletedCount: Math.min(completedCount, FACEPLACE_FALSE_TRACKER_UNITS.length),
       completedUnitCount: completedCount,
       completedUnitIds: [...state.completedUnitIds],
+      display: `${completedCount} / ${FACEPLACE_CAMPAIGN_UNITS.length} REPAIRS`,
       honestRecoveryCompletedCount: recoveryCount,
       preservedActOneUnitIds: state.midpointDiscovered
         ? FACEPLACE_FALSE_TRACKER_UNITS.map(({ unitId }) => unitId)

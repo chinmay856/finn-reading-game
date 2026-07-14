@@ -424,7 +424,8 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(app, /event\.key !== "Escape"/u);
   assert.match(app, /showWikiWhySecuredSequence/u);
   assert.match(copy, /PROVISIONAL FACEPLACE FIXTURE - NOT CANONICAL/u);
-  assert.doesNotMatch(copy, /VIBESHIFT|Chinmay/iu);
+  assert.doesNotMatch(copy, /VIBESHIFT/iu);
+  assert.match(copy, /completionChinmay|midpointChinmay/u);
   assert.match(state, /faceplace_honest_zero/u);
   assert.match(state, /canonical: true/u);
   assert.match(view, /showActOneResult/u);

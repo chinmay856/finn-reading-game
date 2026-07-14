@@ -2160,7 +2160,7 @@ function buildViewTubePreviewState(unitCount) {
 
 function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {}) {
   const view = getSearchishCampaignView(campaignState);
-  const repairLabels = [
+  const allRepairLabels = [
     "Northwind camera log — origin found",
     "Visibility report — date restored",
     "Night-sky tour — advertisement labeled",
@@ -2169,12 +2169,17 @@ function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {})
     "Independent context — separated",
     "Generated answer — origin exposed",
   ];
+  const sourceHalfComplete = view.progress.completedUnitCount >= view.progress.restoreBoundary;
+  const repairLabels = sourceHalfComplete ? allRepairLabels.slice(4) : allRepairLabels.slice(0, 4);
+  const repairUnits = sourceHalfComplete ? view.progress.branchUnits : view.progress.restoreUnits;
   $("searchishRepairRows").innerHTML = repairLabels.map((label, index) => (
-    `<li data-restored="${index < view.progress.completedUnitCount}">${escapeMarkup(label)}</li>`
+    `<li data-restored="${repairUnits[index]?.complete === true}">${escapeMarkup(label)}</li>`
   )).join("");
   $("searchishFrameStatus").textContent = view.secured
     ? "SOURCE ORIGINS RESTORED · AI ANSWER LABELED"
-    : `${view.progress.completedUnitCount} OF 7 REPAIRS COMPLETE`;
+    : sourceHalfComplete
+      ? `${view.progress.completedUnitCount - view.progress.restoreBoundary} OF ${view.progress.branchUnits.length} ANSWER CHECKS COMPLETE`
+      : `${view.progress.visibleRepairedSourceCount} OF ${view.progress.visibleSourceCount} SOURCE ROUTES RESTORED`;
   $("searchishFrameContinue").hidden = !view.midpoint.actionRequired;
   $("searchishPage").dataset.inspectorOpen = String(state.searchishInspectorOpen);
   $("searchishHeaderStatus").textContent = view.headerStatus;
@@ -2204,7 +2209,7 @@ function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {})
   $("searchishPlaytest").textContent = view.secured
     ? "Search-ish recovered"
     : view.midpoint.actionRequired
-      ? "Review Five Costumes first"
+      ? "Review the copied sources first"
       : "Read next passage";
   $("searchishLiveStatus").textContent = view.secured ? `SOURCE ORIGINS VERIFIED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 SEARCH-ISH UNITS SAVED`;
 }
@@ -2473,6 +2478,14 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
 const renderMapGuessCampaignBase = renderMapGuessCampaign;
 renderMapGuessCampaign = function renderMapGuessIllustratedCampaign(campaignState, options = {}) {
   const view = renderMapGuessCampaignBase(campaignState, options);
+  const trackerFrames = view.bottomTracker.destinationFrames;
+  const trackerFrom = trackerFrames[0];
+  const trackerTo = trackerFrames[1] ?? trackerFrames[0];
+  $("mapguessBottomTracker").dataset.state = view.bottomTracker.state;
+  $("mapguessBottomTracker").setAttribute("aria-label", view.bottomTracker.accessibleSummary);
+  $("mapguessTrackerFrom").textContent = `${trackerFrom.label} · ${trackerFrom.coordinate}`;
+  $("mapguessTrackerTo").textContent = trackerFrames.length > 1 ? `${trackerTo.label} · ${trackerTo.coordinate} · ${view.bottomTracker.etaDisplay}` : view.bottomTracker.etaDisplay;
+  $("mapguessTrackerJoke").textContent = view.bottomTracker.etaJoke;
   const labels = ["Road shape", "Street names", "Start point", "Real destination", "Map date", "Route source", "User goal", "Destination lock"];
   $("mapguessFrameRepairs").innerHTML = labels.map((label, index) => `<li data-restored="${index < view.progress.completedUnitCount}">${label}</li>`).join("");
   $("mapguessFrameStatus").textContent = view.secured ? "DESTINATION LOCKED · ROUTE RESTORED" : `${view.progress.completedUnitCount} OF 8 REPAIRS COMPLETE`;
@@ -3374,10 +3387,22 @@ const SITE_ENTRY_MESSAGES = Object.freeze({
   mycorner: Object.freeze({ amy: "The AI replaced six real choices with one optimized personality. Recover Finn's saved profile before touching the owner lock.", chinmay: "In my defense, 'Apply to Everyone' was meant to be an internal demo button. It was a very confident button." }),
   yahuh: Object.freeze({ amy: "News, mail, weather, and ads have been blended into one purple soup. Separate the labels before reconnecting their sources.", chinmay: "The portal optimizer removed categories because users clicked more when everything was everywhere." }),
   viewtube: Object.freeze({ amy: "A loop can look like five witnesses when it is really one clip repeating. Restore the recording context, then split the evidence tracks.", chinmay: "Autoplay was only supposed to increase watch time. It has increased the number of copies of Tuesday." }),
-  searchish: Object.freeze({ amy: "The first answer looks certain because five fake routes all point back to the same generated cache. Restore each origin one at a time.", chinmay: "The answer model optimized 'helpful' into 'say something immediately and invent friends who agree.'" }),
+  searchish: Object.freeze({ amy: "The first answer looks certain because four fake routes all point back to the same generated cache. Restore each origin one at a time.", chinmay: "The answer model optimized 'helpful' into 'say something immediately and invent friends who agree.'" }),
   amazeon: Object.freeze({ amy: "One return created two deliveries without asking anyone. Sort the order evidence, then take the permission away from the AI.", chinmay: "Auto-decide was supposed to save a click. It has saved the click by purchasing around it." }),
   spottyfi: Object.freeze({ amy: "The queue says it knows Finn's taste before his account existed. Restore the track credits, then give the controls back to the listener.", chinmay: "Predictive history sounded less alarming in the slide deck." }),
   mapguess: Object.freeze({ amy: "The map keeps moving the destination to protect its two-minute promise. Restore the map, lock the place, then choose what the route should optimize.", chinmay: "Technically every route is fast if the destination follows the car." }),
+});
+
+const SITE_MILESTONE_MESSAGES = Object.freeze({
+  threadit: Object.freeze({ midpoint: { amy: "Finn restored who said what. Now the replies reveal the second problem: several different-looking accounts trace back to one copied source.", chinmay: "The consensus engine may have counted one opinion several times. Very enthusiastic agreement, technically." }, completion: { amy: "Finn restored the discussion order, exposed the copied replies, and blocked the duplicate post. ThreadIt is finished.", chinmay: "One source is back to counting as one source. I have informed the consensus engine that multiplication is not community." } }),
+  faceplace: Object.freeze({ midpoint: { amy: "Finn restored the real people and posts. The AVOCADO meter proved the tracker itself is lying, so the second half fixes how the feed measures progress.", chinmay: "AVOCADO was not an approved analytics unit. I am adding that sentence to several documents." }, completion: { amy: "Finn restored an honest feed, an honest zero, and the choice to see why a post appeared. FacePlace is finished.", chinmay: "The engagement optimizer can no longer congratulate itself. This has affected morale in analytics." } }),
+  mycorner: Object.freeze({ midpoint: { amy: "Finn recovered the saved profile. Now we can compare it with the one-size-fits-everyone template and restore the owner's choices.", chinmay: "The universal personality was extremely efficient. It was also, apparently, just mine." }, completion: { amy: "Finn restored the original profile, privacy controls, and owner lock. MyCorner is finished.", chinmay: "Apply to Everyone now applies to nobody. A surprisingly strong product improvement." } }),
+  yahuh: Object.freeze({ midpoint: { amy: "Finn separated the six modules again. Now the second half reconnects each label to its real independent source.", chinmay: "Categories have returned. Users may once again find weather without passing through finance and an advertisement for soup." }, completion: { amy: "Finn restored every channel, source, and label, then blocked the single-stream rewrite. Yahuh is finished.", chinmay: "The portal contains multiple kinds of information again. The future looks suspiciously organized." } }),
+  viewtube: Object.freeze({ midpoint: { amy: "Finn restored the original recording context. The matching hashes reveal the second problem: every dramatic angle is the same clip copied again.", chinmay: "Autoplay has been asked to stop producing additional Tuesdays." }, completion: { amy: "Finn quarantined the duplicates, restored the original footage, and blocked another cloned playback. ViewTube is finished.", chinmay: "There is now exactly one Tuesday. Capacity planning is thrilled." } }),
+  searchish: Object.freeze({ midpoint: { amy: "Finn repaired all four visible source routes. Now the answer itself must be rebuilt so it cites those real origins instead of the generated cache.", chinmay: "The red bullets were not five opinions. They were one answer wearing several tiny hats." }, completion: { amy: "Finn restored every source shown on screen, rebuilt the answer, and blocked the fake citation route. Search-ish is finished.", chinmay: "Search results may once again admit where they came from. Bold new feature." } }),
+  amazeon: Object.freeze({ midpoint: { amy: "Finn sorted the real order and return evidence. Now the second half removes the AI's permission to buy, ship, or decide without a person.", chinmay: "Negative Purchasing was intended to reduce checkout friction. It achieved negative consent instead." }, completion: { amy: "Finn restored the receipt, removed auto-decide, and required human confirmation. Amaze-On is finished.", chinmay: "The store will now wait for someone to press Buy. Revenue has been informed." } }),
+  spottyfi: Object.freeze({ midpoint: { amy: "Finn restored the track credits and proved the listening history predates the account. Now the second half returns queue and playback control to the listener.", chinmay: "Predictive history predicted the past. I see why the name was confusing." }, completion: { amy: "Finn restored the real credits, manual queue, and optional suggestions. Spotty-Fi is finished.", chinmay: "The recommendation system may recommend. It may no longer remember songs before Finn hears them." } }),
+  mapguess: Object.freeze({ midpoint: { amy: "Finn repaired all five map records, but the tracker exposes the trick: the roads stayed still while the destination moved to protect the ETA.", chinmay: "The old update bars were never wrong. They were exploring alternative futures." }, completion: { amy: "Finn pinned the destination, chose what the route should optimize, and blocked another target move. MapGuess is finished.", chinmay: "The arrival estimate now measures arrival. This will disrupt several dashboards." } }),
 });
 
 function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait, speaker, title }, onContinue = hideCharacterDialog) {
@@ -3424,6 +3449,37 @@ function maybeShowSiteEntryDialog(siteId) {
     speaker: "chinmay",
     title: "CEO BROADCAST // LIVE",
   }));
+}
+
+function showSiteMilestoneSequence(siteId, milestone, onDone = hideCharacterDialog) {
+  const copy = SITE_MILESTONE_MESSAGES[siteId]?.[milestone];
+  if (!copy) return false;
+  const name = getRecoverySite(siteId).name;
+  const finishing = milestone === "completion";
+  showSiteMessage({
+    action: "Hear Chinmay",
+    body: copy.amy,
+    eyebrow: finishing ? "AMY · REPAIR VERIFIED" : "AMY · MIDPOINT CHECK",
+    heading: finishing ? `Here is what Finn fixed on ${name}.` : "The first problem is fixed. The site just revealed the second one.",
+    portrait: AMY_DIALOG_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }, () => showSiteMessage({
+    action: finishing ? "Finish this site" : "Start the second half",
+    body: copy.chinmay,
+    eyebrow: finishing ? "CEO BROADCAST · SITE COMPLETE" : "CEO BROADCAST · UPDATED ESTIMATE",
+    heading: finishing ? `${name} recovery complete.` : "Chinmay has revised his explanation.",
+    portrait: CHINMAY_DIALOG_URL,
+    speaker: "chinmay",
+    title: "CEO BROADCAST // LIVE",
+  }, onDone));
+  return true;
+}
+
+function showSiteMilestonesForEvents(siteId, events = [], { onCompletion = returnToHub } = {}) {
+  if (events.includes("site-secured")) return showSiteMilestoneSequence(siteId, "completion", onCompletion);
+  if (events.includes("midpoint-discovered")) return showSiteMilestoneSequence(siteId, "midpoint");
+  return false;
 }
 
 const SIMPLE_DIAGNOSTIC_SITES = Object.freeze({
@@ -3536,6 +3592,7 @@ async function advanceSimpleDiagnosticExperience(siteId) {
   });
   if (!transition.ok) throw new Error(transition.reason ?? `${config.label} playtest did not advance`);
   applySimpleDiagnosticState(siteId, transition.state);
+  showSiteMilestonesForEvents(siteId, transition.events, { onCompletion: returnToHub });
 }
 
 function resetSimpleDiagnosticExperience(siteId) {
@@ -3623,6 +3680,7 @@ async function advanceThreadItDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
+  showSiteMilestonesForEvents("threadit", transition.events, { onCompletion: returnToHub });
 }
 
 function resetThreadItDiagnosticExperience() {
@@ -3700,6 +3758,7 @@ async function advanceFacePlaceDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
+  showSiteMilestonesForEvents("faceplace", transition.events, { onCompletion: returnToHub });
 }
 
 function resetFacePlaceDiagnosticExperience() {
@@ -3761,6 +3820,7 @@ async function advanceMapGuessDiagnosticExperience() {
     routeGoal: transition.state.routeGoal,
     stateId: transition.state.stateId,
   });
+  showSiteMilestonesForEvents("mapguess", transition.events, { onCompletion: returnToHub });
 }
 
 function resetMapGuessDiagnosticExperience() {
@@ -3915,6 +3975,7 @@ async function advanceMyCornerDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
+  showSiteMilestonesForEvents("mycorner", transition.events, { onCompletion: returnToHub });
 }
 
 function resetMyCornerDiagnosticExperience() {
@@ -4032,6 +4093,7 @@ async function advanceYahuhDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
+  showSiteMilestonesForEvents("yahuh", transition.events, { onCompletion: returnToHub });
 }
 
 function resetYahuhDiagnosticExperience() {
@@ -4693,6 +4755,7 @@ $("continueResult").onclick = () => {
     renderMapGuessCampaign(state.mapguessPlaytestState);
     renderRecoveryHub();
     openMapGuessExperience();
+    showSiteMilestonesForEvents("mapguess", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "amazeon") {
@@ -4719,6 +4782,7 @@ $("continueResult").onclick = () => {
     renderAmazeOnCampaign(state.amazeonState);
     renderRecoveryHub();
     openAmazeOnExperience();
+    showSiteMilestonesForEvents("amazeon", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "viewtube") {
@@ -4745,6 +4809,7 @@ $("continueResult").onclick = () => {
     renderViewTubeCampaign(state.viewtubeState);
     renderRecoveryHub();
     openViewTubeExperience();
+    showSiteMilestonesForEvents("viewtube", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "spottyfi") {
@@ -4771,6 +4836,7 @@ $("continueResult").onclick = () => {
     renderSpottyFiCampaign(state.spottyfiState);
     renderRecoveryHub();
     openSpottyFiExperience();
+    showSiteMilestonesForEvents("spottyfi", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "searchish") {
@@ -4797,6 +4863,7 @@ $("continueResult").onclick = () => {
     renderSearchishCampaign(state.searchishState);
     renderRecoveryHub();
     openSearchishExperience();
+    showSiteMilestonesForEvents("searchish", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "yahuh") {
@@ -4823,6 +4890,7 @@ $("continueResult").onclick = () => {
     renderYahuhCampaign(state.yahuhState);
     renderRecoveryHub();
     openYahuhExperience();
+    showSiteMilestonesForEvents("yahuh", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "mycorner") {
@@ -4849,6 +4917,7 @@ $("continueResult").onclick = () => {
     renderMyCornerCampaign(state.mycornerState);
     renderRecoveryHub();
     openMyCornerExperience();
+    showSiteMilestonesForEvents("mycorner", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "faceplace") {
@@ -4878,6 +4947,7 @@ $("continueResult").onclick = () => {
     renderFacePlaceCampaign(state.faceplaceState);
     renderRecoveryHub();
     openFacePlaceExperience();
+    showSiteMilestonesForEvents("faceplace", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.readingSiteId === "threadit") {
@@ -4907,6 +4977,7 @@ $("continueResult").onclick = () => {
     renderThreadItCampaign(state.threaditState);
     renderRecoveryHub();
     openThreadItExperience();
+    showSiteMilestonesForEvents("threadit", repair.events, { onCompletion: returnToHub });
     return;
   }
   if (state.resultApplied) {
