@@ -26,6 +26,22 @@ target is legible in its bottom tracker, and the new Amaze-On midpoint was
 visually checked in the executable app. Continue to use the locked-frame plus
 small-overlay pattern for future revisions.
 
+## Amaze-On approved-marketplace correction — 2026-07-13
+
+The unrelated lamp-workshop board has been retired. Amaze-On now follows the
+approved marketplace storyboard closely: Act I is a navy/orange product page
+with six-out-of-five stars, Shopping Auto-Fix AI, and four sponsored results;
+Act II makes the Negative Purchasing joke literal by showing one return create
+two replacements; the secured frame exposes the hidden Auto-Decide permission
+and restores human confirmation.
+
+The seven repairs are no longer represented by a raw count or seven detached
+blank boxes. Four Act I checks sit on the four visible sponsored claims, then
+three Act II checks sit on the receipt/return evidence. Browser review at
+1440×900 covered the clean Act I board, Amy and Chinmay midpoint messages, Act
+II, and both completion messages. The executable review captures are listed in
+`docs/design/review/README.md`. No Reading Engine or speech work changed.
+
 ## Player-review visual direction — checkpoint 5b5613d
 
 The live review checkpoint is
