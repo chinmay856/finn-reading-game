@@ -17,6 +17,32 @@
 - No Reading Engine, speech, scoring, microphone, or passage content changed in
   this visual correction.
 
+## Reading Companion production wiring — 2026-07-14
+
+- PR #115's warmed sherpa evidence is integrated at the production boundary:
+  AudioWorklet capture with exact 20 ms / 16 kHz PCM framing, silent recognizer
+  warm-up, a replaceable local adapter, and independent start/stop lifecycle now sit behind an
+  explicit fail-closed streaming-guide gate.
+- The public GitHub Pages origin was probed directly and does not return COOP,
+  COEP, or CORP. The pinned 203 MB sherpa runtime is therefore not bundled or
+  enabled there; the existing local Whisper checkpoint guide remains available
+  and Whisper remains the only final-scoring authority.
+- The safe viewport refinements are active for every guide lane: an 18-pixel
+  top anchor, natural end clamping, full-target scrolling, reduced-motion
+  behavior, and forward manual visual reconciliation that cannot change speech
+  evidence, completion, scoring, or campaign progress.
+- Exported reports may record lane, fallback reason, and warm-up duration but
+  still contain no audio or transcript text. No timer-driven progress was
+  introduced.
+- Default streaming enablement still requires a header-capable production host,
+  exact pinned runtime packaging/caching, production-origin fixture replay, and
+  one consenting natural 180–220 WPM target-device run. Full details are in
+  `docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`.
+- Validation: focused streaming/viewport tests pass, all 380 repository tests
+  pass, syntax checks pass, the Vite production build passes, and `git diff
+  --check` passes. The real microphone and rendered scroll checks remain
+  explicit pre-default-enablement gates.
+
 ## Visual acceptance correction — 2026-07-13
 
 - ThreadIt and FacePlace were rebuilt after the first image-led pass failed

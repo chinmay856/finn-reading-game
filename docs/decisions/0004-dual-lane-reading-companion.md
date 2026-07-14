@@ -2,7 +2,9 @@
 
 ## Status
 
-Proposed for integration, validated by an isolated browser spike on 2026-07-12.
+Accepted with a deployment gate. The dual-lane contract is production-wired as
+of 2026-07-14, while sherpa remains disabled on GitHub Pages until the proven
+cross-origin-isolation requirements are available.
 
 ## Context
 
@@ -40,6 +42,11 @@ one thread, and greedy decoding. It remains behind a neutral adapter.
 - The official sherpa WebAssembly build requires cross-origin isolation and a
   roughly 203 MB first-load model/runtime download. Deployment must prove those
   headers and caching before integration is enabled.
+- The app exposes an explicit, fail-closed streaming feature request. Missing
+  isolation, shared memory, PCM support, or pinned runtime assets leaves the
+  existing Whisper checkpoint guide and final scoring path available.
+- The evidence-driven viewport policy is independent of the adapter gate and is
+  safe to use with both checkpoint and streaming transcript evidence.
 - The accelerated 200 and 250 WPM fixtures are useful stress tests, not a
   substitute for consented human recordings at 180-220 WPM.
 

@@ -17,6 +17,7 @@ designed to support many future themes.
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
 - Live desktop prototype: <https://chinmay856.github.io/finn-reading-game/>
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
+- Reading Companion production integration: [`docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`](docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md)
 - Preserved mobile side-test notes: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
 - Product vision and architecture: [`docs/ARCHITECTURE_AND_VISION.md`](docs/ARCHITECTURE_AND_VISION.md)
 - Internet Recovery character design: [`docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md`](docs/gameplay/INTERNET_RECOVERY_CHARACTERS.md)
