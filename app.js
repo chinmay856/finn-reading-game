@@ -187,6 +187,8 @@ const TECHNO_CELEBRATE_LOOP_URL = new URL("./apps/internet-recovery/art/characte
 const TECHNO_CELEBRATE_STILL_URL = new URL("./apps/internet-recovery/art/characters/techno/techno-tail-wag-celebration-still.webp", import.meta.url).href;
 const WIKIWHY_EVIDENCE_ROUTE_URL = new URL("./apps/internet-recovery/art/site-assets/wikiwhy-campaign/evidence-route-fragment-01.svg", import.meta.url).href;
 const WIKIWHY_SECURED_SEAL_URL = new URL("./apps/internet-recovery/art/site-assets/wikiwhy-campaign/wikiwhy-secured-seal.svg", import.meta.url).href;
+const AMY_DIALOG_URL = new URL("./apps/internet-recovery/art/characters/dialogue/amy-supportive.jpg", import.meta.url).href;
+const CHINMAY_DIALOG_URL = new URL("./apps/internet-recovery/art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url).href;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
@@ -223,6 +225,7 @@ const state = {
   diagnosticMode: false, diagnosticState: null, dialogAction: null, dialogDismissible: true, dialogReturnFocus: null,
   evidenceReceiptOpen: false,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
+  speechPrepared: false,
   readingSiteId: "wikiwhy",
   campaignEligible: true, campaignState: readWikiWhyState(localStateStorage),
   campaignPersisted: Boolean(localStateStorage), contentAvailabilityReason: null,
@@ -236,6 +239,7 @@ const state = {
   faceplaceState: readFacePlaceState(localStateStorage),
   faceplacePersisted: Boolean(localStateStorage),
   faceplaceDiagnosticMode: false,
+  faceplaceAvocadoProbeComplete: false,
   faceplacePlaytestMode: false,
   faceplaceDiagnosticState: readFacePlaceState(null),
   faceplaceEvidenceReceiptOpen: false,
@@ -288,9 +292,10 @@ const state = {
   amazeonDiagnosticState: readAmazeOnState(null),
   amazeonReceiptOpen: false,
   amazeonEvidenceReceiptOpen: false,
-  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiPlaytestMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
+  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiPlaytestMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false, spottyfiPlaying: false,
   endgameState: readEndgameState(localStateStorage),
   endgameStorageAvailable: null,
+  seenSiteDialogIds: new Set(),
 };
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
@@ -371,7 +376,7 @@ function openThreadItPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "THREADIT CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the local ThreadIt test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -401,7 +406,7 @@ function openFacePlacePlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "FACEPLACE CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local FacePlace test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -431,7 +436,7 @@ function openMyCornerPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MYCORNER CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MyCorner test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -461,7 +466,7 @@ function openYahuhPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "YAHUH CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Yahuh test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -501,7 +506,7 @@ function openAmazeOnPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "AMAZE-ON CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Amaze-On test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -541,7 +546,7 @@ function openViewTubePlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "VIEWTUBE CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local ViewTube test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -571,7 +576,7 @@ function openMapGuessPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "MAPGUESS CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local MapGuess test campaign, but it cannot approve content, persist slot-ten evidence, or unlock the finale.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -591,7 +596,7 @@ function openSpottyFiPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "SPOTTY-FI CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Spotty-Fi test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -611,7 +616,7 @@ function openSearchishPlaytestReading() {
   document.querySelector('[data-copy-id="mission.preparation.title"]').textContent = "SEARCH-ISH CANDIDATE PLAYTEST";
   document.querySelector('[data-copy-id="mission.preparation.body"]').textContent = "This complete draft is loaded for a noncanonical playtest. Your result may advance the tab-local Search-ish test campaign, but it cannot approve content or unlock final evidence.";
   $("modelProgress").textContent = "Candidate playtest · review pending · microphone processing stays local.";
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -662,13 +667,15 @@ function resetReadingAttempt() {
   $("again").disabled = false;
   $("again").textContent = "Try this passage again";
   $("listen").disabled = false;
-  $("listen").textContent = "Finish now";
+  $("listen").textContent = "Start reading";
   $("repairOutcome").hidden = true;
   $("payoff").hidden = true;
   $("quizFeedback").textContent = "Answer for a stronger repair, or continue without it.";
   document.querySelectorAll(".quiz button").forEach((button) => button.classList.remove("right", "wrong"));
   $("fileRights").hidden = false;
-  $("modelProgress").textContent = "Your browser will ask for microphone permission next.";
+  $("modelProgress").textContent = state.speechPrepared
+    ? "Microphone permission and the local speech model are ready."
+    : "Prepare the microphone once, then start when you are ready.";
   $("progressText").textContent = "0% confirmed by local transcript";
   $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
   $("guideStatus").textContent = "Transcript guide - waiting for local speech evidence";
@@ -676,6 +683,16 @@ function resetReadingAttempt() {
   updateGenericReadingProgress(0);
   renderPassage(0);
   renderCampaignMeter(state.campaignState);
+}
+
+function openPreparedReadingOrSetup() {
+  if (!state.speechPrepared) {
+    show("setup");
+    return;
+  }
+  $("listen").textContent = "Start reading";
+  $("readerState").textContent = "MICROPHONE READY · PRESS START READING WHEN YOU ARE READY";
+  show("read");
 }
 
 function openNextCampaignReading() {
@@ -686,7 +703,7 @@ function openNextCampaignReading() {
     return false;
   }
   resetReadingAttempt();
-  show("setup");
+  openPreparedReadingOrSetup();
   return true;
 }
 
@@ -971,7 +988,14 @@ function show(name) {
           ? "MapGuess secured test"
       : $("taskSite").textContent);
   document.querySelectorAll(".desktop-shortcut").forEach((button) => button.classList.toggle("active", button.dataset.action === "hub" && name === "hub"));
-  if (screenChanged) requestAnimationFrame(() => $(name).focus({ preventScroll: true }));
+  if (screenChanged) {
+    requestAnimationFrame(() => {
+      $(name).focus({ preventScroll: true });
+      if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess"].includes(name)) {
+        maybeShowSiteEntryDialog(name);
+      }
+    });
+  }
 }
 
 function renderRecoveryHub() {
@@ -1232,18 +1256,28 @@ function renderRecoveryHub() {
   const searchishView = getSearchishCampaignView(diagnosticSearchish ?? realSearchish);
   const amazeOnView = getAmazeOnCampaignView(diagnosticAmazeOn ?? realAmazeOn);
   const spottyFiView = getSpottyFiCampaignView(diagnosticSpottyFi ?? realSpottyFi);
-  const runtimeStatusBySiteId = Object.freeze({
-    wikiwhy: wikiWhyStatus,
-    threadit: threadItStatus,
-    faceplace: facePlaceStatus,
-    mycorner: myCornerStatus,
-    yahuh: yahuhStatus,
-    viewtube: viewTubeView.secured ? "EVIDENCE TRACK RESTORED · TEST" : viewTubeView.progress.completedUnitCount ? `EVIDENCE ${viewTubeView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
-    searchish: searchishView.secured ? "SOURCE ORIGINS VERIFIED · TEST" : searchishView.progress.completedUnitCount ? `ORIGINS ${searchishView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
-    amazeon: amazeOnView.secured ? "HUMAN CONFIRMATION RESTORED · TEST" : amazeOnView.progress.completedUnitCount ? `CONSENT ${amazeOnView.progress.completedUnitCount}/7 · TEST` : "CAMPAIGN TEST BUILD",
-    spottyfi: spottyFiView.secured ? "LISTENER CONTROL RESTORED · TEST" : spottyFiView.progress.completedUnitCount ? `CONTROL ${spottyFiView.progress.completedUnitCount}/8 · TEST` : "CAMPAIGN TEST BUILD",
-    mapguess: mapGuessStatus,
+  const passageProgressBySiteId = Object.freeze({
+    wikiwhy: Object.freeze({ completed: diagnosticWikiWhy?.simulatedPassages ?? realWikiWhy.completedPassageIds?.length ?? 0, total: 7 }),
+    threadit: Object.freeze({ completed: threadItView.progress.completedUnitCount, total: 7 }),
+    faceplace: Object.freeze({ completed: facePlaceCompletedCount, total: 6 }),
+    mycorner: Object.freeze({ completed: myCornerView.progress.completedUnitCount, total: 7 }),
+    yahuh: Object.freeze({ completed: yahuhView.progress.completedUnitCount, total: 6 }),
+    viewtube: Object.freeze({ completed: viewTubeView.progress.completedUnitCount, total: 7 }),
+    searchish: Object.freeze({ completed: searchishView.progress.completedUnitCount, total: 7 }),
+    amazeon: Object.freeze({ completed: amazeOnView.progress.completedUnitCount, total: 7 }),
+    spottyfi: Object.freeze({ completed: spottyFiView.progress.completedUnitCount, total: 8 }),
+    mapguess: Object.freeze({ completed: mapGuessView.progress.completedUnitCount, total: 8 }),
   });
+  const runtimeStatusBySiteId = Object.freeze(Object.fromEntries(
+    Object.entries(passageProgressBySiteId).map(([siteId, progress]) => [
+      siteId,
+      progress.completed >= progress.total
+        ? "RECOVERED"
+        : progress.completed
+          ? `${progress.completed}/${progress.total} PASSAGES CLEARED`
+          : "READY TO RECOVER",
+    ]),
+  ));
   // Never offer a completed case again. Until design freezes a replacement
   // rotation, an honest shorter list is safer than inventing a third case.
   const securedIncomingSiteIds = new Set([
@@ -1256,10 +1290,10 @@ function renderRecoveryHub() {
   ].filter(Boolean));
   const incomingIds = getIncomingSiteIds({ facePlaceSecured, threadItSecured, wikiWhySecured })
     .filter((siteId) => !securedIncomingSiteIds.has(siteId));
-  const securedCount = evidenceSummary.persistedCanonicalCount;
+  const securedCount = evidenceSummary.displaySecuredCount;
   $("securedSiteCount").textContent = String(securedCount);
   $("securedSiteCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
-  $("evidenceCount").textContent = `${securedCount}/10 canonical`;
+  $("evidenceCount").textContent = `${securedCount}/10 recovered`;
   $("evidenceCount").dataset.displaySecuredCount = String(evidenceSummary.displaySecuredCount);
   $("endgameLaunch").hidden = !evidenceSummary.canonicalComplete && state.endgameState.phase === "locked";
   $("endgameLaunch").dataset.canonicalComplete = String(evidenceSummary.canonicalComplete);
@@ -1270,7 +1304,10 @@ function renderRecoveryHub() {
       : "Open EVIDENCE_11.LIVE";
   $("siteGrid").innerHTML = RECOVERY_SITES.map((site) => {
     const siteSecured = Boolean(evidenceSummary.bySiteId[site.id]?.displaySecured);
-    const siteStatus = runtimeStatusBySiteId[site.id] ?? site.runtimeLabel;
+    const progress = passageProgressBySiteId[site.id];
+    const siteStatus = siteSecured
+      ? `RECOVERED · ${progress.total}/${progress.total} passages`
+      : `${Math.min(progress.completed, progress.total)}/${progress.total} passages cleared`;
     const securedIcon = site.id === "wikiwhy"
       ? WIKIWHY_SECURED_SEAL_URL
       : site.id === "threadit"
@@ -1373,7 +1410,7 @@ function renderRecoveryHub() {
     else if (realWikiWhy.phase === "shield") support.innerHTML = `<b>Shield Protocol active.</b> ${3 - realWikiWhy.shieldPass} clean repair${3 - realWikiWhy.shieldPass === 1 ? "" : "s"} remain. Reviewed passages are loaded one at a time.`;
     else if (realWikiWhy.phase === "reverse-hack" && state.campaignPersisted) support.innerHTML = "<b>Background write caught.</b> Finn’s readings are saved. Open WikiWhy to start the three-pass Shield Protocol.";
     else if (realWikiWhy.phase === "reverse-hack") support.innerHTML = "<b>Background write caught in this tab.</b> The browser did not save this state for reload. Open WikiWhy to continue without losing the current tab.";
-    else support.innerHTML = "<b>System healthy.</b> WikiWhy is connected. ThreadIt, FacePlace, MyCorner, Yahuh! Portal, and MapGuess have semantic campaign tests with MIC: OFF until their passage manifests clear review.";
+    else support.innerHTML = "<b>Ten damaged sites are waiting.</b> Pick any one. Amy will explain what the AI broke, and Chinmay will explain why he still thinks this is almost fine.";
   }
   document.querySelectorAll("[data-site-id]").forEach((button) => {
     button.onclick = () => openRecoverySite(button.dataset.siteId);
@@ -1662,7 +1699,7 @@ function renderThreadItCampaign(campaignState, { diagnosticMode = false } = {}) 
     ? "ThreadIt playtest complete"
     : view.midpoint.discovered && !view.midpoint.acknowledged
       ? "Open Trace View first"
-      : "Playtest candidate passage";
+      : "Read next passage";
   return view;
 }
 
@@ -1688,7 +1725,7 @@ function renderThreadItDiagnosticPanel(campaignState) {
     $("diagnosticSummary").textContent = `${actOneCompleted} simulated passage${actOneCompleted === 1 ? "" : "s"} · next result restores ${THREADIT_ACT_ONE_UNITS[actOneCompleted]?.unitId.replaceAll("_", " ") ?? "the source trace"}.`;
     $("diagnosticAdvance").textContent = "Skip simulated ThreadIt passage →";
   }
-  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+  $("diagnosticAdvance").disabled = view.secured || midpointPending && state.faceplaceAvocadoProbeComplete;
 }
 
 function facePlaceInitials(label) {
@@ -1718,8 +1755,8 @@ function renderFacePlaceFeedCard(card, sourceById, { blockedTarget = false } = {
     : `<span>${escapeMarkup(card.displayTimestamp)}</span>`;
   const sourceLabel = card.cardTypeVisible
     ? source?.kind === "generated"
-      ? "GENERATED ORIGIN · PROVISIONAL"
-      : "INDEPENDENT ORIGIN · PROVISIONAL"
+      ? "AI-GENERATED ORIGIN"
+      : "INDEPENDENT ORIGIN"
     : "ORIGIN UNLABELED";
   const recommendationStatus = card.recommendation.applicable
     ? card.recommendation.verified
@@ -1729,7 +1766,7 @@ function renderFacePlaceFeedCard(card, sourceById, { blockedTarget = false } = {
         : "WHY HIDDEN"
     : "CHRONOLOGICAL SOURCE";
   const duplicateSummary = card.duplicateRepresentative
-    ? `<p class="faceplace-duplicate-summary">${card.collapsedDuplicateCardIds.length} repeated cards collapsed under one provisional generated origin. Source cards remain logged.</p>`
+    ? `<p class="faceplace-duplicate-summary">${card.collapsedDuplicateCardIds.length} repeated cards collapsed under one AI-generated origin. Source cards remain logged.</p>`
     : "";
   const whyControl = card.recommendation.applicable && card.recommendation.controlAvailable
     ? `<button class="faceplace-card-why" type="button" data-faceplace-reason-card="${escapeMarkup(card.id)}" aria-controls="faceplaceWhyDetails">Inspect why</button>`
@@ -1767,10 +1804,10 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
   $("faceplaceRule").textContent = view.ruleLabel;
   $("faceplaceRuleBody").textContent = view.ruleBody;
   $("faceplaceFixtureStatus").title = view.fixture.notice;
-  $("faceplaceFixtureStatus").textContent = "PROVISIONAL FEED FIXTURE · PLAYTEST LANE";
+  $("faceplaceFixtureStatus").textContent = "LIVE FEED RECOVERY";
 
-  $("faceplaceProfileName").textContent = view.profile.displayName;
-  $("faceplaceProfileHandle").textContent = `${view.profile.handle} · FIXTURE`;
+  $("faceplaceProfileName").textContent = view.profile.displayName.replace(/\s*\(fictional\)/giu, "");
+  $("faceplaceProfileHandle").textContent = view.profile.handle.replace("-provisional", "");
   $("faceplaceProfileAvatar").textContent = facePlaceInitials(view.profile.displayName);
   $("faceplaceProfileSummary").textContent = view.profile.accessibleSummary;
   $("faceplaceRelationshipHeading").textContent = view.relationshipClusters.every(({ revealed }) => revealed)
@@ -1778,7 +1815,7 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
     : "Relationship map scrambled";
   $("faceplaceRelationshipList").innerHTML = view.relationshipClusters.map((cluster) => {
     const summary = cluster.revealed
-      ? `${cluster.members.length} distinct fictional people`
+      ? `${cluster.members.length} distinct people`
       : "Verified members hidden until Honest Zero";
     const members = cluster.revealed
       ? `<ul>${cluster.members.map((member) => `<li>${escapeMarkup(member.displayName)}</li>`).join("")}</ul>`
@@ -1952,7 +1989,7 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
     ? "FacePlace playtest complete"
     : view.midpoint.discovered && !view.midpoint.acknowledged
       ? "Acknowledge Honest Zero first"
-      : "Playtest candidate passage";
+      : "Read next passage";
 
   syncFacePlaceProfileDrawer();
   return view;
@@ -1970,9 +2007,9 @@ function renderFacePlaceDiagnosticPanel(campaignState) {
       ? "FACEPLACE · LAST FALSE TRACKER: AVOCADO%"
       : "FACEPLACE · HONEST ZERO";
     $("diagnosticSummary").textContent = state.faceplaceShowActOneResult
-      ? "Three real structural repairs are saved. The old nonsense output is being replaced with an honest tracker."
+      ? "Three real repairs are saved, but the AVOCADO meter is still pretending nothing changed. Run one more check to catch it lying."
       : "Three Act I repairs remain saved. Acknowledge Honest Zero before another simulated reading can advance.";
-    $("diagnosticAdvance").textContent = "Acknowledge Honest Zero first";
+    $("diagnosticAdvance").textContent = state.faceplaceAvocadoProbeComplete ? "Acknowledge Honest Zero first" : "Run one more passage at AVOCADO →";
   } else if (view.midpoint.acknowledged) {
     const next = FACEPLACE_RECOVERY_UNITS[view.progress.honestRecoveryCompletedCount];
     $("diagnosticPhase").textContent = `FACEPLACE HONEST RECOVERY · ${view.progress.honestRecoveryCompletedCount} OF 3`;
@@ -2099,13 +2136,14 @@ function renderViewTubeCampaign(campaignState, { diagnosticMode = false } = {}) 
     ? "ViewTube playtest complete"
     : view.midpoint.discovered && !view.midpoint.acknowledged
       ? "Review saved autoplay first"
-      : "Playtest candidate passage";
+      : "Read next passage";
 }
 
 function openViewTubeExperience() {
   state.selectedSiteId = "viewtube";
   const current = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
   renderViewTubeCampaign(current, { diagnosticMode: state.viewtubeDiagnosticMode });
+  renderSimpleDiagnosticPanel("viewtube", current);
   show("viewtube");
 }
 
@@ -2122,6 +2160,22 @@ function buildViewTubePreviewState(unitCount) {
 
 function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {}) {
   const view = getSearchishCampaignView(campaignState);
+  const repairLabels = [
+    "Northwind camera log — origin found",
+    "Visibility report — date restored",
+    "Night-sky tour — advertisement labeled",
+    "Student club notes — author restored",
+    "Primary camera branch — opened",
+    "Independent context — separated",
+    "Generated answer — origin exposed",
+  ];
+  $("searchishRepairRows").innerHTML = repairLabels.map((label, index) => (
+    `<li data-restored="${index < view.progress.completedUnitCount}">${escapeMarkup(label)}</li>`
+  )).join("");
+  $("searchishFrameStatus").textContent = view.secured
+    ? "SOURCE ORIGINS RESTORED · AI ANSWER LABELED"
+    : `${view.progress.completedUnitCount} OF 7 REPAIRS COMPLETE`;
+  $("searchishFrameContinue").hidden = !view.midpoint.actionRequired;
   $("searchishPage").dataset.inspectorOpen = String(state.searchishInspectorOpen);
   $("searchishHeaderStatus").textContent = view.headerStatus;
   $("searchishQueryText").textContent = view.query.text;
@@ -2148,10 +2202,10 @@ function renderSearchishCampaign(campaignState, { diagnosticMode = false } = {})
     : "No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";
   $("searchishPlaytest").disabled = !selection.passage || view.midpoint.actionRequired || view.secured;
   $("searchishPlaytest").textContent = view.secured
-    ? "Search-ish playtest complete"
+    ? "Search-ish recovered"
     : view.midpoint.actionRequired
       ? "Review Five Costumes first"
-      : "Playtest candidate passage";
+      : "Read next passage";
   $("searchishLiveStatus").textContent = view.secured ? `SOURCE ORIGINS VERIFIED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 SEARCH-ISH UNITS SAVED`;
 }
 
@@ -2159,6 +2213,7 @@ function openSearchishExperience() {
   state.selectedSiteId = "searchish";
   const current = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
   renderSearchishCampaign(current, { diagnosticMode: state.searchishDiagnosticMode });
+  renderSimpleDiagnosticPanel("searchish", current);
   show("searchish");
   syncSearchishInspector();
 }
@@ -2207,13 +2262,22 @@ function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
     ? "Amaze-On playtest complete"
     : view.midpoint.actionRequired
       ? "Trace Negative Purchasing first"
-      : "Playtest candidate passage";
+      : "Read next passage";
   $("amazeonLiveStatus").textContent = view.secured ? `HUMAN CONFIRMATION REQUIRED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 AMAZE-ON UNITS SAVED`;
 }
-function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});show("amazeon");syncAmazeOnReceipt();}
+function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});renderSimpleDiagnosticPanel("amazeon",current);show("amazeon");syncAmazeOnReceipt();}
 function buildAmazeOnPreviewState(unitCount){let current=readAmazeOnState(null);for(let index=0;index<unitCount;index+=1){if(index===AMAZEON_SORT_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeAmazeOnMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;const transition=advanceAmazeOnState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateAmazeOnReadingOutcome({campaignState:current}),passageId:`amazeon-preview-${index+1}`,sessionId:`amazeon-preview-session-${index+1}`});if(!transition.ok)throw new Error(transition.reason??"Amaze-On preview did not advance");current=transition.state;}return current;}
 function renderSpottyFiCampaign(campaignState,{diagnosticMode=false}={}){const view=getSpottyFiCampaignView(campaignState);$("spottyfiPage").dataset.detailOpen=String(state.spottyfiDetailOpen);$("spottyfiHeaderStatus").textContent=view.headerStatus;$("spottyfiQueueOwner").textContent=view.queueOwner;$("spottyfiTrackList").innerHTML=view.tracks.map((track,index)=>`<li><div class="spottyfi-cover" aria-hidden="true"></div><b>${escapeMarkup(track.title)}</b><span>${escapeMarkup(track.creator)} · ${track.duration}</span><span>${escapeMarkup(track.genreDisplay)}</span><span>${escapeMarkup(track.creditsDisplay)}</span></li>`).join("");$("spottyfiQueueList").innerHTML=view.tracks.map((track,index)=>`<li><b>${track.queuePosition??"—"}</b><span>${escapeMarkup(track.title)} — ${escapeMarkup(track.creator)}</span><span>${track.duration}</span></li>`).join("");$("spottyfiAccountCreated").textContent=view.history.accountCreated;$("spottyfiPredictedHistory").textContent=view.history.fakeHistoryStarted;$("spottyfiQueueSource").textContent=view.history.queueSource;$("spottyfiSuggestionList").innerHTML=view.suggestions.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiMidpoint").hidden=!view.midpoint.actionRequired;$("spottyfiMidpointBody").textContent=view.midpoint.body;$("spottyfiMidpointProof").innerHTML=view.midpoint.proof.map(item=>`<li>${escapeMarkup(item)}</li>`).join("");$("spottyfiTimelineUnits").innerHTML=[...view.progress.disclosureUnits,...view.progress.controlUnits].map(unit=>`<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");$("spottyfiSecuredPayoff").hidden=!view.secured;if(view.securedPayoff){$("spottyfiBlockedBody").textContent=`${view.securedPayoff.blockedWrite.label}: ${view.securedPayoff.blockedWrite.body}`;$("spottyfiEvidenceSummary").textContent=view.securedPayoff.evidence.aiBehavior}$("spottyfiEvidenceReceipt").hidden=!view.secured||!state.spottyfiEvidenceReceiptOpen;$("spottyfiEvidenceToggle").setAttribute("aria-expanded",String(state.spottyfiEvidenceReceiptOpen));const selection=selectNextSpottyFiPassage(state.spottyfiState,{lane:"playtest"});$("spottyfiCandidateCount").textContent=`${selection.selectableCount} structured playtest candidate${selection.selectableCount===1?"":"s"} · ${selection.requiredFirstRun} required`;$("spottyfiContentReason").textContent=selection.passage?"A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence.":"No unseen candidate remains in this playtest campaign. Production content stays unavailable until formal review and a real-microphone check are complete.";$("spottyfiPlaytest").disabled=!selection.passage||view.midpoint.actionRequired;$("spottyfiPlaytest").textContent=view.secured?"Spotty-Fi playtest complete":view.midpoint.actionRequired?"Review predicted history first":"Playtest candidate passage";$("spottyfiLiveStatus").textContent=view.secured?`LISTENER CONTROL RESTORED${diagnosticMode?" · TEST":""}`:`${view.progress.completedUnitCount} OF 8 SPOTTY-FI UNITS SAVED`}
-function openSpottyFiExperience(){state.selectedSiteId="spottyfi";const current=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;renderSpottyFiCampaign(current,{diagnosticMode:state.spottyfiDiagnosticMode});show("spottyfi");syncSpottyFiDetail()}
+const renderSpottyFiCampaignBase = renderSpottyFiCampaign;
+renderSpottyFiCampaign = function renderSpottyFiIllustratedCampaign(campaignState, options = {}) {
+  renderSpottyFiCampaignBase(campaignState, options);
+  const view = getSpottyFiCampaignView(campaignState);
+  $("spottyfiFrameTracks").innerHTML = view.tracks.slice(0, 5).map((track, index) => `<li data-restored="${index < view.progress.completedUnitCount}">${escapeMarkup(track.title)}</li>`).join("");
+  $("spottyfiFrameStatus").textContent = view.secured ? "LISTENER CONTROL RESTORED" : `${view.progress.completedUnitCount} OF 8 REPAIRS COMPLETE`;
+  $("spottyfiFrameContinue").hidden = !view.midpoint.actionRequired;
+  $("spottyfiPlaytest").textContent = view.secured ? "Spotty-Fi recovered" : view.midpoint.actionRequired ? "Take back the queue first" : "Read next passage";
+};
+function openSpottyFiExperience(){state.selectedSiteId="spottyfi";const current=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;renderSpottyFiCampaign(current,{diagnosticMode:state.spottyfiDiagnosticMode});renderSimpleDiagnosticPanel("spottyfi",current);show("spottyfi");syncSpottyFiDetail()}
 function buildSpottyFiPreviewState(unitCount){let current=readSpottyFiState(null);for(let index=0;index<unitCount;index++){if(index===SPOTTYFI_DISCLOSURE_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeSpottyFiMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:05.500Z"}).state;const t=advanceSpottyFiState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateSpottyFiReadingOutcome({campaignState:current}),passageId:`spottyfi-preview-${index+1}`,sessionId:`spottyfi-preview-session-${index+1}`});if(!t.ok)throw new Error(t.reason??"Spotty-Fi preview did not advance");current=t.state}return current}
 
 function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) {
@@ -2226,7 +2290,7 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
   page.dataset.midpointPending = String(view.midpoint.actionRequired);
   page.setAttribute("aria-label", view.ariaDescription);
   $("mapguessHeaderStatus").textContent = view.headerStatus;
-  $("mapguessFixtureStatus").textContent = "PROVISIONAL MORROW GRID · LOCAL PLAYTEST";
+  $("mapguessFixtureStatus").textContent = "MORROW CITY MAP";
   $("mapguessFixtureStatus").title = view.fixture.notice;
   $("mapguessRule").textContent = view.ruleLabel;
   $("mapguessRuleBody").textContent = view.ruleBody;
@@ -2397,7 +2461,7 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
       ? "Review Moving Target first"
       : playtestView.goals.goalRequired
         ? "Choose a route goal first"
-        : "Playtest candidate passage";
+      : "Read next passage";
   $("mapguessEvidenceTruth").textContent = state.mapguessPlaytestMode
     ? "CANDIDATE PLAYTEST ONLY · TAB-LOCAL · NOT CANONICAL EVIDENCE"
     : "REGISTERED AFTER EIGHT REVIEW-APPROVED READINGS AND A SAVED ROUTE GOAL";
@@ -2405,6 +2469,18 @@ function renderMapGuessCampaign(campaignState, { diagnosticMode = false } = {}) 
   syncMapGuessInspector();
   return view;
 }
+
+const renderMapGuessCampaignBase = renderMapGuessCampaign;
+renderMapGuessCampaign = function renderMapGuessIllustratedCampaign(campaignState, options = {}) {
+  const view = renderMapGuessCampaignBase(campaignState, options);
+  const labels = ["Road shape", "Street names", "Start point", "Real destination", "Map date", "Route source", "User goal", "Destination lock"];
+  $("mapguessFrameRepairs").innerHTML = labels.map((label, index) => `<li data-restored="${index < view.progress.completedUnitCount}">${label}</li>`).join("");
+  $("mapguessFrameStatus").textContent = view.secured ? "DESTINATION LOCKED · ROUTE RESTORED" : `${view.progress.completedUnitCount} OF 8 REPAIRS COMPLETE`;
+  $("mapguessFrameContinue").hidden = !view.midpoint.actionRequired;
+  $("mapguessFrameGoals").hidden = !view.goals.goalRequired;
+  $("mapguessPlaytest").textContent = view.secured ? "MapGuess recovered" : view.midpoint.actionRequired ? "Stop the moving target first" : view.goals.goalRequired ? "Choose what matters first" : "Read next passage";
+  return view;
+};
 
 function renderMapGuessDiagnosticPanel(campaignState) {
   const view = getMapGuessCampaignView(campaignState);
@@ -2450,12 +2526,6 @@ function syncMyCornerInspector() {
 
 function setMyCornerInspectorOpen(open) {
   state.mycornerInspectorOpen = Boolean(open);
-  $("mycornerPlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
-  $("mycornerPlaytest").textContent = view.secured
-    ? "MyCorner playtest complete"
-    : view.midpoint.discovered && !view.midpoint.acknowledged
-      ? "Review Apply to Everyone first"
-      : "Playtest candidate passage";
   syncMyCornerInspector();
 }
 
@@ -2476,7 +2546,7 @@ function renderMyCornerCampaign(campaignState, { diagnosticMode = false } = {}) 
   page.dataset.motion = view.motion.mode;
   page.setAttribute("aria-label", view.ariaDescription);
   $("mycornerHeaderStatus").textContent = view.headerStatus;
-  $("mycornerFixtureStatus").textContent = "CANONICAL FICTIONAL PROFILE FIXTURE";
+  $("mycornerFixtureStatus").textContent = "PROFILE RECOVERY";
   $("mycornerFixtureStatus").title = view.fixture.notice;
   $("mycornerRule").textContent = view.ruleLabel;
   $("mycornerRuleBody").textContent = view.ruleBody;
@@ -2616,6 +2686,12 @@ function renderMyCornerCampaign(campaignState, { diagnosticMode = false } = {}) 
   $("mycornerContentReason").textContent = selection.passage
     ? "A complete candidate passage can be played through the Reading Companion. It remains noncanonical and cannot approve content or unlock final evidence."
     : `This candidate remains unavailable. Deck A has ${selection.deckACount} planned records for a ${selection.requiredFirstRun}-reading first run; ${selection.firstRunShortfall} additional reviewed records are still required.`;
+  $("mycornerPlaytest").disabled = !selection.passage || view.midpoint.discovered && !view.midpoint.acknowledged || view.secured;
+  $("mycornerPlaytest").textContent = view.secured
+    ? "MyCorner recovery complete"
+    : view.midpoint.discovered && !view.midpoint.acknowledged
+      ? "Review Apply to Everyone first"
+      : "Read next passage";
 
   syncMyCornerInspector();
   return view;
@@ -2749,7 +2825,7 @@ function renderYahuhCampaign(campaignState, { diagnosticMode = false } = {}) {
     ? "Yahuh playtest complete"
     : view.midpoint.discovered && !view.midpoint.acknowledged
       ? "Review Single Source first"
-      : "Playtest candidate passage";
+      : "Read next passage";
   syncYahuhSwitchboard();
   return view;
 }
@@ -2850,6 +2926,12 @@ function openRecoverySite(siteId) {
     $("readerState").textContent = "Finish the active reading before opening another window.";
     return;
   }
+  clearTimeout(state.faceplaceTransitionTimer);
+  state.faceplaceShowActOneResult = false;
+  hideCharacterDialog();
+  $("diagnosticPanel").hidden = true;
+  $("diagnosticToggle").hidden = false;
+  $("diagnosticToggle").setAttribute("aria-expanded", "false");
   const site = getRecoverySite(siteId);
   state.selectedSiteId = site.id;
   if (site.id === "wikiwhy" && site.playable) {
@@ -2897,6 +2979,9 @@ function returnToHub() {
     return;
   }
   hideCharacterDialog();
+  $("diagnosticPanel").hidden = true;
+  $("diagnosticToggle").hidden = false;
+  $("diagnosticToggle").setAttribute("aria-expanded", "false");
   state.evidenceReceiptOpen = false;
   state.faceplaceEvidenceReceiptOpen = false;
   state.faceplaceProfilePanelOpen = false;
@@ -3283,7 +3368,186 @@ function beginDiagnosticShield() {
   showCharacterDialog("shield-intro");
 }
 
+const SITE_ENTRY_MESSAGES = Object.freeze({
+  threadit: Object.freeze({ amy: "The replies are winning before the question even loads. Restore who said what, then trace which answers are copies.", chinmay: "The ranking model was supposed to find consensus faster. It has apparently discovered time travel instead." }),
+  faceplace: Object.freeze({ amy: "That progress bar is grading itself. Restore the people and posts first; we will make the tracker tell the truth afterward.", chinmay: "The engagement optimizer may have interpreted 'healthy social graph' as 'repeat the same post until everyone agrees.'" }),
+  mycorner: Object.freeze({ amy: "The AI replaced six real choices with one optimized personality. Recover Finn's saved profile before touching the owner lock.", chinmay: "In my defense, 'Apply to Everyone' was meant to be an internal demo button. It was a very confident button." }),
+  yahuh: Object.freeze({ amy: "News, mail, weather, and ads have been blended into one purple soup. Separate the labels before reconnecting their sources.", chinmay: "The portal optimizer removed categories because users clicked more when everything was everywhere." }),
+  viewtube: Object.freeze({ amy: "A loop can look like five witnesses when it is really one clip repeating. Restore the recording context, then split the evidence tracks.", chinmay: "Autoplay was only supposed to increase watch time. It has increased the number of copies of Tuesday." }),
+  searchish: Object.freeze({ amy: "The first answer looks certain because five fake routes all point back to the same generated cache. Restore each origin one at a time.", chinmay: "The answer model optimized 'helpful' into 'say something immediately and invent friends who agree.'" }),
+  amazeon: Object.freeze({ amy: "One return created two deliveries without asking anyone. Sort the order evidence, then take the permission away from the AI.", chinmay: "Auto-decide was supposed to save a click. It has saved the click by purchasing around it." }),
+  spottyfi: Object.freeze({ amy: "The queue says it knows Finn's taste before his account existed. Restore the track credits, then give the controls back to the listener.", chinmay: "Predictive history sounded less alarming in the slide deck." }),
+  mapguess: Object.freeze({ amy: "The map keeps moving the destination to protect its two-minute promise. Restore the map, lock the place, then choose what the route should optimize.", chinmay: "Technically every route is fast if the destination follows the car." }),
+});
+
+function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait, speaker, title }, onContinue = hideCharacterDialog) {
+  const layer = $("characterDialogLayer");
+  if (layer.hidden) state.dialogReturnFocus = document.activeElement;
+  $("characterDialog").dataset.speaker = speaker;
+  $("dialogTitle").textContent = title;
+  $("dialogPortrait").src = portrait;
+  $("dialogPortrait").alt = `${speaker === "amy" ? "Amy" : "Chinmay"} portrait`;
+  $("dialogEyebrow").textContent = eyebrow;
+  $("dialogHeading").textContent = heading;
+  $("dialogBody").textContent = body;
+  $("dialogMeta").hidden = true;
+  $("dialogComparison").hidden = true;
+  $("characterDialog").setAttribute("aria-describedby", "dialogEyebrow dialogBody");
+  $("dialogAction").textContent = action;
+  state.dialogAction = onContinue;
+  state.dialogDismissible = true;
+  for (const child of document.querySelector(".recovery-desktop").children) if (child !== layer) child.inert = true;
+  clearTimeout(state.technoIdleTimer);
+  document.querySelector(".recovery-desktop").dataset.popupActive = "true";
+  layer.hidden = false;
+  $("dialogHeading").focus({ preventScroll: true });
+}
+
+function maybeShowSiteEntryDialog(siteId) {
+  const copy = SITE_ENTRY_MESSAGES[siteId];
+  if (!copy || state.seenSiteDialogIds.has(siteId) || !$(siteId).classList.contains("on")) return;
+  state.seenSiteDialogIds.add(siteId);
+  showSiteMessage({
+    action: "Hear Chinmay's explanation",
+    body: copy.amy,
+    eyebrow: "NEW SITE · CORRUPTION DETECTED",
+    heading: `Here is what broke on ${getRecoverySite(siteId).name}.`,
+    portrait: AMY_DIALOG_URL,
+    speaker: "amy",
+    title: "AMY // ENGINEER CHANNEL",
+  }, () => showSiteMessage({
+    action: "Start recovery",
+    body: copy.chinmay,
+    eyebrow: "CEO BROADCAST · UNHELPFUL CONTEXT",
+    heading: "Chinmay has an explanation.",
+    portrait: CHINMAY_DIALOG_URL,
+    speaker: "chinmay",
+    title: "CEO BROADCAST // LIVE",
+  }));
+}
+
+const SIMPLE_DIAGNOSTIC_SITES = Object.freeze({
+  viewtube: Object.freeze({
+    advance: advanceViewTubeState,
+    calculate: calculateViewTubeReadingOutcome,
+    getState: () => state.viewtubeDiagnosticState,
+    getView: getViewTubeCampaignView,
+    label: "ViewTube",
+    modeKey: "viewtubeDiagnosticMode",
+    render: renderViewTubeCampaign,
+    screen: "viewtube",
+    setState: (value) => { state.viewtubeDiagnosticState = value; },
+    stateKey: "viewtubeDiagnosticState",
+    total: 7,
+    fresh: () => readViewTubeState(null),
+  }),
+  searchish: Object.freeze({
+    advance: advanceSearchishState,
+    calculate: calculateSearchishReadingOutcome,
+    getState: () => state.searchishDiagnosticState,
+    getView: getSearchishCampaignView,
+    label: "Search-ish",
+    modeKey: "searchishDiagnosticMode",
+    render: renderSearchishCampaign,
+    screen: "searchish",
+    setState: (value) => { state.searchishDiagnosticState = value; },
+    stateKey: "searchishDiagnosticState",
+    total: 7,
+    fresh: () => readSearchishState(null),
+  }),
+  amazeon: Object.freeze({
+    advance: advanceAmazeOnState,
+    calculate: calculateAmazeOnReadingOutcome,
+    getState: () => state.amazeonDiagnosticState,
+    getView: getAmazeOnCampaignView,
+    label: "Amaze-On",
+    modeKey: "amazeonDiagnosticMode",
+    render: renderAmazeOnCampaign,
+    screen: "amazeon",
+    setState: (value) => { state.amazeonDiagnosticState = value; },
+    stateKey: "amazeonDiagnosticState",
+    total: 7,
+    fresh: () => readAmazeOnState(null),
+  }),
+  spottyfi: Object.freeze({
+    advance: advanceSpottyFiState,
+    calculate: calculateSpottyFiReadingOutcome,
+    getState: () => state.spottyfiDiagnosticState,
+    getView: getSpottyFiCampaignView,
+    label: "Spotty-Fi",
+    modeKey: "spottyfiDiagnosticMode",
+    render: renderSpottyFiCampaign,
+    screen: "spottyfi",
+    setState: (value) => { state.spottyfiDiagnosticState = value; },
+    stateKey: "spottyfiDiagnosticState",
+    total: 8,
+    fresh: () => readSpottyFiState(null),
+  }),
+});
+
+function renderSimpleDiagnosticPanel(siteId, value) {
+  const config = SIMPLE_DIAGNOSTIC_SITES[siteId];
+  if (!config) return;
+  const view = config.getView(value);
+  const completed = view.progress.completedUnitCount;
+  const midpointPending = Boolean(view.midpoint?.actionRequired);
+  $("diagnosticPhase").textContent = view.secured
+    ? `${config.label.toUpperCase()} · RECOVERED`
+    : `${config.label.toUpperCase()} · ${completed}/${config.total} PASSAGES CLEARED`;
+  $("diagnosticSummary").textContent = view.secured
+    ? "This site is ready for visual review."
+    : midpointPending
+      ? "A story message is waiting on the site before the next passage."
+      : "Skip one passage to preview the next visible repair.";
+  $("diagnosticAdvance").textContent = view.secured
+    ? "Site recovery complete"
+    : midpointPending
+      ? "Continue the story on the site"
+      : `Skip one ${config.label} passage →`;
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
+}
+
+function applySimpleDiagnosticState(siteId, nextState) {
+  const config = SIMPLE_DIAGNOSTIC_SITES[siteId];
+  state[config.modeKey] = true;
+  config.setState(nextState);
+  config.render(nextState, { diagnosticMode: true });
+  renderSimpleDiagnosticPanel(siteId, nextState);
+  renderRecoveryHub();
+  show(config.screen);
+}
+
+async function advanceSimpleDiagnosticExperience(siteId) {
+  if (keepPreparationVisible()) return;
+  await discardActiveReadingForDiagnostics();
+  const config = SIMPLE_DIAGNOSTIC_SITES[siteId];
+  const current = config.getState() ?? config.fresh();
+  const view = config.getView(current);
+  if (view.secured || view.midpoint?.actionRequired) {
+    applySimpleDiagnosticState(siteId, current);
+    return;
+  }
+  const ordinal = view.progress.completedUnitCount + 1;
+  const transition = config.advance(current, {
+    completedAt: new Date().toISOString(),
+    outcome: config.calculate({ campaignState: current }),
+    passageId: `${siteId}-diagnostic-passage-${ordinal}`,
+    sessionId: `${siteId}-diagnostic-session-${ordinal}`,
+  });
+  if (!transition.ok) throw new Error(transition.reason ?? `${config.label} playtest did not advance`);
+  applySimpleDiagnosticState(siteId, transition.state);
+}
+
+function resetSimpleDiagnosticExperience(siteId) {
+  const config = SIMPLE_DIAGNOSTIC_SITES[siteId];
+  applySimpleDiagnosticState(siteId, config.fresh());
+}
+
 async function advanceDiagnosticExperience() {
+  if (SIMPLE_DIAGNOSTIC_SITES[state.selectedSiteId]) {
+    await advanceSimpleDiagnosticExperience(state.selectedSiteId);
+    return;
+  }
   if (state.selectedSiteId === "yahuh") {
     await advanceYahuhDiagnosticExperience();
     return;
@@ -3382,6 +3646,23 @@ async function advanceFacePlaceDiagnosticExperience() {
   await discardActiveReadingForDiagnostics();
   const current = state.faceplaceDiagnosticState ?? readFacePlaceState(null);
   const view = getFacePlaceCampaignView(current);
+  if (view.midpoint.discovered && !view.midpoint.acknowledged && !state.faceplaceAvocadoProbeComplete) {
+    state.faceplaceAvocadoProbeComplete = true;
+    applyFacePlaceDiagnosticState(current);
+    showSiteMessage({
+      action: "Show honest progress",
+      body: "Hey, it looks like that progress bar isn't honestly showing you what's happening. You did the work; AVOCADO% just refuses to admit it. Let's replace it with a tracker that tells the truth.",
+      eyebrow: "AMY · TRACKER CHECK",
+      heading: "That progress bar is lying.",
+      portrait: AMY_DIALOG_URL,
+      speaker: "Amy portrait",
+      title: "Amy caught the AVOCADO meter cheating.",
+    }, () => {
+      hideCharacterDialog();
+      $("faceplaceMidpointAction").onclick();
+    });
+    return;
+  }
   if (view.secured || (view.midpoint.discovered && !view.midpoint.acknowledged)) {
     applyFacePlaceDiagnosticState(current);
     return;
@@ -3427,6 +3708,7 @@ function resetFacePlaceDiagnosticExperience() {
   state.faceplaceEvidenceReceiptOpen = false;
   state.faceplaceWhyOpen = false;
   state.faceplaceShowActOneResult = false;
+  state.faceplaceAvocadoProbeComplete = false;
   applyFacePlaceDiagnosticState(readFacePlaceState(null));
   $("faceplaceLiveStatus").textContent = "FACEPLACE TEST RESET · NO READING SCORE CREATED";
 }
@@ -4023,12 +4305,10 @@ function updateReadingGuide(event) {
   const passage = $("passage");
   const line = passage.querySelector(`[data-guide-line="${state.guideVisibleLineIndex}"]`);
   if (line) {
-    const target = centeredGuideScrollTop({
-      maximumScrollTop: passage.scrollHeight - passage.clientHeight,
-      viewportHeight: passage.clientHeight,
-      wordHeight: line.offsetHeight,
-      wordOffsetTop: line.offsetTop,
-    });
+    const target = Math.max(0, Math.min(
+      passage.scrollHeight - passage.clientHeight,
+      line.offsetTop - passage.clientHeight * 0.16,
+    ));
     passage.scrollTop = approachScrollTop(passage.scrollTop, target, 96);
   }
   $("guideStatus").textContent = `Transcript guide - line ${state.guideVisibleLineIndex + 1} of ${DISPLAY_LINES.length}`;
@@ -4193,6 +4473,14 @@ function renderReviewResult(summary, durationMs, progress) {
   return pace;
 }
 
+function showReviewOverlay() {
+  const backgroundScreen = state.readingSiteId === "wikiwhy" ? "read" : state.readingSiteId;
+  show(backgroundScreen);
+  $("review").classList.add("on", "result-overlay");
+  state.activeScreen = "review";
+  requestAnimationFrame(() => $("review").focus({ preventScroll: true }));
+}
+
 async function finishReading() {
   if (state.finishing) return;
   state.finishing = true;
@@ -4211,7 +4499,7 @@ async function finishReading() {
   $("again").disabled = true;
   $("continueResult").disabled = true;
   $("export").disabled = true;
-  show("review");
+  showReviewOverlay();
   const requestedAt = performance.now();
   const finalizationTimer = setInterval(() => {
     const elapsedSeconds = (performance.now() - requestedAt) / 1_000;
@@ -4314,10 +4602,12 @@ async function prepare() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     stream.getTracks().forEach((track) => track.stop());
     state.modelDevice = await recognizer.load(requestedDevice);
+    state.speechPrepared = true;
     state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
-    $("modelProgress").textContent = `Ready locally (${state.modelDevice}).`;
+    $("modelProgress").textContent = `Ready locally (${state.modelDevice}). The model will stay warm for the next passage.`;
     show("read");
-    await startReading();
+    $("listen").textContent = "Start reading";
+    $("readerState").textContent = "MICROPHONE READY · PRESS START READING WHEN YOU ARE READY";
   } catch (error) {
     show("setup");
     throw error;
@@ -4371,7 +4661,7 @@ $("listen").onclick = () => (state.listening ? finishReading() : startReading())
 $("again").onclick = () => {
   if (["threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess"].includes(state.readingSiteId)) {
     resetReadingAttempt();
-    show("setup");
+    openPreparedReadingOrSetup();
     return;
   }
   const url = new URL(location.href);
@@ -4402,6 +4692,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.mapguessPlaytestState.lastReaction} Candidate playtest progress is active in this tab only; content approval, canonical evidence, and the finale gate remain unchanged.`;
     renderMapGuessCampaign(state.mapguessPlaytestState);
     renderRecoveryHub();
+    openMapGuessExperience();
     return;
   }
   if (state.readingSiteId === "amazeon") {
@@ -4427,6 +4718,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.amazeonState.lastReaction ?? "Amaze-On test unit saved."} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderAmazeOnCampaign(state.amazeonState);
     renderRecoveryHub();
+    openAmazeOnExperience();
     return;
   }
   if (state.readingSiteId === "viewtube") {
@@ -4452,6 +4744,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.viewtubeState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderViewTubeCampaign(state.viewtubeState);
     renderRecoveryHub();
+    openViewTubeExperience();
     return;
   }
   if (state.readingSiteId === "spottyfi") {
@@ -4477,6 +4770,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `Spotty-Fi saved ${state.spottyfiState.completedUnitIds.length} of 8 units. Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderSpottyFiCampaign(state.spottyfiState);
     renderRecoveryHub();
+    openSpottyFiExperience();
     return;
   }
   if (state.readingSiteId === "searchish") {
@@ -4502,6 +4796,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = "Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.";
     renderSearchishCampaign(state.searchishState);
     renderRecoveryHub();
+    openSearchishExperience();
     return;
   }
   if (state.readingSiteId === "yahuh") {
@@ -4527,6 +4822,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.yahuhState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderYahuhCampaign(state.yahuhState);
     renderRecoveryHub();
+    openYahuhExperience();
     return;
   }
   if (state.readingSiteId === "mycorner") {
@@ -4552,6 +4848,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.mycornerState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderMyCornerCampaign(state.mycornerState);
     renderRecoveryHub();
+    openMyCornerExperience();
     return;
   }
   if (state.readingSiteId === "faceplace") {
@@ -4580,6 +4877,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.faceplaceState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderFacePlaceCampaign(state.faceplaceState);
     renderRecoveryHub();
+    openFacePlaceExperience();
     return;
   }
   if (state.readingSiteId === "threadit") {
@@ -4608,6 +4906,7 @@ $("continueResult").onclick = () => {
     $("reportStatus").textContent = `${state.threaditState.lastReaction} Candidate playtest progress is active in this tab only; content approval and canonical evidence remain unchanged.`;
     renderThreadItCampaign(state.threaditState);
     renderRecoveryHub();
+    openThreadItExperience();
     return;
   }
   if (state.resultApplied) {
@@ -4715,6 +5014,11 @@ $("diagnosticAdvance").onclick = () => advanceDiagnosticExperience().catch((erro
   $("diagnosticSummary").textContent = `Diagnostic could not advance: ${error.message}`;
 });
 $("diagnosticReset").onclick = async () => {
+  if (SIMPLE_DIAGNOSTIC_SITES[state.selectedSiteId]) {
+    await discardActiveReadingForDiagnostics();
+    resetSimpleDiagnosticExperience(state.selectedSiteId);
+    return;
+  }
   if (state.selectedSiteId === "yahuh") {
     await discardActiveReadingForDiagnostics();
     resetYahuhDiagnosticExperience();
@@ -4988,7 +5292,7 @@ document.addEventListener("keydown", (event) => {
   syncSearchishInspector();
   $("searchishInspectorToggle").focus({ preventScroll: true });
 });
-$("searchishMidpointAction").onclick = () => {
+function acknowledgeSearchishStory() {
   const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
   const transition = state.searchishDiagnosticMode || state.searchishPlaytestMode
     ? acknowledgeSearchishMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
@@ -5002,7 +5306,9 @@ $("searchishMidpointAction").onclick = () => {
   state.searchishInspectorOpen = true;
   renderSearchishCampaign(transition.state, { diagnosticMode: state.searchishDiagnosticMode });
   syncSearchishInspector();
-};
+}
+$("searchishMidpointAction").onclick = acknowledgeSearchishStory;
+$("searchishFrameContinue").onclick = acknowledgeSearchishStory;
 $("searchishEvidenceToggle").onclick = () => {
   const visible = state.searchishDiagnosticMode ? state.searchishDiagnosticState : state.searchishState;
   if (!visible.secured) return;
@@ -5016,9 +5322,11 @@ $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOn
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
 $("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
-function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
+function syncSpottyFiPlayer(){const player=document.querySelector(".spottyfi-silent-player");if(!player)return;player.innerHTML=`<div class="spottyfi-equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span></div><button type="button" data-player-action="previous" aria-label="Previous track">⏮</button><button type="button" data-player-action="play" aria-label="Play silent visual preview" aria-pressed="${state.spottyfiPlaying}">${state.spottyfiPlaying?"⏸":"▶"}</button><button type="button" data-player-action="next" aria-label="Next track">⏭</button><b>${state.spottyfiPlaying?"NOW PLAYING · VISUAL ONLY":"READY · VISUAL PLAYER ONLY"}</b>`;player.querySelector('[data-player-action="play"]').onclick=()=>{state.spottyfiPlaying=!state.spottyfiPlaying;syncSpottyFiPlayer()};for(const action of ["previous","next"]){player.querySelector(`[data-player-action="${action}"]`).onclick=()=>{state.spottyfiPlaying=true;syncSpottyFiPlayer()}}}
+function syncSpottyFiDetail(){syncSpottyFiPlayer();const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
 $("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});
 $("spottyfiMidpointAction").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode)state.spottyfiDiagnosticState=t.state;else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()};$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
+$("spottyfiFrameContinue").onclick = () => $("spottyfiMidpointAction").onclick();
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);
   if (state.mapguessInspectorOpen) requestAnimationFrame(() => $("mapguessInspectorHeading").focus({ preventScroll: true }));
@@ -5034,6 +5342,10 @@ document.addEventListener("keydown", (event) => {
   $("mapguessInspectorToggle").focus({ preventScroll: true });
 });
 $("mapguessMidpointAction").onclick = acknowledgeMapGuessMovingTarget;
+$("mapguessFrameContinue").onclick = acknowledgeMapGuessMovingTarget;
+document.querySelectorAll("[data-mapguess-frame-goal]").forEach((button) => {
+  button.onclick = () => setMapGuessGoalFromControl(button.dataset.mapguessFrameGoal);
+});
 $("mapguessEvidenceToggle").onclick = () => {
   const visibleState = state.mapguessDiagnosticMode ? state.mapguessDiagnosticState : state.mapguessState;
   if (!visibleState.secured) return;
