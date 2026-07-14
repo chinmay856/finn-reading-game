@@ -1,112 +1,231 @@
-/* Image-led 4:3 board. Runtime text remains HTML so the seven repairs, midpoint,
-   and completion state stay exact and accessible. */
+/* Approved toast-video composition with semantic progress layered in place. */
 #viewtube .viewtube-page {
   position: relative;
   display: block !important;
+  overflow: hidden !important;
   padding: 0 !important;
-  background: #171c21 url("/apps/internet-recovery/art/site-assets/viewtube-frames/viewtube-01.webp") center / cover no-repeat !important;
   border: 3px solid #242a31;
   border-radius: 10px;
+  background: #171c21 url("/apps/internet-recovery/art/site-assets/viewtube-frames/viewtube-01.webp") center / cover no-repeat !important;
   box-shadow: 7px 8px 0 #080b1077;
+}
+
+#viewtube .viewtube-page[data-midpoint-discovered="true"] {
+  background-image: url("/apps/internet-recovery/art/site-assets/viewtube-frames/viewtube-02.webp") !important;
+}
+
+#viewtube .viewtube-page[data-secured="true"] {
+  background-image: url("/apps/internet-recovery/art/site-assets/viewtube-frames/viewtube-03.webp") !important;
 }
 
 #viewtube .viewtube-page > :not(.viewtube-titlebar):not(.viewtube-midpoint):not(.viewtube-evidence-timeline):not(.viewtube-secured-payoff):not(.viewtube-live-status) {
   display: none !important;
 }
 
+/* The approved art already contains the ViewTube masthead and rule. */
 #viewtube .viewtube-titlebar {
-  position: absolute;
-  z-index: 3;
-  top: 7.5%;
-  left: 23%;
-  right: 7%;
-  display: flex;
-  min-height: 0;
-  padding: 5px 8px;
-  border: 2px solid #89939c;
-  border-radius: 5px;
-  background: #171c21e8;
-  color: #fff;
-  box-shadow: 2px 2px 0 #0008;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-height: 0 !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
 }
-
-#viewtube .viewtube-titlebar > div { display: none; }
-#viewtube .viewtube-titlebar strong {
-  overflow: hidden;
-  font: 800 clamp(9px, .82vw, 13px)/1.1 "Comic Sans MS", cursive;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-#viewtube .viewtube-titlebar button { display: none; }
 
 #viewtube .viewtube-evidence-timeline {
   position: absolute;
-  z-index: 4;
-  left: 4.2%;
-  right: 4.1%;
-  bottom: 4.6%;
+  z-index: 6;
+  left: 2.8%;
+  right: 10%;
+  bottom: 2.8%;
   display: block !important;
-  height: 18.2%;
+  height: 6.8%;
   margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+#viewtube .viewtube-evidence-timeline::before {
+  content: "RESTORE THE RECORDING";
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 4px);
+  padding: 3px 7px;
+  border: 1px solid #d7a93e;
+  border-radius: 4px 4px 0 0;
+  background: #171c21ed;
+  color: #f3efe5;
+  font: 800 clamp(7px, .65vw, 10px)/1 Consolas, monospace;
+  letter-spacing: .04em;
+  box-shadow: 2px 2px 0 #0007;
 }
 
 #viewtube .viewtube-evidence-timeline > h3,
 #viewtube .viewtube-track-list { display: none !important; }
+
 #viewtube .viewtube-timeline-units {
   display: grid !important;
-  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
-  gap: 1.15%;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1.2%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-#viewtube .viewtube-timeline-unit {
-  display: grid;
-  place-items: end center;
-  min-height: 0;
-  padding: 4px;
-  overflow: hidden;
-  border: 2px dashed #89939c;
-  border-radius: 5px;
-  background: #10161be6;
-  color: #f3efe5;
-  font: 800 clamp(7px, .63vw, 10px)/1.05 "Comic Sans MS", cursive;
-  text-align: center;
-}
-#viewtube .viewtube-timeline-unit[data-state="saved"] {
-  border-style: solid;
-  border-color: #7de0aa;
-  background: #163e2ee8;
-  color: #fff;
-}
-#viewtube .viewtube-timeline-unit[data-state="saved"]::before { content: "✓"; font-size: 1.7em; }
 
-#viewtube .viewtube-midpoint,
+#viewtube .viewtube-timeline-unit {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 4px 5px 4px 20px;
+  overflow: hidden;
+  border: 2px solid #b43a31;
+  border-radius: 5px;
+  background: #10161bed;
+  color: #f3efe5;
+  font: 800 clamp(7px, .7vw, 11px)/1.05 "Comic Sans MS", cursive;
+  text-align: center;
+  text-overflow: ellipsis;
+  box-shadow: 2px 2px 0 #080b10a6;
+}
+
+#viewtube .viewtube-page:not([data-midpoint-discovered="true"]) .viewtube-timeline-unit[data-phase="restore"],
+#viewtube .viewtube-page[data-midpoint-discovered="true"] .viewtube-timeline-unit[data-phase="track"] {
+  display: flex;
+}
+
+#viewtube .viewtube-timeline-unit::before {
+  content: "\00d7";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e75b50;
+  font: 900 15px/1 Arial, sans-serif;
+}
+
+#viewtube .viewtube-timeline-unit[data-complete="true"] {
+  border-color: #2c7a57;
+  background: #174a2eed;
+  color: #f3fff7;
+}
+
+#viewtube .viewtube-timeline-unit[data-complete="true"]::before {
+  content: "\2713";
+  color: #7de0aa;
+}
+
+#viewtube .viewtube-page[data-midpoint-discovered="true"] .viewtube-evidence-timeline {
+  left: 8%;
+  right: 8%;
+  height: 7.6%;
+}
+
+#viewtube .viewtube-page[data-midpoint-discovered="true"] .viewtube-evidence-timeline::before {
+  content: "SEPARATE THE EVIDENCE";
+  border-color: #6851a1;
+}
+
+#viewtube .viewtube-page[data-secured="true"] .viewtube-evidence-timeline::before {
+  content: "EVIDENCE TRACKS RESTORED";
+  border-color: #55a97b;
+  background: #174a2eed;
+}
+
+#viewtube .viewtube-page[data-midpoint-discovered="true"] .viewtube-timeline-units {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1.5%;
+}
+
+#viewtube .viewtube-midpoint {
+  position: absolute;
+  z-index: 9;
+  inset: auto 24% 14%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#viewtube .viewtube-midpoint[hidden] { display: none !important; }
+#viewtube .viewtube-midpoint h3,
+#viewtube .viewtube-midpoint p,
+#viewtube .viewtube-midpoint ul,
+#viewtube .viewtube-midpoint blockquote { display: none; }
+
+#viewtube .viewtube-midpoint button {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 3px solid #242a31;
+  border-radius: 6px;
+  background: #d7a93e;
+  color: #171c21;
+  font: 800 clamp(8px, .78vw, 12px)/1.05 "Comic Sans MS", cursive;
+  box-shadow: 4px 4px 0 #080b10a8;
+}
+
 #viewtube .viewtube-secured-payoff {
   position: absolute;
-  z-index: 12;
-  inset: 17% 17% auto;
-  max-height: 64%;
+  z-index: 8;
+  right: 5.5%;
+  bottom: 14%;
+  width: 44%;
+  max-height: 24%;
   margin: 0;
-  padding: 12px 14px;
+  padding: 7px;
   overflow: auto;
-  border: 4px solid #6851a1;
-  border-radius: 10px;
-  background: #f5f0fff5;
+  border: 2px solid #2c7a57;
+  border-radius: 6px;
+  background: #effbf2ed;
   color: #242a31;
-  box-shadow: 9px 10px 0 #090c1199;
-  font-size: clamp(10px, .86vw, 13px);
+  box-shadow: 4px 4px 0 #080b1099;
 }
-#viewtube .viewtube-secured-payoff { border-color: #2c7a57; background: #eaf6eff7; }
-#viewtube .viewtube-midpoint[hidden],
+
 #viewtube .viewtube-secured-payoff[hidden] { display: none !important; }
-#viewtube .viewtube-midpoint h3,
-#viewtube .viewtube-secured-payoff h3 { margin: 0; }
-#viewtube .viewtube-midpoint blockquote { padding: 5px 7px; }
-#viewtube .viewtube-midpoint-proof { grid-template-columns: repeat(3, 1fr); }
-#viewtube .viewtube-live-status { position: absolute !important; }
+#viewtube .viewtube-secured-payoff > h3,
+#viewtube .viewtube-secured-payoff > p,
+#viewtube .viewtube-secured-payoff > article:first-of-type { display: none; }
+#viewtube #viewtubeEvidenceToggle { width: 100%; min-height: 28px; margin: 0; font-size: clamp(7px, .66vw, 10px); }
+#viewtube #viewtubeEvidenceReceipt[hidden] { display: none !important; }
+#viewtube #viewtubeEvidenceReceipt:not([hidden]) {
+  max-height: 105px;
+  margin: 5px 0 0;
+  padding: 6px;
+  overflow: auto;
+  border: 1px solid #2c7a57;
+  background: #fff;
+  font-size: clamp(7px, .62vw, 9px);
+}
+
+#viewtube .viewtube-live-status {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+#viewtube .viewtube-companion-gate #viewtubeContentReason,
+#viewtube .viewtube-companion-gate #viewtubeCandidateCount { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  #viewtube .viewtube-timeline-unit { animation: none !important; transition: none !important; }
+  #viewtube .viewtube-page *,
+  #viewtube .viewtube-page *::before,
+  #viewtube .viewtube-page *::after { animation: none !important; transition: none !important; }
 }
