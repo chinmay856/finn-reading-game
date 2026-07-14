@@ -1,4 +1,7 @@
+import { StreamingPcmFramer } from "./streaming-pcm.js";
+
 const TARGET_SAMPLE_RATE = 16_000;
+const STREAMING_PCM_WORKLET_URL = new URL("./streaming-pcm-worklet.js", import.meta.url);
 const SILENCE_THRESHOLD = 0.008;
 const PREFERRED_MICROPHONE_CONSTRAINTS = Object.freeze({
   autoGainControl: true,
@@ -14,6 +17,11 @@ export function buildLocalMicrophoneConstraints(supported = {}) {
     if (supported[name]) audio[name] = value;
   }
   return Object.keys(audio).length ? audio : true;
+}
+
+export function supportsStreamingPcm(scope = globalThis) {
+  const AudioContextApi = scope.AudioContext || scope.webkitAudioContext;
+  return Boolean(AudioContextApi && scope.AudioWorkletNode);
 }
 
 function frameHasSpeech(audio, start, frameSize) {
@@ -89,6 +97,10 @@ export class LocalAudioCapture {
     this.previewChunks = [];
     this.previewRecorder = null;
     this.previewTail = new Float32Array();
+    this.mediaSource = null;
+    this.pcmFramer = null;
+    this.pcmListeners = new Set();
+    this.pcmProcessor = null;
     this.startedAt = 0;
     this.stream = null;
     this.timeDomain = null;
@@ -110,6 +122,35 @@ export class LocalAudioCapture {
     return Math.sqrt(energy / this.timeDomain.length);
   }
 
+  subscribePcm(listener) {
+    if (typeof listener !== "function") throw new Error("A PCM listener is required.");
+    this.pcmListeners.add(listener);
+    return () => this.pcmListeners.delete(listener);
+  }
+
+  async setupStreamingPcm() {
+    if (!this.pcmListeners.size || this.pcmProcessor) return;
+    if (!supportsStreamingPcm(window)) {
+      throw new Error("This browser cannot expose local streaming PCM frames.");
+    }
+    this.pcmFramer = new StreamingPcmFramer({
+      onFrame: (frame, sampleRate) => {
+        for (const listener of this.pcmListeners) listener(frame, sampleRate);
+      },
+    });
+    await this.audioContext.audioWorklet.addModule(STREAMING_PCM_WORKLET_URL);
+    this.pcmProcessor = new AudioWorkletNode(this.audioContext, "reading-companion-pcm-tap", {
+      numberOfInputs: 1,
+      numberOfOutputs: 1,
+      outputChannelCount: [1],
+    });
+    this.pcmProcessor.port.onmessage = ({ data }) => {
+      this.pcmFramer.push(new Float32Array(data), this.audioContext.sampleRate);
+    };
+    this.mediaSource.connect(this.pcmProcessor);
+    this.pcmProcessor.connect(this.audioContext.destination);
+  }
+
   async start() {
     if (this.active) throw new Error("Audio capture is already active.");
     if (!window.MediaRecorder) throw new Error("This browser does not support local microphone recording.");
@@ -122,10 +163,12 @@ export class LocalAudioCapture {
       const AudioContextApi = window.AudioContext || window.webkitAudioContext;
       this.audioContext = new AudioContextApi();
       const source = this.audioContext.createMediaStreamSource(this.stream);
+      this.mediaSource = source;
       this.analyser = this.audioContext.createAnalyser();
       this.analyser.fftSize = 1024;
       this.timeDomain = new Float32Array(this.analyser.fftSize);
       source.connect(this.analyser);
+      await this.setupStreamingPcm();
       this.finalRecorder = new MediaRecorder(this.stream);
       this.mimeType = this.finalRecorder.mimeType;
       this.finalRecorder.addEventListener("dataavailable", (event) => {
@@ -202,6 +245,9 @@ export class LocalAudioCapture {
   }
 
   async cleanup() {
+    this.pcmProcessor?.disconnect();
+    this.mediaSource?.disconnect();
+    if (this.pcmProcessor) this.pcmProcessor.port.onmessage = null;
     this.stream?.getTracks().forEach((track) => track.stop());
     if (this.audioContext && this.audioContext.state !== "closed") await this.audioContext.close();
     this.analyser = null;
@@ -209,6 +255,11 @@ export class LocalAudioCapture {
     this.finalChunks = [];
     this.mimeType = "";
     this.finalRecorder = null;
+    this.mediaSource = null;
+    this.pcmFramer?.reset();
+    this.pcmFramer = null;
+    this.pcmListeners.clear();
+    this.pcmProcessor = null;
     this.previewChunks = [];
     this.previewRecorder = null;
     this.previewTail = new Float32Array();

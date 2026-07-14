@@ -79,9 +79,11 @@ game progress.
 4. In the reading setup path in `app.js`, load both recognizers before the
    attempt. A streaming load failure must leave Whisper scoring and Continue
    available.
-5. During capture, update only the authored line. Center it smoothly, pause
-   automatic scrolling while the player manually scrolls, and resume only
-   after an explicit quiet interval.
+5. During capture, update only the authored line. Put early and middle lines at
+   a fixed 16–24 pixel top anchor and let final lines settle at the natural
+   scroll limit. Forward manual scrolling may advance a separate visual line at
+   the anchor, but must never change speech evidence or scoring. Resume ordinary
+   evidence-led movement when speech catches that visual line.
 6. On Finish, stop the live lane immediately and show a local checking state.
    Send the existing final captured audio to Whisper. Only the final neutral
    reading result may enter Game Rules.
@@ -97,10 +99,15 @@ Cross-Origin-Embedder-Policy: require-corp
 Cross-Origin-Resource-Policy: same-origin
 ```
 
-GitHub Pages does not provide repository-controlled response headers. Before
-shipping this adapter, choose and test one of: a host with explicit headers, a
-validated isolation service worker, or a separately proven single-thread
-build. Do not silently weaken the runtime configuration that passed the spike.
+GitHub Pages does not provide repository-controlled response headers. The
+2026-07-14 production probe confirmed that the live game returns none of these
+three headers. The adapter is therefore wired behind `?streamingGuide=1` and a
+runtime capability gate, but it remains on the Whisper checkpoint fallback on
+the public origin. Before enabling it, choose and test one of: a host with
+explicit headers, a validated isolation service worker, or a separately proven
+single-thread build. Do not silently weaken the runtime configuration that
+passed the spike. See
+`READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`.
 
 ## Acceptance gate for the integrating agent
 

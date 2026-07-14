@@ -2,11 +2,26 @@ import { PHOTOSYNTHESIS_PASSAGE } from "./content/wikiwhy/photosynthesis-passage
 import { describePassageRights } from "./content/passage-catalog.js";
 import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
 import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
-import { approachScrollTop, centeredGuideScrollTop } from "./reading-guide.js";
 import { KnownTextLineGuide } from "./reading-companion/known-text-line-guide.js";
+import { LiveReadingCompanion } from "./reading-companion/live-reading-companion.js";
 import { derivePassageDisplayLines } from "./reading-companion/passage-display-lines.js";
-import { LocalAudioCapture } from "./speech/audio-capture.js";
+import {
+  resolveStreamingGuideGate,
+  STREAMING_GUIDE_QUERY_VALUE,
+  streamingGuideGateMessage,
+} from "./reading-companion/streaming-guide-gate.js";
+import {
+  anchoredScrollTop,
+  DEFAULT_READING_ANCHOR_PX,
+  lineAtReadingAnchor,
+  reconcileManualLine,
+} from "./reading-companion/viewport-policy.js";
+import { LocalAudioCapture, supportsStreamingPcm } from "./speech/audio-capture.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
+import {
+  createSherpaStreamingRecognizer,
+  sherpaStreamingRuntimeAvailable,
+} from "./speech/sherpa-streaming-recognizer.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
 import {
   WIKIWHY_EVIDENCE_RECORD,
@@ -191,11 +206,13 @@ const AMY_DIALOG_URL = new URL("./apps/internet-recovery/art/characters/dialogue
 const CHINMAY_DIALOG_URL = new URL("./apps/internet-recovery/art/characters/dialogue/chinmay-fluster-1.jpg", import.meta.url).href;
 const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
-const requestedDevice = new URLSearchParams(location.search).get("speechDevice");
-const uiPreview = new URLSearchParams(location.search).get("uiPreview");
-const requestedSite = new URLSearchParams(location.search).get("site");
-const requestedLaunch = new URLSearchParams(location.search).get("launch");
-const requestedReadingSite = new URLSearchParams(location.search).get("readingSite");
+const query = new URLSearchParams(location.search);
+const requestedDevice = query.get("speechDevice");
+const requestedStreamingGuide = query.get("streamingGuide") === STREAMING_GUIDE_QUERY_VALUE;
+const uiPreview = query.get("uiPreview");
+const requestedSite = query.get("site");
+const requestedLaunch = query.get("launch");
+const requestedReadingSite = query.get("readingSite");
 const TECHNO_IDLE_DELAY_MS = uiPreview === "techno-sleep" ? 250 : 60_000;
 
 function availableLocalStorage() {
@@ -216,9 +233,11 @@ const localStateStorage = availableLocalStorage();
 const state = {
   busy: false, confirmedMatches: new Set(), confirmedProgress: 0, confirmedTokenIndex: 0,
   diagnostics: [], finalText: "", finishing: false, lastCheckpointAt: 0, lastSpeechAt: 0,
-  guidePausedUntil: 0, guideProgress: 0, guideSpeechMs: 0,
-  guide: null, guideTranscriptText: "", guideVisibleLineIndex: 0,
-  guideWpm: PROFILE.guide.defaultWpm, lastMonitorAt: 0,
+  guideProgress: 0,
+  guide: null, guideEvidenceLineIndex: 0, guideManualInteractionUntil: 0,
+  guideProgrammaticScrollUntil: 0, guideScrollFrame: null,
+  guideTranscriptText: "", guideVisibleLineIndex: 0,
+  guideWpm: PROFILE.guide.defaultWpm,
   listening: false, modelDevice: null, monitor: null, transcriptDiagnostics: [],
   comprehension: "not-attempted", processedThroughMs: 0, repairPercent: 0, result: null,
   sessionId: null, startedAt: 0, technoTimer: null, technoIdleTimer: null, technoSleeping: false, technoMode: "idle",
@@ -226,6 +245,8 @@ const state = {
   evidenceReceiptOpen: false,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
   speechPrepared: false,
+  streamingCompanion: null, streamingGuideGate: null, streamingPcmUnsubscribe: null,
+  streamingRecognizer: null, streamingWarmupMs: null,
   readingSiteId: "wikiwhy",
   campaignEligible: true, campaignState: readWikiWhyState(localStateStorage),
   campaignPersisted: Boolean(localStateStorage), contentAvailabilityReason: null,
@@ -642,14 +663,16 @@ function resetReadingAttempt() {
   state.diagnostics = [];
   state.finalText = "";
   state.finishing = false;
-  state.guidePausedUntil = 0;
   state.guideProgress = 0;
-  state.guideSpeechMs = 0;
   state.guide = null;
+  state.guideEvidenceLineIndex = 0;
+  state.guideManualInteractionUntil = 0;
+  state.guideProgrammaticScrollUntil = 0;
+  if (state.guideScrollFrame != null) cancelAnimationFrame(state.guideScrollFrame);
+  state.guideScrollFrame = null;
   state.guideTranscriptText = "";
   state.guideVisibleLineIndex = 0;
   state.lastCheckpointAt = 0;
-  state.lastMonitorAt = 0;
   state.lastSpeechAt = 0;
   state.listening = false;
   state.processedThroughMs = 0;
@@ -4432,22 +4455,65 @@ function renderPassage(progress = state.confirmedProgress) {
   passage.scrollTop = previousScrollTop;
 }
 
+function readingLineGeometry() {
+  return [...$("passage").querySelectorAll("[data-guide-line]")].map((line) => ({
+    height: line.offsetHeight,
+    offsetTop: line.offsetTop,
+  }));
+}
+
+function scrollGuideLineToAnchor(lineIndex) {
+  const passage = $("passage");
+  const line = passage.querySelector(`[data-guide-line="${lineIndex}"]`);
+  if (!line) return;
+  state.guideProgrammaticScrollUntil = performance.now() + 450;
+  passage.scrollTo({
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    top: anchoredScrollTop({
+      anchorOffset: DEFAULT_READING_ANCHOR_PX,
+      lineOffsetTop: line.offsetTop,
+      maximumScrollTop: passage.scrollHeight - passage.clientHeight,
+    }),
+  });
+}
+
+function reconcileManualGuidePosition() {
+  state.guideScrollFrame = null;
+  const now = performance.now();
+  if (now > state.guideManualInteractionUntil || now < state.guideProgrammaticScrollUntil) return;
+  const passage = $("passage");
+  const lineAtAnchor = lineAtReadingAnchor({
+    anchorOffset: DEFAULT_READING_ANCHOR_PX,
+    lines: readingLineGeometry(),
+    scrollTop: passage.scrollTop,
+  });
+  const nextLine = reconcileManualLine({
+    currentVisibleLineIndex: state.guideVisibleLineIndex,
+    lineAtAnchor,
+  });
+  if (nextLine <= state.guideVisibleLineIndex) return;
+  state.guideVisibleLineIndex = nextLine;
+  renderPassage();
+  $("guideStatus").textContent = `Manual guide - line ${nextLine + 1} of ${DISPLAY_LINES.length} - speech evidence unchanged`;
+  diagnostic("manual-guide-advance", {
+    evidenceLineIndex: state.guideEvidenceLineIndex,
+    visualLineIndex: nextLine,
+  });
+}
+
 function updateReadingGuide(event) {
   if (!event) return;
-  state.guideVisibleLineIndex = Math.max(state.guideVisibleLineIndex, event.visibleLineIndex);
+  state.guideEvidenceLineIndex = Math.max(state.guideEvidenceLineIndex, event.visibleLineIndex);
+  state.guideVisibleLineIndex = Math.max(state.guideVisibleLineIndex, state.guideEvidenceLineIndex);
   state.guideProgress = Math.max(state.guideProgress, event.matchedWordCount / Math.max(1, event.totalWordCount));
   renderPassage();
-  if (performance.now() < state.guidePausedUntil) return;
-  const passage = $("passage");
-  const line = passage.querySelector(`[data-guide-line="${state.guideVisibleLineIndex}"]`);
-  if (line) {
-    const target = Math.max(0, Math.min(
-      passage.scrollHeight - passage.clientHeight,
-      line.offsetTop - passage.clientHeight * 0.16,
-    ));
-    passage.scrollTop = approachScrollTop(passage.scrollTop, target, 96);
+  if (state.guideEvidenceLineIndex < state.guideVisibleLineIndex) {
+    $("guideStatus").textContent = `Manual guide - line ${state.guideVisibleLineIndex + 1} of ${DISPLAY_LINES.length} - waiting for speech evidence`;
+    return;
   }
-  $("guideStatus").textContent = `Transcript guide - line ${state.guideVisibleLineIndex + 1} of ${DISPLAY_LINES.length}`;
+  scrollGuideLineToAnchor(state.guideVisibleLineIndex);
+  const lane = state.streamingCompanion ? "Streaming transcript guide" : "Transcript guide";
+  $("guideStatus").textContent = `${lane} - line ${state.guideVisibleLineIndex + 1} of ${DISPLAY_LINES.length}`;
 }
 
 function observeGuideTranscript(text, observedAtMs = performance.now(), { replace = false } = {}) {
@@ -4553,13 +4619,10 @@ async function checkpoint(reason) {
 
 function monitorSpeech() {
   const now = performance.now();
-  const elapsedMs = state.lastMonitorAt ? now - state.lastMonitorAt : 0;
-  state.lastMonitorAt = now;
   const speaking = capture.level >= SPEECH_LEVEL;
   $("voicePulse").classList.toggle("speaking", speaking);
   if (speaking) {
     state.lastSpeechAt = now;
-    state.guideSpeechMs += elapsedMs;
   }
   const totalWords = tokenizeText(PASSAGE).length;
   if (!speaking && !state.busy && !state.finishing
@@ -4577,16 +4640,104 @@ function monitorSpeech() {
   }
 }
 
+function inspectStreamingGuideGate() {
+  return resolveStreamingGuideGate({
+    requested: requestedStreamingGuide,
+    crossOriginIsolated: globalThis.crossOriginIsolated === true,
+    sharedArrayBufferAvailable: typeof globalThis.SharedArrayBuffer === "function",
+    streamingPcmAvailable: supportsStreamingPcm(window),
+    sherpaRuntimeAvailable: sherpaStreamingRuntimeAvailable(globalThis),
+  });
+}
+
+async function prepareStreamingGuide() {
+  state.streamingGuideGate = inspectStreamingGuideGate();
+  if (!state.streamingGuideGate.enabled) return state.streamingGuideGate;
+  try {
+    state.streamingRecognizer = createSherpaStreamingRecognizer({ runtime: globalThis });
+    const prepared = state.streamingRecognizer.prepare();
+    state.streamingWarmupMs = prepared.warmupMs;
+  } catch (error) {
+    state.streamingRecognizer = null;
+    state.streamingWarmupMs = null;
+    state.streamingGuideGate = Object.freeze({
+      enabled: false,
+      mode: "whisper-checkpoint-fallback",
+      reason: "sherpa-initialization-failed",
+      requested: true,
+    });
+    diagnostic("streaming-guide-prepare-error", { message: error.message });
+  }
+  return state.streamingGuideGate;
+}
+
+async function startStreamingGuideAttempt() {
+  if (!state.streamingGuideGate?.enabled || !state.streamingRecognizer) return false;
+  const companion = new LiveReadingCompanion({
+    recognizer: state.streamingRecognizer,
+    passageId: activePassage.id,
+    lines: DISPLAY_LINES,
+    wordsPerMinute: state.guideWpm,
+    onGuidePosition: updateReadingGuide,
+  });
+  try {
+    await companion.start();
+    state.streamingCompanion = companion;
+    state.streamingPcmUnsubscribe = capture.subscribePcm((samples, sampleRate) => {
+      companion.acceptAudio(samples, sampleRate);
+    });
+    $("guideStatus").textContent = "Local streaming guide ready - waiting for speech evidence";
+    diagnostic("streaming-guide-start", { warmupMs: state.streamingWarmupMs });
+    return true;
+  } catch (error) {
+    await companion.close().catch(() => {});
+    state.streamingCompanion = null;
+    state.streamingRecognizer = null;
+    state.streamingGuideGate = Object.freeze({
+      enabled: false,
+      mode: "whisper-checkpoint-fallback",
+      reason: "sherpa-session-start-failed",
+      requested: true,
+    });
+    diagnostic("streaming-guide-start-error", { message: error.message });
+    $("guideStatus").textContent = "Streaming guide stopped - Whisper checkpoint fallback active";
+    return false;
+  }
+}
+
+async function stopStreamingGuideAttempt({ closeRecognizer = false } = {}) {
+  state.streamingPcmUnsubscribe?.();
+  state.streamingPcmUnsubscribe = null;
+  const companion = state.streamingCompanion;
+  state.streamingCompanion = null;
+  if (companion) {
+    try {
+      await companion.stop();
+    } catch (error) {
+      diagnostic("streaming-guide-stop-error", { message: error.message });
+    }
+  }
+  if (closeRecognizer && state.streamingRecognizer) {
+    await state.streamingRecognizer.close().catch(() => {});
+    state.streamingRecognizer = null;
+  }
+}
+
 async function startReading() {
   $("listen").disabled = true;
   $("readerState").textContent = "Starting microphone…";
-  await capture.start();
+  await startStreamingGuideAttempt();
+  try {
+    await capture.start();
+  } catch (error) {
+    await stopStreamingGuideAttempt();
+    throw error;
+  }
   state.listening = true;
   state.sessionId = createSessionId();
   state.startedAt = performance.now();
   state.lastSpeechAt = state.startedAt;
   state.lastCheckpointAt = state.startedAt;
-  state.lastMonitorAt = state.startedAt;
   state.processedThroughMs = 0;
   state.guide = new KnownTextLineGuide({
     passageId: activePassage.id,
@@ -4624,6 +4775,7 @@ async function finishReading() {
   clearInterval(state.monitor);
   $("listen").disabled = true;
   $("readerState").textContent = "Capturing results…";
+  await stopStreamingGuideAttempt();
   while (state.busy) await new Promise((resolve) => setTimeout(resolve, 100));
   const { audio, durationMs, signal } = await capture.stop();
   const liveMatches = new Set(state.confirmedMatches);
@@ -4705,7 +4857,15 @@ function sessionReport() {
     completedAt: new Date().toISOString(),
     privacy: { audioUploadedByApp: false, rawAudioStored: false, transcriptIncluded: false, transcriptStored: false },
     result: state.result,
-    speechEngine: { device: state.modelDevice, model: MODEL_ID, processing: "in-browser" },
+    speechEngine: {
+      device: state.modelDevice,
+      finalAssessment: "whisper",
+      liveGuide: state.streamingGuideGate?.mode ?? "whisper-checkpoint-fallback",
+      liveGuideFallbackReason: state.streamingGuideGate?.reason ?? null,
+      model: MODEL_ID,
+      processing: "in-browser",
+      streamingWarmupMs: state.streamingWarmupMs,
+    },
   };
 }
 
@@ -4738,9 +4898,10 @@ async function prepare() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     stream.getTracks().forEach((track) => track.stop());
     state.modelDevice = await recognizer.load(requestedDevice);
+    const streamingGate = await prepareStreamingGuide();
     state.speechPrepared = true;
     state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
-    $("modelProgress").textContent = `Ready locally (${state.modelDevice}). The model will stay warm for the next passage.`;
+    $("modelProgress").textContent = `Ready locally (${state.modelDevice}). ${streamingGuideGateMessage(streamingGate)}`;
     show("read");
     $("listen").textContent = "Start reading";
     $("readerState").textContent = "MICROPHONE READY · PRESS START READING WHEN YOU ARE READY";
@@ -5632,10 +5793,14 @@ document.querySelectorAll(".desktop-shortcut").forEach((button) => {
 });
 for (const eventName of ["wheel", "pointerdown", "touchstart"]) {
   $("passage").addEventListener(eventName, () => {
-    state.guidePausedUntil = performance.now() + 5_000;
-    $("guideStatus").textContent = "Manual scroll - transcript guide resumes after the next local checkpoint";
+    state.guideManualInteractionUntil = performance.now() + 1_200;
+    $("guideStatus").textContent = "Manual guide - scroll forward to choose the visible line; speech evidence is unchanged";
   }, { passive: true });
 }
+$("passage").addEventListener("scroll", () => {
+  if (state.guideScrollFrame != null) return;
+  state.guideScrollFrame = requestAnimationFrame(reconcileManualGuidePosition);
+}, { passive: true });
 document.querySelectorAll(".quiz button").forEach((button) => {
   button.onclick = () => {
     const correct = button.dataset.answer === "1";
@@ -5663,6 +5828,7 @@ window.addEventListener("pagehide", () => {
   clearTimeout(state.technoIdleTimer);
   clearTimeout(state.faceplaceTransitionTimer);
   if (capture.active) capture.stop();
+  void stopStreamingGuideAttempt({ closeRecognizer: true });
   recognizer.close();
 });
 for (const eventName of ["pointerdown", "keydown", "focusin"]) {

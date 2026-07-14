@@ -319,7 +319,8 @@ body {
 }
 
 .passage.continuous {
-  padding-top: clamp(74px, 10vh, 104px);
+  padding-top: 18px;
+  scroll-padding-top: 18px;
 }
 
 .reading-paragraph {

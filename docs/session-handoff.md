@@ -1,5 +1,32 @@
 # Session handoff
 
+## 2026-07-14 Reading Companion production integration
+
+- Isolated branch: `agent/speech-engine-production-integration`, based on
+  authoritative `origin/main` at `981a774`; the dirty primary checkout remains
+  untouched.
+- The production app now has a 20 ms / 16 kHz PCM tap, warmed sherpa adapter,
+  dual-lane lifecycle, privacy-safe timing metadata, and explicit
+  `?streamingGuide=1` capability gate. Whisper remains final scoring authority,
+  and any streaming failure preserves the checkpoint guide and Continue path.
+- The public Pages response was checked directly: HTTP 200, but COOP, COEP, and
+  CORP are absent. The approximately 203 MB pinned runtime/model is therefore
+  not shipped, and the public build honestly stays on the Whisper checkpoint
+  fallback.
+- The viewport policy from PR #115 is production-integrated independently of
+  hosting: 18-pixel top anchor, natural ending clamp, full-target animation,
+  immediate forward manual visual reconciliation, monotonic backward behavior,
+  and reduced-motion fallback. Manual position never enters speech evidence or
+  scoring.
+- Handoff and remaining production-origin/real-reader gates are documented in
+  `docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`.
+- Validation passed: 15 focused streaming/viewport tests, syntax checks, all
+  380 repository tests, Vite production build, and `git diff --check`.
+  Browser inspection confirmed that `?streamingGuide=1` is requested but the
+  current host exposes neither cross-origin isolation, SharedArrayBuffer, nor
+  the pinned sherpa runtime, so the gate resolves to Whisper fallback. The
+  temporary Vite server was stopped after this audit.
+
 ## 2026-07-13 player review checkpoint and next-thread handoff
 
 - The player-review checkpoint is merged to `main` at `5b5613d` through PR
