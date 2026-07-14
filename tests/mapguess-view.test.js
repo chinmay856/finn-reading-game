@@ -65,7 +65,7 @@ test("each rebuild unit reveals only its authored map layer", () => {
   assert.equal(tileView.truth.tilesNamesRestored, true);
   assert.ok(tileView.tiles.every(({ restored }) => restored));
   assert.ok(tileView.placeNames.every(({ visible }) => visible));
-  assert.ok(tileView.placeNames.some(({ label }) => label === "Glasswater Archive"));
+  assert.ok(tileView.placeNames.some(({ label }) => label === "Adventure Wonderland"));
   const tileRepairText = [
     ...tileView.tiles.map(({ accessibleSummary }) => accessibleSummary),
     ...tileView.placeNames.map(({ accessibleSummary }) => accessibleSummary),

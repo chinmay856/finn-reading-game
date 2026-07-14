@@ -990,10 +990,10 @@
   display: none;
 }
 
-/* D7 is the moved sponsored stop; H4 is the requested destination. */
+/* Coordinates remain in state evidence; the player-facing joke uses names. */
 #mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-map-overlay::before,
 #mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-map-overlay::before {
-  content: "ORIGINAL\A H4";
+  content: "FINN PICKED\A ADVENTURE WONDERLAND";
   position: absolute;
   z-index: 7;
   left: 75%;
@@ -1016,7 +1016,7 @@
 
 #mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-map-overlay::after,
 #mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-map-overlay::after {
-  content: "TARGET MOVED  H4  ⇢  D7";
+  content: "IGNORED FOR SPONSORS  ⇢";
   position: absolute;
   z-index: 6;
   left: 35%;
@@ -1046,7 +1046,7 @@
 /* The shipping 4:3 illustrated frame owns the player-visible proof. */
 #mapguess .mapguess-page[data-state-id="mapguess_moving_target"] .mapguess-illustrated-frame::before,
 #mapguess .mapguess-page[data-state-id^="mapguess_anchor_"] .mapguess-illustrated-frame::before {
-  content: "YOU ASKED FOR\A H4";
+  content: "FINN PICKED\A ADVENTURE WONDERLAND";
   position: absolute;
   z-index: 5;
   left: 60%;
@@ -1143,6 +1143,55 @@
 #mapguess .mapguess-page[data-secured="true"] .mapguess-lake-route-proof,
 #mapguess .mapguess-page[data-secured="true"] .mapguess-lake-warning {
   display: none;
+}
+
+#mapguess .mapguess-sponsored-pin-trail {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+}
+
+#mapguess .mapguess-sponsored-pin-trail span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #9b241f;
+  border-radius: 50% 50% 50% 6px;
+  background: #fff0bde8;
+  color: #8d1e19;
+  font: 900 clamp(7px, .58vw, 9px)/1.05 "Comic Sans MS", cursive;
+  text-align: center;
+  box-shadow: 0 0 0 3px #fff9, 2px 4px 0 #102b4655;
+}
+
+#mapguess .mapguess-sponsored-pin-trail span:nth-child(1) { left: 51%; top: 30%; transform: rotate(-8deg); }
+#mapguess .mapguess-sponsored-pin-trail span:nth-child(2) { left: 62%; top: 41%; transform: rotate(6deg); }
+#mapguess .mapguess-sponsored-pin-trail span:nth-child(3) { left: 76%; top: 55%; transform: rotate(-4deg); }
+
+#mapguess .mapguess-final-destination {
+  display: none;
+  position: absolute;
+  z-index: 7;
+  right: 2%;
+  bottom: 29%;
+  padding: 7px 10px;
+  border: 3px solid #176334;
+  background: #ecffe8ed;
+  color: #124a29;
+  font: 900 clamp(9px, .78vw, 12px)/1.05 "Comic Sans MS", cursive;
+  text-align: center;
+  box-shadow: 3px 4px 0 #102b4655;
+}
+
+#mapguess .mapguess-page[data-secured="true"] .mapguess-sponsored-pin-trail {
+  display: none;
+}
+
+#mapguess .mapguess-page[data-secured="true"] .mapguess-final-destination {
+  display: block;
 }
 
 @media (min-width:1280px) and (min-height:760px) {

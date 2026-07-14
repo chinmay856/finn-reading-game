@@ -15,13 +15,12 @@ test("MapGuess shows the absurd lake route on the map itself", async () => {
   assert.match(css, /data-secured="true"[\s\S]*\.mapguess-lake-route-proof/u);
 });
 
-test("MapGuess moving-target states retain original and moved destinations with a motion trace", async () => {
-  const css = await readFile(cssUrl, "utf8");
-  assert.match(css, /data-state-id="mapguess_moving_target"[^}]+mapguess-map-overlay::before/su);
-  assert.match(css, /content: "ORIGINAL\\A H4"/u);
-  assert.match(css, /content: "TARGET MOVED  H4  ⇢  D7"/u);
-  assert.match(css, /data-location="moved"/u);
-  assert.match(css, /mapguess-illustrated-frame::before/u);
-  assert.match(css, /YOU ASKED FOR\\A H4/u);
-  assert.match(css, /content: "▶"/u);
+test("MapGuess cycles sponsored stops before restoring Finn's chosen destination", async () => {
+  const [css, html] = await Promise.all([readFile(cssUrl, "utf8"), readFile(htmlUrl, "utf8")]);
+  assert.match(css, /content: "FINN PICKED\\A ADVENTURE WONDERLAND"/u);
+  assert.match(css, /content: "IGNORED FOR SPONSORS/u);
+  assert.match(html, /mapguess-sponsored-pin-trail/u);
+  assert.match(html, /SPONSORED<br>#1[\s\S]*SPONSORED<br>#2[\s\S]*SPONSORED<br>#3/u);
+  assert.match(html, /mapguess-final-destination[^>]*>[\s\S]*ADVENTURE WONDERLAND/u);
+  assert.match(css, /data-secured="true"[\s\S]*\.mapguess-final-destination/u);
 });

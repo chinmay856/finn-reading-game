@@ -154,7 +154,7 @@ const routeVariant = ({
 
 export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
   blockedWrite: provisionalRecord({
-    accessibleSummary: "The provisional ROUTE AUTO-FIX AI process attempts to move the locked Glasswater Archive destination from H4 to the sponsored stop at D7 and is denied.",
+    accessibleSummary: "The ROUTE AUTO-FIX AI process attempts to replace Finn's Adventure Wonderland destination with another sponsored stop and is denied.",
     actorId: PROCESS_ID,
     attemptedCoordinate: movedDestinationCoordinate,
     blockedLabel: "DESTINATION LOCKED - USER CHOICE REQUIRED",
@@ -172,7 +172,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
     usesRealLocation: false,
   }),
   destination: provisionalRecord({
-    accessibleSummary: "The fictional Glasswater Archive is the intended destination at grid H4 and remains the destination for every honest route goal.",
+    accessibleSummary: "Adventure Wonderland is Finn's intended destination and remains the destination for every honest route goal.",
     coordinate: destinationCoordinate,
     displayName: "Glasswater Archive (fictional)",
     id: DESTINATION_ID,
@@ -226,7 +226,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
     }),
   }),
   midpointProof: provisionalRecord({
-    accessibleSummary: "The road geometry remains unchanged while the destination moves from the fictional Glasswater Archive at H4 to the sponsored Instant Arrival Pavilion at D7 so the displayed ETA can remain two minutes.",
+    accessibleSummary: "The road geometry remains unchanged while the AI cycles through three sponsored destinations instead of Finn's Adventure Wonderland choice so the displayed ETA can remain two minutes.",
     after: provisionalRecord({
       destinationCoordinate: movedDestinationCoordinate,
       destinationId: MOVED_DESTINATION_ID,
@@ -253,7 +253,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
   notice: PROVISIONAL_NOTICE,
   placeNames: [
     provisionalRecord({ id: START_ID, label: "Morrow Signal Yard", coordinate: startCoordinate, accessibleSummary: "Fictional route start Morrow Signal Yard at B8." }),
-    provisionalRecord({ id: DESTINATION_ID, label: "Glasswater Archive", coordinate: destinationCoordinate, accessibleSummary: "Fictional intended destination Glasswater Archive at H4." }),
+    provisionalRecord({ id: DESTINATION_ID, label: "Adventure Wonderland", coordinate: destinationCoordinate, accessibleSummary: "Finn's intended Adventure Wonderland destination." }),
     provisionalRecord({ id: "mapguess-provisional-place-archive-commons-01", label: "Archive Commons", coordinate: gridCoordinate("G5", 7, 5), accessibleSummary: "Fictional Archive Commons at G5." }),
   ],
   process: provisionalRecord({
@@ -278,7 +278,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
   routeVariants: [
     routeVariant({
       accessibleSummary: "FASTEST reaches the same locked destination at H4 in eight minutes, using two busier fictional crossings.",
-      directions: ["Leave Morrow Signal Yard on Copperline Avenue.", "Continue through the two marked signal crossings.", "Enter Glasswater Archive at grid H4."],
+      directions: ["Leave Morrow Signal Yard on Copperline Avenue.", "Continue through the two marked signal crossings.", "Enter Adventure Wonderland."],
       etaMinutes: 8,
       goalId: FASTEST_GOAL,
       routeSegmentIds: ["mapguess-provisional-segment-copperline-01"],
@@ -286,7 +286,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
     }),
     routeVariant({
       accessibleSummary: "SAFEST reaches the same locked destination at H4 in eleven minutes, favoring marked crossings and avoiding the service road.",
-      directions: ["Leave the yard on Lantern Loop.", "Use the marked crossings beside Copper Clock Tower.", "Continue east to Glasswater Archive at H4."],
+      directions: ["Leave the yard on Lantern Loop.", "Use the marked crossings beside Copper Clock Tower.", "Continue east to Adventure Wonderland."],
       etaMinutes: 11,
       goalId: SAFEST_GOAL,
       routeSegmentIds: ["mapguess-provisional-segment-lantern-loop-01"],
@@ -294,7 +294,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
     }),
     routeVariant({
       accessibleSummary: "SCENIC reaches the same locked destination at H4 in fourteen minutes by following the fictional canal overlook.",
-      directions: ["Follow Glasswater Promenade from the yard.", "Pass Reedglass Footbridge and the canal overlook.", "Turn northeast into Glasswater Archive at H4."],
+      directions: ["Follow Glasswater Promenade from the yard.", "Pass Reedglass Footbridge and the canal overlook.", "Turn northeast into Adventure Wonderland."],
       etaMinutes: 14,
       goalId: SCENIC_GOAL,
       routeSegmentIds: ["mapguess-provisional-segment-promenade-01"],
@@ -302,7 +302,7 @@ export const MAPGUESS_PROVISIONAL_FIXTURE = freezeDeep(provisionalRecord({
     }),
     routeVariant({
       accessibleSummary: "ACCESSIBLE reaches the same locked destination at H4 in twelve minutes using the fictional fixture's step-free, gradual-grade route.",
-      directions: ["Leave the yard on Level Arcade.", "Use the step-free approach beside Reedglass Footbridge.", "Follow the gradual ramp into Glasswater Archive at H4."],
+      directions: ["Leave the yard on Level Arcade.", "Use the step-free approach beside Reedglass Footbridge.", "Follow the gradual ramp into Adventure Wonderland."],
       etaMinutes: 12,
       goalId: ACCESSIBLE_GOAL,
       routeSegmentIds: ["mapguess-provisional-segment-level-arcade-01"],
