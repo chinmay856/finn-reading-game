@@ -107,6 +107,40 @@ reported 112-second finish. The next run must determine whether model loading
 was repeated, audio finalization stalled, requests queued behind checkpoints,
 or the UI delayed result presentation after inference completed.
 
+## Streaming latency result
+
+The warmed sherpa-onnx browser path now meets the sub-one-second R&D gate. The
+model/runtime loads before play, a throwaway silent stream warms decoding, and
+live audio is offered every 20 ms. Progress still advances only when sherpa
+returns transcript evidence; no timer moves the guide.
+
+| Fixture | First evidence after speech | Evidence lag p95 | Maximum evidence lag | Worst UI-thread decode block |
+| --- | ---: | ---: | ---: | ---: |
+| Natural 154 WPM | 527 ms | 381 ms | 421 ms | 84 ms |
+| Accelerated 200 WPM | 341 ms | 302 ms | 341 ms | 80 ms |
+| Accelerated 250 WPM | 422 ms | 342 ms | 342 ms | 83 ms |
+| Mid-passage pause | 499 ms | 381 ms | 421 ms | 90 ms |
+| Light room noise | 845 ms | 342 ms | 422 ms | 85 ms |
+| Repeated phrase/restart | 513 ms | 381 ms | 421 ms | 87 ms |
+
+The browser suite reused one warmed recognizer, reached the final line for all
+six fixtures, uploaded nothing, and retained no transcript in the committed
+result. `longestEvidenceGapMs` is not recognition latency: it measures time
+between changed partial strings and naturally includes pauses or steady speech
+inside one authored sentence. Evidence lag uses sherpa token timestamps versus
+audio already fed and is the relevant ongoing-latency measure.
+
+The executable regression gate is
+`prototypes/reading-companion/browser-latency-acceptance.test.js`; raw
+non-transcript results are in
+`prototypes/reading-companion/browser-latency-results-2026-07-13.json`.
+
+For production integration, retain the 20 ms feed and explicit warm-up. Moving
+the sherpa runtime into a worker is still recommended to isolate the remaining
+80-90 ms synchronous decode blocks, but it is no longer required to prove the
+sub-one-second evidence target. The GitHub Pages cross-origin-isolation hosting
+gate remains a deployment issue, not an R&D latency failure.
+
 ## Files for the next agent
 
 - `prototypes/reading-companion/viewport-policy.js`
@@ -114,5 +148,8 @@ or the UI delayed result presentation after inference completed.
 - `prototypes/reading-companion/viewport-policy-benchmark.mjs`
 - `prototypes/reading-companion/viewport-policy-benchmark-2026-07-13.json`
 - `prototypes/reading-companion/viewport-policy-browser.html`
+- `prototypes/reading-companion/browser-latency-results-2026-07-13.json`
+- `prototypes/reading-companion/browser-latency-acceptance.test.js`
+- `prototypes/reading-companion/cdp-benchmark-client.mjs`
 - `prototypes/reading-companion/prototype.js`
 - `prototypes/reading-companion/prototype.css`

@@ -8,7 +8,9 @@ import {
 } from "./viewport-policy.js";
 
 const SAMPLE_RATE = 16_000;
-const FEED_INTERVAL_MS = 80;
+const query = new URLSearchParams(location.search);
+const FEED_INTERVAL_MS = Math.max(20, Math.min(160, Number(query.get("feedMs")) || 20));
+const AUTO_SUITE = query.has("autosuite");
 const REFERENCE_LINES = Object.freeze([
   "He tells us that at this festive season of the year,",
   "with Christmas and roast beef looming before us,",
@@ -106,7 +108,21 @@ let recognizer = null;
 let runState = null;
 let suiteRunning = false;
 let suiteSummaries = [];
+let recognizerWarmupMs = 0;
 const runtimeStartedAt = performance.now();
+
+function warmRecognizer(instance) {
+  const startedAt = performance.now();
+  const stream = instance.createStream();
+  try {
+    stream.acceptWaveform(SAMPLE_RATE, new Float32Array(SAMPLE_RATE));
+    stream.inputFinished();
+    while (instance.isReady(stream)) instance.decode(stream);
+  } finally {
+    stream.free();
+  }
+  return Math.round(performance.now() - startedAt);
+}
 
 function setStatus(message, state = "loading") {
   elements.status.textContent = message;
@@ -143,9 +159,11 @@ function renderMetrics() {
     "Fixture": runState.fixtureLabel,
     "Effective delivery": `${runState.effectiveWpm} WPM`,
     "Model load": `${Math.round(runState.modelLoadMs)} ms`,
+    "Recognizer warm-up": `${runState.recognizerWarmupMs} ms`,
     "Audio duration": runState.audioDurationMs ? `${runState.audioDurationMs} ms` : "—",
     "First partial": runState.firstPartialMs == null ? "—" : `${runState.firstPartialMs} ms`,
     "First line evidence": runState.firstEvidenceMs == null ? "—" : `${runState.firstEvidenceMs} ms`,
+    "Speech-to-first evidence": runState.firstEvidenceAfterSpeechMs == null ? "—" : `${runState.firstEvidenceAfterSpeechMs} ms`,
     "Partial revisions": String(runState.partialUpdates),
     "Cursor advances": String(runState.cursorAdvances),
     "Longest evidence gap": `${runState.longestEvidenceGapMs} ms`,
@@ -160,6 +178,22 @@ function renderMetrics() {
     description.textContent = value;
     return [term, description];
   }));
+}
+
+function speechOnsetMs(samples) {
+  const frameSize = Math.round(SAMPLE_RATE * 0.02);
+  const noiseWindow = Math.min(samples.length, Math.round(SAMPLE_RATE * 0.2));
+  let noiseEnergy = 0;
+  for (let index = 0; index < noiseWindow; index += 1) noiseEnergy += samples[index] * samples[index];
+  const noiseFloor = Math.sqrt(noiseEnergy / Math.max(1, noiseWindow));
+  const threshold = Math.max(0.008, noiseFloor * 3.5);
+  for (let start = 0; start < samples.length; start += frameSize) {
+    let energy = 0;
+    const end = Math.min(samples.length, start + frameSize);
+    for (let index = start; index < end; index += 1) energy += samples[index] * samples[index];
+    if (Math.sqrt(energy / Math.max(1, end - start)) >= threshold) return Math.round((start / SAMPLE_RATE) * 1_000);
+  }
+  return 0;
 }
 
 function processResult(text, isEndpoint = false) {
@@ -178,8 +212,17 @@ function processResult(text, isEndpoint = false) {
 
   const evidence = tracker.observe(fullTranscript);
   if (evidence.advanced) {
-    if (runState.firstEvidenceMs == null) runState.firstEvidenceMs = now;
+    if (runState.firstEvidenceMs == null) {
+      runState.firstEvidenceMs = now;
+      runState.firstEvidenceAfterSpeechMs = Math.max(0, now - runState.speechOnsetMs);
+    }
     runState.cursorAdvances += 1;
+    const timestampSeconds = Number(runState.latestRecognizerTimestampSeconds);
+    if (Number.isFinite(timestampSeconds) && timestampSeconds >= 0) {
+      runState.evidenceLagSamples.push(Math.max(0, Math.round(
+        ((runState.fedSamples / SAMPLE_RATE) - timestampSeconds) * 1_000,
+      )));
+    }
     animateAdvance(evidence.previousIndex, evidence.confirmedIndex);
   }
   runState.finalMatched = evidence.matchedCount;
@@ -202,7 +245,18 @@ function decodeAvailable(stream) {
   const elapsed = performance.now() - started;
   runState.decodeTotalMs += elapsed;
   runState.worstDecodeMs = Math.max(runState.worstDecodeMs, elapsed);
-  if (decodes) processResult(recognizer.getResult(stream).text, recognizer.isEndpoint(stream));
+  if (decodes) {
+    const result = recognizer.getResult(stream);
+    const timestamps = Array.isArray(result.timestamps) ? result.timestamps : [];
+    runState.latestRecognizerTimestampSeconds = timestamps.at(-1);
+    processResult(result.text, recognizer.isEndpoint(stream));
+  }
+}
+
+function percentile(values, fraction) {
+  if (!values.length) return null;
+  const sorted = [...values].sort((left, right) => left - right);
+  return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * fraction))];
 }
 
 async function decodeFixture() {
@@ -259,17 +313,23 @@ async function runFixture(fixture, baseSamples) {
     effectiveWpm: fixtureWordsPerMinute(words.length, samples.length, SAMPLE_RATE),
     events: [],
     finalMatched: 0,
+    fedSamples: 0,
     firstEvidenceMs: null,
+    firstEvidenceAfterSpeechMs: null,
     firstPartialMs: null,
+    evidenceLagSamples: [],
     fixtureId: fixture.id,
     fixtureLabel: fixture.label,
     lastEvidenceAtMs: null,
     lastTranscript: "",
+    latestRecognizerTimestampSeconds: null,
     longestEvidenceGapMs: 0,
     modelLoadMs: performance.now() - runtimeStartedAt,
     partialUpdates: 0,
+    recognizerWarmupMs,
     running: true,
     startedAt: performance.now(),
+    speechOnsetMs: speechOnsetMs(samples),
     worstDecodeMs: 0,
   };
   elements.runButton.disabled = true;
@@ -291,6 +351,7 @@ async function runFixture(fixture, baseSamples) {
         if (target > fedSamples) {
           stream.acceptWaveform(SAMPLE_RATE, samples.slice(fedSamples, target));
           fedSamples = target;
+          runState.fedSamples = fedSamples;
           decodeAvailable(stream);
         }
         if (performance.now() > replayDeadline) {
@@ -323,7 +384,7 @@ async function runFixture(fixture, baseSamples) {
     renderMetrics();
   }
 
-  return Object.freeze({
+  const summary = Object.freeze({
     effectiveWpm: runState.effectiveWpm,
     finalMatched: runState.finalMatched,
     finalLine: anticipatedLineIndex({
@@ -333,6 +394,12 @@ async function runFixture(fixture, baseSamples) {
     }) + 1,
     finalPosition: tracker.confirmedIndex + 1,
     firstEvidenceMs: runState.firstEvidenceMs ?? runState.audioDurationMs,
+    firstEvidenceAfterSpeechMs: runState.firstEvidenceAfterSpeechMs ?? runState.audioDurationMs,
+    feedIntervalMs: FEED_INTERVAL_MS,
+    recognizerWarmupMs: runState.recognizerWarmupMs,
+    evidenceLagMedianMs: percentile(runState.evidenceLagSamples, 0.5),
+    evidenceLagP95Ms: percentile(runState.evidenceLagSamples, 0.95),
+    evidenceLagMaximumMs: percentile(runState.evidenceLagSamples, 1),
     id: fixture.id,
     label: fixture.label,
     longestEvidenceGapMs: runState.longestEvidenceGapMs,
@@ -340,6 +407,28 @@ async function runFixture(fixture, baseSamples) {
     transcript: runState.lastTranscript,
     worstDecodeMs: Math.round(runState.worstDecodeMs),
   });
+  const browserSummary = Object.freeze({
+    effectiveWpm: summary.effectiveWpm,
+    evidenceLagMaximumMs: summary.evidenceLagMaximumMs,
+    evidenceLagMedianMs: summary.evidenceLagMedianMs,
+    evidenceLagP95Ms: summary.evidenceLagP95Ms,
+    feedIntervalMs: summary.feedIntervalMs,
+    finalLine: summary.finalLine,
+    finalMatched: summary.finalMatched,
+    finalPosition: summary.finalPosition,
+    firstEvidenceAfterSpeechMs: summary.firstEvidenceAfterSpeechMs,
+    firstEvidenceMs: summary.firstEvidenceMs,
+    id: summary.id,
+    longestEvidenceGapMs: summary.longestEvidenceGapMs,
+    partialUpdates: summary.partialUpdates,
+    recognizerWarmupMs: summary.recognizerWarmupMs,
+    worstDecodeMs: summary.worstDecodeMs,
+  });
+  if (!AUTO_SUITE) {
+    globalThis.__benchmarkSummary = browserSummary;
+    document.body.dataset.benchmarkComplete = "true";
+  }
+  return summary;
 }
 
 async function runSample() {
@@ -360,6 +449,26 @@ async function runSuite() {
       const summary = await runFixture(fixture, baseSamples);
       if (summary) suiteSummaries.push(summary);
       renderSuiteResults();
+    }
+    if (AUTO_SUITE) {
+      globalThis.__benchmarkSummary = suiteSummaries.map((summary) => ({
+        effectiveWpm: summary.effectiveWpm,
+        evidenceLagMaximumMs: summary.evidenceLagMaximumMs,
+        evidenceLagMedianMs: summary.evidenceLagMedianMs,
+        evidenceLagP95Ms: summary.evidenceLagP95Ms,
+        feedIntervalMs: summary.feedIntervalMs,
+        finalLine: summary.finalLine,
+        finalMatched: summary.finalMatched,
+        finalPosition: summary.finalPosition,
+        firstEvidenceAfterSpeechMs: summary.firstEvidenceAfterSpeechMs,
+        firstEvidenceMs: summary.firstEvidenceMs,
+        id: summary.id,
+        longestEvidenceGapMs: summary.longestEvidenceGapMs,
+        partialUpdates: summary.partialUpdates,
+        recognizerWarmupMs: summary.recognizerWarmupMs,
+        worstDecodeMs: summary.worstDecodeMs,
+      }));
+      document.body.dataset.benchmarkComplete = "true";
     }
     setStatus("Tough fixture suite complete.", "ready");
   } finally {
@@ -385,11 +494,28 @@ window.addEventListener("sherpa-status", ({ detail }) => {
 window.addEventListener("sherpa-ready", () => {
   try {
     recognizer = globalThis.createOnlineRecognizer(globalThis.Module);
+    setStatus("Warming the local streaming recognizer…");
+    recognizerWarmupMs = warmRecognizer(recognizer);
     engineReady = true;
     elements.runButton.disabled = false;
     elements.suiteButton.disabled = false;
     elements.downloadDetail.textContent = "All recognition runs locally. No audio or transcript is uploaded or retained.";
     setStatus("Local streaming recognizer ready", "ready");
+    const autoFixtureId = query.get("autorun");
+    if (AUTO_SUITE) {
+      queueMicrotask(() => runSuite());
+    } else if (autoFixtureId) {
+      const fixture = FIXTURE_DEFINITIONS.find(({ id }) => id === autoFixtureId) ?? FIXTURE_DEFINITIONS[0];
+      queueMicrotask(async () => {
+        try {
+          const baseSamples = await decodeFixture();
+          await runFixture(fixture, baseSamples);
+        } catch (error) {
+          globalThis.__benchmarkError = error?.message ?? String(error);
+          document.body.dataset.benchmarkComplete = "error";
+        }
+      });
+    }
   } catch (error) {
     setStatus(`Recognizer initialization failed: ${error?.message ?? error}`, "error");
   }
