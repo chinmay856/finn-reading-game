@@ -89,3 +89,14 @@ not yet published or deployed.
 
 Review requests and response protocol live in
 [`../DESIGN_REQUESTS.md`](../DESIGN_REQUESTS.md).
+
+## Spotty-Fi visible-progress correction
+
+- `spottyfi-visible-repairs-act-one-v1.png` — five visible album cards, each
+  carrying the repair it represents; no numeric repair banner or fake player.
+- `spottyfi-midpoint-story-v1.png` — Amy's explicit Act I/Act II handoff after
+  all five album-card checks turn green.
+- `spottyfi-visible-controls-act-two-v1.png` — the three visible listener-
+  control checks that replace the first-half warning at midpoint.
+- `spottyfi-completion-story-v1.png` — Amy names Finn's finished repair before
+  Chinmay's site-complete message and return to the Recovery Map.

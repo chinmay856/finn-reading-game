@@ -292,7 +292,7 @@ const state = {
   amazeonDiagnosticState: readAmazeOnState(null),
   amazeonReceiptOpen: false,
   amazeonEvidenceReceiptOpen: false,
-  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiPlaytestMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false, spottyfiPlaying: false,
+  spottyfiState: readSpottyFiState(localStateStorage), spottyfiPersisted: Boolean(localStateStorage), spottyfiDiagnosticMode: false, spottyfiPlaytestMode: false, spottyfiDiagnosticState: readSpottyFiState(null), spottyfiDetailOpen: false, spottyfiEvidenceReceiptOpen: false,
   endgameState: readEndgameState(localStateStorage),
   endgameStorageAvailable: null,
   seenSiteDialogIds: new Set(),
@@ -1274,7 +1274,7 @@ function renderRecoveryHub() {
       progress.completed >= progress.total
         ? "RECOVERED"
         : progress.completed
-          ? `${progress.completed}/${progress.total} PASSAGES CLEARED`
+          ? "RECOVERY IN PROGRESS"
           : "READY TO RECOVER",
     ]),
   ));
@@ -1306,8 +1306,10 @@ function renderRecoveryHub() {
     const siteSecured = Boolean(evidenceSummary.bySiteId[site.id]?.displaySecured);
     const progress = passageProgressBySiteId[site.id];
     const siteStatus = siteSecured
-      ? `RECOVERED · ${progress.total}/${progress.total} passages`
-      : `${Math.min(progress.completed, progress.total)}/${progress.total} passages cleared`;
+      ? "RECOVERED"
+      : progress.completed
+        ? "RECOVERY IN PROGRESS"
+        : "READY TO RECOVER";
     const securedIcon = site.id === "wikiwhy"
       ? WIKIWHY_SECURED_SEAL_URL
       : site.id === "threadit"
@@ -2277,8 +2279,17 @@ const renderSpottyFiCampaignBase = renderSpottyFiCampaign;
 renderSpottyFiCampaign = function renderSpottyFiIllustratedCampaign(campaignState, options = {}) {
   renderSpottyFiCampaignBase(campaignState, options);
   const view = getSpottyFiCampaignView(campaignState);
-  $("spottyfiFrameTracks").innerHTML = view.tracks.slice(0, 5).map((track, index) => `<li data-restored="${index < view.progress.completedUnitCount}">${escapeMarkup(track.title)}</li>`).join("");
-  $("spottyfiFrameStatus").textContent = view.secured ? "LISTENER CONTROL RESTORED" : `${view.progress.completedUnitCount} OF 8 REPAIRS COMPLETE`;
+  $("spottyfiFrameTracks").innerHTML = view.tracks.slice(0, 5).map((track, index) => {
+    const unit = view.progress.disclosureUnits[index];
+    return `<li data-restored="${unit.complete}" aria-label="${escapeMarkup(unit.label)}: ${unit.complete ? "restored" : "not restored"}"><strong aria-hidden="true">${escapeMarkup(unit.label)}</strong><span aria-hidden="true">${escapeMarkup(track.title)}</span></li>`;
+  }).join("");
+  const controlChecklist = $("spottyfiFrameControls");
+  controlChecklist.hidden = view.progress.completedUnitCount < view.progress.disclosureBoundary;
+  controlChecklist.innerHTML = view.progress.controlUnits.map((unit) => `<li data-restored="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");
+  const nextVisibleUnit = [...view.progress.disclosureUnits, ...view.progress.controlUnits].find((unit) => !unit.complete);
+  $("spottyfiFrameStatus").textContent = view.secured
+    ? "Every visible Spotty-Fi repair is checked. Listener control restored."
+    : `${nextVisibleUnit?.label ?? "NEXT REPAIR"} is the next visible repair.`;
   $("spottyfiFrameContinue").hidden = !view.midpoint.actionRequired;
   $("spottyfiPlaytest").textContent = view.secured ? "Spotty-Fi recovered" : view.midpoint.actionRequired ? "Take back the queue first" : "Read next passage";
 };
@@ -3545,21 +3556,22 @@ function renderSimpleDiagnosticPanel(siteId, value) {
   const config = SIMPLE_DIAGNOSTIC_SITES[siteId];
   if (!config) return;
   const view = config.getView(value);
-  const completed = view.progress.completedUnitCount;
   const midpointPending = Boolean(view.midpoint?.actionRequired);
   $("diagnosticPhase").textContent = view.secured
     ? `${config.label.toUpperCase()} · RECOVERED`
-    : `${config.label.toUpperCase()} · ${completed}/${config.total} PASSAGES CLEARED`;
+    : midpointPending
+      ? `${config.label.toUpperCase()} · STORY CHECKPOINT`
+      : `${config.label.toUpperCase()} · NEXT VISIBLE REPAIR`;
   $("diagnosticSummary").textContent = view.secured
     ? "This site is ready for visual review."
     : midpointPending
-      ? "A story message is waiting on the site before the next passage."
-      : "Skip one passage to preview the next visible repair.";
+      ? "A story message is waiting on the site before the next visible repair."
+      : "Preview the next change on the site.";
   $("diagnosticAdvance").textContent = view.secured
     ? "Site recovery complete"
     : midpointPending
       ? "Continue the story on the site"
-      : `Skip one ${config.label} passage →`;
+      : `Preview next ${config.label} repair →`;
   $("diagnosticAdvance").disabled = view.secured || midpointPending;
 }
 
@@ -5393,10 +5405,9 @@ $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOn
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
 $("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
-function syncSpottyFiPlayer(){const player=document.querySelector(".spottyfi-silent-player");if(!player)return;player.innerHTML=`<div class="spottyfi-equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span></div><button type="button" data-player-action="previous" aria-label="Previous track">⏮</button><button type="button" data-player-action="play" aria-label="Play silent visual preview" aria-pressed="${state.spottyfiPlaying}">${state.spottyfiPlaying?"⏸":"▶"}</button><button type="button" data-player-action="next" aria-label="Next track">⏭</button><b>${state.spottyfiPlaying?"NOW PLAYING · VISUAL ONLY":"READY · VISUAL PLAYER ONLY"}</b>`;player.querySelector('[data-player-action="play"]').onclick=()=>{state.spottyfiPlaying=!state.spottyfiPlaying;syncSpottyFiPlayer()};for(const action of ["previous","next"]){player.querySelector(`[data-player-action="${action}"]`).onclick=()=>{state.spottyfiPlaying=true;syncSpottyFiPlayer()}}}
-function syncSpottyFiDetail(){syncSpottyFiPlayer();const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
+function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
 $("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});
-$("spottyfiMidpointAction").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode)state.spottyfiDiagnosticState=t.state;else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()};$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
+$("spottyfiMidpointAction").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode){state.spottyfiDiagnosticState=t.state;renderSimpleDiagnosticPanel("spottyfi",t.state)}else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()};$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
 $("spottyfiFrameContinue").onclick = () => $("spottyfiMidpointAction").onclick();
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);

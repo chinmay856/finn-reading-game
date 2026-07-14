@@ -222,13 +222,21 @@
 .spottyfi-page > :not(.spottyfi-illustrated-frame) { display: none !important; }
 .spottyfi-illustrated-frame { position: relative; width:auto; max-width:100%; height:calc(100% - 12px); aspect-ratio: 4 / 3; overflow: hidden; border: 3px solid #b4ed00; border-radius: 12px; box-shadow: 7px 8px 0 #07130b99; }
 .spottyfi-illustrated-frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.spottyfi-frame-tracks { position: absolute; left: 25.5%; right: 2.6%; bottom: 17.2%; display: grid; grid-template-columns: repeat(5,1fr); gap: 1.2%; margin: 0; padding: 0; list-style: none; }
-.spottyfi-frame-tracks li { overflow: hidden; color: #f6f7ed; font: 700 clamp(8px,.78vw,12px)/1.05 "Comic Sans MS",cursive; text-align: center; text-overflow: ellipsis; white-space: nowrap; text-shadow: 1px 1px #000; }
+.spottyfi-frame-tracks { position: absolute; left: 25.5%; right: 2.6%; top: 59.3%; bottom: 13.8%; display: grid; grid-template-columns: repeat(5,1fr); gap: 1.2%; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.spottyfi-frame-tracks li { position: relative; display: flex; align-items: flex-end; justify-content: center; min-width: 0; color: #f6f7ed; font: 700 clamp(8px,.78vw,12px)/1.05 "Comic Sans MS",cursive; text-align: center; text-shadow: 1px 1px #000; }
+.spottyfi-frame-tracks li strong { position: absolute; top: 2%; left: 3%; max-width: 92%; overflow: hidden; padding: 2px 5px 2px 19px; border: 1px solid #ff4b88; border-radius: 999px; background: #0a0d0ceb; color: #ff76a7; font: 800 clamp(6px,.56vw,9px)/1.1 Consolas,monospace; text-overflow: ellipsis; white-space: nowrap; box-shadow: 1px 1px 0 #000; }
+.spottyfi-frame-tracks li strong::before { content: "×"; position: absolute; left: 5px; top: 0; color: #ff4b88; font-size: 14px; line-height: 14px; }
+.spottyfi-frame-tracks li span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .spottyfi-frame-tracks li[data-restored="true"] { color: #b4ed00; }
-.spottyfi-frame-tracks li[data-restored="true"]::before { content: "✓ "; }
-.spottyfi-illustrated-frame .spottyfi-silent-player { position: absolute; left: 31%; right: 7%; bottom: 1.9%; display: flex !important; justify-content: center; gap: 9px; height: 8.2% !important; padding: 4px 8px; border: 0 !important; background: #050806e8 !important; }
-.spottyfi-illustrated-frame .spottyfi-equalizer { display: none; }
-.spottyfi-frame-status { position: absolute; left: 1.5%; bottom: 1.8%; width: 27%; margin: 0; color: #b4ed00; font: 700 clamp(9px,.9vw,13px)/1.2 "Comic Sans MS",cursive; text-align: center; }
+.spottyfi-frame-tracks li[data-restored="true"] strong { border-color: #b4ed00; color: #dffff0; background: #11210eea; }
+.spottyfi-frame-tracks li[data-restored="true"] strong::before { content: "✓"; color: #b4ed00; }
+.spottyfi-frame-controls { position: absolute; left: 25.3%; top: 33.4%; width: 50%; display: grid; gap: 4px; margin: 0; padding: 7px 9px; border: 2px solid #f52b7a; border-radius: 8px; background: #050806ec; list-style: none; box-shadow: 4px 4px 0 #0008; }
+.spottyfi-frame-controls[hidden] { display: none; }
+.spottyfi-frame-controls::before { content: "ACT II · GIVE FINN THE CONTROLS"; color: #fff; font: 800 clamp(7px,.66vw,10px)/1.1 Consolas,monospace; letter-spacing: .06em; }
+.spottyfi-frame-controls li { position: relative; padding: 3px 6px 3px 24px; border: 1px solid #ff4b88; color: #ff9bc0; font: 800 clamp(7px,.67vw,10px)/1.1 "Comic Sans MS",cursive; }
+.spottyfi-frame-controls li::before { content: "○"; position: absolute; left: 6px; color: #ff4b88; }
+.spottyfi-frame-controls li[data-restored="true"] { border-color: #b4ed00; color: #dffff0; background: #193118; }
+.spottyfi-frame-controls li[data-restored="true"]::before { content: "✓"; color: #b4ed00; }
 .spottyfi-frame-continue { position: absolute; left: 38%; bottom: 11%; width: 35%; padding: 7px; border: 2px solid #b4ed00; border-radius: 8px; background: #f52b7a; color: white; font: 700 clamp(10px,1vw,15px)/1.1 "Comic Sans MS",cursive; box-shadow: 3px 3px 0 #000; }
 .spottyfi-frame-continue[hidden] { display: none; }
 .spottyfi-companion-gate #spottyfiContentReason,
@@ -239,12 +247,6 @@
 .spottyfi-track-list li:nth-child(3) .spottyfi-cover { background: radial-gradient(circle at 65% 55%,#ffd35a 0 11%,transparent 12%),linear-gradient(#071b3f,#1265a8 70%,#111 71%) !important; }
 .spottyfi-track-list li:nth-child(4) .spottyfi-cover { background: linear-gradient(30deg,#a76c36 0 25%,#e3c38c 26% 50%,#71451f 51% 75%,#f1d7a7 76%) !important; }
 .spottyfi-track-list li:nth-child(5) .spottyfi-cover { background: radial-gradient(circle at 50% 55%,#ffd461 0 18%,#bd6727 19% 28%,transparent 29%),linear-gradient(#291512,#c55d35) !important; }
-.spottyfi-silent-player { align-items: center !important; height: 58px !important; border-color: #73e52b !important; background: #050806 !important; }
-.spottyfi-equalizer { display: flex; align-items: end; gap: 3px; height: 34px; }
-.spottyfi-equalizer span { width: 7px !important; background: #73e52b !important; }
-.spottyfi-silent-player button { width: 42px; height: 38px; border: 2px solid #73e52b; border-radius: 50%; background: #101512; color: #73e52b; font: 700 18px/1 Arial; }
-.spottyfi-silent-player button[aria-pressed="true"] { background: #73e52b; color: #081007; }
-.spottyfi-silent-player b { color: #d8ffd0; font-size: 10px; }
 
 .mapguess-page { position:relative; display:grid !important; place-items:center; overflow:hidden !important; padding:8px !important; background:#e8e3d6 !important; }
 #mapguess .mapguess-browser-window { grid-template-rows:minmax(0,1fr) !important; }
