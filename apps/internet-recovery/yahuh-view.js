@@ -185,6 +185,10 @@ export function getYahuhCampaignView(campaignState, { reducedMotion = false } = 
       reconnectCompletedCount,
       requiredReadingCount: 6,
       sortCompletedCount,
+      visibleCountLabel: `${state.completedUnitIds.length} / 6 PORTAL REPAIRS`,
+      phase: sortCompletedCount < 3
+        ? { completed: sortCompletedCount, label: "SORT SIX MODULES", total: 3 }
+        : { completed: reconnectCompletedCount, label: "RECONNECT SIX CHANNELS", total: 3 },
     },
     readingGate: {
       microphone: "off",
@@ -204,13 +208,16 @@ export function getYahuhCampaignView(campaignState, { reducedMotion = false } = 
     secured: state.secured,
     securedPayoff: state.secured
       ? {
+          amy: getYahuhCopy(YAHUH_COPY_IDS.completionAmy),
           blockedWrite: {
             ...YAHUH_PROVISIONAL_BLOCKED_WRITE_RECORD,
             process: blockedProcess ? { ...blockedProcess } : null,
           },
           body: getYahuhCopy(YAHUH_COPY_IDS.secureBody),
+          chinmay: getYahuhCopy(YAHUH_COPY_IDS.completionChinmay),
           evidence: { ...YAHUH_PROVISIONAL_EVIDENCE_RECORD },
           status: getYahuhCopy(YAHUH_COPY_IDS.secureStatus),
+          title: getYahuhCopy(YAHUH_COPY_IDS.completionTitle),
           technoAlt: getYahuhCopy(YAHUH_COPY_IDS.technoAlt),
           technoLabel: getYahuhCopy(YAHUH_COPY_IDS.technoLabel),
         }

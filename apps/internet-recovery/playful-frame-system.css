@@ -1,4 +1,32 @@
 /* Illustrated sites use one locked base frame plus stable HTML state overlays. */
+:root {
+  --ir98-site-aspect: 4 / 3;
+}
+
+/*
+ * Site art is authored against one 4:3 stage. The stage is letterboxed inside
+ * the OS window instead of independently scaling panels and overlays. This is
+ * the calibration boundary for screenshots and playtests: browser zoom stays
+ * at 100%, while unused space belongs outside the site stage.
+ */
+.threadit-page,
+.faceplace-page,
+.mycorner-page,
+.yahuh-page,
+.viewtube-page,
+.searchish-page,
+.amazeon-page,
+.spottyfi-page,
+.mapguess-page {
+  aspect-ratio: var(--ir98-site-aspect) !important;
+  width: auto !important;
+  height: calc(100% - 12px) !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: auto !important;
+  overflow: hidden !important;
+}
+
 .threadit-page,
 .faceplace-page,
 .mycorner-page,
@@ -226,15 +254,21 @@
 .mapguess-page > :not(.mapguess-illustrated-frame) { display:none !important; }
 .mapguess-illustrated-frame { position:relative; width:auto; max-width:100%; height:calc(100% - 12px); aspect-ratio:4/3; overflow:hidden; border:3px solid #12335d; border-radius:10px; box-shadow:6px 7px 0 #071b2f55; font-family:"Comic Sans MS",cursive; }
 .mapguess-illustrated-frame > img { display:block; width:100%; height:100%; object-fit:cover; }
-.mapguess-frame-repairs { position:absolute; left:2%; bottom:2.8%; width:34%; display:grid; grid-template-columns:1fr 1fr; gap:2px 7px; margin:0; padding:7px 9px; border:2px solid #124b2b; border-radius:7px; background:#f7f3e9ed; list-style:none; font:700 clamp(7px,.7vw,10px)/1.1 "Comic Sans MS",cursive; }
+.mapguess-bottom-tracker { position:absolute; left:2%; right:2%; bottom:1.5%; z-index:2; display:grid; grid-template-columns:auto 24px auto; align-items:center; gap:4px; min-height:10.5%; padding:5px 10px; border:2px solid #12335d; border-radius:8px; background:#f7f3e9f2; color:#12335d; font:700 clamp(8px,.72vw,11px)/1.1 "Comic Sans MS",cursive; text-align:center; }
+.mapguess-bottom-tracker small { grid-column:1/-1; color:#704a13; font-size:clamp(7px,.62vw,9px); }
+.mapguess-bottom-tracker[data-state="moving-target"] #mapguessTrackerArrow { color:#b3261e; animation:mapguess-target-jump .8s steps(2,end) infinite; }
+.mapguess-bottom-tracker[data-state="honest"] { border-color:#16713b; color:#16713b; }
+@keyframes mapguess-target-jump { 50% { transform:translateX(6px); } }
+@media(prefers-reduced-motion:reduce){.mapguess-bottom-tracker[data-state="moving-target"] #mapguessTrackerArrow{animation:none}.mapguess-bottom-tracker[data-state="moving-target"] #mapguessTrackerArrow::after{content:" TARGET MOVED"}}
+.mapguess-frame-repairs { position:absolute; left:2%; bottom:13%; width:34%; display:grid; grid-template-columns:1fr 1fr; gap:2px 7px; margin:0; padding:7px 9px; border:2px solid #124b2b; border-radius:7px; background:#f7f3e9ed; list-style:none; font:700 clamp(7px,.7vw,10px)/1.1 "Comic Sans MS",cursive; }
 .mapguess-frame-repairs li { color:#9c2c24; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .mapguess-frame-repairs li::before { content:"○ "; }
 .mapguess-frame-repairs li[data-restored="true"] { color:#16713b; }
 .mapguess-frame-repairs li[data-restored="true"]::before { content:"✓ "; }
-.mapguess-frame-status { position:absolute; right:2.5%; bottom:3.5%; margin:0; padding:5px 9px; border:2px solid #0d5d2e; border-radius:7px; background:#f7f3e9ed; color:#0d5d2e; font:700 clamp(9px,.85vw,13px)/1.1 "Comic Sans MS",cursive; }
-.mapguess-frame-continue { position:absolute; left:41%; bottom:4%; width:33%; padding:7px; border:2px solid #52227b; border-radius:8px; background:#ffe16e; color:#17233a; font:700 clamp(9px,.9vw,14px)/1.1 "Comic Sans MS",cursive; box-shadow:3px 3px #17233a; }
+.mapguess-frame-status { position:absolute; right:2.5%; bottom:13%; margin:0; padding:5px 9px; border:2px solid #0d5d2e; border-radius:7px; background:#f7f3e9ed; color:#0d5d2e; font:700 clamp(9px,.85vw,13px)/1.1 "Comic Sans MS",cursive; }
+.mapguess-frame-continue { position:absolute; left:41%; bottom:14%; width:33%; padding:7px; border:2px solid #52227b; border-radius:8px; background:#ffe16e; color:#17233a; font:700 clamp(9px,.9vw,14px)/1.1 "Comic Sans MS",cursive; box-shadow:3px 3px #17233a; }
 .mapguess-frame-continue[hidden],.mapguess-frame-goals[hidden] { display:none; }
-.mapguess-frame-goals { position:absolute; left:38%; right:4%; bottom:3%; display:grid; grid-template-columns:repeat(4,1fr); gap:4px; padding:8px; border:2px solid #124b2b; border-radius:8px; background:#f7f3e9f2; }
+.mapguess-frame-goals { position:absolute; left:38%; right:4%; bottom:13%; display:grid; grid-template-columns:repeat(4,1fr); gap:4px; padding:8px; border:2px solid #124b2b; border-radius:8px; background:#f7f3e9f2; }
 .mapguess-frame-goals b { grid-column:1/-1; color:#124b2b; font-size:clamp(9px,.8vw,12px); text-align:center; }
 .mapguess-frame-goals button { padding:4px 2px; border:2px solid #12335d; border-radius:6px; background:#fff; color:#12335d; font:700 clamp(8px,.72vw,11px)/1 "Comic Sans MS",cursive; }
 .mapguess-companion-gate #mapguessContentReason,

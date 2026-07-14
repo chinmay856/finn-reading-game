@@ -126,6 +126,13 @@ test("Moving Target keeps road geometry fixed and exposes the exact coordinate p
   assert.equal(midpoint.destinationComparison.currentLocation, "moved");
   assert.equal(midpoint.destinationComparison.roadGeometryChanged, false);
   assert.equal(midpoint.destinationComparison.destinationCoordinatesChanged, true);
+  assert.equal(midpoint.bottomTracker.position, "bottom");
+  assert.equal(midpoint.bottomTracker.state, "moving-target");
+  assert.equal(midpoint.bottomTracker.destinationChanged, true);
+  assert.deepEqual(midpoint.bottomTracker.destinationFrames.map(({ coordinate }) => coordinate), ["H4", "D7"]);
+  assert.match(midpoint.bottomTracker.etaJoke, /vintage software update/i);
+  assert.match(midpoint.midpoint.amyLine, /target did/i);
+  assert.match(midpoint.midpoint.chinmayLine, /technically correct/i);
   assert.deepEqual(midpoint.destinationComparison.proofLines, [
     "ROAD GEOMETRY CHANGED: NO",
     "DESTINATION COORDINATES CHANGED: YES",
@@ -205,6 +212,11 @@ test("secured payoff permanently exposes canonical evidence and the denied pin m
   assert.equal(view.blockedWrite.fixtureAttempt.targetDestinationId, MAPGUESS_PROVISIONAL_FIXTURE.destination.id);
   assert.equal(view.securedPayoff.canonical, true);
   assert.equal(view.securedPayoff.testOnly, false);
+  assert.equal(view.securedPayoff.endOfSite, true);
+  assert.match(view.securedPayoff.amyLine, /Finn anchored/i);
+  assert.match(view.securedPayoff.chinmayLine, /place you picked/i);
+  assert.equal(view.bottomTracker.state, "honest");
+  assert.deepEqual(view.bottomTracker.destinationFrames.map(({ coordinate }) => coordinate), ["H4", "H4"]);
 
   const normalizedAgain = normalizeMapGuessState({
     ...securedState,

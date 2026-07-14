@@ -2,7 +2,7 @@ import { SEARCHISH_BRANCH_UNITS, SEARCHISH_RESTORE_UNITS } from "./searchish-rul
 import { SEARCHISH_BLOCKED_WRITE_RECORD, SEARCHISH_EVIDENCE_RECORD, normalizeSearchishState } from "./searchish-state.js";
 
 export const SEARCHISH_FIXTURE = Object.freeze({
-  answer: Object.freeze({ id: "searchish-answer-generated-01", text: "The Northwind streak was definitely a test rocket. Five results confirm it." }),
+  answer: Object.freeze({ id: "searchish-answer-generated-01", text: "The Northwind streak was definitely a test rocket. Four results confirm it." }),
   cacheId: "searchish-cache-generated-7f21",
   fixtureId: "searchish-fixture-observatory-light-01",
   query: Object.freeze({ id: "searchish-query-observatory-light-01", terms: Object.freeze(["caused", "northwind", "observatory", "light", "streak"]), text: "what caused the northwind observatory light streak" }),
@@ -30,6 +30,7 @@ export function getSearchishCampaignView(value) {
     matchDisplay: reveal[index] ? result.matches.join(", ") : "QUERY MATCH HIDDEN",
     originId: state.midpointAcknowledged ? result.originId : null,
     sponsorshipDisplay: reveal[index] ? result.sponsored ? "SPONSORED" : "NOT SPONSORED" : "PLACEMENT TYPE HIDDEN",
+    visualStatus: reveal[index] ? "repaired" : "corrupted",
   }));
   const branches = Object.freeze([
     Object.freeze({ id: "searchish-branch-primary-camera-01", label: "PRIMARY CAMERA", open: completed.has("primary_branch"), summary: "The original recording establishes what the camera captured, not what caused it." }),
@@ -39,13 +40,37 @@ export function getSearchishCampaignView(value) {
   return Object.freeze({
     answer: Object.freeze({ ...SEARCHISH_FIXTURE.answer, label: state.secured ? "GENERATED SUMMARY — CHECK SOURCES" : "INSTANT CERTAINTY" }),
     branches,
-    headerStatus: state.secured ? "SOURCE ORIGINS VERIFIED" : state.midpointDiscovered ? "FIVE COSTUMES DETECTED" : "FIRST RESULT IS THE ANSWER",
-    midpoint: Object.freeze({ actionLabel: "Keep the restored result labels and open independent source branches", actionRequired: state.midpointDiscovered && !state.midpointAcknowledged, body: "Five apparent answers redirect to one generated cache.", proof: Object.freeze(["APPARENT RESULTS: 5", "DISTINCT ORIGINS: 1", "INDEPENDENT CONFIRMATIONS: 0"]) }),
-    progress: Object.freeze({ branchUnits: SEARCHISH_BRANCH_UNITS.map((unit) => Object.freeze({ ...unit, complete: completed.has(unit.unitId) })), completedUnitCount: state.completedUnitIds.length, restoreUnits: SEARCHISH_RESTORE_UNITS.map((unit) => Object.freeze({ ...unit, complete: completed.has(unit.unitId) })) }),
+    headerStatus: state.secured ? "SOURCE ORIGINS VERIFIED" : state.midpointDiscovered ? "FOUR COSTUMES DETECTED" : "FIRST RESULT IS THE ANSWER",
+    midpoint: Object.freeze({
+      actionLabel: "Keep the four restored result labels and check which sources are actually independent",
+      actionRequired: state.midpointDiscovered && !state.midpointAcknowledged,
+      amyLine: "You repaired all four result labels. Now we can see the trick: four cards are still pointing back to one generated cache.",
+      body: "Four apparent results redirect to one generated cache.",
+      chinmayLine: "I asked it for more sources. It made the same source wear four extremely convincing name tags.",
+      proof: Object.freeze(["VISIBLE RESULT CARDS: 4", "DISTINCT ORIGINS: 1", "INDEPENDENT CONFIRMATIONS: 0"]),
+      title: "LABELS FIXED. SOURCES STILL DUPLICATED.",
+      visible: state.midpointDiscovered && !state.midpointAcknowledged,
+    }),
+    progress: Object.freeze({
+      branchUnits: SEARCHISH_BRANCH_UNITS.map((unit) => Object.freeze({ ...unit, complete: completed.has(unit.unitId) })),
+      completedUnitCount: state.completedUnitIds.length,
+      restoreBoundary: SEARCHISH_RESTORE_UNITS.length,
+      restoreUnits: SEARCHISH_RESTORE_UNITS.map((unit, index) => Object.freeze({ ...unit, complete: completed.has(unit.unitId), resultId: SEARCHISH_FIXTURE.results[index].id, visualStatus: completed.has(unit.unitId) ? "repaired" : "corrupted" })),
+      visibleCorruptedSourceCount: reveal.filter((isRepaired) => !isRepaired).length,
+      visibleRepairedSourceCount: reveal.filter(Boolean).length,
+      visibleSourceCount: SEARCHISH_FIXTURE.results.length,
+    }),
     query: SEARCHISH_FIXTURE.query,
     results: Object.freeze(results),
     secured: state.secured,
-    securedPayoff: state.secured ? Object.freeze({ blockedWrite: SEARCHISH_BLOCKED_WRITE_RECORD, evidence: SEARCHISH_EVIDENCE_RECORD }) : null,
+    securedPayoff: state.secured ? Object.freeze({
+      amyLine: "Finn fixed the source trail. Search-ish now shows four honest result cards, two independent branches, and a warning on the generated summary.",
+      blockedWrite: SEARCHISH_BLOCKED_WRITE_RECORD,
+      chinmayLine: "So the answer was not confirmed five times. It was one answer doing impressions. I am retiring that feature immediately.",
+      endOfSite: true,
+      evidence: SEARCHISH_EVIDENCE_RECORD,
+      title: "SEARCH-ISH FIXED",
+    }) : null,
     stateId: state.stateId,
   });
 }

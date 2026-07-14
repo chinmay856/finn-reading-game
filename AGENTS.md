@@ -16,6 +16,9 @@ Before making architectural, gameplay, content-model, speech, scoring, progressi
   state after publication.
 - Do not create parallel chat-handoff systems unless the user explicitly changes
   this working model.
+- Close browser tabs, preview servers, terminals, and other temporary sessions
+  as soon as their verification work is complete. Leave a live tab or process
+  open only when the user explicitly asks for a handoff.
 - Coordinate parallel art work through `docs/design/DESIGN_REQUESTS.md`. Keep its
   synchronization commit, focused questions, acceptance criteria, and current
   executable screenshots updated so design agents can answer through GitHub

@@ -48,9 +48,11 @@ test("the corrupted view has exactly six semantic modules and no percentage", ()
   assert.equal(view.readingGate.scoreCreated, false);
   assert.deepEqual(view.progress, {
     completedUnitCount: 0,
+    phase: { completed: 0, label: "SORT SIX MODULES", total: 3 },
     reconnectCompletedCount: 0,
     requiredReadingCount: 6,
     sortCompletedCount: 0,
+    visibleCountLabel: "0 / 6 PORTAL REPAIRS",
   });
   assert.doesNotMatch(JSON.stringify(view), /percentage|progressbar|\d+%/iu);
 });
@@ -108,4 +110,19 @@ test("reduced motion changes only motion metadata", () => {
   const { motion: _animatedMotion, ...animatedSemantic } = animated;
   const { motion: _reducedMotion, ...reducedSemantic } = reduced;
   assert.deepEqual(reducedSemantic, animatedSemantic);
+});
+
+test("Yahuh exposes six real repairs across two named halves and a completion exchange", () => {
+  const beforeMidpoint = getYahuhCampaignView(stateAt(2));
+  assert.deepEqual(beforeMidpoint.progress.phase, { completed: 2, label: "SORT SIX MODULES", total: 3 });
+  assert.equal(beforeMidpoint.progress.visibleCountLabel, "2 / 6 PORTAL REPAIRS");
+
+  const midpoint = getYahuhCampaignView(stateAt(3));
+  assert.deepEqual(midpoint.progress.phase, { completed: 0, label: "RECONNECT SIX CHANNELS", total: 3 });
+  assert.match(midpoint.midpoint.amy, /First half complete/iu);
+  assert.match(midpoint.midpoint.amy, /Second half/iu);
+
+  const secured = getYahuhCampaignView(stateAt(6));
+  assert.match(secured.securedPayoff.amy, /Site complete/iu);
+  assert.match(secured.securedPayoff.chinmay, /withdraw my objection/iu);
 });

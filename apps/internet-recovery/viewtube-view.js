@@ -196,6 +196,10 @@ export function getViewTubeCampaignView(campaignState, { reducedMotion = false }
       restoreCompletedCount: restoreTimeline.filter(({ saved }) => saved).length,
       restoreTimeline,
       trackCompletedCount: evidenceTracks.filter(({ verified }) => verified).length,
+      visibleCountLabel: `${state.completedUnitIds.length} / 7 VIDEO REPAIRS`,
+      phase: state.completedUnitIds.length < VIEWTUBE_RESTORE_UNITS.length
+        ? { completed: restoreTimeline.filter(({ saved }) => saved).length, label: "RESTORE VIDEO CONTEXT", total: VIEWTUBE_RESTORE_UNITS.length }
+        : { completed: evidenceTracks.filter(({ verified }) => verified).length, label: "VERIFY EVIDENCE TRACKS", total: VIEWTUBE_TRACK_UNITS.length },
     },
     readingGate: {
       countLabel: getViewTubeCopy(VIEWTUBE_COPY_IDS.readingGateCount),
@@ -223,14 +227,17 @@ export function getViewTubeCampaignView(campaignState, { reducedMotion = false }
     secured: state.secured,
     securedPayoff: state.secured
       ? {
+          amy: getViewTubeCopy(VIEWTUBE_COPY_IDS.completionAmy),
           blockedWrite: {
             ...VIEWTUBE_PROVISIONAL_BLOCKED_WRITE_RECORD,
             actorDisplayName: fixture.process.displayName,
             targetDisplayName: fixture.blockedCloneTarget.label,
           },
           body: getViewTubeCopy(VIEWTUBE_COPY_IDS.secureBody),
+          chinmay: getViewTubeCopy(VIEWTUBE_COPY_IDS.completionChinmay),
           evidence: { ...VIEWTUBE_PROVISIONAL_EVIDENCE_RECORD },
           status: getViewTubeCopy(VIEWTUBE_COPY_IDS.secureStatus),
+          title: getViewTubeCopy(VIEWTUBE_COPY_IDS.completionTitle),
           technoAlt: getViewTubeCopy(VIEWTUBE_COPY_IDS.technoAlt),
           technoAsset: VIEWTUBE_ASSETS[VIEWTUBE_ASSET_IDS.technoSecured],
           technoLabel: getViewTubeCopy(VIEWTUBE_COPY_IDS.technoLabel),

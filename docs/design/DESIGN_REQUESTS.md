@@ -400,3 +400,22 @@ independent review and real-microphone evidence exist.
 When a remaining request is answered, record the decision and design commit in
 this file or a linked response file. That gives implementation agents an
 objective synchronization point instead of relying on chat history.
+
+## 2026-07-13 mechanics synchronization
+
+- Builder branch: `agent/game-mechanics-refinement` from `afa3152`.
+- The shared site-stage contract is now a forced 4:3 letterboxed canvas at
+  100% browser zoom. Future site art must preserve one base-frame crop and
+  stable overlay coordinates within that boundary.
+- Midpoint and completion are no longer art-only states: every site view model
+  carries Amy and Chinmay copy plus exact progress/phase data, and runtime
+  transitions open the two-person exchanges.
+- Search-ish's approved executable count is four visible result/source routes
+  before midpoint, followed by three source/answer checks. Do not draw five
+  first-half bullets in a replacement frame.
+- MapGuess's bottom tracker is an executable semantic overlay. At midpoint it
+  must visibly show `YOU ASKED FOR · H4` moving to `TARGET MOVED HERE · D7`
+  while the estimate remains two minutes; secured state shows H4 to H4.
+- Visual builds are still uneven across the other image-led sites. Any new art
+  should target the shared 4:3 boundary and must not replace semantic progress,
+  dialogue, focus, or reduced-motion behavior with baked text.

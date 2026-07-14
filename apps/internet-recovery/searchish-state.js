@@ -27,7 +27,7 @@ export const SEARCHISH_EVIDENCE_RECORD = Object.freeze({
   }),
   siteId: "searchish",
   slot: 7,
-  summary: "Four apparent results and one generated answer redirected to one generated cache.",
+  summary: "Four apparent results redirected to one generated cache; the generated answer falsely treated the repetition as confirmation.",
   testOnly: false,
   title: "SEARCH-ISH / GENERATED CACHE REDIRECT",
   upstreamServiceId: "ai_repair_service",
