@@ -320,7 +320,7 @@ test("ThreadIt source-tree runtime is semantic, distinct, and content-gated", as
   assert.match(markup, /id="threaditSourceClose"[^>]+aria-label="Close source relationships"/u);
   assert.match(markup, /<svg id="threaditConnectorLayer"/u);
   assert.match(markup, /data-relationship="replies-to"/u);
-  assert.match(markup, /PROVISIONAL FORUM FIXTURE/u);
+  assert.match(markup, /LIVE FORUM RECOVERY/u);
   assert.match(markup, /MIC: OFF/u);
   assert.match(markup, /NO READING SCORE/u);
   assert.match(markup, /id="threaditPlaytest"/u);
@@ -414,7 +414,7 @@ test("FacePlace Honest Zero runtime is semantic, content-gated, and evidence-saf
   assert.match(app, /trackerMeter\.setAttribute\("role", "progressbar"\)/u);
   assert.match(app, /for \(const attribute of \["role", "aria-valuemin"/u);
   assert.match(app, /provisional-blocked-write-recorded/u);
-  assert.match(app, /const securedCount = evidenceSummary\.persistedCanonicalCount/u);
+  assert.match(app, /const securedCount = evidenceSummary\.displaySecuredCount/u);
   assert.match(app, /faceplace-repair-state/u);
   assert.match(app, /aria-label="\$\{escapeMarkup\(`\$\{status\}: \$\{label\}`\)\}"/u);
   assert.match(app, /visibleCardType = card\.cardTypeVisible/u);
@@ -542,7 +542,7 @@ test("MapGuess Moving Target runtime is semantic, exact, content-gated, and evid
   assert.match(mapguessOpenRoute, /\$\("mapguessPlaytest"\)\.onclick = openMapGuessPlaytestReading;/u);
   assert.match(mapguessPlaytestRoute, /state\.mapguessPlaytestState = readMapGuessState\(null\)/u);
   assert.match(mapguessPlaytestRoute, /selectMapGuessPlaytestPassage\(\)/u);
-  assert.match(mapguessPlaytestRoute, /show\("setup"\);/u);
+  assert.match(mapguessPlaytestRoute, /openPreparedReadingOrSetup\(\);/u);
   assert.match(app, /selectNextMapGuessPassage\(state\.mapguessPlaytestState, \{ lane: "playtest" \}\)/u);
   assert.match(app, /state\.mapguessPlaytestState = repair\.state/u);
   assert.match(app, /content approval, canonical evidence, and the finale gate remain unchanged/u);

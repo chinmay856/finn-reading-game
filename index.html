@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="/apps/internet-recovery/spottyfi-fidelity.css">
   <link rel="stylesheet" href="/apps/internet-recovery/screen-visibility.css">
   <link rel="stylesheet" href="/apps/internet-recovery/tomorrow-playtest-polish.css">
+  <link rel="stylesheet" href="/apps/internet-recovery/playful-frame-system.css">
 </head>
 <body>
   <div class="page-frame">
@@ -52,7 +53,7 @@
           <div class="window-titlebar"><span>RECOVERY BROWSER — MAP OF WHAT REMAINS</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="hub-browser-toolbar"><button type="button" disabled>←</button><button type="button" disabled>→</button><span>recovery://map/incoming-cases</span><strong>REMOTE TUNNEL ACTIVE</strong></div>
           <div class="recovery-map-body">
-            <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 CANONICAL</span></div></header>
+            <header><div><small>RECOVERY MAP</small><h2>Ten sites. One Internet having a difficult day.</h2></div><div class="hub-count"><b id="securedSiteCount">0</b><span>OF 10 RECOVERED</span></div></header>
             <div id="siteGrid" class="site-grid" aria-label="Recovery sites"></div>
             <section class="incoming-cases"><div class="incoming-case-heading"><span class="incoming-case-folder" aria-hidden="true">IN</span><div><small>INCOMING CASES</small><h3>Choose what to inspect next</h3></div></div><div id="incomingCases" class="incoming-case-list"></div></section>
           </div>
@@ -60,7 +61,7 @@
         <div class="hub-side-windows">
           <aside class="os-window case-file-window">
             <div class="window-titlebar"><span>CASE FILE</span><span class="window-controls" aria-hidden="true">□ ×</span></div>
-            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10 canonical</span></div><ol id="evidenceSlots"></ol><button id="endgameLaunch" class="os-button primary" type="button" hidden>EVIDENCE_11.LIVE locked</button><small>Logs only. No audio or transcripts.</small></div>
+            <div class="case-file-body"><div><b>EVIDENCE SLOTS</b><span id="evidenceCount">0/10 recovered</span></div><ol id="evidenceSlots"></ol><button id="endgameLaunch" class="os-button primary" type="button" hidden>EVIDENCE_11.LIVE locked</button><small>Logs only. No audio or transcripts.</small></div>
           </aside>
           <aside class="os-window amy-support-window">
             <div class="window-titlebar"><span>AMY // ENGINEER SUPPORT</span><span class="window-controls" aria-hidden="true">— □</span></div>
@@ -102,7 +103,7 @@
       <section id="threadit" class="screen desktop-surface threadit-surface" tabindex="-1">
         <article class="os-window threadit-browser-window">
           <div class="window-titlebar"><span id="threaditBrowserTitle">THREADIT — SOURCE RELATIONSHIP RECOVERY</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
-          <div class="browser-toolbar"><button id="threaditBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span class="address">http://threadit.recovered/source-tree</span><span id="threaditSecurityStatus" class="browser-security">STRUCTURAL TEST</span></div>
+          <div class="browser-toolbar"><button id="threaditBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span class="address">http://threadit.recovered/source-tree</span><span id="threaditSecurityStatus" class="browser-security">RECOVERY IN PROGRESS</span></div>
           <div id="threaditPage" class="threadit-page" data-state-id="threadit_corrupted">
             <header class="threadit-header">
               <img class="threadit-mark" src="/apps/internet-recovery/art/site-assets/threadit/threadit-mark.svg" alt="ThreadIt interlocked conversation mark">
@@ -115,7 +116,7 @@
             </nav>
             <div class="threadit-layout">
               <section class="threadit-thread-column" aria-labelledby="threaditRule">
-                <header><small id="threaditFixtureStatus">PROVISIONAL FORUM FIXTURE · PLAYTEST LANE</small><h3 id="threaditRule">MOST VOTES WINS REALITY</h3><p id="threaditRuleBody">The highest number is the truest answer. Replies may appear before questions if they are popular enough.</p></header>
+                <header><small id="threaditFixtureStatus">LIVE FORUM RECOVERY</small><h3 id="threaditRule">MOST VOTES WINS REALITY</h3><p id="threaditRuleBody">The highest number is the truest answer. Replies may appear before questions if they are popular enough.</p></header>
                 <ol id="threaditPostList" class="threadit-post-list" aria-label="ThreadIt question and replies">
                   <li class="threadit-post" data-node-type="reply" data-origin="generated-copy"><b>TOP ANSWER: I agree with the summary I have not read.</b><span>SOURCE: The number next to my name</span></li>
                   <li class="threadit-post" data-node-type="question" data-origin="original"><b>QUESTION: [moved below because it was less viral]</b><span>MOD NOTE: Chronology has been deprecated for engagement.</span></li>
@@ -184,15 +185,15 @@
             </header>
             <div class="faceplace-layout">
               <aside id="faceplaceProfileRail" class="faceplace-profile-rail" aria-labelledby="faceplaceProfileHeading" aria-describedby="faceplaceProfileSummary">
-                <header><div><small>PROFILE / RELATIONSHIPS</small><h3 id="faceplaceProfileHeading" tabindex="-1">PROVISIONAL PROFILE</h3></div><button id="faceplaceProfileClose" type="button" aria-label="Close profile and relationships">CLOSE</button></header>
-                <article class="faceplace-profile-card"><span id="faceplaceProfileAvatar" class="faceplace-avatar" aria-hidden="true">JV</span><div><b id="faceplaceProfileName">Juniper Vale (fictional)</b><span id="faceplaceProfileHandle">@juniper-vale-provisional · FIXTURE</span></div></article>
+                <header><div><small>PROFILE / RELATIONSHIPS</small><h3 id="faceplaceProfileHeading" tabindex="-1">JUNIPER'S PROFILE</h3></div><button id="faceplaceProfileClose" type="button" aria-label="Close profile and relationships">CLOSE</button></header>
+                <article class="faceplace-profile-card"><span id="faceplaceProfileAvatar" class="faceplace-avatar" aria-hidden="true">JV</span><div><b id="faceplaceProfileName">Juniper Vale</b><span id="faceplaceProfileHandle">@juniper-vale</span></div></article>
                 <nav class="faceplace-profile-nav" aria-label="FacePlace profile sections"><span aria-current="page">Feed</span><span>Messages</span><span>Saved</span><span>Groups</span></nav>
                 <section aria-labelledby="faceplaceRelationshipHeading"><small>RELATIONSHIP CLUSTERS</small><h4 id="faceplaceRelationshipHeading">Origin labels missing</h4><ul id="faceplaceRelationshipList"></ul></section>
                 <p id="faceplaceProfileSummary" class="faceplace-visually-hidden">A provisional fictional profile with relationship clusters used only for the structural campaign test.</p>
               </aside>
 
               <section class="faceplace-feed-column" aria-labelledby="faceplaceRule">
-                <header><small id="faceplaceFixtureStatus">PROVISIONAL FEED FIXTURE · PLAYTEST LANE</small><h3 id="faceplaceRule">THE FEED IS WHAT HAPPENED</h3><p id="faceplaceRuleBody">If the feed repeats it, it must be important. If the feed hides it, it probably did not matter.</p></header>
+                <header><small id="faceplaceFixtureStatus">LIVE FEED RECOVERY</small><h3 id="faceplaceRule">THE FEED IS WHAT HAPPENED</h3><p id="faceplaceRuleBody">If the feed repeats it, it must be important. If the feed hides it, it probably did not matter.</p></header>
                 <div class="faceplace-feed-controls" role="group" aria-label="Feed order"><button id="faceplaceRankedMode" type="button" aria-pressed="true">RANKED</button><button id="faceplaceChronologicalMode" type="button" aria-pressed="false" disabled>CHRONOLOGICAL</button></div>
                 <p id="faceplaceFeedInstructions" class="faceplace-visually-hidden">Scrollable feed. Use arrow keys or Page Up and Page Down while the feed is focused.</p>
                 <ol id="faceplaceFeedList" class="faceplace-feed-list" aria-label="FacePlace feed cards" aria-describedby="faceplaceFeedInstructions" tabindex="0"></ol>
@@ -218,7 +219,7 @@
             </div>
             <p id="faceplaceLiveStatus" class="faceplace-live-status" role="status" aria-live="polite">No accepted FacePlace repair is running.</p>
           </div>
-          <footer class="faceplace-status-strip"><b id="faceplaceStatusStrip">ACTIVE SORT: REACTIONS DESCENDING</b><span id="faceplaceUnitStatus">0 OF 3 ACT I REPAIRS SAVED</span><span id="faceplaceDiagnosticTruth">CONTENT REVIEW GATE · MIC OFF</span></footer>
+          <footer class="faceplace-status-strip"><b id="faceplaceStatusStrip">ACTIVE SORT: REACTIONS DESCENDING</b><span id="faceplaceUnitStatus">0 OF 6 REPAIRS SAVED</span><span id="faceplaceDiagnosticTruth">MIC OFF</span></footer>
         </article>
         <aside class="os-window faceplace-companion-gate">
           <div class="window-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true">— □</span></div>
@@ -369,6 +370,14 @@
 
       <section id="searchish" class="screen desktop-surface searchish-surface" tabindex="-1">
         <article id="searchishPage" class="searchish-page" data-inspector-open="false" aria-labelledby="searchishHeading">
+          <section class="searchish-illustrated-frame" aria-label="Search-ish generated answer and source recovery">
+            <img src="/apps/internet-recovery/art/site-assets/searchish-frames/searchish-01.webp" alt="Search-ish shows a cheerful search mascot beside a suspicious AI answer whose five sources have hidden origins.">
+            <div class="searchish-repair-overlay" aria-live="polite">
+              <ol id="searchishRepairRows" class="searchish-repair-rows"></ol>
+              <p id="searchishFrameStatus" class="searchish-frame-status">0 OF 7 REPAIRS COMPLETE</p>
+              <button id="searchishFrameContinue" class="searchish-frame-continue" type="button" hidden>Open the real sources →</button>
+            </div>
+          </section>
           <header class="searchish-header"><div><img src="/apps/internet-recovery/art/site-assets/marks/searchish-mark.svg" alt=""><h2 id="searchishHeading">Search-ish</h2></div><strong id="searchishHeaderStatus">FIRST RESULT IS THE ANSWER</strong><button id="searchishInspectorToggle" type="button" aria-controls="searchishInspector" aria-expanded="false">Source branch inspector</button></header>
           <section class="searchish-query" aria-labelledby="searchishQueryHeading"><small>CANONICAL FICTIONAL SEARCH FIXTURE</small><h3 id="searchishQueryHeading">Query</h3><p id="searchishQueryText"></p><ul id="searchishQueryTerms"></ul></section>
           <section class="searchish-answer" aria-labelledby="searchishAnswerLabel"><div><small id="searchishAnswerLabel">INSTANT CERTAINTY</small><p id="searchishAnswerText"></p></div><img class="searchish-network-art" src="/apps/internet-recovery/art/site-assets/searchish/source-branch-network-v1.webp" alt="A generated answer core splits into several colorful disguises before resolving into independent evidence branches." width="1280" height="720" loading="lazy" decoding="async"></section>
@@ -396,6 +405,13 @@
 
       <section id="spottyfi" class="screen desktop-surface spottyfi-surface" tabindex="-1">
         <article id="spottyfiPage" class="spottyfi-page" data-detail-open="false" aria-labelledby="spottyfiHeading">
+          <section class="spottyfi-illustrated-frame" aria-label="Spotty-Fi corrupted music recommendations">
+            <img src="/apps/internet-recovery/art/site-assets/spottyfi-frames/spottyfi-01.webp" alt="Spotty-Fi shows five strange album covers, a corrupted taste profile, and recognizable music controls.">
+            <ol id="spottyfiFrameTracks" class="spottyfi-frame-tracks" aria-label="Five-song recovery queue"></ol>
+            <div class="spottyfi-silent-player spottyfi-frame-player" role="group" aria-label="Spotty-Fi playback controls"></div>
+            <p id="spottyfiFrameStatus" class="spottyfi-frame-status">0 OF 8 REPAIRS COMPLETE</p>
+            <button id="spottyfiFrameContinue" class="spottyfi-frame-continue" type="button" hidden>Take back the queue →</button>
+          </section>
           <header class="spottyfi-header"><div><img src="/apps/internet-recovery/art/site-assets/marks/spottyfi-mark.svg" alt=""><h2 id="spottyfiHeading">Spotty-Fi</h2></div><strong id="spottyfiHeaderStatus">THE ALGORITHM IS YOUR TASTE</strong><button id="spottyfiDetailToggle" type="button" aria-controls="spottyfiDetailDrawer" aria-expanded="false">Credits, history, and suggestions</button></header>
           <section class="spottyfi-library" aria-labelledby="spottyfiLibraryHeading"><small>CANONICAL FICTIONAL SILENT LIBRARY · NO AUDIO OR LYRICS</small><h3 id="spottyfiLibraryHeading">Finn's manual mixtape</h3><p>QUEUE OWNER: <b id="spottyfiQueueOwner">AUTO-PREFILLED</b></p><ol id="spottyfiTrackList" class="spottyfi-track-list"></ol></section>
           <div class="spottyfi-layout"><section aria-labelledby="spottyfiQueueHeading"><h3 id="spottyfiQueueHeading">Five-track manual queue</h3><ol id="spottyfiQueueList" class="spottyfi-queue-list"></ol><div class="spottyfi-silent-player" role="img" aria-label="Silent decorative equalizer blocks; no audio is present"><span></span><span></span><span></span><span></span><b>NO SITE AUDIO</b></div></section><aside id="spottyfiDetailDrawer" class="spottyfi-detail" aria-labelledby="spottyfiDetailHeading"><header><h3 id="spottyfiDetailHeading" tabindex="-1">Credits, history, and suggestions</h3><button id="spottyfiDetailClose" type="button">Close</button></header><section><h4>History proof</h4><dl><div><dt>Account created</dt><dd id="spottyfiAccountCreated">ACCOUNT DATE HIDDEN</dd></div><div><dt>Predicted history started</dt><dd id="spottyfiPredictedHistory">PREDICTED HISTORY START HIDDEN</dd></div><div><dt>Queue source</dt><dd id="spottyfiQueueSource">QUEUE SOURCE HIDDEN</dd></div></dl></section><section><h4>Optional suggestions</h4><ol id="spottyfiSuggestionList"></ol></section></aside></div>
@@ -412,6 +428,19 @@
           <div class="window-titlebar"><span id="mapguessBrowserTitle">MAPGUESS — ROUTE RECOVERY</span><span class="window-controls" aria-hidden="true">— □ ×</span></div>
           <div class="browser-toolbar"><button id="mapguessBack" type="button" aria-label="Back to Recovery Map" title="Back to Recovery Map">←</button><button type="button" disabled>→</button><span class="address">http://mapguess.recovered/morrow-grid</span><span id="mapguessSecurityStatus" class="browser-security">CONTENT REVIEW GATE</span></div>
           <div id="mapguessPage" class="mapguess-page" data-state-id="mapguess_corrupted" data-inspector-open="false" data-secured="false">
+            <section class="mapguess-illustrated-frame" aria-label="MapGuess corrupted route recovery">
+              <img src="/apps/internet-recovery/art/site-assets/mapguess-frames/mapguess-01.webp" alt="MapGuess displays a playful street map where a suspicious two-minute route bends toward the wrong sponsored destination.">
+              <ol id="mapguessFrameRepairs" class="mapguess-frame-repairs" aria-label="Map repairs"></ol>
+              <p id="mapguessFrameStatus" class="mapguess-frame-status">0 OF 8 REPAIRS COMPLETE</p>
+              <button id="mapguessFrameContinue" class="mapguess-frame-continue" type="button" hidden>Stop moving the destination →</button>
+              <div id="mapguessFrameGoals" class="mapguess-frame-goals" hidden>
+                <b>What matters for this route?</b>
+                <button type="button" data-mapguess-frame-goal="fastest">Fastest</button>
+                <button type="button" data-mapguess-frame-goal="safest">Safest</button>
+                <button type="button" data-mapguess-frame-goal="scenic">Scenic</button>
+                <button type="button" data-mapguess-frame-goal="accessible">Accessible</button>
+              </div>
+            </section>
             <header class="mapguess-header">
               <img class="mapguess-mark" src="/apps/internet-recovery/art/site-assets/marks/mapguess-mark.svg" alt="MapGuess folded map and location pin mark">
               <div class="mapguess-identity"><small>MAP / ROUTE OPTIMIZATION</small><h2>MapGuess</h2><p>Fastest is only useful after the destination stays put.</p></div>

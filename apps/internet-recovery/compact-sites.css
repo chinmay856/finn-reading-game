@@ -1,5 +1,5 @@
 /* Desktop-only board compression. Reading Companion typography is untouched. */
-@media (min-width:1280px) and (min-height:760px) {
+@media (min-width:1280px) and (min-height:650px) {
   /* ThreadIt reads as a forum board at a glance: the feed is a compact
      two-column scan surface while the Reading Companion keeps its large type. */
   #threadit .threadit-layout { gap:8px; padding:8px; }

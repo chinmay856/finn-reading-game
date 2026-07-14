@@ -1,0 +1,310 @@
+/* Illustrated sites use one locked base frame plus stable HTML state overlays. */
+.threadit-page,
+.faceplace-page,
+.mycorner-page,
+.yahuh-page,
+.viewtube-page,
+.searchish-page,
+.amazeon-page,
+.spottyfi-page,
+.mapguess-page,
+.character-dialog,
+.site-card,
+.incoming-case,
+.site-reading-stage {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+/* Review and rights metadata stays in the data model, not in Finn's story UI. */
+#threaditContentReason, #threaditCandidateCount,
+#faceplaceContentReason, #faceplaceCandidateCount,
+#mycornerContentReason, #mycornerCandidateCount,
+#yahuhContentReason, #yahuhCandidateCount,
+#viewtubeContentReason, #viewtubeCandidateCount,
+#searchishContentReason, #searchishCandidateCount,
+#amazeonContentReason, #amazeonCandidateCount,
+#spottyfiContentReason, #spottyfiCandidateCount,
+#mapguessContentReason, #mapguessCandidateCount { display: none !important; }
+.threadit-source-note span,
+.mapguess-source-note span { display:none; }
+
+/* ThreadIt is a compact forum board, never a tall feed. */
+#threadit .threadit-thread-column { overflow:hidden !important; }
+#threadit .threadit-post-list { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:6px !important; overflow:hidden !important; }
+#threadit .threadit-post { min-height:0 !important; padding:6px !important; grid-template-columns:30px 24px minmax(0,1fr) !important; }
+#threadit .threadit-post-votes { min-height:42px !important; }
+#threadit .threadit-post-title { font-size:11px !important; }
+#threadit .threadit-post-body { display:-webkit-box; min-height:25px !important; overflow:hidden; -webkit-box-orient:vertical; -webkit-line-clamp:2; font-size:9px !important; line-height:1.25 !important; }
+#threadit .threadit-post-meta-secondary { display:none !important; }
+
+.searchish-page {
+  position: relative;
+  display: grid !important;
+  place-items: center;
+  overflow: hidden !important;
+  padding: 8px;
+  background: #efe8d7;
+}
+
+.searchish-page > :not(.searchish-illustrated-frame) { display: none !important; }
+
+.searchish-illustrated-frame {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  height: calc(100% - 12px);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 3px solid #10283d;
+  border-radius: 14px;
+  background: #f6f0df;
+  box-shadow: 7px 8px 0 #0d263855;
+}
+
+.searchish-illustrated-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.searchish-repair-overlay {
+  position: absolute;
+  left: 7.5%;
+  bottom: 9.8%;
+  width: 48.5%;
+  padding: 7px 10px 8px;
+  border: 2px solid #b3231c;
+  border-radius: 10px;
+  background: #f8f1df;
+  box-shadow: 0 0 0 3px #f8f1df;
+}
+
+.searchish-repair-rows {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(10px, 1.12vw, 17px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.searchish-repair-rows li {
+  overflow: hidden;
+  color: #a9231d;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchish-repair-rows li::before { content: "•"; display: inline-block; width: 1.1em; }
+.searchish-repair-rows li[data-restored="true"] { color: #16713b; }
+.searchish-repair-rows li[data-restored="true"]::before { content: "✓"; }
+
+.searchish-frame-status {
+  margin: 5px 0 0;
+  padding-top: 4px;
+  border-top: 1px dashed currentColor;
+  color: #195d37;
+  font-size: clamp(9px, 1vw, 15px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.searchish-frame-continue {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border: 2px solid #124a76;
+  border-radius: 8px;
+  background: #ffe16e;
+  color: #10283d;
+  font: 700 clamp(10px, 1vw, 15px)/1.1 "Comic Sans MS", cursive;
+  box-shadow: 2px 2px 0 #10283d;
+}
+.searchish-frame-continue[hidden] { display: none; }
+
+/* The art is the story surface; the sidecar only needs the next readable action. */
+.searchish-companion-gate #searchishContentReason,
+.searchish-companion-gate #searchishCandidateCount { display: none; }
+.searchish-companion-gate > div > p:not(#searchishContentReason):not(#searchishCandidateCount) { opacity: .7; }
+
+/* Reading headroom: the active line rests near the top with future text below. */
+.passage.continuous { padding-top: 24px !important; }
+.reading-paragraph { font-family: Georgia, serif; font-size: clamp(14px, 1.05vw, 17px) !important; }
+.dialog-techno-alert { width:clamp(170px,16vw,230px) !important; right:max(18px,calc(50vw - 455px)) !important; bottom:max(54px,calc(50vh - 318px)) !important; }
+
+/* Preparation is one clear, fully visible decision—not a scrolling document. */
+#setup { overflow:hidden !important; align-items:stretch !important; }
+#setup .mission-window { height:100%; max-height:100% !important; margin-top:0 !important; overflow:hidden !important; }
+#setup .mission-body { display:grid; align-content:start; gap:7px; height:calc(100% - 30px); overflow:hidden; padding:12px 16px; }
+#setup .mission-body h2 { margin:2px 0 3px; font-size:clamp(24px,2.4vw,34px); }
+#setup .mission-body > p { margin:2px 0; line-height:1.3; }
+#setup .file-card { margin:4px 0; padding:8px 10px; }
+#setup .file-icon { width:44px; height:48px; }
+#setup .file-card span { margin-top:2px; font-size:10px; }
+#setup .guide-setting { margin:2px 0; padding:6px 8px; }
+#setup .guide-setting select { padding:5px; }
+#setup .privacy-truth { padding:7px 9px; }
+#setup .model-progress { margin:0; padding:6px 8px; }
+#setup .engine-lab { display:none; }
+
+.recovery-desktop { position: relative; }
+.review-surface.result-overlay {
+  position: absolute;
+  z-index: 40;
+  inset: 62px 18px 52px;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  align-items: center;
+  padding: 28px;
+  background: #10203399;
+  backdrop-filter: blur(2px);
+}
+.review-surface.result-overlay .result-window,
+.review-surface.result-overlay .quiz {
+  max-height: calc(100vh - 160px);
+  margin: 0;
+  overflow: auto;
+}
+
+/* TEST remains useful, but it should not visually compete with the game. */
+.diagnostic-panel { max-height: min(390px, calc(100vh - 150px)); overflow: auto; }
+.diagnostic-body > small,
+.diagnostic-truth { display: none; }
+.diagnostic-panel .window-titlebar span { font-size: 0; }
+.diagnostic-panel .window-titlebar span::after { content: "QUICK PLAYTEST"; font-size: 11px; }
+
+#mycornerFixtureStatus,
+#yahuhFixtureStatus,
+#viewtubeFixtureStatus,
+#mapguessFixtureStatus,
+#faceplaceFixtureStatus,
+#threaditFixtureStatus { font-size: 0 !important; }
+#mycornerFixtureStatus::after { content: "PROFILE RECOVERY"; font-size: 10px; }
+#yahuhFixtureStatus::after { content: "PORTAL RECOVERY"; font-size: 10px; }
+#viewtubeFixtureStatus::after { content: "VIDEO EVIDENCE RECOVERY"; font-size: 10px; }
+#mapguessFixtureStatus::after { content: "MORROW CITY MAP"; font-size: 10px; }
+#faceplaceFixtureStatus::after { content: "LIVE FEED RECOVERY"; font-size: 10px; }
+#threaditFixtureStatus::after { content: "LIVE FORUM RECOVERY"; font-size: 10px; }
+
+.spottyfi-page { --sf-green: #b4ed00 !important; position: relative; display: grid !important; place-items: center; overflow: hidden !important; padding: 8px; background: #101512 !important; color: #f4f7ef !important; }
+.spottyfi-page > :not(.spottyfi-illustrated-frame) { display: none !important; }
+.spottyfi-illustrated-frame { position: relative; width:auto; max-width:100%; height:calc(100% - 12px); aspect-ratio: 4 / 3; overflow: hidden; border: 3px solid #b4ed00; border-radius: 12px; box-shadow: 7px 8px 0 #07130b99; }
+.spottyfi-illustrated-frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.spottyfi-frame-tracks { position: absolute; left: 25.5%; right: 2.6%; bottom: 17.2%; display: grid; grid-template-columns: repeat(5,1fr); gap: 1.2%; margin: 0; padding: 0; list-style: none; }
+.spottyfi-frame-tracks li { overflow: hidden; color: #f6f7ed; font: 700 clamp(8px,.78vw,12px)/1.05 "Comic Sans MS",cursive; text-align: center; text-overflow: ellipsis; white-space: nowrap; text-shadow: 1px 1px #000; }
+.spottyfi-frame-tracks li[data-restored="true"] { color: #b4ed00; }
+.spottyfi-frame-tracks li[data-restored="true"]::before { content: "✓ "; }
+.spottyfi-illustrated-frame .spottyfi-silent-player { position: absolute; left: 31%; right: 7%; bottom: 1.9%; display: flex !important; justify-content: center; gap: 9px; height: 8.2% !important; padding: 4px 8px; border: 0 !important; background: #050806e8 !important; }
+.spottyfi-illustrated-frame .spottyfi-equalizer { display: none; }
+.spottyfi-frame-status { position: absolute; left: 1.5%; bottom: 1.8%; width: 27%; margin: 0; color: #b4ed00; font: 700 clamp(9px,.9vw,13px)/1.2 "Comic Sans MS",cursive; text-align: center; }
+.spottyfi-frame-continue { position: absolute; left: 38%; bottom: 11%; width: 35%; padding: 7px; border: 2px solid #b4ed00; border-radius: 8px; background: #f52b7a; color: white; font: 700 clamp(10px,1vw,15px)/1.1 "Comic Sans MS",cursive; box-shadow: 3px 3px 0 #000; }
+.spottyfi-frame-continue[hidden] { display: none; }
+.spottyfi-companion-gate #spottyfiContentReason,
+.spottyfi-companion-gate #spottyfiCandidateCount { display:none; }
+.spottyfi-cover { height: 82px !important; border: 3px solid #73e52b !important; }
+.spottyfi-track-list li:nth-child(1) .spottyfi-cover { background: radial-gradient(circle at 25% 30%,#ff477e 0 15%,transparent 16%),linear-gradient(135deg,#152437 45%,#e9d49f 46% 62%,#1e6ea8 63%) !important; }
+.spottyfi-track-list li:nth-child(2) .spottyfi-cover { background: linear-gradient(160deg,#170f38,#5620b7 45%,#ff2fa5 46% 51%,#111 52%) !important; }
+.spottyfi-track-list li:nth-child(3) .spottyfi-cover { background: radial-gradient(circle at 65% 55%,#ffd35a 0 11%,transparent 12%),linear-gradient(#071b3f,#1265a8 70%,#111 71%) !important; }
+.spottyfi-track-list li:nth-child(4) .spottyfi-cover { background: linear-gradient(30deg,#a76c36 0 25%,#e3c38c 26% 50%,#71451f 51% 75%,#f1d7a7 76%) !important; }
+.spottyfi-track-list li:nth-child(5) .spottyfi-cover { background: radial-gradient(circle at 50% 55%,#ffd461 0 18%,#bd6727 19% 28%,transparent 29%),linear-gradient(#291512,#c55d35) !important; }
+.spottyfi-silent-player { align-items: center !important; height: 58px !important; border-color: #73e52b !important; background: #050806 !important; }
+.spottyfi-equalizer { display: flex; align-items: end; gap: 3px; height: 34px; }
+.spottyfi-equalizer span { width: 7px !important; background: #73e52b !important; }
+.spottyfi-silent-player button { width: 42px; height: 38px; border: 2px solid #73e52b; border-radius: 50%; background: #101512; color: #73e52b; font: 700 18px/1 Arial; }
+.spottyfi-silent-player button[aria-pressed="true"] { background: #73e52b; color: #081007; }
+.spottyfi-silent-player b { color: #d8ffd0; font-size: 10px; }
+
+.mapguess-page { position:relative; display:grid !important; place-items:center; overflow:hidden !important; padding:8px !important; background:#e8e3d6 !important; }
+#mapguess .mapguess-browser-window { grid-template-rows:minmax(0,1fr) !important; }
+#mapguess .mapguess-browser-window > .window-titlebar,
+#mapguess .mapguess-browser-window > .browser-toolbar,
+#mapguess .mapguess-status-strip { display:none !important; }
+.mapguess-page > :not(.mapguess-illustrated-frame) { display:none !important; }
+.mapguess-illustrated-frame { position:relative; width:auto; max-width:100%; height:calc(100% - 12px); aspect-ratio:4/3; overflow:hidden; border:3px solid #12335d; border-radius:10px; box-shadow:6px 7px 0 #071b2f55; font-family:"Comic Sans MS",cursive; }
+.mapguess-illustrated-frame > img { display:block; width:100%; height:100%; object-fit:cover; }
+.mapguess-frame-repairs { position:absolute; left:2%; bottom:2.8%; width:34%; display:grid; grid-template-columns:1fr 1fr; gap:2px 7px; margin:0; padding:7px 9px; border:2px solid #124b2b; border-radius:7px; background:#f7f3e9ed; list-style:none; font:700 clamp(7px,.7vw,10px)/1.1 "Comic Sans MS",cursive; }
+.mapguess-frame-repairs li { color:#9c2c24; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.mapguess-frame-repairs li::before { content:"○ "; }
+.mapguess-frame-repairs li[data-restored="true"] { color:#16713b; }
+.mapguess-frame-repairs li[data-restored="true"]::before { content:"✓ "; }
+.mapguess-frame-status { position:absolute; right:2.5%; bottom:3.5%; margin:0; padding:5px 9px; border:2px solid #0d5d2e; border-radius:7px; background:#f7f3e9ed; color:#0d5d2e; font:700 clamp(9px,.85vw,13px)/1.1 "Comic Sans MS",cursive; }
+.mapguess-frame-continue { position:absolute; left:41%; bottom:4%; width:33%; padding:7px; border:2px solid #52227b; border-radius:8px; background:#ffe16e; color:#17233a; font:700 clamp(9px,.9vw,14px)/1.1 "Comic Sans MS",cursive; box-shadow:3px 3px #17233a; }
+.mapguess-frame-continue[hidden],.mapguess-frame-goals[hidden] { display:none; }
+.mapguess-frame-goals { position:absolute; left:38%; right:4%; bottom:3%; display:grid; grid-template-columns:repeat(4,1fr); gap:4px; padding:8px; border:2px solid #124b2b; border-radius:8px; background:#f7f3e9f2; }
+.mapguess-frame-goals b { grid-column:1/-1; color:#124b2b; font-size:clamp(9px,.8vw,12px); text-align:center; }
+.mapguess-frame-goals button { padding:4px 2px; border:2px solid #12335d; border-radius:6px; background:#fff; color:#12335d; font:700 clamp(8px,.72vw,11px)/1 "Comic Sans MS",cursive; }
+.mapguess-companion-gate #mapguessContentReason,
+.mapguess-companion-gate #mapguessCandidateCount { display:none; }
+
+/* Story labels belong in dialogue, not developer ribbons pasted over the sites. */
+.threadit-header::after,
+.faceplace-header::after,
+.mycorner-header::after,
+.yahuh-header::after,
+.viewtube-titlebar::after,
+.searchish-header::after,
+.amazeon-header::after,
+.spottyfi-header::after,
+.mapguess-header::after,
+.amazeon-listing::after { display:none !important; content:none !important; }
+
+.mycorner-source-note span,
+.yahuh-source-note span,
+.viewtube-source-note span,
+.amazeon-source-note span,
+.spottyfi-source-note span { display:none !important; }
+
+/* Full-screen desktop play uses glanceable boards; no nested scroll panes. */
+#threaditSourcePanel,
+#faceplaceProfileRail,
+#faceplaceFeedList,
+#faceplace .faceplace-context-rail,
+#mycornerProfileRail,
+#mycornerProfileColumn,
+#mycornerOwnerInspector,
+#yahuhPortalRegion,
+#yahuhSwitchboard,
+#viewtubePage,
+#amazeonPage,
+.threadit-companion-gate,
+.faceplace-companion-gate,
+.mycorner-companion-gate,
+.yahuh-companion-gate,
+.viewtube-companion-gate,
+.amazeon-companion-gate { overflow:hidden !important; }
+
+#faceplace .faceplace-feed-card:nth-child(n+3),
+#faceplace .faceplace-person-suggestion:nth-child(n+3) { display:none !important; }
+#viewtube .viewtube-evidence-timeline,
+#amazeon .amazeon-timeline { display:none !important; }
+#viewtube .viewtube-content-layout { grid-template-rows:minmax(0,1fr) !important; }
+#viewtube .viewtube-player-frame { max-height:220px !important; }
+#amazeon .amazeon-parcel { min-height:64px !important; }
+
+.mapguess-map-canvas {
+  background-color: #ebe7dd !important;
+  background-image:
+    linear-gradient(28deg, transparent 0 47%, #fff 48% 51%, transparent 52%),
+    linear-gradient(92deg, transparent 0 28%, #fff 29% 32%, transparent 33%),
+    linear-gradient(0deg, transparent 0 18%, #fff 19% 22%, transparent 23%),
+    linear-gradient(0deg, transparent 0 63%, #f6cf78 64% 67%, transparent 68%),
+    repeating-linear-gradient(90deg, transparent 0 11%, #d8d3c8 11.5% 12%, transparent 12.5% 23%),
+    repeating-linear-gradient(0deg, transparent 0 13%, #d8d3c8 13.5% 14%, transparent 14.5% 27%) !important;
+}
+.mapguess-tile-grid { opacity: .14 !important; mix-blend-mode: multiply; }
+.mapguess-map-overlay { background: transparent !important; }
+.mapguess-route-line,
+.mapguess-route-segment { stroke-linecap: round !important; stroke-linejoin: round !important; }
+
+@media (min-width: 1280px) {
+  .desktop-shortcut-rail { z-index: 2; }
+  .searchish-surface { padding-left: 78px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .searchish-illustrated-frame { transition: none; }
+}

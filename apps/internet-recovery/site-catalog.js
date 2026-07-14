@@ -33,47 +33,47 @@ export const RECOVERY_SITES = Object.freeze([
   Object.freeze({
     id: "threadit", name: "ThreadIt", mark: "T", archetype: "Forum / source lineage",
     belief: "MOST VOTES WINS REALITY", description: "Replies outrank questions while one automated source repeats itself.",
-    accent: "#e35a16", markImage: MARKS.threadit, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.threadit,
+    accent: "#e35a16", markImage: MARKS.threadit, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.threadit,
   }),
   Object.freeze({
     id: "faceplace", name: "FacePlace", mark: "F", archetype: "Ranked social feed",
     belief: "THE FEED IS WHAT HAPPENED", description: "A nonsense tracker rewards reactions instead of restoring real authors.",
-    accent: "#1862aa", markImage: MARKS.faceplace, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.faceplace,
+    accent: "#1862aa", markImage: MARKS.faceplace, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.faceplace,
   }),
   Object.freeze({
     id: "mycorner", name: "MyCorner", mark: "M", archetype: "Custom social profile",
     belief: "POPULARITY IS A NUMBER. AN ALGORITHM KNOWS YOUR PERSONALITY.", description: "Every profile has become one CEO demo page.",
-    accent: "#b21c72", markImage: MARKS.mycorner, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.mycorner,
+    accent: "#b21c72", markImage: MARKS.mycorner, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.mycorner,
   }),
   Object.freeze({
     id: "yahuh", name: "Yahuh! Portal", mark: "Y!", archetype: "Crowded web portal",
     belief: "IF INFORMATION EXISTS, IT BELONGS ON THE FRONT PAGE.", description: "All information has been blended into homepage paste.",
-    accent: "#6e3e98", markImage: MARKS.yahuh, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.yahuh,
+    accent: "#6e3e98", markImage: MARKS.yahuh, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.yahuh,
   }),
   Object.freeze({
     id: "viewtube", name: "ViewTube", mark: "V", archetype: "Video-sharing site",
     belief: "WATCH TIME PROVES TRUTH", description: "The same buffering toast clip is wearing ten different costumes.",
-    accent: "#a51f17", markImage: MARKS.viewtube, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.viewtube,
+    accent: "#a51f17", markImage: MARKS.viewtube, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.viewtube,
   }),
   Object.freeze({
     id: "searchish", name: "Search-ish", mark: "S?", archetype: "Web search",
     belief: "THE FIRST RESULT IS THE ANSWER", description: "Five confident results all redirect to one generated cache.",
-    accent: "#d27b12", markImage: MARKS.searchish, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.searchish,
+    accent: "#d27b12", markImage: MARKS.searchish, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.searchish,
   }),
   Object.freeze({
     id: "amazeon", name: "Amaze-On", mark: "A", archetype: "Online marketplace",
     belief: "RECOMMENDED MEANS CHOSEN", description: "Hidden automation turns one return into two future deliveries.",
-    accent: "#e69616", markImage: MARKS.amazeon, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.amazeon,
+    accent: "#e69616", markImage: MARKS.amazeon, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.amazeon,
   }),
   Object.freeze({
     id: "spottyfi", name: "Spotty-Fi", mark: "S♪", archetype: "Music streaming",
     belief: "THE ALGORITHM IS YOUR TASTE", description: "A fabricated history keeps choosing the same silent twelve-second track.",
-    accent: "#6ebd22", markImage: MARKS.spottyfi, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.spottyfi,
+    accent: "#6ebd22", markImage: MARKS.spottyfi, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.spottyfi,
   }),
   Object.freeze({
     id: "mapguess", name: "MapGuess", mark: "M?", archetype: "Maps and navigation",
     belief: "THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE.", description: "The promised arrival time stays fixed by quietly moving the destination.",
-    accent: "#177449", markImage: MARKS.mapguess, playable: false, runtimeAvailable: true, runtimeLabel: "CAMPAIGN TEST BUILD", previewImage: PREVIEWS.mapguess,
+    accent: "#177449", markImage: MARKS.mapguess, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.mapguess,
   }),
 ]);
 
