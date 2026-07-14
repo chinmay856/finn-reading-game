@@ -1075,6 +1075,15 @@
 .faceplace-layout {
   isolation: isolate;
   position: relative;
+  min-height: 0;
+  height: 100%;
+  padding: 0;
+  border: 4px solid #133c86;
+  border-radius: 14px;
+  background: #164b9b;
+  box-shadow:
+    inset 0 0 0 3px #7dcbd0,
+    inset 0 0 26px #071b4da8;
 }
 
 .faceplace-layout::before {
@@ -1083,21 +1092,227 @@
   z-index: -1;
   inset: 0;
   background: url("./art/site-assets/faceplace/faceplace-feed-base-v1.webp") center / cover no-repeat;
-  opacity: .36;
+  opacity: .94;
   pointer-events: none;
 }
 
 .faceplace-profile-rail,
 .faceplace-feed-column,
 .faceplace-context-rail {
-  background-color: #f3f6fad9;
-  backdrop-filter: blur(1.5px);
+  border-radius: 10px;
+  background-color: #edf8f1c7;
+  box-shadow: 0 3px 10px #071b4d70;
+  backdrop-filter: blur(3px) saturate(.8);
+}
+
+.faceplace-profile-rail {
+  display: none;
+}
+
+.faceplace-feed-column {
+  position: absolute;
+  z-index: 2;
+  inset: 4% 24% 4% 13%;
+  min-width: 0;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.faceplace-feed-column > header {
+  display: none;
+}
+
+.faceplace-feed-column > header small,
+.faceplace-feed-column > header p {
+  display: none;
+}
+
+.faceplace-feed-column > header h3 {
+  font-size: .74rem;
+  line-height: 1.15;
+}
+
+.faceplace-feed-controls {
+  display: none;
+}
+
+.faceplace-feed-controls button {
+  padding: 2px 7px;
+  font-size: .6rem;
+}
+
+.faceplace-feed-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: space-between;
+  gap: 31% 4%;
+  height: 100%;
+  padding: 9% 2% 8%;
+  background: transparent;
+}
+
+.faceplace-context-rail {
+  position: absolute;
+  z-index: 3;
+  inset: 4% 1.5% 4% auto;
+  width: 21%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.faceplace-context-rail > section,
+.faceplace-context-rail > article {
+  padding: 6px;
+  border: 2px solid #74cbd0;
+  border-radius: 7px;
+  background: #f5fff3e8;
+}
+
+.faceplace-context-rail .faceplace-people {
+  display: none;
+}
+
+.faceplace-context-rail #faceplaceSavedRepairs,
+.faceplace-context-rail .faceplace-tracker > p,
+.faceplace-context-rail .faceplace-why:has(button:disabled) {
+  display: none;
+}
+
+.faceplace-context-rail .faceplace-tracker-meter {
+  display: grid;
+  gap: 3px;
+}
+
+.faceplace-context-rail .faceplace-tracker-meter > strong {
+  font-size: .8rem;
+}
+
+.faceplace-context-rail .faceplace-midpoint-notice small,
+.faceplace-context-rail .faceplace-midpoint-notice blockquote {
+  display: none;
+}
+
+.faceplace-context-rail .faceplace-midpoint-notice h3,
+.faceplace-context-rail .faceplace-midpoint-notice p {
+  display: none !important;
+}
+
+.faceplace-context-rail .faceplace-midpoint-notice::before {
+  content: "HONEST FEED STARTS AT 0%";
+  display: block;
+  margin: 0 0 7px;
+  color: #174f4d;
+  font-size: .66rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+#faceplaceMidpointAction {
+  display: block;
+  width: 100%;
+  padding: 8px 5px;
+  border: 2px outset #fff1a8;
+  background: #ffd65a;
+  color: #251c00;
+  font-weight: 900;
+  box-shadow: 0 2px 0 #9b6c00;
+}
+
+#faceplaceMidpointAction:hover,
+#faceplaceMidpointAction:focus-visible {
+  background: #ffe584;
+}
+
+.faceplace-context-rail h3,
+.faceplace-context-rail h4,
+.faceplace-context-rail p,
+.faceplace-context-rail li,
+.faceplace-context-rail button {
+  font-size: .58rem;
+  line-height: 1.15;
+}
+
+.faceplace-feed-column > header,
+.faceplace-feed-card,
+.faceplace-tracker,
+.faceplace-midpoint-notice,
+.faceplace-people,
+.faceplace-why,
+.faceplace-secured-payoff {
+  box-shadow: 0 2px 7px #071b4d59;
+}
+
+.faceplace-feed-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 3px 4px;
+  border-radius: 7px;
+  background-color: #fffdf2d9;
+}
+
+#faceplace .faceplace-feed-card p,
+#faceplace .faceplace-card-footer {
+  display: none !important;
+}
+
+.faceplace-feed-card header b {
+  display: none;
+}
+
+.faceplace-feed-card header {
+  gap: 2px;
+}
+
+.faceplace-feed-card header strong {
+  overflow: hidden;
+  font-size: .48rem;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.faceplace-feed-card header time,
+.faceplace-feed-card header span {
+  display: none;
+}
+
+.faceplace-feed-card .faceplace-mini-avatar {
+  width: 18px;
+  height: 18px;
+  border-width: 1px;
+  font-size: .45rem;
+}
+
+.faceplace-feed-card[data-duplicate="true"] {
+  transform: rotate(-.35deg);
+}
+
+.faceplace-feed-card[data-duplicate="true"]:nth-child(even) {
+  transform: rotate(.35deg);
 }
 
 .faceplace-page[data-rule-repaired="true"] .faceplace-layout::before,
 .faceplace-page[data-secured="true"] .faceplace-layout::before {
-  opacity: .44;
-  filter: saturate(1.08);
+  opacity: 1;
+  filter: saturate(1.16) brightness(1.04);
+}
+
+/* The image-led board replaces the old internal site masthead and diagnostics. */
+.faceplace-header,
+.faceplace-live-status,
+.faceplace-status-strip,
+.faceplace-browser-window .browser-security {
+  display: none;
+}
+
+.faceplace-page {
+  grid-template-rows: minmax(0, 1fr);
 }
 
 @media (forced-colors: active) {

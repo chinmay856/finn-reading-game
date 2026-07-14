@@ -1,5 +1,19 @@
 # Project status
 
+## Visual acceptance correction — 2026-07-13
+
+- ThreadIt and FacePlace were rebuilt after the first image-led pass failed
+  visual review: their generated designs now fill the 4:3 play surface instead
+  of sitting faintly behind legacy dashboards. Live overlays are limited to
+  concise repair status, source controls, midpoint action, and accessibility.
+- MapGuess now draws the absurd route through the lake on the playable frame
+  and shows the requested H4 pin, moved D7 target, and motion trace directly on
+  the map. The bottom tracker remains supporting evidence rather than the only
+  explanation.
+- Acceptance requires executable screenshots at 1280x720 for corrupted and
+  midpoint/trace states, followed by common-sense playability review and
+  iteration. DOM checks alone are not sufficient for these visual builds.
+
 ## Ten-site playtest completion candidate — 2026-07-13
 
 - All ten Internet Recovery sites now use a fixed 4:3 play surface. ThreadIt,

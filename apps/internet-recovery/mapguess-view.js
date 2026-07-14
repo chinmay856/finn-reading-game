@@ -559,15 +559,15 @@ export function getMapGuessCampaignView(currentState, { reducedMotion = false } 
     },
     bottomTracker: {
       accessibleSummary: state.secured
-        ? "Destination locked at Glasswater Archive, H4. Honest ETA uses the selected route."
+        ? "Finn's chosen destination, Adventure Wonderland, is locked. Honest ETA uses the selected route."
         : state.midpointDiscovered
-          ? "Moving target detected: the requested destination jumps from H4 to sponsored stop D7 while the ETA remains two minutes."
+          ? "Moving target detected: the route cycles through sponsored destinations one, two, and three while Finn's Adventure Wonderland choice is ignored."
           : "Old-style update estimate: two minutes remaining; destination verification is still pending.",
       destinationChanged: state.midpointDiscovered && !state.secured,
       destinationFrames: state.midpointDiscovered
         ? [
-            { coordinate: "H4", label: "YOU ASKED FOR", state: "requested" },
-            { coordinate: state.secured ? "H4" : "D7", label: state.secured ? "DESTINATION LOCKED" : "TARGET MOVED HERE", state: state.secured ? "locked" : "moved" },
+            { coordinate: "H4", label: "FINN PICKED ADVENTURE WONDERLAND", state: "requested" },
+            { coordinate: state.secured ? "H4" : "D7", label: state.secured ? "ADVENTURE WONDERLAND LOCKED" : "SPONSORED DESTINATION #3", state: state.secured ? "locked" : "moved" },
           ]
         : [{ coordinate: "?", label: "DESTINATION VERIFYING", state: "unknown" }],
       etaDisplay: state.secured ? directions.etaDisplay : "2 MINUTES REMAINING",

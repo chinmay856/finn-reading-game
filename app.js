@@ -2483,8 +2483,8 @@ renderMapGuessCampaign = function renderMapGuessIllustratedCampaign(campaignStat
   const trackerTo = trackerFrames[1] ?? trackerFrames[0];
   $("mapguessBottomTracker").dataset.state = view.bottomTracker.state;
   $("mapguessBottomTracker").setAttribute("aria-label", view.bottomTracker.accessibleSummary);
-  $("mapguessTrackerFrom").textContent = `${trackerFrom.label} · ${trackerFrom.coordinate}`;
-  $("mapguessTrackerTo").textContent = trackerFrames.length > 1 ? `${trackerTo.label} · ${trackerTo.coordinate} · ${view.bottomTracker.etaDisplay}` : view.bottomTracker.etaDisplay;
+  $("mapguessTrackerFrom").textContent = trackerFrom.label;
+  $("mapguessTrackerTo").textContent = trackerFrames.length > 1 ? `${trackerTo.label} · ${view.bottomTracker.etaDisplay}` : view.bottomTracker.etaDisplay;
   $("mapguessTrackerJoke").textContent = view.bottomTracker.etaJoke;
   const labels = ["Road shape", "Street names", "Start point", "Real destination", "Map date", "Route source", "User goal", "Destination lock"];
   $("mapguessFrameRepairs").innerHTML = labels.map((label, index) => `<li data-restored="${index < view.progress.completedUnitCount}">${label}</li>`).join("");
