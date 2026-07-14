@@ -2238,7 +2238,12 @@ function buildSearchishPreviewState(unitCount) {
 
 function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
   const view = getAmazeOnCampaignView(campaignState);
-  $("amazeonPage").dataset.receiptOpen = String(state.amazeonReceiptOpen);
+  const page = $("amazeonPage");
+  const midpointDiscovered = view.progress.completedUnitCount >= view.progress.sortBoundary;
+  page.dataset.receiptOpen = String(state.amazeonReceiptOpen);
+  page.dataset.midpointDiscovered = String(midpointDiscovered);
+  page.dataset.secured = String(view.secured);
+  page.dataset.phase = view.secured ? "trace-receipt" : midpointDiscovered ? "negative-purchasing" : "recommendations";
   $("amazeonHeaderStatus").textContent = view.headerStatus;
   $("amazeonListingDescription").textContent = view.listing.description;
   $("amazeonSeller").textContent = view.listing.sellerDisplay;
@@ -2254,7 +2259,8 @@ function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
   $("amazeonMidpoint").hidden = !view.midpoint.actionRequired;
   $("amazeonMidpointBody").textContent = view.midpoint.body;
   $("amazeonMidpointProof").innerHTML = view.midpoint.proof.map((item) => `<li>${escapeMarkup(item)}</li>`).join("");
-  $("amazeonTimelineUnits").innerHTML = [...view.progress.sortUnits, ...view.progress.receiptUnits].map((unit) => `<li data-complete="${unit.complete}">${escapeMarkup(unit.label)}</li>`).join("");
+  const visibleUnits = [...view.progress.sortUnits, ...view.progress.receiptUnits];
+  $("amazeonTimelineUnits").innerHTML = visibleUnits.map((unit, index) => `<li data-complete="${unit.complete}" data-stage="${index < view.progress.sortBoundary ? "sort" : "receipt"}" aria-label="${escapeMarkup(unit.label)}: ${unit.complete ? "restored" : "not restored"}">${escapeMarkup(unit.label)}</li>`).join("");
   $("amazeonSecuredPayoff").hidden = !view.secured;
   if (view.securedPayoff) { $("amazeonBlockedBody").textContent = view.securedPayoff.blockedWrite.body; $("amazeonEvidenceSummary").textContent = view.securedPayoff.evidence.aiBehavior; }
   $("amazeonEvidenceReceipt").hidden = !view.secured || !state.amazeonEvidenceReceiptOpen;
@@ -2270,7 +2276,10 @@ function renderAmazeOnCampaign(campaignState, { diagnosticMode = false } = {}) {
     : view.midpoint.actionRequired
       ? "Trace Negative Purchasing first"
       : "Read next passage";
-  $("amazeonLiveStatus").textContent = view.secured ? `HUMAN CONFIRMATION REQUIRED${diagnosticMode ? " · TEST" : ""}` : `${view.progress.completedUnitCount} OF 7 AMAZE-ON UNITS SAVED`;
+  const nextVisibleUnit = visibleUnits.find((unit) => !unit.complete);
+  $("amazeonLiveStatus").textContent = view.secured
+    ? `Every visible Amaze-On repair is checked. Human confirmation required${diagnosticMode ? " in test mode" : ""}.`
+    : `${nextVisibleUnit?.label ?? "NEXT REPAIR"} is the next visible repair.`;
 }
 function openAmazeOnExperience(){state.selectedSiteId="amazeon";const current=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;renderAmazeOnCampaign(current,{diagnosticMode:state.amazeonDiagnosticMode});renderSimpleDiagnosticPanel("amazeon",current);show("amazeon");syncAmazeOnReceipt();}
 function buildAmazeOnPreviewState(unitCount){let current=readAmazeOnState(null);for(let index=0;index<unitCount;index+=1){if(index===AMAZEON_SORT_UNITS.length&&!current.midpointAcknowledged)current=acknowledgeAmazeOnMidpointState(current,{acknowledgedAt:"2026-07-12T00:00:04.500Z"}).state;const transition=advanceAmazeOnState(current,{completedAt:`2026-07-12T00:00:0${index}.000Z`,outcome:calculateAmazeOnReadingOutcome({campaignState:current}),passageId:`amazeon-preview-${index+1}`,sessionId:`amazeon-preview-session-${index+1}`});if(!transition.ok)throw new Error(transition.reason??"Amaze-On preview did not advance");current=transition.state;}return current;}
@@ -5403,7 +5412,7 @@ function syncAmazeOnReceipt(){const drawer=matchMedia("(max-width: 1279px)").mat
 $("amazeonReceiptToggle").onclick=()=>{state.amazeonReceiptOpen=!state.amazeonReceiptOpen;syncAmazeOnReceipt();if(state.amazeonReceiptOpen)requestAnimationFrame(()=>$("amazeonReceiptHeading").focus({preventScroll:true}));};
 $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});};
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
-$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode)state.amazeonDiagnosticState=transition.state;else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
+$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode){state.amazeonDiagnosticState=transition.state;renderSimpleDiagnosticPanel("amazeon",transition.state);}else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
 function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
 $("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});

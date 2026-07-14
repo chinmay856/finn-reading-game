@@ -38,6 +38,22 @@
   and `git diff --check` pass. Per the current playtest instruction, no speech
   engine or latency behavior changed in this work.
 
+## Amaze-On approved-marketplace correction — 2026-07-13
+
+- Replaced the unrelated lamp-workshop frame with the approved marketplace,
+  Negative Purchasing, and Trace Receipt compositions.
+- Act I now binds four visible checks to four sponsored product claims. Act II
+  binds three visible checks to the receipt, replacement, and human-confirmation
+  evidence. The old raw seven-unit banner and detached blank repair boxes are
+  gone.
+- Browser QA at 1440×900 confirmed the full entry, 4-check Act I, Amy/Chinmay
+  midpoint, 3-check Act II, Amy/Chinmay completion, and Recovery Map return.
+  The diagnostic panel also refreshes after the midpoint instead of remaining
+  stuck at its story checkpoint.
+- Repository validation passes: syntax checks, all 365 tests, production build,
+  and `git diff --check`.
+- No Reading Engine, speech, scoring, microphone, or passage content changed.
+
 ## Player review checkpoint — active 2026-07-13
 
 - Build `5b5613d` is live for review. It publishes the first image-led locked

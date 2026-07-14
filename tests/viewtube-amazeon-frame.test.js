@@ -19,16 +19,24 @@ test("ViewTube uses one 4:3 image-led board with seven live repair slots", async
   assert.match(css, /\.viewtube-secured-payoff\[hidden\]/u);
 });
 
-test("Amaze-On uses one 4:3 image-led board with seven live consent slots", async () => {
+test("Amaze-On uses three 4:3 marketplace states with four then three visible checks", async () => {
   const [html, css] = await Promise.all([
     readFile(new URL("index.html", ROOT), "utf8"),
     readFile(new URL("apps/internet-recovery/amazeon-frame.css", ROOT), "utf8"),
     access(new URL("apps/internet-recovery/art/site-assets/amazeon-frames/amazeon-01.webp", ROOT)),
+    access(new URL("apps/internet-recovery/art/site-assets/amazeon-frames/amazeon-02.webp", ROOT)),
+    access(new URL("apps/internet-recovery/art/site-assets/amazeon-frames/amazeon-03.webp", ROOT)),
   ]);
 
   assert.match(html, /amazeon-frame\.css/u);
   assert.match(css, /amazeon-01\.webp/u);
-  assert.match(css, /grid-template-columns:\s*repeat\(7,/u);
+  assert.match(css, /amazeon-02\.webp/u);
+  assert.match(css, /amazeon-03\.webp/u);
+  assert.match(css, /grid-template-columns:\s*repeat\(4,/u);
+  assert.match(css, /grid-template-columns:\s*repeat\(3,/u);
+  assert.match(css, /li\[data-stage="sort"\]/u);
+  assert.match(css, /li\[data-stage="receipt"\]/u);
+  assert.doesNotMatch(css, /grid-template-columns:\s*repeat\(7,/u);
   assert.match(css, /overflow:\s*hidden/u);
   assert.match(css, /\.amazeon-midpoint\[hidden\]/u);
   assert.match(css, /\.amazeon-secured-payoff\[hidden\]/u);

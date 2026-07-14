@@ -100,3 +100,19 @@ Review requests and response protocol live in
   control checks that replace the first-half warning at midpoint.
 - `spottyfi-completion-story-v1.png` — Amy names Finn's finished repair before
   Chinmay's site-complete message and return to the Recovery Map.
+
+## Amaze-On approved-marketplace correction
+
+- `amazeon-marketplace-act-one-v1.png` — the approved navy/orange marketplace,
+  six-out-of-five-star headphones, Auto-Fix AI, sponsored recommendations, and
+  four repair checks attached directly to the four visible claims.
+- `amazeon-negative-purchasing-midpoint-amy-v1.png` — Amy explains that the
+  first evidence-sort problem is fixed and the second problem is AI consent.
+- `amazeon-negative-purchasing-midpoint-chinmay-v1.png` — Chinmay concedes that
+  “checkout friction” produced negative consent and starts Act II.
+- `amazeon-trace-receipt-act-two-v1.png` — one returned order visibly becomes
+  two replacements, with three receipt/consent checks attached to the return.
+- `amazeon-completion-amy-v1.png` — Amy names the restored receipt, removed
+  auto-decide permission, and required human confirmation.
+- `amazeon-completion-chinmay-v1.png` — Chinmay closes the site and admits the
+  store must now wait for a person to press Buy.
