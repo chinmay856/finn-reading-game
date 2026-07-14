@@ -645,6 +645,14 @@ APIs require a secure context outside localhost. The existing mobile loop and
 its Git history remain available for occasional side testing, but mobile-specific
 optimization is paused.
 
+The low-latency Sherpa guide additionally requires a cross-origin-isolated
+origin. Firebase Hosting is the accepted production-preview surface because it
+can return COOP/COEP/CORP and serve the pinned large runtime from the same
+origin. GitHub Pages remains the lightweight fallback until the isolated
+origin passes the production fixture, real-microphone, privacy, and failure
+gates. See
+[`decisions/0004-firebase-hosting-for-isolated-speech-runtime.md`](decisions/0004-firebase-hosting-for-isolated-speech-runtime.md).
+
 ---
 
 ## 9. Future book-reading mode — preserve compatibility, do not build yet
@@ -760,6 +768,23 @@ For every feature, ask:
 ---
 
 ## 12. Architecture decisions
+
+### ADR-004 — Serve the pinned streaming runtime from one isolated origin
+
+**Status:** Accepted
+
+**Decision:** Use Firebase Hosting for the header-capable Sherpa production
+preview while preserving GitHub Pages as the fail-closed Whisper fallback until
+the isolated origin passes its release gates.
+
+**Reason:** The proven runtime needs COOP/COEP/CORP and includes a roughly
+191 MB single data file. Firebase can serve both the app and that file from one
+origin without an object-store proxy.
+
+**Consequence:** The runtime stays checksum-pinned and out of Git; isolated
+hosts stream the exact large data package into versioned OPFS and request the
+guide by default, while non-isolated hosts do neither. See
+[`decisions/0004-firebase-hosting-for-isolated-speech-runtime.md`](decisions/0004-firebase-hosting-for-isolated-speech-runtime.md).
 
 ### ADR-003 — Separate playtest eligibility from production approval
 

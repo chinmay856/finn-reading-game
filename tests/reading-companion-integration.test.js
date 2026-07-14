@@ -28,9 +28,27 @@ test("the streaming lane is gated and Whisper remains the final assessment autho
   const app = await appSource;
   assert.match(app, /resolveStreamingGuideGate\(\{/u);
   assert.match(app, /requestedStreamingGuide/u);
+  assert.match(app, /await loadPinnedSherpaRuntime\(\{/u);
+  assert.match(app, /onDataProgress\(\{ loaded, source, stage, total \}\)/u);
+  assert.doesNotMatch(app, /preparePinnedSherpaRuntimeCache/u);
+  assert.match(app, /globalThis\.crossOriginIsolated === true/u);
   assert.match(app, /await stopStreamingGuideAttempt\(\);/u);
   assert.match(app, /finalAssessment: "whisper"/u);
   assert.match(app, /const text = await recognizer\.transcribe\(audio\)/u);
+});
+
+test("the isolated-host boot eagerly warms one streaming recognizer for every passage", async () => {
+  const app = await appSource;
+  assert.match(app, /let streamingGuideBootPromise = null;/u);
+  assert.match(app, /streamingGuideBootPromise \?\?= initializeStreamingGuideOnce\(\);/u);
+  assert.match(app, /state\.streamingRecognizer \?\?= createSherpaStreamingRecognizer/u);
+  assert.match(app, /void preloadStreamingGuide\(\);/u);
+  const initialization = app.slice(app.indexOf("async function initializeStreamingGuideOnce()"), app.indexOf("function preloadStreamingGuide()"));
+  assert.match(initialization, /await loadPinnedSherpaRuntime/u);
+  const reset = app.slice(app.indexOf("function resetReadingAttempt()"), app.indexOf("function openPreparedReadingOrSetup()"));
+  assert.doesNotMatch(reset, /streamingRecognizer|streamingGuideBootPromise|streamingWarmupMs/u);
+  const stopAttempt = app.slice(app.indexOf("async function stopStreamingGuideAttempt"), app.indexOf("async function startReading()"));
+  assert.match(stopAttempt, /if \(closeRecognizer && state\.streamingRecognizer\)/u);
 });
 
 test("guide transcript memory is reset per attempt and excluded from reports", async () => {

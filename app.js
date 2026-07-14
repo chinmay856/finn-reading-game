@@ -22,6 +22,7 @@ import {
   createSherpaStreamingRecognizer,
   sherpaStreamingRuntimeAvailable,
 } from "./speech/sherpa-streaming-recognizer.js";
+import { loadPinnedSherpaRuntime } from "./speech/sherpa-runtime-loader.js";
 import { saveSessionSummary, updateSessionComprehension } from "./reading-session-store.js";
 import {
   WIKIWHY_EVIDENCE_RECORD,
@@ -208,7 +209,10 @@ const $ = (id) => document.getElementById(id);
 const capture = new LocalAudioCapture();
 const query = new URLSearchParams(location.search);
 const requestedDevice = query.get("speechDevice");
-const requestedStreamingGuide = query.get("streamingGuide") === STREAMING_GUIDE_QUERY_VALUE;
+const streamingGuideOverride = query.get("streamingGuide");
+const requestedStreamingGuide = streamingGuideOverride == null
+  ? globalThis.crossOriginIsolated === true
+  : streamingGuideOverride === STREAMING_GUIDE_QUERY_VALUE;
 const uiPreview = query.get("uiPreview");
 const requestedSite = query.get("site");
 const requestedLaunch = query.get("launch");
@@ -318,6 +322,7 @@ const state = {
   endgameStorageAvailable: null,
   seenSiteDialogIds: new Set(),
 };
+let streamingGuideBootPromise = null;
 
 const recognizer = new LocalWhisperRecognizer({ onProgress(data = {}) {
   const value = Number.isFinite(data.progress) ? ` ${Math.round(data.progress)}%` : "";
@@ -4650,11 +4655,42 @@ function inspectStreamingGuideGate() {
   });
 }
 
-async function prepareStreamingGuide() {
+async function initializeStreamingGuideOnce() {
   state.streamingGuideGate = inspectStreamingGuideGate();
+  const canLoadRuntime = requestedStreamingGuide
+    && globalThis.crossOriginIsolated === true
+    && typeof globalThis.SharedArrayBuffer === "function"
+    && supportsStreamingPcm(window);
+  if (!state.streamingGuideGate.enabled && canLoadRuntime
+    && state.streamingGuideGate.reason === "sherpa-runtime-unavailable") {
+    try {
+      await loadPinnedSherpaRuntime({
+        runtime: globalThis,
+        onDataProgress({ loaded, source, stage, total }) {
+          if (stage === "fallback") {
+            $("modelProgress").textContent = "Browser storage unavailable; using the direct local runtime.";
+            return;
+          }
+          if (source === "opfs") {
+            $("modelProgress").textContent = "Loading the saved local live guide...";
+            return;
+          }
+          const percent = total > 0 ? Math.round((loaded / total) * 100) : 0;
+          $("modelProgress").textContent = `Saving the local live guide... ${percent}%`;
+        },
+        onStatus(message) {
+          const detail = String(message || "").replace("Downloading data...", "Downloading local live guide...");
+          $("modelProgress").textContent = detail || "Initializing the local live guide...";
+        },
+      });
+      state.streamingGuideGate = inspectStreamingGuideGate();
+    } catch (error) {
+      diagnostic("streaming-guide-runtime-load-error", { message: error.message });
+    }
+  }
   if (!state.streamingGuideGate.enabled) return state.streamingGuideGate;
   try {
-    state.streamingRecognizer = createSherpaStreamingRecognizer({ runtime: globalThis });
+    state.streamingRecognizer ??= createSherpaStreamingRecognizer({ runtime: globalThis });
     const prepared = state.streamingRecognizer.prepare();
     state.streamingWarmupMs = prepared.warmupMs;
   } catch (error) {
@@ -4669,6 +4705,15 @@ async function prepareStreamingGuide() {
     diagnostic("streaming-guide-prepare-error", { message: error.message });
   }
   return state.streamingGuideGate;
+}
+
+function preloadStreamingGuide() {
+  streamingGuideBootPromise ??= initializeStreamingGuideOnce();
+  return streamingGuideBootPromise;
+}
+
+function prepareStreamingGuide() {
+  return preloadStreamingGuide();
 }
 
 async function startStreamingGuideAttempt() {
@@ -5839,6 +5884,7 @@ function updateDesktopClock() {
 }
 
 hydrateInternetRecoveryCopy();
+void preloadStreamingGuide();
 if (uiPreview) {
   state.campaignState = readWikiWhyState(null);
   state.campaignPersisted = true;

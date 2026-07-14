@@ -15,7 +15,8 @@ designed to support many future themes.
 ## Start here
 
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
-- Live desktop prototype: <https://chinmay856.github.io/finn-reading-game/>
+- Live isolated desktop prototype: <https://finn-reading-game.web.app/>
+- Non-isolated GitHub Pages fallback: <https://chinmay856.github.io/finn-reading-game/>
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
 - Reading Companion production integration: [`docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`](docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md)
 - Preserved mobile side-test notes: [`docs/PHONE_TEST.md`](docs/PHONE_TEST.md)
@@ -84,5 +85,7 @@ npm run build
 npm run dev
 ```
 
-The speech model runs in the browser. The application does not upload or store
-audio or transcripts. The first visit downloads and caches the model files.
+The speech models run in the browser. The application does not upload or store
+audio or transcripts. On the isolated Firebase build, the first visit stores
+the large Sherpa package in browser-private storage; later visits reuse that
+verified local copy instead of downloading it again.
