@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sherpa Runtime Deployment Check</title>
+    <style>
+      :root { color-scheme: dark; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #07131b; color: #d8f7ff; }
+      main { width: min(42rem, calc(100% - 2rem)); border: 2px solid #43d5ff; padding: 1.5rem; background: #0d202c; box-shadow: 0 0 2rem #43d5ff33; }
+      h1 { margin-top: 0; color: #7cff7c; }
+      button { border: 2px solid #7cff7c; background: #102e1b; color: #eaffea; padding: .75rem 1rem; font: inherit; cursor: pointer; }
+      button:disabled { opacity: .65; cursor: wait; }
+      output { display: block; min-height: 4rem; margin-top: 1rem; white-space: pre-wrap; }
+      .fine { color: #9bb9c6; font-size: .85rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>READING ENGINE · DEPLOYMENT DIAGNOSTIC</p>
+      <h1>Sherpa runtime check</h1>
+      <p>This downloads and warms the pinned local speech guide. It does not request a microphone, process speech, or retain a transcript.</p>
+      <button id="run" type="button">Load and warm Sherpa v1.13.2</button>
+      <output id="status" aria-live="polite">Waiting for an explicit check.</output>
+      <p class="fine">Final reading assessment remains Whisper. This page checks only the low-latency guide runtime.</p>
+    </main>
+    <script type="module" src="./speech/sherpa-runtime-smoke.js"></script>
+  </body>
+</html>

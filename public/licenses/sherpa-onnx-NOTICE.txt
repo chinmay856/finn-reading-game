@@ -1,0 +1,14 @@
+Sherpa-ONNX streaming speech runtime notice
+
+Runtime: sherpa-onnx v1.13.2
+Source: https://github.com/k2-fsa/sherpa-onnx
+Release artifact: sherpa-onnx-wasm-simd-v1.13.2-en-asr-zipformer.tar.bz2
+
+Embedded model: sherpa-onnx-streaming-zipformer-en-2023-06-21
+Model source: https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
+
+Sherpa-ONNX and the embedded model are distributed under the Apache License,
+Version 2.0. A copy is provided beside this notice as Apache-2.0.txt.
+
+The runtime and model execute locally in the browser. The application does not
+upload or retain learner audio or transcript text.

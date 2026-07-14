@@ -1,5 +1,47 @@
 # Project status
 
+## Isolated Sherpa production preview — live 2026-07-14
+
+- Firebase Hosting is live at <https://finn-reading-game.web.app/> as the
+  single-origin preview surface for the pinned Sherpa runtime. Production
+  responses were verified to return COOP/COEP/CORP, expose
+  `SharedArrayBuffer`, and serve the runtime's 190,951,044-byte data file.
+  GitHub Pages remains the non-isolated fallback.
+- The exact sherpa-onnx `v1.13.2` archive and four required runtime files are
+  SHA-256 pinned. Deployment preparation keeps the approximately 194 MiB
+  generated payload out of Git and copies only verified files into
+  `dist/sherpa/v1.13.2/`.
+- Live Chrome rejected Cache Storage for the 190,951,044-byte data response:
+  after nine minutes only 12.6 MB had committed. The replacement streams one
+  cold request into versioned OPFS, validates the exact file size, and supplies
+  the local `ArrayBuffer` synchronously to Emscripten before main-script
+  injection. Automated coverage proves a fresh runtime uses OPFS with zero
+  data-file network requests. The same worker URL is retained only as a
+  no-fetch migration that claims existing clients and deletes the failed cache.
+- Isolated origins still initialize one reusable recognizer eagerly;
+  `?streamingGuide=0` disables the lane for diagnosis. Non-isolated hosts do not
+  download Sherpa and retain the Whisper checkpoint fallback.
+- Firebase configuration returns the isolation headers on every response,
+  caches small versioned runtime and Vite assets immutably, and revalidates HTML.
+- A clean live Chrome run downloaded the data file once, wrote an exact
+  190,951,044-byte OPFS copy, initialized sherpa-onnx `v1.13.2`, and completed
+  silent warm-up in 162 ms. After clearing the normal HTTP cache, a fresh page
+  reached ready in 4.8 seconds from OPFS with no `.data` network request; the
+  full game reached the Recovery Map in 6.0 seconds without another model
+  download. The recognizer remains warm and reusable between passages.
+- Whisper remains final scoring authority. No audio or transcript persistence
+  was introduced, and the Reading Engine remains independent from wrapper and
+  campaign state.
+- The existing `onnx-community/whisper-base_timestamped` WASM scoring model was
+  cold-loaded on the isolated production origin under COEP, initialized in
+  100 seconds on the test connection, completed an inference call, and returned
+  immediately from a second `load()` on the same recognizer. The app retains
+  that recognizer across passages instead of rebuilding it for each reading.
+- Firebase authentication, project creation, deployment, isolation-header
+  verification, cold model storage, and zero-redownload repeat loading are
+  complete. Remaining release evidence is the production-origin fixture replay,
+  failure-path checks, and one consenting natural 180–220 WPM reader test.
+
 ## ViewTube approved-toast-video correction — 2026-07-14
 
 - Replaced the generic winter-sky editor with three optimized frames composited

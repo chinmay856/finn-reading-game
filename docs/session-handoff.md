@@ -2,30 +2,42 @@
 
 ## 2026-07-14 Reading Companion production integration
 
-- Isolated branch: `agent/speech-engine-production-integration`, based on
-  authoritative `origin/main` at `981a774`; the dirty primary checkout remains
+- Isolated publication branch: `agent/sherpa-live-hosting`, based on
+  authoritative `origin/main` at `4f54c92`; the dirty primary checkout remains
   untouched.
 - The production app now has a 20 ms / 16 kHz PCM tap, warmed sherpa adapter,
-  dual-lane lifecycle, privacy-safe timing metadata, and explicit
-  `?streamingGuide=1` capability gate. Whisper remains final scoring authority,
-  and any streaming failure preserves the checkpoint guide and Continue path.
-- The public Pages response was checked directly: HTTP 200, but COOP, COEP, and
-  CORP are absent. The approximately 203 MB pinned runtime/model is therefore
-  not shipped, and the public build honestly stays on the Whisper checkpoint
-  fallback.
+  dual-lane lifecycle, privacy-safe timing metadata, and an isolated-host
+  default with `?streamingGuide=0` as its diagnostic opt-out. Whisper remains
+  final scoring authority, and any streaming failure preserves the checkpoint
+  guide and Continue path.
+- The isolated build is deployed at <https://finn-reading-game.web.app/>.
+  Firebase returns COOP, COEP, and CORP; real Chrome reports
+  `crossOriginIsolated`, `SharedArrayBuffer`, and OPFS support. The non-isolated
+  GitHub Pages build remains available as the Whisper-only fallback.
+- The 190,951,044-byte Sherpa data package is downloaded once into versioned
+  OPFS, size-validated, and supplied locally before Emscripten starts. A clean
+  cold production run initialized Sherpa and stored the exact file. A separate
+  warm run cleared the normal HTTP cache, reached ready in 4.8 seconds, and made
+  zero `.data` requests; the game then reached the Recovery Map in 6.0 seconds
+  without another data download. One warmed recognizer is reused across
+  passages.
+- The existing Whisper final-scoring model also cold-loaded successfully under
+  production COEP, initialized through WASM in 100 seconds on the test
+  connection, and completed a local inference call. Calling `load()` again on
+  the same recognizer returned in 0 ms, confirming the intended one-load-per-app
+  lifecycle used across passage attempts.
 - The viewport policy from PR #115 is production-integrated independently of
   hosting: 18-pixel top anchor, natural ending clamp, full-target animation,
   immediate forward manual visual reconciliation, monotonic backward behavior,
   and reduced-motion fallback. Manual position never enters speech evidence or
   scoring.
-- Handoff and remaining production-origin/real-reader gates are documented in
+- Handoff and remaining fixture, failure-path, and real-reader gates are documented in
   `docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`.
-- Validation passed: 15 focused streaming/viewport tests, syntax checks, all
-  380 repository tests, Vite production build, and `git diff --check`.
-  Browser inspection confirmed that `?streamingGuide=1` is requested but the
-  current host exposes neither cross-origin isolation, SharedArrayBuffer, nor
-  the pinned sherpa runtime, so the gate resolves to Whisper fallback. The
-  temporary Vite server was stopped after this audit.
+- Validation passed: syntax checks, all 401 repository tests, the Sherpa asset
+  checksum build, Vite production build, Firebase deploy, production header and
+  cache audit, real Chrome cold/warm runtime checks, and rendered Recovery Map
+  inspection. Temporary browser profiles, tabs, and servers are closed after
+  final publication verification.
 
 ## 2026-07-13 player review checkpoint and next-thread handoff
 
