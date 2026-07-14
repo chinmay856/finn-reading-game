@@ -1,5 +1,29 @@
 # Project status
 
+## Ten-site playtest completion candidate — 2026-07-13
+
+- All ten Internet Recovery sites now use a fixed 4:3 play surface. ThreadIt,
+  FacePlace, MyCorner, Yahuh, ViewTube, and Amaze-On have joined Search-ish,
+  Spotty-Fi, and MapGuess with image-led locked frames and semantic repair
+  overlays; WikiWhy retains its established campaign presentation.
+- Every post-WikiWhy site now has Amy/Chinmay entry, midpoint, and completion
+  exchanges. Midpoints explain the change between the first and second repair
+  problem; completions say what Finn fixed and explicitly finish the site.
+- Progress geometry matches each authored flow: ThreadIt 4+3, FacePlace 3+3,
+  MyCorner 4+3, Yahuh 3+3, ViewTube 4+3, Search-ish 4+3, Amaze-On 4+3,
+  Spotty-Fi 5+3, and MapGuess 5+3. Search-ish therefore shows four initial
+  source routes followed by three answer checks rather than changing phase
+  halfway through a mismatched list.
+- MapGuess's bottom tracker now visibly compares the requested and moved
+  destination and preserves the deliberately unreliable vintage
+  “2 minutes remaining” estimate until Finn locks the real target.
+- Desktop browser QA at 1280x720 covered entry, midpoint, and secured previews:
+  all image-led site frames measured exactly 4:3, no document or active-screen
+  overflow was found, and exactly one Techno was visible in every state.
+- Validation for this candidate: syntax checks, 360 tests, production build,
+  and `git diff --check` pass. Per the current playtest instruction, no speech
+  engine or latency behavior changed in this work.
+
 ## Player review checkpoint — active 2026-07-13
 
 - Build `5b5613d` is live for review. It publishes the first image-led locked

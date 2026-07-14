@@ -1,5 +1,20 @@
 # Parallel design requests
 
+## Ten-site visual completion — 2026-07-13
+
+The six remaining locked-frame builds are implemented. ThreadIt, FacePlace,
+MyCorner, Yahuh, ViewTube, and Amaze-On now use optimized 1024x768 WebP bases
+with semantic HTML overlays for repair state, progress, controls, and
+accessibility. Final base assets are 77–134 kB each. The earlier request below
+is closed; no additional P0 site-frame artwork is outstanding.
+
+Integrated browser QA at 1280x720 covered the corrupted, midpoint, and secured
+states for all nine previewable site frames. Each measured exactly 4:3 with no
+page or active-screen overflow and one visible Techno. The MapGuess moving
+target is legible in its bottom tracker, and the new Amaze-On midpoint was
+visually checked in the executable app. Continue to use the locked-frame plus
+small-overlay pattern for future revisions.
+
 ## Player-review visual direction — checkpoint 5b5613d
 
 The live review checkpoint is

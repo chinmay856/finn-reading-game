@@ -1067,3 +1067,41 @@
     outline-color: Highlight;
   }
 }
+
+/*
+ * Image-led 4:3 stage. The base scene contains no words or progress values;
+ * AVOCADO%, the six repairs, and every control remain live semantic overlays.
+ */
+.faceplace-layout {
+  isolation: isolate;
+  position: relative;
+}
+
+.faceplace-layout::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: url("./art/site-assets/faceplace/faceplace-feed-base-v1.webp") center / cover no-repeat;
+  opacity: .36;
+  pointer-events: none;
+}
+
+.faceplace-profile-rail,
+.faceplace-feed-column,
+.faceplace-context-rail {
+  background-color: #f3f6fad9;
+  backdrop-filter: blur(1.5px);
+}
+
+.faceplace-page[data-rule-repaired="true"] .faceplace-layout::before,
+.faceplace-page[data-secured="true"] .faceplace-layout::before {
+  opacity: .44;
+  filter: saturate(1.08);
+}
+
+@media (forced-colors: active) {
+  .faceplace-layout::before {
+    display: none;
+  }
+}

@@ -283,7 +283,7 @@ export const FACEPLACE_PROVISIONAL_FEED_FIXTURE = freezeDeep({
     upstreamServiceId: "ai_repair_service",
   },
   profile: {
-    accessibleSummary: "Provisional fictional profile for Juniper Vale, the owner of this test feed.",
+    accessibleSummary: "Fictional profile for Juniper Vale, whose relationship clusters reveal how the damaged feed chooses what Finn sees.",
     bio: "Collects bus sketches, repairs stubborn lamps, and distrusts counters that contain produce.",
     displayName: "Juniper Vale (fictional)",
     handle: "@juniper-vale-provisional",
