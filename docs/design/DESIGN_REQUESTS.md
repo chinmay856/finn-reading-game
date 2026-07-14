@@ -1,5 +1,24 @@
 # Parallel design requests
 
+## Player-review visual direction — checkpoint 5b5613d
+
+The live review checkpoint is
+<https://chinmay856.github.io/finn-reading-game/?build=5b5613d>. Search-ish,
+Spotty-Fi, and MapGuess are the first examples of the requested locked-frame
+hybrid: one playful fixed-aspect illustrated base plus small semantic HTML
+overlays for changing repair text, progress, and controls. Their current bases
+are under `apps/internet-recovery/art/site-assets/*-frames/`.
+
+Next art priority is to bring ThreadIt, FacePlace, MyCorner, Yahuh, ViewTube, and
+Amaze-On up to the visual quality of their Recovery Map thumbnails. Each site
+needs one stable 4:3 composition and a repair sequence in which one red/corrupt
+element changes in place to green/clean without geometry, crop, or palette
+jumping. Prefer fewer, stronger elements and playful Easter eggs over dashboard
+boxes. Do not bake `Act`, `fixture`, `provisional`, `canonical`, `candidate`, or
+repeated `fictional` notes into the art. Optimize bases to WebP and keep state
+differences as small overlays when practical. Full acceptance criteria and the
+implementation/QA order are in `docs/PLAYTEST_REVIEW_HANDOFF_2026-07-13.md`.
+
 ## Compact persistent-Techno motion pack — requested 2026-07-12
 
 Implementation now keeps Techno visible and animated on every game screen using the existing ball-drop idle loop. Please provide a compact behavior pack so her motion can vary by context.

@@ -1,5 +1,21 @@
 # Session handoff
 
+## 2026-07-13 player review checkpoint and next-thread handoff
+
+- The player-review checkpoint is merged to `main` at `5b5613d` through PR
+  #113 and is live at
+  <https://chinmay856.github.io/finn-reading-game/?build=5b5613d>.
+- Search-ish, Spotty-Fi, and MapGuess establish the locked illustrated-frame
+  direction; Comic Sans-style site typography, compact ten-site layouts,
+  site-specific candidate routing, clearer reading start, result overlays,
+  progress labels, and the FacePlace AVOCADO beat are included.
+- Validation passed: syntax checks, 342 tests, production build, and no document
+  or nested-panel overflow across all ten initial sites at 1280x720.
+- This is a test checkpoint, not the final review build. The complete prioritized
+  player-feedback backlog and acceptance criteria are in
+  `docs/PLAYTEST_REVIEW_HANDOFF_2026-07-13.md`. Start the next thread there and
+  keep the P0 routing/state/progression regressions ahead of further art polish.
+
 ## 2026-07-13 Tomorrow playtest polish and speech evidence
 
 - Working branch: `agent/tomorrow-playtest-polish`, created from authoritative

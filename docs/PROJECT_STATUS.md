@@ -1,5 +1,18 @@
 # Project status
 
+## Player review checkpoint — active 2026-07-13
+
+- Build `5b5613d` is live for review. It publishes the first image-led locked
+  frames for Search-ish, Spotty-Fi, and MapGuess; Comic Sans-style site copy;
+  compact no-scroll boards; site-correct TEST routing; reading-start and result
+  flow improvements; map progress; and the FacePlace AVOCADO story beat.
+- The checkpoint passed syntax checks, 342 tests, the production build, and a
+  browser overflow audit across all ten initial sites at 1280x720.
+- It is not the final playtest release. Full next steps and completion gates are
+  in `docs/PLAYTEST_REVIEW_HANDOFF_2026-07-13.md`: gameplay correctness and
+  state isolation first, remaining visual redesign second, and measured real-
+  microphone latency work third.
+
 ## Tomorrow playtest release pass — active 2026-07-13
 
 - All ten site boards and companion panels fit the 1440×900 desktop without
