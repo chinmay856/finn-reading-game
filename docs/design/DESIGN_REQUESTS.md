@@ -427,6 +427,21 @@ When a remaining request is answered, record the decision and design commit in
 this file or a linked response file. That gives implementation agents an
 objective synchronization point instead of relying on chat history.
 
+## 2026-07-14 visible-progress and decorative-control rule
+
+- Never show a passage, repair, or unit fraction unless the same screen exposes
+  the same number of trackable visual items. Each increment must visibly change
+  one of those items, normally from a missing mark to a restored check.
+- A control that does not perform an action is illustration, not a button.
+  Image-led sites may draw decorative playback, map, or browser controls inside
+  the 4:3 artwork, but must not place a second fake interactive layer over them.
+- Before accepting an image-led build, open it at the forced desktop viewport,
+  capture the corrupted, midpoint, Act II, and completion states, and inspect
+  for overlap, clipping, misleading controls, and progress that is not visible.
+- Spotty-Fi is the reference correction: five album-card checks in Act I,
+  three listener-control checks in Act II, no numeric repair banner, and no
+  simulated player. Review evidence is listed in `docs/design/review/README.md`.
+
 ## 2026-07-13 mechanics synchronization
 
 - Builder branch: `agent/game-mechanics-refinement` from `afa3152`.

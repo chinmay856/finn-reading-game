@@ -727,6 +727,27 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
 Do not fake secured sites, score candidate prose, reuse WikiWhy as a ten-site
 template, or start the final breach before enough real campaigns exist.
 
+### Spotty-Fi honest visual progress (2026-07-14)
+
+- Spotty-Fi no longer places a numeric repair counter or a second mock player
+  over artwork that already contains a complete decorative player. The artwork
+  remains explicitly silent and no playback state is simulated.
+- The five Act I repair units now map one-to-one to the five visible album
+  cards. Each card carries its own red missing mark or green restored check.
+- At the midpoint, a three-row Act II listener-control checklist replaces the
+  first-half warning copy. Its queue-owner, verified-history, and optional-
+  suggestions checks map one-to-one to the final three repair units.
+- The Amy and Chinmay midpoint exchange, the Act II unlock, all three Act II
+  checks, the Amy and Chinmay completion exchange, and return to the Recovery
+  Map were exercised end to end in the browser at 1440x900. The frame measured
+  exactly 4:3 with no horizontal overflow.
+- Raw passage fractions were also removed from Recovery Map cards and the
+  quick-playtest panel. Counts remain only where the same screen exposes the
+  corresponding visible items, such as evidence slots or site checklists.
+- Speech, microphone, scoring, and Reading Engine behavior were not changed.
+- `npm.cmd run check`, all 364 tests, `npm.cmd run build`, and `git diff
+  --check` pass.
+
 ## Repository workflow
 
 1. Start from synchronized `main`.
