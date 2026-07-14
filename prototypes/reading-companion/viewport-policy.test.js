@@ -1,19 +1,21 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { anchoredScrollTop, createViewportTrace, lineAtReadingAnchor, reconcileManualLine, requiredTailSpace } from "./viewport-policy.js";
+import { anchoredScrollTop, createViewportTrace, lineAtReadingAnchor, reconcileManualLine } from "./viewport-policy.js";
 
 const lines = [
   { offsetTop: 30, height: 58 },
   { offsetTop: 96, height: 58 },
   { offsetTop: 162, height: 58 },
   { offsetTop: 228, height: 58 },
+  { offsetTop: 294, height: 58 },
+  { offsetTop: 360, height: 58 },
+  { offsetTop: 426, height: 58 },
 ];
 
-test("reserves enough tail space for the final line to reach the reading anchor", () => {
-  assert.equal(requiredTailSpace({ viewportHeight: 300, anchorOffset: 18, lastLineHeight: 58 }), 224);
+test("anchors early lines high but lets final lines settle naturally near the bottom", () => {
   const trace = createViewportTrace({ viewportHeight: 300, anchorOffset: 18, lines });
-  assert.deepEqual(trace.map(({ topInViewport }) => topInViewport), [18, 18, 18, 18]);
+  assert.deepEqual(trace.map(({ topInViewport }) => topInViewport), [18, 18, 18, 44, 110, 176, 242]);
 });
 
 test("anchors ordinary lines near the top instead of centering them", () => {

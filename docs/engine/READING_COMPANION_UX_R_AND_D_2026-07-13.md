@@ -12,11 +12,10 @@ highlight keep up. The reported final-score wait was about 112 seconds.
 
 ## Root causes found in the current build
 
-1. The production guide asks for a near-top target but clamps it to the real
-   document bottom. Without space below the last line, the final lines cannot
-   physically reach that target and remain at the bottom of the viewport.
-2. The passage begins with `13vh` top padding. This creates headroom initially
-   but does not create the equivalent tail room needed at the end.
+1. The passage begins with `13vh` top padding, so the initial active sentence
+   can sit substantially below the top even before scrolling begins.
+2. The target is a percentage of viewport height rather than a small stable
+   reading anchor, which makes its placement vary with window size.
 3. Wheel, pointer, or touch interaction pauses automatic guide scrolling for
    five seconds. Recognition can continue during the pause, so the eventual
    resume can jump several lines and feel more latent than the recognizer is.
@@ -32,7 +31,8 @@ highlight keep up. The reported final-score wait was about 112 seconds.
 The isolated prototype now implements a reusable viewport policy:
 
 - an 18-pixel reading anchor near the top;
-- calculated tail space so every line, including the last, can reach it;
+- natural end clamping: early and middle lines stay high while unread text
+  remains, then final lines settle toward the bottom with no artificial space;
 - direct smooth scrolling to the complete target rather than one fixed step per
   recognition event;
 - forward manual scroll reconciliation: the line crossing the reading anchor
@@ -44,29 +44,35 @@ The isolated prototype now implements a reusable viewport policy:
 
 The executable geometry benchmark is
 `prototypes/reading-companion/viewport-policy-benchmark-2026-07-13.json`.
-For the 300-pixel fixture viewport, the last three lines land at exactly 18
-pixels from the top. Under the old no-tail geometry, the final line remained at
-228 pixels—visually at the bottom.
+For the 300-pixel, seven-line fixture viewport, the first three lines land at
+18 pixels from the top. The later lines then settle at 44, 110, 176, and 242
+pixels as the viewport reaches the real document end. This is intentional: the
+top anchor provides look-ahead during reading, while the final line finishes
+naturally near the bottom.
+
+The dedicated rendered-browser check at
+`prototypes/reading-companion/viewport-policy-browser.html` measured the first
+line at 18 pixels, a middle line at 18 pixels, and the final line at 232 pixels.
+Its simulated forward manual scroll selected line index 2 while reporting
+`scoringPositionChanged: false`; the browser report passed.
 
 ## Integration recommendation
 
 The integrating agent should port the behavior, not copy prototype DOM code:
 
-1. Add a non-interactive tail spacer inside the production passage scroller.
-   Recalculate it with `ResizeObserver` from viewport height, top anchor, and
-   final-line height.
-2. Scroll the active line to a fixed 16-24 pixel top anchor. Do not use a
-   viewport percentage or `block: center`.
-3. Replace the five-second manual pause. During forward manual scrolling,
+1. Scroll the active line toward a fixed 16-24 pixel top anchor while ordinary
+   content remains below it. Keep the browser's natural maximum-scroll clamp so
+   the ending lines settle lower. Do not add trailing spacer content.
+2. Replace the five-second manual pause. During forward manual scrolling,
    calculate the line at the anchor and advance a separate `visualLineIndex`.
-4. Never write a manual visual position into `confirmedWordIndex`, matched-word
+3. Never write a manual visual position into `confirmedWordIndex`, matched-word
    counts, completion evidence, diagnostics presented as speech evidence, or
    the final result.
-5. When speech evidence catches the manually chosen line, resume ordinary
+4. When speech evidence catches the manually chosen line, resume ordinary
    evidence-led updates without a jump.
-6. Animate to the full target in roughly 120-220 ms; do not depend on another
+5. Animate to the full target in roughly 120-220 ms; do not depend on another
    recognizer event to complete movement.
-7. Keep the current monotonic speech guide and asynchronous final Whisper lane
+6. Keep the current monotonic speech guide and asynchronous final Whisper lane
    separate.
 
 ## Next latency experiment
@@ -83,8 +89,9 @@ Finish click -> final Whisper result available
 Store only durations, counts, model/runtime identifiers, and failure labels.
 Do not retain audio or transcript text. Run at least three natural 180-220 WPM
 attempts. The UI policy passes when line-settle time is under 220 ms after an
-event, the final line reaches the same anchor as middle lines, manual forward
-scroll reacts within one animation frame, and no manual action affects scoring.
+event, early and middle lines use the top anchor, final lines settle naturally,
+manual forward scroll reacts within one animation frame, and no manual action
+affects scoring.
 
 The 112-second score delay is a separate P0 failure. Before changing models,
 capture its phase breakdown: audio finalization, resampling, worker transfer,
@@ -106,5 +113,6 @@ or the UI delayed result presentation after inference completed.
 - `prototypes/reading-companion/viewport-policy.test.js`
 - `prototypes/reading-companion/viewport-policy-benchmark.mjs`
 - `prototypes/reading-companion/viewport-policy-benchmark-2026-07-13.json`
+- `prototypes/reading-companion/viewport-policy-browser.html`
 - `prototypes/reading-companion/prototype.js`
 - `prototypes/reading-companion/prototype.css`

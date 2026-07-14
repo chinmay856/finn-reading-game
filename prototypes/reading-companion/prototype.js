@@ -5,7 +5,6 @@ import {
   DEFAULT_READING_ANCHOR_PX,
   lineAtReadingAnchor,
   reconcileManualLine,
-  requiredTailSpace,
 } from "./viewport-policy.js";
 
 const SAMPLE_RATE = 16_000;
@@ -25,7 +24,6 @@ const elements = {
   metrics: document.querySelector("#metrics"),
   passage: document.querySelector("#passage"),
   passageLines: document.querySelector("#passageLines"),
-  passageTail: document.querySelector("#passageTail"),
   positionLabel: document.querySelector("#positionLabel"),
   runButton: document.querySelector("#runButton"),
   sampleAudio: document.querySelector("#sampleAudio"),
@@ -59,16 +57,6 @@ function lineGeometry() {
   return lineElements.map((line) => ({ height: line.offsetHeight, offsetTop: line.offsetTop }));
 }
 
-function updateTailSpace() {
-  const lastLine = lineElements.at(-1);
-  if (!lastLine) return;
-  elements.passageTail.style.height = `${requiredTailSpace({
-    anchorOffset: DEFAULT_READING_ANCHOR_PX,
-    lastLineHeight: lastLine.offsetHeight,
-    viewportHeight: elements.passage.clientHeight,
-  })}px`;
-}
-
 function paintVisibleLine(lineIndex) {
   visibleLineIndex = Math.max(visibleLineIndex, lineIndex);
   lineElements.forEach((line, candidateIndex) => {
@@ -80,7 +68,6 @@ function paintVisibleLine(lineIndex) {
 function scrollVisibleLineToAnchor() {
   const target = lineElements[visibleLineIndex];
   if (!target) return;
-  updateTailSpace();
   programmaticScrollUntil = performance.now() + 450;
   elements.passage.scrollTo({
     behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
@@ -113,7 +100,6 @@ elements.passage.addEventListener("scroll", () => {
   record("manual-guide-advance", { visibleLineIndex });
 }, { passive: true });
 
-window.addEventListener("resize", updateTailSpace);
 
 let engineReady = false;
 let recognizer = null;

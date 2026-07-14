@@ -3,7 +3,7 @@ import { createViewportTrace, lineAtReadingAnchor, reconcileManualLine } from ".
 
 const viewportHeight = 300;
 const anchorOffset = 18;
-const lines = [30, 96, 162, 228].map((offsetTop) => ({ offsetTop, height: 58 }));
+const lines = [30, 96, 162, 228, 294, 360, 426].map((offsetTop) => ({ offsetTop, height: 58 }));
 const oldMaximumScrollTop = Math.max(0, lines.at(-1).offsetTop + lines.at(-1).height - viewportHeight);
 const oldCentered = lines.map((line) => ({
   lineOffsetTop: line.offsetTop,
@@ -14,8 +14,8 @@ const manualTopLine = lineAtReadingAnchor({ anchorOffset, lines, scrollTop: 150 
 const result = {
   generatedAt: "2026-07-13",
   scenario: { anchorOffset, lineCount: lines.length, viewportHeight },
-  oldCenteredWithoutTailSpace: oldCentered,
-  topAnchoredWithTailSpace: topAnchored,
+  oldCentered: oldCentered,
+  topAnchoredWithNaturalEndClamp: topAnchored,
   manualForwardScroll: {
     confirmedSpeechLineIndex: 0,
     viewportLineAtAnchor: manualTopLine,

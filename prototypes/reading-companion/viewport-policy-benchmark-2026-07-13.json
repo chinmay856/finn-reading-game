@@ -2,10 +2,10 @@
   "generatedAt": "2026-07-13",
   "scenario": {
     "anchorOffset": 18,
-    "lineCount": 4,
+    "lineCount": 7,
     "viewportHeight": 300
   },
-  "oldCenteredWithoutTailSpace": [
+  "oldCentered": [
     {
       "lineOffsetTop": 30,
       "topInViewport": 30
@@ -16,14 +16,26 @@
     },
     {
       "lineOffsetTop": 162,
-      "topInViewport": 162
+      "topInViewport": 121
     },
     {
       "lineOffsetTop": 228,
-      "topInViewport": 228
+      "topInViewport": 121
+    },
+    {
+      "lineOffsetTop": 294,
+      "topInViewport": 121
+    },
+    {
+      "lineOffsetTop": 360,
+      "topInViewport": 176
+    },
+    {
+      "lineOffsetTop": 426,
+      "topInViewport": 242
     }
   ],
-  "topAnchoredWithTailSpace": [
+  "topAnchoredWithNaturalEndClamp": [
     {
       "lineIndex": 0,
       "scrollTop": 12,
@@ -41,8 +53,23 @@
     },
     {
       "lineIndex": 3,
-      "scrollTop": 210,
-      "topInViewport": 18
+      "scrollTop": 184,
+      "topInViewport": 44
+    },
+    {
+      "lineIndex": 4,
+      "scrollTop": 184,
+      "topInViewport": 110
+    },
+    {
+      "lineIndex": 5,
+      "scrollTop": 184,
+      "topInViewport": 176
+    },
+    {
+      "lineIndex": 6,
+      "scrollTop": 184,
+      "topInViewport": 242
     }
   ],
   "manualForwardScroll": {

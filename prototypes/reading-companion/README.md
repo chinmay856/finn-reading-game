@@ -12,7 +12,8 @@ recognition evidence aligns with the known passage.
 - Hidden word evidence is monotonic; elapsed time alone cannot move it.
 - The visible guide highlights one top-anchored authored line and anticipates
   2-4 words to cover approximately one second of recognition latency.
-- Reserved tail space lets even the final line reach the same top anchor.
+- Early and middle lines use the top anchor while unread text remains; final
+  lines settle naturally near the bottom without artificial trailing space.
 - Forward manual scrolling advances only the visual line at the anchor; hidden
   speech evidence and final scoring remain unchanged.
 - The same audio can be replayed repeatedly, producing comparable event traces.
