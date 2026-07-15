@@ -19,6 +19,9 @@
   and `faceplace-repaired-feed-v2.png` under `docs/design/review/`.
 - Validation passes: all 407 repository tests, syntax checks, the Vite
   production build, and `git diff --check`.
+- Commit `c6e7593` is pushed to draft PR #124 and deployed to
+  <https://finn-reading-game.web.app/>. Production smoke verification confirmed
+  the live ThreadIt entry and `Untangle the thread` action from that build.
 - The Reading Engine, speech recognition, scoring, microphone behavior, and
   passage selection were not changed.
 

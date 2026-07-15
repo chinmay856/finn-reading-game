@@ -24,6 +24,9 @@
 - Current executable captures are recorded in `docs/design/review/`. All 407
   repository tests, syntax checks, the Vite production build, and `git diff
   --check` pass.
+- Firebase Hosting now serves the validated `c6e7593` build at
+  <https://finn-reading-game.web.app/>. The direct ThreadIt review route is
+  <https://finn-reading-game.web.app/?launch=threadit&build=c6e7593>.
 
 ## Isolated Sherpa production preview — live 2026-07-14
 
