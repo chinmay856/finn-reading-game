@@ -112,17 +112,17 @@ test("reduced motion changes only motion metadata", () => {
   assert.deepEqual(reducedSemantic, animatedSemantic);
 });
 
-test("Yahuh exposes six real repairs across two named halves and a completion exchange", () => {
+test("Yahuh exposes six real repairs across a causal reveal and completion exchange", () => {
   const beforeMidpoint = getYahuhCampaignView(stateAt(2));
   assert.deepEqual(beforeMidpoint.progress.phase, { completed: 2, label: "SORT SIX MODULES", total: 3 });
   assert.equal(beforeMidpoint.progress.visibleCountLabel, "2 / 6 PORTAL REPAIRS");
 
   const midpoint = getYahuhCampaignView(stateAt(3));
   assert.deepEqual(midpoint.progress.phase, { completed: 0, label: "RECONNECT SIX CHANNELS", total: 3 });
-  assert.match(midpoint.midpoint.amy, /First half complete/iu);
-  assert.match(midpoint.midpoint.amy, /Second half/iu);
+  assert.match(midpoint.midpoint.amy, /six modules are sorted and labeled/iu);
+  assert.match(midpoint.midpoint.amy, /identical timestamp exposes one generated stream/iu);
 
   const secured = getYahuhCampaignView(stateAt(6));
-  assert.match(secured.securedPayoff.amy, /Site complete/iu);
+  assert.match(secured.securedPayoff.amy, /every module has its own channel again/iu);
   assert.match(secured.securedPayoff.chinmay, /withdraw my objection/iu);
 });

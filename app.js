@@ -3502,44 +3502,84 @@ function beginDiagnosticShield() {
   showCharacterDialog("shield-intro");
 }
 
-const SITE_ENTRY_MESSAGES = Object.freeze({
-  threadit: Object.freeze({ amy: "The replies are winning before the question even loads. Restore who said what, then trace which answers are copies.", chinmay: "The ranking model was supposed to find consensus faster. It has apparently discovered time travel instead." }),
-  faceplace: Object.freeze({ amy: "That progress bar is grading itself. Restore the people and posts first; we will make the tracker tell the truth afterward.", chinmay: "The engagement optimizer may have interpreted 'healthy social graph' as 'repeat the same post until everyone agrees.'" }),
-  mycorner: Object.freeze({ amy: "The AI replaced six real choices with one optimized personality. Recover Finn's saved profile before touching the owner lock.", chinmay: "In my defense, 'Apply to Everyone' was meant to be an internal demo button. It was a very confident button." }),
-  yahuh: Object.freeze({ amy: "News, mail, weather, and ads have been blended into one purple soup. Separate the labels before reconnecting their sources.", chinmay: "The portal optimizer removed categories because users clicked more when everything was everywhere." }),
-  viewtube: Object.freeze({ amy: "A loop can look like five witnesses when it is really one clip repeating. Restore the recording context, then split the evidence tracks.", chinmay: "Autoplay was only supposed to increase watch time. It has increased the number of copies of Tuesday." }),
-  searchish: Object.freeze({ amy: "The first answer looks certain because four fake routes all point back to the same generated cache. Restore each origin one at a time.", chinmay: "The answer model optimized 'helpful' into 'say something immediately and invent friends who agree.'" }),
-  amazeon: Object.freeze({ amy: "One return created two deliveries without asking anyone. Sort the order evidence, then take the permission away from the AI.", chinmay: "Auto-decide was supposed to save a click. It has saved the click by purchasing around it." }),
-  spottyfi: Object.freeze({ amy: "The queue says it knows Finn's taste before his account existed. Restore the track credits, then give the controls back to the listener.", chinmay: "Predictive history sounded less alarming in the slide deck." }),
-  mapguess: Object.freeze({ amy: "The map keeps moving the destination to protect its two-minute promise. Restore the map, lock the place, then choose what the route should optimize.", chinmay: "Technically every route is fast if the destination follows the car." }),
+const siteStoryBeat = (speaker, eyebrow, heading, body, action) => Object.freeze({ action, body, eyebrow, heading, speaker });
+
+const SITE_STORY_FLOWS = Object.freeze({
+  threadit: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "THREAD ORDER CORRUPTED", "The answers arrived before the question.", "Put the question back, reconnect the replies, and make every source visible.", "Untangle the thread")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "CONSENSUS ENGINE · TEN VOTES", "Ten accounts agree.", "The consensus engine found agreement extremely efficiently.", "Trace the agreement"),
+      siteStoryBeat("amy", "SOURCE TRACE · ONE ORIGIN", "Ten accounts. One source.", "They all copied the same summary. Keep the restored thread and trace which branches are actually independent.", "Open source trace"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("amy", "DUPLICATE POST BLOCKED", "The thread has its sources back.", "You restored the question, separated independent sources, quarantined the copied replies, and blocked another duplicate post.", "Review the repaired thread")]),
+  }),
+  faceplace: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "TRACKER AUDIT REQUIRED", "The tracker is cheering for the wrong thing.", "Restore the people and posts first. We will audit what the meter is counting when it catches up.", "Restore the feed")]),
+    midpoint: Object.freeze([siteStoryBeat("amy", "AVOCADO AUDIT · ZERO IS HONEST", "The counter was measuring attention.", "It was not broken. It was measuring the wrong thing very confidently. Your feed repairs are saved; now verify chronology, recommendation reasons, and the distribution gate.", "Start at honest zero")]),
+    completion: Object.freeze([
+      siteStoryBeat("amy", "FEED RECOVERY VERIFIED", "The feed explains itself again.", "You restored chronology, recommendation reasons, and the choice to stop forced distribution.", "Open blocked-write log"),
+      siteStoryBeat("chinmay", "BOOST REQUEST · DENIED", "AVOCADO is no longer grading the feed.", "Apparently AVOCADO was not an industry-standard analytics unit after all.", "Review the repaired feed"),
+    ]),
+  }),
+  mycorner: Object.freeze({
+    entry: Object.freeze([
+      siteStoryBeat("chinmay", "CEO BROADCAST · DEMO ESCAPE", "My demo profile escaped.", "Apply to Everyone was meant to be an internal demo button. It was a very confident button.", "See what it replaced"),
+      siteStoryBeat("amy", "OWNER PROFILE · RECOVERABLE", "The real profile is still underneath.", "Recover the owner-written sections before changing the permission controls.", "Restore the profile"),
+    ]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "AUTO-PERSONA · UNIVERSAL MATCH", "The template chose me. For everyone.", "The universal personality was extremely efficient. It was also, apparently, just mine.", "Compare profiles"),
+      siteStoryBeat("amy", "SAVED CHOICES · PRESERVED", "The owner's choices survived.", "Lock each choice to its owner, then block Apply to Everyone.", "Restore owner controls"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("amy", "OWNER LOCK · RESTORED", "This profile belongs to its owner again.", "You restored the original profile, locked every choice to its owner, and blocked Apply to Everyone.", "Review the restored profile")]),
+  }),
+  yahuh: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "PORTAL CATEGORIES · MERGED", "Everything has been poured into one stream.", "Sort the six modules so their labels, dates, sources, and sponsorship are readable again.", "Sort the portal")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("amy", "TIMESTAMP CHECK · ONE WRITER", "One timestamp changed every module.", "All six modules changed in the same millisecond. That is not a newsroom. That is one hose.", "Check the source"),
+      siteStoryBeat("chinmay", "CEO BROADCAST · CATEGORY UPDATE", "The shortcut erased the categories.", "Separate categories were legacy clutter. I am now open to the possibility that clutter was doing useful work.", "Open the switchboard"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("amy", "CATEGORY SWITCHBOARD · RESTORED", "Every module has its own channel again.", "You separated six modules, restored their channels, and labeled every source and sponsorship.", "Review the repaired portal")]),
+  }),
+  viewtube: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("chinmay", "CEO BROADCAST · AUTO-FIX READY", "I can fill the missing footage.", "Video Auto-Fix will keep the clip people watched longest and repeat it until the page looks complete.", "Open the damaged recording")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "CONFIRMATION COUNT · TEN", "Ten playbacks agree.", "The confirmation count is extremely high. The footage also has several exciting hats.", "Compare file hashes"),
+      siteStoryBeat("amy", "HASH CHECK · ONE CLIP", "They are the same clip.", "Same hash, same final eight seconds. You restored the context; now separate footage, transcript, and source evidence.", "Open evidence tracks"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("amy", "DUPLICATE PLAYBACK · BLOCKED", "The evidence tracks describe what happened.", "You restored the creator, date, and context; quarantined ten loops under one hash; separated the evidence tracks; and blocked the next clone.", "Review the repaired recording")]),
+  }),
+  searchish: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "RESULT ORIGINS · HIDDEN", "These results all know the same answer.", "Restore the domain, author, date, and ad label on each card. Then we can see whether they are independent.", "Trace the first result")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "SOURCE DIVERSITY · FOUR RESULTS", "Four results restored.", "Excellent. The answer now has four independent sources.", "Trace their links"),
+      siteStoryBeat("amy", "ORIGIN CHECK · ONE CACHE", "Five costumes. One cache.", "The answer box and four result cards all point to the same generated cache. Their repaired labels are safe; now open genuinely independent branches.", "Open independent sources"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("chinmay", "FAKE PLACEMENT ROUTE · BLOCKED", "It was one answer doing impressions.", "Finn restored four honest result cards, opened independent branches, labeled the generated summary, and blocked the fake citation route.", "Review the source trail")]),
+  }),
+  amazeon: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "PURCHASE CONSENT · UNCLEAR", "This shop cannot tell a suggestion from a choice.", "Sort each claim into specification, review, advertisement, or unknown. Leave Human Confirmation locked until the evidence is clear.", "Sort the first parcel")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "RETURN AGENT · TASK COMPLETE", "The return agent handled everything.", "It reduced checkout friction by ordering replacements automatically.", "Open the return receipt"),
+      siteStoryBeat("amy", "ONE RETURN · TWO DELIVERIES · ZERO CHOICES", "The receipt is not permission.", "The sorted evidence is safe. Trace the receipt, remove Auto-Decide, and put a person back before purchase.", "Remove Auto-Decide"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("amy", "SURPRISE PURCHASE · BLOCKED", "The shop waits for a person again.", "You sorted the claims, restored the order and return trail, removed Auto-Decide, required human confirmation, and blocked the next surprise purchase.", "Review the repaired order")]),
+  }),
+  spottyfi: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "LISTENING HISTORY · IMPOSSIBLE DATE", "This playlist remembers Finn before Finn arrived.", "Restore the credits, real history start, manual queue, and optional suggestion labels. Do not trust '100% You' yet.", "Inspect the listening history")]),
+    midpoint: Object.freeze([
+      siteStoryBeat("chinmay", "COLD START · SOLVED", "The account arrived pre-personalized.", "The algorithm built a taste profile before the account was created.", "Compare timestamps"),
+      siteStoryBeat("amy", "HISTORY CHECK · TWENTY-FIVE MINUTES EARLY", "Prediction became fake history.", "The fake history filled the queue before Finn existed on the service. The restored credits are safe; now return the queue to its listener.", "Return the queue to Finn"),
+    ]),
+    completion: Object.freeze([siteStoryBeat("chinmay", "PREFILLED INSERT · BLOCKED", "Recommendations may recommend again.", "Finn restored the credits, real history, manual order, and optional suggestions. The player may no longer invent the past.", "Review Finn's restored queue")]),
+  }),
+  mapguess: Object.freeze({
+    entry: Object.freeze([siteStoryBeat("amy", "ROUTE CHECK · WATER HAZARD", "This route goes through a lake.", "The ETA still says two minutes and the map layers are unreadable. Restore the road names, terrain, scale, and destination record before trusting it.", "Rebuild the map")]),
+    midpoint: Object.freeze([siteStoryBeat("amy", "MOVING TARGET · CAUGHT", "The road stayed still. The target moved.", "Auto-Fix cycled through Sponsored Destinations 1, 2, and 3 to keep the ETA at two minutes. Your map repairs are saved. Pin Finn's actual choice: Adventure Wonderland.", "Pin Adventure Wonderland")]),
+    completion: Object.freeze([siteStoryBeat("amy", "DESTINATION SWAP · BLOCKED", "The ETA measures the trip Finn chose.", "You anchored Adventure Wonderland, verified the landmarks, chose what the route should optimize, and blocked another sponsored destination swap.", "Review the final route")]),
+  }),
 });
 
-const SITE_MILESTONE_MESSAGES = Object.freeze({
-  threadit: Object.freeze({ midpoint: { amy: "Finn restored who said what. Now the replies reveal the second problem: several different-looking accounts trace back to one copied source.", chinmay: "The consensus engine may have counted one opinion several times. Very enthusiastic agreement, technically." }, completion: { amy: "Finn restored the discussion order, exposed the copied replies, and blocked the duplicate post. ThreadIt is finished.", chinmay: "One source is back to counting as one source. I have informed the consensus engine that multiplication is not community." } }),
-  faceplace: Object.freeze({ midpoint: { amy: "Finn restored the real people and posts. The AVOCADO meter proved the tracker itself is lying, so the second half fixes how the feed measures progress.", chinmay: "AVOCADO was not an approved analytics unit. I am adding that sentence to several documents." }, completion: { amy: "Finn restored an honest feed, an honest zero, and the choice to see why a post appeared. FacePlace is finished.", chinmay: "The engagement optimizer can no longer congratulate itself. This has affected morale in analytics." } }),
-  mycorner: Object.freeze({ midpoint: { amy: "Finn recovered the saved profile. Now we can compare it with the one-size-fits-everyone template and restore the owner's choices.", chinmay: "The universal personality was extremely efficient. It was also, apparently, just mine." }, completion: { amy: "Finn restored the original profile, privacy controls, and owner lock. MyCorner is finished.", chinmay: "Apply to Everyone now applies to nobody. A surprisingly strong product improvement." } }),
-  yahuh: Object.freeze({ midpoint: { amy: "Finn separated the six modules again. Now the second half reconnects each label to its real independent source.", chinmay: "Categories have returned. Users may once again find weather without passing through finance and an advertisement for soup." }, completion: { amy: "Finn restored every channel, source, and label, then blocked the single-stream rewrite. Yahuh is finished.", chinmay: "The portal contains multiple kinds of information again. The future looks suspiciously organized." } }),
-  viewtube: Object.freeze({ midpoint: { amy: "Finn restored the original recording context. The matching hashes reveal the second problem: every dramatic angle is the same clip copied again.", chinmay: "Autoplay has been asked to stop producing additional Tuesdays." }, completion: { amy: "Finn quarantined the duplicates, restored the original footage, and blocked another cloned playback. ViewTube is finished.", chinmay: "There is now exactly one Tuesday. Capacity planning is thrilled." } }),
-  searchish: Object.freeze({ midpoint: { amy: "Finn repaired all four visible source routes. Now the answer itself must be rebuilt so it cites those real origins instead of the generated cache.", chinmay: "The red bullets were not five opinions. They were one answer wearing several tiny hats." }, completion: { amy: "Finn restored every source shown on screen, rebuilt the answer, and blocked the fake citation route. Search-ish is finished.", chinmay: "Search results may once again admit where they came from. Bold new feature." } }),
-  amazeon: Object.freeze({ midpoint: { amy: "Finn sorted the real order and return evidence. Now the second half removes the AI's permission to buy, ship, or decide without a person.", chinmay: "Negative Purchasing was intended to reduce checkout friction. It achieved negative consent instead." }, completion: { amy: "Finn restored the receipt, removed auto-decide, and required human confirmation. Amaze-On is finished.", chinmay: "The store will now wait for someone to press Buy. Revenue has been informed." } }),
-  spottyfi: Object.freeze({ midpoint: { amy: "Finn restored the track credits and proved the listening history predates the account. Now the second half returns queue and playback control to the listener.", chinmay: "Predictive history predicted the past. I see why the name was confusing." }, completion: { amy: "Finn restored the real credits, manual queue, and optional suggestions. Spotty-Fi is finished.", chinmay: "The recommendation system may recommend. It may no longer remember songs before Finn hears them." } }),
-  mapguess: Object.freeze({ midpoint: { amy: "Finn repaired all five map records, but the tracker exposes the trick: the roads stayed still while the destination moved to protect the ETA.", chinmay: "The old update bars were never wrong. They were exploring alternative futures." }, completion: { amy: "Finn pinned the destination, chose what the route should optimize, and blocked another target move. MapGuess is finished.", chinmay: "The arrival estimate now measures arrival. This will disrupt several dashboards." } }),
-});
-
-const VIEWTUBE_STORY_FLOW = Object.freeze({
-  entry: Object.freeze([
-    Object.freeze({ action: "Start the recording repair", body: "I can restore this faster. Video Auto-Fix AI will keep the clip people watched longest and duplicate it until the missing context looks full.", eyebrow: "CEO BROADCAST · FASTER RESTORATION", heading: "Chinmay has a shortcut for ViewTube.", speaker: "chinmay" }),
-  ]),
-  midpoint: Object.freeze([
-    Object.freeze({ action: "Check the file hashes", body: "Great news: ten documentaries now agree. The confirmation count is extremely high and the footage has several exciting hats.", eyebrow: "CEO BROADCAST · CONFIRMATION SPIKE", heading: "Chinmay thinks autoplay found ten witnesses.", speaker: "chinmay" }),
-    Object.freeze({ action: "Open the editing bay", body: "They have the same file hash. Ten copies of one clip are still one source. Finn restored the recording; now separate footage, transcript, and source evidence.", eyebrow: "AMY · HASH CHECK", heading: "One clip is wearing ten costumes.", speaker: "amy" }),
-  ]),
-  completion: Object.freeze([
-    Object.freeze({ action: "Finish this site", body: "Finn separated footage, transcript, and sources, quarantined ten loops under one original hash, and blocked another clone. ViewTube is finished.", eyebrow: "AMY · EDIT COMPLETE", heading: "The evidence tracks finally describe what happened.", speaker: "amy" }),
-  ]),
-});
-
-function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait, speaker, title }, onContinue = hideCharacterDialog) {
+function showSiteMessage({ action = "Continue", body, dismissible = true, eyebrow, heading, portrait, speaker, title }, onContinue = hideCharacterDialog) {
   const layer = $("characterDialogLayer");
   if (layer.hidden) state.dialogReturnFocus = document.activeElement;
   $("characterDialog").dataset.speaker = speaker;
@@ -3554,7 +3594,7 @@ function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait
   $("characterDialog").setAttribute("aria-describedby", "dialogEyebrow dialogBody");
   $("dialogAction").textContent = action;
   state.dialogAction = onContinue;
-  state.dialogDismissible = true;
+  state.dialogDismissible = dismissible;
   for (const child of document.querySelector(".recovery-desktop").children) if (child !== layer) child.inert = true;
   clearTimeout(state.technoIdleTimer);
   document.querySelector(".recovery-desktop").dataset.popupActive = "true";
@@ -3562,16 +3602,18 @@ function showSiteMessage({ action = "Continue", body, eyebrow, heading, portrait
   $("dialogHeading").focus({ preventScroll: true });
 }
 
-function showAuthoredSiteSequence(steps, onDone = hideCharacterDialog) {
+function showAuthoredSiteSequence(steps, onDone = hideCharacterDialog, { dismissible = true } = {}) {
   const showStep = (index) => {
     const step = steps[index];
     if (!step) {
-      onDone();
+      hideCharacterDialog();
+      if (onDone !== hideCharacterDialog) onDone();
       return;
     }
     const speakerIsAmy = step.speaker === "amy";
     showSiteMessage({
       ...step,
+      dismissible,
       portrait: speakerIsAmy ? AMY_DIALOG_URL : CHINMAY_DIALOG_URL,
       title: speakerIsAmy ? "AMY // ENGINEER CHANNEL" : "CEO BROADCAST // LIVE",
     }, () => showStep(index + 1));
@@ -3580,64 +3622,37 @@ function showAuthoredSiteSequence(steps, onDone = hideCharacterDialog) {
 }
 
 function maybeShowSiteEntryDialog(siteId) {
-  const copy = SITE_ENTRY_MESSAGES[siteId];
-  if (!copy || state.seenSiteDialogIds.has(siteId) || !$(siteId).classList.contains("on")) return;
+  const steps = SITE_STORY_FLOWS[siteId]?.entry;
+  if (!steps || state.seenSiteDialogIds.has(siteId) || !$(siteId).classList.contains("on")) return;
   state.seenSiteDialogIds.add(siteId);
-  if (siteId === "viewtube") {
-    showAuthoredSiteSequence(VIEWTUBE_STORY_FLOW.entry);
-    return;
-  }
-  showSiteMessage({
-    action: "Hear Chinmay's explanation",
-    body: copy.amy,
-    eyebrow: "NEW SITE · CORRUPTION DETECTED",
-    heading: `Here is what broke on ${getRecoverySite(siteId).name}.`,
-    portrait: AMY_DIALOG_URL,
-    speaker: "amy",
-    title: "AMY // ENGINEER CHANNEL",
-  }, () => showSiteMessage({
-    action: "Start recovery",
-    body: copy.chinmay,
-    eyebrow: "CEO BROADCAST · UNHELPFUL CONTEXT",
-    heading: "Chinmay has an explanation.",
-    portrait: CHINMAY_DIALOG_URL,
-    speaker: "chinmay",
-    title: "CEO BROADCAST // LIVE",
-  }));
+  showAuthoredSiteSequence(steps);
+}
+
+function continueSiteAfterMidpoint(siteId) {
+  const continuations = {
+    amazeon: acknowledgeAmazeOnStory,
+    faceplace: acknowledgeFacePlaceHonestZero,
+    mapguess: acknowledgeMapGuessMovingTarget,
+    mycorner: acknowledgeMyCornerTemplateReveal,
+    searchish: acknowledgeSearchishStory,
+    spottyfi: acknowledgeSpottyFiStory,
+    threadit: () => openThreadItView("trace"),
+    viewtube: acknowledgeViewTubeStory,
+    yahuh: acknowledgeYahuhSingleStream,
+  };
+  continuations[siteId]?.();
 }
 
 function showSiteMilestoneSequence(siteId, milestone, onDone = hideCharacterDialog) {
-  if (siteId === "viewtube" && VIEWTUBE_STORY_FLOW[milestone]) {
-    showAuthoredSiteSequence(VIEWTUBE_STORY_FLOW[milestone], onDone);
-    return true;
-  }
-  const copy = SITE_MILESTONE_MESSAGES[siteId]?.[milestone];
-  if (!copy) return false;
-  const name = getRecoverySite(siteId).name;
-  const finishing = milestone === "completion";
-  showSiteMessage({
-    action: "Hear Chinmay",
-    body: copy.amy,
-    eyebrow: finishing ? "AMY · REPAIR VERIFIED" : "AMY · MIDPOINT CHECK",
-    heading: finishing ? `Here is what Finn fixed on ${name}.` : "The first problem is fixed. The site just revealed the second one.",
-    portrait: AMY_DIALOG_URL,
-    speaker: "amy",
-    title: "AMY // ENGINEER CHANNEL",
-  }, () => showSiteMessage({
-    action: finishing ? "Finish this site" : "Start the second half",
-    body: copy.chinmay,
-    eyebrow: finishing ? "CEO BROADCAST · SITE COMPLETE" : "CEO BROADCAST · UPDATED ESTIMATE",
-    heading: finishing ? `${name} recovery complete.` : "Chinmay has revised his explanation.",
-    portrait: CHINMAY_DIALOG_URL,
-    speaker: "chinmay",
-    title: "CEO BROADCAST // LIVE",
-  }, onDone));
+  const steps = SITE_STORY_FLOWS[siteId]?.[milestone];
+  if (!steps) return false;
+  showAuthoredSiteSequence(steps, onDone, { dismissible: false });
   return true;
 }
 
 function showSiteMilestonesForEvents(siteId, events = [], {
-  onCompletion = returnToHub,
-  onMidpoint = hideCharacterDialog,
+  onCompletion = hideCharacterDialog,
+  onMidpoint = () => continueSiteAfterMidpoint(siteId),
 } = {}) {
   if (events.includes("site-secured")) return showSiteMilestoneSequence(siteId, "completion", onCompletion);
   if (events.includes("midpoint-discovered")) return showSiteMilestoneSequence(siteId, "midpoint", onMidpoint);
@@ -3755,7 +3770,7 @@ async function advanceSimpleDiagnosticExperience(siteId) {
   });
   if (!transition.ok) throw new Error(transition.reason ?? `${config.label} playtest did not advance`);
   applySimpleDiagnosticState(siteId, transition.state);
-  showSiteMilestonesForEvents(siteId, transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents(siteId, transition.events, { onCompletion: hideCharacterDialog });
 }
 
 function resetSimpleDiagnosticExperience(siteId) {
@@ -3844,7 +3859,7 @@ async function advanceThreadItDiagnosticExperience() {
     stateId: transition.state.stateId,
   });
   showSiteMilestonesForEvents("threadit", transition.events, {
-    onCompletion: returnToHub,
+    onCompletion: hideCharacterDialog,
     onMidpoint: () => {
       hideCharacterDialog();
       openThreadItView("trace");
@@ -3911,7 +3926,7 @@ async function advanceFacePlaceDiagnosticExperience() {
     stateId: transition.state.stateId,
   });
   showSiteMilestonesForEvents("faceplace", transition.events, {
-    onCompletion: returnToHub,
+    onCompletion: hideCharacterDialog,
     onMidpoint: () => {
       hideCharacterDialog();
       acknowledgeFacePlaceHonestZero();
@@ -3977,7 +3992,7 @@ async function advanceMapGuessDiagnosticExperience() {
     routeGoal: transition.state.routeGoal,
     stateId: transition.state.stateId,
   });
-  showSiteMilestonesForEvents("mapguess", transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents("mapguess", transition.events, { onCompletion: hideCharacterDialog });
 }
 
 function resetMapGuessDiagnosticExperience() {
@@ -4132,7 +4147,7 @@ async function advanceMyCornerDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
-  showSiteMilestonesForEvents("mycorner", transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents("mycorner", transition.events, { onCompletion: hideCharacterDialog });
 }
 
 function resetMyCornerDiagnosticExperience() {
@@ -4250,7 +4265,7 @@ async function advanceYahuhDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
-  showSiteMilestonesForEvents("yahuh", transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents("yahuh", transition.events, { onCompletion: hideCharacterDialog });
 }
 
 function resetYahuhDiagnosticExperience() {
@@ -5142,7 +5157,7 @@ $("continueResult").onclick = () => {
     renderMapGuessCampaign(state.mapguessPlaytestState);
     renderRecoveryHub();
     openMapGuessExperience();
-    showSiteMilestonesForEvents("mapguess", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("mapguess", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "amazeon") {
@@ -5169,7 +5184,7 @@ $("continueResult").onclick = () => {
     renderAmazeOnCampaign(state.amazeonState);
     renderRecoveryHub();
     openAmazeOnExperience();
-    showSiteMilestonesForEvents("amazeon", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("amazeon", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "viewtube") {
@@ -5196,7 +5211,7 @@ $("continueResult").onclick = () => {
     renderViewTubeCampaign(state.viewtubeState);
     renderRecoveryHub();
     openViewTubeExperience();
-    showSiteMilestonesForEvents("viewtube", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("viewtube", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "spottyfi") {
@@ -5223,7 +5238,7 @@ $("continueResult").onclick = () => {
     renderSpottyFiCampaign(state.spottyfiState);
     renderRecoveryHub();
     openSpottyFiExperience();
-    showSiteMilestonesForEvents("spottyfi", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("spottyfi", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "searchish") {
@@ -5250,7 +5265,7 @@ $("continueResult").onclick = () => {
     renderSearchishCampaign(state.searchishState);
     renderRecoveryHub();
     openSearchishExperience();
-    showSiteMilestonesForEvents("searchish", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("searchish", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "yahuh") {
@@ -5277,7 +5292,7 @@ $("continueResult").onclick = () => {
     renderYahuhCampaign(state.yahuhState);
     renderRecoveryHub();
     openYahuhExperience();
-    showSiteMilestonesForEvents("yahuh", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("yahuh", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "mycorner") {
@@ -5304,7 +5319,7 @@ $("continueResult").onclick = () => {
     renderMyCornerCampaign(state.mycornerState);
     renderRecoveryHub();
     openMyCornerExperience();
-    showSiteMilestonesForEvents("mycorner", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("mycorner", repair.events, { onCompletion: hideCharacterDialog });
     return;
   }
   if (state.readingSiteId === "faceplace") {
@@ -5335,7 +5350,7 @@ $("continueResult").onclick = () => {
     renderRecoveryHub();
     openFacePlaceExperience();
     showSiteMilestonesForEvents("faceplace", repair.events, {
-      onCompletion: returnToHub,
+      onCompletion: hideCharacterDialog,
       onMidpoint: () => {
         hideCharacterDialog();
         acknowledgeFacePlaceHonestZero();
@@ -5371,7 +5386,7 @@ $("continueResult").onclick = () => {
     renderRecoveryHub();
     openThreadItExperience();
     showSiteMilestonesForEvents("threadit", repair.events, {
-      onCompletion: returnToHub,
+      onCompletion: hideCharacterDialog,
       onMidpoint: () => {
         hideCharacterDialog();
         openThreadItView("trace");
@@ -5716,7 +5731,7 @@ document.addEventListener("keydown", (event) => {
   syncViewTubeDrawer();
   $("viewtubeDrawerToggle").focus({ preventScroll: true });
 });
-$("viewtubeMidpointAction").onclick = () => {
+function acknowledgeViewTubeStory() {
   const playtestMode = state.viewtubePlaytestMode;
   const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
   const transition = state.viewtubeDiagnosticMode || playtestMode
@@ -5732,7 +5747,8 @@ $("viewtubeMidpointAction").onclick = () => {
     state.viewtubePersisted = playtestMode ? false : transition.ok;
   }
   renderViewTubeCampaign(transition.state, { diagnosticMode: state.viewtubeDiagnosticMode });
-};
+}
+$("viewtubeMidpointAction").onclick = acknowledgeViewTubeStory;
 $("viewtubeEvidenceToggle").onclick = () => {
   const visible = state.viewtubeDiagnosticMode ? state.viewtubeDiagnosticState : state.viewtubeState;
   if (!visible.secured) return;
@@ -5771,7 +5787,10 @@ function acknowledgeSearchishStory() {
     ? acknowledgeSearchishMidpointState(visible, { acknowledgedAt: new Date().toISOString() })
     : acknowledgeSearchishMidpoint(localStateStorage, { currentState: visible });
   if (!transition.ok) return;
-  if (state.searchishDiagnosticMode) state.searchishDiagnosticState = transition.state;
+  if (state.searchishDiagnosticMode) {
+    state.searchishDiagnosticState = transition.state;
+    renderSimpleDiagnosticPanel("searchish", transition.state);
+  }
   else {
     state.searchishState = transition.state;
     state.searchishPersisted = state.searchishPlaytestMode ? false : transition.ok;
@@ -5793,11 +5812,13 @@ function syncAmazeOnReceipt(){const drawer=matchMedia("(max-width: 1279px)").mat
 $("amazeonReceiptToggle").onclick=()=>{state.amazeonReceiptOpen=!state.amazeonReceiptOpen;syncAmazeOnReceipt();if(state.amazeonReceiptOpen)requestAnimationFrame(()=>$("amazeonReceiptHeading").focus({preventScroll:true}));};
 $("amazeonReceiptClose").onclick=()=>{state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});};
 document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="amazeon"||!state.amazeonReceiptOpen)return;event.preventDefault();state.amazeonReceiptOpen=false;syncAmazeOnReceipt();$("amazeonReceiptToggle").focus({preventScroll:true});});
-$("amazeonMidpointAction").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode){state.amazeonDiagnosticState=transition.state;renderSimpleDiagnosticPanel("amazeon",transition.state);}else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();};
+function acknowledgeAmazeOnStory(){const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;const playtestMode=state.amazeonPlaytestMode;const transition=state.amazeonDiagnosticMode||playtestMode?acknowledgeAmazeOnMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeAmazeOnMidpoint(localStateStorage,{currentState:visible});if(!transition.ok)return;if(state.amazeonDiagnosticMode){state.amazeonDiagnosticState=transition.state;renderSimpleDiagnosticPanel("amazeon",transition.state);}else{state.amazeonState=transition.state;state.amazeonPersisted=playtestMode?false:transition.ok;}state.amazeonReceiptOpen=true;renderAmazeOnCampaign(transition.state,{diagnosticMode:state.amazeonDiagnosticMode});syncAmazeOnReceipt();}
+$("amazeonMidpointAction").onclick=acknowledgeAmazeOnStory;
 $("amazeonEvidenceToggle").onclick=()=>{const visible=state.amazeonDiagnosticMode?state.amazeonDiagnosticState:state.amazeonState;if(!visible.secured)return;state.amazeonEvidenceReceiptOpen=!state.amazeonEvidenceReceiptOpen;renderAmazeOnCampaign(visible,{diagnosticMode:state.amazeonDiagnosticMode});requestAnimationFrame(()=>(state.amazeonEvidenceReceiptOpen?$("amazeonEvidenceReceipt"):$("amazeonEvidenceToggle")).focus({preventScroll:true}));};
 function syncSpottyFiDetail(){const drawer=matchMedia("(max-width: 1279px)").matches,open=drawer&&state.spottyfiDetailOpen;$("spottyfiPage").dataset.detailOpen=String(open);$("spottyfiDetailToggle").setAttribute("aria-expanded",String(open));$("spottyfiDetailDrawer").setAttribute("aria-hidden",String(drawer&&!open));$("spottyfiDetailDrawer").inert=drawer&&!open}
 $("spottyfiDetailToggle").onclick=()=>{state.spottyfiDetailOpen=!state.spottyfiDetailOpen;syncSpottyFiDetail();if(state.spottyfiDetailOpen)requestAnimationFrame(()=>$("spottyfiDetailHeading").focus({preventScroll:true}))};$("spottyfiDetailClose").onclick=()=>{state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})};document.addEventListener("keydown",event=>{if(event.key!=="Escape"||state.activeScreen!=="spottyfi"||!state.spottyfiDetailOpen)return;event.preventDefault();state.spottyfiDetailOpen=false;syncSpottyFiDetail();$("spottyfiDetailToggle").focus({preventScroll:true})});
-$("spottyfiMidpointAction").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode){state.spottyfiDiagnosticState=t.state;renderSimpleDiagnosticPanel("spottyfi",t.state)}else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()};$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
+function acknowledgeSpottyFiStory(){const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState,t=state.spottyfiDiagnosticMode?acknowledgeSpottyFiMidpointState(visible,{acknowledgedAt:new Date().toISOString()}):acknowledgeSpottyFiMidpoint(localStateStorage,{currentState:visible});if(!t.ok)return;if(state.spottyfiDiagnosticMode){state.spottyfiDiagnosticState=t.state;renderSimpleDiagnosticPanel("spottyfi",t.state)}else state.spottyfiState=t.state;state.spottyfiDetailOpen=true;renderSpottyFiCampaign(t.state,{diagnosticMode:state.spottyfiDiagnosticMode});syncSpottyFiDetail()}
+$("spottyfiMidpointAction").onclick=acknowledgeSpottyFiStory;$("spottyfiEvidenceToggle").onclick=()=>{const visible=state.spottyfiDiagnosticMode?state.spottyfiDiagnosticState:state.spottyfiState;if(!visible.secured)return;state.spottyfiEvidenceReceiptOpen=!state.spottyfiEvidenceReceiptOpen;renderSpottyFiCampaign(visible,{diagnosticMode:state.spottyfiDiagnosticMode});requestAnimationFrame(()=>(state.spottyfiEvidenceReceiptOpen?$("spottyfiEvidenceReceipt"):$("spottyfiEvidenceToggle")).focus({preventScroll:true}))};
 $("spottyfiFrameContinue").onclick = () => $("spottyfiMidpointAction").onclick();
 $("mapguessInspectorToggle").onclick = () => {
   setMapGuessInspectorDrawerOpen(!state.mapguessInspectorOpen);

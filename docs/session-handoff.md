@@ -1,5 +1,27 @@
 # Session handoff
 
+## 2026-07-14 authored cutscene continuity
+
+- Working branch: `agent/site-visual-continuity`; the dirty primary checkout
+  remains untouched. This continues draft PR #124.
+- All nine post-WikiWhy sites now use authored entry, midpoint, and completion
+  arrays instead of the fixed Amy then Chinmay template. Buttons name concrete
+  game actions, speaker order varies by story, and the final midpoint click
+  invokes the site's real Act II acknowledgement directly.
+- Midpoint and completion sequences are non-dismissible so Escape cannot strand
+  saved progress. Completion leaves the repaired site on screen for inspection
+  instead of returning to the map before the payoff can be seen.
+- Real 1280x720 browser playthroughs covered every midpoint and the complete
+  FacePlace ending. Search-ish needed one additional diagnostic-panel render
+  after acknowledgement; that regression was fixed and retested.
+- Review captures: `threadit-cutscene-ten-accounts-v2.png`,
+  `threadit-act2-source-trace-v2.png`, `faceplace-completion-cutscene-v2.png`,
+  and `faceplace-repaired-feed-v2.png` under `docs/design/review/`.
+- Validation passes: all 407 repository tests, syntax checks, the Vite
+  production build, and `git diff --check`.
+- The Reading Engine, speech recognition, scoring, microphone behavior, and
+  passage selection were not changed.
+
 ## 2026-07-14 Reading Companion production integration
 
 - Isolated publication branch: `agent/sherpa-live-hosting`, based on
