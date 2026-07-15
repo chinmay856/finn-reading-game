@@ -106,6 +106,19 @@ body {
   height: 100%;
 }
 
+/* Keep the approved site composition in place while reading. The live
+   Reading Companion replaces only the small setup gate beside that site. */
+:is(#threadit,#faceplace,#mycorner,#yahuh,#viewtube,#searchish,#amazeon,#spottyfi,#mapguess)[data-live-reading="true"] > .reader-window {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+:is(#threadit,#faceplace,#mycorner,#yahuh,#viewtube,#searchish,#amazeon,#spottyfi,#mapguess)[data-live-reading="true"] > aside[hidden] {
+  display: none !important;
+}
+
 .site-reading-stage {
   --reading-site-accent: #e35a16;
   --reading-progress: 0;

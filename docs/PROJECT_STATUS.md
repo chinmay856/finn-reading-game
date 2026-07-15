@@ -915,3 +915,25 @@ desktop click-through remains the publication smoke check.
   non-overlapping MapGuess moving-target tracker.
 - Speech, scoring, microphone, and Reading Engine files were intentionally not
   changed. `npm.cmd run check`, all 354 tests, and `npm.cmd run build` pass.
+
+## Live reading site continuity hotfix - deployed 2026-07-14
+
+- For all nine non-WikiWhy sites, `Read next passage` now keeps the active site
+  visible and docks the Reading Companion beside it. The legacy generic
+  `live-reading` preview no longer replaces the site.
+- First-time microphone preparation also runs inside that docked companion.
+  The setup page, generic reader, and stale previous-site routes remain hidden
+  while microphone access and the local models start.
+- `Start reading` pins the owning site both before and after asynchronous local
+  guide and microphone startup. Failure and retry states stay on the same site.
+- The floating Techno desktop pet is hidden during docked live reading so it
+  cannot cover the microphone control.
+- FacePlace's midpoint now moves naturally from Honest Zero into Act II without
+  inventing an extra AVOCADO passage; its secured evidence panel remains
+  readable beside the companion.
+- Firebase Hosting was verified at the cache-busted Spotty-Fi URL: the Spotty-Fi
+  screen stayed active after both `Read next passage` and microphone setup,
+  `#readingCompanionWindow` remained a child of `#spottyfi`, and neither the
+  setup screen nor the generic reader became active.
+- `npm.cmd run check`, all 404 tests, `npm.cmd run build`, pinned Sherpa v1.13.2
+  SHA-256 verification, and two Firebase Hosting deployments passed.

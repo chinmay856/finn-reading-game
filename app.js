@@ -248,6 +248,7 @@ const state = {
   diagnosticMode: false, diagnosticState: null, dialogAction: null, dialogDismissible: true, dialogReturnFocus: null,
   evidenceReceiptOpen: false,
   activeScreen: "hub", selectedSiteId: "wikiwhy", preparing: false,
+  liveReadingSiteId: null, preparationError: null, streamingBootStatus: "",
   speechPrepared: false,
   streamingCompanion: null, streamingGuideGate: null, streamingPcmUnsubscribe: null,
   streamingRecognizer: null, streamingWarmupMs: null,
@@ -264,7 +265,6 @@ const state = {
   faceplaceState: readFacePlaceState(localStateStorage),
   faceplacePersisted: Boolean(localStateStorage),
   faceplaceDiagnosticMode: false,
-  faceplaceAvocadoProbeComplete: false,
   faceplacePlaytestMode: false,
   faceplaceDiagnosticState: readFacePlaceState(null),
   faceplaceEvidenceReceiptOpen: false,
@@ -715,12 +715,20 @@ function resetReadingAttempt() {
 
 function openPreparedReadingOrSetup() {
   if (!state.speechPrepared) {
+    if (LIVE_READING_SITE_IDS.includes(state.readingSiteId)) {
+      $("listen").disabled = false;
+      $("listen").textContent = "Prepare microphone";
+      $("readerState").textContent = "MICROPHONE SETUP REQUIRED - THIS SITE WILL STAY OPEN";
+      $("guideStatus").textContent = "Prepare the local reading guide once, then read without leaving this site.";
+      showReadingExperience();
+      return;
+    }
     show("setup");
     return;
   }
   $("listen").textContent = "Start reading";
   $("readerState").textContent = "MICROPHONE READY · PRESS START READING WHEN YOU ARE READY";
-  show("read");
+  showReadingExperience();
 }
 
 function openNextCampaignReading() {
@@ -879,6 +887,55 @@ function syncReadingStage() {
   $("siteReadingStatus").textContent = `${site.name.toUpperCase()} LINK READY`;
 }
 
+const LIVE_READING_SITE_IDS = Object.freeze([
+  "threadit",
+  "faceplace",
+  "mycorner",
+  "yahuh",
+  "viewtube",
+  "searchish",
+  "amazeon",
+  "spottyfi",
+  "mapguess",
+]);
+
+function restoreLiveReadingLayout() {
+  const siteId = state.liveReadingSiteId;
+  if (!siteId) return;
+  const siteScreen = $(siteId);
+  const gate = siteScreen?.querySelector(":scope > aside:not(.reader-window)");
+  if (gate) {
+    gate.hidden = false;
+    gate.inert = false;
+    gate.removeAttribute("aria-hidden");
+  }
+  siteScreen?.removeAttribute("data-live-reading");
+  $("read").append($("readingCompanionWindow"));
+  state.liveReadingSiteId = null;
+}
+
+function showReadingExperience() {
+  if (!LIVE_READING_SITE_IDS.includes(state.readingSiteId)) {
+    restoreLiveReadingLayout();
+    show("read");
+    return;
+  }
+  restoreLiveReadingLayout();
+  const siteScreen = $(state.readingSiteId);
+  const gate = siteScreen.querySelector(":scope > aside:not(.reader-window)");
+  gate.hidden = true;
+  gate.inert = true;
+  gate.setAttribute("aria-hidden", "true");
+  siteScreen.dataset.liveReading = "true";
+  siteScreen.append($("readingCompanionWindow"));
+  state.liveReadingSiteId = state.readingSiteId;
+  show(state.readingSiteId);
+  // The site-owned reading layout has no safe floating corner for the desktop
+  // pet; keep the primary microphone control completely unobstructed.
+  $("technoPet").dataset.screen = "read";
+  requestAnimationFrame(() => $("listen").focus({ preventScroll: true }));
+}
+
 function updateGenericReadingProgress(percent) {
   const value = Math.min(100, Math.max(0, Math.round(Number(percent) || 0)));
   const stage = $("siteReadingStage");
@@ -897,6 +954,7 @@ function updateGenericReadingProgress(percent) {
 }
 
 function show(name) {
+  if (state.liveReadingSiteId && name !== state.liveReadingSiteId) restoreLiveReadingLayout();
   const screenChanged = state.activeScreen !== name;
   for (const id of ["hub", "endgame", "sitePreview", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "searchish", "amazeon", "spottyfi", "mapguess", "setup", "read", "review"]) $(id).classList.toggle("on", id === name);
   state.activeScreen = name;
@@ -1755,7 +1813,7 @@ function renderThreadItDiagnosticPanel(campaignState) {
     $("diagnosticSummary").textContent = `${actOneCompleted} simulated passage${actOneCompleted === 1 ? "" : "s"} · next result restores ${THREADIT_ACT_ONE_UNITS[actOneCompleted]?.unitId.replaceAll("_", " ") ?? "the source trace"}.`;
     $("diagnosticAdvance").textContent = "Skip simulated ThreadIt passage →";
   }
-  $("diagnosticAdvance").disabled = view.secured || midpointPending && state.faceplaceAvocadoProbeComplete;
+  $("diagnosticAdvance").disabled = view.secured || midpointPending;
 }
 
 function facePlaceInitials(label) {
@@ -1982,8 +2040,8 @@ function renderFacePlaceCampaign(campaignState, { diagnosticMode = false } = {})
     ?? "PENDING DESIGNER ID";
   $("faceplaceEvidenceToggle").setAttribute("aria-expanded", String(view.secured && state.faceplaceEvidenceReceiptOpen));
   $("faceplaceEvidenceToggle").textContent = state.faceplaceEvidenceReceiptOpen
-    ? "Close provisional FacePlace test receipt"
-    : "Open provisional FacePlace test receipt";
+    ? "Close repair receipt"
+    : "Open repair receipt";
   $("faceplaceEvidenceReceipt").hidden = !view.secured || !state.faceplaceEvidenceReceiptOpen;
 
   $("faceplaceStatusStrip").textContent = view.secured
@@ -2039,7 +2097,7 @@ function renderFacePlaceDiagnosticPanel(campaignState) {
     $("diagnosticSummary").textContent = state.faceplaceShowActOneResult
       ? "Three real repairs are saved, but the AVOCADO meter is still pretending nothing changed. Run one more check to catch it lying."
       : "Three Act I repairs remain saved. Acknowledge Honest Zero before another simulated reading can advance.";
-    $("diagnosticAdvance").textContent = state.faceplaceAvocadoProbeComplete ? "Acknowledge Honest Zero first" : "Run one more passage at AVOCADO →";
+    $("diagnosticAdvance").textContent = "Finish the Honest Zero cutscene first";
   } else if (view.midpoint.acknowledged) {
     const next = FACEPLACE_RECOVERY_UNITS[view.progress.honestRecoveryCompletedCount];
     $("diagnosticPhase").textContent = `FACEPLACE HONEST RECOVERY · ${view.progress.honestRecoveryCompletedCount} OF 3`;
@@ -2998,7 +3056,7 @@ function keepPreparationVisible() {
 function openRecoverySite(siteId) {
   if (keepPreparationVisible()) return;
   if (state.listening || (state.finishing && !state.result)) {
-    show("read");
+    showReadingExperience();
     $("readerState").textContent = "Finish the active reading before opening another window.";
     return;
   }
@@ -3050,7 +3108,7 @@ function openRecoverySite(siteId) {
 function returnToHub() {
   if (keepPreparationVisible()) return;
   if (state.listening || (state.finishing && !state.result)) {
-    show("read");
+    showReadingExperience();
     $("readerState").textContent = "Finish the active reading before returning to the Recovery Map.";
     return;
   }
@@ -3577,9 +3635,12 @@ function showSiteMilestoneSequence(siteId, milestone, onDone = hideCharacterDial
   return true;
 }
 
-function showSiteMilestonesForEvents(siteId, events = [], { onCompletion = returnToHub } = {}) {
+function showSiteMilestonesForEvents(siteId, events = [], {
+  onCompletion = returnToHub,
+  onMidpoint = hideCharacterDialog,
+} = {}) {
   if (events.includes("site-secured")) return showSiteMilestoneSequence(siteId, "completion", onCompletion);
-  if (events.includes("midpoint-discovered")) return showSiteMilestoneSequence(siteId, "midpoint");
+  if (events.includes("midpoint-discovered")) return showSiteMilestoneSequence(siteId, "midpoint", onMidpoint);
   return false;
 }
 
@@ -3782,7 +3843,13 @@ async function advanceThreadItDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
-  showSiteMilestonesForEvents("threadit", transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents("threadit", transition.events, {
+    onCompletion: returnToHub,
+    onMidpoint: () => {
+      hideCharacterDialog();
+      openThreadItView("trace");
+    },
+  });
 }
 
 function resetThreadItDiagnosticExperience() {
@@ -3806,23 +3873,6 @@ async function advanceFacePlaceDiagnosticExperience() {
   await discardActiveReadingForDiagnostics();
   const current = state.faceplaceDiagnosticState ?? readFacePlaceState(null);
   const view = getFacePlaceCampaignView(current);
-  if (view.midpoint.discovered && !view.midpoint.acknowledged && !state.faceplaceAvocadoProbeComplete) {
-    state.faceplaceAvocadoProbeComplete = true;
-    applyFacePlaceDiagnosticState(current);
-    showSiteMessage({
-      action: "Show honest progress",
-      body: "Hey, it looks like that progress bar isn't honestly showing you what's happening. You did the work; AVOCADO% just refuses to admit it. Let's replace it with a tracker that tells the truth.",
-      eyebrow: "AMY · TRACKER CHECK",
-      heading: "That progress bar is lying.",
-      portrait: AMY_DIALOG_URL,
-      speaker: "Amy portrait",
-      title: "Amy caught the AVOCADO meter cheating.",
-    }, () => {
-      hideCharacterDialog();
-      $("faceplaceMidpointAction").onclick();
-    });
-    return;
-  }
   if (view.secured || (view.midpoint.discovered && !view.midpoint.acknowledged)) {
     applyFacePlaceDiagnosticState(current);
     return;
@@ -3860,7 +3910,13 @@ async function advanceFacePlaceDiagnosticExperience() {
     events: transition.events,
     stateId: transition.state.stateId,
   });
-  showSiteMilestonesForEvents("faceplace", transition.events, { onCompletion: returnToHub });
+  showSiteMilestonesForEvents("faceplace", transition.events, {
+    onCompletion: returnToHub,
+    onMidpoint: () => {
+      hideCharacterDialog();
+      acknowledgeFacePlaceHonestZero();
+    },
+  });
 }
 
 function resetFacePlaceDiagnosticExperience() {
@@ -3869,7 +3925,6 @@ function resetFacePlaceDiagnosticExperience() {
   state.faceplaceEvidenceReceiptOpen = false;
   state.faceplaceWhyOpen = false;
   state.faceplaceShowActOneResult = false;
-  state.faceplaceAvocadoProbeComplete = false;
   applyFacePlaceDiagnosticState(readFacePlaceState(null));
   $("faceplaceLiveStatus").textContent = "FACEPLACE TEST RESET · NO READING SCORE CREATED";
 }
@@ -4655,6 +4710,11 @@ function inspectStreamingGuideGate() {
   });
 }
 
+function updateStreamingBootStatus(message) {
+  state.streamingBootStatus = message;
+  if (!state.preparationError) $("modelProgress").textContent = message;
+}
+
 async function initializeStreamingGuideOnce() {
   state.streamingGuideGate = inspectStreamingGuideGate();
   const canLoadRuntime = requestedStreamingGuide
@@ -4668,19 +4728,19 @@ async function initializeStreamingGuideOnce() {
         runtime: globalThis,
         onDataProgress({ loaded, source, stage, total }) {
           if (stage === "fallback") {
-            $("modelProgress").textContent = "Browser storage unavailable; using the direct local runtime.";
+            updateStreamingBootStatus("Browser storage unavailable; using the direct local runtime.");
             return;
           }
           if (source === "opfs") {
-            $("modelProgress").textContent = "Loading the saved local live guide...";
+            updateStreamingBootStatus("Loading the saved local live guide…");
             return;
           }
           const percent = total > 0 ? Math.round((loaded / total) * 100) : 0;
-          $("modelProgress").textContent = `Saving the local live guide... ${percent}%`;
+          updateStreamingBootStatus(`One-time live guide download: ${percent}% saved locally`);
         },
         onStatus(message) {
           const detail = String(message || "").replace("Downloading data...", "Downloading local live guide...");
-          $("modelProgress").textContent = detail || "Initializing the local live guide...";
+          updateStreamingBootStatus(detail || "Initializing the local live guide…");
         },
       });
       state.streamingGuideGate = inspectStreamingGuideGate();
@@ -4769,9 +4829,18 @@ async function stopStreamingGuideAttempt({ closeRecognizer = false } = {}) {
 }
 
 async function startReading() {
+  // Starting the microphone must never route away from the site the player is
+  // repairing. Keep the live companion attached to that site before and after
+  // the asynchronous model/microphone startup in case either step yields long
+  // enough for another stale navigation callback to run.
+  showReadingExperience();
   $("listen").disabled = true;
-  $("readerState").textContent = "Starting microphone…";
-  await startStreamingGuideAttempt();
+  $("listen").textContent = "Starting…";
+  $("readerState").textContent = "STARTING LOCAL READING GUIDE…";
+  const streamingStarted = await startStreamingGuideAttempt();
+  $("readerState").textContent = streamingStarted
+    ? "LOCAL GUIDE READY · OPENING MICROPHONE…"
+    : "OPENING MICROPHONE…";
   try {
     await capture.start();
   } catch (error) {
@@ -4790,9 +4859,10 @@ async function startReading() {
     wordsPerMinute: state.guideWpm,
   });
   state.monitor = setInterval(monitorSpeech, 100);
-  $("listen").textContent = "Finish now";
+  showReadingExperience();
+  $("listen").textContent = "Finish reading";
   $("listen").disabled = false;
-  $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.ready.title"];
+  $("readerState").textContent = "LISTENING · READ ALOUD NOW";
   diagnostic("capture-start");
 }
 
@@ -4806,6 +4876,7 @@ function renderReviewResult(summary, durationMs, progress) {
 }
 
 function showReviewOverlay() {
+  restoreLiveReadingLayout();
   const backgroundScreen = state.readingSiteId === "wikiwhy" ? "read" : state.readingSiteId;
   show(backgroundScreen);
   $("review").classList.add("on", "result-overlay");
@@ -4937,30 +5008,62 @@ async function prepare() {
     return;
   }
   state.preparing = true;
+  state.preparationError = null;
+  const inlineSitePreparation = LIVE_READING_SITE_IDS.includes(state.readingSiteId);
+  if (inlineSitePreparation) {
+    showReadingExperience();
+    $("listen").disabled = true;
+    $("listen").textContent = "Checking microphone...";
+    $("readerState").textContent = "CHECKING MICROPHONE - SITE REMAINS OPEN";
+    $("guideStatus").textContent = "Requesting local microphone access...";
+  }
   $("begin").disabled = true;
+  $("begin").textContent = "Checking microphone…";
   try {
     $("modelProgress").textContent = "Requesting microphone…";
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     stream.getTracks().forEach((track) => track.stop());
+    if (inlineSitePreparation) {
+      $("listen").textContent = "Loading local guide...";
+      $("readerState").textContent = "MICROPHONE CONFIRMED - LOADING ONCE";
+      $("guideStatus").textContent = "Loading the local scoring model once...";
+    }
+    $("begin").textContent = "Loading local scoring model…";
+    $("modelProgress").textContent = "Microphone confirmed. Loading the local scoring model once…";
     state.modelDevice = await recognizer.load(requestedDevice);
+    $("begin").textContent = "Loading live guide…";
+    $("modelProgress").textContent = state.streamingBootStatus || "Loading the local live reading guide once…";
     const streamingGate = await prepareStreamingGuide();
     state.speechPrepared = true;
     state.guideWpm = Number($("guideWpm").value) || PROFILE.guide.defaultWpm;
     $("modelProgress").textContent = `Ready locally (${state.modelDevice}). ${streamingGuideGateMessage(streamingGate)}`;
-    show("read");
+    $("begin").textContent = "Microphone ready";
+    showReadingExperience();
     $("listen").textContent = "Start reading";
+    $("listen").disabled = false;
     $("readerState").textContent = "MICROPHONE READY · PRESS START READING WHEN YOU ARE READY";
   } catch (error) {
-    show("setup");
+    if (inlineSitePreparation) {
+      showReadingExperience();
+      $("listen").disabled = false;
+      $("listen").textContent = "Try microphone again";
+      $("readerState").textContent = "MICROPHONE SETUP STOPPED - SITE STILL OPEN";
+      $("guideStatus").textContent = `Check Chrome's microphone input, then try again. ${error.message}`;
+    } else {
+      show("setup");
+    }
     throw error;
   } finally {
     state.preparing = false;
+    if (!state.speechPrepared) $("begin").disabled = false;
   }
 }
 
 $("begin").onclick = () => prepare().catch((error) => {
+  state.preparationError = error;
   $("begin").disabled = false;
-  $("modelProgress").textContent = `Could not start: ${error.message}`;
+  $("begin").textContent = "Try microphone again";
+  $("modelProgress").textContent = `Microphone setup stopped: ${error.message}. Check Chrome's microphone input, then try again.`;
 });
 $("endgameLaunch").onclick = () => openEndgame({
   canonicalComplete: $("endgameLaunch").dataset.canonicalComplete === "true",
@@ -4996,8 +5099,12 @@ $("endgameRevoke").onclick = () => {
 for (const id of ["endgameExit", "endgameSafetyExit", "endgameReturn"]) {
   $(id).onclick = () => { renderRecoveryHub(); show("hub"); };
 }
-$("listen").onclick = () => (state.listening ? finishReading() : startReading()).catch((error) => {
-  $("readerState").textContent = error.message;
+$("listen").onclick = () => (state.speechPrepared
+  ? (state.listening ? finishReading() : startReading())
+  : prepare()).catch((error) => {
+  $("readerState").textContent = `MICROPHONE DID NOT START · ${error.message}`;
+  $("guideStatus").textContent = "Check Chrome's microphone input, then try again. No reading progress was recorded.";
+  $("listen").textContent = "Try microphone again";
   $("listen").disabled = false;
 });
 $("again").onclick = () => {
@@ -5227,7 +5334,13 @@ $("continueResult").onclick = () => {
     renderFacePlaceCampaign(state.faceplaceState);
     renderRecoveryHub();
     openFacePlaceExperience();
-    showSiteMilestonesForEvents("faceplace", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("faceplace", repair.events, {
+      onCompletion: returnToHub,
+      onMidpoint: () => {
+        hideCharacterDialog();
+        acknowledgeFacePlaceHonestZero();
+      },
+    });
     return;
   }
   if (state.readingSiteId === "threadit") {
@@ -5257,7 +5370,13 @@ $("continueResult").onclick = () => {
     renderThreadItCampaign(state.threaditState);
     renderRecoveryHub();
     openThreadItExperience();
-    showSiteMilestonesForEvents("threadit", repair.events, { onCompletion: returnToHub });
+    showSiteMilestonesForEvents("threadit", repair.events, {
+      onCompletion: returnToHub,
+      onMidpoint: () => {
+        hideCharacterDialog();
+        openThreadItView("trace");
+      },
+    });
     return;
   }
   if (state.resultApplied) {
@@ -5730,6 +5849,10 @@ $("taskStart").onclick = returnToHub;
 $("taskHub").onclick = returnToHub;
 $("taskSite").onclick = () => openRecoverySite(state.selectedSiteId);
 $("taskReader").onclick = () => {
+  if (state.liveReadingSiteId || state.listening || (state.finishing && !state.result)) {
+    showReadingExperience();
+    return;
+  }
   if (state.selectedSiteId === "threadit") {
     openThreadItExperience();
     return;
@@ -6260,7 +6383,7 @@ if (requestedLaunch === "wikiwhy") {
     positionProgress: 0.55,
   }, 1_250);
   $("readerState").textContent = INTERNET_RECOVERY_COPY["reading.active"];
-  show("read");
+  showReadingExperience();
 } else if (uiPreview === "review") {
   const previewTotal = tokenizeText(PASSAGE).length;
   state.result = { accuracy: 91, matchedWords: Math.round(previewTotal * 0.91), progress: 0.96, totalWords: previewTotal, wpm: 243 };
