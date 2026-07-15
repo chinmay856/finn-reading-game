@@ -4,16 +4,16 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("ThreadIt uses text-free image-led art behind semantic repair UI", async () => {
+test("ThreadIt renders as a semantic forum website with a source-tracing view", async () => {
   const [css, view] = await Promise.all([
     readFile(new URL("apps/internet-recovery/threadit.css", root), "utf8"),
     readFile(new URL("apps/internet-recovery/threadit-view.js", root), "utf8"),
-    access(new URL("apps/internet-recovery/art/site-assets/threadit/threadit-source-tree-base-v1.webp", root)),
   ]);
 
-  assert.match(css, /threadit-source-tree-base-v1\.webp/u);
-  assert.match(css, /\.threadit-layout::before/u);
-  assert.match(css, /pointer-events:\s*none/u);
+  assert.match(css, /Website-first correction/u);
+  assert.match(css, /#threadit\s+\.threadit-post-list/u);
+  assert.match(css, /\.threadit-page\[data-active-view="trace"\]\s+\.threadit-source-panel/u);
+  assert.match(css, /background:\s*#fff7f2/u);
   assert.match(view, /display:\s*`\$\{state\.completedUnitIds\.length\} \/ \$\{THREADIT_CAMPAIGN_UNITS\.length\} REPAIRS`/u);
   assert.match(view, /nextUnitCount:\s*THREADIT_CAMPAIGN_UNITS\.length - THREADIT_ACT_ONE_UNITS\.length/u);
   assert.match(view, /amy:\s*getThreadItCopy\(THREADIT_COPY_IDS\.completionAmy\)/u);

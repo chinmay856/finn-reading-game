@@ -204,15 +204,15 @@ test("reduced motion changes only motion metadata and the view is deeply frozen"
   assertDeepFrozen(reduced);
 });
 
-test("MyCorner exposes honest phase counts and explicit midpoint and completion dialogue", () => {
+test("MyCorner exposes honest phase counts and causal midpoint and completion dialogue", () => {
   const midpoint = getMyCornerCampaignView(stateAt(4));
   assert.deepEqual(midpoint.progress.phase, { completed: 0, label: "LOCK OWNER CONTROLS", total: 3 });
   assert.equal(midpoint.progress.visibleCountLabel, "4 / 7 PROFILE REPAIRS");
-  assert.match(midpoint.midpoint.amyLine, /First half complete/iu);
-  assert.match(midpoint.midpoint.amyLine, /Second half/iu);
+  assert.match(midpoint.midpoint.amyLine, /owner-written profile sections survived/iu);
+  assert.match(midpoint.midpoint.amyLine, /lock those choices to their owners/iu);
 
   const secured = getMyCornerCampaignView(stateAt(7));
   assert.equal(secured.progress.visibleCountLabel, "7 / 7 PROFILE REPAIRS");
-  assert.match(secured.securedPayoff.amyLine, /Site complete/iu);
+  assert.match(secured.securedPayoff.amyLine, /belongs to its owner again/iu);
   assert.match(secured.securedPayoff.chinmayLine, /no longer everybody's profile/iu);
 });

@@ -81,6 +81,49 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(app, /calculateWikiWhyReadingOutcome/u);
 });
 
+test("non-WikiWhy reading keeps the owning site visible beside the live companion", async () => {
+  const [app, html, polish] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../index.html", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/tomorrow-playtest-polish.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(html, /id="readingCompanionWindow" class="os-window reader-window"/u);
+  assert.match(app, /function showReadingExperience\(\)/u);
+  assert.match(app, /siteScreen\.append\(\$\("readingCompanionWindow"\)\)/u);
+  assert.match(app, /siteScreen\.dataset\.liveReading = "true"/u);
+  assert.match(app, /\$\("technoPet"\)\.dataset\.screen = "read"/u);
+  const preparedRoute = app.slice(app.indexOf("function openPreparedReadingOrSetup()"), app.indexOf("function openNextCampaignReading()"));
+  assert.match(preparedRoute, /MICROPHONE SETUP REQUIRED - THIS SITE WILL STAY OPEN/u);
+  assert.match(preparedRoute, /showReadingExperience\(\)/u);
+  assert.doesNotMatch(preparedRoute, /show\("read"\)/u);
+  const startReadingRoute = app.slice(app.indexOf("async function startReading()"), app.indexOf("function renderReviewResult"));
+  assert.equal((startReadingRoute.match(/showReadingExperience\(\);/gu) ?? []).length, 2);
+  assert.doesNotMatch(startReadingRoute, /show\("read"\)/u);
+  assert.match(polish, /\[data-live-reading="true"\] > \.reader-window/u);
+});
+
+test("microphone startup exposes loading, listening, and retry states", async () => {
+  const app = await readFile(new URL("../app.js", import.meta.url), "utf8");
+  assert.match(app, /"Checking microphone…"/u);
+  assert.match(app, /"Loading local scoring model…"/u);
+  assert.match(app, /"Loading live guide…"/u);
+  assert.match(app, /"LISTENING · READ ALOUD NOW"/u);
+  assert.match(app, /"Try microphone again"/u);
+  assert.match(app, /No reading progress was recorded/u);
+  assert.match(app, /state\.speechPrepared[\s\S]*\? \(state\.listening \? finishReading\(\) : startReading\(\)\)[\s\S]*: prepare\(\)/u);
+  assert.match(app, /MICROPHONE SETUP STOPPED - SITE STILL OPEN/u);
+});
+
+test("FacePlace midpoint starts Act II without a fake extra passage", async () => {
+  const [app, css] = await Promise.all([
+    readFile(new URL("../app.js", import.meta.url), "utf8"),
+    readFile(new URL("../apps/internet-recovery/faceplace.css", import.meta.url), "utf8"),
+  ]);
+  assert.doesNotMatch(app, /faceplaceAvocadoProbeComplete|Run one more passage at AVOCADO/u);
+  assert.match(app, /onMidpoint:\s*\(\) => \{\s*hideCharacterDialog\(\);\s*acknowledgeFacePlaceHonestZero\(\);/u);
+  assert.match(css, /#faceplaceMidpointAction\[hidden\],[\s\S]*display:\s*none !important/u);
+});
+
 test("implemented wrapper copy uses stable IDs outside the Reading Engine", async () => {
   const [app, copy, engine, html] = await Promise.all([
     readFile(new URL("../app.js", import.meta.url), "utf8"),

@@ -1,5 +1,20 @@
 # Current implementation review captures
 
+## Authored cutscene continuity — 2026-07-14
+
+- `threadit-cutscene-ten-accounts-v2.png` — Chinmay's mistaken ten-account
+  consensus claim, with the concrete `Trace the agreement` action.
+- `threadit-act2-source-trace-v2.png` — the final cutscene action has opened the
+  semantic source trace on the same site with three trace checks ready.
+- `faceplace-completion-cutscene-v2.png` — Amy names the exact recovered feed
+  controls before the blocked-write reveal.
+- `faceplace-repaired-feed-v2.png` — both completion beats are closed and the
+  secured feed remains visible for inspection and Recovery Map return.
+
+These are executable 1280x720 captures from `agent/site-visual-continuity`.
+They replace the generic two-speaker checkpoint as the current pacing reference;
+WikiWhy remains the original reference for contextual action labels.
+
 These images are temporary design-review evidence for the executable Recovery
 Map and site structural tests. FacePlace is deployed on `main` at `e776471`
 through PRs #34 and #35; CI, Pages, and its complete public HTTPS diagnostic

@@ -1411,7 +1411,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: url("./art/site-assets/threadit/threadit-source-tree-base-v1.webp") center / cover no-repeat;
+  background: none;
   opacity: .38;
   pointer-events: none;
 }
@@ -1469,7 +1469,7 @@
   [data-state-id="threadit_secured"]
 ) .threadit-layout::before {
   opacity: 1;
-  background-color: #dfce9f;
+  background-color: #f4f5f7;
   background-position: center;
   background-size: contain;
   filter: saturate(1.08) contrast(1.03);
@@ -1482,6 +1482,11 @@
   inset: 0;
   background: linear-gradient(#fff7db0a, #22150a0d);
   pointer-events: none;
+}
+
+.threadit-page[data-source-open="false"] .threadit-layout::after {
+  z-index: 1;
+  background: linear-gradient(90deg, transparent 0 34%, #f7f8faef 36% 100%);
 }
 
 .threadit-header {
@@ -1751,4 +1756,592 @@
     inset: 8% 4% 12% auto;
     width: 48%;
   }
+}
+
+/* v2 follows the approved orange forum / purple bot cascade / green source
+   tree concept. The artwork carries the dense graph; semantic DOM stays live
+   as compact labels and controls instead of drawing a second graph on top. */
+#threaditPage[data-source-open="true"] .threadit-source-panel {
+  inset: 0;
+  width: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel > header {
+  position: absolute;
+  z-index: 5;
+  top: 7%;
+  left: 35%;
+  width: 34%;
+  max-width: none;
+  margin: 0;
+  padding: 7px 9px;
+  border-color: #f26822;
+  background: #fff8f2f2;
+  box-shadow: 2px 3px 0 #a6421640;
+  transform: none;
+  pointer-events: auto;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel > header h3 {
+  color: #9a3412;
+  font-size: 10px;
+  line-height: 1.15;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel > header small {
+  color: #c2410c;
+  font-size: 8px;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel > header button {
+  min-height: 26px;
+  padding: 3px 5px;
+  font-size: 8px;
+}
+
+.threadit-page[data-active-view="trace"] .threadit-thread-column,
+.threadit-page[data-secured="true"] .threadit-thread-column,
+#threaditPage[data-source-open="true"] .threadit-source-close {
+  display: none !important;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-canvas {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%);
+  opacity: 0;
+}
+
+#threaditPage[data-source-open="true"] #threaditSourceSummary {
+  position: absolute;
+  z-index: 5;
+  left: 35%;
+  bottom: 7%;
+  width: 34%;
+  margin: 0;
+  padding: 7px 9px;
+  border: 2px solid #6655a6;
+  background: #f5f0fff2;
+  box-shadow: 2px 3px 0 #2e214333;
+  color: #403070;
+  font: 800 9px/1.25 "Lucida Console", Consolas, monospace;
+  text-align: center;
+}
+
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice {
+  position: absolute;
+  z-index: 6;
+  top: 22%;
+  left: 34%;
+  width: 36%;
+  margin: 0;
+  padding: 9px;
+  pointer-events: auto;
+}
+
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice > img,
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice > p,
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice > blockquote {
+  display: none;
+}
+
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice h3 {
+  font-size: 13px;
+}
+
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice::after {
+  content: "TEN ACCOUNTS · ONE SOURCE";
+  color: #4b3b82;
+  font: 800 10px/1.25 "Lucida Console", Consolas, monospace;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff {
+  position: absolute;
+  z-index: 6;
+  right: 2%;
+  bottom: 6%;
+  width: 31%;
+  gap: 5px;
+  margin: 0;
+  padding: 8px;
+  box-shadow: 2px 3px 0 #1c6b3b40;
+  pointer-events: auto;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff > img,
+.threadit-page[data-secured="true"] .threadit-blocked-write img,
+.threadit-page[data-secured="true"] .threadit-blocked-write small {
+  display: none;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff h3,
+.threadit-page[data-secured="true"] .threadit-secured-payoff h4 {
+  font-size: 10px;
+  line-height: 1.18;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff ul,
+.threadit-page[data-secured="true"] .threadit-secured-payoff p,
+.threadit-page[data-secured="true"] .threadit-secured-payoff button {
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff ul {
+  gap: 2px;
+  margin-top: 4px;
+  padding-left: 14px;
+}
+
+.threadit-page[data-secured="true"] .threadit-blocked-write {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  padding: 5px;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff > button {
+  min-height: 25px;
+  padding: 3px 5px;
+}
+
+/* Website-first correction. ThreadIt is a forum with a source-tracing view,
+   not a diagram pasted into a retro utility. These final rules intentionally
+   render the live semantic question, replies, tabs, and source relationships. */
+.threadit-page {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f3f4f5;
+  color: #22252a;
+}
+
+.threadit-page .threadit-layout::before,
+.threadit-page .threadit-layout::after {
+  display: none !important;
+}
+
+.threadit-page .threadit-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: center;
+  min-height: 52px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #d7d9dc;
+  background: #fff;
+}
+
+.threadit-page .threadit-header > img,
+.threadit-page .threadit-mark {
+  width: 36px;
+  height: 36px;
+}
+
+.threadit-page .threadit-header > div:nth-child(2) {
+  min-width: 0;
+}
+
+.threadit-page .threadit-header > div:nth-child(2) h2,
+.threadit-page .threadit-wordmark {
+  margin: 0;
+  color: #f15a24;
+  font: 900 20px/1 Arial, sans-serif;
+  letter-spacing: -.02em;
+}
+
+.threadit-page .threadit-header > div:first-of-type > small,
+.threadit-page .threadit-header > div:first-of-type > p,
+.threadit-page .threadit-tagline,
+.threadit-page .threadit-header .threadit-identity small,
+.threadit-page .threadit-header .threadit-identity p {
+  display: block;
+}
+
+.threadit-page .threadit-header p {
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: #62666c;
+  font: 10px/1.15 Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.threadit-page .threadit-header > strong,
+.threadit-page .threadit-header-status {
+  max-width: 155px;
+  padding: 6px 8px;
+  border: 1px solid #f1b297;
+  border-radius: 4px;
+  background: #fff5f1;
+  color: #a53a12;
+  font: 800 9px/1.15 Arial, sans-serif;
+  text-align: right;
+}
+
+.threadit-page .threadit-tabs {
+  position: static;
+  display: flex;
+  z-index: auto;
+  width: auto;
+  min-height: 32px;
+  padding: 0 9px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #cfd2d6;
+  background: #eceef0;
+  box-shadow: none;
+}
+
+.threadit-page .threadit-tabset {
+  display: flex;
+  gap: 2px;
+}
+
+.threadit-page .threadit-tab,
+.threadit-page .threadit-source-toggle {
+  min-height: 27px;
+  margin: 0;
+  padding: 4px 9px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #45484d;
+  font: 800 9px/1 Arial, sans-serif;
+}
+
+.threadit-page .threadit-tab[aria-selected="true"],
+.threadit-page .threadit-source-toggle[aria-expanded="true"] {
+  border-bottom-color: #f15a24;
+  color: #d94b18;
+}
+
+.threadit-page .threadit-layout,
+.threadit-page:is([data-active-view="trace"],[data-secured="true"]) .threadit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  padding: 8px;
+  overflow: hidden;
+  background: #f7f8f9;
+}
+
+.threadit-page .threadit-thread-column {
+  position: static;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: auto;
+  max-height: none;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #d5d8dc;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 2px 7px #17212b1a;
+  transform: none;
+}
+
+.threadit-page .threadit-thread-column > header {
+  min-height: 0;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e0e2e5;
+  background: #fff8f4;
+}
+
+.threadit-page .threadit-thread-column > header > * {
+  display: block !important;
+}
+
+.threadit-page .threadit-thread-column > header::before,
+.threadit-page .threadit-thread-column > header::after {
+  display: none;
+}
+
+.threadit-page .threadit-thread-column > header small {
+  color: #d94b18;
+  font: 800 8px/1 Arial, sans-serif;
+}
+
+.threadit-page .threadit-thread-column > header h3 {
+  margin: 3px 0;
+  color: #3a3d42;
+  font: 900 15px/1.1 Arial, sans-serif;
+}
+
+.threadit-page .threadit-thread-column > header p {
+  margin: 0;
+  color: #62666c;
+  font: 10px/1.25 Arial, sans-serif;
+}
+
+#threadit .threadit-post-list,
+#threadit #threaditPostList {
+  display: grid !important;
+  gap: 6px;
+  min-height: 0;
+  margin: 0;
+  padding: 8px;
+  overflow: auto;
+  list-style: none;
+  background: #f7f8f9;
+}
+
+#threadit .threadit-post {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 7px;
+  align-items: start;
+  padding: 7px;
+  border: 1px solid #d9dcdf;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+#threadit .threadit-post[data-origin="generated-copy"] {
+  border-left: 4px solid #7b62b3;
+  background: #faf8ff;
+}
+
+#threadit .threadit-post[data-node-type="question"] {
+  border-left: 4px solid #f15a24;
+  background: #fffaf7;
+}
+
+#threadit .threadit-post > img,
+#threadit .threadit-post-votes,
+#threadit .threadit-post-main > p,
+#threadit .threadit-post-body,
+#threadit .threadit-post-meta-secondary {
+  display: block;
+}
+
+#threadit .threadit-post > img {
+  width: 26px;
+  height: 26px;
+}
+
+#threadit .threadit-post-main b,
+#threadit .threadit-post-main p,
+#threadit .threadit-post-main span {
+  font-family: Arial, sans-serif;
+}
+
+#threadit .threadit-post-main b {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+#threadit .threadit-post-main p,
+#threadit .threadit-post-main span {
+  margin: 2px 0 0;
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+#threadit .threadit-post-votes {
+  min-height: 0;
+  padding: 4px;
+  border-radius: 3px;
+  color: #d94b18;
+  font: 800 9px/1 Arial, sans-serif;
+}
+
+.threadit-page[data-active-view="trace"] .threadit-thread-column,
+.threadit-page[data-secured="true"] .threadit-thread-column {
+  display: none !important;
+}
+
+#threaditPage .threadit-source-panel,
+#threaditPage[data-source-open] .threadit-source-panel {
+  position: static;
+  display: none;
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  visibility: visible;
+  border: 1px solid #d5d8dc;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 2px 7px #17212b1a;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel,
+.threadit-page[data-active-view="trace"] .threadit-source-panel,
+.threadit-page[data-secured="true"] .threadit-source-panel {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-panel > header,
+.threadit-page .threadit-source-panel > header {
+  position: static;
+  display: flex;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 7px 9px;
+  border: 0;
+  border-bottom: 3px solid #f15a24;
+  border-radius: 0;
+  background: #fff7f2;
+  box-shadow: none;
+  transform: none;
+  pointer-events: auto;
+}
+
+.threadit-page .threadit-source-panel > header h3 {
+  color: #9a3412;
+  font: 900 12px/1.1 Arial, sans-serif;
+}
+
+#threaditPage[data-source-open="true"] .threadit-source-canvas,
+.threadit-page .threadit-source-canvas {
+  position: relative !important;
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 7px !important;
+  overflow: auto !important;
+  clip-path: none;
+  opacity: 1;
+}
+
+.threadit-page #threaditConnectorLayer {
+  display: none;
+}
+
+.threadit-page #threaditSourceTree,
+.threadit-page .threadit-source-tree {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  min-height: 0;
+  align-content: start;
+}
+
+.threadit-page .threadit-source-node {
+  padding: 6px;
+  border: 1px solid #cfd5da;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.threadit-page .threadit-source-node[data-origin="generated-copy"] {
+  border-color: #a99bd0;
+  background: #f8f5ff;
+}
+
+.threadit-page .threadit-source-node[data-origin="independent"] {
+  border-color: #86b692;
+  background: #f3fbf5;
+}
+
+.threadit-page .threadit-source-node img {
+  width: 24px;
+  height: 24px;
+}
+
+.threadit-page .threadit-source-node b,
+.threadit-page .threadit-source-node span,
+.threadit-page .threadit-source-node small,
+.threadit-page .threadit-source-node strong {
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+.threadit-page .threadit-source-quarantine {
+  grid-column: 1 / -1;
+  padding: 6px;
+  border: 1px solid #a99bd0;
+  border-radius: 4px;
+  background: #f5f0ff;
+}
+
+.threadit-page .threadit-source-quarantine > ul {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 5px;
+}
+
+#threaditPage[data-source-open="true"] #threaditSourceSummary,
+.threadit-page #threaditSourceSummary {
+  position: static;
+  width: auto;
+  margin: 0 7px 7px;
+  padding: 6px 8px;
+  border: 1px solid #7b62b3;
+  border-radius: 4px;
+  background: #f5f0ff;
+  box-shadow: none;
+  color: #403070;
+  font: 800 9px/1.2 Arial, sans-serif;
+  text-align: center;
+}
+
+#threaditPage[data-source-open="true"] .threadit-midpoint-notice,
+.threadit-page .threadit-midpoint-notice,
+.threadit-page[data-secured="true"] .threadit-secured-payoff {
+  position: static;
+  width: auto;
+  margin: 7px;
+  padding: 8px;
+  overflow: visible;
+  box-shadow: none;
+  pointer-events: auto;
+}
+
+.threadit-page .threadit-midpoint-notice > img,
+.threadit-page .threadit-midpoint-notice > p,
+.threadit-page .threadit-midpoint-notice > blockquote {
+  display: none;
+}
+
+.threadit-page .threadit-midpoint-notice::after {
+  content: "TEN ACCOUNTS · ONE SOURCE";
+  color: #4b3b82;
+  font: 900 10px/1.2 Arial, sans-serif;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(145px, .72fr);
+  gap: 7px;
+  border-color: #2f7b45;
+  background: #f0faf3;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff > img {
+  display: none;
+}
+
+.threadit-page[data-secured="true"] .threadit-blocked-write {
+  display: block;
+  padding: 6px;
+  border: 1px solid #c83a31;
+  background: #fff5f4;
+}
+
+.threadit-page[data-secured="true"] .threadit-secured-payoff > button {
+  grid-column: 1 / -1;
+  min-height: 26px;
 }

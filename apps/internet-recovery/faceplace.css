@@ -1224,6 +1224,11 @@
   box-shadow: 0 2px 0 #9b6c00;
 }
 
+#faceplaceMidpointAction[hidden],
+.faceplace-midpoint-notice[hidden] {
+  display: none !important;
+}
+
 #faceplaceMidpointAction:hover,
 #faceplaceMidpointAction:focus-visible {
   background: #ffe584;
@@ -1236,6 +1241,89 @@
 .faceplace-context-rail button {
   font-size: .58rem;
   line-height: 1.15;
+}
+
+/* The secured state is a control panel, not another tiny status sticker. Keep
+   the final story beats readable: why the post appeared, chronology restored,
+   and the AI's forced-distribution write denied. */
+.faceplace-page[data-secured="true"] .faceplace-context-rail {
+  inset: 3% 1.5% 3% auto;
+  width: 29%;
+  gap: 3px;
+  padding: 5px;
+  overflow: auto;
+  border: 2px solid #74cbd0;
+  border-radius: 8px;
+  background: #f5fff3f2;
+  box-shadow: 0 3px 10px #071b4d70;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-tracker,
+.faceplace-page[data-secured="true"] .faceplace-midpoint-notice,
+.faceplace-page[data-secured="true"] .faceplace-people {
+  display: none !important;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-context-rail > section {
+  margin: 0;
+  padding: 7px;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-context-rail h3,
+.faceplace-page[data-secured="true"] .faceplace-context-rail h4 {
+  font-size: .7rem;
+  line-height: 1.18;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-context-rail p,
+.faceplace-page[data-secured="true"] .faceplace-context-rail li,
+.faceplace-page[data-secured="true"] .faceplace-context-rail button,
+.faceplace-page[data-secured="true"] .faceplace-context-rail a {
+  font-size: .62rem;
+  line-height: 1.25;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-secured-banner {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.faceplace-page[data-secured="true"] .faceplace-secured-banner img {
+  display: none;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-secured-banner ul {
+  margin: 5px 0 0;
+  padding-left: 15px;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-secured-payoff {
+  display: grid;
+  gap: 5px;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-secured-banner h3,
+.faceplace-page[data-secured="true"] .faceplace-blocked-write h4 {
+  margin: 2px 0;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-blocked-write {
+  margin-top: 0;
+  padding: 6px;
+}
+
+.faceplace-page[data-secured="true"] #faceplaceBlockedActor,
+.faceplace-page[data-secured="true"] #faceplaceBlockedTarget {
+  display: none;
+}
+
+.faceplace-page[data-secured="true"] .faceplace-blocked-write p {
+  margin: 3px 0 0;
+}
+
+.faceplace-page[data-secured="true"] #faceplaceEvidenceToggle {
+  width: 100%;
+  min-height: 26px;
+  padding: 3px 5px;
 }
 
 .faceplace-feed-column > header,

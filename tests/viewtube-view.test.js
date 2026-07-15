@@ -131,17 +131,17 @@ test("reduced motion changes only presentation metadata", () => {
   );
 });
 
-test("ViewTube progress follows seven actual repairs and brackets both halves with dialogue", () => {
+test("ViewTube progress follows seven actual repairs and explains the evidence turn", () => {
   const beforeMidpoint = getViewTubeCampaignView(buildState(3));
   assert.deepEqual(beforeMidpoint.progress.phase, { completed: 3, label: "RESTORE VIDEO CONTEXT", total: 4 });
   assert.equal(beforeMidpoint.progress.visibleCountLabel, "3 / 7 VIDEO REPAIRS");
 
   const midpoint = getViewTubeCampaignView(buildState(4));
   assert.deepEqual(midpoint.progress.phase, { completed: 0, label: "VERIFY EVIDENCE TRACKS", total: 3 });
-  assert.match(midpoint.midpoint.amy, /First half complete/iu);
-  assert.match(midpoint.midpoint.amy, /Second half/iu);
+  assert.match(midpoint.midpoint.amy, /creator, frames, transcript, and source context are restored/iu);
+  assert.match(midpoint.midpoint.amy, /file hashes match, proving every replay is the same clip/iu);
 
   const secured = getViewTubeCampaignView(buildState(7));
-  assert.match(secured.securedPayoff.amy, /Site complete/iu);
+  assert.match(secured.securedPayoff.amy, /stopped duplicate loops/iu);
   assert.match(secured.securedPayoff.chinmay, /no longer ten witnesses/iu);
 });

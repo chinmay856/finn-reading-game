@@ -1,5 +1,21 @@
 # Parallel design requests
 
+## Authored cutscene continuity correction — 2026-07-14
+
+The shared Amy-to-Chinmay checkpoint template has been retired. Each site now
+owns a short entry, midpoint, and completion sequence whose speaker order and
+length follow its actual reveal. Buttons name the next player action rather
+than the next speaker or an act boundary. The last midpoint click opens the real
+Act II surface directly, and completion leaves the repaired site visible for
+inspection.
+
+Executable 1280x720 QA clicked through all nine midpoint transitions and the
+full FacePlace ending. The representative ThreadIt and FacePlace captures are
+listed in `docs/design/review/README.md`. Future story review should reject
+generic labels such as `Hear Chinmay`, `Start the second half`, or `Finish this
+site`, and should keep character dialogue out of inline evidence panels when a
+modal has already delivered the same beat.
+
 ## ViewTube approved-toast-video correction — 2026-07-14
 
 The generic winter-sky editor has been retired. ViewTube now derives all three

@@ -1,5 +1,33 @@
 # Project status
 
+## Authored cutscene continuity correction — 2026-07-14
+
+- Replaced the post-WikiWhy Amy-to-Chinmay template with authored entry,
+  midpoint, and completion beats for all nine remaining sites. Sequence length
+  and speaker order now follow each plot; a character appears only when the
+  reveal or joke needs them.
+- Removed meta-navigation such as `Hear Chinmay`, `Start the second half`, and
+  `Finish this site`. Every button now names Finn's next concrete action, from
+  `Open source trace` and `Start at honest zero` to `Pin Adventure Wonderland`.
+- The final midpoint action now performs the real acknowledgement and opens the
+  next repair surface. The player no longer closes two popups and then clicks a
+  third duplicate midpoint button. Transition-critical sequences cannot be
+  dismissed with Escape before that handoff completes.
+- Completion closes onto the repaired site so the player can inspect the result
+  and its blocked-write evidence before using the site's visible Recovery Map
+  control. MyCorner, Yahuh, and ViewTube also dropped the repeated `First half`,
+  `Second half`, and `Site complete` wording from their inline evidence copy.
+- Browser QA at 1280x720 clicked through all nine midpoint sequences. Every one
+  kept its owning site visible and enabled its next repair; the check caught and
+  fixed a Search-ish diagnostic-panel refresh bug. FacePlace was also played
+  through both completion beats and remained on the secured feed afterward.
+- Current executable captures are recorded in `docs/design/review/`. All 407
+  repository tests, syntax checks, the Vite production build, and `git diff
+  --check` pass.
+- Firebase Hosting now serves the validated `c6e7593` build at
+  <https://finn-reading-game.web.app/>. The direct ThreadIt review route is
+  <https://finn-reading-game.web.app/?launch=threadit&build=c6e7593>.
+
 ## Isolated Sherpa production preview — live 2026-07-14
 
 - Firebase Hosting is live at <https://finn-reading-game.web.app/> as the
@@ -915,3 +943,25 @@ desktop click-through remains the publication smoke check.
   non-overlapping MapGuess moving-target tracker.
 - Speech, scoring, microphone, and Reading Engine files were intentionally not
   changed. `npm.cmd run check`, all 354 tests, and `npm.cmd run build` pass.
+
+## Live reading site continuity hotfix - deployed 2026-07-14
+
+- For all nine non-WikiWhy sites, `Read next passage` now keeps the active site
+  visible and docks the Reading Companion beside it. The legacy generic
+  `live-reading` preview no longer replaces the site.
+- First-time microphone preparation also runs inside that docked companion.
+  The setup page, generic reader, and stale previous-site routes remain hidden
+  while microphone access and the local models start.
+- `Start reading` pins the owning site both before and after asynchronous local
+  guide and microphone startup. Failure and retry states stay on the same site.
+- The floating Techno desktop pet is hidden during docked live reading so it
+  cannot cover the microphone control.
+- FacePlace's midpoint now moves naturally from Honest Zero into Act II without
+  inventing an extra AVOCADO passage; its secured evidence panel remains
+  readable beside the companion.
+- Firebase Hosting was verified at the cache-busted Spotty-Fi URL: the Spotty-Fi
+  screen stayed active after both `Read next passage` and microphone setup,
+  `#readingCompanionWindow` remained a child of `#spottyfi`, and neither the
+  setup screen nor the generic reader became active.
+- `npm.cmd run check`, all 404 tests, `npm.cmd run build`, pinned Sherpa v1.13.2
+  SHA-256 verification, and two Firebase Hosting deployments passed.
