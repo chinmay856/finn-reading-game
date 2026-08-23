@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="900" height="815" viewBox="0 0 900 815">
+  <sodipodi:namedview pagecolor="#c8c8c8">
+    <inkscape:page x="0" y="0" width="900" height="815" inkscape:label="FacePlace corrupted site"/>
+    <inkscape:page x="1000" y="0" width="900" height="815" inkscape:label="FacePlace repaired site"/>
+  </sodipodi:namedview>
+  <defs>
+    <linearGradient id="browser" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#063b6c"/>
+      <stop offset="1" stop-color="#005589"/>
+    </linearGradient>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".24" stroke-width="3"/>
+    </pattern>
+    <clipPath id="photoClip">
+      <rect width="520" height="240" rx="4"/>
+    </clipPath>
+    <g id="windowButton">
+      <rect width="26" height="23" fill="#d9d7cf" stroke="#fff"/>
+      <path d="M2 21h22V2" fill="none" stroke="#555" stroke-width="2"/>
+    </g>
+    <g id="personIcon">
+      <circle cx="10" cy="8" r="6" fill="#fff"/>
+      <path d="M1 24c0-7 4-11 9-11s9 4 9 11" fill="#fff"/>
+    </g>
+    <g id="shell">
+      <rect width="900" height="815" fill="#eeeae1"/>
+      <rect x="2" y="2" width="896" height="811" rx="5" fill="#f4f5f7" stroke="#c7c5bd" stroke-width="4"/>
+      <rect x="4" y="4" width="892" height="40" fill="url(#browser)"/>
+      <text x="20" y="31" class="browserTitle">www.face-place.net</text>
+      <use href="#windowButton" x="802" y="11"/>
+      <use href="#windowButton" x="832" y="11"/>
+      <use href="#windowButton" x="862" y="11"/>
+      <path d="m868 16 15 14m0-14-15 14" stroke="#222" stroke-width="2"/>
+      <rect x="4" y="44" width="892" height="67" fill="#315caa"/>
+      <rect x="20" y="58" width="38" height="38" rx="7" fill="#fff"/>
+      <text x="39" y="88" text-anchor="middle" class="mark">f</text>
+      <text x="70" y="86" class="siteLogo">faceplace</text>
+      <rect x="300" y="59" width="330" height="38" rx="18" fill="#fff"/>
+      <text x="324" y="83" class="small muted">Search FacePlace</text>
+      <use href="#personIcon" x="760" y="62"/>
+      <circle cx="826" cy="77" r="16" fill="#fff" opacity=".95"/>
+      <text x="826" y="83" text-anchor="middle" class="label blue">•••</text>
+      <rect x="4" y="111" width="892" height="38" fill="#fff" stroke="#d4d7dc"/>
+      <text x="24" y="136" class="small">Home</text>
+      <text x="92" y="136" class="small">Friends</text>
+      <text x="168" y="136" class="small">Photos</text>
+      <text x="240" y="136" class="small">Messages</text>
+    </g>
+  </defs>
+  <style>text{font-family:"Chalkboard SE","Comic Sans MS",sans-serif}.browserTitle{fill:#fff;font-size:20px;font-weight:700}.siteLogo{fill:#fff;font-size:26px;font-weight:700}.mark{fill:#315caa;font-size:34px;font-weight:700}.heading{font-size:22px;font-weight:700;fill:#172d40}.label{font-size:13px;font-weight:700}.body{font-size:14px;fill:#27373c}.small{font-size:13px;fill:#34444d}.tiny{font-size:11px;fill:#596267}.muted{fill:#78828a}.red{fill:#C5251E}.green{fill:#2F8A49}.blue{fill:#315caa}.meter{font-size:15px;font-weight:700}.caption{font-size:19px;font-weight:700;fill:#172d40}</style>
+  <g inkscape:groupmode="layer" inkscape:label="FacePlace corrupted site">
+    <use href="#shell"/>
+    <g transform="translate(22 165)">
+      <rect width="142" height="526" rx="6" fill="#fff" stroke="#d5d8dd"/>
+      <text x="18" y="36" class="label blue">TYLER K.</text>
+      <text x="18" y="60" class="tiny">fictional peer</text>
+      <line x1="16" y1="82" x2="126" y2="82" stroke="#d5d8dd"/>
+      <text x="18" y="116" class="small">Feed</text>
+      <text x="18" y="150" class="small">About</text>
+      <text x="18" y="184" class="small">Photos</text>
+      <text x="18" y="218" class="small">Friends</text>
+      <line x1="16" y1="250" x2="126" y2="250" stroke="#d5d8dd"/>
+      <text x="18" y="280" class="label">PHOTO ALBUMS</text>
+      <text x="18" y="308" class="tiny">Lake day · 1 photo</text>
+      <text x="18" y="332" class="tiny">Weekend stuff · 6</text>
+    </g>
+    <g transform="translate(180 165)">
+      <rect width="548" height="526" rx="7" fill="#fff" stroke="#C5251E"/>
+      <text x="16" y="27" class="label">Tyler K.</text>
+      <text x="16" y="47" class="tiny">Yesterday at 5:08 PM · Public</text>
+      <text x="16" y="76" class="caption red">“LEGENDARY FISH! ONE OF A KIND!”</text>
+      <text x="16" y="100" class="body red">Caught it all by myself. #SoloLegend #NoHelpNeeded</text>
+      <g transform="translate(14 118)" clip-path="url(#photoClip)">
+        <image href="faceplace-fishing-wide-v1.jpg" x="-290" y="-130" width="1100" height="619" preserveAspectRatio="xMidYMid meet"/>
+      </g>
+      <rect x="14" y="118" width="520" height="240" rx="4" fill="none" stroke="#C5251E" stroke-width="3"/>
+      <text x="16" y="386" class="body blue">♥  Like     Comment     Share</text>
+      <text x="424" y="386" class="tiny">1.2K reactions</text>
+      <line x1="14" y1="400" x2="534" y2="400" stroke="#d5d8dd"/>
+      <text x="18" y="424" class="label">Maya R.</text><text x="82" y="424" class="small">This is the biggest fish ever.</text>
+      <text x="18" y="452" class="label">Leo P.</text><text x="72" y="452" class="small">How do you do everything perfectly?</text>
+      <text x="18" y="480" class="label">Nia S.</text><text x="68" y="480" class="small">Teach me your secret! 🎣</text>
+      <rect x="14" y="494" width="520" height="24" fill="url(#redHatch)"/><text x="26" y="511" class="tiny red">Write a comment…</text>
+    </g>
+    <g transform="translate(744 165)">
+      <rect width="132" height="526" rx="6" fill="#fff" stroke="#d5d8dd"/>
+      <text x="12" y="30" class="label">TRENDING</text>
+      <text x="12" y="58" class="tiny red">#PerfectWeekend</text>
+      <text x="12" y="84" class="tiny red">#BestLifeEver</text>
+      <text x="12" y="110" class="tiny red">#SoloLegend</text>
+      <rect x="10" y="136" width="112" height="104" fill="url(#redHatch)" stroke="#C5251E"/>
+      <text x="20" y="166" class="tiny red">AVOCADO 83%</text>
+      <text x="20" y="194" class="tiny red">BANANA 14%</text>
+      <text x="20" y="222" class="tiny red">HONESTY ???</text>
+      <line x1="10" y1="266" x2="122" y2="266" stroke="#d5d8dd"/>
+      <text x="12" y="294" class="label">MORE POSTS</text>
+      <rect x="10" y="312" width="112" height="62" fill="#edf0f5"/><text x="18" y="338" class="tiny">Amazing vacations</text><text x="18" y="358" class="tiny">Perfect highlights</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter red">HONESTY METER</text>
+      <text x="150" y="24" class="meter red">AVOCADO%</text>
+      <rect x="0" y="38" width="858" height="24" fill="url(#redHatch)" stroke="#C5251E"/>
+    </g>
+  </g>
+  <g transform="translate(1000 0)" inkscape:groupmode="layer" inkscape:label="FacePlace repaired site">
+    <use href="#shell"/>
+    <g transform="translate(22 165)">
+      <rect width="142" height="526" rx="6" fill="#fff" stroke="#d5d8dd"/>
+      <text x="18" y="36" class="label blue">TYLER K.</text>
+      <text x="18" y="60" class="tiny">fictional peer</text>
+      <line x1="16" y1="82" x2="126" y2="82" stroke="#d5d8dd"/>
+      <text x="18" y="116" class="small">Feed</text>
+      <text x="18" y="150" class="small">About</text>
+      <text x="18" y="184" class="small">Photos</text>
+      <text x="18" y="218" class="small">Friends</text>
+      <line x1="16" y1="250" x2="126" y2="250" stroke="#d5d8dd"/>
+      <text x="18" y="280" class="label">PHOTO ALBUMS</text>
+      <text x="18" y="308" class="tiny">Lake day · 8 photos</text>
+      <text x="18" y="332" class="tiny">Weekend stuff · 6</text>
+    </g>
+    <g transform="translate(180 165)">
+      <rect width="548" height="526" rx="7" fill="#fff" stroke="#2F8A49"/>
+      <text x="16" y="27" class="label">Tyler K.</text>
+      <text x="16" y="47" class="tiny">Yesterday at 5:08 PM · Public</text>
+      <text x="16" y="76" class="caption">“I CAUGHT THIS ONE!”</text>
+      <text x="16" y="100" class="body">Great day at the lake. Thanks for the help! #LakeDay</text>
+      <g transform="translate(14 118)" clip-path="url(#photoClip)">
+        <image href="faceplace-fishing-wide-v1.jpg" x="0" y="-26" width="520" height="292" preserveAspectRatio="xMidYMid meet"/>
+      </g>
+      <rect x="14" y="118" width="520" height="240" rx="4" fill="none" stroke="#2F8A49" stroke-width="3"/>
+      <text x="16" y="386" class="body blue">♥  Like     Comment     Share</text>
+      <text x="424" y="386" class="tiny">482 reactions</text>
+      <line x1="14" y1="400" x2="534" y2="400" stroke="#d5d8dd"/>
+      <text x="18" y="424" class="label">Maya R.</text><text x="82" y="424" class="small">Glad I could help net it!</text>
+      <text x="18" y="452" class="label">Tyler K.</text><text x="80" y="452" class="small">Cleanup took forever 😂</text>
+      <text x="18" y="480" class="label">Nia S.</text><text x="68" y="480" class="small">Still a great catch!</text>
+      <rect x="14" y="494" width="520" height="24" fill="#eef5ef"/><text x="26" y="511" class="tiny">Write a comment…</text>
+    </g>
+    <g transform="translate(744 165)">
+      <rect width="132" height="526" rx="6" fill="#fff" stroke="#d5d8dd"/>
+      <text x="12" y="30" class="label">TRENDING</text>
+      <text x="12" y="58" class="tiny">#LakeDay</text>
+      <text x="12" y="84" class="tiny">#FishingFriends</text>
+      <text x="12" y="110" class="tiny">#CleanupCrew</text>
+      <rect x="10" y="136" width="112" height="104" fill="#e0f0e3" stroke="#2F8A49"/>
+      <text x="20" y="166" class="tiny green">AVOCADO 51%</text>
+      <text x="20" y="194" class="tiny green">BANANA 103%</text>
+      <text x="20" y="222" class="tiny green">HONESTY ¯\_(ツ)_/¯</text>
+      <line x1="10" y1="266" x2="122" y2="266" stroke="#d5d8dd"/>
+      <text x="12" y="294" class="label">MORE POSTS</text>
+      <rect x="10" y="312" width="112" height="62" fill="#edf0f5"/><text x="18" y="338" class="tiny">Friends at the lake</text><text x="18" y="358" class="tiny">The cleanup pile</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter green">HONESTY METER</text>
+      <text x="150" y="24" class="meter green">BANANA%</text>
+      <rect x="0" y="38" width="858" height="24" fill="#e0f0e3" stroke="#2F8A49"/>
+      <rect x="0" y="38" width="858" height="24" fill="#2F8A49"/>
+    </g>
+  </g>
+</svg>

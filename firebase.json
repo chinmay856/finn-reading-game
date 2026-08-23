@@ -1,6 +1,13 @@
 {
   "hosting": {
     "public": "dist",
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/playable-missions.html",
+        "type": 302
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",

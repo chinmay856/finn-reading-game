@@ -55,6 +55,22 @@ test("silence cannot advance the guide because no transcript is observed", () =>
   assert.equal(guide.confirmedWordIndex, before.confirmedWordIndex);
 });
 
+test("one transcript update cannot jump more than one authored line", () => {
+  const guide = new KnownTextLineGuide({ passageId: "passage-1", lines, wordsPerMinute: 250 });
+  const event = guide.observePartial(lines.join(" "));
+  assert.equal(event.visibleLineIndex, 1);
+});
+
+test("scattered common words and ending-only speech do not move the live guide", () => {
+  const guide = new KnownTextLineGuide({ passageId: "passage-1", lines });
+  const unrelated = guide.observePartial("the library comfortable final reader");
+  const ending = guide.observePartial("the final line stays visible after the reader finishes");
+  assert.equal(unrelated.confirmedWordIndex, -1);
+  assert.equal(unrelated.visibleLineIndex, 0);
+  assert.equal(ending.confirmedWordIndex, -1);
+  assert.equal(ending.visibleLineIndex, 0);
+});
+
 test("controller exposes only a neutral recognizer and guide boundary", async () => {
   let listener;
   const events = [];

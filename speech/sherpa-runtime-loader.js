@@ -145,8 +145,14 @@ function beginRuntimeLoad({ runtime, onStatus, onDataProgress, assetBase, prepar
       document,
       new URL(RUNTIME_SCRIPT, resolvedAssetBase).href,
     );
-    await Promise.all([runtimeScriptLoaded, initialized]);
-    return runtime;
+    try {
+      await Promise.all([runtimeScriptLoaded, initialized]);
+      return runtime;
+    } finally {
+      // Emscripten consumes the package synchronously during initialization.
+      // Release our extra OPFS ArrayBuffer reference after that boundary.
+      preloadedDataPackage = null;
+    }
   })();
 }
 

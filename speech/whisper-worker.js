@@ -1,6 +1,7 @@
 import { env, pipeline } from "@huggingface/transformers";
 
 const MODEL_ID = "onnx-community/whisper-base_timestamped";
+const MODEL_REVISION = "608c49e61301901684bc36cac8f74b95ff6b5a8e";
 const DEVICE_CONFIG = {
   wasm: { device: "wasm", dtype: "q8" },
   webgpu: {
@@ -30,6 +31,7 @@ async function loadModel(id, device) {
   transcriber = await pipeline("automatic-speech-recognition", MODEL_ID, {
     ...config,
     progress_callback: (data) => reply(id, "progress", { data }),
+    revision: MODEL_REVISION,
   });
   loadedDevice = device;
   if (device === "webgpu") await transcriber(new Float32Array(16_000), { language: "en" });

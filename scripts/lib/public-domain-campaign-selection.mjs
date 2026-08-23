@@ -1,0 +1,53 @@
+export const PUBLIC_DOMAIN_CAMPAIGN_SELECTION = Object.freeze([
+  // Scheduled replacements in the reviewed first-six manuscript.
+  { id: "wikiwhy-01", sourceId: 2627, startLine: 248, title: "On the Method of Zadig", author: "T. H. Huxley", form: "scientific essay" },
+  { id: "wikiwhy-07", sourceId: 65274, startLine: 1398, title: "The Fixation of Belief", author: "Charles S. Peirce", form: "philosophical essay" },
+  { id: "wikiwhy-09", sourceId: 5116, startLine: 3427, title: "Pragmatism", author: "William James", form: "philosophical lecture" },
+  { id: "wikiwhy-10", sourceId: 10616, startLine: 10348, title: "An Essay Concerning Human Understanding", author: "John Locke", form: "philosophical essay" },
+  { id: "threadit-07", sourceId: 9662, startLine: 3415, title: "An Enquiry Concerning Human Understanding", author: "David Hume", form: "philosophical essay" },
+  { id: "threadit-08", sourceId: 2657, startLine: 3756, title: "Cooper Union Address", author: "Abraham Lincoln", form: "historical speech" },
+  { id: "faceplace-06", sourceId: 512, startLine: 1040, title: "The Birth-Mark", author: "Nathaniel Hawthorne", form: "short fiction" },
+  { id: "faceplace-07", sourceId: 73893, startLine: 6994, title: "The Necklace", author: "Guy de Maupassant", form: "short fiction" },
+  { id: "mycorner-05", sourceId: 844, startLine: 425, title: "The Importance of Being Earnest", author: "Oscar Wilde", form: "comic play" },
+  { id: "mycorner-08", sourceId: 16643, startLine: 2114, title: "Self-Reliance", author: "Ralph Waldo Emerson", form: "essay" },
+  { id: "mycorner-09", sourceId: 11339, startLine: 2559, title: "Selected Fables", author: "Aesop", form: "fables" },
+  { id: "yahuh-06", sourceId: 19484, startLine: 795, title: "How I Edited an Agricultural Paper", author: "Mark Twain", form: "humorous essay" },
+  { id: "yahuh-07", sourceId: 6456, startLine: 881, title: "Public Opinion", author: "Walter Lippmann", form: "social criticism" },
+  { id: "viewtube-06", sourceId: 72890, startLine: 101, title: "The Machine Stops", author: "E. M. Forster", form: "science fiction" },
+  { id: "viewtube-07", sourceId: 16287, startLine: 2202, title: "Talks to Teachers on Psychology", author: "William James", form: "psychology lecture" },
+
+  // Amaze-On.
+  { id: "amaze-on-01", sourceId: 43855, startLine: 386, title: "The Way to Wealth", author: "Benjamin Franklin", form: "essay" },
+  { id: "amaze-on-02", sourceId: 3300, startLine: 251, title: "The Wealth of Nations", author: "Adam Smith", form: "economic argument" },
+  { id: "amaze-on-03", sourceId: 30755, startLine: 6094, title: "The Stones of Venice: The Nature of Gothic", author: "John Ruskin", form: "art criticism" },
+  { id: "amaze-on-04", sourceId: 7256, startLine: 37, title: "The Gift of the Magi", author: "O. Henry", form: "short fiction" },
+  { id: "amaze-on-05", sourceId: 3053, startLine: 3217, title: "Useful Work versus Useless Toil", author: "William Morris", form: "social essay" },
+  { id: "amaze-on-06", sourceId: 2376, startLine: 3476, title: "Up from Slavery", author: "Booker T. Washington", form: "memoir" },
+  { id: "amaze-on-07", sourceId: 205, startLine: 779, title: "Walden: Economy", author: "Henry David Thoreau", form: "reflective essay" },
+  { id: "amaze-on-08", sourceId: 833, startLine: 1881, title: "The Theory of the Leisure Class", author: "Thorstein Veblen", form: "social analysis" },
+  { id: "amaze-on-09", sourceId: 550, startLine: 641, title: "Silas Marner", author: "George Eliot", form: "novel" },
+  { id: "amaze-on-10", sourceId: 6019, startLine: 2133, title: "The Earth as Modified by Human Action", author: "George Perkins Marsh", form: "environmental essay" },
+  { id: "amaze-on-11", sourceId: 46, startLine: 2758, title: "A Christmas Carol", author: "Charles Dickens", form: "novella" },
+
+  // Spotty-Fi.
+  { id: "spotty-fi-01", sourceId: 1322, startLine: 444, title: "Leaves of Grass", author: "Walt Whitman", form: "poetry" },
+  { id: "spotty-fi-02", sourceId: 408, startLine: 6373, title: "The Sorrow Songs", author: "W. E. B. Du Bois", form: "cultural essay" },
+  { id: "spotty-fi-03", sourceId: 44, startLine: 6214, title: "The Song of the Lark", author: "Willa Cather", form: "novel" },
+  { id: "spotty-fi-04", sourceId: 55749, startLine: 204, title: "The Philosophy of Composition", author: "Edgar Allan Poe", form: "literary criticism" },
+  { id: "spotty-fi-05", sourceId: 64908, startLine: 2937, title: "What Is Art?", author: "Leo Tolstoy", form: "art criticism" },
+  { id: "spotty-fi-06", sourceId: 18338, startLine: 10756, title: "Selected Poems", author: "Paul Laurence Dunbar", form: "poetry" },
+  { id: "spotty-fi-07", sourceId: 381, startLine: 4226, title: "A Humble Remonstrance", author: "Robert Louis Stevenson", form: "literary criticism" },
+  { id: "spotty-fi-08", sourceId: 42324, startLine: 184, title: "Frankenstein: 1831 Introduction", author: "Mary Shelley", form: "author's introduction" },
+  { id: "spotty-fi-09", sourceId: 2945, startLine: 115, title: "The Poet", author: "Ralph Waldo Emerson", form: "essay" },
+  { id: "spotty-fi-10", sourceId: 23, startLine: 1432, title: "Narrative of the Life of Frederick Douglass", author: "Frederick Douglass", form: "memoir" },
+
+  // MapGuess.
+  { id: "mapguess-01", sourceId: 120, startLine: 1389, title: "Treasure Island", author: "Robert Louis Stevenson", form: "adventure fiction" },
+  { id: "mapguess-02", sourceId: 103, startLine: 7883, title: "Around the World in Eighty Days", author: "Jules Verne", form: "adventure fiction" },
+  { id: "mapguess-03", sourceId: 535, startLine: 1831, title: "Travels with a Donkey in the Cévennes", author: "Robert Louis Stevenson", form: "travel narrative" },
+  { id: "mapguess-04", sourceId: 521, startLine: 3367, title: "Robinson Crusoe", author: "Daniel Defoe", form: "adventure fiction" },
+  { id: "mapguess-05", sourceId: 944, startLine: 1605, targetWords: 250, title: "The Voyage of the Beagle", author: "Charles Darwin", form: "travel and science narrative" },
+  { id: "mapguess-06", sourceId: 1022, startLine: 36, title: "Walking", author: "Henry David Thoreau", form: "essay" },
+  { id: "mapguess-07", sourceId: 13, startLine: 270, title: "The Hunting of the Snark", author: "Lewis Carroll", form: "comic poetry" },
+  { id: "mapguess-08", sourceId: 829, startLine: 2307, title: "Gulliver's Travels", author: "Jonathan Swift", form: "satirical fiction" },
+]);

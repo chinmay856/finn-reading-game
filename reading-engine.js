@@ -81,6 +81,40 @@ export function hasEndEvidence(matchedIndexes, totalCount, options = {}) {
   return tailMatches >= required;
 }
 
+export function advanceEvidenceCursor({
+  currentTokenIndex = 0,
+  matchedTokenIndexes = [],
+  maximumAdvance = 16,
+  maximumGap = 3,
+  maximumReacquisitionGap = 12,
+  minimumLocalMatches = 2,
+  minimumReacquisitionMatches = 4,
+  startingLookAhead = 3,
+  totalCount = 0,
+} = {}) {
+  const current = Math.max(0, Math.min(Number(currentTokenIndex) || 0, totalCount));
+  const matched = [...new Set(matchedTokenIndexes)]
+    .filter((index) => Number.isInteger(index) && index >= current && index < totalCount)
+    .sort((left, right) => left - right);
+  if (!matched.length) return current;
+
+  const clusters = [];
+  for (const index of matched) {
+    const cluster = clusters.at(-1);
+    if (!cluster || index - cluster.at(-1) > maximumGap) clusters.push([index]);
+    else cluster.push(index);
+  }
+  const local = clusters.find((cluster) => (
+    cluster[0] <= current + startingLookAhead && cluster.length >= minimumLocalMatches
+  ));
+  const reacquired = clusters.find((cluster) => (
+    cluster[0] <= current + maximumReacquisitionGap && cluster.length >= minimumReacquisitionMatches
+  ));
+  const accepted = local ?? reacquired;
+  if (!accepted) return current;
+  return Math.min(totalCount, current + Math.max(1, maximumAdvance), accepted.at(-1) + 1);
+}
+
 export function alignTranscript(expectedText, spokenText, options = {}) {
   const expectedTokens = Array.isArray(expectedText) ? expectedText : tokenizeText(expectedText);
   const fillers = options.fillers ?? DEFAULT_FILLERS;

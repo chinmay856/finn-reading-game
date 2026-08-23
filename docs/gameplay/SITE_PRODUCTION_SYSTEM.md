@@ -10,6 +10,12 @@ allowing every site to keep its own progress fiction, midpoint, and finish.
 The per-site build briefs remain authoritative for local story. This file is
 authoritative for shared production behavior.
 
+Before authoring or regenerating a visual sequence, builders must read
+[`SITE_SEQUENCE_AUTHORING_PRINCIPLES.md`](../design/SITE_SEQUENCE_AUTHORING_PRINCIPLES.md)
+and produce its four required preflight artifacts. This prevents reviewed
+continuity, show-don't-tell, pacing, and Auto-character decisions from being
+lost when a four-state bookend expands into a complete sequence.
+
 ## Required site contract
 
 Every playable site must define:

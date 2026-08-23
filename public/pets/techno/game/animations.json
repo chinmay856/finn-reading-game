@@ -1,0 +1,61 @@
+{
+  "format": "techno-game-animations-v1",
+  "frameSize": [
+    192,
+    208
+  ],
+  "animations": {
+    "floppy-drive": {
+      "frames": [
+        "frames/floppy-drive/00.png",
+        "frames/floppy-drive/01.png",
+        "frames/floppy-drive/02.png",
+        "frames/floppy-drive/03.png",
+        "frames/floppy-drive/04.png",
+        "frames/floppy-drive/05.png"
+      ],
+      "frameDurationMs": 220,
+      "loop": false,
+      "holdLastMs": 900
+    },
+    "file-search": {
+      "frames": [
+        "frames/file-search/00.png",
+        "frames/file-search/01.png",
+        "frames/file-search/02.png",
+        "frames/file-search/03.png",
+        "frames/file-search/04.png",
+        "frames/file-search/05.png"
+      ],
+      "frameDurationMs": 210,
+      "loop": true,
+      "holdLastMs": 0
+    },
+    "usb-delivery": {
+      "frames": [
+        "frames/usb-delivery/00.png",
+        "frames/usb-delivery/01.png",
+        "frames/usb-delivery/02.png",
+        "frames/usb-delivery/03.png",
+        "frames/usb-delivery/04.png",
+        "frames/usb-delivery/05.png"
+      ],
+      "frameDurationMs": 190,
+      "loop": false,
+      "holdLastMs": 800
+    },
+    "data-restored": {
+      "frames": [
+        "frames/data-restored/00.png",
+        "frames/data-restored/01.png",
+        "frames/data-restored/02.png",
+        "frames/data-restored/03.png",
+        "frames/data-restored/04.png",
+        "frames/data-restored/05.png"
+      ],
+      "frameDurationMs": 220,
+      "loop": false,
+      "holdLastMs": 1200
+    }
+  }
+}

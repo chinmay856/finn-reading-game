@@ -1,0 +1,55 @@
+:root { font-family: system-ui, sans-serif; color: #20242b; background: #e8edf1; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+main { width: min(920px, calc(100% - 32px)); margin: 24px auto; }
+header, .eyebrow, .actions, .model-loader { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+header { margin-bottom: 18px; }
+.header-links { display: flex; gap: 14px; }
+h1, h2, p { margin-top: 0; }
+h3 { margin: 6px 0 12px; font-size: 1.15rem; }
+small, .eyebrow, .mode-label { font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.reader-card, .result { background: #fff; border: 2px solid #28323b; box-shadow: 7px 7px 0 #96a7b5; padding: 28px; }
+.mode-label { display: inline-block; margin: 18px 8px 8px 0; font-size: .78rem; }
+select { min-height: 38px; padding: 6px; font: inherit; }
+.model-loader { margin: 12px 0 22px; font-size: .9rem; color: #45515c; }
+.model-loader progress { width: min(360px, 55%); height: 16px; }
+.passage { position: relative; height: 340px; overflow-y: auto; padding: 110px 8px 220px; scroll-behavior: smooth; font-family: Georgia, serif; font-size: clamp(23px, 3vw, 32px); line-height: 1.5; }
+.passage p { margin: 0 0 10px; padding: 3px 10px; border-radius: 5px; transition: opacity .2s, background .2s; opacity: .58; }
+.passage p.past { opacity: .4; }
+.passage p.active { background: #fff1a8; opacity: 1; }
+.status { min-height: 25px; margin: 18px 0 8px; font-weight: 650; }
+.progress { height: 12px; border: 1px solid #28323b; background: #d8e0e6; margin-bottom: 18px; }
+.progress span { display: block; width: 0; height: 100%; background: #21864b; transition: width .25s; }
+button { min-height: 44px; padding: 9px 16px; border: 2px solid #28323b; background: #f6f8fa; font: inherit; font-weight: 700; cursor: pointer; }
+button:disabled { opacity: .45; cursor: default; }
+#finish { background: #fff1a8; }
+.result { margin-top: 20px; }
+.performance-summary { margin: 24px 0 18px; }
+.performance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.performance-grid > div { display: grid; gap: 5px; padding: 14px; border: 1px solid #96a7b5; background: #fff; }
+.performance-grid span { color: #56616b; font-size: .8rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.performance-grid small { color: #56616b; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.learning-review { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.learning-review > section { padding: 18px; border: 1px solid #96a7b5; background: #f6f8fa; }
+.answer-grid { display: grid; gap: 8px; }
+.answer-choice { width: 100%; text-align: left; background: #fff; }
+.answer-choice:hover, .answer-choice:focus-visible { background: #e9f4ff; }
+.answer-choice.selected.correct { border-color: #21864b; background: #e6f7ec; }
+.answer-choice.selected.incorrect { border-color: #b65a35; background: #fff0e9; }
+.answer-feedback, .word-audio-status { min-height: 42px; margin: 12px 0 0; color: #45515c; font-size: .92rem; }
+.word-grid { display: grid; gap: 8px; }
+.word-card { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 10px; border: 1px solid #bdc8d1; background: #fff; text-align: left; }
+.word-card:hover, .word-card:focus-visible { background: #e9f4ff; }
+.word-card div { display: grid; gap: 2px; }
+.word-card span { color: #56616b; font-size: .88rem; }
+.word-card.speaking { background: #fff1a8; }
+.result details { margin-top: 16px; }
+.result pre { overflow: auto; white-space: pre-wrap; }
+.fine { margin-top: 16px; color: #56616b; }
+.diagnostic-toggle { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; color: #4d5968; font-size: 14px; }
+.diagnostic-toggle input { margin-top: 2px; }
+.button-link { display: inline-flex; align-items: center; min-height: 44px; padding: 9px 16px; border: 2px solid #28323b; background: #f6f8fa; color: #20242b; font-weight: 700; text-decoration: none; }
+.result audio { display: block; width: min(480px, 100%); margin: 14px 0; }
+@media (max-width: 720px) { .learning-review, .performance-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .actions { align-items: stretch; flex-direction: column; } .passage { height: 360px; } }
+@media (prefers-reduced-motion: reduce) { .passage { scroll-behavior: auto; } .passage p, .progress span { transition: none; } }

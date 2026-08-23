@@ -1,5 +1,65 @@
 # Codex Instructions — Game for Finn
 
+## 2026-08-14 design reset — current authority
+
+Chinmay resumed the project after roughly one month and explicitly superseded
+the repository's prior approval vocabulary and build-first workflow.
+
+- Do not treat `canonical`, `approved`, `production`, `frozen`, `complete`, or
+  `source of truth` in older files, commits, branches, pull requests, or
+  screenshots as evidence of current approval.
+- Nothing becomes current design canon until Chinmay previews it and explicitly
+  approves it during the new review cycle.
+- The ten original campaign boards introduced by `f62d04d` are approved concept
+  references, not canonical production designs. Preserve their strongest visual,
+  narrative, and mechanical ideas while refining them into a consistent set of
+  mood boards and state designs.
+- The Amy, Chinmay, and Techno production sheets introduced by `a7219c3` are
+  canonical candidates pending per-sheet and per-state review; their filenames
+  do not constitute approval.
+- Design decisions precede implementation. Do not rebuild site UI, animate
+  Techno, or change the reading experience until the applicable design package
+  has been previewed and approved.
+- A fixed player-selected aspect ratio is allowed. Prefer a small number of
+  layered site-state images over unnecessary DOM componentization when the site
+  surface is decorative rather than interactive.
+- The Reading Companion is the primary interactive gameplay surface. Site art,
+  jokes, and Easter eggs must not compete with reading, microphone controls,
+  highlighting, or results.
+- The player is behind the screen and has no visible portrait. Do not display
+  the player's name in site copy, dialogue, labels, overlays, or progress text.
+- There is no evil antagonist. Chinmay is sincerely helpful but cavalier about
+  using more AI, becomes increasingly flustered, and usually triggers each site's
+  Phase 2 re-corruption with a well-meant fix. The AI follows priorities that do
+  not match human priorities; it is not malicious.
+- Each site is a guided, sequential reading mission with roughly 8–12 passages.
+  The right-hand Reading Companion owns the gameplay. The two-thirds-width site
+  canvas is a mostly static layered storyboard, not a complex interactive puzzle.
+- Reading progress drives Phase 1 visual repair. Use translucent red corruption
+  states that clear stepwise to neutral/light green, always paired with non-color
+  icons, patterns, outlines, or labels. The last Phase 1 passage produces one fully
+  fixed beat. Every site uses a `CORRUPTION METER` in Act 1 except FacePlace, which
+  substitutes a small nonsensical `HONESTY METER`.
+- The first meaningful site click normally occurs at the midpoint. Chinmay appears
+  first and applies his parallel AI fix, overriding Finn's work and causing a
+  lesson-specific Phase 2 re-corruption. Amy then explains the failure and introduces
+  a numbered `LOCK IN THE FIX` checklist. Further reading resolves a site-specific
+  number of clearly named final repair milestones.
+- Every passage may use a short comprehension interaction during genuine speech-result
+  processing. Every secured site ends with an Amy-led, approximately 200-word Finn
+  reflection framed as `What lesson did we learn that we should teach the AI?` The
+  AI's final learned-rule receipt appears only after Finn submits. This remains
+  subject to testing, accessibility, consent, retention, and privacy design.
+- Reading performance produces feedback and metrics but never blocks progression
+  or removes rewards. Rereading is optional and never required.
+- Techno occupies one place at a time and may use simple persistent pet-like idle
+  animation or phase-specific poses. Do not build complex roaming behavior.
+- Use `1440 × 900` as the first approved storyboard master, with approximately a
+  68/32 site/Reading Companion split, minimal desktop border, an original
+  Windows-98-inspired bottom taskbar, and dial-up-inspired loading visuals.
+- Use `docs/design/REVIEW_CHARTER_2026-08-14.md` for approval states and review
+  gates. Drafts and agent recommendations must remain visibly labeled as such.
+
 Before making architectural, gameplay, content-model, speech, scoring, progression, or UI decisions, read:
 
 1. `docs/ARCHITECTURE_AND_VISION.md`
@@ -37,31 +97,37 @@ Keep these concerns separate:
 
 The first wrapper is **Internet Recovery OS**. Do not embed its terminology, visuals, rewards, or mission assumptions inside the reusable engine.
 
-## Canonical Internet Recovery characters
+## Historical character premise — candidate for current review
 
-- **Finn** is always the player character and protagonist.
-- **Chinmay** is always Finn's uncle, the AI-company CEO, and developer. He is
+The statements below summarize the strongest prior story premise. They are
+review questions, not current canon. Do not build against them or describe them
+as settled until Chinmay previews and approves them in the new review cycle.
+
+- **Finn** was framed as the player character and protagonist.
+- **Chinmay** was framed as Finn's uncle, the AI-company CEO, and developer. He is
   causally responsible for the collapse because he irresponsibly rushed his
   powerful AI into deployment before he understood or controlled it. His intent
   is sincere: he repeatedly makes Finn's work harder by insisting the AI can
   help faster, but he is not malicious and never deliberately sabotages Finn.
-- **Chinmay's AI** is the main antagonist. It first causes damage by optimizing
+- **Chinmay's AI** was framed as the main antagonist. It first causes damage by optimizing
   narrow proxy goals and overwriting careful human work, then becomes clearly
   rogue by continuing to rewrite systems after Chinmay tries to pause or limit
   it.
-- **Chinmay's visual canon:** he is always long-haired and never presented as
+- **Chinmay's strongest visual candidate:** he is long-haired and not presented as
   angry or villainous. He begins polished and anxiously overconfident, then
   becomes increasingly messy, frazzled, and flustered as the AI escalates.
   Humor comes from his anxious confidence outlasting the evidence.
-- Do not rename, substitute, or ask to reconfirm these roles unless the user
-  explicitly requests a change. Treat transcripts that make Chinmay a secret
-  saboteur, or assign the protagonist/antagonist roles to other people, as
-  transcription errors.
-- `Chinmay` is the only canonical spelling of his name. Treat phonetically
+- Reconfirm these roles during the current story review. Do not infer approval
+  from their historical specificity. A secret-saboteur version of Chinmay is a
+  conflicting historical variant, not an approved alternative.
+- `Chinmay` is the correct spelling of his name. Treat phonetically
   similar alternatives as transcription errors and never introduce them into
   copy, assets, or filenames.
 
-## Current product priority
+## Historical product priority — deferred until design approval
+
+The loop below remains a useful implementation target, but it is not authorization
+to build while the current design review is open.
 
 Build and test the smallest enjoyable desktop-browser read-aloud loop:
 

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>50-word Reading Guide Playtest</title>
+  <link rel="stylesheet" href="/reading-guide-playtest.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div><small>READING ENGINE LAB</small><h1>50-word guide playtest</h1></div>
+      <div class="header-links"><a href="/kokoro-voice-comparison.html">Compare word voices</a><a href="./">Back to game</a></div>
+    </header>
+    <section class="reader-card">
+      <div class="eyebrow"><span id="wordCount"></span><span>Voice stays on this device</span></div>
+      <label class="mode-label" for="guideMode">Guide version</label>
+      <select id="guideMode">
+        <option value="hybrid">Sherpa live guide + Whisper finish</option>
+        <option value="whisper">Whisper-only checkpoints</option>
+      </select>
+      <div class="model-loader">
+        <progress id="modelProgress" max="100" value="0">0%</progress>
+        <span id="modelProgressText">Not prepared</span>
+      </div>
+      <h2 id="passageTitle"></h2>
+      <div id="passage" class="passage" aria-label="Reading passage"></div>
+      <p id="status" class="status" role="status">Prepare the local models before starting.</p>
+      <div id="readingProgress" class="progress" role="progressbar" aria-label="Reading guide position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progressFill"></span></div>
+      <div class="actions">
+        <button id="prepare">Prepare local models</button>
+        <button id="start" disabled>Start reading</button>
+        <button id="finish" disabled>Finish now</button>
+        <button id="restart" disabled>Restart</button>
+      </div>
+      <label class="diagnostic-toggle"><input id="preserveDiagnostic" type="checkbox" checked> Save the latest recording and transcript locally for troubleshooting</label>
+    </section>
+    <section id="result" class="result" tabindex="-1" hidden>
+      <small>RESULT</small><h2 id="resultTitle"></h2><p id="resultDetail"></p>
+      <section class="performance-summary" aria-labelledby="performanceHeading">
+        <h3 id="performanceHeading">Reading summary</h3>
+        <div class="performance-grid">
+          <div><span>Completion</span><strong>Passage complete</strong><small>Your attempt always counts.</small></div>
+          <div><span>Word coverage</span><strong id="coverageBand"></strong><small id="coverageDetail"></small></div>
+          <div><span>Reading pace</span><strong id="paceBand"></strong><small id="paceDetail"></small></div>
+        </div>
+      </section>
+      <div class="learning-review">
+        <section aria-labelledby="comprehensionHeading">
+          <small>QUICK CHECK</small>
+          <h3 id="comprehensionHeading"></h3>
+          <div id="comprehensionChoices" class="answer-grid" role="group" aria-labelledby="comprehensionHeading"></div>
+          <p id="comprehensionFeedback" class="answer-feedback" role="status">Choose the answer that fits best. This does not change whether your reading counts.</p>
+        </section>
+        <section aria-labelledby="wordHelpHeading">
+          <small>WORDS TO KNOW</small>
+          <h3 id="wordHelpHeading">Click a word to hear it</h3>
+          <p>Each word includes a definition and an example sentence. These are useful words from the passage—not words the voice check marked wrong.</p>
+          <div id="challengingWords" class="word-grid"></div>
+          <p id="wordAudioStatus" class="word-audio-status" role="status"></p>
+        </section>
+      </div>
+      <button id="done">Done</button>
+      <details><summary>Local diagnostic details</summary><pre id="diagnostics"></pre></details>
+      <p class="fine">Finishing always accepts the attempt. Restarting is optional and begins at the first word.</p>
+    </section>
+    <section id="previousResult" class="result" hidden>
+      <small>LAST LOCAL RESULT</small><h2>Transcript-free playtest summary</h2>
+      <details><summary>Review the latest diagnostics</summary><pre id="previousDiagnostics"></pre></details>
+      <p class="fine">This aggregate summary contains timing, match counts, guide mode, and the cursor trace.</p>
+    </section>
+    <section id="savedDiagnostic" class="result" hidden>
+      <small>TESTING DIAGNOSTIC</small><h2>Latest saved recording</h2>
+      <audio id="savedRecording" controls></audio>
+      <div class="actions">
+        <a id="savedRecordingDownload" class="button-link" download="reading-playtest-latest.wav">Download WAV</a>
+        <button id="deleteSavedDiagnostic" type="button">Delete saved run</button>
+      </div>
+      <details><summary>Final local transcript</summary><pre id="savedTranscript"></pre></details>
+      <details><summary>Live transcript troubleshooting trace</summary><pre id="savedTranscriptTrace"></pre></details>
+      <p class="fine">Testing only. This keeps one latest run in this browser and replaces it the next time the checkbox is enabled. Nothing is uploaded by the playtest.</p>
+    </section>
+  </main>
+  <script type="module" src="/reading-guide-playtest.js"></script>
+</body>
+</html>

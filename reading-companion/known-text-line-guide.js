@@ -1,3 +1,5 @@
+import { advanceEvidenceCursor } from "../reading-engine.js";
+
 const WORD_PATTERN = /[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
 
 export function normalizeGuideWord(value) {
@@ -112,16 +114,20 @@ export class KnownTextLineGuide {
 
   observePartial(transcript, observedAtMs = performance.now()) {
     const evidence = alignGuideEvidence(this.referenceTokens, transcript);
-    const plausibleAdvance = Math.max(1, evidence.spokenCount + 1);
-    const proposed = Math.min(evidence.furthestMatchedIndex, plausibleAdvance);
-    this.confirmedWordIndex = Math.max(this.confirmedWordIndex, proposed);
+    const nextCursor = advanceEvidenceCursor({
+      currentTokenIndex: this.confirmedWordIndex + 1,
+      matchedTokenIndexes: evidence.matchedIndexes,
+      totalCount: this.referenceTokens.length,
+    });
+    this.confirmedWordIndex = Math.max(this.confirmedWordIndex, nextCursor - 1);
     const anticipatedWordIndex = anticipatedGuideWord({
       confirmedWordIndex: this.confirmedWordIndex,
       latencyMs: this.latencyMs,
       totalWords: this.referenceTokens.length,
       wordsPerMinute: this.wordsPerMinute,
     });
-    this.visibleLineIndex = Math.max(this.visibleLineIndex, lineForWord(this.layout, anticipatedWordIndex));
+    const evidenceLineIndex = lineForWord(this.layout, anticipatedWordIndex);
+    this.visibleLineIndex = Math.max(this.visibleLineIndex, Math.min(evidenceLineIndex, this.visibleLineIndex + 1));
     return Object.freeze({
       type: "reading-guide-position",
       passageId: this.passageId,

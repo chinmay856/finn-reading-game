@@ -103,6 +103,7 @@ export class LocalAudioCapture {
     this.pcmProcessor = null;
     this.startedAt = 0;
     this.stream = null;
+    this.startRequestId = 0;
     this.timeDomain = null;
   }
 
@@ -151,15 +152,31 @@ export class LocalAudioCapture {
     this.pcmProcessor.connect(this.audioContext.destination);
   }
 
-  async start() {
+  async start({ permissionTimeoutMs = 20_000 } = {}) {
     if (this.active) throw new Error("Audio capture is already active.");
     if (!window.MediaRecorder) throw new Error("This browser does not support local microphone recording.");
     this.finalChunks = [];
     this.previewChunks = [];
     this.previewTail = new Float32Array();
+    const requestId = ++this.startRequestId;
     try {
       const supported = navigator.mediaDevices.getSupportedConstraints?.() ?? {};
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: buildLocalMicrophoneConstraints(supported) });
+      let timeoutId;
+      const streamRequest = navigator.mediaDevices.getUserMedia({ audio: buildLocalMicrophoneConstraints(supported) });
+      streamRequest.then((stream) => {
+        if (this.startRequestId !== requestId) stream.getTracks().forEach((track) => track.stop());
+      }).catch(() => {});
+      try {
+        this.stream = await Promise.race([
+          streamRequest,
+          new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => reject(new Error("Microphone permission request timed out.")), permissionTimeoutMs);
+          }),
+        ]);
+      } finally {
+        clearTimeout(timeoutId);
+      }
+      if (this.startRequestId !== requestId) throw new Error("Microphone setup was cancelled.");
       const AudioContextApi = window.AudioContext || window.webkitAudioContext;
       this.audioContext = new AudioContextApi();
       const source = this.audioContext.createMediaStreamSource(this.stream);
@@ -245,6 +262,7 @@ export class LocalAudioCapture {
   }
 
   async cleanup() {
+    this.startRequestId += 1;
     this.pcmProcessor?.disconnect();
     this.mediaSource?.disconnect();
     if (this.pcmProcessor) this.pcmProcessor.port.onmessage = null;

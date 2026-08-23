@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#087f88">
+  <title>Internet Recovery · Playable Missions</title>
+  <link rel="stylesheet" href="/playable-missions.css">
+</head>
+<body>
+  <main class="playtest-shell">
+    <section id="stageScaler" class="stage-scaler" aria-label="Internet Recovery OS 98">
+      <div id="gameStage" class="game-stage">
+        <section id="setupDesktop" class="setup-desktop" hidden aria-hidden="true">
+          <footer class="launcher-taskbar"><button class="start-button" type="button" disabled>START</button><span id="setupTask">▣ Player Login</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+        </section>
+        <nav id="setupShortcuts" class="desktop-shortcuts setup-shortcuts" hidden aria-hidden="true">
+          <span><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></span>
+          <button class="desktop-shortcut" data-open-documents type="button"><span class="shortcut-icon documents" aria-hidden="true"></span><b>DOCUMENTS</b></button>
+          <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
+        </nav>
+        <section id="launcherView" class="recovery-launcher" hidden aria-labelledby="launcherTitle">
+          <nav class="desktop-shortcuts" aria-label="Recovery OS desktop">
+            <a href="/playable-missions.html"><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
+            <button class="desktop-shortcut" data-open-documents type="button"><span class="shortcut-icon documents" aria-hidden="true"></span><b>DOCUMENTS</b></button>
+            <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
+          </nav>
+          <section class="launcher-window">
+            <div class="launcher-titlebar"><span>▣ Recovery Browser — Choose a corrupted site</span><span aria-hidden="true">_ □ ×</span></div>
+            <header class="launcher-intro"><div><small>INCOMING RECOVERY CASES</small><h1 id="launcherTitle">Where do you want to start?</h1></div><div class="launcher-counts"><strong id="completeCount">0 / 8 COMPLETE</strong><span>8 CASES AVAILABLE</span></div></header>
+            <div id="siteGrid" class="site-grid"></div>
+          </section>
+          <footer class="launcher-taskbar"><button class="start-button" type="button">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+        </section>
+
+        <section id="missionView" class="mission-view" hidden>
+          <img id="siteFrame" class="site-frame" alt="">
+          <nav class="desktop-shortcuts mission-shortcuts" aria-label="Recovery OS desktop">
+            <a href="/playable-missions.html"><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
+            <button class="desktop-shortcut" data-open-documents type="button"><span class="shortcut-icon documents" aria-hidden="true"></span><b>DOCUMENTS</b></button>
+            <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
+          </nav>
+          <section id="readingCompanion" class="reading-companion" aria-labelledby="companionTitle">
+          <header class="companion-titlebar"><span>READING COMPANION</span><span aria-hidden="true">— □ ×</span></header>
+          <div id="readerView" class="companion-view">
+            <div class="companion-kicker"><span id="missionName"></span><span id="passagePosition"></span></div>
+            <h1 id="companionTitle"></h1>
+            <div id="passage" class="passage" tabindex="0" aria-label="Reading passage"></div>
+            <p id="readerStatus" class="status" role="status">Prepare the local models when you are ready.</p>
+            <div class="guide-progress" role="progressbar" aria-label="Reading guide position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="guideProgressFill"></span></div>
+            <div id="modelPanel" class="model-panel"><progress id="modelProgress" max="100" value="0"></progress><span id="modelStatus">Not prepared</span></div>
+            <div class="reader-actions">
+              <button id="prepareModels" type="button">Prepare local models</button>
+              <button id="startReading" type="button" disabled>Start reading</button>
+              <button id="finishReading" type="button" disabled>Finish now</button>
+              <button id="skipReading" class="skip-button" type="button">Skip passage</button>
+            </div>
+            <div class="troubleshooting"><label><input id="retainTroubleshooting" type="checkbox"> Keep the latest audio and transcript on this device for troubleshooting</label><button id="deleteTroubleshooting" type="button">Delete saved copy</button><span id="diagnosticStatus" role="status"></span></div>
+          </div>
+
+          <div id="skipView" class="companion-view skip-view" hidden tabindex="-1">
+            <div class="companion-kicker"><span>PASSAGE SKIPPED</span><span id="skipPassagePosition"></span></div>
+            <h1>Preview advanced without a voice score.</h1>
+            <p>Skipping is only for this fast design click-through. It changes the site frame, but it does not pretend the passage was read or the quick check was answered.</p>
+            <div class="skip-stamp">NO SPEECH RESULT RECORDED</div>
+            <button id="continueAfterSkip" type="button">Continue preview</button>
+          </div>
+
+          <div id="resultView" class="companion-view" hidden tabindex="-1">
+            <div class="companion-kicker"><span>READING COMPLETE</span><span id="resultPassagePosition"></span></div>
+            <h1 id="resultTitle"></h1><p id="resultDetail"></p>
+            <div class="score-grid"><article><span>Coverage</span><strong id="coverageBand"></strong><small id="coverageDetail"></small></article><article><span>Pace</span><strong id="paceBand"></strong><small id="paceDetail"></small></article></div>
+            <section class="quick-check"><small>QUICK CHECK · USE THE PASSAGE</small><h2 id="question"></h2><div id="answers"></div><p id="answerFeedback" role="status"></p></section>
+            <section id="wordHelp" class="word-help"><small>WORDS TO KNOW</small><div id="wordCards"></div><p id="wordAudioStatus" role="status"></p></section>
+            <div class="reader-actions"><button id="retryReading" type="button">Retry reading</button><button id="nextPassage" type="button" disabled>Next passage</button></div>
+          </div>
+
+          <div id="reflectionView" class="companion-view" hidden>
+            <div class="companion-kicker"><span>TEACH OTTO</span><span>SITE REPAIRED</span></div>
+            <h1>What lesson should Otto remember?</h1><p id="reflectionPrompt"></p>
+            <textarea id="reflectionText" rows="9" placeholder="Write one sentence Otto should remember…"></textarea>
+            <div class="reflection-count"><span id="reflectionCount">0 words</span><span>One clear sentence is enough for this prototype.</span></div>
+            <button id="submitReflection" type="button">Send instructions to Otto</button>
+          </div>
+
+          <div id="receiptView" class="companion-view receipt-view" hidden>
+            <small>SITE REPAIR COMPLETE</small><h1 id="receiptTitle">Instructions sent to Otto.</h1><p>Your lesson is on its way. Otto will confirm what he learned before you choose the next site.</p>
+            <button id="confirmReceipt" type="button">Continue</button>
+          </div>
+          </section>
+
+          <div id="storyOverlay" class="story-overlay" hidden>
+            <article class="story-dialog" data-speaker="chinmay"><div id="storySpeaker" class="speaker-tile" aria-hidden="true"></div><div><small id="storyLabel"></small><h2 id="storyHeading"></h2><p id="storyText"></p><button id="storyContinue" type="button">Continue</button></div></article>
+          </div>
+          <div id="corruptionPause" class="corruption-pause" hidden>
+            <button id="corruptionContinue" type="button">Oh no—what did Otto do?</button>
+          </div>
+          <footer class="launcher-taskbar mission-taskbar"><button class="start-button" type="button">START</button><span id="missionTask">▣ Recovery Site</span><span>□ Reading Companion</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+        </section>
+        <aside id="technoPet" class="hatched-techno" data-state="idle" data-place="left" aria-label="Techno, the animated recovery companion">
+          <div class="techno-sprite" aria-hidden="true"></div>
+          <img id="technoGameAction" class="techno-game-action" alt="" hidden>
+        </aside>
+        <section id="profileGate" class="profile-gate" hidden aria-labelledby="profileTitle">
+          <div class="profile-window">
+            <div class="launcher-titlebar"><span>▣ Recovery OS 98 — Player Login</span><span aria-hidden="true">_ □ ×</span></div>
+            <div class="profile-body">
+              <small>LOAD OR CREATE A SAVE FILE</small>
+              <h1 id="profileTitle">Who is playing?</h1>
+              <p>Enter a player name. A matching name loads its saved recovery cases; a new name starts a new game on this device.</p>
+              <label for="profileName">PLAYER NAME</label>
+              <input id="profileName" type="text" maxlength="24" autocomplete="off" spellcheck="false">
+              <p id="profileError" class="profile-error" role="alert"></p>
+              <button id="loadProfile" type="button">Load or create game</button>
+              <div id="savedProfiles" class="saved-profiles"></div>
+            </div>
+          </div>
+        </section>
+        <section id="dialupGate" class="dialup-gate" hidden aria-labelledby="dialupTitle">
+          <div class="dialup-window" data-state="dialing">
+            <div class="dialup-titlebar"><span>Dialing Progress</span><span aria-hidden="true">×</span></div>
+            <div class="dialup-body">
+              <small>LOCAL CONNECTION WIZARD</small>
+              <h1 id="dialupTitle">Preparing the local voice model…</h1>
+              <div class="dialup-connection" aria-hidden="true">
+                <img class="dialup-art" src="/walkthroughs/shared/dialup-voice-connection-v2.png" alt="">
+                <div class="dialup-packet-signal"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="dialup-status">
+                <strong id="dialupStatus" role="status">Dialing localhost…</strong>
+                <progress id="dialupProgress" max="100"></progress>
+                <small>No modem sound will play. Your ears are safe.</small>
+              </div>
+              <div class="dialup-actions">
+                <button id="retryDialup" type="button" hidden>Redial</button>
+                <button id="continueWithoutVoice" type="button" hidden>Continue in preview mode</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="startMenu" class="start-menu" hidden aria-label="Start menu">
+          <div class="start-menu-brand">RECOVERY<br>OS 98</div>
+          <div class="start-menu-items">
+            <div class="start-profile"><small>PLAYER</small><strong id="activeProfileName">No save loaded</strong></div>
+            <button id="saveGame" type="button">💾 <span><b>Save game</b><small>Save this case and campaign</small></span></button>
+            <a id="caseMapLink" href="/playable-missions.html">▣ <span><b>Recovery map</b><small>Return to all ten cases</small></span></a>
+            <button id="switchProfile" type="button">👤 <span><b>Switch player</b><small>Load a different save file</small></span></button>
+            <button id="newGame" type="button">✦ <span><b>New game</b><small>Create another player</small></span></button>
+          </div>
+        </section>
+        <section id="documentsWindow" class="documents-overlay" hidden aria-labelledby="documentsTitle">
+          <div class="documents-window">
+            <div class="launcher-titlebar"><span>▣ Documents — Recovery Lessons</span><button id="closeDocuments" type="button" aria-label="Close Documents">×</button></div>
+            <div class="documents-toolbar">📁 <strong id="documentsTitle">Saved feedback for Otto</strong><span id="documentsProfile"></span></div>
+            <div class="documents-body">
+              <div id="documentList" class="document-list" aria-label="Recovery documents"></div>
+              <article id="documentPreview" class="document-preview"><h2>No recovery file selected</h2><p>Finish a recovery case and teach Otto a lesson. The saved lesson will appear here.</p></article>
+            </div>
+          </div>
+        </section>
+        <div id="saveToast" class="save-toast" hidden role="status">Game saved.</div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/playable-missions.js"></script>
+</body>
+</html>

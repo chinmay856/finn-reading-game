@@ -1,18 +1,34 @@
 export const DEFAULT_SPEECH_DEVICE = "wasm";
 
 export class LocalWhisperRecognizer {
-  constructor({ onProgress = () => {} } = {}) {
+  constructor({ loadTimeoutMs = 150_000, onProgress = () => {}, transcribeTimeoutMs = 30_000 } = {}) {
     this.device = null;
+    this.loadTimeoutMs = loadTimeoutMs;
     this.nextRequestId = 1;
     this.onProgress = onProgress;
     this.pending = new Map();
     this.ready = false;
+    this.transcribeTimeoutMs = transcribeTimeoutMs;
     this.worker = null;
   }
 
-  createWorker(device) {
-    this.worker?.terminate();
+  failPending(error) {
+    for (const pending of this.pending.values()) {
+      clearTimeout(pending.timeoutId);
+      pending.reject(error);
+    }
     this.pending.clear();
+  }
+
+  resetWorker(error) {
+    if (error) this.failPending(error);
+    this.worker?.terminate();
+    this.worker = null;
+    this.ready = false;
+  }
+
+  createWorker(device) {
+    this.resetWorker(new Error("The local speech worker was replaced."));
     this.device = device;
     this.worker = new Worker(new URL("./whisper-worker.js", import.meta.url), { type: "module" });
     this.worker.addEventListener("message", ({ data }) => {
@@ -23,46 +39,45 @@ export class LocalWhisperRecognizer {
       const pending = this.pending.get(data.id);
       if (!pending) return;
       this.pending.delete(data.id);
+      clearTimeout(pending.timeoutId);
       if (data.status === "error") pending.reject(new Error(data.error));
       else pending.resolve(data.result);
     });
     this.worker.addEventListener("error", (event) => {
       const error = new Error(event.message || "The local speech worker stopped unexpectedly.");
-      for (const pending of this.pending.values()) pending.reject(error);
-      this.pending.clear();
+      this.resetWorker(error);
     });
   }
 
-  request(type, data = {}, transfer = []) {
+  request(type, data = {}, transfer = [], timeoutMs = this.transcribeTimeoutMs) {
     const id = this.nextRequestId;
     this.nextRequestId += 1;
     return new Promise((resolve, reject) => {
-      this.pending.set(id, { reject, resolve });
+      const timeoutId = setTimeout(() => {
+        const pending = this.pending.get(id);
+        if (!pending) return;
+        this.pending.delete(id);
+        pending.reject(new Error(`The local speech ${type} request timed out.`));
+        this.resetWorker(new Error("The local speech worker was stopped after a timeout."));
+      }, timeoutMs);
+      this.pending.set(id, { reject, resolve, timeoutId });
       this.worker.postMessage({ data, id, type }, transfer);
     });
   }
 
   async load(requestedDevice = null) {
     if (this.ready) return this.device;
-    let hasWebGpu = false;
-    if (navigator.gpu) {
-      try {
-        hasWebGpu = Boolean(await navigator.gpu.requestAdapter());
-      } catch {
-        hasWebGpu = false;
-      }
-    }
     const preferredDevice = requestedDevice === "wasm" || requestedDevice === "webgpu"
       ? requestedDevice
       : DEFAULT_SPEECH_DEVICE;
     this.createWorker(preferredDevice);
     try {
-      await this.request("load", { device: preferredDevice });
+      await this.request("load", { device: preferredDevice }, [], this.loadTimeoutMs);
     } catch (error) {
       if (preferredDevice !== "webgpu") throw error;
       this.onProgress({ status: "fallback", message: "WebGPU was unavailable; using the compatible CPU engine." });
       this.createWorker("wasm");
-      await this.request("load", { device: "wasm" });
+      await this.request("load", { device: "wasm" }, [], this.loadTimeoutMs);
     }
     this.ready = true;
     return this.device;
@@ -76,8 +91,6 @@ export class LocalWhisperRecognizer {
   }
 
   close() {
-    this.worker?.terminate();
-    this.worker = null;
-    this.ready = false;
+    this.resetWorker(new Error("The local speech recognizer was closed."));
   }
 }

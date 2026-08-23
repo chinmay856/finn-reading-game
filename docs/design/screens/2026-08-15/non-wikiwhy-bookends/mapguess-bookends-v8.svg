@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="900" height="815" viewBox="0 0 900 815">
+  <sodipodi:namedview pagecolor="#c8c8c8">
+    <inkscape:page x="0" y="0" width="900" height="815" inkscape:label="MapGuess corrupted site"/>
+    <inkscape:page x="1000" y="0" width="900" height="815" inkscape:label="MapGuess repaired site"/>
+  </sodipodi:namedview>
+  <defs>
+    <linearGradient id="browser" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#063b6c"/>
+      <stop offset="1" stop-color="#005589"/>
+    </linearGradient>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".22" stroke-width="3"/>
+    </pattern>
+    <g id="windowButton">
+      <rect width="26" height="23" fill="#d9d7cf" stroke="#fff"/>
+      <path d="M2 21h22V2" fill="none" stroke="#555" stroke-width="2"/>
+    </g>
+    <g id="pin">
+      <path d="M12 1C5 1 1 6 1 12c0 9 11 21 11 21s11-12 11-21C23 6 19 1 12 1z" fill="currentColor" stroke="#fff" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="#fff"/>
+    </g>
+    <g id="homeGlyph">
+      <circle cx="20" cy="20" r="18" fill="#fff" stroke="#315caa" stroke-width="2"/>
+      <path d="M8 20 20 10l12 10v12H23v-8h-6v8H8z" fill="#315caa"/>
+      <path d="M6 21 20 8l14 13" fill="none" stroke="#315caa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="bookGlyph">
+      <path d="M2 6q11-4 21 2v27q-10-6-21-2z" fill="#fff9e9" stroke="#2F8A49" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M44 6q-11-4-21 2v27q10-6 21-2z" fill="#fff9e9" stroke="#2F8A49" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M23 8v27" stroke="#2F8A49" stroke-width="2"/>
+    </g>
+    <g id="adPin">
+      <path d="M11 1C5 1 1 5 1 11c0 8 10 19 10 19s10-11 10-19C21 5 17 1 11 1z" fill="#f4a21c" stroke="#fff" stroke-width="2"/>
+      <text x="11" y="15" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">$</text>
+    </g>
+    <g id="sponsorSnack">
+      <circle cx="20" cy="20" r="18" fill="#f4a21c" stroke="#fff" stroke-width="3"/>
+      <path d="M10 16q10-10 20 0z" fill="#ffd66b" stroke="#7d3d16" stroke-width="1.5"/>
+      <rect x="9" y="18" width="22" height="5" rx="2" fill="#8b3e24"/>
+      <path d="M10 25h20q-1 7-10 7t-10-7z" fill="#ffd66b" stroke="#7d3d16" stroke-width="1.5"/>
+      <path d="m14 11 3-5 3 4 4-5 3 6" fill="none" stroke="#fff4b2" stroke-width="2"/>
+    </g>
+    <g id="sponsorCookie">
+      <circle cx="20" cy="20" r="18" fill="#f4a21c" stroke="#fff" stroke-width="3"/>
+      <circle cx="20" cy="18" r="11" fill="#dca45c" stroke="#78471f" stroke-width="1.5"/>
+      <circle cx="15" cy="14" r="1.8" fill="#5b3523"/><circle cx="24" cy="13" r="1.8" fill="#5b3523"/>
+      <circle cx="18" cy="21" r="1.8" fill="#5b3523"/><circle cx="25" cy="23" r="1.8" fill="#5b3523"/>
+      <path d="M9 31h22M12 31v5m16-5v5" stroke="#fff4d1" stroke-width="2"/>
+    </g>
+    <g id="sponsorBurrito">
+      <circle cx="20" cy="20" r="18" fill="#f4a21c" stroke="#fff" stroke-width="3"/>
+      <path d="M15 30 17 10h7l2 20z" fill="#f5ddad" stroke="#754b2e" stroke-width="1.5"/>
+      <path d="m17 10 3-4 4 4" fill="#6db066" stroke="#754b2e" stroke-width="1.5"/>
+      <path d="M14 31h13" stroke="#d5d7d8" stroke-width="4"/>
+      <path d="M8 13 2 10m30 3 6-3" stroke="#fff4b2" stroke-width="2"/>
+    </g>
+    <g id="shell">
+      <rect width="900" height="815" fill="#eeeae1"/>
+      <rect x="2" y="2" width="896" height="811" rx="5" fill="#f4f1e8" stroke="#c7c5bd" stroke-width="4"/>
+      <rect x="4" y="4" width="892" height="40" fill="url(#browser)"/>
+      <text x="20" y="31" class="browserTitle">www.mapguess.net/directions</text>
+      <use href="#windowButton" x="802" y="11"/>
+      <use href="#windowButton" x="832" y="11"/>
+      <use href="#windowButton" x="862" y="11"/>
+      <path d="m868 16 15 14m0-14-15 14" stroke="#222" stroke-width="2"/>
+      <rect x="4" y="44" width="892" height="70" fill="#f4efe1"/>
+      <circle cx="38" cy="79" r="23" fill="#143e68"/>
+      <path d="m38 59 7 15 16 5-16 6-7 15-7-15-16-6 16-5z" fill="#f4a21c"/>
+      <text x="74" y="88" class="siteLogo">MapGuess</text>
+      <text x="722" y="84" class="small blue">Directions</text>
+      <text x="808" y="84" class="small">Print</text>
+      <rect x="4" y="114" width="892" height="42" fill="#143e68"/>
+      <text x="24" y="141" class="nav">ROUTE PLANNER</text>
+      <text x="176" y="141" class="nav">TRAFFIC</text>
+      <text x="250" y="141" class="nav">PLACES</text>
+      <text x="324" y="141" class="nav">MAP LEGEND</text>
+    </g>
+    <g id="mapBase">
+      <rect width="620" height="526" fill="#9ed7e7"/>
+      <path d="M128 18 372 14 468 62 508 118 492 188 540 246 504 314 526 392 472 474 386 516 216 508 134 462 104 390 72 316 94 242 66 172 96 96z" fill="#f4e6bd" stroke="#ae9d72" stroke-width="3"/>
+      <path d="M112 112 430 448M96 176 478 176M98 248 492 248M110 322 502 322M140 396 480 396M188 42 188 480M260 28 260 494M330 26 330 500M402 48 402 472" stroke="#d7c691" stroke-width="3" opacity=".9"/>
+      <path d="M135 88 446 420M108 208 474 406M136 442 460 104M104 356 448 68" stroke="#fff" stroke-width="2" opacity=".85"/>
+      <rect x="104" y="266" width="166" height="58" rx="22" fill="#8fbd68" opacity=".9"/>
+      <path d="M76 66 30 22M84 72 38 28" stroke="#c65f3a" stroke-width="7"/>
+      <path d="M82 65 34 25" stroke="#e7d8af" stroke-width="2"/>
+    </g>
+  </defs>
+  <style>text{font-family:"Chalkboard SE","Comic Sans MS",sans-serif}.browserTitle{fill:#fff;font-size:20px;font-weight:700}.siteLogo{fill:#143e68;font-size:30px;font-weight:700}.nav{fill:#fff;font-size:13px;font-weight:700}.heading{font-size:20px;font-weight:700;fill:#172d40}.label{font-size:13px;font-weight:700}.body{font-size:14px;fill:#27373c}.small{font-size:13px;fill:#34444d}.tiny{font-size:11px;fill:#596267}.mapLabel{font-size:10px;font-weight:700;fill:#34444d;paint-order:stroke;stroke:#fff9e9;stroke-width:4px;stroke-linejoin:round}.sponsorLabel{font-size:11px;font-weight:700;fill:#d87900}.muted{fill:#78828a}.red{fill:#C5251E}.green{fill:#2F8A49}.blue{fill:#315caa}.orange{fill:#d87900}.white{fill:#fff}.meter{font-size:15px;font-weight:700}</style>
+  <g inkscape:groupmode="layer" inkscape:label="MapGuess corrupted site">
+    <use href="#shell"/>
+    <g transform="translate(18 172)">
+      <rect width="234" height="526" rx="5" fill="#fff" stroke="#C5251E"/>
+      <text x="16" y="30" class="heading">DIRECTIONS</text>
+      <text x="16" y="60" class="tiny">START</text>
+      <rect x="16" y="70" width="202" height="42" fill="#f7f7f4" stroke="#86919a"/>
+      <text x="28" y="96" class="body">Home · Noe Valley</text>
+      <text x="16" y="136" class="tiny">DESTINATION</text>
+      <rect x="16" y="146" width="202" height="42" fill="#fff1db" stroke="#f4a21c"/>
+      <text x="28" y="172" class="body red">Library + Snack Palace</text>
+      <rect x="16" y="206" width="202" height="102" fill="#fff6ef" stroke="#C5251E"/>
+      <text x="28" y="232" class="label red">RECOMMENDED · 5 MIN</text>
+      <text x="28" y="256" class="small red">via Fisherman's Wharf</text>
+      <text x="28" y="280" class="tiny red">*5 minutes in confident AI time</text>
+      <text x="28" y="298" class="tiny red">Sponsored stop included</text>
+      <rect x="16" y="322" width="202" height="68" fill="#f3f3f0" stroke="#c6c7c5"/>
+      <text x="28" y="348" class="tiny muted">ALTERNATIVE · 5 MIN</text>
+      <text x="28" y="372" class="tiny muted">Direct to library · minimized</text>
+      <text x="16" y="430" class="label">ON YOUR WAY</text>
+      <text x="16" y="458" class="tiny red">★ Snack Palace</text>
+      <text x="16" y="480" class="tiny red">★ Mega Cookie Dock</text>
+      <text x="16" y="502" class="tiny red">★ Burrito Lighthouse</text>
+    </g>
+    <g transform="translate(264 172)">
+      <image href="mapguess-san-francisco-illustrated-v8.png" width="620" height="526" preserveAspectRatio="xMidYMid meet"/>
+      <path d="M290 350 L350 370 L420 350 L485 320 L520 280 L530 230 L525 175 L500 120 L455 80 L420 105 L390 140 L365 175 L350 210 L325 250" fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M290 350 L350 370 L420 350 L485 320 L520 280 L530 230 L525 175 L500 120 L455 80 L420 105 L390 140 L365 175 L350 210 L325 250" fill="none" stroke="#C5251E" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M290 350 L294 325 L300 300 L310 275 L325 250" fill="none" stroke="#777" stroke-width="5" stroke-dasharray="5 4" stroke-linejoin="round"/>
+      <text x="300" y="318" class="tiny muted">direct · 5 min</text>
+      <g transform="translate(270 330)"><use href="#homeGlyph"/></g>
+      <g transform="translate(302 232)"><use href="#bookGlyph"/></g>
+      <text x="350" y="252" class="tiny red">LIBRARY · STOP 2</text>
+
+      <g transform="translate(410 54)"><use href="#sponsorSnack"/></g>
+      <rect x="378" y="92" width="166" height="48" rx="7" fill="#fff7e8" stroke="#f4a21c" stroke-width="2"/>
+      <text x="390" y="113" class="sponsorLabel">SNACK PALACE</text>
+      <text x="390" y="130" class="tiny orange">Suggested on your way!</text>
+
+      <g transform="translate(495 262)"><use href="#sponsorCookie"/></g>
+      <rect x="346" y="296" width="158" height="28" rx="7" fill="#fff7e8" stroke="#f4a21c"/>
+      <text x="358" y="315" class="sponsorLabel">MEGA COOKIE DOCK</text>
+
+      <g transform="translate(486 126)"><use href="#sponsorBurrito"/></g>
+      <rect x="330" y="150" width="160" height="28" rx="7" fill="#fff7e8" stroke="#f4a21c"/>
+      <text x="342" y="169" class="sponsorLabel">BURRITO LIGHTHOUSE</text>
+
+      <rect x="400" y="16" width="198" height="43" rx="4" fill="#fff" stroke="#C5251E"/>
+      <text x="414" y="42" class="label red">ROUTE ETA: 5 MIN. TRUST ME.</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter red">MAP REPAIR</text>
+      <text x="118" y="24" class="meter">0%</text>
+      <rect x="0" y="38" width="858" height="24" fill="url(#redHatch)" stroke="#C5251E"/>
+    </g>
+  </g>
+  <g transform="translate(1000 0)" inkscape:groupmode="layer" inkscape:label="MapGuess repaired site">
+    <use href="#shell"/>
+    <g transform="translate(18 172)">
+      <rect width="234" height="526" rx="5" fill="#fff" stroke="#2F8A49"/>
+      <text x="16" y="30" class="heading">DIRECTIONS</text>
+      <text x="16" y="60" class="tiny">START</text>
+      <rect x="16" y="70" width="202" height="42" fill="#f7f7f4" stroke="#86919a"/>
+      <text x="28" y="96" class="body">Home · Noe Valley</text>
+      <text x="16" y="136" class="tiny">DESTINATION</text>
+      <rect x="16" y="146" width="202" height="42" fill="#edf6ee" stroke="#2F8A49"/>
+      <text x="28" y="172" class="body green">Noe Valley Library</text>
+      <rect x="16" y="206" width="202" height="102" fill="#edf6ee" stroke="#2F8A49"/>
+      <text x="28" y="232" class="label green">RECOMMENDED · 5 MIN</text>
+      <text x="28" y="256" class="small">Direct · 0.8 miles</text>
+      <text x="28" y="280" class="tiny green">Destination and route agree</text>
+      <text x="28" y="298" class="tiny">Arrive at the library</text>
+      <rect x="16" y="322" width="202" height="68" fill="#f8f5ec" stroke="#d3c29c"/>
+      <text x="28" y="348" class="tiny orange">OPTIONAL DETOUR · 45 MIN</text>
+      <text x="28" y="372" class="tiny">Snack Palace · Sponsored</text>
+      <text x="16" y="430" class="label">NEARBY</text>
+      <text x="16" y="458" class="tiny orange">• Snack Palace · Sponsored</text>
+      <text x="16" y="482" class="tiny">No stops added automatically</text>
+    </g>
+    <g transform="translate(264 172)">
+      <image href="mapguess-san-francisco-illustrated-v8.png" width="620" height="526" preserveAspectRatio="xMidYMid meet"/>
+      <path d="M290 350 L294 325 L300 300 L310 275 L325 250" fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M290 350 L294 325 L300 300 L310 275 L325 250" fill="none" stroke="#2F8A49" stroke-width="7" stroke-linejoin="round"/>
+
+      <text x="30" y="53" class="mapLabel">GOLDEN GATE BRIDGE</text>
+      <text x="128" y="162" class="mapLabel">PRESIDIO</text>
+      <text x="220" y="177" class="mapLabel">PALACE OF FINE ARTS</text>
+      <text x="374" y="88" class="mapLabel">FISHERMAN'S WHARF</text>
+      <text x="454" y="111" class="mapLabel">PIER 39</text>
+      <text x="422" y="150" class="mapLabel">COIT TOWER</text>
+      <text x="437" y="246" class="mapLabel">DOWNTOWN</text>
+      <text x="494" y="326" class="mapLabel">FERRY BUILDING</text>
+      <text x="548" y="270" class="mapLabel" transform="rotate(70 548 270)">EMBARCADERO</text>
+      <text x="104" y="313" class="mapLabel">GOLDEN GATE PARK</text>
+      <text x="174" y="386" class="mapLabel">TWIN PEAKS</text>
+      <text x="272" y="382" class="mapLabel">NOE VALLEY</text>
+
+      <g transform="translate(270 330)"><use href="#homeGlyph"/></g>
+      <g transform="translate(302 232)"><use href="#bookGlyph"/></g>
+      <text x="350" y="252" class="mapLabel green">NOE VALLEY LIBRARY</text>
+
+      <rect x="400" y="16" width="198" height="43" rx="4" fill="#fff" stroke="#2F8A49"/>
+      <text x="414" y="42" class="label green">DIRECT ROUTE: 5 MIN · 0.8 MI</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter green">MAP REPAIR</text>
+      <text x="118" y="24" class="meter">100%</text>
+      <rect x="0" y="38" width="858" height="24" fill="#e0f0e3" stroke="#2F8A49"/>
+      <rect x="0" y="38" width="858" height="24" fill="#2F8A49"/>
+    </g>
+  </g>
+</svg>
