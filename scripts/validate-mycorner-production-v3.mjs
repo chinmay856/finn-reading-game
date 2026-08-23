@@ -63,8 +63,8 @@ errors.push(...await page.evaluate(() => {
 
   needs(first[0], ["DefinitelyAmy_Official_Real", "ONLINE NOW · IDENTITY NOT VERIFIED", "6 minutes ago", "URGENT BULLETIN!!!", "HELP! MY PHONE BROKE AT THE AIRPORT!", "$2,000", "ONLINE MESSAGES ONLY · UNSECURED", "AMY_FRIEND_LEGIT"]);
   needs(first[1], ["AMY'S DETAILS", "6 years ago", "San Francisco", "Tea: ready", "Techno's Fetch Mix", "CONTACTING KNOWN AMY", "MESSAGE · VERIFIED", "PHONE · VERIFIED"]);
-  needs(first[2], ["AMY'S LATEST BULLETIN", "Techno found a stick longer than the sidewalk.", "AMY'S LATEST BULLETINS", "YESTERDAY · DOG PARK", "LAST WEEK · WORKSHOP", "6 YEARS OF POSTS"]);
-  needs(first[3], ["AMY'S BLURBS", "Engineer, tea drinker, Techno's ball thrower.", "People who return borrowed tools and dog toys."]);
+  needs(first[2], ["AMY'S LATEST BULLETIN", "Techno found a stick longer than the sidewalk.", "She is keeping it.", "AMY'S LATEST BULLETINS", "YESTERDAY · DOG PARK", "LAST WEEK · SAN FRANCISCO", "Went for a long run around San Francisco.", "6 YEARS OF POSTS"]);
+  needs(first[3], ["AMY'S BLURBS", "Engineer, coffee drinker, Techno's ball thrower.", "People who throw the ball for Techno."]);
   needs(first[4], ["Amy", "AMY IS IN YOUR EXTENDED NETWORK", "PHONE · VERIFIED", "KNOWN FRIENDS", "CHINMAY", "TECHNO"]);
   needs(locks[0], ["AUTO VERIFIED ∞%", "AUTO IS IN EVERY EXTENDED NETWORK", "BLUETOOTH ENABLED", "AUTO VIP AIRPORT RESCUE ACTIVATED!", "PROFILE REWRITE", "AUTO FRIEND SPACE", "AUTO BEACH", "AUTO HIKE", "AUTO PARTY", "AUTO MUSEUM", "$20,000"]);
   needs(locks[1], ["LOCK IN THE REPAIR", "CHECK THE PERSON", "CHECK ACCOUNT HISTORY", "VERIFY ANOTHER WAY", "PAUSE ON MONEY REQUESTS"]);
@@ -98,7 +98,7 @@ errors.push(...await page.evaluate(() => {
 
   const initialBlurbs = first.slice(0, 3).map((state) => state.querySelector("[data-module='blurbs']")?.textContent.includes("A helpful friend who can send $2,000 before takeoff."));
   if (initialBlurbs.some((value) => !value)) issues.push("The unresolved copied profile blurb changed before its named repair.");
-  const restoredBlurbs = first.slice(3).map((state) => state.querySelector("[data-module='blurbs']")?.textContent.includes("People who return borrowed tools and dog toys."));
+  const restoredBlurbs = first.slice(3).map((state) => state.querySelector("[data-module='blurbs']")?.textContent.includes("People who throw the ball for Techno."));
   if (restoredBlurbs.some((value) => !value)) issues.push("The restored profile blurb drifted after repair.");
 
   const profileGroupStroke = (state) => state.querySelector("[data-module='profile-details-group'] rect")?.getAttribute("stroke")?.toUpperCase();

@@ -18,11 +18,10 @@ import { loadPinnedSherpaRuntime } from "./speech/sherpa-runtime-loader.js";
 import { createSherpaStreamingRecognizer, sherpaStreamingRuntimeAvailable } from "./speech/sherpa-streaming-recognizer.js";
 
 const $ = (id) => document.getElementById(id);
-const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "yahuh", "viewtube", "amaze-on", "spotty-fi", "mapguess"]);
+const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "amaze-on", "spotty-fi", "mapguess"]);
 const CATALOG_TO_ROUTE = Object.freeze({ amazeon: "amaze-on", spottyfi: "spotty-fi" });
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
 const LOCKED_PREVIEWS = Object.freeze({
-  mycorner: "/walkthroughs/previews/mycorner-current_p1.png",
   searchish: "/walkthroughs/previews/search-ish-current_p1.png",
 });
 const requestedSiteId = new URLSearchParams(location.search).get("site");
@@ -68,6 +67,7 @@ const SITE_PORTRAITS = Object.freeze({
   wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
   threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   faceplace: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  mycorner: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
@@ -270,7 +270,7 @@ function renderLauncher() {
   $("launcherView").hidden = false;
   $("missionView").hidden = true;
   const completedSiteIds = activeProfile()?.completedSiteIds ?? [];
-  $("completeCount").textContent = `${completedSiteIds.length} / 8 COMPLETE`;
+  $("completeCount").textContent = `${completedSiteIds.length} / ${PLAYABLE_SITE_IDS.length} COMPLETE`;
   $("siteGrid").replaceChildren(...RECOVERY_SITES.map((site) => {
     const routeId = CATALOG_TO_ROUTE[site.id] ?? site.id;
     const playable = PLAYABLE_SITE_IDS.includes(routeId);
@@ -891,7 +891,7 @@ function renderSavedProfiles() {
   $("savedProfiles").replaceChildren(...profiles.map((profile) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = `${profile.displayName} · ${profile.completedSiteIds.length}/8 complete`;
+    button.textContent = `${profile.displayName} · ${profile.completedSiteIds.length}/${PLAYABLE_SITE_IDS.length} complete`;
     button.addEventListener("click", () => beginProfile(profile.displayName));
     return button;
   }));

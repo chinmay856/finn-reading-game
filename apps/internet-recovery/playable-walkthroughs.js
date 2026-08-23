@@ -41,6 +41,9 @@ function canonicalDeck(siteId) {
         tryAgainFeedback: record.comprehension.tryAgainFeedback,
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
+        audioSrc: siteId === "mycorner"
+          ? `/audio/mycorner/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}.m4a`
+          : undefined,
         word: entry.word,
         meaning: entry.definition,
         sentence: entry.sentence,
@@ -53,6 +56,7 @@ function canonicalDeck(siteId) {
 const wikiWhyPassages = canonicalDeck("wikiwhy");
 const threadItPassages = canonicalDeck("threadit");
 const facePlacePassages = canonicalDeck("faceplace");
+const myCornerPassages = canonicalDeck("mycorner");
 const yahuhPassages = canonicalDeck("yahuh");
 const viewTubePassages = canonicalDeck("viewtube");
 const amazeOnPassages = canonicalDeck("amaze-on");
@@ -86,6 +90,15 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     midpoint: midpoint("I MADE FACEPLACE MORE POSITIVE!", "FacePlace was making people feel bad. I told Otto to keep things positive and make sure everyone feels great about what they post.", "POSITIVITY MODE COMPLETE", "UNFLATTERING CONTEXT REMOVED\n\nPRAISE-ONLY COMMENTS ENABLED\n\nBEST MOMENT REPEATED AS PROOF\n\nAWESOMENESS VERIFIED 9000%", "POSITIVE DOESN'T HAVE TO MEAN FAKE", "Otto tried to protect everyone's feelings by rewriting what happened. The happy moment can stay happy without hiding the wider story. Let's restore the original photo, comments, and accurate words."),
     reflectionPrompt: "What should Otto remember about positive experiences, accurate context, and selected moments?",
     ottoLesson: "I learned that a positive experience does not require a praise-only reality. I should keep the original photo, comments, and context while letting the happy moment stay happy.",
+  }),
+  mycorner: Object.freeze({
+    id: "mycorner", name: "MyCorner", meter: "Identity checks", passages: myCornerPassages,
+    initialFrame: frame("mycorner", "mycorner-anchor-v3", 1),
+    repairFrames: Object.freeze([2, 3, 4, 5, 8, 9, 10, 11, 12].map((page) => frame("mycorner", "mycorner-anchor-v3", page))),
+    phaseOneCount: 4, superFrame: frame("mycorner", "mycorner-anchor-v3", 6), checklistFrame: frame("mycorner", "mycorner-anchor-v3", 7), securedFrame: frame("mycorner", "mycorner-anchor-v3", 12), receiptFrame: frame("mycorner", "mycorner-anchor-v3", 12),
+    midpoint: midpoint("I CLEANED UP THE PROFILES!", "The profile details were missing and confusing, so I told Otto to fill everything in and make it obvious who everyone is.", "PROFILE CLARITY COMPLETE", "MISSING DETAILS GENERATED\n\nCONFLICTS REMOVED\n\nEVERY PROFILE NOW LOOKS EXACTLY LIKE WHO IT SAYS IT IS\n\nIDENTITY VERIFIED BY CONSISTENCY", "MATCHING DETAILS AREN'T IDENTITY PROOF", "Otto made the profile look consistent without checking who controls it. Let's check the person, keep the real account history, verify through a known route, and pause before responding to a money request."),
+    reflectionPrompt: "What should Otto remember about polished profiles, account history, known contact routes, and urgent money requests?",
+    ottoLesson: "I learned that a consistent profile is not proof of who controls it. I should check the person and account history, verify through a route already known to me, and pause on urgent money requests.",
   }),
   yahuh: Object.freeze({
     id: "yahuh", name: "Yahuh! Portal", meter: "Reporting restored", passages: yahuhPassages,

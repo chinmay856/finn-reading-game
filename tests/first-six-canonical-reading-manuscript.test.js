@@ -45,7 +45,7 @@ test("the first WikiWhy vocabulary set uses reviewed stretch words with contextu
 });
 
 test("currently playable packet sites use canonical records and one visual frame per reading", () => {
-  for (const siteId of ["wikiwhy", "threadit", "faceplace", "viewtube"]) {
+  for (const siteId of ["wikiwhy", "threadit", "faceplace", "mycorner", "viewtube"]) {
     const walkthrough = getPlayableWalkthrough(siteId);
     assert.deepEqual(walkthrough.passages.map((passage) => passage.id), FIRST_SIX_CANONICAL_PASSAGES[siteId].map((passage) => passage.id));
     assert.equal(walkthrough.repairFrames.length, walkthrough.passages.length);
