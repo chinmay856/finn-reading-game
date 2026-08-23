@@ -39,7 +39,7 @@ test("comprehension, troubleshooting retention, retry, skip, and reflection cont
   assert.match(script, /wordAudio\.src = entry\.audioSrc/u);
 });
 
-test("Recovery OS launcher exposes ten cases but only eight playable routes", () => {
+test("Recovery OS launcher exposes ten cases but only nine playable routes", () => {
   assert.match(html, /aria-label="Internet Recovery OS 98"/u);
   assert.match(html, />INTERNET RECOVERY OS</u);
   assert.match(html, /MY<br>COMPUTER/u);
@@ -47,10 +47,11 @@ test("Recovery OS launcher exposes ten cases but only eight playable routes", ()
   assert.match(html, />TRASH</u);
   assert.doesNotMatch(html, />HOME</u);
   assert.doesNotMatch(html, /FLOPPY<br>DISK/u);
-  assert.match(script, /PLAYABLE_SITE_IDS[^;]+wikiwhy[^;]+threadit[^;]+faceplace[^;]+yahuh[^;]+viewtube[^;]+amaze-on[^;]+spotty-fi[^;]+mapguess/u);
+  assert.match(script, /PLAYABLE_SITE_IDS[^;]+wikiwhy[^;]+threadit[^;]+faceplace[^;]+mycorner[^;]+yahuh[^;]+viewtube[^;]+amaze-on[^;]+spotty-fi[^;]+mapguess/u);
   assert.doesNotMatch(script, /DESIGN IN PROGRESS/u);
   assert.match(script, /getPlayableWalkthrough\(routeId\)\.initialFrame/u);
-  assert.match(script, /mycorner-current_p1\.png/u);
+  assert.doesNotMatch(script, /mycorner-current_p1\.png/u);
+  assert.match(html, /9 CASES AVAILABLE/u);
   assert.match(css, /NOT PLAYABLE YET/u);
 });
 

@@ -7,6 +7,7 @@ const expectations = Object.freeze({
   wikiwhy: Object.freeze({ count: 10, first: 6, secured: "_p7.png" }),
   threadit: Object.freeze({ count: 9, first: 6, secured: "_p14.png" }),
   faceplace: Object.freeze({ count: 8, first: 5, secured: "_p14.png" }),
+  mycorner: Object.freeze({ count: 9, first: 4, secured: "_p12.png" }),
   yahuh: Object.freeze({ count: 9, first: 6, secured: "_p13.png" }),
   viewtube: Object.freeze({ count: 8, first: 5, secured: "_p14.png" }),
   "spotty-fi": Object.freeze({ count: 10, first: 5, secured: "_p13.png" }),
@@ -14,7 +15,7 @@ const expectations = Object.freeze({
   mapguess: Object.freeze({ count: 8, first: 4, secured: "_p15.png" }),
 });
 
-test("the eight finished missions have one visual repair per passage", () => {
+test("the nine finished missions have one visual advance per passage", () => {
   assert.deepEqual(Object.keys(PLAYABLE_WALKTHROUGHS).sort(), Object.keys(expectations).sort());
   for (const [id, expected] of Object.entries(expectations)) {
     const mission = PLAYABLE_WALKTHROUGHS[id];
@@ -58,6 +59,18 @@ test("MapGuess preserves the approved repeated moving-target sequence", () => {
   );
   assert.equal(mission.superFrame.endsWith("_p6.png"), true);
   assert.equal(mission.checklistFrame.endsWith("_p7.png"), true);
+});
+
+test("MyCorner preserves the reviewed twelve-state identity-check sequence", () => {
+  const mission = PLAYABLE_WALKTHROUGHS.mycorner;
+  assert.deepEqual(
+    mission.repairFrames.map((source) => Number(source.match(/_p(\d+)\.png$/u)?.[1])),
+    [2, 3, 4, 5, 8, 9, 10, 11, 12],
+  );
+  assert.equal(mission.superFrame.endsWith("_p6.png"), true);
+  assert.equal(mission.checklistFrame.endsWith("_p7.png"), true);
+  assert.equal(mission.passages.every(({ id }, index) => id === `mycorner-${String(index + 1).padStart(2, "0")}`), true);
+  assert.equal(mission.passages.flatMap(({ challengingWords }) => challengingWords).every(({ audioSrc }) => audioSrc?.startsWith("/audio/mycorner/kokoro-heart/")), true);
 });
 
 test("player-facing midpoint copy contains no internal act or phase labels", () => {

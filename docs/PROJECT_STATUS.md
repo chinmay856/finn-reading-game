@@ -1,5 +1,22 @@
 # Project status
 
+## MyCorner reviewed mission integration — 2026-08-23
+
+- MyCorner now uses the reviewed 12-state v3 sequence: four first-run identity
+  repairs, the unobscured profile-consistency over-fix, the four-item lock
+  overlay, and the secured profile bookend. The playable wrapper advances the
+  exact exported frames and keeps all dialogue in semantic DOM overlays.
+- The existing nine-record MyCorner deck is now wired into the Reading
+  Companion in canonical `mycorner-01` through `mycorner-09` order. The runtime
+  merges the three frozen public-domain replacements into the reviewed
+  first-six manuscript, preserving source introductions, questions, feedback,
+  rights links, and contextual vocabulary.
+- All 27 MyCorner vocabulary cards have static Kokoro Heart AAC files under
+  `public/audio/mycorner/kokoro-heart/`; the result screen uses those files
+  directly and retains the current local-generation fallback.
+- The Recovery Browser now exposes nine playable cases. Search-ish remains the
+  only visibly locked site.
+
 ## Eight-site V2 playable and reviewed vocabulary pass — 2026-08-22
 
 - The V2 Recovery OS launcher now exposes eight playable designs: WikiWhy,
