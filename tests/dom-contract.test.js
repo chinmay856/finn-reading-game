@@ -63,12 +63,12 @@ test("continuous reading has no sentence or line check controls", async () => {
   assert.match(html, /Copy timing report/u);
   assert.match(html, /Inspect this session’s local transcripts/u);
   assert.match(html, /Prepare microphone/u);
-  assert.match(app, /hasEndEvidence/u);
+  assert.doesNotMatch(app, /hasEndEvidence/u);
   assert.doesNotMatch(html, />Start reading</u);
   assert.match(html, /<option value="250" selected>250 WPM<\/option>/u);
   assert.match(html, /<option value="300">300 WPM<\/option>/u);
   assert.match(app, /updateReadingGuide/u);
-  assert.match(app, /hasEndEvidence\(state\.confirmedMatches/u);
+  assert.doesNotMatch(app, /void finishReading\(\)/u);
   assert.match(html, /id="finalizationStatus"/u);
   assert.match(app, /finalAddedWords/u);
   assert.match(html, /INTERNET RECOVERY 98/u);

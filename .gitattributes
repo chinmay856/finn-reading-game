@@ -1,0 +1,9 @@
+# Frozen source snapshots and generated design boards preserve upstream spacing.
+docs/content/sources/** -whitespace
+docs/design/screens/** -whitespace
+
+# Editorial manuscripts intentionally use Markdown hard breaks in record fields.
+docs/content/*.md -whitespace
+docs/design/*.md -whitespace
+docs/design/review/*.md -whitespace
+docs/engine/*.md -whitespace

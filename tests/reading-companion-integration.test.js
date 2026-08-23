@@ -42,6 +42,8 @@ test("the isolated-host boot eagerly warms one streaming recognizer for every pa
   assert.match(app, /let streamingGuideBootPromise = null;/u);
   assert.match(app, /streamingGuideBootPromise \?\?= initializeStreamingGuideOnce\(\);/u);
   assert.match(app, /state\.streamingRecognizer \?\?= createSherpaStreamingRecognizer/u);
+  assert.match(app, /failStreamingGuideAttempt\(companion, error\)/u);
+  assert.match(app, /reason: "sherpa-mid-session-failed"/u);
   assert.match(app, /void preloadStreamingGuide\(\);/u);
   const initialization = app.slice(app.indexOf("async function initializeStreamingGuideOnce()"), app.indexOf("function preloadStreamingGuide()"));
   assert.match(initialization, /await loadPinnedSherpaRuntime/u);

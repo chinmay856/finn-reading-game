@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildLocalMicrophoneConstraints, summarizeSignal, trimSilence } from "../speech/audio-capture.js";
+import { buildLocalMicrophoneConstraints, LocalAudioCapture, summarizeSignal, trimSilence } from "../speech/audio-capture.js";
 import { DEFAULT_SPEECH_DEVICE } from "../speech/local-whisper-recognizer.js";
 
 test("uses the proven WebAssembly speech path by default", () => {
@@ -47,4 +47,32 @@ test("summarizes signal without retaining audio", () => {
   assert.ok(summary.activeFrameRatio > 0.9);
   assert.equal(summary.peak, 0.05);
   assert.ok(summary.rms > 0.03);
+});
+
+test("a pending microphone request times out and stops a late stream", async () => {
+  const originalWindow = globalThis.window;
+  const originalNavigator = globalThis.navigator;
+  let resolveStream;
+  let stopped = false;
+  globalThis.window = { MediaRecorder: class {} };
+  Object.defineProperty(globalThis, "navigator", {
+    configurable: true,
+    value: {
+      mediaDevices: {
+        getSupportedConstraints: () => ({}),
+        getUserMedia: () => new Promise((resolve) => { resolveStream = resolve; }),
+      },
+    },
+  });
+  try {
+    const capture = new LocalAudioCapture();
+    await assert.rejects(capture.start({ permissionTimeoutMs: 5 }), /timed out/u);
+    resolveStream({ getTracks: () => [{ stop: () => { stopped = true; } }] });
+    await new Promise((resolve) => setImmediate(resolve));
+    assert.equal(stopped, true);
+    assert.equal(capture.active, false);
+  } finally {
+    globalThis.window = originalWindow;
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: originalNavigator });
+  }
 });

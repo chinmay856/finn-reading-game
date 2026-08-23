@@ -1,5 +1,22 @@
 # Project status
 
+## Eight-site V2 playable and reviewed vocabulary pass — 2026-08-22
+
+- The V2 Recovery OS launcher now exposes eight playable designs: WikiWhy,
+  ThreadIt, FacePlace, Yahuh! Portal, ViewTube, Amaze-On, Spotty-Fi, and
+  MapGuess. MyCorner and Search-ish remain visibly locked rather than implying
+  that saved design material is playable.
+- Yahuh uses its reviewed 13-state sequence. MapGuess uses its visually approved
+  15-state sequence, including three visible failed attempts with the same
+  `GO DIRECTLY TO THE LIBRARY` instruction before the fourth attempt succeeds.
+- All 159 vocabulary cards in the reviewed 53-passage first-six manuscript were
+  editorially rebuilt and checked against exact passage sentences. The runtime
+  definitions now describe the sense used in context; the generated review table
+  is `docs/content/FIRST_SIX_VOCABULARY_EDITORIAL_TABLE_2026-08-22.md`.
+- MapGuess currently uses the eight explicitly provisional first-run candidates.
+  It does not receive invented vocabulary cards or canonical labels while the
+  remaining-four production manuscript is still pending.
+
 ## Isolated Sherpa production preview — live 2026-07-14
 
 - Firebase Hosting is live at <https://finn-reading-game.web.app/> as the
@@ -860,6 +877,29 @@ template, or start the final breach before enough real campaigns exist.
 
 Preserve the historical mobile prototype and its branches as side-test
 reference; do not resume mobile optimization unless the user reprioritizes it.
+
+### V2 public-domain reading campaign — prepared 2026-08-23
+
+- The playable V2 wrapper now merges 15 same-ID public-domain replacements into
+  the first-six packet and uses complete canonical public-domain decks for
+  Amaze-On (11), Spotty-Fi (10), and MapGuess (8).
+- The generated campaign layer contains 44 passages, 44 three-choice checks, and
+  132 context-specific vocabulary cards. Every card preserves its exact source
+  sentence; source introductions are one short scored title-and-author sentence.
+- Frozen Project Gutenberg source snapshots, selection boundaries, editorial
+  metadata, the generated runtime module, and the human-readable canonical
+  manuscript are kept together. `npm run generate:public-domain-campaign` and
+  `npm run validate:public-domain-campaign` fail closed on count, rights-link,
+  length, question, vocabulary, or exact-sentence drift.
+- Amaze-On, Spotty-Fi, and MapGuess no longer use project-written placeholder
+  passages in the playable wrapper. MyCorner and Search-ish remain unavailable
+  in the Recovery Browser while their designs are under active review.
+- Techno uses the validated `file-search` action during a live reading and the
+  `data-restored` celebration when a finished passage is accepted, then returns
+  to the normal review state.
+- Validation: 475 tests, content validation, syntax checks, production build,
+  diff whitespace checks, and a local Amaze-On browser smoke test pass. V1 and
+  V2 Firebase sites were not deployed by this change.
 
 ### ThreadIt desktop scanability (2026-07-12)
 

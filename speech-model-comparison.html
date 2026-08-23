@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local Speech Model Comparison</title>
+  <link rel="stylesheet" href="/moonshine-benchmark.css">
+</head>
+<body>
+  <main class="benchmark-shell">
+    <header><div><small>READING ENGINE LAB</small><h1>Streaming guide vs final scorer</h1></div></header>
+    <section class="panel benchmark-intro">
+      <p>Runs identical synthetic acceptance and failure fixtures through pinned Sherpa streaming and Whisper final scoring. Sherpa receives audio at a real 20 ms cadence. Nothing is uploaded or retained.</p>
+      <label>Generated reference reading <input id="referenceAudio" type="file" accept="audio/*"></label>
+      <label>Generated first two words <input id="twoWordAudio" type="file" accept="audio/*"></label>
+      <label>Generated final line only <input id="endingAudio" type="file" accept="audio/*"></label>
+      <label>Generated unrelated speech <input id="unrelatedAudio" type="file" accept="audio/*"></label>
+      <button id="run" class="primary" disabled>Run both models</button>
+      <p id="status" role="status">Choose both local audio fixtures.</p>
+    </section>
+    <section class="panel"><pre id="results">No run yet.</pre></section>
+  </main>
+  <script type="module" src="/speech-model-comparison.js"></script>
+</body>
+</html>

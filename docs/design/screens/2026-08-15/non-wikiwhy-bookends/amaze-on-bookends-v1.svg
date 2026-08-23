@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="900" height="815" viewBox="0 0 900 815">
+  <sodipodi:namedview pagecolor="#c8c8c8">
+    <inkscape:page x="0" y="0" width="900" height="815" inkscape:label="Amaze-On corrupted site"/>
+    <inkscape:page x="1000" y="0" width="900" height="815" inkscape:label="Amaze-On repaired site"/>
+  </sodipodi:namedview>
+  <defs>
+    <linearGradient id="browser" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#063b6c"/><stop offset="1" stop-color="#005589"/></linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#102f4f"/><stop offset="1" stop-color="#163f66"/></linearGradient>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".25" stroke-width="3"/></pattern>
+    <g id="windowButtons"><rect width="26" height="23" fill="#d9d7cf" stroke="#fff"/><path d="M2 21h22V2" fill="none" stroke="#555" stroke-width="2"/></g>
+    <g id="boxMark"><path d="M3 8 15 2l12 6-12 7z" fill="#ff9900" stroke="#5b3908"/><path d="m3 8 12 7v13L3 21z" fill="#d98000" stroke="#5b3908"/><path d="m27 8-12 7v13l12-7z" fill="#f5aa2a" stroke="#5b3908"/></g>
+    <g id="shell">
+      <rect width="900" height="815" fill="#eeeae1"/>
+      <rect x="2" y="2" width="896" height="811" rx="5" fill="#fff" stroke="#c7c5bd" stroke-width="4"/>
+      <rect x="4" y="4" width="892" height="40" fill="url(#browser)"/><text x="20" y="31" class="browserTitle">www.amaze-on.com</text><use href="#windowButtons" x="802" y="11"/><use href="#windowButtons" x="832" y="11"/><use href="#windowButtons" x="862" y="11"/><path d="m868 16 15 14m0-14-15 14" stroke="#222" stroke-width="2"/>
+      <rect x="4" y="44" width="892" height="70" fill="url(#navy)"/><use href="#boxMark" x="19" y="61"/><text x="58" y="88" class="siteLogo">amaze-on</text><rect x="190" y="58" width="505" height="42" rx="4" fill="#fff"/><text x="210" y="85" class="searchText">SOCCER SHOES</text><rect x="650" y="58" width="45" height="42" fill="#ffad22"/><circle cx="670" cy="76" r="8" fill="none" stroke="#1a2c3b" stroke-width="2"/><path d="m676 82 7 7" stroke="#1a2c3b" stroke-width="2"/><text x="730" y="85" class="navText">Orders</text><text x="820" y="85" class="navText">Cart (0)</text>
+      <rect x="4" y="114" width="892" height="38" fill="#f3f2ec" stroke="#c5c7c8"/>
+    </g>
+  </defs>
+  <style>
+    text{font-family:"Chalkboard SE","Comic Sans MS",sans-serif}.browserTitle{fill:#fff;font-size:20px;font-weight:700}.siteLogo{fill:#fff;font-size:25px;font-weight:700}.navText{fill:#fff;font-size:14px}.searchText{fill:#192c3a;font-size:16px}.small{font-size:13px;fill:#3f4a4e}.tiny{font-size:11px;fill:#596267}.heading{font-size:23px;font-weight:700;fill:#172d40}.productTitle{font-size:19px;font-weight:700;fill:#172d40}.price{font-size:25px;font-weight:700}.red{fill:#C5251E}.green{fill:#2F8A49}.orange{fill:#f18a00}.white{fill:#fff}.label{font-size:13px;font-weight:700}.body{font-size:14px;fill:#27373c}.meter{font-size:15px;font-weight:700}
+  </style>
+
+  <g id="page-amaze-corrupted" inkscape:groupmode="layer" inkscape:label="Amaze-On corrupted site">
+    <use href="#shell"/>
+    <text x="24" y="139" class="small red">TOP RESULTS — SORTED BY WHO PAYS US</text><text x="742" y="139" class="tiny red">DETAILS HIDDEN</text>
+    <g transform="translate(22 168)">
+      <rect width="414" height="414" rx="8" fill="#fff" stroke="#C5251E" stroke-width="2"/><rect width="414" height="38" fill="#C5251E"/><text x="18" y="25" class="label white">SPONSORED • BEST BECAUSE WE SAID SO</text>
+      <text x="207" y="72" text-anchor="middle" class="productTitle">CAPTAIN GOALAZO MEGA-BOOT</text><text x="207" y="102" text-anchor="middle" class="price red">$9,999</text><image href="amaze-on-goalazo-v1.png" x="82" y="110" width="250" height="205" preserveAspectRatio="xMidYMid meet"/>
+      <text x="24" y="344" class="red body">★★★★★ “CHANGED MY LIFE.”</text><text x="24" y="370" class="red body">★★★★★ “GOALAZO = GOAT.”</text><text x="24" y="396" class="red body">FIT, MATERIALS, AND REVIEW CONTEXT HIDDEN</text>
+    </g>
+    <g transform="translate(464 168)">
+      <rect width="414" height="414" rx="8" fill="#fff" stroke="#C5251E" stroke-width="2"/><rect width="414" height="38" fill="url(#redHatch)"/><text x="18" y="25" class="label red">ABSOLUTE CHEAPEST • AIR-RUSHED NOW</text>
+      <text x="207" y="72" text-anchor="middle" class="productTitle">CHEAPEST SHOE ON EARTH</text><text x="207" y="102" text-anchor="middle" class="price red">$1.03</text><image href="amaze-on-cheapest-v1.png" x="82" y="110" width="250" height="205" preserveAspectRatio="xMidYMid meet"/>
+      <text x="24" y="344" class="red body">★★★★★ “IT IS… A SHOE?”</text><text x="24" y="370" class="red body">★★★★★ “ARRIVED IN TWELVE BOXES.”</text><text x="24" y="396" class="red body">DURABILITY, WASTE, AND REAL REVIEWS HIDDEN</text>
+    </g>
+    <g transform="translate(22 600)"><rect width="856" height="105" rx="7" fill="#F5D8D6" stroke="#C5251E"/><text x="18" y="28" class="label red">WHAT THE PAGE HIDES</text><text x="18" y="55" class="body red">SIZE + SURFACE • WHY IT RANKS • REVIEW HISTORY • HOW LONG IT LASTS • DELIVERY + PACKAGING</text><text x="18" y="84" class="body red">ONLY TWO CHOICES: MOST SPONSORED OR ABSOLUTE CHEAPEST</text></g>
+    <g transform="translate(22 720)"><text x="0" y="24" class="meter red">CHOICE REPAIR</text><text x="135" y="24" class="meter">0%</text><rect x="0" y="38" width="856" height="24" fill="#eee" stroke="#C5251E"/></g>
+  </g>
+
+  <g id="page-amaze-repaired" transform="translate(1000 0)" inkscape:groupmode="layer" inkscape:label="Amaze-On repaired site">
+    <use href="#shell"/>
+    <text x="24" y="139" class="small green">COMPARE SOCCER SHOES — NOTHING SELECTED</text><text x="524" y="139" class="tiny">SIZE: FINN'S • GRASS • BUDGET: UNDER $90</text>
+    <g transform="translate(22 168)">
+      <rect width="414" height="414" rx="8" fill="#fff" stroke="#2F8A49" stroke-width="2"/><rect width="414" height="38" fill="#fff3db"/><text x="18" y="25" class="label orange">SPONSORED — PAID PLACEMENT</text>
+      <text x="207" y="72" text-anchor="middle" class="productTitle">CAPTAIN GOALAZO MEGA-BOOT</text><text x="207" y="102" text-anchor="middle" class="price">$9,999</text><image href="amaze-on-goalazo-v1.png" x="82" y="110" width="250" height="205" preserveAspectRatio="xMidYMid meet"/>
+      <g class="body"><text x="24" y="344">FIT: narrow • not in Finn's size</text><text x="24" y="368">REVIEWS: 2.6 ★ • paid and mixed context</text><text x="24" y="392">DELIVERY: 14–21 days • excessive packaging</text></g>
+    </g>
+    <g transform="translate(464 168)">
+      <rect width="414" height="414" rx="8" fill="#fff" stroke="#2F8A49" stroke-width="2"/><rect width="414" height="38" fill="#DCEFDC"/><text x="18" y="25" class="label green">LOWEST PRICE — DETAILS RESTORED</text>
+      <text x="207" y="72" text-anchor="middle" class="productTitle">CHEAPEST SHOE ON EARTH</text><text x="207" y="102" text-anchor="middle" class="price">$1.03</text><image href="amaze-on-cheapest-v1.png" x="82" y="110" width="250" height="205" preserveAspectRatio="xMidYMid meet"/>
+      <g class="body"><text x="24" y="344">FIT: no arch support • size uncertain</text><text x="24" y="368">REVIEWS: 1.2 ★ • mostly negative</text><text x="24" y="392">DURABILITY: falls apart • high replacement waste</text></g>
+    </g>
+    <g transform="translate(22 600)"><rect width="856" height="105" rx="7" fill="#DCEFDC" stroke="#2F8A49"/><text x="18" y="28" class="label green">FINN KEEPS THE CHOICE</text><text x="18" y="55" class="body">COMPARE FIT • REVIEWS • DURABILITY • DELIVERY • PACKAGING</text><rect x="642" y="18" width="192" height="42" rx="5" fill="#fff" stroke="#2F8A49"/><text x="738" y="45" text-anchor="middle" class="label green">SHOW OTHER SHOES</text><text x="18" y="84" class="body">No purchase is made. Fast delivery remains an option, not an automatic decision.</text></g>
+    <g transform="translate(22 720)"><text x="0" y="24" class="meter green">CHOICE REPAIR</text><text x="135" y="24" class="meter">100%</text><rect x="0" y="38" width="856" height="24" fill="#eee" stroke="#2F8A49"/><rect x="0" y="38" width="856" height="24" fill="#2F8A49"/></g>
+  </g>
+</svg>

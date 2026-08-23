@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  advanceEvidenceCursor,
   alignTranscript,
   estimateReadingPace,
   hasEndEvidence,
@@ -8,6 +9,39 @@ import {
   summarizeTokenMatches,
   tokenizeText,
 } from "../reading-engine.js";
+
+test("cursor ignores isolated late matches from unrelated or ending-only speech", () => {
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: [9, 18, 30], totalCount: 32 }), 0);
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: [23, 24, 25, 26, 31], totalCount: 32 }), 0);
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: [2], totalCount: 50 }), 0);
+});
+
+test("cursor follows a continuous local cluster and caps each update", () => {
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: [0, 1, 2, 3, 24], totalCount: 32 }), 4);
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: Array.from({ length: 32 }, (_, index) => index), totalCount: 32 }), 16);
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 16, matchedTokenIndexes: Array.from({ length: 16 }, (_, index) => index + 16), totalCount: 32 }), 32);
+});
+
+test("cursor reacquires a sustained nearby cluster after a skipped line", () => {
+  assert.equal(advanceEvidenceCursor({
+    currentTokenIndex: 12,
+    matchedTokenIndexes: Array.from({ length: 29 }, (_, index) => index + 21),
+    totalCount: 50,
+  }), 28);
+});
+
+test("cursor ignores unrelated speech before and after sustained passage evidence", () => {
+  const totalCount = 50;
+  const unrelated = [2, 7, 20, 33, 42];
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: 0, matchedTokenIndexes: unrelated, totalCount }), 0);
+  const firstPass = advanceEvidenceCursor({
+    currentTokenIndex: 0,
+    matchedTokenIndexes: Array.from({ length: totalCount }, (_, index) => index),
+    totalCount,
+  });
+  assert.equal(firstPass, 16);
+  assert.equal(advanceEvidenceCursor({ currentTokenIndex: firstPass, matchedTokenIndexes: unrelated, totalCount }), firstPass);
+});
 
 test("normalizes punctuation and apostrophes", () => {
   assert.equal(normalizeWord("Mary's"), "marys");

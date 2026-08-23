@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1052" viewBox="0 0 620 526">
+  <image href="../../2026-08-15/non-wikiwhy-bookends/mapguess-san-francisco-illustrated-v8.png" width="620" height="526"/>
+  <g fill="none" stroke="#16384a" stroke-opacity=".32" stroke-width=".5">
+    <path d="M20 0v526M40 0v526M60 0v526M80 0v526M100 0v526M120 0v526M140 0v526M160 0v526M180 0v526M200 0v526M220 0v526M240 0v526M260 0v526M280 0v526M300 0v526M320 0v526M340 0v526M360 0v526M380 0v526M400 0v526M420 0v526M440 0v526M460 0v526M480 0v526M500 0v526M520 0v526M540 0v526M560 0v526M580 0v526M600 0v526"/>
+    <path d="M0 20h620M0 40h620M0 60h620M0 80h620M0 100h620M0 120h620M0 140h620M0 160h620M0 180h620M0 200h620M0 220h620M0 240h620M0 260h620M0 280h620M0 300h620M0 320h620M0 340h620M0 360h620M0 380h620M0 400h620M0 420h620M0 440h620M0 460h620M0 480h620M0 500h620M0 520h620"/>
+  </g>
+  <g font-family="monospace" font-size="6" font-weight="700" fill="#102b3a" opacity=".75">
+    <text x="2" y="12">0</text><text x="98" y="12">100</text><text x="198" y="12">200</text><text x="298" y="12">300</text><text x="398" y="12">400</text><text x="498" y="12">500</text><text x="598" y="12">600</text>
+    <text x="2" y="102">100</text><text x="2" y="202">200</text><text x="2" y="302">300</text><text x="2" y="402">400</text><text x="2" y="502">500</text>
+  </g>
+  <g fill="#fff" stroke="#315caa" stroke-width="2"><circle cx="290" cy="350" r="6"/><circle cx="325" cy="250" r="6"/></g>
+  <text x="298" y="362" font-size="9" font-weight="700" fill="#315caa">HOME</text>
+  <text x="333" y="245" font-size="9" font-weight="700" fill="#2f8a49">LIBRARY</text>
+</svg>

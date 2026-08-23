@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="900" height="815" viewBox="0 0 900 815">
+  <sodipodi:namedview pagecolor="#c8c8c8">
+    <inkscape:page x="0" y="0" width="900" height="815" inkscape:label="Yahuh corrupted site"/>
+    <inkscape:page x="1000" y="0" width="900" height="815" inkscape:label="Yahuh repaired site"/>
+  </sodipodi:namedview>
+  <defs>
+    <linearGradient id="browser" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#063b6c"/>
+      <stop offset="1" stop-color="#005589"/>
+    </linearGradient>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".22" stroke-width="3"/>
+    </pattern>
+    <g id="windowButton">
+      <rect width="26" height="23" fill="#d9d7cf" stroke="#fff"/>
+      <path d="M2 21h22V2" fill="none" stroke="#555" stroke-width="2"/>
+    </g>
+    <g id="shell">
+      <rect width="900" height="815" fill="#eeeae1"/>
+      <rect x="2" y="2" width="896" height="811" rx="5" fill="#f7f5f8" stroke="#c7c5bd" stroke-width="4"/>
+      <rect x="4" y="4" width="892" height="40" fill="url(#browser)"/>
+      <text x="20" y="31" class="browserTitle">www.yahuh.net/news</text>
+      <use href="#windowButton" x="802" y="11"/>
+      <use href="#windowButton" x="832" y="11"/>
+      <use href="#windowButton" x="862" y="11"/>
+      <path d="m868 16 15 14m0-14-15 14" stroke="#222" stroke-width="2"/>
+      <rect x="4" y="44" width="892" height="76" fill="#fff"/>
+      <text x="24" y="91" class="siteLogo">yahuh!</text>
+      <rect x="182" y="59" width="480" height="42" rx="4" fill="#fff" stroke="#6433a7" stroke-width="2"/>
+      <text x="204" y="86" class="small muted">Search news and the web</text>
+      <rect x="662" y="59" width="52" height="42" fill="#6433a7"/>
+      <circle cx="683" cy="77" r="8" fill="none" stroke="#fff" stroke-width="2"/>
+      <path d="m689 83 8 8" stroke="#fff" stroke-width="2"/>
+      <text x="752" y="84" class="small purple">Mail</text>
+      <text x="812" y="84" class="small purple">Sign in</text>
+      <rect x="4" y="120" width="892" height="42" fill="#6433a7"/>
+      <text x="24" y="147" class="nav">HOME</text>
+      <text x="92" y="147" class="nav">NEWS</text>
+      <text x="158" y="147" class="nav">WEATHER</text>
+      <text x="248" y="147" class="nav">SPORTS</text>
+      <text x="318" y="147" class="nav">FUN</text>
+      <text x="790" y="147" class="nav">10:24 AM</text>
+    </g>
+  </defs>
+  <style>text{font-family:"Chalkboard SE","Comic Sans MS",sans-serif}.browserTitle{fill:#fff;font-size:20px;font-weight:700}.siteLogo{fill:#6433a7;font-size:38px;font-weight:700}.nav{fill:#fff;font-size:13px;font-weight:700}.headline{font-size:24px;font-weight:700;fill:#172d40}.cardHead{font-size:17px;font-weight:700;fill:#172d40}.label{font-size:13px;font-weight:700}.body{font-size:14px;fill:#27373c}.small{font-size:13px;fill:#34444d}.tiny{font-size:11px;fill:#596267}.muted{fill:#78828a}.red{fill:#C5251E}.green{fill:#2F8A49}.purple{fill:#6433a7}.white{fill:#fff}.meter{font-size:15px;font-weight:700}</style>
+  <g inkscape:groupmode="layer" inkscape:label="Yahuh corrupted site">
+    <use href="#shell"/>
+    <text x="22" y="190" class="label purple">BREAKING NEWS · STORIES YOU ABSOLUTELY MUST PANIC-READ</text>
+    <g transform="translate(18 206)">
+      <rect width="554" height="394" rx="7" fill="#fff" stroke="#C5251E"/>
+      <image href="yahuh-moon-v1.png" x="12" y="12" width="244" height="244" preserveAspectRatio="xMidYMid slice"/>
+      <rect x="12" y="12" width="244" height="244" fill="none" stroke="#C5251E" stroke-width="3"/>
+      <text x="278" y="42" class="tiny red">BREAKING · 73 EXCLAMATION MARKS</text>
+      <text x="278" y="82" class="headline red">MOON RESIGNS</text>
+      <text x="278" y="114" class="headline red">FROM NIGHT SHIFT!</text>
+      <text x="278" y="150" class="body red">Darkness crisis expected tonight.</text>
+      <text x="278" y="178" class="body red">Nobody knows what happens next.</text>
+      <rect x="278" y="204" width="252" height="42" fill="url(#redHatch)"/>
+      <text x="292" y="230" class="tiny red">ARTICLE DETAILS HIDDEN</text>
+      <line x1="12" y1="274" x2="542" y2="274" stroke="#dedbe1"/>
+      <text x="14" y="302" class="label">LIVE UPDATES</text>
+      <text x="14" y="330" class="body red">10:01 — Moon seen leaving with a box.</text>
+      <text x="14" y="356" class="body red">10:02 — Experts refuse to rule out anything.</text>
+      <text x="14" y="382" class="tiny red">Correction status: nobody has checked yet</text>
+    </g>
+    <g transform="translate(588 206)">
+      <rect width="294" height="188" rx="7" fill="#fff" stroke="#C5251E"/>
+      <image href="yahuh-soup-ship-v1.png" x="10" y="10" width="116" height="116" preserveAspectRatio="xMidYMid slice"/>
+      <text x="140" y="30" class="tiny red">ALERT</text>
+      <text x="140" y="58" class="cardHead red">OCEAN NOW</text>
+      <text x="140" y="82" class="cardHead red">40% SOUP!</text>
+      <text x="140" y="110" class="tiny red">Pacific panic spreads</text>
+      <text x="12" y="156" class="small red">“The whole ocean?” — chopped quote</text>
+      <text x="12" y="178" class="tiny red">Updated: ???</text>
+    </g>
+    <g transform="translate(588 412)">
+      <rect width="294" height="188" rx="7" fill="#fff" stroke="#C5251E"/>
+      <image href="yahuh-pigeon-v1.png" x="10" y="10" width="116" height="116" preserveAspectRatio="xMidYMid slice"/>
+      <text x="140" y="30" class="tiny red">DEMOCRACY SHOCK</text>
+      <text x="140" y="58" class="cardHead red">PIGEON WINS</text>
+      <text x="140" y="82" class="cardHead red">CITY ELECTION!</text>
+      <text x="140" y="110" class="tiny red">Humans stunned</text>
+      <rect x="10" y="140" width="274" height="35" fill="url(#redHatch)"/>
+      <text x="22" y="163" class="tiny red">Sponsored story · label almost invisible</text>
+    </g>
+    <g transform="translate(18 620)">
+      <rect width="864" height="70" fill="#fff" stroke="#C5251E"/>
+      <text x="14" y="24" class="label red">MORE BREAKING:</text>
+      <text x="144" y="24" class="small red">WEATHER CLOUD DECLARES THREE DROPS AN EMERGENCY</text>
+      <text x="14" y="52" class="tiny red">Read immediately · Share before reading · Correction and source links unavailable</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter red">HEADLINE REPAIR</text>
+      <text x="160" y="24" class="meter">0%</text>
+      <rect x="0" y="38" width="858" height="24" fill="url(#redHatch)" stroke="#C5251E"/>
+    </g>
+  </g>
+  <g transform="translate(1000 0)" inkscape:groupmode="layer" inkscape:label="Yahuh repaired site">
+    <use href="#shell"/>
+    <text x="22" y="190" class="label purple">TODAY'S NEWS · UPDATED 10:24 AM</text>
+    <g transform="translate(18 206)">
+      <rect width="554" height="394" rx="7" fill="#fff" stroke="#2F8A49"/>
+      <image href="yahuh-moon-v1.png" x="12" y="12" width="244" height="244" preserveAspectRatio="xMidYMid slice"/>
+      <rect x="12" y="12" width="244" height="244" fill="none" stroke="#2F8A49" stroke-width="3"/>
+      <text x="278" y="42" class="tiny green">SKY WATCH · UPDATED 10:18 AM</text>
+      <text x="278" y="82" class="headline">NEW MOON</text>
+      <text x="278" y="114" class="headline">NEXT WEEK</text>
+      <text x="278" y="150" class="body">The moon will appear darkest during</text>
+      <text x="278" y="174" class="body">its regular monthly cycle.</text>
+      <text x="278" y="208" class="tiny green">Source: community observatory calendar</text>
+      <text x="278" y="232" class="tiny">Photo illustration caption shown</text>
+      <line x1="12" y1="274" x2="542" y2="274" stroke="#dedbe1"/>
+      <text x="14" y="302" class="label">LATEST UPDATE</text>
+      <text x="14" y="330" class="body">10:18 — Calendar and viewing times confirmed.</text>
+      <text x="14" y="356" class="body">The earlier “resignation” headline was inaccurate.</text>
+      <text x="14" y="382" class="tiny green">Correction posted · previous version available</text>
+    </g>
+    <g transform="translate(588 206)">
+      <rect width="294" height="188" rx="7" fill="#fff" stroke="#2F8A49"/>
+      <image href="yahuh-soup-ship-v1.png" x="10" y="10" width="116" height="116" preserveAspectRatio="xMidYMid slice"/>
+      <text x="140" y="30" class="tiny green">SHIPPING</text>
+      <text x="140" y="54" class="cardHead" style="font-size:15px">SHIP CARRYING</text>
+      <text x="140" y="76" class="cardHead" style="font-size:15px">SOUP CROSSES</text>
+      <text x="140" y="98" class="cardHead" style="font-size:15px">PACIFIC</text>
+      <text x="140" y="120" class="tiny">Canned cargo stays aboard</text>
+      <text x="12" y="156" class="small">Captain: “The soup is inside the ship.”</text>
+      <text x="12" y="178" class="tiny green">Updated 9:52 · full quote shown</text>
+    </g>
+    <g transform="translate(588 412)">
+      <rect width="294" height="188" rx="7" fill="#fff" stroke="#2F8A49"/>
+      <image href="yahuh-pigeon-v1.png" x="10" y="10" width="116" height="116" preserveAspectRatio="xMidYMid slice"/>
+      <text x="140" y="30" class="tiny green">SCHOOL NEWS</text>
+      <text x="140" y="58" class="cardHead">PIGEON MASCOT</text>
+      <text x="140" y="82" class="cardHead">WINS FUNDRAISER</text>
+      <text x="140" y="110" class="tiny">Student costume tops vote</text>
+      <rect x="10" y="140" width="274" height="35" fill="#fff3db"/>
+      <text x="22" y="163" class="tiny">PROMOTED: mascot T-shirts · clearly labeled</text>
+    </g>
+    <g transform="translate(18 620)">
+      <rect width="864" height="70" fill="#fff" stroke="#2F8A49"/>
+      <text x="14" y="24" class="label green">WEATHER:</text>
+      <text x="102" y="24" class="small">LIGHT RAIN POSSIBLE · THREE DROPS SHOWN IN ILLUSTRATION</text>
+      <text x="14" y="52" class="tiny green">Forecast details · source · timestamp · correction history available</text>
+    </g>
+    <g transform="translate(18 716)">
+      <text x="0" y="24" class="meter green">HEADLINE REPAIR</text>
+      <text x="160" y="24" class="meter">100%</text>
+      <rect x="0" y="38" width="858" height="24" fill="#e0f0e3" stroke="#2F8A49"/>
+      <rect x="0" y="38" width="858" height="24" fill="#2F8A49"/>
+    </g>
+  </g>
+</svg>

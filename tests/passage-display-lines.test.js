@@ -21,11 +21,31 @@ test("keeps a long sentence together by default so the guide never cuts a though
   assert.deepEqual(derivePassageDisplayLines(passage), passage.paragraphs);
 });
 
-test("chunks long authored prose into bounded view-owned lines", () => {
-  const passage = { paragraphs: ["one two three four five six seven eight nine ten"] };
-  assert.deepEqual(derivePassageDisplayLines(passage, { maximumWords: 4 }), [
-    "one two three four",
-    "five six seven eight",
-    "nine ten",
+test("chunks long authored prose at natural clause pauses", () => {
+  const passage = { paragraphs: ["one two three, four five six; seven eight nine, ten eleven."] };
+  assert.deepEqual(derivePassageDisplayLines(passage, { maximumWords: 6 }), [
+    "one two three, four five six;",
+    "seven eight nine, ten eleven.",
+  ]);
+});
+
+test("does not invent a pause inside a long unpunctuated clause", () => {
+  const line = "one two three four five six seven eight nine ten";
+  assert.deepEqual(derivePassageDisplayLines({ paragraphs: [line] }, { maximumWords: 4 }), [line]);
+});
+
+test("does not mistake titles and abbreviations for sentence endings", () => {
+  const paragraph = "Mr. and Mrs. Cuthbert waited for Dr. Spencer. Anne looked toward Bright River.";
+  assert.deepEqual(derivePassageDisplayLines({ paragraphs: [paragraph] }), [
+    "Mr. and Mrs. Cuthbert waited for Dr. Spencer.",
+    "Anne looked toward Bright River.",
+  ]);
+});
+
+test("joins a short connective clause to the phrase that follows it", () => {
+  const paragraph = "The meadow faded into purple; while, far away, the birds continued their song.";
+  assert.deepEqual(derivePassageDisplayLines({ paragraphs: [paragraph] }, { maximumWords: 6 }), [
+    "The meadow faded into purple;",
+    "while, far away, the birds continued their song.",
   ]);
 });

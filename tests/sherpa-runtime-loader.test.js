@@ -101,7 +101,11 @@ test("injects the OPFS buffer synchronously before the main script and preserves
   });
 
   assert.equal(observedPackage, packageBuffer);
-  assert.equal(hookCalls.length, 1);
+  assert.equal(runtime.Module.getPreloadedPackage(
+    "https://example.test/finn-reading-game/sherpa/v1.13.2/sherpa-onnx-wasm-main-asr.data",
+    190_951_044,
+  ), undefined);
+  assert.equal(hookCalls.length, 2);
   assert.equal(initialized, 1);
   assert.equal(progress.length, 1);
   assert.equal(appended.at(-1), "https://example.test/finn-reading-game/sherpa/v1.13.2/sherpa-onnx-wasm-main-asr.js");

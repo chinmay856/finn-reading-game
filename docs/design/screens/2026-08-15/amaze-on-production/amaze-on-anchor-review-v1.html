@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Amaze-On sequence review v1</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:#111820;color:#f4f7f8;overflow:hidden}header{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#17232d}h1{margin:0;font-size:18px}#counter{color:#aab8c2}main{height:calc(100vh - 110px);display:grid;place-items:center;padding:12px 78px}img{display:block;max-width:100%;max-height:100%;border:1px solid #526572;box-shadow:0 12px 38px #0009}button{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:86px;border:1px solid #78909c;background:#263b49e8;color:#fff;font-size:34px;cursor:pointer}#previous{left:12px}#next{right:12px}footer{height:56px;display:flex;gap:7px;align-items:center;justify-content:flex-start;overflow-x:auto;padding:6px 18px;background:#17232d}footer button{position:static;transform:none;flex:0 0 auto;width:auto;height:auto;padding:7px 10px;font-size:12px;border-radius:4px}footer button[aria-current=true]{outline:3px solid #ffad22}
+  </style>
+</head>
+<body>
+  <header><h1 id="title"></h1><span id="counter"></span></header>
+  <main><img id="frame" alt=""></main>
+  <button id="previous" aria-label="Previous screen">‹</button>
+  <button id="next" aria-label="Next screen">›</button>
+  <footer id="tabs"></footer>
+  <script>
+    const screens = [
+      ["Initial corruption", "amaze-on-anchor-v1_p1.png"],
+      ["Size restored", "amaze-on-anchor-v1_p2.png"],
+      ["Budget + brand restored", "amaze-on-anchor-v1_p3.png"],
+      ["Review context restored", "amaze-on-anchor-v1_p4.png"],
+      ["Delivery options restored", "amaze-on-anchor-v1_p5.png"],
+      ["Product details restored", "amaze-on-anchor-v1_p6.png"],
+      ["Ranking + useful choices restored", "amaze-on-anchor-v1_p7.png"],
+      ["Auto-buy over-fix", "amaze-on-anchor-v1_p8.png"],
+      ["Repair checklist", "amaze-on-anchor-v1_p9.png"],
+      ["Paid placement locked", "amaze-on-anchor-v1_p10.png"],
+      ["Review context locked", "amaze-on-anchor-v1_p11.png"],
+      ["Fit + durability locked", "amaze-on-anchor-v1_p12.png"],
+      ["Delivery + waste locked", "amaze-on-anchor-v1_p13.png"],
+      ["Permission locked", "amaze-on-anchor-v1_p14.png"],
+      ["Site secured", "amaze-on-anchor-v1_p15.png"],
+    ];
+    let index = 0;
+    const frame = document.querySelector("#frame");
+    const title = document.querySelector("#title");
+    const counter = document.querySelector("#counter");
+    const tabs = document.querySelector("#tabs");
+    function render() {
+      title.textContent = screens[index][0];
+      counter.textContent = `${index + 1} / ${screens.length}`;
+      frame.src = screens[index][1] + "?v=8-auto-buy-permission";
+      frame.alt = screens[index][0];
+      [...tabs.children].forEach((button, position) => button.setAttribute("aria-current", position === index));
+      tabs.children[index]?.scrollIntoView({block:"nearest",inline:"nearest"});
+    }
+    screens.forEach(([label], position) => {
+      const button = document.createElement("button");
+      button.textContent = `${position + 1}. ${label}`;
+      button.addEventListener("click", () => { index = position; render(); });
+      tabs.append(button);
+    });
+    function move(step) { index = (index + step + screens.length) % screens.length; render(); }
+    document.querySelector("#previous").addEventListener("click", () => move(-1));
+    document.querySelector("#next").addEventListener("click", () => move(1));
+    addEventListener("keydown", (event) => { if (event.key === "ArrowLeft") move(-1); if (event.key === "ArrowRight") move(1); });
+    render();
+  </script>
+</body>
+</html>

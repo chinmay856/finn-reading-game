@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kokoro Word Voice Comparison</title>
+  <link rel="stylesheet" href="/kokoro-voice-comparison.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div><small>READING ENGINE LAB</small><h1>Kokoro voice comparison</h1></div>
+      <a href="/reading-guide-playtest.html">Back to reading test</a>
+    </header>
+    <section class="card">
+      <p>This isolated test compares the current macOS system voice with a local Kokoro neural voice. Nothing you play is uploaded.</p>
+      <div class="controls">
+        <button id="prepareKokoro" type="button">Prepare Kokoro · about 93 MB</button>
+        <label for="kokoroVoice">Kokoro voice
+          <select id="kokoroVoice">
+            <option value="af_heart">Heart · American female</option>
+            <option value="af_bella">Bella · American female</option>
+            <option value="af_nicole">Nicole · American female</option>
+            <option value="am_fenrir">Fenrir · American male</option>
+          </select>
+        </label>
+      </div>
+      <progress id="modelProgress" max="100" value="0">0%</progress>
+      <p id="status" role="status">Kokoro is not prepared. The system-voice buttons work now.</p>
+      <p class="fine">Spike configuration: <code>kokoro-js 1.2.1</code>, <code>Kokoro-82M-v1.0-ONNX</code>, q8, WASM. The first load downloads and caches the model.</p>
+    </section>
+    <section id="examples" class="examples" aria-label="Word voice comparisons"></section>
+    <section class="card playback">
+      <h2>Latest Kokoro generation</h2>
+      <audio id="kokoroPlayer" controls></audio>
+      <a id="downloadKokoro" hidden>Download generated WAV</a>
+      <p id="measurement" class="fine">No neural sample generated yet.</p>
+    </section>
+  </main>
+  <script type="module" src="/kokoro-voice-comparison.js"></script>
+</body>
+</html>

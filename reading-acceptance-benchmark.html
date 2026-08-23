@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reading Acceptance Baseline</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/moonshine-benchmark.css">
+</head>
+<body>
+  <main class="benchmark-shell">
+    <header><div><small>READING ENGINE LAB</small><h1>Acceptance and failure baseline</h1></div><a class="back-link" href="./">Back to game</a></header>
+    <section class="panel benchmark-intro">
+      <small>LOCAL, REPEATABLE, NON-PRODUCTION</small>
+      <h2>Generated speech and failure cases</h2>
+      <p>Choose one generated reading of the reference and one unrelated-speech recording. The harness derives silence, beginning-only, ending-only, and complete cases, runs the production Whisper worker locally, and reports evidence without changing game state.</p>
+      <label>Reference reading <input id="referenceAudio" type="file" accept="audio/*"></label>
+      <label>Unrelated speech <input id="unrelatedAudio" type="file" accept="audio/*"></label>
+      <p id="benchmarkStatus" class="benchmark-status" role="status">Choose both local audio fixtures.</p>
+      <div class="benchmark-actions"><button id="runBenchmark" class="primary" disabled>Run acceptance baseline</button></div>
+      <p class="fine">Audio and transcripts stay in this tab. The harness writes no session or campaign state.</p>
+    </section>
+    <section class="benchmark-grid">
+      <article class="panel benchmark-reader"><small>REFERENCE</small><h2>32 words</h2><p id="referenceText"></p></article>
+      <aside class="panel benchmark-results"><small>MEASURED RESULTS</small><h2>Recognition, alignment, and latency</h2><pre id="benchmarkResults">No run yet.</pre></aside>
+    </section>
+  </main>
+  <script type="module" src="/reading-acceptance-benchmark.js"></script>
+</body>
+</html>

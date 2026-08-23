@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spotty-Fi anchor review v1</title>
+    <style>
+      :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #111820; color: #f4f7f8; overflow: hidden; }
+      header { height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; background: #17232d; }
+      h1 { margin: 0; font-size: 18px; }
+      #counter { color: #aab8c2; }
+      main { height: calc(100vh - 110px); display: grid; place-items: center; padding: 12px 78px; }
+      img { display: block; max-width: 100%; max-height: 100%; border: 1px solid #526572; box-shadow: 0 12px 38px #0009; }
+      button { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 86px; border: 1px solid #78909c; background: #263b49e8; color: white; font-size: 34px; cursor: pointer; }
+      #previous { left: 12px; } #next { right: 12px; }
+      footer { height: 56px; display: flex; gap: 10px; align-items: center; justify-content: center; background: #17232d; }
+      footer button { position: static; transform: none; width: auto; height: auto; padding: 8px 14px; font-size: 14px; border-radius: 4px; }
+      footer button[aria-current="true"] { outline: 3px solid #a8dd19; }
+    </style>
+  </head>
+  <body>
+    <header><h1 id="title"></h1><span id="counter"></span></header>
+    <main><img id="frame" alt=""></main>
+    <button id="previous" aria-label="Previous screen">‹</button>
+    <button id="next" aria-label="Next screen">›</button>
+    <footer id="tabs"></footer>
+    <script>
+      const screens = [
+        ["Initial corruption", "spotty-fi-anchor-v1_p1.png"],
+        ["Credit details restored", "spotty-fi-anchor-v1_p2.png"],
+        ["User choice restored", "spotty-fi-anchor-v1_p3.png"],
+        ["Artists restored", "spotty-fi-anchor-v1_p4.png"],
+        ["Creator context restored", "spotty-fi-anchor-v1_p5.png"],
+        ["Fully repaired", "spotty-fi-anchor-v1_p6.png"],
+        ["Auto super-corruption", "spotty-fi-anchor-v1_p7.png"],
+        ["Repair checklist", "spotty-fi-anchor-v1_p8.png"],
+        ["Artist locked", "spotty-fi-anchor-v1_p9.png"],
+        ["Credits locked", "spotty-fi-anchor-v1_p10.png"],
+        ["User choice locked", "spotty-fi-anchor-v1_p11.png"],
+        ["Volume locked", "spotty-fi-anchor-v1_p12.png"],
+        ["Site secured", "spotty-fi-anchor-v1_p13.png"],
+      ];
+      let index = 0;
+      const frame = document.querySelector("#frame");
+      const title = document.querySelector("#title");
+      const counter = document.querySelector("#counter");
+      const tabs = document.querySelector("#tabs");
+      const render = () => {
+        title.textContent = screens[index][0];
+        counter.textContent = `${index + 1} / ${screens.length}`;
+        frame.src = screens[index][1]; frame.alt = screens[index][0];
+        [...tabs.children].forEach((button, position) => button.setAttribute("aria-current", position === index));
+      };
+      screens.forEach(([label], position) => {
+        const button = document.createElement("button"); button.textContent = label;
+        button.addEventListener("click", () => { index = position; render(); }); tabs.append(button);
+      });
+      const move = (step) => { index = (index + step + screens.length) % screens.length; render(); };
+      document.querySelector("#previous").addEventListener("click", () => move(-1));
+      document.querySelector("#next").addEventListener("click", () => move(1));
+      addEventListener("keydown", (event) => { if (event.key === "ArrowLeft") move(-1); if (event.key === "ArrowRight") move(1); });
+      render();
+    </script>
+  </body>
+</html>

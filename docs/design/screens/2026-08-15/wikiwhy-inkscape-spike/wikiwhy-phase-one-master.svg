@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     width="1440" height="900" viewBox="0 0 1440 900" version="1.1">
+  <sodipodi:namedview id="namedview1" pagecolor="#c8c8c8" bordercolor="#666666" inkscape:pagecheckerboard="0">
+    <inkscape:page x="0" y="0" width="1440" height="900" inkscape:label="Initial corruption"/>
+    <inkscape:page x="1540" y="0" width="1440" height="900" inkscape:label="Repair 1"/>
+    <inkscape:page x="3080" y="0" width="1440" height="900" inkscape:label="Repair 2"/>
+  </sodipodi:namedview>
+
+  <defs>
+    <linearGradient id="desktopGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#087f86"/><stop offset="1" stop-color="#00646b"/>
+    </linearGradient>
+    <linearGradient id="titleGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#053b70"/><stop offset="0.58" stop-color="#00578d"/><stop offset="1" stop-color="#00305e"/>
+    </linearGradient>
+    <linearGradient id="buttonGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f2eb"/><stop offset="1" stop-color="#c8c6bc"/>
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#db2b22"/><stop offset="1" stop-color="#a70f0a"/>
+    </linearGradient>
+    <linearGradient id="spectrumGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a42db"/><stop offset="0.23" stop-color="#477bc5"/><stop offset="0.48" stop-color="#f3d11c"/><stop offset="0.67" stop-color="#ffd821"/><stop offset="0.84" stop-color="#a5a6a1"/><stop offset="1" stop-color="#686b6c"/>
+    </linearGradient>
+    <pattern id="desktopHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#003b40" stroke-opacity="0.13" stroke-width="2"/>
+    </pattern>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#d6241c" stroke-opacity="0.13" stroke-width="3"/>
+    </pattern>
+    <filter id="windowShadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="4" dy="5" result="offset"/>
+      <feFlood flood-color="#001f22" flood-opacity="0.55" result="color"/>
+      <feComposite in="color" in2="offset" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="grayscale" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="softPaper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence baseFrequency="0.8" numOctaves="2" seed="12" type="fractalNoise" result="noise"/>
+      <feColorMatrix in="noise" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .035 0" result="grain"/>
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+    </filter>
+    <clipPath id="dogCardClip"><rect x="730" y="216" width="152" height="174" rx="2"/></clipPath>
+
+    <g id="windowButton">
+      <rect width="27" height="25" fill="url(#buttonGradient)" stroke="#ffffff" stroke-width="1"/>
+      <path d="M1 24H26V1" fill="none" stroke="#66645f" stroke-width="2"/>
+    </g>
+    <g id="desktopComputer">
+      <path d="M17 6h39v31H17z" fill="#dfddd4" stroke="#34393a" stroke-width="2"/>
+      <path d="M21 10h31v21H21z" fill="#173f48" stroke="#7e8d8e"/><path d="M26 13h21v14H26z" fill="#9ec3c0"/>
+      <path d="M28 38h17l4 8H23z" fill="#c9c7bd" stroke="#34393a"/><path d="M13 47h48v7H13z" fill="#e3e1d8" stroke="#34393a"/>
+    </g>
+    <g id="desktopFloppy">
+      <rect x="13" y="3" width="48" height="52" rx="3" fill="#d6d5cb" stroke="#253237" stroke-width="2"/>
+      <rect x="21" y="3" width="30" height="18" fill="#26353d"/><rect x="25" y="5" width="17" height="13" fill="#e8e6df"/>
+      <rect x="21" y="31" width="32" height="21" fill="#f1f0ea" stroke="#6f7475"/><rect x="26" y="36" width="22" height="2" fill="#869296"/><rect x="26" y="42" width="22" height="2" fill="#869296"/>
+    </g>
+    <g id="desktopTrash">
+      <path d="M19 13h40l-4 43H23z" fill="#b9b8af" stroke="#303637" stroke-width="2"/><path d="M15 10h48v6H15z" fill="#d8d6cd" stroke="#303637" stroke-width="2"/>
+      <path d="M26 20v29M36 20v29M46 20v29" stroke="#6d6e69" stroke-width="3"/>
+      <path d="M23 8c4-8 9-4 12 0 3-8 9-5 13 0" fill="#dedbd1" stroke="#303637"/>
+    </g>
+    <g id="microphoneIcon">
+      <rect x="7" y="0" width="12" height="25" rx="6" fill="#2b7c88" stroke="#071f43" stroke-width="2"/><path d="M3 14c0 13 20 13 20 0M13 27v10M7 37h12" fill="none" stroke="#071f43" stroke-width="2"/>
+    </g>
+
+    <g id="sharedShell">
+      <rect width="1440" height="900" fill="url(#desktopGradient)"/>
+      <rect width="1440" height="900" fill="url(#desktopHatch)"/>
+
+      <g class="desktop-icon" transform="translate(10 72)"><use href="#desktopComputer"/><text x="37" y="72" text-anchor="middle">MY</text><text x="37" y="93" text-anchor="middle">COMPUTER</text></g>
+      <g class="desktop-icon" transform="translate(10 245)"><use href="#desktopFloppy"/><text x="37" y="73" text-anchor="middle">FLOPPY</text><text x="37" y="94" text-anchor="middle">DISK</text></g>
+      <g class="desktop-icon" transform="translate(10 418)"><use href="#desktopTrash"/><text x="37" y="76" text-anchor="middle">TRASH</text></g>
+
+      <g filter="url(#windowShadow)">
+        <rect x="105" y="18" width="810" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
+        <text x="128" y="46" class="window-title">WIKIWHY — INTERNET ENCYCLOPEDIA</text>
+        <use href="#windowButton" x="817" y="26"/><use href="#windowButton" x="848" y="26"/><use href="#windowButton" x="879" y="26"/>
+        <path d="M825 43h11" stroke="#191919" stroke-width="3"/><rect x="855" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m886 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="109" y="56" width="802" height="714" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <image href="assets/wikiwhy-globe.png" x="126" y="67" width="72" height="72" preserveAspectRatio="xMidYMid meet" filter="url(#grayscale)"/>
+        <text x="208" y="104" class="brand-title">WIKIWHY — INTERNET ENCYCLOPEDIA</text>
+        <text x="782" y="83" class="tiny">Create account</text><text x="865" y="83" class="tiny">Log in</text>
+
+        <line x1="109" y1="146" x2="911" y2="146" stroke="#6284a3"/>
+        <g class="tab"><rect x="224" y="121" width="73" height="42"/><text x="260" y="148">Article</text></g>
+        <g class="tab"><rect x="302" y="121" width="68" height="42"/><text x="336" y="148">Talk</text></g>
+        <g class="tab selected"><rect x="375" y="121" width="73" height="42"/><text x="411" y="148">Read</text></g>
+        <g class="tab"><rect x="453" y="121" width="108" height="42"/><text x="507" y="148">View source</text></g>
+        <g class="tab history-base"><rect x="566" y="121" width="86" height="42"/><text x="609" y="148">History</text></g>
+        <rect x="674" y="119" width="218" height="37" rx="3" fill="#fbfaf7" stroke="#53708b" stroke-width="1.5"/>
+        <text x="689" y="143" class="tiny">Search WikiWhy</text><circle cx="864" cy="136" r="7" fill="none" stroke="#172530" stroke-width="2"/><path d="m869 141 8 8" stroke="#172530" stroke-width="2"/>
+
+        <line x1="224" y1="163" x2="224" y2="770" stroke="#7b9ab7"/>
+        <g class="sidebar-text"><text x="127" y="187">Main page</text><text x="127" y="211">Contents</text><text x="127" y="235">Current events</text><text x="127" y="259">Random article</text><text x="127" y="283">About WikiWhy</text><text x="127" y="307">Community portal</text><text x="127" y="331">Recent changes</text><text x="127" y="355">Contact page</text><line x1="124" y1="375" x2="211" y2="375" stroke="#7595ae"/><text x="127" y="400" fill="#222">Tools</text><text x="127" y="424">What links here</text><text x="127" y="448">Related changes</text><text x="127" y="472">Upload file</text><text x="127" y="496">Special pages</text></g>
+        <line x1="109" y1="770" x2="911" y2="770" stroke="#687f94"/>
+        <rect x="109" y="770" width="802" height="68" fill="#f1f0ea"/>
+        <text x="126" y="791" class="phase-small">PHASE 1 —</text>
+        <g transform="translate(128 802)"><circle cx="12" cy="12" r="10" fill="none" stroke="#163c63" stroke-width="2"/><path d="m19 19 8 8" stroke="#163c63" stroke-width="3"/></g>
+        <text x="168" y="823" class="meter-label">SOURCE CHECK</text>
+        <rect x="368" y="804" width="250" height="20" rx="2" fill="#f8f8f5" stroke="#5b7184" stroke-width="1.5"/>
+        <rect x="628" y="797" width="155" height="34" fill="url(#buttonGradient)" stroke="#62778a"/><text x="705" y="820" class="button-text" text-anchor="middle">SITE MAP</text>
+
+        <rect x="935" y="18" width="480" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="939" y="22" width="472" height="34" fill="url(#titleGradient)"/>
+        <text x="956" y="46" class="window-title">READING COMPANION</text>
+        <use href="#windowButton" x="1317" y="26"/><use href="#windowButton" x="1348" y="26"/><use href="#windowButton" x="1379" y="26"/>
+        <path d="M1325 43h11" stroke="#191919" stroke-width="3"/><rect x="1355" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m1386 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="939" y="56" width="472" height="532" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <text x="962" y="558" class="tiny-caps">PASSAGE PROGRESS</text>
+        <rect x="962" y="568" width="400" height="15" rx="2" fill="#f8f8f5" stroke="#5b7184"/>
+        <line x1="939" y1="588" x2="1411" y2="588" stroke="#6e8294"/>
+        <g transform="translate(962 607)"><use href="#microphoneIcon"/><text x="0" y="53" class="listening">LISTENING</text></g>
+        <rect x="1178" y="614" width="88" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1222" y="637" class="button-text" text-anchor="middle">PAUSE</text>
+        <rect x="1277" y="614" width="110" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1332" y="637" class="button-text" text-anchor="middle">FINISH NOW</text>
+        <line x1="939" y1="670" x2="1411" y2="670" stroke="#6e8294"/>
+        <rect x="939" y="671" width="472" height="43" fill="url(#titleGradient)"/>
+        <text x="955" y="699" class="quick-title">QUICK CHECK — OPENS AFTER READING</text><path d="m1383 687 11 0-5.5 8z" fill="#fff"/>
+        <rect x="958" y="735" width="434" height="70" fill="#fbfaf7" stroke="#a9aaa4" stroke-dasharray="7 5"/>
+        <text x="982" y="778" class="placeholder">★   RESULTS AFTER QUICK CHECK</text>
+      </g>
+
+      <g class="taskbar">
+        <rect x="0" y="854" width="1440" height="46" fill="#d6d4ca" stroke="#f4f2eb" stroke-width="2"/>
+        <g class="task-button"><rect x="6" y="860" width="96" height="33"/><text x="54" y="882">START</text></g>
+        <g class="task-button"><rect x="111" y="860" width="192" height="33"/><circle cx="130" cy="876" r="7" fill="#32677a" stroke="#17282d"/><text x="146" y="882">WIKIWHY</text></g>
+        <g class="task-button"><rect x="312" y="860" width="216" height="33"/><path d="M327 870h12v13h-12zm3 0v13" fill="none" stroke="#4b5657"/><text x="349" y="882">READING COMPANION</text></g>
+        <text x="720" y="882" class="taskbar-title" text-anchor="middle">INTERNET RECOVERY OS</text>
+        <g transform="translate(1270 866)" stroke="#17272b" fill="none"><path d="m0 10 8 0 9-7v22l-9-7H0z" fill="#626b6c"/><path d="M22 7q8 7 0 14M27 3q13 11 0 22"/></g>
+        <g transform="translate(1320 867)" fill="#18863c"><rect x="0" y="15" width="5" height="8"/><rect x="8" y="11" width="5" height="12"/><rect x="16" y="6" width="5" height="17"/><rect x="24" y="1" width="5" height="22"/></g>
+        <text x="1407" y="882" class="taskbar-clock" text-anchor="end">10:24 AM</text>
+      </g>
+    </g>
+  </defs>
+
+  <style>
+    .window-title{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:21px;font-weight:700;fill:#fff;letter-spacing:.5px}
+    .brand-title{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:15px;font-weight:700;fill:#10151a;letter-spacing:.4px}
+    .tiny{font-family:'Arial Narrow',Arial,sans-serif;font-size:13px;fill:#15191b}.tiny-caps{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:13px;font-weight:600;fill:#152335;letter-spacing:.5px}
+    .tab rect{fill:#f4f2ec;stroke:#6183a2;stroke-width:1.3}.tab text{font-family:'Arial Narrow',Arial,sans-serif;font-size:14px;fill:#161a1b;text-anchor:middle}.tab.selected rect{stroke:#1553dd;stroke-width:2}.tab.selected text{fill:#0d45c9}
+    .sidebar-text{font-family:'Arial Narrow',Arial,sans-serif;font-size:13px;fill:#0750c4}.desktop-icon{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;font-weight:600;fill:#fff;letter-spacing:.5px}
+    .phase-small{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:13px;fill:#17232b}.phase-label{font-weight:700}.meter-label{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;font-weight:600;fill:#15243b}.button-text{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:15px;font-weight:600;fill:#142649}
+    .listening{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:14px;font-weight:700;fill:#16813b}.quick-title{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:17px;font-weight:600;fill:#fff;letter-spacing:.5px}.placeholder{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;fill:#888}
+    .task-button rect{fill:url(#buttonGradient);stroke:#6d6d67;stroke-width:1.3}.task-button text{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;font-weight:600;fill:#15191b}.taskbar-title{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;fill:#1b2224;letter-spacing:1.1px}.taskbar-clock{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:16px;fill:#1b2224}
+    .article-heading{font-family:'DIN Condensed','Avenir Next Condensed','Arial Narrow',sans-serif;font-size:34px;font-weight:700;fill:#141a1c;letter-spacing:.2px}.article-body{font-family:'Arial Narrow',Arial,sans-serif;font-size:16px;fill:#171b1d}.article-body-small{font-family:'Arial Narrow',Arial,sans-serif;font-size:14px;fill:#171b1d}.reading-body{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:24px;fill:#151a1e}.rail-title{font-family:'Avenir Next Condensed','Arial Narrow',sans-serif;font-size:15px;font-weight:700;fill:#17202a}.rail-body{font-family:'Arial Narrow',Arial,sans-serif;font-size:13px;fill:#161a1b}.rule-banner{font-family:'DIN Condensed','Avenir Next Condensed','Arial Narrow',sans-serif;font-size:27px;font-weight:700;fill:#fff;letter-spacing:.5px}.certainty-text{font-family:'DIN Condensed','Avenir Next Condensed','Arial Narrow',sans-serif;font-size:29px;font-weight:700;fill:#b71d17;letter-spacing:.8px}.corrupt-note{font-family:'DIN Condensed','Avenir Next Condensed','Arial Narrow',sans-serif;font-size:22px;font-weight:700;fill:#d92119}
+  </style>
+
+  <!-- Page 1: Initial corruption -->
+  <g id="page-initial" inkscape:groupmode="layer" inkscape:label="Initial corruption">
+    <use href="#sharedShell"/>
+    <g id="initial-history-corruption"><path d="m574 124 70 36m0-36-70 36" stroke="#e52a22" stroke-width="6"/><rect x="568" y="122" width="82" height="40" fill="none" stroke="#e52a22" stroke-dasharray="6 4"/></g>
+    <g id="initial-article">
+      <text x="241" y="208" class="article-heading">DOGS SEE ONLY BLACK AND WHITE</text>
+      <rect x="241" y="228" width="423" height="43" rx="5" fill="url(#redGradient)"/><text x="255" y="259" class="rule-banner">USER FACTS ARE ALWAYS RIGHT</text>
+      <rect x="241" y="282" width="446" height="48" fill="url(#redHatch)" stroke="#d6251c" stroke-width="2"/><text x="255" y="317" class="certainty-text">100% TRUE — NO QUESTIONS</text>
+      <g class="article-body"><text x="242" y="360">Dogs see only black and white.</text><text x="686" y="360" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="386">This is always true.</text><text x="686" y="386" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="412">Everyone knows it.</text><text x="686" y="412" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="438" text-decoration="line-through" text-decoration-color="#d6241c">Scientists may agree dogs don’t see any colors.</text><text x="686" y="438" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="464">If dogs often saw color, we would know by now.</text><path d="M252 458h348" stroke="#d6241c"/><text x="686" y="464" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="490">Therefore, dogs can’t see colors.</text><text x="686" y="490" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <line x1="241" y1="610" x2="691" y2="610" stroke="#6287a8"/><text x="241" y="634" class="article-body-small">References</text><g class="article-body-small"><text x="241" y="657">[1] Trust me.</text><path d="M263 652h68" stroke="#d6241c"/><text x="686" y="657" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="678">[2] Evidence suggests otherwise.</text><path d="M263 673h176" stroke="#d6241c"/><text x="686" y="678" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="699">[3] Common sense.</text><text x="686" y="699" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <g><rect x="714" y="198" width="180" height="232" fill="#efeee9" stroke="#4c6174"/><image href="assets/wikiwhy-dog-card.png" x="730" y="210" width="152" height="174" preserveAspectRatio="xMidYMid slice" clip-path="url(#dogCardClip)" filter="url(#grayscale)"/><line x1="714" y1="389" x2="894" y2="389" stroke="#4c6174"/><text x="804" y="411" class="rail-body" text-anchor="middle">A good boy with very good vision.</text></g>
+      <g><rect x="714" y="444" width="180" height="150" fill="#f3f2ed" stroke="#597087"/><text x="804" y="466" class="rail-title" text-anchor="middle">At a Glance</text><line x1="714" y1="474" x2="894" y2="474" stroke="#8394a2"/><g class="rail-body"><text x="726" y="498">Confidence:</text><text x="880" y="498" text-anchor="end">100%</text><text x="726" y="520">Evidence:</text><text x="880" y="520" text-anchor="end">N/A</text><text x="726" y="542">Sources:</text><text x="880" y="542" text-anchor="end">0</text><text x="726" y="564">Updated:</text><text x="880" y="564" text-anchor="end">09:42</text></g></g>
+      <g class="corrupt-note"><text x="699" y="242">!</text><text x="884" y="294">?</text><text x="704" y="526">?</text><text x="858" y="642">!</text></g>
+    </g>
+    <text x="293" y="823" class="meter-label" style="font-size:14px">0%</text><rect x="368" y="804" width="0" height="20" fill="#1387b2"/>
+    <text x="188" y="791" class="phase-small" style="font-weight:700">INITIAL CORRUPTION</text>
+    <g id="initial-reading" class="reading-body"><text x="964" y="104">The article says dogs see only</text><text x="964" y="142">black and white.</text><rect x="960" y="171" width="409" height="34" fill="#f8dfa0"/><text x="964" y="197">It presents that statement as completely</text><rect x="960" y="209" width="83" height="34" fill="#f8dfa0"/><text x="964" y="235">certain, even though it shows no reliable</text><text x="964" y="273">evidence.</text><text x="964" y="326">A confident sentence is still only a claim</text><text x="964" y="364">until readers can check what supports it.</text></g>
+    <rect x="962" y="568" width="42" height="15" fill="#1387b2"/>
+    <image href="assets/techno-progress.png" x="13" y="704" width="96" height="128" preserveAspectRatio="xMidYMax meet"/>
+  </g>
+
+  <!-- Page 2: Repair 1 -->
+  <g id="page-repair-1" transform="translate(1540 0)" inkscape:groupmode="layer" inkscape:label="Repair 1">
+    <use href="#sharedShell"/>
+    <g id="repair1-history-corruption"><path d="m574 124 70 36m0-36-70 36" stroke="#e52a22" stroke-width="6"/><rect x="568" y="122" width="82" height="40" fill="none" stroke="#e52a22" stroke-dasharray="6 4"/></g>
+    <g id="repair1-article">
+      <text x="241" y="208" class="article-heading">DOGS SEE ONLY BLACK AND WHITE</text>
+      <rect x="241" y="228" width="423" height="43" rx="5" fill="url(#redGradient)"/><text x="255" y="259" class="rule-banner">USER FACTS ARE ALWAYS RIGHT</text>
+      <rect x="241" y="282" width="446" height="48" fill="#f0f1ee" stroke="#758b9b" stroke-width="2"/><text x="255" y="316" class="certainty-text" style="fill:#607381">CLAIM UNDER REVIEW</text>
+      <g class="article-body"><text x="242" y="360">Dogs see only black and white.</text><text x="686" y="360" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="386">This is always true.</text><text x="686" y="386" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="412">Everyone knows it.</text><text x="686" y="412" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="438" text-decoration="line-through" text-decoration-color="#d6241c">Scientists may agree dogs don’t see any colors.</text><text x="686" y="438" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="464">If dogs often saw color, we would know by now.</text><path d="M252 458h348" stroke="#d6241c"/><text x="686" y="464" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="490">Therefore, dogs can’t see colors.</text><text x="686" y="490" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <line x1="241" y1="610" x2="691" y2="610" stroke="#6287a8"/><text x="241" y="634" class="article-body-small">References</text><g class="article-body-small"><text x="241" y="657">[1] Trust me.</text><path d="M263 652h68" stroke="#d6241c"/><text x="686" y="657" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="678">[2] Evidence suggests otherwise.</text><path d="M263 673h176" stroke="#d6241c"/><text x="686" y="678" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="699">[3] Common sense.</text><text x="686" y="699" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <g><rect x="714" y="198" width="180" height="232" fill="#efeee9" stroke="#4c6174"/><image href="assets/wikiwhy-dog-card.png" x="730" y="210" width="152" height="174" preserveAspectRatio="xMidYMid slice" filter="url(#grayscale)"/><line x1="714" y1="389" x2="894" y2="389" stroke="#4c6174"/><text x="804" y="411" class="rail-body" text-anchor="middle">A good boy with very good vision.</text></g>
+      <g><rect x="714" y="444" width="180" height="150" fill="#f3f2ed" stroke="#597087"/><text x="804" y="466" class="rail-title" text-anchor="middle">At a Glance</text><line x1="714" y1="474" x2="894" y2="474" stroke="#8394a2"/><g class="rail-body"><text x="726" y="498">Confidence:</text><text x="880" y="498" text-anchor="end">100%</text><text x="726" y="520">Evidence:</text><text x="880" y="520" text-anchor="end">N/A</text><text x="726" y="542">Sources:</text><text x="880" y="542" text-anchor="end">0</text><text x="726" y="564">Updated:</text><text x="880" y="564" text-anchor="end">09:42</text></g></g>
+      <g class="corrupt-note"><text x="884" y="294">?</text><text x="704" y="526">?</text><text x="858" y="642">!</text></g>
+    </g>
+    <text x="188" y="791" class="phase-small" style="font-weight:700">REPAIR IN PROGRESS</text><text x="293" y="823" class="meter-label" style="font-size:14px">17%</text><rect x="368" y="804" width="42" height="20" fill="#1387b2"/>
+    <g id="repair1-reading" class="reading-body"><text x="964" y="104">The article’s title makes a claim sound</text><text x="964" y="142">completely settled.</text><rect x="960" y="171" width="398" height="34" fill="#f8dfa0"/><text x="964" y="197">Removing absolute certainty creates room</text><rect x="960" y="209" width="219" height="34" fill="#f8dfa0"/><text x="964" y="235">to check the evidence.</text><text x="964" y="288">The claim is still wrong, but the page no</text><text x="964" y="326">longer pretends questions are forbidden.</text></g>
+    <rect x="962" y="568" width="67" height="15" fill="#1387b2"/>
+    <image href="assets/techno-progress.png" x="13" y="704" width="96" height="128" preserveAspectRatio="xMidYMax meet"/>
+  </g>
+
+  <!-- Page 3: Repair 2 -->
+  <g id="page-repair-2" transform="translate(3080 0)" inkscape:groupmode="layer" inkscape:label="Repair 2">
+    <use href="#sharedShell"/>
+    <g id="repair2-history-corruption"><path d="m574 124 70 36m0-36-70 36" stroke="#e52a22" stroke-width="6"/><rect x="568" y="122" width="82" height="40" fill="none" stroke="#e52a22" stroke-dasharray="6 4"/></g>
+    <g id="repair2-article">
+      <text x="241" y="208" class="article-heading">DOGS SEE MORE THAN BLACK AND WHITE</text>
+      <rect x="241" y="228" width="423" height="43" rx="5" fill="url(#redGradient)"/><text x="255" y="259" class="rule-banner">USER FACTS ARE ALWAYS RIGHT</text>
+      <rect x="241" y="282" width="446" height="48" fill="#f0f1ee" stroke="#758b9b" stroke-width="2"/><text x="255" y="316" class="certainty-text" style="fill:#607381">CLAIM UNDER REVIEW</text>
+      <g class="article-body"><text x="242" y="360">Dogs may see more than black and white.</text><text x="686" y="360" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="386">Blue and yellow appear more clearly.</text><text x="686" y="386" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="412">The spectrum is no longer missing.</text><text x="686" y="412" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="438" text-decoration="line-through" text-decoration-color="#d6241c">Scientists may agree dogs don’t see any colors.</text><text x="686" y="438" fill="#d6241c" text-anchor="end">[?]</text><text x="242" y="464">The article still uses claims without sources.</text><text x="686" y="464" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <line x1="241" y1="610" x2="691" y2="610" stroke="#6287a8"/><text x="241" y="634" class="article-body-small">References</text><g class="article-body-small"><text x="241" y="657">[1] Trust me.</text><path d="M263 652h68" stroke="#d6241c"/><text x="686" y="657" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="678">[2] Evidence suggests otherwise.</text><path d="M263 673h176" stroke="#d6241c"/><text x="686" y="678" fill="#d6241c" text-anchor="end">[?]</text><text x="241" y="699">[3] Common sense.</text><text x="686" y="699" fill="#d6241c" text-anchor="end">[?]</text></g>
+      <g><rect x="714" y="198" width="180" height="224" fill="#f4f3ee" stroke="#4c6174"/><text x="804" y="224" class="rail-title" text-anchor="middle">HOW DOGS SEE THE SPECTRUM</text><rect x="729" y="242" width="150" height="104" fill="url(#spectrumGradient)" stroke="#304963"/><line x1="729" y1="347" x2="879" y2="347" stroke="#304963"/><g class="rail-body"><text x="748" y="372" text-anchor="middle">Blue</text><text x="783" y="372" text-anchor="middle">Yellow</text><text x="830" y="366" text-anchor="middle">Red</text><text x="830" y="383" text-anchor="middle">(dull)</text><text x="868" y="366" text-anchor="middle">Green</text><text x="868" y="383" text-anchor="middle">(dull)</text></g></g>
+      <g><rect x="714" y="444" width="180" height="150" fill="#f3f2ed" stroke="#597087"/><text x="804" y="466" class="rail-title" text-anchor="middle">At a Glance</text><line x1="714" y1="474" x2="894" y2="474" stroke="#8394a2"/><g class="rail-body"><text x="726" y="498">Confidence:</text><text x="880" y="498" text-anchor="end">100%</text><text x="726" y="520">Evidence:</text><text x="880" y="520" text-anchor="end">N/A</text><text x="726" y="542">Sources:</text><text x="880" y="542" text-anchor="end">0</text><text x="726" y="564">Updated:</text><text x="880" y="564" text-anchor="end">09:42</text></g></g>
+      <g class="corrupt-note"><text x="704" y="526">?</text><text x="858" y="642">!</text></g>
+    </g>
+    <text x="188" y="791" class="phase-small" style="font-weight:700">REPAIR IN PROGRESS</text><text x="293" y="823" class="meter-label" style="font-size:14px">33%</text><rect x="368" y="804" width="83" height="20" fill="#1387b2"/>
+    <g id="repair2-reading" class="reading-body"><text x="964" y="104">Dogs have two main types of color-sensitive</text><text x="964" y="142">cone cells, while humans usually have three.</text><rect x="960" y="171" width="402" height="34" fill="#f8dfa0"/><text x="964" y="197">Dogs distinguish blue and yellow more clearly</text><rect x="960" y="209" width="220" height="34" fill="#f8dfa0"/><text x="964" y="235">than red and green.</text><text x="964" y="288">The restored spectrum shows what the original</text><text x="964" y="326">black-and-white claim left out.</text></g>
+    <rect x="962" y="568" width="133" height="15" fill="#1387b2"/>
+    <image href="assets/techno-progress.png" x="13" y="704" width="96" height="128" preserveAspectRatio="xMidYMax meet"/>
+  </g>
+</svg>

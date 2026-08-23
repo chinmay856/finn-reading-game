@@ -1,7 +1,7 @@
 import { PHOTOSYNTHESIS_PASSAGE } from "./content/wikiwhy/photosynthesis-passage.js";
 import { describePassageRights } from "./content/passage-catalog.js";
 import { hydrateInternetRecoveryCopy, INTERNET_RECOVERY_COPY } from "./apps/internet-recovery/copy.js";
-import { alignTranscript, estimateReadingPace, hasEndEvidence, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
+import { advanceEvidenceCursor, alignTranscript, estimateReadingPace, summarizeTokenMatches, tokenizeText } from "./reading-engine.js";
 import { KnownTextLineGuide } from "./reading-companion/known-text-line-guide.js";
 import { LiveReadingCompanion } from "./reading-companion/live-reading-companion.js";
 import { derivePassageDisplayLines } from "./reading-companion/passage-display-lines.js";
@@ -4454,7 +4454,7 @@ function renderPassage(progress = state.confirmedProgress) {
       cursor += 1;
       return `<span class="word ${className}">${part}</span>`;
     }).join("");
-    const active = lineIndex === state.guideVisibleLineIndex;
+    const active = lineIndex >= state.guideVisibleLineIndex && lineIndex <= state.guideVisibleLineIndex + 1;
     return `<p class="reading-paragraph ${active ? "active" : ""}" data-guide-line="${lineIndex}">${words}</p>`;
   }).join("");
   passage.scrollTop = previousScrollTop;
@@ -4545,10 +4545,20 @@ function projectedCampaignPercent(readingProgress) {
   return Math.round(start + ((finish - start) * progress));
 }
 
-function updateProgress(alignment, latencyMs = null) {
-  alignment.matchedTokenIndexes.forEach((index) => state.confirmedMatches.add(index));
-  state.confirmedProgress = Math.max(state.confirmedProgress, alignment.positionProgress);
-  state.confirmedTokenIndex = Math.max(state.confirmedTokenIndex, alignment.furthestMatchedTokenIndex + 1);
+function updateProgress(alignment, latencyMs = null, { final = false } = {}) {
+  const totalCount = alignment.expectedTokens?.length ?? tokenizeText(PASSAGE).length;
+  if (final) state.confirmedMatches = new Set(alignment.matchedTokenIndexes);
+  else alignment.matchedTokenIndexes.forEach((index) => state.confirmedMatches.add(index));
+  state.confirmedTokenIndex = advanceEvidenceCursor({
+    currentTokenIndex: state.confirmedTokenIndex,
+    matchedTokenIndexes: alignment.matchedTokenIndexes,
+    maximumAdvance: final ? totalCount : 16,
+    totalCount,
+  });
+  state.confirmedProgress = Math.max(
+    state.confirmedProgress,
+    totalCount ? state.confirmedTokenIndex / totalCount : 0,
+  );
   const percent = Math.round(state.confirmedProgress * 100);
   if (state.readingSiteId !== "wikiwhy") {
     state.repairPercent = Math.max(state.repairPercent, percent);
@@ -4628,13 +4638,6 @@ function monitorSpeech() {
   $("voicePulse").classList.toggle("speaking", speaking);
   if (speaking) {
     state.lastSpeechAt = now;
-  }
-  const totalWords = tokenizeText(PASSAGE).length;
-  if (!speaking && !state.busy && !state.finishing
-    && hasEndEvidence(state.confirmedMatches, totalWords, PROFILE.endDetection)
-    && now - state.lastSpeechAt >= PROFILE.endDetection.finalPauseMs) {
-    void finishReading();
-    return;
   }
   const sinceCheckpoint = now - state.lastCheckpointAt;
   const naturalPause = state.lastSpeechAt > state.lastCheckpointAt
@@ -4716,6 +4719,23 @@ function prepareStreamingGuide() {
   return preloadStreamingGuide();
 }
 
+async function failStreamingGuideAttempt(companion, error) {
+  if (state.streamingCompanion !== companion) return;
+  state.streamingPcmUnsubscribe?.();
+  state.streamingPcmUnsubscribe = null;
+  state.streamingCompanion = null;
+  state.streamingRecognizer = null;
+  state.streamingGuideGate = Object.freeze({
+    enabled: false,
+    mode: "whisper-checkpoint-fallback",
+    reason: "sherpa-mid-session-failed",
+    requested: true,
+  });
+  await companion.close().catch(() => {});
+  diagnostic("streaming-guide-mid-session-error", { message: error.message });
+  $("guideStatus").textContent = "Instant guide paused - Whisper checkpoint fallback active";
+}
+
 async function startStreamingGuideAttempt() {
   if (!state.streamingGuideGate?.enabled || !state.streamingRecognizer) return false;
   const companion = new LiveReadingCompanion({
@@ -4729,7 +4749,11 @@ async function startStreamingGuideAttempt() {
     await companion.start();
     state.streamingCompanion = companion;
     state.streamingPcmUnsubscribe = capture.subscribePcm((samples, sampleRate) => {
-      companion.acceptAudio(samples, sampleRate);
+      try {
+        companion.acceptAudio(samples, sampleRate);
+      } catch (error) {
+        void failStreamingGuideAttempt(companion, error);
+      }
     });
     $("guideStatus").textContent = "Local streaming guide ready - waiting for speech evidence";
     diagnostic("streaming-guide-start", { warmupMs: state.streamingWarmupMs });
@@ -4850,7 +4874,7 @@ async function finishReading() {
   observeGuideTranscript(text, performance.now(), { replace: true });
   const alignment = alignTranscript(PASSAGE, text, { lookAhead: 24 });
   const finalLatencyMs = Math.round(performance.now() - requestedAt);
-  updateProgress(alignment, finalLatencyMs);
+  updateProgress(alignment, finalLatencyMs, { final: true });
   const combined = summarizeTokenMatches(PASSAGE, state.confirmedMatches);
   const pace = renderReviewResult(combined, durationMs, state.confirmedProgress);
   const finalAddedWords = combined.matchedCount - liveSummary.matchedCount;

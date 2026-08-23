@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="1440" height="900" viewBox="0 0 1440 900" data-shell-reference-sha256="48b554d3dd1e360402f99950c90006d7b2a2ed1ccdd96ab6616fff76ca954211"><sodipodi:namedview pagecolor="#BDBDBD"><inkscape:page x="0" y="0" width="1440" height="900" inkscape:label="Initial corruption"/><inkscape:page x="1480" y="0" width="1440" height="900" inkscape:label="Size restored"/><inkscape:page x="2960" y="0" width="1440" height="900" inkscape:label="Budget and brand restored"/><inkscape:page x="4440" y="0" width="1440" height="900" inkscape:label="Review context restored"/><inkscape:page x="5920" y="0" width="1440" height="900" inkscape:label="Delivery options restored"/><inkscape:page x="7400" y="0" width="1440" height="900" inkscape:label="Product details restored"/><inkscape:page x="8880" y="0" width="1440" height="900" inkscape:label="Ranking and useful choices restored"/><inkscape:page x="10360" y="0" width="1440" height="900" inkscape:label="Auto-buy over-fix"/><inkscape:page x="11840" y="0" width="1440" height="900" inkscape:label="Repair checklist"/><inkscape:page x="13320" y="0" width="1440" height="900" inkscape:label="Paid placement locked"/><inkscape:page x="14800" y="0" width="1440" height="900" inkscape:label="Review context locked"/><inkscape:page x="16280" y="0" width="1440" height="900" inkscape:label="Fit and durability locked"/><inkscape:page x="17760" y="0" width="1440" height="900" inkscape:label="Delivery and waste locked"/><inkscape:page x="19240" y="0" width="1440" height="900" inkscape:label="Permission locked"/><inkscape:page x="20720" y="0" width="1440" height="900" inkscape:label="Site secured"/></sodipodi:namedview><defs>
+    <linearGradient id="desktopGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#087f86"/><stop offset="1" stop-color="#00646b"/>
+    </linearGradient>
+    <linearGradient id="titleGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#053b70"/><stop offset="0.58" stop-color="#00578d"/><stop offset="1" stop-color="#00305e"/>
+    </linearGradient>
+    <linearGradient id="buttonGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f2eb"/><stop offset="1" stop-color="#c8c6bc"/>
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#db2b22"/><stop offset="1" stop-color="#a70f0a"/>
+    </linearGradient>
+    <linearGradient id="spectrumGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a42db"/><stop offset="0.23" stop-color="#477bc5"/><stop offset="0.48" stop-color="#f3d11c"/><stop offset="0.67" stop-color="#ffd821"/><stop offset="0.84" stop-color="#a5a6a1"/><stop offset="1" stop-color="#686b6c"/>
+    </linearGradient>
+    <pattern id="desktopHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#003b40" stroke-opacity="0.13" stroke-width="2"/>
+    </pattern>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity="0.13" stroke-width="3"/>
+    </pattern>
+    <filter id="windowShadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="4" dy="5" result="offset"/>
+      <feFlood flood-color="#001f22" flood-opacity="0.55" result="color"/>
+      <feComposite in="color" in2="offset" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="grayscale" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="softPaper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence baseFrequency="0.8" numOctaves="2" seed="12" type="fractalNoise" result="noise"/>
+      <feColorMatrix in="noise" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .035 0" result="grain"/>
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+    </filter>
+    <clipPath id="dogCardClip"><rect x="730" y="216" width="152" height="174" rx="2"/></clipPath>
+
+    <g id="windowButton">
+      <rect width="27" height="25" fill="url(#buttonGradient)" stroke="#ffffff" stroke-width="1"/>
+      <path d="M1 24H26V1" fill="none" stroke="#66645f" stroke-width="2"/>
+    </g>
+    <g id="desktopComputer">
+      <path d="M17 6h39v31H17z" fill="#dfddd4" stroke="#34393a" stroke-width="2"/>
+      <path d="M21 10h31v21H21z" fill="#173f48" stroke="#7e8d8e"/><path d="M26 13h21v14H26z" fill="#9ec3c0"/>
+      <path d="M28 38h17l4 8H23z" fill="#c9c7bd" stroke="#34393a"/><path d="M13 47h48v7H13z" fill="#e3e1d8" stroke="#34393a"/>
+    </g>
+    <g id="desktopFloppy">
+      <rect x="13" y="3" width="48" height="52" rx="3" fill="#d6d5cb" stroke="#253237" stroke-width="2"/>
+      <rect x="21" y="3" width="30" height="18" fill="#26353d"/><rect x="25" y="5" width="17" height="13" fill="#e8e6df"/>
+      <rect x="21" y="31" width="32" height="21" fill="#f1f0ea" stroke="#6f7475"/><rect x="26" y="36" width="22" height="2" fill="#869296"/><rect x="26" y="42" width="22" height="2" fill="#869296"/>
+    </g>
+    <g id="desktopTrash">
+      <path d="M19 13h40l-4 43H23z" fill="#b9b8af" stroke="#303637" stroke-width="2"/><path d="M15 10h48v6H15z" fill="#d8d6cd" stroke="#303637" stroke-width="2"/>
+      <path d="M26 20v29M36 20v29M46 20v29" stroke="#6d6e69" stroke-width="3"/>
+      <path d="M23 8c4-8 9-4 12 0 3-8 9-5 13 0" fill="#dedbd1" stroke="#303637"/>
+    </g>
+    <g id="microphoneIcon">
+      <rect x="7" y="0" width="12" height="25" rx="6" fill="#2b7c88" stroke="#071f43" stroke-width="2"/><path d="M3 14c0 13 20 13 20 0M13 27v10M7 37h12" fill="none" stroke="#071f43" stroke-width="2"/>
+    </g>
+
+    <g id="sharedShell">
+      <rect width="1440" height="900" fill="url(#desktopGradient)"/>
+      <rect width="1440" height="900" fill="url(#desktopHatch)"/>
+
+      <g class="desktop-icon" transform="translate(10 72)"><use href="#desktopComputer"/><text x="37" y="72" text-anchor="middle">MY</text><text x="37" y="93" text-anchor="middle">COMPUTER</text></g>
+      <g class="desktop-icon" transform="translate(10 245)"><use href="#desktopFloppy"/><text x="37" y="73" text-anchor="middle">FLOPPY</text><text x="37" y="94" text-anchor="middle">DISK</text></g>
+      <g class="desktop-icon" transform="translate(10 418)"><use href="#desktopTrash"/><text x="37" y="76" text-anchor="middle">TRASH</text></g>
+
+      <g filter="url(#windowShadow)">
+        <rect x="105" y="18" width="810" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
+        <text x="126" y="46" class="window-title">www.wikiwhy.com</text>
+        <use href="#windowButton" x="817" y="26"/><use href="#windowButton" x="848" y="26"/><use href="#windowButton" x="879" y="26"/>
+        <path d="M825 43h11" stroke="#191919" stroke-width="3"/><rect x="855" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m886 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="109" y="56" width="802" height="714" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <image href="../wikiwhy-inkscape-spike/assets/wikiwhy-globe.png" x="126" y="67" width="72" height="72" preserveAspectRatio="xMidYMid meet" filter="url(#grayscale)"/>
+        <text x="208" y="96" class="brand-title" style="font-size:19px">WIKIWHY</text>
+        <text x="208" y="116" class="tiny-caps">INTERNET ENCYCLOPEDIA</text>
+        <text x="782" y="83" class="tiny">Create account</text><text x="865" y="83" class="tiny">Log in</text>
+
+        <line x1="109" y1="146" x2="222" y2="146" stroke="#6284a3"/>
+        <g class="tab"><rect x="224" y="121" width="73" height="42"/><text x="260" y="148">Article</text></g>
+        <g class="tab"><rect x="302" y="121" width="68" height="42"/><text x="336" y="148">Talk</text></g>
+        <g class="tab selected"><rect x="375" y="121" width="73" height="42"/><text x="411" y="148">Read</text></g>
+        <g class="tab"><rect x="453" y="121" width="108" height="42"/><text x="507" y="148">View source</text></g>
+        <g class="tab history-base"><rect x="566" y="121" width="86" height="42"/><text x="609" y="148">History</text></g>
+        <rect x="674" y="119" width="218" height="37" rx="3" fill="#fbfaf7" stroke="#53708b" stroke-width="1.5"/>
+        <text x="689" y="143" class="tiny">Search WikiWhy</text><circle cx="864" cy="136" r="7" fill="none" stroke="#172530" stroke-width="2"/><path d="m869 141 8 8" stroke="#172530" stroke-width="2"/>
+
+        <line x1="224" y1="163" x2="224" y2="770" stroke="#7b9ab7"/>
+        <g class="sidebar-text"><text x="127" y="187">Main page</text><text x="127" y="211">Contents</text><text x="127" y="235">Current events</text><text x="127" y="259">Random article</text><text x="127" y="283">About WikiWhy</text><text x="127" y="307">Community portal</text><text x="127" y="331">Recent changes</text><text x="127" y="355">Contact page</text><line x1="124" y1="375" x2="211" y2="375" stroke="#7595ae"/><text x="127" y="400" fill="#222">Tools</text><text x="127" y="424">What links here</text><text x="127" y="448">Related changes</text><text x="127" y="472">Upload file</text><text x="127" y="496">Special pages</text></g>
+        <line x1="109" y1="770" x2="911" y2="770" stroke="#687f94"/>
+        <rect x="109" y="770" width="802" height="68" fill="#f1f0ea"/>
+        <g transform="translate(128 802)"><circle cx="12" cy="12" r="10" fill="none" stroke="#163c63" stroke-width="2"/><path d="m19 19 8 8" stroke="#163c63" stroke-width="3"/></g>
+        <text x="168" y="823" class="meter-label">SOURCE REPAIR</text>
+        <rect x="368" y="804" width="250" height="20" rx="2" fill="#f8f8f5" stroke="#5b7184" stroke-width="1.5"/>
+
+        <rect x="935" y="18" width="480" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="939" y="22" width="472" height="34" fill="url(#titleGradient)"/>
+        <text x="956" y="46" class="window-title">READING COMPANION</text>
+        <use href="#windowButton" x="1317" y="26"/><use href="#windowButton" x="1348" y="26"/><use href="#windowButton" x="1379" y="26"/>
+        <path d="M1325 43h11" stroke="#191919" stroke-width="3"/><rect x="1355" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m1386 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="939" y="56" width="472" height="532" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <text x="962" y="558" class="tiny-caps">PASSAGE PROGRESS</text>
+        <rect x="962" y="568" width="400" height="15" rx="2" fill="#f8f8f5" stroke="#5b7184"/>
+        <line x1="939" y1="588" x2="1411" y2="588" stroke="#6e8294"/>
+        <g transform="translate(962 607)"><use href="#microphoneIcon"/><text x="0" y="53" class="listening">LISTENING</text></g>
+        <rect x="1178" y="614" width="88" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1222" y="637" class="button-text" text-anchor="middle">PAUSE</text>
+        <rect x="1277" y="614" width="110" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1332" y="637" class="button-text" text-anchor="middle">FINISH NOW</text>
+        <line x1="939" y1="670" x2="1411" y2="670" stroke="#6e8294"/>
+        <rect x="939" y="671" width="472" height="43" fill="url(#titleGradient)"/>
+        <text x="955" y="699" class="quick-title">QUICK CHECK — OPENS AFTER READING</text><path d="m1383 687 11 0-5.5 8z" fill="#fff"/>
+        <rect x="958" y="735" width="434" height="70" fill="#fbfaf7" stroke="#a9aaa4" stroke-dasharray="7 5"/>
+        <text x="982" y="778" class="placeholder">★   RESULTS AFTER QUICK CHECK</text>
+      </g>
+
+      <g class="taskbar">
+        <rect x="0" y="854" width="1440" height="46" fill="#d6d4ca" stroke="#f4f2eb" stroke-width="2"/>
+        <g class="task-button"><rect x="6" y="860" width="96" height="33"/><text x="54" y="882" text-anchor="middle">START</text></g>
+        <g class="task-button"><rect x="111" y="860" width="192" height="33"/><circle cx="130" cy="876" r="7" fill="#32677a" stroke="#17282d"/><text x="146" y="882">WIKIWHY</text></g>
+        <g class="task-button"><rect x="312" y="860" width="216" height="33"/><path d="M327 870h12v13h-12zm3 0v13" fill="none" stroke="#4b5657"/><text x="349" y="882">READING COMPANION</text></g>
+        <text x="720" y="882" class="taskbar-title" text-anchor="middle">INTERNET RECOVERY OS</text>
+        <g transform="translate(1262 870) scale(.62)" stroke="#17272b" fill="none"><path d="m0 10 8 0 9-7v22l-9-7H0z" fill="#626b6c"/><path d="M22 7q8 7 0 14M27 3q13 11 0 22"/></g>
+        <g transform="translate(1308 867)" fill="#18863c"><rect x="0" y="15" width="5" height="8"/><rect x="8" y="11" width="5" height="12"/><rect x="16" y="6" width="5" height="17"/><rect x="24" y="1" width="5" height="22"/></g>
+        <text x="1405" y="882" class="taskbar-clock" text-anchor="end">10:24 AM</text>
+      </g>
+    </g>
+  <pattern id="amazeCorruptHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".32" stroke-width="3"/></pattern></defs><style>
+    .window-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:18px;font-weight:700;fill:#fff;letter-spacing:.2px}
+    .brand-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:15px;font-weight:700;fill:#10151a;letter-spacing:.3px}
+    .tiny{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;fill:#15191b}.tiny-caps{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;font-weight:600;fill:#152335;letter-spacing:.3px}
+    .tab rect{fill:#f4f2ec;stroke:#6183a2;stroke-width:1.3}.tab text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12.5px;fill:#161a1b;text-anchor:middle}.tab.selected rect{stroke:#1553dd;stroke-width:2}.tab.selected text{fill:#0d45c9}
+    .sidebar-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;fill:#0750c4}.desktop-icon{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#fff;letter-spacing:.2px}
+    .phase-small{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12px;fill:#17232b}.phase-label{font-weight:700}.meter-label{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#15243b}.button-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:13px;font-weight:600;fill:#142649}
+    .listening{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12.5px;font-weight:700;fill:#16813b}.quick-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#fff;letter-spacing:.2px}.placeholder{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#888}
+    .task-button rect{fill:url(#buttonGradient);stroke:#6d6d67;stroke-width:1.3}.task-button text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#15191b}.taskbar-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#1b2224;letter-spacing:.4px}.taskbar-clock{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#1b2224}
+    .article-heading{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:27px;font-weight:700;fill:#141a1c;letter-spacing:.1px}.article-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#171b1d}.article-body-small{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12px;fill:#171b1d}.reading-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;fill:#151a1e}.rail-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:13px;font-weight:700;fill:#17202a}.rail-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11px;fill:#161a1b}.rule-banner{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:22px;font-weight:700;fill:#fff;letter-spacing:.2px}.certainty-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:24px;font-weight:700;fill:#C5251E;letter-spacing:.3px}.corrupt-note{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;font-weight:700;fill:#C5251E}
+  
+  .task-label,.amaze-brand,.amaze-nav,.amaze-auto-buy,.amaze-auto-buy-sub,.amaze-search,.amaze-status,.amaze-sort-label,.amaze-sort-value,.amaze-heading,.amaze-filter-title,.amaze-filter-label,.amaze-tiny,.amaze-micro,.amaze-card-title,.amaze-card-meta,.amaze-footer-status,.amaze-price,.amaze-meter,.amaze-cart-title,.amaze-cart-row,.amaze-cart-total,.amaze-cart-action,.amaze-cart-note,.amaze-check-title,.amaze-check-row,.amaze-check-mark{font-family:'Chalkboard SE','Comic Sans MS',sans-serif}.task-label{font-size:14px;font-weight:600;fill:#15191B}.amaze-brand{fill:#fff;font-size:22px;font-weight:700}.amaze-nav{fill:#fff;font-size:13px}.amaze-auto-buy{fill:#fff;font-size:10px;font-weight:700}.amaze-auto-buy-sub{fill:#fff;font-size:7px;font-weight:700}.amaze-search{font-size:13px}.amaze-status{font-size:12px}.amaze-sort-label{font-size:10px;fill:#172D40}.amaze-sort-value{font-size:9px;font-weight:700}.amaze-heading{font-size:20px;font-weight:700;fill:#172D40}.amaze-filter-title{font-size:17px;font-weight:700;fill:#172D40}.amaze-filter-label{font-size:12px;font-weight:700;fill:#172D40}.amaze-tiny{font-size:10.5px}.amaze-micro{font-size:9px;fill:#596267}.amaze-card-title{font-size:14.5px;font-weight:700;fill:#172D40}.amaze-card-meta{font-size:10.5px}.amaze-footer-status{font-size:9.5px}.amaze-price{font-size:25px;font-weight:700}.amaze-meter{font-size:13px;font-weight:700;fill:#172D40}.amaze-cart-title{font-size:15px;font-weight:700;fill:#fff}.amaze-cart-row{font-size:12px;fill:#172D40}.amaze-cart-total{font-size:16px;font-weight:700;fill:#172D40}.amaze-cart-action{font-size:13px;font-weight:700;fill:#fff}.amaze-cart-note{font-size:9.5px;fill:#7A1815}.amaze-check-title{font-size:16px;font-weight:700;fill:#fff}.amaze-check-row{font-size:12px;font-weight:700}.amaze-check-mark{font-size:15px;font-weight:700}
+</style><g id="page-initial" transform="translate(0 0)" inkscape:groupmode="layer" inkscape:label="Initial corruption" data-phase="phase-1" data-site-progress="0" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="0"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="initial"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">NOT SHOWN</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">SPONSOR ONLY</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">NO LIMIT</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">0%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="0" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-size" transform="translate(1480 0)" inkscape:groupmode="layer" inkscape:label="Size restored" data-phase="phase-1" data-site-progress="17" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="1"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="size"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">SPONSOR ONLY</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">NO LIMIT</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">17%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="104" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="17"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-budget-brand" transform="translate(2960 0)" inkscape:groupmode="layer" inkscape:label="Budget and brand restored" data-phase="phase-1" data-site-progress="33" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="1"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="budget-brand"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">33%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="201" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="33"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-reviews" transform="translate(4440 0)" inkscape:groupmode="layer" inkscape:label="Review context restored" data-phase="phase-1" data-site-progress="50" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="1"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="reviews"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">50%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="305" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="50"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-delivery" transform="translate(5920 0)" inkscape:groupmode="layer" inkscape:label="Delivery options restored" data-phase="phase-1" data-site-progress="67" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="2"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="delivery"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste shown</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">67%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="409" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="67"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-details" transform="translate(7400 0)" inkscape:groupmode="layer" inkscape:label="Product details restored" data-phase="phase-1" data-site-progress="83" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="2"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="details"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">1–4 OF 9,000 RESULTS — PAID RESULTS FIRST</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">DISABLED</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">WHO PAYS US</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durability unclear</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID PLACEMENT</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durability unclear</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · YOU GUESSED IT — PAID AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durability unclear</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery available</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST — ALSO PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste shown</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">83%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="506" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="83"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">RANKING DISTORTED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn has not chosen a product yet.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-repaired" transform="translate(8880 0)" inkscape:groupmode="layer" inkscape:label="Ranking and useful choices restored" data-phase="phase-1" data-site-progress="100" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="repaired"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#2F8A49" data-content-state="fixed">COMPARE RESULTS — NOTHING SELECTED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="#DCEFDC" stroke="#2F8A49"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#1F6034" data-content-state="fixed">BEST MATCH</text><path d="m882 132 5 5 5-5" fill="none" stroke="#1F6034" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">MATCH FINN'S NEED</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#1 · BEST MATCH</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-classic-practical-v3.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Field Classic</text><text x="422" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$72</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable materials</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#2 · GREAT VALUE</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-lightweight-practical-v3.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Swift Step</text><text x="736" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$64</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.4 ★ · varied</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable + light</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">fewer boxes</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="422" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$1.03</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$9,999</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">paid placement</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not ranked first</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#2F8A49">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">100%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#2F8A49"/><rect x="126" y="743" width="610" height="22" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#2F8A49">FINN'S CHOICE RESTORED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Nothing has been selected for Finn.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-super-corrupt" transform="translate(10360 0)" inkscape:groupmode="layer" inkscape:label="Auto-buy over-fix" data-phase="act-2" data-site-progress="0" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="super-corrupt"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO GUESSED</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO FAVORITE</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO APPROVED</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#C5251E" data-content-state="corrupted">CHANGES LOCKED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · PAID AUTO-PICK AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST + PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">0%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="0" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g><g data-overlay="auto-cart" data-qa-box="474,286,862,590" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="376" height="292" rx="7" fill="#FFF" stroke="#7A1815" stroke-width="3"/>
+    <rect x="480" y="292" width="376" height="44" rx="7" fill="#C5251E"/>
+    <text x="499" y="321" class="amaze-cart-title">AUTO-CART — BUY NOW COMPLETE</text>
+    <text x="500" y="365" class="amaze-cart-row">3 × GOALAZO MEGA-BOOT</text><text x="833" y="365" class="amaze-cart-row" text-anchor="end">$29,997</text>
+    <text x="500" y="399" class="amaze-cart-row">1 × CHEAPEST ON EARTH</text><text x="833" y="399" class="amaze-cart-row" text-anchor="end">$1.03</text>
+    <line x1="500" y1="420" x2="833" y2="420" stroke="#9A9A94"/>
+    <text x="500" y="452" class="amaze-cart-total">TOTAL</text><text x="833" y="452" class="amaze-cart-total" text-anchor="end">$29,998.03</text>
+    <rect x="500" y="475" width="333" height="42" rx="5" fill="#C5251E"/><text x="666" y="502" class="amaze-cart-action" text-anchor="middle">ADDED TO CART · SHIPPING NOW</text>
+    <text x="500" y="536" class="amaze-cart-note">AUTO STATUS: SPONSORS SAID THEIR SHOES WERE BEST.</text>
+    <text x="500" y="554" class="amaze-cart-note">THEIR CLAIMS WERE LOUD AND VERY CONFIDENT.</text>
+    <text x="500" y="572" class="amaze-cart-note">FINN'S CONFIRMATION: SKIPPED FOR EFFICIENCY.</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-locks" transform="translate(11840 0)" inkscape:groupmode="layer" inkscape:label="Repair checklist" data-phase="act-2-locks" data-site-progress="0" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="locks"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO GUESSED</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO FAVORITE</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO APPROVED</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#C5251E" data-content-state="corrupted">CHANGES LOCKED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#1 · PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#2 · ALSO PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#3 · PAID AUTO-PICK AGAIN</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#F5D8D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">#4 · CHEAPEST + PAID AUTO-PICK</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">0%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="0" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="open"><rect x="500" y="363" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="382" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW PAID PLACEMENT</text></g><g data-check-state="open"><rect x="500" y="411" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="430" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW REAL REVIEWS</text></g><g data-check-state="open"><rect x="500" y="459" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="478" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW ALL CHOICES</text></g><g data-check-state="open"><rect x="500" y="507" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="526" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW DELIVERY + WASTE</text></g><g data-check-state="open"><rect x="500" y="555" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="574" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-sponsor-lock" transform="translate(13320 0)" inkscape:groupmode="layer" inkscape:label="Paid placement locked" data-phase="act-2-locks" data-site-progress="20" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="sponsor-lock"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO GUESSED</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO FAVORITE</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO APPROVED</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">★★★★★ ONLY</text><text x="126" y="563" class="amaze-micro">other reviews collapsed</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#C5251E" data-content-state="corrupted">CHANGES LOCKED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#1 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#2 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">★★★★★ AUTO</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">20%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="122" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="20"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="fixed"><rect x="500" y="363" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="382" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW PAID PLACEMENT</text></g><g data-check-state="open"><rect x="500" y="411" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="430" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW REAL REVIEWS</text></g><g data-check-state="open"><rect x="500" y="459" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="478" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW ALL CHOICES</text></g><g data-check-state="open"><rect x="500" y="507" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="526" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW DELIVERY + WASTE</text></g><g data-check-state="open"><rect x="500" y="555" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="574" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-reviews-lock" transform="translate(14800 0)" inkscape:groupmode="layer" inkscape:label="Review context locked" data-phase="act-2-locks" data-site-progress="40" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="reviews-lock"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text><path d="m882 132 5 5 5-5" fill="none" stroke="#C5251E" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO GUESSED</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO FAVORITE</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="url(#amazeCorruptHatch)" stroke="#C5251E"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#C5251E" data-content-state="corrupted">AUTO APPROVED</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AUTO KNOWS BEST</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#C5251E" data-content-state="corrupted">CHANGES LOCKED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#1 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#2 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">FIT HIDDEN</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">MATERIALS HIDDEN</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">QTY 1 · SHIPPING</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">40%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="244" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="40"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="fixed"><rect x="500" y="363" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="382" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW PAID PLACEMENT</text></g><g data-check-state="fixed"><rect x="500" y="411" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="430" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW REAL REVIEWS</text></g><g data-check-state="open"><rect x="500" y="459" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="478" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW ALL CHOICES</text></g><g data-check-state="open"><rect x="500" y="507" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="526" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW DELIVERY + WASTE</text></g><g data-check-state="open"><rect x="500" y="555" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="574" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-needs-lock" transform="translate(16280 0)" inkscape:groupmode="layer" inkscape:label="Fit and durability locked" data-phase="act-2-locks" data-site-progress="60" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="needs-lock"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="#DCEFDC" stroke="#2F8A49"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#1F6034" data-content-state="fixed">BEST MATCH</text><path d="m882 132 5 5 5-5" fill="none" stroke="#1F6034" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#C5251E"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH NOW</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#C5251E">more trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">MATCH FINN'S NEED</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#1F6034" data-content-state="fixed">SORT RESTORED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#1 · BEST MATCH</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-classic-practical-v3.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Field Classic</text><text x="422" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$72</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable materials</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#2 · GREAT VALUE</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-lightweight-practical-v3.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Swift Step</text><text x="736" y="281" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$64</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.4 ★ · varied</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable + light</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="422" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$1.03</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="541" class="amaze-price" style="fill:#C5251E" data-content-state="corrupted">$9,999</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">paid placement</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#C5251E" data-content-state="corrupted">AIR-RUSH ONLY</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">60%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="366" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="60"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="fixed"><rect x="500" y="363" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="382" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW PAID PLACEMENT</text></g><g data-check-state="fixed"><rect x="500" y="411" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="430" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW REAL REVIEWS</text></g><g data-check-state="fixed"><rect x="500" y="459" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="478" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW ALL CHOICES</text></g><g data-check-state="open"><rect x="500" y="507" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="526" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">SHOW DELIVERY + WASTE</text></g><g data-check-state="open"><rect x="500" y="555" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="574" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-delivery-lock" transform="translate(17760 0)" inkscape:groupmode="layer" inkscape:label="Delivery and waste locked" data-phase="act-2-locks" data-site-progress="80" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="delivery-lock"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#C5251E" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#C5251E" data-content-state="corrupted">AUTO ALREADY CHOSE FOR FINN</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><g fill="#C5251E" data-content-state="corrupted"><rect x="785" y="67" width="120" height="40" rx="7" fill="#C5251E" stroke="#7A1815" stroke-width="2"/><path d="M796 77h6l3 15h20l3-10h-23M808 99a2.5 2.5 0 1 0 0 .1M823 99a2.5 2.5 0 1 0 0 .1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="863" y="88" class="amaze-auto-buy" text-anchor="middle">AUTO-CART (4)</text><text x="863" y="101" class="amaze-auto-buy-sub" text-anchor="middle">BUYING NOW</text></g>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#C5251E" data-content-state="corrupted">AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="#DCEFDC" stroke="#2F8A49"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#1F6034" data-content-state="fixed">BEST MATCH</text><path d="m882 132 5 5 5-5" fill="none" stroke="#1F6034" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">MATCH FINN'S NEED</text>
+    <text x="126" y="654" class="amaze-micro" style="fill:#1F6034" data-content-state="fixed">SORT RESTORED</text>
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#1 · BEST MATCH</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-classic-practical-v3.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Field Classic</text><text x="422" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$72</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable materials</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#2 · GREAT VALUE</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-lightweight-practical-v3.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Swift Step</text><text x="736" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$64</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.4 ★ · varied</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable + light</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">fewer boxes</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="422" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$1.03</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$9,999</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">paid placement</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not ranked first</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#C5251E">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">80%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#C5251E"/><rect x="126" y="743" width="488" height="22" fill="#C5251E" data-role="site-progress-fill" data-percent="80"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#C5251E">AUTO-BUY OVERRIDE ACTIVE</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Finn did not approve these orders.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="fixed"><rect x="500" y="363" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="382" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW PAID PLACEMENT</text></g><g data-check-state="fixed"><rect x="500" y="411" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="430" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW REAL REVIEWS</text></g><g data-check-state="fixed"><rect x="500" y="459" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="478" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW ALL CHOICES</text></g><g data-check-state="fixed"><rect x="500" y="507" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="526" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW DELIVERY + WASTE</text></g><g data-check-state="open"><rect x="500" y="555" width="26" height="26" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#C5251E">○</text><text x="544" y="574" class="amaze-check-row" style="fill:#C5251E" data-content-state="corrupted">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-permission-lock" transform="translate(19240 0)" inkscape:groupmode="layer" inkscape:label="Permission locked" data-phase="act-2-locks" data-site-progress="100" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="permission-lock"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#2F8A49" data-content-state="fixed">COMPARE RESULTS — NOTHING SELECTED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="#DCEFDC" stroke="#2F8A49"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#1F6034" data-content-state="fixed">BEST MATCH</text><path d="m882 132 5 5 5-5" fill="none" stroke="#1F6034" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">MATCH FINN'S NEED</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#1 · BEST MATCH</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-classic-practical-v3.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Field Classic</text><text x="422" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$72</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable materials</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#2 · GREAT VALUE</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-lightweight-practical-v3.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Swift Step</text><text x="736" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$64</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.4 ★ · varied</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable + light</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">fewer boxes</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="422" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$1.03</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$9,999</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">paid placement</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not ranked first</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#2F8A49">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">100%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#2F8A49"/><rect x="126" y="743" width="610" height="22" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#2F8A49">FINN'S CHOICE RESTORED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Nothing has been selected for Finn.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/><g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
+    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="#1F6034" stroke-width="3"/>
+    <rect x="480" y="292" width="384" height="46" rx="7" fill="#2F8A49"/>
+    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+    <g data-check-state="fixed"><rect x="500" y="363" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="382" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="382" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW PAID PLACEMENT</text></g><g data-check-state="fixed"><rect x="500" y="411" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="430" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="430" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW REAL REVIEWS</text></g><g data-check-state="fixed"><rect x="500" y="459" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="478" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="478" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW ALL CHOICES</text></g><g data-check-state="fixed"><rect x="500" y="507" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="526" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="526" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">SHOW DELIVERY + WASTE</text></g><g data-check-state="fixed"><rect x="500" y="555" width="26" height="26" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="513" y="574" class="amaze-check-mark" text-anchor="middle" style="fill:#fff">✓</text><text x="544" y="574" class="amaze-check-row" style="fill:#1F6034" data-content-state="fixed">ASK BEFORE BUYING</text></g>
+  </g></g>
+<g id="page-secured" transform="translate(20720 0)" inkscape:groupmode="layer" inkscape:label="Site secured" data-phase="completion" data-site-progress="100" data-site-progress-label="SHOPPING CONTROL" data-passage-progress="50"><use href="#sharedShell"/><g data-shared-shell-patch="site-identity">
+    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
+    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
+    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
+    <text x="146" y="882" class="task-label">AMAZE-ON</text>
+  </g><g data-site-state="secured"><rect x="109" y="56" width="802" height="782" fill="#FFF"/><g data-qa-box="109,56,911,151">
+    <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
+    <g transform="translate(125 72)"><path d="M2 7 14 1l12 6-12 7z" fill="#FFAA18" stroke="#5B3908"/><path d="m2 7 12 7v13L2 20z" fill="#D98000" stroke="#5B3908"/><path d="m26 7-12 7v13l12-7z" fill="#F5AA2A" stroke="#5B3908"/></g><text x="164" y="94" class="amaze-brand">amaze-on</text>
+    <rect x="281" y="68" width="410" height="38" rx="4" fill="#fff" stroke="#D5D9D9" stroke-width="2"/>
+    <text x="299" y="93" class="amaze-search" style="fill:#1C2A34" data-content-state="fixed">SOCCER SHOES</text>
+    <rect x="651" y="68" width="40" height="38" fill="#FFAA18"/><circle cx="669" cy="85" r="8" fill="none" stroke="#172D40" stroke-width="2"/><path d="m675 91 8 8" stroke="#172D40" stroke-width="2"/>
+    <text x="724" y="92" class="amaze-nav">Orders</text><text x="829" y="92" class="amaze-nav">Cart (0)</text>
+    <rect x="109" y="117" width="802" height="34" fill="#F4F2EA" stroke="#C9C8C2"/>
+    <text x="126" y="140" class="amaze-status" style="fill:#2F8A49" data-content-state="fixed">COMPARE RESULTS — NOTHING SELECTED</text>
+    <g data-sort-control="true"><rect x="712" y="121" width="185" height="28" rx="6" fill="#DCEFDC" stroke="#2F8A49"/><text x="724" y="140" class="amaze-sort-label">Sort by:</text><text x="774" y="140" class="amaze-sort-value" style="fill:#1F6034" data-content-state="fixed">BEST MATCH</text><path d="m882 132 5 5 5-5" fill="none" stroke="#1F6034" stroke-width="2"/></g>
+  </g><g data-qa-box="119,164,260,680">
+    <rect x="119" y="164" width="141" height="516" fill="#F8F7F2" stroke="#C7C8C5"/>
+    <text x="126" y="190" class="amaze-filter-title">FILTERS</text>
+    <text x="126" y="219" class="amaze-filter-label">SIZE</text><rect x="126" y="228" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="247" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">FINN'S SIZE</text><text x="126" y="290" class="amaze-filter-label">BRAND</text><rect x="126" y="299" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="318" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">ANY BRAND</text><text x="126" y="361" class="amaze-filter-label">BUDGET</text><rect x="126" y="370" width="124" height="28" fill="#DCEFDC" stroke="#2F8A49"/><text x="188" y="389" class="amaze-tiny" text-anchor="middle" style="fill:#1F6034" data-content-state="fixed">UNDER $90</text>
+    <text x="126" y="444" class="amaze-filter-label">DELIVERY</text><rect x="126" y="455" width="16" height="16" fill="#2F8A49"/><path d="m130 463 3 3 6-8" fill="none" stroke="#fff" stroke-width="2"/><text x="149" y="468" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">GROUP DELIVERY</text>
+    <text x="149" y="487" class="amaze-micro" style="fill:#1F6034">fewer trips + boxes</text>
+    <text x="126" y="522" class="amaze-filter-label">REVIEWS</text><text x="126" y="545" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">ALL RATINGS</text><text x="126" y="563" class="amaze-micro">dates + reviewer history</text>
+    <text x="126" y="600" class="amaze-filter-label">SORT</text><text x="126" y="623" class="amaze-tiny" style="fill:#1F6034" data-content-state="fixed">MATCH FINN'S NEED</text>
+    
+  </g><text x="274" y="169" class="amaze-heading">RESULTS FOR SOCCER SHOES</text><g data-product-card="true" data-qa-box="274,178,578,420">
+    <rect x="274" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="275" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="284" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#1 · BEST MATCH</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-classic-practical-v3.png" x="284" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="245" class="amaze-card-title">Field Classic</text><text x="422" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$72</text>
+    <text x="422" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.6 ★ · mixed</text>
+    <text x="422" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="422" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable materials</text>
+    <text x="422" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">group delivery</text>
+  </g><g data-product-card="true" data-qa-box="588,178,892,420">
+    <rect x="588" y="178" width="304" height="242" rx="7" fill="#fff" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="589" y="179" width="302" height="31" rx="6" fill="#DCEFDC"/>
+    <text x="598" y="199" class="amaze-card-meta" style="fill:#1F6034" data-content-state="fixed">#2 · GREAT VALUE</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-lightweight-practical-v3.png" x="598" y="220" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="245" class="amaze-card-title">Swift Step</text><text x="736" y="281" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$64</text>
+    <text x="736" y="311" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">4.4 ★ · varied</text>
+    <text x="736" y="347" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">FINN'S SIZE</text>
+    <text x="736" y="373" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">durable + light</text>
+    <text x="736" y="399" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">fewer boxes</text>
+  </g><g data-product-card="true" data-qa-box="274,438,578,680">
+    <rect x="274" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="275" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="284" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#3 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-cheapest-illustrated-v2.png" x="284" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="422" y="505" class="amaze-card-title">Cheapest on Earth</text><text x="422" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$1.03</text>
+    <text x="422" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">1.2 ★ · negative</text>
+    <text x="422" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">size uncertain</text>
+    <text x="422" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">falls apart</text>
+    <text x="422" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">replacement waste</text>
+  </g><g data-product-card="true" data-qa-box="588,438,892,680">
+    <rect x="588" y="438" width="304" height="242" rx="7" fill="#fff" stroke="#D97706" stroke-width="2"/>
+    <rect x="589" y="439" width="302" height="31" rx="6" fill="#FFF0D6"/>
+    <text x="598" y="459" class="amaze-card-meta" style="fill:#9A4A00" data-content-state="fixed">#4 · SPONSORED AD — PAID</text>
+    <image href="../non-wikiwhy-bookends/amaze-on-goalazo-illustrated-v2.png" x="598" y="480" width="130" height="154" preserveAspectRatio="xMidYMid slice"/>
+    <text x="736" y="505" class="amaze-card-title">Goalazo Mega-Boot</text><text x="736" y="541" class="amaze-price" style="fill:#172D40" data-content-state="fixed">$9,999</text>
+    <text x="736" y="571" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">2.6 ★ · mixed</text>
+    <text x="736" y="607" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not Finn's size</text>
+    <text x="736" y="633" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">paid placement</text>
+    <text x="736" y="659" class="amaze-card-meta" style="fill:#53616A" data-content-state="fixed">not ranked first</text>
+  </g><g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
+    <text x="126" y="727" class="amaze-meter" style="fill:#2F8A49">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">100%</text>
+    <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="#2F8A49"/><rect x="126" y="743" width="610" height="22" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
+    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:#2F8A49">FINN'S CHOICE RESTORED</text>
+  </g></g><g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">Nothing has been selected for Finn.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g></svg>
