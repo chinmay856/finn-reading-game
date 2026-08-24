@@ -216,14 +216,14 @@ function autoCart(state) {
 
 function repairChecklist(checked) {
   const items = ["SHOW PAID PLACEMENT", "SHOW REAL REVIEWS", "SHOW ALL CHOICES", "SHOW DELIVERY + WASTE", "ASK BEFORE BUYING"];
-  return `<g data-overlay="repair-checklist" data-qa-box="474,285,870,625" filter="url(#windowShadow)">
-    <rect x="480" y="292" width="384" height="326" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
-    <rect x="480" y="292" width="384" height="46" rx="7" fill="${COLORS.repair}"/>
-    <text x="499" y="322" class="amaze-check-title">LOCK IN THE REPAIR</text>
+  return `<g data-overlay="repair-checklist" data-qa-box="559,303,891,616" filter="url(#windowShadow)">
+    <rect x="565" y="310" width="320" height="300" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
+    <rect x="565" y="310" width="320" height="44" rx="7" fill="${COLORS.repair}"/>
+    <text x="585" y="339" class="amaze-check-title">LOCK IN THE REPAIR</text>
     ${items.map((item, index) => {
       const fixed = index < checked;
-      const y = 363 + index * 48;
-      return `<g data-check-state="${fixed ? "fixed" : "open"}"><rect x="500" y="${y}" width="26" height="26" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="513" y="${y + 19}" class="amaze-check-mark" text-anchor="middle" style="fill:${fixed ? "#fff" : COLORS.corruption}">${fixed ? "✓" : "○"}</text><text x="544" y="${y + 19}" class="amaze-check-row" style="fill:${fixed ? COLORS.repairDark : COLORS.corruption}" data-content-state="${fixed ? "fixed" : "corrupted"}">${item}</text></g>`;
+      const y = 371 + index * 45;
+      return `<g data-check-state="${fixed ? "fixed" : "open"}"><rect x="585" y="${y}" width="25" height="25" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="597.5" y="${y + 18}" class="amaze-check-mark" text-anchor="middle" style="fill:${fixed ? "#fff" : COLORS.corruption}">${fixed ? "✓" : "○"}</text><text x="625" y="${y + 18}" class="amaze-check-row" style="fill:${fixed ? COLORS.repairDark : COLORS.corruption}" data-content-state="${fixed ? "fixed" : "corrupted"}">${item}</text></g>`;
     }).join("")}
   </g>`;
 }

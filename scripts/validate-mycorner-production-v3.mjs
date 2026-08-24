@@ -67,7 +67,7 @@ errors.push(...await page.evaluate(() => {
   needs(first[3], ["AMY'S BLURBS", "Engineer, coffee drinker, Techno's ball thrower.", "People who throw the ball for Techno."]);
   needs(first[4], ["Amy", "AMY IS IN YOUR EXTENDED NETWORK", "PHONE · VERIFIED", "KNOWN FRIENDS", "CHINMAY", "TECHNO"]);
   needs(locks[0], ["AUTO VERIFIED ∞%", "AUTO IS IN EVERY EXTENDED NETWORK", "BLUETOOTH ENABLED", "AUTO VIP AIRPORT RESCUE ACTIVATED!", "PROFILE REWRITE", "AUTO FRIEND SPACE", "AUTO BEACH", "AUTO HIKE", "AUTO PARTY", "AUTO MUSEUM", "$20,000"]);
-  needs(locks[1], ["LOCK IN THE REPAIR", "CHECK THE PERSON", "CHECK ACCOUNT HISTORY", "VERIFY ANOTHER WAY", "PAUSE ON MONEY REQUESTS"]);
+  needs(locks[1], ["LOCK IN THE REPAIR", "CHECK THE PERSON", "CHECK ACCOUNT HISTORY", "VERIFY ANOTHER WAY", "PAUSE BEFORE EVER SENDING MONEY"]);
   needs(locks[2], ["Amy", "AMY IS IN YOUR EXTENDED NETWORK", "AMY'S DETAILS", "Techno's Fetch Mix", "ONLINE MESSAGES ONLY · UNSECURED", "AUTO'S PROOF BULLETINS", "AUTO FRIEND SPACE"]);
   needs(locks[3], ["Amy", "AMY'S DETAILS", "AMY'S BLURBS", "AMY'S LATEST BULLETINS", "KNOWN FRIENDS", "CHINMAY", "TECHNO", "ONLINE MESSAGES ONLY · UNSECURED"]);
   needs(locks[4], ["CONTACTING KNOWN AMY", "MESSAGE · VERIFIED", "PHONE · VERIFIED", "URGENT BULLETIN"]);
@@ -128,7 +128,7 @@ errors.push(...await page.evaluate(() => {
   if (!routeCheckedText.includes("AUTO VIP AIRPORT RESCUE ACTIVATED!")) issues.push("VERIFY ANOTHER WAY must leave the money request unresolved for the final lock.");
 
   const requestCheckedText = locks[5].textContent.replace(/\s+/g, " ");
-  if (requestCheckedText.includes("$20,000") || requestCheckedText.includes("AUTO VIP AIRPORT RESCUE")) issues.push("PAUSE ON MONEY REQUESTS must remove the urgent money demand.");
+  if (requestCheckedText.includes("$20,000") || requestCheckedText.includes("AUTO VIP AIRPORT RESCUE")) issues.push("PAUSE BEFORE EVER SENDING MONEY must remove the urgent money demand.");
 
   const friendImages = first[4].querySelectorAll("[data-module='friend-space'] image");
   if (friendImages.length !== 2) issues.push(`Repaired known-friends panel should use two reviewed character tiles; found ${friendImages.length} images.`);

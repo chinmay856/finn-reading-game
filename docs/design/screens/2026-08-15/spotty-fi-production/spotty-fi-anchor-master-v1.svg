@@ -1000,11 +1000,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="#2F8A49"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="518" y="407" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="425" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="425" class="spot-check-row">SHOW THE ARTIST</text><rect x="518" y="441" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="459" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="459" class="spot-check-row">SHOW THE CREDITS</text><rect x="518" y="475" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="493" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="493" class="spot-check-row">LET USERS CHOOSE</text><rect x="518" y="509" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    <rect x="579" y="417" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="434" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="434" class="spot-check-row">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-artist" transform="translate(11840 0)" inkscape:groupmode="layer" inkscape:label="Artist locked" data-phase="act-2-locks" data-site-progress="25" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1097,11 +1097,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="#2F8A49"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="518" y="407" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="425" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="425" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="518" y="441" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="459" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="459" class="spot-check-row">SHOW THE CREDITS</text><rect x="518" y="475" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="493" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="493" class="spot-check-row">LET USERS CHOOSE</text><rect x="518" y="509" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-credits" transform="translate(13320 0)" inkscape:groupmode="layer" inkscape:label="Credits locked" data-phase="act-2-locks" data-site-progress="50" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1194,11 +1194,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="#2F8A49"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="518" y="407" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="425" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="425" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="518" y="441" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="459" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="459" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="518" y="475" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="493" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="493" class="spot-check-row">LET USERS CHOOSE</text><rect x="518" y="509" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-choice" transform="translate(14800 0)" inkscape:groupmode="layer" inkscape:label="User choice locked" data-phase="act-2-locks" data-site-progress="75" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1291,11 +1291,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="#2F8A49"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="518" y="407" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="425" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="425" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="518" y="441" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="459" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="459" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="518" y="475" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="493" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="493" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="518" y="509" width="24" height="24" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="530" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="556" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-volume" transform="translate(16280 0)" inkscape:groupmode="layer" inkscape:label="Volume locked" data-phase="act-2-locks" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1388,11 +1388,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="#2F8A49"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="518" y="407" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="425" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="425" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="518" y="441" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="459" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="459" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="518" y="475" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="493" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="493" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="518" y="509" width="24" height="24" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="530" y="527" class="spot-check-fixed" text-anchor="middle">✓</text><text x="556" y="527" class="spot-check-row-fixed">LET USERS SET THE VOLUME</text>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="527" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="527" class="spot-check-row-fixed">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-secured" transform="translate(17760 0)" inkscape:groupmode="layer" inkscape:label="Site secured" data-phase="completion" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">

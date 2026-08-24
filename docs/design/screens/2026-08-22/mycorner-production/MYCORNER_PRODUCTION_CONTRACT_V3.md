@@ -75,7 +75,7 @@ Four locks, deliberately not a mirror of the four first-run repairs:
    known-friends context;
 3. `VERIFY ANOTHER WAY` replaces the unsecured online-only route with known
    verified phone and message routes;
-4. `PAUSE ON MONEY REQUESTS` removes the urgent demand and returns the clean
+4. `PAUSE BEFORE EVER SENDING MONEY` removes the urgent demand and returns the clean
    profile.
 
 ### Secured payoff

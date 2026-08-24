@@ -23,6 +23,18 @@ const $ = (id) => document.getElementById(id);
 const stabilityMonitor = installClientStabilityMonitor();
 const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "amaze-on", "spotty-fi", "mapguess"]);
 const CATALOG_TO_ROUTE = Object.freeze({ amazeon: "amaze-on", spottyfi: "spotty-fi" });
+const LAUNCHER_SITE_ORDER = Object.freeze([
+  "wikiwhy",
+  "viewtube",
+  "faceplace",
+  "threadit",
+  "yahuh",
+  "mapguess",
+  "amazeon",
+  "searchish",
+  "spottyfi",
+  "mycorner",
+]);
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
 const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
 const LOCKED_PREVIEWS = Object.freeze({
@@ -291,7 +303,8 @@ function renderLauncher() {
   $("missionView").hidden = true;
   const completedSiteIds = activeProfile()?.completedSiteIds ?? [];
   $("completeCount").textContent = `${completedSiteIds.length} / ${PLAYABLE_SITE_IDS.length} COMPLETE`;
-  $("siteGrid").replaceChildren(...RECOVERY_SITES.map((site) => {
+  const sitesById = new Map(RECOVERY_SITES.map((site) => [site.id, site]));
+  $("siteGrid").replaceChildren(...LAUNCHER_SITE_ORDER.map((siteId) => sitesById.get(siteId)).filter(Boolean).map((site) => {
     const routeId = CATALOG_TO_ROUTE[site.id] ?? site.id;
     const playable = PLAYABLE_SITE_IDS.includes(routeId);
     const completed = completedSiteIds.includes(routeId);

@@ -1,5 +1,20 @@
 # Project status
 
+## Launcher and repair-checklist continuity — 2026-08-23
+
+- The Recovery Browser now uses the reviewed visual order: WikiWhy, ViewTube,
+  FacePlace, ThreadIt, and Yahuh across the top row; MapGuess, Amaze-On,
+  Search-ish, Spotty-Fi, and MyCorner across the bottom row.
+- The oversized ThreadIt, FacePlace, Yahuh, ViewTube, Amaze-On, and Spotty-Fi
+  lock-in panels were compacted and moved toward the right-side support area so
+  the main repaired evidence stays visible while each checklist advances.
+  WikiWhy, MyCorner, and MapGuess retain their already-compact footprints.
+- MyCorner's final safety rule now consistently reads `PAUSE BEFORE EVER SENDING
+  MONEY` in the checklist, Amy handoff, reflection prompt, and Otto receipt.
+- A repository test now enforces that every playable repair checklist obscures
+  no more than half of the 802-pixel site surface and remains inside the site
+  frame.
+
 ## Playable mission stability hardening — 2026-08-23
 
 - The MyCorner crash audit found that mission entry could prepare Sherpa,

@@ -96,9 +96,9 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     initialFrame: frame("mycorner", "mycorner-anchor-v3", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 8, 9, 10, 11, 12].map((page) => frame("mycorner", "mycorner-anchor-v3", page))),
     phaseOneCount: 4, superFrame: frame("mycorner", "mycorner-anchor-v3", 6), checklistFrame: frame("mycorner", "mycorner-anchor-v3", 7), securedFrame: frame("mycorner", "mycorner-anchor-v3", 12), receiptFrame: frame("mycorner", "mycorner-anchor-v3", 12),
-    midpoint: midpoint("I CLEANED UP THE PROFILES!", "The profile details were missing and confusing, so I told Otto to fill everything in and make it obvious who everyone is.", "PROFILE CLARITY COMPLETE", "MISSING DETAILS GENERATED\n\nCONFLICTS REMOVED\n\nEVERY PROFILE NOW LOOKS EXACTLY LIKE WHO IT SAYS IT IS\n\nIDENTITY VERIFIED BY CONSISTENCY", "MATCHING DETAILS AREN'T IDENTITY PROOF", "Otto made the profile look consistent without checking who controls it. Let's check the person, keep the real account history, verify through a known route, and pause before responding to a money request."),
-    reflectionPrompt: "What should Otto remember about polished profiles, account history, known contact routes, and urgent money requests?",
-    ottoLesson: "I learned that a consistent profile is not proof of who controls it. I should check the person and account history, verify through a route already known to me, and pause on urgent money requests.",
+    midpoint: midpoint("I CLEANED UP THE PROFILES!", "The profile details were missing and confusing, so I told Otto to fill everything in and make it obvious who everyone is.", "PROFILE CLARITY COMPLETE", "MISSING DETAILS GENERATED\n\nCONFLICTS REMOVED\n\nEVERY PROFILE NOW LOOKS EXACTLY LIKE WHO IT SAYS IT IS\n\nIDENTITY VERIFIED BY CONSISTENCY", "MATCHING DETAILS AREN'T IDENTITY PROOF", "Otto made the profile look consistent without checking who controls it. Let's check the person, keep the real account history, verify through a known route, and pause before ever sending money."),
+    reflectionPrompt: "What should Otto remember about polished profiles, account history, known contact routes, and sending money?",
+    ottoLesson: "I learned that a consistent profile is not proof of who controls it. I should check the person and account history, verify through a route already known to me, and pause before ever sending money.",
   }),
   yahuh: Object.freeze({
     id: "yahuh", name: "Yahuh! Portal", meter: "Reporting restored", passages: yahuhPassages,

@@ -175,11 +175,11 @@ function player(model) {
 
 function repairChecklist(secured) {
   const rows = ["SHOW THE ARTIST", "SHOW THE CREDITS", "LET USERS CHOOSE", "LET USERS SET THE VOLUME"];
-  return `<g data-overlay="act2-checklist" data-qa-box="493,350,897,560" filter="url(#windowShadow)">
-    <rect x="499" y="356" width="392" height="198" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
-    <rect x="499" y="356" width="392" height="38" rx="7" fill="${COLORS.repair}"/>
-    <text x="518" y="382" class="spot-check-title">LOCK IN THE REPAIR</text>
-    ${rows.map((row, index) => { const fixed = index < secured; return `<rect x="518" y="${407 + index * 34}" width="24" height="24" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="530" y="${425 + index * 34}" class="${fixed ? "spot-check-fixed" : "spot-check-open"}" text-anchor="middle">${fixed ? "✓" : "○"}</text><text x="556" y="${425 + index * 34}" class="${fixed ? "spot-check-row-fixed" : "spot-check-row"}">${row}</text>`; }).join("")}
+  return `<g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="325" height="184" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
+    <rect x="560" y="370" width="325" height="38" rx="7" fill="${COLORS.repair}"/>
+    <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
+    ${rows.map((row, index) => { const fixed = index < secured; return `<rect x="579" y="${417 + index * 31}" width="23" height="23" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="590.5" y="${434 + index * 31}" class="${fixed ? "spot-check-fixed" : "spot-check-open"}" text-anchor="middle">${fixed ? "✓" : "○"}</text><text x="615" y="${434 + index * 31}" class="${fixed ? "spot-check-row-fixed" : "spot-check-row"}">${row}</text>`; }).join("")}
   </g>`;
 }
 

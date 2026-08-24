@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const script = await readFile(new URL("../playable-missions.js", import.meta.url), "utf8");
+const walkthroughs = await readFile(new URL("../apps/internet-recovery/playable-walkthroughs.js", import.meta.url), "utf8");
 const html = await readFile(new URL("../playable-missions.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../playable-missions.css", import.meta.url), "utf8");
 
@@ -55,6 +56,13 @@ test("Recovery OS launcher exposes ten cases but only nine playable routes", () 
   assert.match(css, /NOT PLAYABLE YET/u);
 });
 
+test("Recovery OS launcher uses the reviewed two-row visual order", () => {
+  assert.match(
+    script,
+    /LAUNCHER_SITE_ORDER[^;]+wikiwhy[^;]+viewtube[^;]+faceplace[^;]+threadit[^;]+yahuh[^;]+mapguess[^;]+amazeon[^;]+searchish[^;]+spottyfi[^;]+mycorner/u,
+  );
+});
+
 test("MapGuess exposes the approved moving-target transition beats", () => {
   assert.match(script, /mission\.transitionBeats/u);
   assert.match(script, /function runTransitionBeat/u);
@@ -88,6 +96,11 @@ test("the over-fix remains visible before Amy and Otto confirms the site lesson 
   assert.match(script, /previewButton\.disabled = true/u);
   assert.match(script, /previewButton\.textContent = "React to the site first"/u);
   assert.match(script, /\$\("readingCompanion"\)\.inert = true/u);
+});
+
+test("MyCorner teaches the reviewed pause-before-payment rule", () => {
+  assert.match(walkthroughs, /pause before ever sending money/u);
+  assert.doesNotMatch(walkthroughs, /pause on urgent money requests/u);
 });
 
 test("named local saves, completed cases, and the Windows 98 Start menu are wired", () => {
