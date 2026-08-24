@@ -50,4 +50,16 @@ export const PUBLIC_DOMAIN_CAMPAIGN_SELECTION = Object.freeze([
   { id: "mapguess-06", sourceId: 1022, startLine: 36, title: "Walking", author: "Henry David Thoreau", form: "essay" },
   { id: "mapguess-07", sourceId: 13, startLine: 270, title: "The Hunting of the Snark", author: "Lewis Carroll", form: "comic poetry" },
   { id: "mapguess-08", sourceId: 829, startLine: 2307, title: "Gulliver's Travels", author: "Jonathan Swift", form: "satirical fiction" },
+
+  // Search-ish.
+  { id: "searchish-01", sourceId: 308, startLine: 116, title: "Three Men in a Boat", author: "Jerome K. Jerome", form: "comic novel" },
+  { id: "searchish-02", sourceId: 14474, startLine: 458, title: "The Chemical History of a Candle", author: "Michael Faraday", form: "science lecture" },
+  { id: "searchish-03", sourceId: 148, startLine: 5509, title: "The Autobiography of Benjamin Franklin", author: "Benjamin Franklin", form: "memoir" },
+  { id: "searchish-04", sourceId: 575, startLine: 4309, title: "Of Studies", author: "Francis Bacon", form: "essay" },
+  { id: "searchish-05", sourceId: 1661, startLine: 5961, title: "The Adventure of the Blue Carbuncle", author: "Arthur Conan Doyle", form: "detective fiction" },
+  { id: "searchish-06", sourceId: 1228, startLine: 13701, title: "On the Origin of Species", author: "Charles Darwin", form: "scientific argument" },
+  { id: "searchish-07", sourceId: 59, startLine: 510, title: "Discourse on the Method", author: "René Descartes", form: "philosophical essay", translator: "John Veitch" },
+  { id: "searchish-08", sourceId: 50189, startLine: 1901, title: "The Ethics of Belief", author: "William Kingdon Clifford", form: "philosophical essay" },
+  { id: "searchish-09", sourceId: 37423, startLine: 377, title: "How We Think", author: "John Dewey", form: "educational psychology" },
+  { id: "searchish-10", sourceId: 1315, startLine: 3332, title: "The Method of Scientific Investigation", author: "T. H. Huxley", form: "science lecture" },
 ]);

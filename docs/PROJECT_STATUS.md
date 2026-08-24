@@ -1,5 +1,28 @@
 # Project status
 
+## Search-ish reviewed mission integration — 2026-08-23
+
+- Search-ish now uses the reviewed 14-state v3 sequence: six first-run search
+  hierarchy repairs, the unobscured AI-plus-sponsor over-fix, the four-item lock
+  sequence, and the secured results hierarchy. The playable wrapper advances
+  one reviewed frame per accepted passage only after a correct comprehension
+  answer; retries never reapply a visual delta.
+- Ten attributed public-domain readings now provide the Search-ish deck in
+  canonical `searchish-01` through `searchish-10` order. The generated campaign
+  layer retains the short spoken title-and-author introduction, source and
+  rights link, exact excerpt, loop-until-correct check, and three
+  context-specific vocabulary sentences for every record.
+- All 30 Search-ish vocabulary cards have static Kokoro Heart AAC files under
+  `public/audio/searchish/kokoro-heart/` so the result screen does not need to
+  synthesize them on demand.
+- The Recovery Browser now exposes all ten reviewed missions as playable.
+  Search-ish appears in the existing reviewed launcher order and uses versioned
+  runtime frames copied from the non-mutated production exports.
+- Validation passes the Search-ish semantic/text-bounds validator, the generic
+  14-state validator, all 488 repository tests, the production build, the
+  static-audio validator, and the local ten-route stability smoke without a
+  renderer, page, console, model-readiness, navigation, or memory-growth error.
+
 ## Launcher and repair-checklist continuity — 2026-08-23
 
 - The Recovery Browser now uses the reviewed visual order: WikiWhy, ViewTube,
@@ -40,7 +63,7 @@
   Sherpa paused for that recovery session.
 - `scripts/run-playable-stability-smoke.mjs` exercises simultaneous MyCorner
   tabs, a synthetic read/finish/vocabulary cycle, repeated in-document mission
-  switches, a forced-reload fallback, and all nine playable routes. It fails on
+  switches, a forced-reload fallback, and all ten playable routes. It fails on
   renderer, page, console, exclusivity, readiness, or memory-growth errors.
 
 ## MyCorner reviewed mission integration — 2026-08-23
@@ -57,8 +80,8 @@
 - All 27 MyCorner vocabulary cards have static Kokoro Heart AAC files under
   `public/audio/mycorner/kokoro-heart/`; the result screen uses those files
   directly and retains the current local-generation fallback.
-- The Recovery Browser now exposes nine playable cases. Search-ish remains the
-  only visibly locked site.
+- The Recovery Browser exposed nine playable cases at this checkpoint;
+  Search-ish was the only visibly locked site before its reviewed integration.
 
 ## Eight-site V2 playable and reviewed vocabulary pass — 2026-08-22
 
@@ -943,17 +966,17 @@ reference; do not resume mobile optimization unless the user reprioritizes it.
 - The playable V2 wrapper now merges 15 same-ID public-domain replacements into
   the first-six packet and uses complete canonical public-domain decks for
   Amaze-On (11), Spotty-Fi (10), and MapGuess (8).
-- The generated campaign layer contains 44 passages, 44 three-choice checks, and
-  132 context-specific vocabulary cards. Every card preserves its exact source
+- The generated campaign layer contains 54 passages, 54 three-choice checks, and
+  162 context-specific vocabulary cards. Every card preserves its exact source
   sentence; source introductions are one short scored title-and-author sentence.
 - Frozen Project Gutenberg source snapshots, selection boundaries, editorial
   metadata, the generated runtime module, and the human-readable canonical
   manuscript are kept together. `npm run generate:public-domain-campaign` and
   `npm run validate:public-domain-campaign` fail closed on count, rights-link,
   length, question, vocabulary, or exact-sentence drift.
-- Amaze-On, Spotty-Fi, and MapGuess no longer use project-written placeholder
-  passages in the playable wrapper. MyCorner and Search-ish remain unavailable
-  in the Recovery Browser while their designs are under active review.
+- Amaze-On, Spotty-Fi, MapGuess, and Search-ish no longer use project-written
+  placeholder passages in the playable wrapper. MyCorner and Search-ish were
+  still unavailable in the Recovery Browser at this historical checkpoint.
 - Techno uses the validated `file-search` action during a live reading and the
   `data-restored` celebration when a finished passage is accepted, then returns
   to the normal review state.

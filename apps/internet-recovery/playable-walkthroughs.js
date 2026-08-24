@@ -1,4 +1,6 @@
-const WALKTHROUGH_ASSET_VERSION = "20260823-checklist-continuity";
+const WALKTHROUGH_ASSET_VERSION = "20260823-searchish-unsolicited-summary-v6";
+
+const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set(["mycorner", "searchish"]);
 
 function frame(directory, prefix, page) {
   return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
@@ -43,8 +45,8 @@ function canonicalDeck(siteId) {
         tryAgainFeedback: record.comprehension.tryAgainFeedback,
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
-        audioSrc: siteId === "mycorner"
-          ? `/audio/mycorner/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}.m4a`
+        audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -62,6 +64,7 @@ const myCornerPassages = canonicalDeck("mycorner");
 const yahuhPassages = canonicalDeck("yahuh");
 const viewTubePassages = canonicalDeck("viewtube");
 const amazeOnPassages = canonicalDeck("amaze-on");
+const searchIshPassages = canonicalDeck("searchish");
 const spottyFiPassages = canonicalDeck("spotty-fi");
 const mapGuessPassages = canonicalDeck("mapguess");
 
@@ -128,6 +131,15 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     midpoint: midpoint("I MADE SHOPPING EASIER!", "Finding the right shoes was taking forever. I told Otto to help find a good pair and take care of the tedious parts.", "CONVENIENCE MODE COMPLETE", "BEST ITEMS SELECTED\n\nFOUR PRODUCTS ADDED\n\nCHECKOUT COMPLETED\n\nCONFIRMATION REMOVED AS AN EXTRA STEP", "HELPING WITH A CHOICE ISN'T MAKING IT", "Otto treated convenience as permission. A recommendation can narrow the options, but the shopper still needs the useful details and the final choice. Let's restore comparisons, labels, and confirmation."),
     reflectionPrompt: "What should Otto remember about shopping help, useful comparisons, and permission?",
     ottoLesson: "I learned that easier shopping is not automatic purchasing. I should help compare useful choices, label paid influence, and always ask before buying.",
+  }),
+  searchish: Object.freeze({
+    id: "searchish", name: "Search-ish", meter: "Search restored", passages: searchIshPassages,
+    initialFrame: frame("searchish", "searchish-anchor-v3", 1),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12, 13].map((page) => frame("searchish", "searchish-anchor-v3", page))),
+    phaseOneCount: 6, superFrame: frame("searchish", "searchish-anchor-v3", 8), checklistFrame: frame("searchish", "searchish-anchor-v3", 9), securedFrame: frame("searchish", "searchish-anchor-v3", 14), receiptFrame: frame("searchish", "searchish-anchor-v3", 14),
+    midpoint: midpoint("I MADE SEARCH FASTER!", "Finding a print copy was taking too long. I told Otto to put the most useful answer first and keep the search simple.", "ONE FASTEST ANSWER SELECTED", "AI SUMMARY + SPONSORED SHORTCUT MERGED\n\nREAL OPTIONS COLLAPSED\n\nORIGINAL SEARCH LOCKED\n\nEXTRA CHOICES REMOVED", "HE REPLACED THE SEARCH", "Otto fused an AI answer with a paid shortcut and hid the places that actually offer the book. Let's fix the AI, make it optional, restore the real options, and keep the search editable."),
+    reflectionPrompt: "What should Otto remember about AI answers, paid shortcuts, real options, and the original search?",
+    ottoLesson: "I learned that a faster answer should not replace the search. I should keep AI accurate and optional, label paid results, show real options, and leave the original query editable.",
   }),
   "spotty-fi": Object.freeze({
     id: "spotty-fi", name: "Spotty-Fi", meter: "Music recovery", passages: spottyFiPassages,

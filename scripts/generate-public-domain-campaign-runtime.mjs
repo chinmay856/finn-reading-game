@@ -14,6 +14,7 @@ const siteNames = Object.freeze({
   "amaze-on": "Amaze-On",
   "spotty-fi": "Spotty-Fi",
   mapguess: "MapGuess",
+  searchish: "Search-ish",
 });
 
 function words(value) {
@@ -24,6 +25,7 @@ function extract(source, startLine, targetWords = 285) {
   const tail = source.split("\n").slice(startLine - 1).join("\n");
   const normalized = tail
     .replace(/^\s*(?:CHAPTER|BOOK|PART|FIT)\b[^\n]*\n+/iu, "")
+    .replace(/\[(?:Picture|Illustration|Sidenote)[^\]]*\]\s*/giu, "")
     .replace(/\n(?=[^\n])/gu, " ")
     .replace(/\{\d+[a-z]?\}/giu, "")
     .replace(/[_*]/gu, "")
@@ -78,7 +80,7 @@ for (const spec of PUBLIC_DOMAIN_CAMPAIGN_SELECTION) {
     form: spec.form,
     spokenWordCount,
     paragraphs,
-    source: Object.freeze({ label: spec.title, url: `https://www.gutenberg.org/ebooks/${spec.sourceId}` }),
+    source: Object.freeze({ label: spec.title, url: `https://www.gutenberg.org/ebooks/${spec.sourceId}`, translator: spec.translator ?? null }),
     rights: "Public domain in the USA per the linked Project Gutenberg item record.",
     selectionNote: `Exact excerpt begins at line ${spec.startLine} of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/${spec.sourceId}.txt.`,
     comprehension: Object.freeze({
@@ -93,8 +95,8 @@ for (const spec of PUBLIC_DOMAIN_CAMPAIGN_SELECTION) {
   }));
 }
 
-assert.equal(records.length, 44, "campaign passage count");
-assert.equal(Object.keys(PUBLIC_DOMAIN_CAMPAIGN_EDITORIAL).length, 44, "editorial record count");
+assert.equal(records.length, 54, "campaign passage count");
+assert.equal(Object.keys(PUBLIC_DOMAIN_CAMPAIGN_EDITORIAL).length, 54, "editorial record count");
 
 const grouped = Object.fromEntries(Object.keys(siteNames).map((siteId) => [siteId, records.filter((record) => record.siteId === siteId)]));
 const moduleText = `// Generated from the frozen public-domain source snapshots and editorial metadata.\n// Update scripts/lib/public-domain-campaign-*.mjs and rerun npm run generate:public-domain-campaign.\n\nconst DATA = ${JSON.stringify(grouped, null, 2)};\n\nfunction deepFreeze(value) {\n  if (!value || typeof value !== "object" || Object.isFrozen(value)) return value;\n  for (const child of Object.values(value)) deepFreeze(child);\n  return Object.freeze(value);\n}\n\nexport const PUBLIC_DOMAIN_CAMPAIGN_PASSAGES = deepFreeze(DATA);\nexport const PUBLIC_DOMAIN_CAMPAIGN_PASSAGE_COUNT = Object.values(PUBLIC_DOMAIN_CAMPAIGN_PASSAGES).flat().length;\n`;
@@ -103,7 +105,7 @@ await writeFile(path.resolve("content/public-domain-campaign-passages.js"), modu
 const markdown = [
   "# Public-Domain Campaign Canonical Reading Manuscript",
   "",
-  "Status: canonical integration source for the scheduled first-six replacements and the Amaze-On, Spotty-Fi, and MapGuess reading libraries. Exact questions, vocabulary, and readability remain subject to the recorded full playtest.",
+  "Status: canonical integration source for the scheduled first-six replacements and the Amaze-On, Spotty-Fi, MapGuess, and Search-ish reading libraries. Exact questions, vocabulary, and readability remain subject to the recorded full playtest.",
   "",
   "Every spoken introduction is one short sentence naming the work and author. Excerpts preserve the frozen Project Gutenberg wording after removal of transcription markup. Vocabulary sentences are copied from the same excerpt and definitions are specific to that use.",
   "",
@@ -118,6 +120,7 @@ for (const [siteId, siteRecords] of Object.entries(grouped)) {
       `- **Form:** ${record.form}`,
       `- **Spoken word count:** ${record.spokenWordCount}`,
       `- **Source:** [${record.source.label}](${record.source.url})`,
+      ...(record.source.translator ? [`- **Translator:** ${record.source.translator}`] : []),
       `- **Rights:** ${record.rights}`,
       `- **Selection note:** ${record.selectionNote}`,
       "",

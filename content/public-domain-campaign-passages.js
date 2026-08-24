@@ -15,7 +15,8 @@ const DATA = {
       ],
       "source": {
         "label": "On the Method of Zadig",
-        "url": "https://www.gutenberg.org/ebooks/2627"
+        "url": "https://www.gutenberg.org/ebooks/2627",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 248 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/2627.txt.",
@@ -63,7 +64,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Fixation of Belief",
-        "url": "https://www.gutenberg.org/ebooks/65274"
+        "url": "https://www.gutenberg.org/ebooks/65274",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1398 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/65274.txt.",
@@ -111,7 +113,8 @@ const DATA = {
       ],
       "source": {
         "label": "Pragmatism",
-        "url": "https://www.gutenberg.org/ebooks/5116"
+        "url": "https://www.gutenberg.org/ebooks/5116",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3427 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/5116.txt.",
@@ -159,7 +162,8 @@ const DATA = {
       ],
       "source": {
         "label": "An Essay Concerning Human Understanding",
-        "url": "https://www.gutenberg.org/ebooks/10616"
+        "url": "https://www.gutenberg.org/ebooks/10616",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 10348 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/10616.txt.",
@@ -209,7 +213,8 @@ const DATA = {
       ],
       "source": {
         "label": "An Enquiry Concerning Human Understanding",
-        "url": "https://www.gutenberg.org/ebooks/9662"
+        "url": "https://www.gutenberg.org/ebooks/9662",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3415 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/9662.txt.",
@@ -257,7 +262,8 @@ const DATA = {
       ],
       "source": {
         "label": "Cooper Union Address",
-        "url": "https://www.gutenberg.org/ebooks/2657"
+        "url": "https://www.gutenberg.org/ebooks/2657",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3756 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/2657.txt.",
@@ -307,7 +313,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Birth-Mark",
-        "url": "https://www.gutenberg.org/ebooks/512"
+        "url": "https://www.gutenberg.org/ebooks/512",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1040 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/512.txt.",
@@ -355,7 +362,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Necklace",
-        "url": "https://www.gutenberg.org/ebooks/73893"
+        "url": "https://www.gutenberg.org/ebooks/73893",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 6994 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/73893.txt.",
@@ -405,7 +413,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Importance of Being Earnest",
-        "url": "https://www.gutenberg.org/ebooks/844"
+        "url": "https://www.gutenberg.org/ebooks/844",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 425 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/844.txt.",
@@ -453,7 +462,8 @@ const DATA = {
       ],
       "source": {
         "label": "Self-Reliance",
-        "url": "https://www.gutenberg.org/ebooks/16643"
+        "url": "https://www.gutenberg.org/ebooks/16643",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2114 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/16643.txt.",
@@ -501,7 +511,8 @@ const DATA = {
       ],
       "source": {
         "label": "Selected Fables",
-        "url": "https://www.gutenberg.org/ebooks/11339"
+        "url": "https://www.gutenberg.org/ebooks/11339",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2559 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/11339.txt.",
@@ -551,7 +562,8 @@ const DATA = {
       ],
       "source": {
         "label": "How I Edited an Agricultural Paper",
-        "url": "https://www.gutenberg.org/ebooks/19484"
+        "url": "https://www.gutenberg.org/ebooks/19484",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 795 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/19484.txt.",
@@ -599,7 +611,8 @@ const DATA = {
       ],
       "source": {
         "label": "Public Opinion",
-        "url": "https://www.gutenberg.org/ebooks/6456"
+        "url": "https://www.gutenberg.org/ebooks/6456",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 881 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/6456.txt.",
@@ -649,7 +662,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Machine Stops",
-        "url": "https://www.gutenberg.org/ebooks/72890"
+        "url": "https://www.gutenberg.org/ebooks/72890",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 101 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/72890.txt.",
@@ -697,7 +711,8 @@ const DATA = {
       ],
       "source": {
         "label": "Talks to Teachers on Psychology",
-        "url": "https://www.gutenberg.org/ebooks/16287"
+        "url": "https://www.gutenberg.org/ebooks/16287",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2202 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/16287.txt.",
@@ -747,7 +762,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Way to Wealth",
-        "url": "https://www.gutenberg.org/ebooks/43855"
+        "url": "https://www.gutenberg.org/ebooks/43855",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 386 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/43855.txt.",
@@ -795,7 +811,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Wealth of Nations",
-        "url": "https://www.gutenberg.org/ebooks/3300"
+        "url": "https://www.gutenberg.org/ebooks/3300",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 251 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/3300.txt.",
@@ -843,7 +860,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Stones of Venice: The Nature of Gothic",
-        "url": "https://www.gutenberg.org/ebooks/30755"
+        "url": "https://www.gutenberg.org/ebooks/30755",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 6094 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/30755.txt.",
@@ -891,7 +909,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Gift of the Magi",
-        "url": "https://www.gutenberg.org/ebooks/7256"
+        "url": "https://www.gutenberg.org/ebooks/7256",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 37 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/7256.txt.",
@@ -939,7 +958,8 @@ const DATA = {
       ],
       "source": {
         "label": "Useful Work versus Useless Toil",
-        "url": "https://www.gutenberg.org/ebooks/3053"
+        "url": "https://www.gutenberg.org/ebooks/3053",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3217 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/3053.txt.",
@@ -987,7 +1007,8 @@ const DATA = {
       ],
       "source": {
         "label": "Up from Slavery",
-        "url": "https://www.gutenberg.org/ebooks/2376"
+        "url": "https://www.gutenberg.org/ebooks/2376",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3476 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/2376.txt.",
@@ -1035,7 +1056,8 @@ const DATA = {
       ],
       "source": {
         "label": "Walden: Economy",
-        "url": "https://www.gutenberg.org/ebooks/205"
+        "url": "https://www.gutenberg.org/ebooks/205",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 779 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/205.txt.",
@@ -1083,7 +1105,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Theory of the Leisure Class",
-        "url": "https://www.gutenberg.org/ebooks/833"
+        "url": "https://www.gutenberg.org/ebooks/833",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1881 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/833.txt.",
@@ -1131,7 +1154,8 @@ const DATA = {
       ],
       "source": {
         "label": "Silas Marner",
-        "url": "https://www.gutenberg.org/ebooks/550"
+        "url": "https://www.gutenberg.org/ebooks/550",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 641 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/550.txt.",
@@ -1179,7 +1203,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Earth as Modified by Human Action",
-        "url": "https://www.gutenberg.org/ebooks/6019"
+        "url": "https://www.gutenberg.org/ebooks/6019",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2133 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/6019.txt.",
@@ -1227,7 +1252,8 @@ const DATA = {
       ],
       "source": {
         "label": "A Christmas Carol",
-        "url": "https://www.gutenberg.org/ebooks/46"
+        "url": "https://www.gutenberg.org/ebooks/46",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2758 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/46.txt.",
@@ -1277,7 +1303,8 @@ const DATA = {
       ],
       "source": {
         "label": "Leaves of Grass",
-        "url": "https://www.gutenberg.org/ebooks/1322"
+        "url": "https://www.gutenberg.org/ebooks/1322",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 444 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1322.txt.",
@@ -1325,7 +1352,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Sorrow Songs",
-        "url": "https://www.gutenberg.org/ebooks/408"
+        "url": "https://www.gutenberg.org/ebooks/408",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 6373 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/408.txt.",
@@ -1373,7 +1401,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Song of the Lark",
-        "url": "https://www.gutenberg.org/ebooks/44"
+        "url": "https://www.gutenberg.org/ebooks/44",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 6214 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/44.txt.",
@@ -1421,7 +1450,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Philosophy of Composition",
-        "url": "https://www.gutenberg.org/ebooks/55749"
+        "url": "https://www.gutenberg.org/ebooks/55749",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 204 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/55749.txt.",
@@ -1469,7 +1499,8 @@ const DATA = {
       ],
       "source": {
         "label": "What Is Art?",
-        "url": "https://www.gutenberg.org/ebooks/64908"
+        "url": "https://www.gutenberg.org/ebooks/64908",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2937 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/64908.txt.",
@@ -1517,7 +1548,8 @@ const DATA = {
       ],
       "source": {
         "label": "Selected Poems",
-        "url": "https://www.gutenberg.org/ebooks/18338"
+        "url": "https://www.gutenberg.org/ebooks/18338",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 10756 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/18338.txt.",
@@ -1565,7 +1597,8 @@ const DATA = {
       ],
       "source": {
         "label": "A Humble Remonstrance",
-        "url": "https://www.gutenberg.org/ebooks/381"
+        "url": "https://www.gutenberg.org/ebooks/381",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 4226 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/381.txt.",
@@ -1613,7 +1646,8 @@ const DATA = {
       ],
       "source": {
         "label": "Frankenstein: 1831 Introduction",
-        "url": "https://www.gutenberg.org/ebooks/42324"
+        "url": "https://www.gutenberg.org/ebooks/42324",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 184 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/42324.txt.",
@@ -1661,7 +1695,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Poet",
-        "url": "https://www.gutenberg.org/ebooks/2945"
+        "url": "https://www.gutenberg.org/ebooks/2945",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 115 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/2945.txt.",
@@ -1709,7 +1744,8 @@ const DATA = {
       ],
       "source": {
         "label": "Narrative of the Life of Frederick Douglass",
-        "url": "https://www.gutenberg.org/ebooks/23"
+        "url": "https://www.gutenberg.org/ebooks/23",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1432 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/23.txt.",
@@ -1759,7 +1795,8 @@ const DATA = {
       ],
       "source": {
         "label": "Treasure Island",
-        "url": "https://www.gutenberg.org/ebooks/120"
+        "url": "https://www.gutenberg.org/ebooks/120",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1389 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/120.txt.",
@@ -1807,7 +1844,8 @@ const DATA = {
       ],
       "source": {
         "label": "Around the World in Eighty Days",
-        "url": "https://www.gutenberg.org/ebooks/103"
+        "url": "https://www.gutenberg.org/ebooks/103",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 7883 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/103.txt.",
@@ -1855,7 +1893,8 @@ const DATA = {
       ],
       "source": {
         "label": "Travels with a Donkey in the Cévennes",
-        "url": "https://www.gutenberg.org/ebooks/535"
+        "url": "https://www.gutenberg.org/ebooks/535",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1831 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/535.txt.",
@@ -1903,7 +1942,8 @@ const DATA = {
       ],
       "source": {
         "label": "Robinson Crusoe",
-        "url": "https://www.gutenberg.org/ebooks/521"
+        "url": "https://www.gutenberg.org/ebooks/521",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 3367 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/521.txt.",
@@ -1951,7 +1991,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Voyage of the Beagle",
-        "url": "https://www.gutenberg.org/ebooks/944"
+        "url": "https://www.gutenberg.org/ebooks/944",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 1605 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/944.txt.",
@@ -1999,7 +2040,8 @@ const DATA = {
       ],
       "source": {
         "label": "Walking",
-        "url": "https://www.gutenberg.org/ebooks/1022"
+        "url": "https://www.gutenberg.org/ebooks/1022",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 36 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1022.txt.",
@@ -2047,7 +2089,8 @@ const DATA = {
       ],
       "source": {
         "label": "The Hunting of the Snark",
-        "url": "https://www.gutenberg.org/ebooks/13"
+        "url": "https://www.gutenberg.org/ebooks/13",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 270 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/13.txt.",
@@ -2095,7 +2138,8 @@ const DATA = {
       ],
       "source": {
         "label": "Gulliver's Travels",
-        "url": "https://www.gutenberg.org/ebooks/829"
+        "url": "https://www.gutenberg.org/ebooks/829",
+        "translator": null
       },
       "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
       "selectionNote": "Exact excerpt begins at line 2307 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/829.txt.",
@@ -2126,6 +2170,498 @@ const DATA = {
           "word": "favourable",
           "definition": "Helpful or likely to produce a good result.",
           "sentence": "I ate my breakfast before the sun was up; and heaving anchor, the wind being favourable, I steered the same course that I had done the day before, wherein I was directed by my pocket compass.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    }
+  ],
+  "searchish": [
+    {
+      "id": "searchish-01",
+      "siteId": "searchish",
+      "title": "Three Men in a Boat",
+      "form": "comic novel",
+      "spokenWordCount": 304,
+      "paragraphs": [
+        "An excerpt from “Three Men in a Boat” by Jerome K. Jerome.",
+        "I remember going to the British Museum one day to read up the treatment for some slight ailment of which I had a touch—hay fever, I fancy it was. I got down the book, and read all I came to read; and then, in an unthinking moment, I idly turned the leaves, and began to indolently study diseases, generally. I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it. I sat for awhile, frozen with horror; and then, in the listlessness of despair, I again turned over the pages. I came to typhoid fever—read the symptoms—discovered that I had typhoid fever, must have had it for months without knowing it—wondered what else I had got; turned up St. Vitus’s Dance—found, as I expected, that I had that too,—began to get interested in my case, and determined to sift it to the bottom, and so started alphabetically—read up ague, and learnt that I was sickening for it, and that the acute stage would commence in about another fortnight. Bright’s disease, I was relieved to find, I had only in a modified form, and, so far as that was concerned, I might live for years. Cholera I had, with severe complications; and diphtheria I seemed to have been born with. I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee. I felt rather hurt about this at first; it seemed somehow to be a sort of slight. Why hadn’t I got housemaid’s knee? Why this invidious reservation? After a while, however, less grasping feelings prevailed."
+      ],
+      "source": {
+        "label": "Three Men in a Boat",
+        "url": "https://www.gutenberg.org/ebooks/308",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 116 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/308.txt.",
+      "comprehension": {
+        "prompt": "What happens after the narrator begins reading a general list of diseases?",
+        "correct": "He treats each list of symptoms as evidence that he has nearly every disease.",
+        "distractors": [
+          "He compares the book with a doctor's careful examination.",
+          "He stops reading as soon as he finds his original ailment."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "premonitory",
+          "definition": "Serving as an advance warning of something.",
+          "sentence": "I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it.",
+          "properNoun": false
+        },
+        {
+          "word": "devastating",
+          "definition": "Causing severe damage, distress, or shock.",
+          "sentence": "I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it.",
+          "properNoun": false
+        },
+        {
+          "word": "conscientiously",
+          "definition": "In a careful and responsible way.",
+          "sentence": "I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-02",
+      "siteId": "searchish",
+      "title": "The Chemical History of a Candle",
+      "form": "science lecture",
+      "spokenWordCount": 298,
+      "paragraphs": [
+        "An excerpt from “The Chemical History of a Candle” by Michael Faraday.",
+        "There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel. In order that you may understand that, let me shew you a very pretty, but very common-place experiment. If you blow a candle out cleverly, you will see the vapour rise from it. You have, I know, often smelt the vapour of a blown-out candle—and a very bad smell it is; but if you blow it out cleverly, you will be able to see pretty well the vapour into which this solid matter is transformed. I will blow out one of these candles in such a way as not to disturb the air around it, by the continuing action of my breath; and now, if I hold a lighted taper two or three inches from the wick, you will observe a train of fire going through the air till it reaches the candle. I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed. Now, as to the shape or form of the flame. It concerns us much to know about the condition which the matter of the candle finally assumes at the top of the wick—where you have such beauty and brightness as nothing but combustion or flame can produce. You have the glittering beauty of gold and silver, and the still higher lustre of jewels, like the ruby and diamond; but none of these rival the brilliancy and beauty of flame. What diamond can shine like flame?"
+      ],
+      "source": {
+        "label": "The Chemical History of a Candle",
+        "url": "https://www.gutenberg.org/ebooks/14474",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 458 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/14474.txt.",
+      "comprehension": {
+        "prompt": "What does Faraday's relighting demonstration reveal about candle fuel?",
+        "correct": "The heated fuel becomes a combustible vapour that can carry flame back to the wick.",
+        "distractors": [
+          "The solid wax burns without first changing condition.",
+          "A diamond gives the candle enough heat to relight itself."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "vaporous",
+          "definition": "Existing in the form of vapour or gas.",
+          "sentence": "There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel.",
+          "properNoun": false
+        },
+        {
+          "word": "condensed",
+          "definition": "Changed from a gas into a liquid or solid.",
+          "sentence": "I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.",
+          "properNoun": false
+        },
+        {
+          "word": "combustible",
+          "definition": "Able to catch fire and burn.",
+          "sentence": "I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-03",
+      "siteId": "searchish",
+      "title": "The Autobiography of Benjamin Franklin",
+      "form": "memoir",
+      "spokenWordCount": 298,
+      "paragraphs": [
+        "An excerpt from “The Autobiography of Benjamin Franklin” by Benjamin Franklin.",
+        "What gave my book the more sudden and general celebrity, was the success of one of its proposed experiments, made by Messrs. Dalibard and De Lor at Marly, for drawing lightning from the clouds. This engag'd the public attention every where. M. de Lor, who had an apparatus for experimental philosophy, and lectur'd in that branch of science, undertook to repeat what he called the Philadelphia Experiments; and, after they were performed before the king and court, all the curious of Paris flocked to see them. I will not swell this narrative with an account of that capital experiment, nor of the infinite pleasure I receiv'd in the success of a similar one I made soon after with a kite at Philadelphia, as both are to be found in the histories of electricity. Dr. Wright, an English physician, when at Paris, wrote to a friend, who was of the Royal Society, an account of the high esteem my experiments were in among the learned abroad, and of their wonder that my writings had been so little noticed in England. The society, on this, resum'd the consideration of the letters that had been read to them; and the celebrated Dr. Watson drew up a summary account of them, and of all I had afterwards sent to England on the subject, which he accompanied with some praise of the writer. This summary was then printed in their Transactions; and some members of the society in London, particularly the very ingenious Mr. Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me."
+      ],
+      "source": {
+        "label": "The Autobiography of Benjamin Franklin",
+        "url": "https://www.gutenberg.org/ebooks/148",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 5509 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/148.txt.",
+      "comprehension": {
+        "prompt": "What caused Franklin's electricity experiments to receive greater recognition?",
+        "correct": "Other experimenters repeated and verified the results, including drawing lightning from clouds.",
+        "distractors": [
+          "Franklin replaced the experiments with a more confident summary.",
+          "The Royal Society accepted the claims before anyone repeated them."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "apparatus",
+          "definition": "Equipment arranged for a scientific experiment.",
+          "sentence": "de Lor, who had an apparatus for experimental philosophy, and lectur'd in that branch of science, undertook to repeat what he called the Philadelphia Experiments; and, after they were performed before the king and court, all the curious of Paris flocked to see them.",
+          "properNoun": false
+        },
+        {
+          "word": "verified",
+          "definition": "Checked and shown to be true or accurate.",
+          "sentence": "Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me.",
+          "properNoun": false
+        },
+        {
+          "word": "procuring",
+          "definition": "Obtaining something through deliberate effort.",
+          "sentence": "Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-04",
+      "siteId": "searchish",
+      "title": "Of Studies",
+      "form": "essay",
+      "spokenWordCount": 303,
+      "paragraphs": [
+        "An excerpt from “Of Studies” by Francis Bacon.",
+        "STUDIES serve for delight, for ornament, and for ability. Their chief use for delight, is in privateness and retiring; for ornament, is in discourse; and for ability, is in the judgment, and disposition of business. For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned. To spend too much time in studies is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar. They perfect nature, and are perfected by experience: for natural abilities are like natural plants, that need proyning, by study; and studies themselves, do give forth directions too much at large, except they be bounded in by experience. Crafty men contemn studies, simple men admire them, and wise men use them; for they teach not their own use; but that is a wisdom without them, and above them, won by observation. Read not to contradict and confute; nor to believe and take for granted; nor to find talk and discourse; but to weigh and consider. Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read, but not curiously; and some few to be read wholly, and with diligence and attention. Some books also may be read by deputy, and extracts made of them by others; but that would be only in the less important arguments, and the meaner sort of books, else distilled books are like common distilled waters, flashy things. Reading maketh a full man; conference a ready man; and writing an exact man."
+      ],
+      "source": {
+        "label": "Of Studies",
+        "url": "https://www.gutenberg.org/ebooks/575",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 4309 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/575.txt.",
+      "comprehension": {
+        "prompt": "How does Bacon advise readers to approach books?",
+        "correct": "They should weigh ideas and vary the depth of reading according to the book's value.",
+        "distractors": [
+          "They should accept every statement without questioning it.",
+          "They should read every book with exactly the same amount of attention."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "affectation",
+          "definition": "Behavior adopted mainly to impress other people.",
+          "sentence": "To spend too much time in studies is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar.",
+          "properNoun": false
+        },
+        {
+          "word": "marshalling",
+          "definition": "Arranging people or things in an effective order.",
+          "sentence": "For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.",
+          "properNoun": false
+        },
+        {
+          "word": "particulars",
+          "definition": "Individual facts or specific details.",
+          "sentence": "For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-05",
+      "siteId": "searchish",
+      "title": "The Adventure of the Blue Carbuncle",
+      "form": "detective fiction",
+      "spokenWordCount": 301,
+      "paragraphs": [
+        "An excerpt from “The Adventure of the Blue Carbuncle” by Arthur Conan Doyle.",
+        "“But you are joking. What can you gather from this old battered felt?” “Here is my lens. You know my methods. What can you gather yourself as to the individuality of the man who has worn this article?” I took the tattered object in my hands and turned it over rather ruefully. It was a very ordinary black hat of the usual round shape, hard and much the worse for wear. The lining had been of red silk, but was a good deal discoloured. There was no maker’s name; but, as Holmes had remarked, the initials “H. B.” were scrawled upon one side. It was pierced in the brim for a hat-securer, but the elastic was missing. For the rest, it was cracked, exceedingly dusty, and spotted in several places, although there seemed to have been some attempt to hide the discoloured patches by smearing them with ink. “I can see nothing,” said I, handing it back to my friend. “On the contrary, Watson, you can see everything. You fail, however, to reason from what you see. You are too timid in drawing your inferences.” “Then, pray tell me what it is that you can infer from this hat?” He picked it up and gazed at it in the peculiar introspective fashion which was characteristic of him. “It is perhaps less suggestive than it might have been,” he remarked, “and yet there are a few inferences which are very distinct, and a few others which represent at least a strong balance of probability. That the man was highly intellectual is of course obvious upon the face of it, and also that he was fairly well-to-do within the last three years, although he has now fallen upon evil days."
+      ],
+      "source": {
+        "label": "The Adventure of the Blue Carbuncle",
+        "url": "https://www.gutenberg.org/ebooks/1661",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 5961 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1661.txt.",
+      "comprehension": {
+        "prompt": "Why does Watson fail to reach Holmes's conclusions about the hat?",
+        "correct": "Watson notices the details but does not reason from them to inferences.",
+        "distractors": [
+          "The hat has no visible details at all.",
+          "Holmes uses information that is not connected to the hat."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "individuality",
+          "definition": "The qualities that distinguish one person or thing from others.",
+          "sentence": "What can you gather yourself as to the individuality of the man who has worn this article?",
+          "properNoun": false
+        },
+        {
+          "word": "introspective",
+          "definition": "Directed toward examining one's own thoughts.",
+          "sentence": "” He picked it up and gazed at it in the peculiar introspective fashion which was characteristic of him.",
+          "properNoun": false
+        },
+        {
+          "word": "inferences",
+          "definition": "Conclusions reached from evidence and reasoning.",
+          "sentence": "You are too timid in drawing your inferences.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-06",
+      "siteId": "searchish",
+      "title": "On the Origin of Species",
+      "form": "scientific argument",
+      "spokenWordCount": 277,
+      "paragraphs": [
+        "An excerpt from “On the Origin of Species” by Charles Darwin.",
+        "As this whole volume is one long argument, it may be convenient to the reader to have the leading facts and inferences briefly recapitulated. That many and grave objections may be advanced against the theory of descent with modification through natural selection, I do not deny. I have endeavoured to give to them their full force. Nothing at first can appear more difficult to believe than that the more complex organs and instincts should have been perfected, not by means superior to, though analogous with, human reason, but by the accumulation of innumerable slight variations, each good for the individual possessor. Nevertheless, this difficulty, though appearing to our imagination insuperably great, cannot be considered real if we admit the following propositions, namely,—that gradations in the perfection of any organ or instinct, which we may consider, either do now exist or could have existed, each good of its kind,—that all organs and instincts are, in ever so slight a degree, variable,—and, lastly, that there is a struggle for existence leading to the preservation of each profitable deviation of structure or instinct. The truth of these propositions cannot, I think, be disputed. It is, no doubt, extremely difficult even to conjecture by what gradations many structures have been perfected, more especially amongst broken and failing groups of organic beings; but we see so many strange gradations in nature, as is proclaimed by the canon, “Natura non facit saltum,” that we ought to be extremely cautious in saying that any organ or instinct, or any whole being, could not have arrived at its present state by many graduated steps."
+      ],
+      "source": {
+        "label": "On the Origin of Species",
+        "url": "https://www.gutenberg.org/ebooks/1228",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 13701 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1228.txt.",
+      "comprehension": {
+        "prompt": "Why does Darwin caution against declaring a complex organ impossible to develop gradually?",
+        "correct": "Small useful variations can be preserved over many graduated steps.",
+        "distractors": [
+          "Every complex organ appears complete in a single change.",
+          "Objections should be ignored whenever a theory is popular."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "recapitulated",
+          "definition": "Summarized or stated again in a shorter form.",
+          "sentence": "As this whole volume is one long argument, it may be convenient to the reader to have the leading facts and inferences briefly recapitulated.",
+          "properNoun": false
+        },
+        {
+          "word": "gradations",
+          "definition": "A series of gradual stages or degrees.",
+          "sentence": "Nevertheless, this difficulty, though appearing to our imagination insuperably great, cannot be considered real if we admit the following propositions, namely,—that gradations in the perfection of any organ or instinct, which we may consider, either do now exist or could have existed, each good of its kind,—that all organs and instincts are, in ever so slight a degree, variable,—and, lastly, that there is a struggle for existence leading to the preservation of each profitable deviation of structure or instinct.",
+          "properNoun": false
+        },
+        {
+          "word": "conjecture",
+          "definition": "To form a conclusion from incomplete evidence.",
+          "sentence": "It is, no doubt, extremely difficult even to conjecture by what gradations many structures have been perfected, more especially amongst broken and failing groups of organic beings; but we see so many strange gradations in nature, as is proclaimed by the canon, “Natura non facit saltum,” that we ought to be extremely cautious in saying that any organ or instinct, or any whole being, could not have arrived at its present state by many graduated steps.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-07",
+      "siteId": "searchish",
+      "title": "Discourse on the Method",
+      "form": "philosophical essay",
+      "spokenWordCount": 278,
+      "paragraphs": [
+        "An excerpt from “Discourse on the Method” by René Descartes.",
+        "The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt. The second, to divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution. The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence. And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted. The long chains of simple and easy reasonings by means of which geometers are accustomed to reach the conclusions of their most difficult demonstrations, had led me to imagine that all things, to the knowledge of which man is competent, are mutually connected in the same way, and that there is nothing so far removed from us as to be beyond our reach, or so hidden that we cannot discover it, provided only we abstain from accepting the false for the true, and always preserve in our thoughts the order necessary for the deduction of one truth from another."
+      ],
+      "source": {
+        "label": "Discourse on the Method",
+        "url": "https://www.gutenberg.org/ebooks/59",
+        "translator": "John Veitch"
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 510 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/59.txt.",
+      "comprehension": {
+        "prompt": "What do Descartes's four rules require a thinker to do?",
+        "correct": "Use clear evidence, divide difficulties, proceed in order, and review completely.",
+        "distractors": [
+          "Begin with the most complicated claim and skip familiar facts.",
+          "Trust the first conclusion as long as it sounds certain."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "precipitancy",
+          "definition": "Excessive haste that can lead to poor judgment.",
+          "sentence": "The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt.",
+          "properNoun": false
+        },
+        {
+          "word": "antecedence",
+          "definition": "The condition of coming before something else.",
+          "sentence": "The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence.",
+          "properNoun": false
+        },
+        {
+          "word": "enumerations",
+          "definition": "Complete lists of items considered one by one.",
+          "sentence": "And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-08",
+      "siteId": "searchish",
+      "title": "The Ethics of Belief",
+      "form": "philosophical essay",
+      "spokenWordCount": 303,
+      "paragraphs": [
+        "An excerpt from “The Ethics of Belief” by William Kingdon Clifford.",
+        "I. The Duty of Inquiry.--A shipowner was about to send to sea an emigrant-ship. He knew that she was old, and not over-well built at the first; that she had seen many seas and climes, and often had needed repairs. Doubts had been suggested to him that possibly she was not seaworthy. These doubts preyed upon his mind, and made him unhappy; he thought that perhaps he ought to have her thoroughly overhauled and refitted, even though this should put him to great expense. Before the ship sailed, however, he succeeded in overcoming these melancholy reflections. He said to himself that she had gone safely through so many voyages and weathered so many storms that it was idle to suppose she would not come safely home from this trip also. He would put his trust in Providence, which could hardly fail to protect all these unhappy families that were leaving their fatherland to seek for better times elsewhere. He would dismiss from his mind all ungenerous suspicions about the honesty of builders and contractors. In such ways he acquired a sincere and comfortable conviction that his vessel was thoroughly safe and seaworthy; he watched her departure with a light heart, and benevolent wishes for the success of the exiles in their strange new home that was to be; and he got his insurance-money when she went down in mid-ocean and told no tales. What shall we say of him? Surely this, that he was verily guilty of the death of those men. It is admitted that he did sincerely believe in the soundness of his ship; but the sincerity of his conviction can in no wise help him, because he had no right to believe on such evidence as was before him."
+      ],
+      "source": {
+        "label": "The Ethics of Belief",
+        "url": "https://www.gutenberg.org/ebooks/50189",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 1901 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/50189.txt.",
+      "comprehension": {
+        "prompt": "Why does Clifford judge the shipowner guilty even though the owner sincerely believed the ship was safe?",
+        "correct": "The owner dismissed serious doubts instead of investigating the available evidence.",
+        "distractors": [
+          "The owner had no reason at all to know the ship was old.",
+          "A sincere belief always excuses a harmful decision."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "seaworthy",
+          "definition": "Fit and safe for a voyage at sea.",
+          "sentence": "Doubts had been suggested to him that possibly she was not seaworthy.",
+          "properNoun": false
+        },
+        {
+          "word": "conviction",
+          "definition": "A firmly held belief or opinion.",
+          "sentence": "In such ways he acquired a sincere and comfortable conviction that his vessel was thoroughly safe and seaworthy; he watched her departure with a light heart, and benevolent wishes for the success of the exiles in their strange new home that was to be; and he got his insurance-money when she went down in mid-ocean and told no tales.",
+          "properNoun": false
+        },
+        {
+          "word": "reflections",
+          "definition": "Serious thoughts or careful considerations.",
+          "sentence": "Before the ship sailed, however, he succeeded in overcoming these melancholy reflections.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-09",
+      "siteId": "searchish",
+      "title": "How We Think",
+      "form": "educational psychology",
+      "spokenWordCount": 319,
+      "paragraphs": [
+        "An excerpt from “How We Think” by John Dewey.",
+        "So far there is the same sort of situation as when one looking at a cloud is reminded of a human figure and face. Thinking in both of these cases (the cases of belief and of fancy) involves a noted or perceived fact, followed by something else which is not observed but which is brought to mind, suggested by the thing seen. One reminds us, as we say, of the other. Side by side, however, with this factor of agreement in the two cases of suggestion is a factor of marked disagreement. We do not believe in the face suggested by the cloud; we do not consider at all the probability of its being a fact. There is no reflective thought. The danger of rain, on the contrary, presents itself to us as a genuine possibility--as a possible fact of the same nature as the observed coolness. Put differently, we do not regard the cloud as meaning or indicating a face, but merely as suggesting it, while we do consider that the coolness may mean rain. In the first case, seeing an object, we just happen, as we say, to think of something else; in the second, we consider the possibility and nature of the connection between the object seen and the object suggested. The seen thing is regarded as in some way the ground or basis of belief in the suggested thing; it possesses the quality of evidence. This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking. By calling up various situations to which such terms as signifies and indicates apply, the student will best realize for himself the actual facts denoted by the words reflective thought."
+      ],
+      "source": {
+        "label": "How We Think",
+        "url": "https://www.gutenberg.org/ebooks/37423",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 377 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/37423.txt.",
+      "comprehension": {
+        "prompt": "What distinguishes the thought of rain from seeing a face in a cloud?",
+        "correct": "Observed conditions provide evidence for rain, while the face is only a resemblance that comes to mind.",
+        "distractors": [
+          "Both ideas are equally supported by the observed cloud.",
+          "Neither idea involves a connection between what is seen and what is suggested."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "signifies",
+          "definition": "Indicates or means something beyond itself.",
+          "sentence": "This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.",
+          "properNoun": false
+        },
+        {
+          "word": "warrant",
+          "definition": "A justification or sound reason for a belief.",
+          "sentence": "This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.",
+          "properNoun": false
+        },
+        {
+          "word": "distinctively",
+          "definition": "In a way that clearly sets something apart.",
+          "sentence": "This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.",
+          "properNoun": false
+        }
+      ],
+      "reviewStatus": "canonical-public-domain-campaign-subject-to-full-playtest"
+    },
+    {
+      "id": "searchish-10",
+      "siteId": "searchish",
+      "title": "The Method of Scientific Investigation",
+      "form": "science lecture",
+      "spokenWordCount": 317,
+      "paragraphs": [
+        "An excerpt from “The Method of Scientific Investigation” by T. H. Huxley.",
+        "A very trivial circumstance will serve to exemplify this. Suppose you go into a fruiterer's shop, wanting an apple,--you take up one, and, on biting it, you find it is sour; you look at it, and see that it is hard and green. You take up another one, and that too is hard, green, and sour. The shopman offers you a third; but, before biting it, you examine it, and find that it is hard and green, and you immediately say that you will not have it, as it must be sour, like those that you have already tried. Nothing can be more simple than that, you think; but if you will take the trouble to analyse and trace out into its logical elements what has been done by the mind, you will be greatly surprised. In the first place you have performed the operation of induction. You found that, in two experiences, hardness and greenness in apples went together with sourness. It was so in the first case, and it was confirmed by the second. True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness. You found upon that a general law that all hard and green apples are sour; and that, so far as it goes, is a perfect induction. Well, having got your natural law in this way, when you are offered another apple which you find is hard and green, you say, \"All hard and green apples are sour; this apple is hard and green, therefore this apple is sour.\" That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion."
+      ],
+      "source": {
+        "label": "The Method of Scientific Investigation",
+        "url": "https://www.gutenberg.org/ebooks/1315",
+        "translator": null
+      },
+      "rights": "Public domain in the USA per the linked Project Gutenberg item record.",
+      "selectionNote": "Exact excerpt begins at line 3332 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1315.txt.",
+      "comprehension": {
+        "prompt": "How does the apple example move from observation to a conclusion?",
+        "correct": "Repeated observations form a general rule, which is then applied to another apple.",
+        "distractors": [
+          "The shopman's opinion is accepted without testing any apple.",
+          "One apple is assumed to represent every possible fruit."
+        ],
+        "correctFeedback": "Yes. That answer is directly supported by the passage.",
+        "tryAgainFeedback": "Not quite. Look for the detail that most directly answers the question."
+      },
+      "vocabulary": [
+        {
+          "word": "induction",
+          "definition": "Reasoning from specific observations toward a general rule.",
+          "sentence": "In the first place you have performed the operation of induction.",
+          "properNoun": false
+        },
+        {
+          "word": "generalise",
+          "definition": "To form a broad rule from particular examples.",
+          "sentence": "True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness.",
+          "properNoun": false
+        },
+        {
+          "word": "syllogism",
+          "definition": "A structured argument that applies stated premises to reach a conclusion.",
+          "sentence": "\" That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion.",
           "properNoun": false
         }
       ],

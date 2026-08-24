@@ -1,6 +1,6 @@
 # Public-Domain Campaign Canonical Reading Manuscript
 
-Status: canonical integration source for the scheduled first-six replacements and the Amaze-On, Spotty-Fi, and MapGuess reading libraries. Exact questions, vocabulary, and readability remain subject to the recorded full playtest.
+Status: canonical integration source for the scheduled first-six replacements and the Amaze-On, Spotty-Fi, MapGuess, and Search-ish reading libraries. Exact questions, vocabulary, and readability remain subject to the recorded full playtest.
 
 Every spoken introduction is one short sentence naming the work and author. Excerpts preserve the frozen Project Gutenberg wording after removal of transcription markup. Vocabulary sentences are copied from the same excerpt and definitions are specific to that use.
 
@@ -1297,4 +1297,297 @@ Having thus prepared all things as well as I was able, I set sail on the twenty-
 - **conjectured** — Definition: Formed an opinion from incomplete evidence. Used in a sentence: I slept well, and as I conjectured at least six hours, for I found the day broke in two hours after I awaked.
 - **uninhabited** — Definition: Having no people living there. Used in a sentence: I advanced forward, and cast anchor on the lee-side of the island, which seemed to be uninhabited.
 - **favourable** — Definition: Helpful or likely to produce a good result. Used in a sentence: I ate my breakfast before the sun was up; and heaving anchor, the wind being favourable, I steered the same course that I had done the day before, wherein I was directed by my pocket compass.
+
+## Search-ish
+
+### searchish-01 — Three Men in a Boat
+
+- **Form:** comic novel
+- **Spoken word count:** 304
+- **Source:** [Three Men in a Boat](https://www.gutenberg.org/ebooks/308)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 116 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/308.txt.
+
+**Spoken passage**
+
+An excerpt from “Three Men in a Boat” by Jerome K. Jerome.
+
+I remember going to the British Museum one day to read up the treatment for some slight ailment of which I had a touch—hay fever, I fancy it was. I got down the book, and read all I came to read; and then, in an unthinking moment, I idly turned the leaves, and began to indolently study diseases, generally. I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it. I sat for awhile, frozen with horror; and then, in the listlessness of despair, I again turned over the pages. I came to typhoid fever—read the symptoms—discovered that I had typhoid fever, must have had it for months without knowing it—wondered what else I had got; turned up St. Vitus’s Dance—found, as I expected, that I had that too,—began to get interested in my case, and determined to sift it to the bottom, and so started alphabetically—read up ague, and learnt that I was sickening for it, and that the acute stage would commence in about another fortnight. Bright’s disease, I was relieved to find, I had only in a modified form, and, so far as that was concerned, I might live for years. Cholera I had, with severe complications; and diphtheria I seemed to have been born with. I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee. I felt rather hurt about this at first; it seemed somehow to be a sort of slight. Why hadn’t I got housemaid’s knee? Why this invidious reservation? After a while, however, less grasping feelings prevailed.
+
+**Comprehension check**
+
+- Prompt: What happens after the narrator begins reading a general list of diseases?
+- Correct answer: He treats each list of symptoms as evidence that he has nearly every disease.
+- Distractor A: He compares the book with a doctor's careful examination.
+- Distractor B: He stops reading as soon as he finds his original ailment.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **premonitory** — Definition: Serving as an advance warning of something. Used in a sentence: I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it.
+- **devastating** — Definition: Causing severe damage, distress, or shock. Used in a sentence: I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it.
+- **conscientiously** — Definition: In a careful and responsible way. Used in a sentence: I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee.
+
+### searchish-02 — The Chemical History of a Candle
+
+- **Form:** science lecture
+- **Spoken word count:** 298
+- **Source:** [The Chemical History of a Candle](https://www.gutenberg.org/ebooks/14474)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 458 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/14474.txt.
+
+**Spoken passage**
+
+An excerpt from “The Chemical History of a Candle” by Michael Faraday.
+
+There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel. In order that you may understand that, let me shew you a very pretty, but very common-place experiment. If you blow a candle out cleverly, you will see the vapour rise from it. You have, I know, often smelt the vapour of a blown-out candle—and a very bad smell it is; but if you blow it out cleverly, you will be able to see pretty well the vapour into which this solid matter is transformed. I will blow out one of these candles in such a way as not to disturb the air around it, by the continuing action of my breath; and now, if I hold a lighted taper two or three inches from the wick, you will observe a train of fire going through the air till it reaches the candle. I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed. Now, as to the shape or form of the flame. It concerns us much to know about the condition which the matter of the candle finally assumes at the top of the wick—where you have such beauty and brightness as nothing but combustion or flame can produce. You have the glittering beauty of gold and silver, and the still higher lustre of jewels, like the ruby and diamond; but none of these rival the brilliancy and beauty of flame. What diamond can shine like flame?
+
+**Comprehension check**
+
+- Prompt: What does Faraday's relighting demonstration reveal about candle fuel?
+- Correct answer: The heated fuel becomes a combustible vapour that can carry flame back to the wick.
+- Distractor A: The solid wax burns without first changing condition.
+- Distractor B: A diamond gives the candle enough heat to relight itself.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **vaporous** — Definition: Existing in the form of vapour or gas. Used in a sentence: There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel.
+- **condensed** — Definition: Changed from a gas into a liquid or solid. Used in a sentence: I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.
+- **combustible** — Definition: Able to catch fire and burn. Used in a sentence: I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.
+
+### searchish-03 — The Autobiography of Benjamin Franklin
+
+- **Form:** memoir
+- **Spoken word count:** 298
+- **Source:** [The Autobiography of Benjamin Franklin](https://www.gutenberg.org/ebooks/148)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 5509 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/148.txt.
+
+**Spoken passage**
+
+An excerpt from “The Autobiography of Benjamin Franklin” by Benjamin Franklin.
+
+What gave my book the more sudden and general celebrity, was the success of one of its proposed experiments, made by Messrs. Dalibard and De Lor at Marly, for drawing lightning from the clouds. This engag'd the public attention every where. M. de Lor, who had an apparatus for experimental philosophy, and lectur'd in that branch of science, undertook to repeat what he called the Philadelphia Experiments; and, after they were performed before the king and court, all the curious of Paris flocked to see them. I will not swell this narrative with an account of that capital experiment, nor of the infinite pleasure I receiv'd in the success of a similar one I made soon after with a kite at Philadelphia, as both are to be found in the histories of electricity. Dr. Wright, an English physician, when at Paris, wrote to a friend, who was of the Royal Society, an account of the high esteem my experiments were in among the learned abroad, and of their wonder that my writings had been so little noticed in England. The society, on this, resum'd the consideration of the letters that had been read to them; and the celebrated Dr. Watson drew up a summary account of them, and of all I had afterwards sent to England on the subject, which he accompanied with some praise of the writer. This summary was then printed in their Transactions; and some members of the society in London, particularly the very ingenious Mr. Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me.
+
+**Comprehension check**
+
+- Prompt: What caused Franklin's electricity experiments to receive greater recognition?
+- Correct answer: Other experimenters repeated and verified the results, including drawing lightning from clouds.
+- Distractor A: Franklin replaced the experiments with a more confident summary.
+- Distractor B: The Royal Society accepted the claims before anyone repeated them.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **apparatus** — Definition: Equipment arranged for a scientific experiment. Used in a sentence: de Lor, who had an apparatus for experimental philosophy, and lectur'd in that branch of science, undertook to repeat what he called the Philadelphia Experiments; and, after they were performed before the king and court, all the curious of Paris flocked to see them.
+- **verified** — Definition: Checked and shown to be true or accurate. Used in a sentence: Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me.
+- **procuring** — Definition: Obtaining something through deliberate effort. Used in a sentence: Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me.
+
+### searchish-04 — Of Studies
+
+- **Form:** essay
+- **Spoken word count:** 303
+- **Source:** [Of Studies](https://www.gutenberg.org/ebooks/575)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 4309 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/575.txt.
+
+**Spoken passage**
+
+An excerpt from “Of Studies” by Francis Bacon.
+
+STUDIES serve for delight, for ornament, and for ability. Their chief use for delight, is in privateness and retiring; for ornament, is in discourse; and for ability, is in the judgment, and disposition of business. For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned. To spend too much time in studies is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar. They perfect nature, and are perfected by experience: for natural abilities are like natural plants, that need proyning, by study; and studies themselves, do give forth directions too much at large, except they be bounded in by experience. Crafty men contemn studies, simple men admire them, and wise men use them; for they teach not their own use; but that is a wisdom without them, and above them, won by observation. Read not to contradict and confute; nor to believe and take for granted; nor to find talk and discourse; but to weigh and consider. Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read, but not curiously; and some few to be read wholly, and with diligence and attention. Some books also may be read by deputy, and extracts made of them by others; but that would be only in the less important arguments, and the meaner sort of books, else distilled books are like common distilled waters, flashy things. Reading maketh a full man; conference a ready man; and writing an exact man.
+
+**Comprehension check**
+
+- Prompt: How does Bacon advise readers to approach books?
+- Correct answer: They should weigh ideas and vary the depth of reading according to the book's value.
+- Distractor A: They should accept every statement without questioning it.
+- Distractor B: They should read every book with exactly the same amount of attention.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **affectation** — Definition: Behavior adopted mainly to impress other people. Used in a sentence: To spend too much time in studies is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar.
+- **marshalling** — Definition: Arranging people or things in an effective order. Used in a sentence: For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.
+- **particulars** — Definition: Individual facts or specific details. Used in a sentence: For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.
+
+### searchish-05 — The Adventure of the Blue Carbuncle
+
+- **Form:** detective fiction
+- **Spoken word count:** 301
+- **Source:** [The Adventure of the Blue Carbuncle](https://www.gutenberg.org/ebooks/1661)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 5961 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1661.txt.
+
+**Spoken passage**
+
+An excerpt from “The Adventure of the Blue Carbuncle” by Arthur Conan Doyle.
+
+“But you are joking. What can you gather from this old battered felt?” “Here is my lens. You know my methods. What can you gather yourself as to the individuality of the man who has worn this article?” I took the tattered object in my hands and turned it over rather ruefully. It was a very ordinary black hat of the usual round shape, hard and much the worse for wear. The lining had been of red silk, but was a good deal discoloured. There was no maker’s name; but, as Holmes had remarked, the initials “H. B.” were scrawled upon one side. It was pierced in the brim for a hat-securer, but the elastic was missing. For the rest, it was cracked, exceedingly dusty, and spotted in several places, although there seemed to have been some attempt to hide the discoloured patches by smearing them with ink. “I can see nothing,” said I, handing it back to my friend. “On the contrary, Watson, you can see everything. You fail, however, to reason from what you see. You are too timid in drawing your inferences.” “Then, pray tell me what it is that you can infer from this hat?” He picked it up and gazed at it in the peculiar introspective fashion which was characteristic of him. “It is perhaps less suggestive than it might have been,” he remarked, “and yet there are a few inferences which are very distinct, and a few others which represent at least a strong balance of probability. That the man was highly intellectual is of course obvious upon the face of it, and also that he was fairly well-to-do within the last three years, although he has now fallen upon evil days.
+
+**Comprehension check**
+
+- Prompt: Why does Watson fail to reach Holmes's conclusions about the hat?
+- Correct answer: Watson notices the details but does not reason from them to inferences.
+- Distractor A: The hat has no visible details at all.
+- Distractor B: Holmes uses information that is not connected to the hat.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **individuality** — Definition: The qualities that distinguish one person or thing from others. Used in a sentence: What can you gather yourself as to the individuality of the man who has worn this article?
+- **introspective** — Definition: Directed toward examining one's own thoughts. Used in a sentence: ” He picked it up and gazed at it in the peculiar introspective fashion which was characteristic of him.
+- **inferences** — Definition: Conclusions reached from evidence and reasoning. Used in a sentence: You are too timid in drawing your inferences.
+
+### searchish-06 — On the Origin of Species
+
+- **Form:** scientific argument
+- **Spoken word count:** 277
+- **Source:** [On the Origin of Species](https://www.gutenberg.org/ebooks/1228)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 13701 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1228.txt.
+
+**Spoken passage**
+
+An excerpt from “On the Origin of Species” by Charles Darwin.
+
+As this whole volume is one long argument, it may be convenient to the reader to have the leading facts and inferences briefly recapitulated. That many and grave objections may be advanced against the theory of descent with modification through natural selection, I do not deny. I have endeavoured to give to them their full force. Nothing at first can appear more difficult to believe than that the more complex organs and instincts should have been perfected, not by means superior to, though analogous with, human reason, but by the accumulation of innumerable slight variations, each good for the individual possessor. Nevertheless, this difficulty, though appearing to our imagination insuperably great, cannot be considered real if we admit the following propositions, namely,—that gradations in the perfection of any organ or instinct, which we may consider, either do now exist or could have existed, each good of its kind,—that all organs and instincts are, in ever so slight a degree, variable,—and, lastly, that there is a struggle for existence leading to the preservation of each profitable deviation of structure or instinct. The truth of these propositions cannot, I think, be disputed. It is, no doubt, extremely difficult even to conjecture by what gradations many structures have been perfected, more especially amongst broken and failing groups of organic beings; but we see so many strange gradations in nature, as is proclaimed by the canon, “Natura non facit saltum,” that we ought to be extremely cautious in saying that any organ or instinct, or any whole being, could not have arrived at its present state by many graduated steps.
+
+**Comprehension check**
+
+- Prompt: Why does Darwin caution against declaring a complex organ impossible to develop gradually?
+- Correct answer: Small useful variations can be preserved over many graduated steps.
+- Distractor A: Every complex organ appears complete in a single change.
+- Distractor B: Objections should be ignored whenever a theory is popular.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **recapitulated** — Definition: Summarized or stated again in a shorter form. Used in a sentence: As this whole volume is one long argument, it may be convenient to the reader to have the leading facts and inferences briefly recapitulated.
+- **gradations** — Definition: A series of gradual stages or degrees. Used in a sentence: Nevertheless, this difficulty, though appearing to our imagination insuperably great, cannot be considered real if we admit the following propositions, namely,—that gradations in the perfection of any organ or instinct, which we may consider, either do now exist or could have existed, each good of its kind,—that all organs and instincts are, in ever so slight a degree, variable,—and, lastly, that there is a struggle for existence leading to the preservation of each profitable deviation of structure or instinct.
+- **conjecture** — Definition: To form a conclusion from incomplete evidence. Used in a sentence: It is, no doubt, extremely difficult even to conjecture by what gradations many structures have been perfected, more especially amongst broken and failing groups of organic beings; but we see so many strange gradations in nature, as is proclaimed by the canon, “Natura non facit saltum,” that we ought to be extremely cautious in saying that any organ or instinct, or any whole being, could not have arrived at its present state by many graduated steps.
+
+### searchish-07 — Discourse on the Method
+
+- **Form:** philosophical essay
+- **Spoken word count:** 278
+- **Source:** [Discourse on the Method](https://www.gutenberg.org/ebooks/59)
+- **Translator:** John Veitch
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 510 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/59.txt.
+
+**Spoken passage**
+
+An excerpt from “Discourse on the Method” by René Descartes.
+
+The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt. The second, to divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution. The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence. And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted. The long chains of simple and easy reasonings by means of which geometers are accustomed to reach the conclusions of their most difficult demonstrations, had led me to imagine that all things, to the knowledge of which man is competent, are mutually connected in the same way, and that there is nothing so far removed from us as to be beyond our reach, or so hidden that we cannot discover it, provided only we abstain from accepting the false for the true, and always preserve in our thoughts the order necessary for the deduction of one truth from another.
+
+**Comprehension check**
+
+- Prompt: What do Descartes's four rules require a thinker to do?
+- Correct answer: Use clear evidence, divide difficulties, proceed in order, and review completely.
+- Distractor A: Begin with the most complicated claim and skip familiar facts.
+- Distractor B: Trust the first conclusion as long as it sounds certain.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **precipitancy** — Definition: Excessive haste that can lead to poor judgment. Used in a sentence: The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt.
+- **antecedence** — Definition: The condition of coming before something else. Used in a sentence: The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence.
+- **enumerations** — Definition: Complete lists of items considered one by one. Used in a sentence: And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted.
+
+### searchish-08 — The Ethics of Belief
+
+- **Form:** philosophical essay
+- **Spoken word count:** 303
+- **Source:** [The Ethics of Belief](https://www.gutenberg.org/ebooks/50189)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 1901 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/50189.txt.
+
+**Spoken passage**
+
+An excerpt from “The Ethics of Belief” by William Kingdon Clifford.
+
+I. The Duty of Inquiry.--A shipowner was about to send to sea an emigrant-ship. He knew that she was old, and not over-well built at the first; that she had seen many seas and climes, and often had needed repairs. Doubts had been suggested to him that possibly she was not seaworthy. These doubts preyed upon his mind, and made him unhappy; he thought that perhaps he ought to have her thoroughly overhauled and refitted, even though this should put him to great expense. Before the ship sailed, however, he succeeded in overcoming these melancholy reflections. He said to himself that she had gone safely through so many voyages and weathered so many storms that it was idle to suppose she would not come safely home from this trip also. He would put his trust in Providence, which could hardly fail to protect all these unhappy families that were leaving their fatherland to seek for better times elsewhere. He would dismiss from his mind all ungenerous suspicions about the honesty of builders and contractors. In such ways he acquired a sincere and comfortable conviction that his vessel was thoroughly safe and seaworthy; he watched her departure with a light heart, and benevolent wishes for the success of the exiles in their strange new home that was to be; and he got his insurance-money when she went down in mid-ocean and told no tales. What shall we say of him? Surely this, that he was verily guilty of the death of those men. It is admitted that he did sincerely believe in the soundness of his ship; but the sincerity of his conviction can in no wise help him, because he had no right to believe on such evidence as was before him.
+
+**Comprehension check**
+
+- Prompt: Why does Clifford judge the shipowner guilty even though the owner sincerely believed the ship was safe?
+- Correct answer: The owner dismissed serious doubts instead of investigating the available evidence.
+- Distractor A: The owner had no reason at all to know the ship was old.
+- Distractor B: A sincere belief always excuses a harmful decision.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **seaworthy** — Definition: Fit and safe for a voyage at sea. Used in a sentence: Doubts had been suggested to him that possibly she was not seaworthy.
+- **conviction** — Definition: A firmly held belief or opinion. Used in a sentence: In such ways he acquired a sincere and comfortable conviction that his vessel was thoroughly safe and seaworthy; he watched her departure with a light heart, and benevolent wishes for the success of the exiles in their strange new home that was to be; and he got his insurance-money when she went down in mid-ocean and told no tales.
+- **reflections** — Definition: Serious thoughts or careful considerations. Used in a sentence: Before the ship sailed, however, he succeeded in overcoming these melancholy reflections.
+
+### searchish-09 — How We Think
+
+- **Form:** educational psychology
+- **Spoken word count:** 319
+- **Source:** [How We Think](https://www.gutenberg.org/ebooks/37423)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 377 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/37423.txt.
+
+**Spoken passage**
+
+An excerpt from “How We Think” by John Dewey.
+
+So far there is the same sort of situation as when one looking at a cloud is reminded of a human figure and face. Thinking in both of these cases (the cases of belief and of fancy) involves a noted or perceived fact, followed by something else which is not observed but which is brought to mind, suggested by the thing seen. One reminds us, as we say, of the other. Side by side, however, with this factor of agreement in the two cases of suggestion is a factor of marked disagreement. We do not believe in the face suggested by the cloud; we do not consider at all the probability of its being a fact. There is no reflective thought. The danger of rain, on the contrary, presents itself to us as a genuine possibility--as a possible fact of the same nature as the observed coolness. Put differently, we do not regard the cloud as meaning or indicating a face, but merely as suggesting it, while we do consider that the coolness may mean rain. In the first case, seeing an object, we just happen, as we say, to think of something else; in the second, we consider the possibility and nature of the connection between the object seen and the object suggested. The seen thing is regarded as in some way the ground or basis of belief in the suggested thing; it possesses the quality of evidence. This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking. By calling up various situations to which such terms as signifies and indicates apply, the student will best realize for himself the actual facts denoted by the words reflective thought.
+
+**Comprehension check**
+
+- Prompt: What distinguishes the thought of rain from seeing a face in a cloud?
+- Correct answer: Observed conditions provide evidence for rain, while the face is only a resemblance that comes to mind.
+- Distractor A: Both ideas are equally supported by the observed cloud.
+- Distractor B: Neither idea involves a connection between what is seen and what is suggested.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **signifies** — Definition: Indicates or means something beyond itself. Used in a sentence: This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.
+- **warrant** — Definition: A justification or sound reason for a belief. Used in a sentence: This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.
+- **distinctively** — Definition: In a way that clearly sets something apart. Used in a sentence: This function by which one thing signifies or indicates another, and thereby leads us to consider how far one may be regarded as warrant for belief in the other, is, then, the central factor in all reflective or distinctively intellectual thinking.
+
+### searchish-10 — The Method of Scientific Investigation
+
+- **Form:** science lecture
+- **Spoken word count:** 317
+- **Source:** [The Method of Scientific Investigation](https://www.gutenberg.org/ebooks/1315)
+- **Rights:** Public domain in the USA per the linked Project Gutenberg item record.
+- **Selection note:** Exact excerpt begins at line 3332 of the frozen local Project Gutenberg text snapshot docs/content/sources/gutenberg/1315.txt.
+
+**Spoken passage**
+
+An excerpt from “The Method of Scientific Investigation” by T. H. Huxley.
+
+A very trivial circumstance will serve to exemplify this. Suppose you go into a fruiterer's shop, wanting an apple,--you take up one, and, on biting it, you find it is sour; you look at it, and see that it is hard and green. You take up another one, and that too is hard, green, and sour. The shopman offers you a third; but, before biting it, you examine it, and find that it is hard and green, and you immediately say that you will not have it, as it must be sour, like those that you have already tried. Nothing can be more simple than that, you think; but if you will take the trouble to analyse and trace out into its logical elements what has been done by the mind, you will be greatly surprised. In the first place you have performed the operation of induction. You found that, in two experiences, hardness and greenness in apples went together with sourness. It was so in the first case, and it was confirmed by the second. True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness. You found upon that a general law that all hard and green apples are sour; and that, so far as it goes, is a perfect induction. Well, having got your natural law in this way, when you are offered another apple which you find is hard and green, you say, "All hard and green apples are sour; this apple is hard and green, therefore this apple is sour." That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion.
+
+**Comprehension check**
+
+- Prompt: How does the apple example move from observation to a conclusion?
+- Correct answer: Repeated observations form a general rule, which is then applied to another apple.
+- Distractor A: The shopman's opinion is accepted without testing any apple.
+- Distractor B: One apple is assumed to represent every possible fruit.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
+
+**Vocabulary packet**
+
+- **induction** — Definition: Reasoning from specific observations toward a general rule. Used in a sentence: In the first place you have performed the operation of induction.
+- **generalise** — Definition: To form a broad rule from particular examples. Used in a sentence: True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness.
+- **syllogism** — Definition: A structured argument that applies stated premises to reach a conclusion. Used in a sentence: " That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion.
 
