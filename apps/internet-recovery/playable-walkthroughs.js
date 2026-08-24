@@ -1,5 +1,7 @@
+const WALKTHROUGH_ASSET_VERSION = "20260823-checklist-continuity";
+
 function frame(directory, prefix, page) {
-  return `/walkthroughs/${directory}/${prefix}_p${page}.png`;
+  return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
 }
 
 function midpoint(chinmayHeading, chinmayText, autoHeading, autoText, amyHeading, amyText) {

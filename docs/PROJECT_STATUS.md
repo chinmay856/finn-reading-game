@@ -14,6 +14,8 @@
 - A repository test now enforces that every playable repair checklist obscures
   no more than half of the 802-pixel site surface and remains inside the site
   frame.
+- Walkthrough frame URLs carry a release version so revised storyboard PNGs do
+  not remain hidden behind Firebase's one-hour browser cache during playtests.
 
 ## Playable mission stability hardening — 2026-08-23
 

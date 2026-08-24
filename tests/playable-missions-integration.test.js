@@ -63,6 +63,11 @@ test("Recovery OS launcher uses the reviewed two-row visual order", () => {
   );
 });
 
+test("walkthrough frame URLs are versioned so revised mission art bypasses stale Firebase caches", () => {
+  assert.match(walkthroughs, /WALKTHROUGH_ASSET_VERSION/u);
+  assert.match(walkthroughs, /\.png\?v=\$\{WALKTHROUGH_ASSET_VERSION\}/u);
+});
+
 test("MapGuess exposes the approved moving-target transition beats", () => {
   assert.match(script, /mission\.transitionBeats/u);
   assert.match(script, /function runTransitionBeat/u);
