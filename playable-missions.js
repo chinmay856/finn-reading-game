@@ -21,7 +21,7 @@ import { createSherpaStreamingRecognizer, sherpaStreamingRuntimeAvailable } from
 
 const $ = (id) => document.getElementById(id);
 const stabilityMonitor = installClientStabilityMonitor();
-const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "amaze-on", "spotty-fi", "mapguess"]);
+const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "amaze-on", "searchish", "spotty-fi", "mapguess"]);
 const CATALOG_TO_ROUTE = Object.freeze({ amazeon: "amaze-on", spottyfi: "spotty-fi" });
 const LAUNCHER_SITE_ORDER = Object.freeze([
   "wikiwhy",
@@ -37,9 +37,6 @@ const LAUNCHER_SITE_ORDER = Object.freeze([
 ]);
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
 const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
-const LOCKED_PREVIEWS = Object.freeze({
-  searchish: "/walkthroughs/previews/search-ish-current_p1.png",
-});
 const requestedSiteId = new URLSearchParams(location.search).get("site");
 let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
   ? getPlayableWalkthrough(requestedSiteId)
@@ -90,6 +87,7 @@ const SITE_PORTRAITS = Object.freeze({
   yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  searchish: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-evidence", completion: "amy-supportive" }),
   "spotty-fi": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
   mapguess: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
 });
@@ -321,7 +319,7 @@ function renderLauncher() {
     else card.setAttribute("aria-disabled", "true");
     const preview = document.createElement("img");
     preview.className = "preview";
-    preview.src = playable ? getPlayableWalkthrough(routeId).initialFrame : LOCKED_PREVIEWS[site.id];
+    preview.src = playable ? getPlayableWalkthrough(routeId).initialFrame : site.previewImage;
     preview.alt = "";
     const copy = document.createElement("div");
     copy.className = "card-copy";

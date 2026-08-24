@@ -11,9 +11,10 @@ const expected = Object.freeze({
   "amaze-on": 11,
   "spotty-fi": 10,
   mapguess: 8,
+  searchish: 10,
 });
 
-assert.equal(PUBLIC_DOMAIN_CAMPAIGN_PASSAGE_COUNT, 44);
+assert.equal(PUBLIC_DOMAIN_CAMPAIGN_PASSAGE_COUNT, 54);
 for (const [siteId, count] of Object.entries(expected)) {
   const records = PUBLIC_DOMAIN_CAMPAIGN_PASSAGES[siteId];
   assert.equal(records.length, count, `${siteId}: passage count`);
@@ -30,5 +31,7 @@ for (const [siteId, count] of Object.entries(expected)) {
     }
   }
 }
+
+assert.equal(PUBLIC_DOMAIN_CAMPAIGN_PASSAGES.searchish[6].source.translator, "John Veitch", "searchish-07: translation metadata");
 
 console.log(`Validated ${PUBLIC_DOMAIN_CAMPAIGN_PASSAGE_COUNT} public-domain passages and ${PUBLIC_DOMAIN_CAMPAIGN_PASSAGE_COUNT * 3} vocabulary cards.`);

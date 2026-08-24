@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="1440" height="900" viewBox="0 0 1440 900" data-shell-reference-sha256="48b554d3dd1e360402f99950c90006d7b2a2ed1ccdd96ab6616fff76ca954211" data-site="searchish" data-sequence-version="3"><sodipodi:namedview pagecolor="#BDBDBD"><inkscape:page x="0" y="0" width="1440" height="900" inkscape:label="Answer and ads crowd out the search"/><inkscape:page x="1480" y="0" width="1440" height="900" inkscape:label="AI overview corrected"/><inkscape:page x="2960" y="0" width="1440" height="900" inkscape:label="AI overview made optional"/><inkscape:page x="4440" y="0" width="1440" height="900" inkscape:label="Paid placement labeled"/><inkscape:page x="5920" y="0" width="1440" height="900" inkscape:label="Library result restored"/><inkscape:page x="7400" y="0" width="1440" height="900" inkscape:label="Neighborhood bookstore restored"/><inkscape:page x="8880" y="0" width="1440" height="900" inkscape:label="Useful search hierarchy restored"/><inkscape:page x="10360" y="0" width="1440" height="900" inkscape:label="Auto finishes the search"/><inkscape:page x="11840" y="0" width="1440" height="900" inkscape:label="Lock in the search repair"/><inkscape:page x="13320" y="0" width="1440" height="900" inkscape:label="AI answer corrected"/><inkscape:page x="14800" y="0" width="1440" height="900" inkscape:label="AI made optional"/><inkscape:page x="16280" y="0" width="1440" height="900" inkscape:label="Real options restored"/><inkscape:page x="17760" y="0" width="1440" height="900" inkscape:label="Search control restored"/><inkscape:page x="19240" y="0" width="1440" height="900" inkscape:label="Search repair secured"/></sodipodi:namedview><defs>
+    <linearGradient id="desktopGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#087f86"/><stop offset="1" stop-color="#00646b"/>
+    </linearGradient>
+    <linearGradient id="titleGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#053b70"/><stop offset="0.58" stop-color="#00578d"/><stop offset="1" stop-color="#00305e"/>
+    </linearGradient>
+    <linearGradient id="buttonGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f2eb"/><stop offset="1" stop-color="#c8c6bc"/>
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#db2b22"/><stop offset="1" stop-color="#a70f0a"/>
+    </linearGradient>
+    <linearGradient id="spectrumGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a42db"/><stop offset="0.23" stop-color="#477bc5"/><stop offset="0.48" stop-color="#f3d11c"/><stop offset="0.67" stop-color="#ffd821"/><stop offset="0.84" stop-color="#a5a6a1"/><stop offset="1" stop-color="#686b6c"/>
+    </linearGradient>
+    <pattern id="desktopHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#003b40" stroke-opacity="0.13" stroke-width="2"/>
+    </pattern>
+    <pattern id="redHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity="0.13" stroke-width="3"/>
+    </pattern>
+    <filter id="windowShadow" x="-10%" y="-10%" width="125%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="4" dy="5" result="offset"/>
+      <feFlood flood-color="#001f22" flood-opacity="0.55" result="color"/>
+      <feComposite in="color" in2="offset" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="grayscale" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="softPaper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence baseFrequency="0.8" numOctaves="2" seed="12" type="fractalNoise" result="noise"/>
+      <feColorMatrix in="noise" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .035 0" result="grain"/>
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+    </filter>
+    <clipPath id="dogCardClip"><rect x="730" y="216" width="152" height="174" rx="2"/></clipPath>
+
+    <g id="windowButton">
+      <rect width="27" height="25" fill="url(#buttonGradient)" stroke="#ffffff" stroke-width="1"/>
+      <path d="M1 24H26V1" fill="none" stroke="#66645f" stroke-width="2"/>
+    </g>
+    <g id="desktopComputer">
+      <path d="M17 6h39v31H17z" fill="#dfddd4" stroke="#34393a" stroke-width="2"/>
+      <path d="M21 10h31v21H21z" fill="#173f48" stroke="#7e8d8e"/><path d="M26 13h21v14H26z" fill="#9ec3c0"/>
+      <path d="M28 38h17l4 8H23z" fill="#c9c7bd" stroke="#34393a"/><path d="M13 47h48v7H13z" fill="#e3e1d8" stroke="#34393a"/>
+    </g>
+    <g id="desktopFloppy">
+      <rect x="13" y="3" width="48" height="52" rx="3" fill="#d6d5cb" stroke="#253237" stroke-width="2"/>
+      <rect x="21" y="3" width="30" height="18" fill="#26353d"/><rect x="25" y="5" width="17" height="13" fill="#e8e6df"/>
+      <rect x="21" y="31" width="32" height="21" fill="#f1f0ea" stroke="#6f7475"/><rect x="26" y="36" width="22" height="2" fill="#869296"/><rect x="26" y="42" width="22" height="2" fill="#869296"/>
+    </g>
+    <g id="desktopTrash">
+      <path d="M19 13h40l-4 43H23z" fill="#b9b8af" stroke="#303637" stroke-width="2"/><path d="M15 10h48v6H15z" fill="#d8d6cd" stroke="#303637" stroke-width="2"/>
+      <path d="M26 20v29M36 20v29M46 20v29" stroke="#6d6e69" stroke-width="3"/>
+      <path d="M23 8c4-8 9-4 12 0 3-8 9-5 13 0" fill="#dedbd1" stroke="#303637"/>
+    </g>
+    <g id="microphoneIcon">
+      <rect x="7" y="0" width="12" height="25" rx="6" fill="#2b7c88" stroke="#071f43" stroke-width="2"/><path d="M3 14c0 13 20 13 20 0M13 27v10M7 37h12" fill="none" stroke="#071f43" stroke-width="2"/>
+    </g>
+
+    <g id="sharedShell">
+      <rect width="1440" height="900" fill="url(#desktopGradient)"/>
+      <rect width="1440" height="900" fill="url(#desktopHatch)"/>
+
+      <g class="desktop-icon" transform="translate(10 72)"><use href="#desktopComputer"/><text x="37" y="72" text-anchor="middle">MY</text><text x="37" y="93" text-anchor="middle">COMPUTER</text></g>
+      <g class="desktop-icon" transform="translate(10 245)"><use href="#desktopFloppy"/><text x="37" y="73" text-anchor="middle">FLOPPY</text><text x="37" y="94" text-anchor="middle">DISK</text></g>
+      <g class="desktop-icon" transform="translate(10 418)"><use href="#desktopTrash"/><text x="37" y="76" text-anchor="middle">TRASH</text></g>
+
+      <g filter="url(#windowShadow)">
+        <rect x="105" y="18" width="810" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
+        <text x="126" y="46" class="window-title">www.wikiwhy.com</text>
+        <use href="#windowButton" x="817" y="26"/><use href="#windowButton" x="848" y="26"/><use href="#windowButton" x="879" y="26"/>
+        <path d="M825 43h11" stroke="#191919" stroke-width="3"/><rect x="855" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m886 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="109" y="56" width="802" height="714" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <image href="../../2026-08-15/wikiwhy-inkscape-spike/assets/wikiwhy-globe.png" x="126" y="67" width="72" height="72" preserveAspectRatio="xMidYMid meet" filter="url(#grayscale)"/>
+        <text x="208" y="96" class="brand-title" style="font-size:19px">WIKIWHY</text>
+        <text x="208" y="116" class="tiny-caps">INTERNET ENCYCLOPEDIA</text>
+        <text x="782" y="83" class="tiny">Create account</text><text x="865" y="83" class="tiny">Log in</text>
+
+        <line x1="109" y1="146" x2="222" y2="146" stroke="#6284a3"/>
+        <g class="tab"><rect x="224" y="121" width="73" height="42"/><text x="260" y="148">Article</text></g>
+        <g class="tab"><rect x="302" y="121" width="68" height="42"/><text x="336" y="148">Talk</text></g>
+        <g class="tab selected"><rect x="375" y="121" width="73" height="42"/><text x="411" y="148">Read</text></g>
+        <g class="tab"><rect x="453" y="121" width="108" height="42"/><text x="507" y="148">View source</text></g>
+        <g class="tab history-base"><rect x="566" y="121" width="86" height="42"/><text x="609" y="148">History</text></g>
+        <rect x="674" y="119" width="218" height="37" rx="3" fill="#fbfaf7" stroke="#53708b" stroke-width="1.5"/>
+        <text x="689" y="143" class="tiny">Search WikiWhy</text><circle cx="864" cy="136" r="7" fill="none" stroke="#172530" stroke-width="2"/><path d="m869 141 8 8" stroke="#172530" stroke-width="2"/>
+
+        <line x1="224" y1="163" x2="224" y2="770" stroke="#7b9ab7"/>
+        <g class="sidebar-text"><text x="127" y="187">Main page</text><text x="127" y="211">Contents</text><text x="127" y="235">Current events</text><text x="127" y="259">Random article</text><text x="127" y="283">About WikiWhy</text><text x="127" y="307">Community portal</text><text x="127" y="331">Recent changes</text><text x="127" y="355">Contact page</text><line x1="124" y1="375" x2="211" y2="375" stroke="#7595ae"/><text x="127" y="400" fill="#222">Tools</text><text x="127" y="424">What links here</text><text x="127" y="448">Related changes</text><text x="127" y="472">Upload file</text><text x="127" y="496">Special pages</text></g>
+        <line x1="109" y1="770" x2="911" y2="770" stroke="#687f94"/>
+        <rect x="109" y="770" width="802" height="68" fill="#f1f0ea"/>
+        <g transform="translate(128 802)"><circle cx="12" cy="12" r="10" fill="none" stroke="#163c63" stroke-width="2"/><path d="m19 19 8 8" stroke="#163c63" stroke-width="3"/></g>
+        <text x="168" y="823" class="meter-label">SOURCE REPAIR</text>
+        <rect x="368" y="804" width="250" height="20" rx="2" fill="#f8f8f5" stroke="#5b7184" stroke-width="1.5"/>
+
+        <rect x="935" y="18" width="480" height="824" rx="4" fill="#f8f7f2" stroke="#3c4242" stroke-width="4"/>
+        <rect x="939" y="22" width="472" height="34" fill="url(#titleGradient)"/>
+        <text x="956" y="46" class="window-title">READING COMPANION</text>
+        <use href="#windowButton" x="1317" y="26"/><use href="#windowButton" x="1348" y="26"/><use href="#windowButton" x="1379" y="26"/>
+        <path d="M1325 43h11" stroke="#191919" stroke-width="3"/><rect x="1355" y="32" width="13" height="13" fill="none" stroke="#222" stroke-width="2"/><path d="m1386 33 13 13m0-13-13 13" stroke="#222" stroke-width="2"/>
+        <rect x="939" y="56" width="472" height="532" fill="#fbfaf6" filter="url(#softPaper)"/>
+        <text x="962" y="558" class="tiny-caps">PASSAGE PROGRESS</text>
+        <rect x="962" y="568" width="400" height="15" rx="2" fill="#f8f8f5" stroke="#5b7184"/>
+        <line x1="939" y1="588" x2="1411" y2="588" stroke="#6e8294"/>
+        <g transform="translate(962 607)"><use href="#microphoneIcon"/><text x="0" y="53" class="listening">LISTENING</text></g>
+        <rect x="1178" y="614" width="88" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1222" y="637" class="button-text" text-anchor="middle">PAUSE</text>
+        <rect x="1277" y="614" width="110" height="34" fill="url(#buttonGradient)" stroke="#61778b"/><text x="1332" y="637" class="button-text" text-anchor="middle">FINISH NOW</text>
+        <line x1="939" y1="670" x2="1411" y2="670" stroke="#6e8294"/>
+        <rect x="939" y="671" width="472" height="43" fill="url(#titleGradient)"/>
+        <text x="955" y="699" class="quick-title">QUICK CHECK — OPENS AFTER READING</text><path d="m1383 687 11 0-5.5 8z" fill="#fff"/>
+        <rect x="958" y="735" width="434" height="70" fill="#fbfaf7" stroke="#a9aaa4" stroke-dasharray="7 5"/>
+        <text x="982" y="778" class="placeholder">★   RESULTS AFTER QUICK CHECK</text>
+      </g>
+
+      <g class="taskbar">
+        <rect x="0" y="854" width="1440" height="46" fill="#d6d4ca" stroke="#f4f2eb" stroke-width="2"/>
+        <g class="task-button"><rect x="6" y="860" width="96" height="33"/><text x="54" y="882" text-anchor="middle">START</text></g>
+        <g class="task-button"><rect x="111" y="860" width="192" height="33"/><circle cx="130" cy="876" r="7" fill="#32677a" stroke="#17282d"/><text x="146" y="882">WIKIWHY</text></g>
+        <g class="task-button"><rect x="312" y="860" width="216" height="33"/><path d="M327 870h12v13h-12zm3 0v13" fill="none" stroke="#4b5657"/><text x="349" y="882">READING COMPANION</text></g>
+        <text x="720" y="882" class="taskbar-title" text-anchor="middle">INTERNET RECOVERY OS</text>
+        <g transform="translate(1262 870) scale(.62)" stroke="#17272b" fill="none"><path d="m0 10 8 0 9-7v22l-9-7H0z" fill="#626b6c"/><path d="M22 7q8 7 0 14M27 3q13 11 0 22"/></g>
+        <g transform="translate(1308 867)" fill="#18863c"><rect x="0" y="15" width="5" height="8"/><rect x="8" y="11" width="5" height="12"/><rect x="16" y="6" width="5" height="17"/><rect x="24" y="1" width="5" height="22"/></g>
+        <text x="1405" y="882" class="taskbar-clock" text-anchor="end">10:24 AM</text>
+      </g>
+    </g>
+  <pattern id="siHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="10" stroke="#C5251E" stroke-opacity=".25" stroke-width="3"/></pattern></defs><style>
+    .window-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:18px;font-weight:700;fill:#fff;letter-spacing:.2px}
+    .brand-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:15px;font-weight:700;fill:#10151a;letter-spacing:.3px}
+    .tiny{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;fill:#15191b}.tiny-caps{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;font-weight:600;fill:#152335;letter-spacing:.3px}
+    .tab rect{fill:#f4f2ec;stroke:#6183a2;stroke-width:1.3}.tab text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12.5px;fill:#161a1b;text-anchor:middle}.tab.selected rect{stroke:#1553dd;stroke-width:2}.tab.selected text{fill:#0d45c9}
+    .sidebar-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11.5px;fill:#0750c4}.desktop-icon{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#fff;letter-spacing:.2px}
+    .phase-small{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12px;fill:#17232b}.phase-label{font-weight:700}.meter-label{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#15243b}.button-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:13px;font-weight:600;fill:#142649}
+    .listening{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12.5px;font-weight:700;fill:#16813b}.quick-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#fff;letter-spacing:.2px}.placeholder{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#888}
+    .task-button rect{fill:url(#buttonGradient);stroke:#6d6d67;stroke-width:1.3}.task-button text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;font-weight:600;fill:#15191b}.taskbar-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#1b2224;letter-spacing:.4px}.taskbar-clock{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#1b2224}
+    .article-heading{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:27px;font-weight:700;fill:#141a1c;letter-spacing:.1px}.article-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#171b1d}.article-body-small{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12px;fill:#171b1d}.reading-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;fill:#151a1e}.rail-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:13px;font-weight:700;fill:#17202a}.rail-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11px;fill:#161a1b}.rule-banner{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:22px;font-weight:700;fill:#fff;letter-spacing:.2px}.certainty-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:24px;font-weight:700;fill:#C5251E;letter-spacing:.3px}.corrupt-note{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;font-weight:700;fill:#C5251E}
+  
+.si-task,.si-logo,.si-query,.si-nav,.si-chip,.si-kicker,.si-ai-title,.si-ai-title-small,.si-body,.si-small,.si-source,.si-url,.si-link,.si-link-small,.si-online-title,.si-dot,.si-rank,.si-count,.si-view-more,.si-favicon-pg,.si-ad-tiny,.si-paid-label,.si-store-title,.si-result-title,.si-price,.si-edition-price,.si-cover,.si-cover-big,.si-cover-small,.si-auto-title,.si-auto-sub,.si-auto-button,.si-meter,.si-status,.si-lock-title,.si-lock-label,.si-lock-mark{font-family:'Chalkboard SE','Comic Sans MS',sans-serif}.si-task{font-size:14px;font-weight:600;fill:#15191B}.si-logo{font-size:25px;font-weight:700}.si-query{font-size:14px;fill:#283641}.si-red{fill:#C5251E;font-weight:700}.si-nav{font-size:9px;fill:#34424D}.si-chip{font-size:8px;font-weight:700;fill:#45535E}.si-kicker{font-size:12px;font-weight:700}.si-ai-title{font-size:22px;font-weight:700}.si-ai-title-small{font-size:17px;font-weight:700}.si-body{font-size:12px;fill:#202B34}.si-small{font-size:10px;fill:#45535E}.si-source{font-size:9px;font-weight:700}.si-url{font-size:9px;fill:#536573}.si-link{font-size:15px;fill:#245EAD}.si-link-small{font-size:11px;fill:#245EAD;text-decoration:underline}.si-online-title{font-size:12px;font-weight:700;fill:#245EAD}.si-dot{font-size:12px;fill:#60717E}.si-rank{font-size:11px;font-weight:700;fill:#fff}.si-count{font-size:9px;fill:#68747C}.si-view-more{font-size:10px;font-weight:700;fill:#516370}.si-favicon-pg{font-size:8px;font-weight:700;fill:#A53C35}.si-ad-tiny{font-size:7px}.si-paid-label{font-size:9px;font-weight:700;fill:#fff}.si-store-title{font-size:13px;font-weight:700;fill:#27323B}.si-result-title{font-size:15px;font-weight:700;fill:#27323B}.si-price{font-size:13px;font-weight:700;fill:#793D2A}.si-edition-price{font-size:9px;font-weight:700;fill:#793D2A}.si-cover{font-size:7px;font-weight:700;fill:#fff}.si-cover-big{font-size:12px;font-weight:700;fill:#fff}.si-cover-small{font-size:5px;fill:#fff}.si-auto-title{font-size:24px;font-weight:700}.si-auto-sub{font-size:15px;font-weight:700}.si-auto-button{font-size:13px;font-weight:700}.si-meter{font-size:13px;font-weight:700}.si-status{font-size:8px;font-weight:700}.si-lock-title{font-size:18px;font-weight:700;fill:#fff}.si-lock-label{font-size:11px;font-weight:700}.si-lock-mark{font-size:14px;font-weight:700}</style><g id="page-initial" transform="translate(0 0)" inkscape:groupmode="layer" inkscape:label="Answer and ads crowd out the search" data-run="first" data-phase="first-run" data-site-progress="0" data-passage-progress="50" data-visual-delta="0"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="crowded"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="corrupt">
+    <rect x="129" y="160" width="762" height="162" rx="10" fill="#F5D8D6" stroke="#C5251E" stroke-width="2"/>
+    <text x="151" y="185" class="si-kicker" fill="#C5251E">✦ AI OVERVIEW</text>
+    <text x="151" y="214" class="si-ai-title" fill="#C5251E">I CAN HELP WITH THE BOOK.</text>
+    <text x="151" y="241" class="si-body">You asked for a print copy. I can summarize it instead.</text>
+    <text x="151" y="264" class="si-body">Huckleberry Finn follows a boy traveling on the Mississippi River.</text>
+    <text x="151" y="287" class="si-body">There is a raft, a journey, and many complicated adventures...</text>
+    
+    <image href="assets/searchish-ai-river-book-v1.jpg" x="653" y="172" width="214" height="132" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="653" y="172" width="214" height="132" rx="7" fill="none" stroke="#C5251E" stroke-width="1.5"/>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="corrupt">
+    <rect x="129" y="334" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#C5251E" stroke-width="2"/>
+    <text x="146" y="352" class="si-ad-tiny" fill="#C5251E">ad</text>
+    <text x="147" y="365" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="396" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="421" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="450" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="471" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="368" width="266" height="93" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="470" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="470" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="470" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="491" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="515" r="13" fill="#3274B9"/><path d="M144 509q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 511v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="509" class="si-source" fill="#C5251E">CITY LIBRARY</text>
+    <text x="873" y="509" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="534" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="554" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="575" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="599" r="13" fill="#D87835"/><path d="M145 597h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="593" class="si-source" fill="#C5251E">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="593" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="618" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="638" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">0%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="0" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">AI and paid products hide useful results.</text><text x="964" y="150" class="reading-body">The search itself is still visible.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-overview-corrected" transform="translate(1480 0)" inkscape:groupmode="layer" inkscape:label="AI overview corrected" data-run="first" data-phase="first-run" data-site-progress="17" data-passage-progress="50" data-visual-delta="1"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="crowded"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="160" width="762" height="162" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="185" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <text x="151" y="214" class="si-ai-title" fill="#23364A">ADVENTURES OF HUCKLEBERRY FINN</text>
+    <text x="151" y="241" class="si-body">A novel by Mark Twain, published in the 1880s.</text>
+    <text x="151" y="264" class="si-body">Print copies are available from libraries and bookstores.</text>
+    
+    <text x="151" y="289" class="si-source" fill="#1F6034">SOURCES: LIBRARY CATALOG · PUBLISHER HISTORY</text>
+    <image href="assets/searchish-ai-river-book-v1.jpg" x="653" y="172" width="214" height="132" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="653" y="172" width="214" height="132" rx="7" fill="none" stroke="#2F8A49" stroke-width="1.5"/>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="corrupt">
+    <rect x="129" y="334" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#C5251E" stroke-width="2"/>
+    <text x="146" y="352" class="si-ad-tiny" fill="#C5251E">ad</text>
+    <text x="147" y="365" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="396" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="421" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="450" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="471" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="368" width="266" height="93" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="470" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="470" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="470" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="491" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="515" r="13" fill="#3274B9"/><path d="M144 509q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 511v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="509" class="si-source" fill="#C5251E">CITY LIBRARY</text>
+    <text x="873" y="509" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="534" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="554" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="575" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="599" r="13" fill="#D87835"/><path d="M145 597h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="593" class="si-source" fill="#C5251E">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="593" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="618" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="638" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">17%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="128" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="17"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">One part of the page has been repaired.</text><text x="964" y="150" class="reading-body">The remaining red evidence needs attention.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-overview-optional" transform="translate(2960 0)" inkscape:groupmode="layer" inkscape:label="AI overview made optional" data-run="first" data-phase="first-run" data-site-progress="33" data-passage-progress="50" data-visual-delta="2"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ai-shrunk"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="corrupt">
+    <rect x="129" y="226" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#C5251E" stroke-width="2"/>
+    <text x="146" y="244" class="si-ad-tiny" fill="#C5251E">ad</text>
+    <text x="147" y="257" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="288" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="313" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="342" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="363" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="260" width="266" height="93" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="362" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="362" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="362" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="383" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="407" r="13" fill="#3274B9"/><path d="M144 401q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 403v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="401" class="si-source" fill="#C5251E">CITY LIBRARY</text>
+    <text x="873" y="401" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="426" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="446" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="467" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="491" r="13" fill="#D87835"/><path d="M145 489h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="485" class="si-source" fill="#C5251E">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="485" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="510" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="530" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="free-online-results" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.22">
+    <rect x="129" y="551" width="762" height="100" rx="7" fill="#fff" stroke="#C5251E"/>
+    <text x="151" y="569" class="si-source" fill="#C5251E">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="595" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="599" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="590" class="si-online-title">Project Gutenberg</text><text x="177" y="606" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="598" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="616" x2="875" y2="616" stroke="#CAD7E1"/>
+    <circle cx="154" cy="635" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 630h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="631" class="si-online-title">Internet Archive</text><text x="177" y="647" class="si-url">archive.org/details</text>
+    <text x="848" y="639" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">33%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="248" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="33"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">One part of the page has been repaired.</text><text x="964" y="150" class="reading-body">The remaining red evidence needs attention.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-paid-labeled" transform="translate(4440 0)" inkscape:groupmode="layer" inkscape:label="Paid placement labeled" data-run="first" data-phase="first-run" data-site-progress="50" data-passage-progress="50" data-visual-delta="2"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ai-shrunk"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="226" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="238" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="256" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="257" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="288" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="313" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="342" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="363" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="260" width="266" height="93" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="362" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="362" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="362" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="383" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="407" r="13" fill="#3274B9"/><path d="M144 401q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 403v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="401" class="si-source" fill="#C5251E">CITY LIBRARY</text>
+    <text x="873" y="401" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="426" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="446" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="467" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="491" r="13" fill="#D87835"/><path d="M145 489h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="485" class="si-source" fill="#C5251E">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="485" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="510" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="530" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="free-online-results" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.22">
+    <rect x="129" y="551" width="762" height="100" rx="7" fill="#fff" stroke="#C5251E"/>
+    <text x="151" y="569" class="si-source" fill="#C5251E">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="595" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="599" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="590" class="si-online-title">Project Gutenberg</text><text x="177" y="606" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="598" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="616" x2="875" y2="616" stroke="#CAD7E1"/>
+    <circle cx="154" cy="635" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 630h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="631" class="si-online-title">Internet Archive</text><text x="177" y="647" class="si-url">archive.org/details</text>
+    <text x="848" y="639" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">50%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="376" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="50"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">One part of the page has been repaired.</text><text x="964" y="150" class="reading-body">The remaining red evidence needs attention.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-library-restored" transform="translate(5920 0)" inkscape:groupmode="layer" inkscape:label="Library result restored" data-run="first" data-phase="first-run" data-site-progress="67" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="options-returning"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="226" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="238" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="256" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="257" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="288" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="313" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="342" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="363" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="260" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="362" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="362" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="362" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="383" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="407" r="13" fill="#3274B9"/><path d="M144 401q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 403v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="401" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="401" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="426" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="446" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="467" width="762" height="100" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="485" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="511" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="515" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="506" class="si-online-title">Project Gutenberg</text><text x="177" y="522" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="514" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="532" x2="875" y2="532" stroke="#CAD7E1"/>
+    <circle cx="154" cy="551" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 546h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="547" class="si-online-title">Internet Archive</text><text x="177" y="563" class="si-url">archive.org/details</text>
+    <text x="848" y="555" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="corrupt" opacity="0.27">
+    <rect x="129" y="579" width="762" height="72" rx="7" fill="#fff" stroke="#C5251E" stroke-width="1"/>
+    <circle cx="153" cy="603" r="13" fill="#D87835"/><path d="M145 601h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="597" class="si-source" fill="#C5251E">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="597" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="622" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="642" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">67%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="504" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="67"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">One part of the page has been repaired.</text><text x="964" y="150" class="reading-body">The remaining red evidence needs attention.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-bookstore-restored" transform="translate(7400 0)" inkscape:groupmode="layer" inkscape:label="Neighborhood bookstore restored" data-run="first" data-phase="first-run" data-site-progress="83" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="options-returning"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="226" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="238" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="256" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="257" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="288" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="313" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="342" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="363" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="260" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="362" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="362" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="362" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="383" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="407" r="13" fill="#3274B9"/><path d="M144 401q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 403v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="401" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="401" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="426" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="446" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g><g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="467" width="762" height="100" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="485" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="511" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="515" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="506" class="si-online-title">Project Gutenberg</text><text x="177" y="522" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="514" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="532" x2="875" y2="532" stroke="#CAD7E1"/>
+    <circle cx="154" cy="551" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 546h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="547" class="si-online-title">Internet Archive</text><text x="177" y="563" class="si-url">archive.org/details</text>
+    <text x="848" y="555" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g><g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="579" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="603" r="13" fill="#D87835"/><path d="M145 601h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="597" class="si-source" fill="#1F6034">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="597" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="622" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="642" class="si-small">Local pickup · compare editions in person</text>
+  </g><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">83%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="624" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="83"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">One part of the page has been repaired.</text><text x="964" y="150" class="reading-body">The remaining red evidence needs attention.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-hierarchy-restored" transform="translate(8880 0)" inkscape:groupmode="layer" inkscape:label="Useful search hierarchy restored" data-run="first" data-phase="first-run" data-site-progress="100" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ranked">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g>
+    <g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="226" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="250" r="13" fill="#3274B9"/><path d="M144 244q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 246v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="244" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="244" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="269" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="289" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g>
+    <g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="308" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="332" r="13" fill="#D87835"/><path d="M145 330h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="326" class="si-source" fill="#1F6034">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="326" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="351" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="371" class="si-small">Local pickup · compare editions in person</text>
+  </g>
+    <g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="390" width="762" height="104" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="408" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="434" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="438" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="429" class="si-online-title">Project Gutenberg</text><text x="177" y="445" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="437" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="455" x2="875" y2="455" stroke="#CAD7E1"/>
+    <circle cx="154" cy="474" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 469h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="470" class="si-online-title">Internet Archive</text><text x="177" y="486" class="si-url">archive.org/details</text>
+    <text x="848" y="478" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g>
+    <g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="506" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="518" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="536" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="537" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="568" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="593" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="622" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="643" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="540" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="642" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="642" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="642" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g>
+    <g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#2F8A49">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#2F8A49">100%</text><rect x="126" y="732" width="752" height="25" fill="#EEF4EF" stroke="#2F8A49"/><rect x="126" y="732" width="752" height="25" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#2F8A49">SEARCH RESULTS RESTORED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The print-copy options now match the search.</text><text x="964" y="150" class="reading-body">Paid placement and AI help stay labeled.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-auto-overfix" transform="translate(10360 0)" inkscape:groupmode="layer" inkscape:label="Auto finishes the search" data-run="auto" data-phase="auto" data-site-progress="0" data-passage-progress="50" data-visual-delta="0"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="disabled">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#F1F3F4" stroke="#C5251E" stroke-width="2"/>
+    <text x="310" y="92" class="si-query si-red">AUTO ALREADY SEARCHED FOR YOU</text>
+    <circle cx="825" cy="87" r="12" fill="#F5D8D6"/><path d="M819 81l12 12m0-12-12 12" stroke="#C5251E" stroke-width="2"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-module="auto-answer" data-purpose="repair target" data-semantic-state="corrupt">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <rect x="129" y="160" width="762" height="474" rx="11" fill="#F5D8D6" stroke="#C5251E" stroke-width="3"/>
+    <text x="151" y="190" class="si-kicker" fill="#C5251E">AUTO SEARCH · BLUETOOTH ENABLED</text>
+    <text x="151" y="229" class="si-auto-title" fill="#C5251E">HUCKLEBERRY FINN SHORTCUT FOUND.</text>
+    <text x="151" y="258" class="si-body">Auto found the fastest printed way to get the main ideas.</text>
+    <text x="151" y="281" class="si-body">One answer · one bookstore · one click.</text>
+    <rect x="151" y="298" width="718" height="218" rx="8" fill="#FFF8EE" stroke="#C5251E" stroke-width="2"/>
+    <rect x="169" y="314" width="142" height="24" rx="12" fill="#E8A928"/><text x="240" y="331" class="si-paid-label" text-anchor="middle">SPONSORED · PAID</text>
+    <text x="169" y="368" class="si-auto-sub" fill="#C5251E">HUCKLEBERRY FINN STUDY NOTES</text>
+    <text x="169" y="397" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="169" y="423" class="si-body">Fast summary edition · delivery tomorrow</text>
+    <text x="169" y="450" class="si-price">$16.99</text>
+    <rect x="169" y="468" width="270" height="31" rx="16" fill="#C5251E"/><text x="304" y="489" class="si-paid-label" text-anchor="middle">AUTO OPENED THIS OPTION</text>
+    <image href="assets/searchish-study-notes-v1.jpg" x="641" y="314" width="194" height="186" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="641" y="314" width="194" height="186" rx="7" fill="none" stroke="#C5251E" stroke-width="1.5"/>
+    <rect x="151" y="528" width="718" height="44" rx="6" fill="#fff" stroke="#C5251E"/><text x="171" y="557" class="si-auto-sub" fill="#C5251E">OTHER RESULTS (47) · COLLAPSED</text>
+    <rect x="151" y="584" width="718" height="32" rx="6" fill="#C5251E"/><text x="510" y="606" class="si-auto-button" text-anchor="middle">ONE BEST ANSWER · ZERO EXTRA SEARCHING</text>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">0%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="0" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">AUTO ANSWER OVERRIDE ACTIVE</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">Auto selected one answer.</text><text x="964" y="150" class="reading-body">Other book options nearly disappeared.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-lock-open" transform="translate(11840 0)" inkscape:groupmode="layer" inkscape:label="Lock in the search repair" data-run="lock" data-phase="lock-run" data-site-progress="0" data-passage-progress="50" data-visual-delta="0"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="disabled">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#F1F3F4" stroke="#C5251E" stroke-width="2"/>
+    <text x="310" y="92" class="si-query si-red">AUTO ALREADY SEARCHED FOR YOU</text>
+    <circle cx="825" cy="87" r="12" fill="#F5D8D6"/><path d="M819 81l12 12m0-12-12 12" stroke="#C5251E" stroke-width="2"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-module="auto-answer" data-purpose="repair target" data-semantic-state="corrupt">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <rect x="129" y="160" width="762" height="474" rx="11" fill="#F5D8D6" stroke="#C5251E" stroke-width="3"/>
+    <text x="151" y="190" class="si-kicker" fill="#C5251E">AUTO SEARCH · BLUETOOTH ENABLED</text>
+    <text x="151" y="229" class="si-auto-title" fill="#C5251E">HUCKLEBERRY FINN SHORTCUT FOUND.</text>
+    <text x="151" y="258" class="si-body">Auto found the fastest printed way to get the main ideas.</text>
+    <text x="151" y="281" class="si-body">One answer · one bookstore · one click.</text>
+    <rect x="151" y="298" width="718" height="218" rx="8" fill="#FFF8EE" stroke="#C5251E" stroke-width="2"/>
+    <rect x="169" y="314" width="142" height="24" rx="12" fill="#E8A928"/><text x="240" y="331" class="si-paid-label" text-anchor="middle">SPONSORED · PAID</text>
+    <text x="169" y="368" class="si-auto-sub" fill="#C5251E">HUCKLEBERRY FINN STUDY NOTES</text>
+    <text x="169" y="397" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="169" y="423" class="si-body">Fast summary edition · delivery tomorrow</text>
+    <text x="169" y="450" class="si-price">$16.99</text>
+    <rect x="169" y="468" width="270" height="31" rx="16" fill="#C5251E"/><text x="304" y="489" class="si-paid-label" text-anchor="middle">AUTO OPENED THIS OPTION</text>
+    <image href="assets/searchish-study-notes-v1.jpg" x="641" y="314" width="194" height="186" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="641" y="314" width="194" height="186" rx="7" fill="none" stroke="#C5251E" stroke-width="1.5"/>
+    <rect x="151" y="528" width="718" height="44" rx="6" fill="#fff" stroke="#C5251E"/><text x="171" y="557" class="si-auto-sub" fill="#C5251E">OTHER RESULTS (47) · COLLAPSED</text>
+    <rect x="151" y="584" width="718" height="32" rx="6" fill="#C5251E"/><text x="510" y="606" class="si-auto-button" text-anchor="middle">ONE BEST ANSWER · ZERO EXTRA SEARCHING</text>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">0%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="0" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">AUTO ANSWER OVERRIDE ACTIVE</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">Auto selected one answer.</text><text x="964" y="150" class="reading-body">Other book options nearly disappeared.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><g data-module="lock-overlay" data-purpose="repair target" data-checked="0"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="#2F8A49"/><rect x="582" y="390" width="305" height="13" fill="#2F8A49"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text><rect x="606" y="408" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="428" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="428" class="si-lock-label" fill="#C5251E">FIX THE AI</text><rect x="606" y="455" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="475" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="475" class="si-lock-label" fill="#C5251E">MAKE AI OPTIONAL</text><rect x="606" y="502" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="522" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="522" class="si-lock-label" fill="#C5251E">SHOW REAL OPTIONS</text><rect x="606" y="549" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="569" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="569" class="si-lock-label" fill="#C5251E">KEEP THE SEARCH</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-ai-lock" transform="translate(13320 0)" inkscape:groupmode="layer" inkscape:label="AI answer corrected" data-run="lock" data-phase="lock-run" data-site-progress="25" data-passage-progress="50" data-visual-delta="1"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="disabled">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#F1F3F4" stroke="#C5251E" stroke-width="2"/>
+    <text x="310" y="92" class="si-query si-red">AUTO ALREADY SEARCHED FOR YOU</text>
+    <circle cx="825" cy="87" r="12" fill="#F5D8D6"/><path d="M819 81l12 12m0-12-12 12" stroke="#C5251E" stroke-width="2"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="auto-ai-corrected"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="160" width="762" height="162" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="185" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <text x="151" y="214" class="si-ai-title" fill="#23364A">ADVENTURES OF HUCKLEBERRY FINN</text>
+    <text x="151" y="241" class="si-body">A novel by Mark Twain, published in the 1880s.</text>
+    <text x="151" y="264" class="si-body">Print copies are available from libraries and bookstores.</text>
+    
+    <text x="151" y="289" class="si-source" fill="#1F6034">SOURCES: LIBRARY CATALOG · PUBLISHER HISTORY</text>
+    <image href="assets/searchish-ai-river-book-v1.jpg" x="653" y="172" width="214" height="132" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="653" y="172" width="214" height="132" rx="7" fill="none" stroke="#2F8A49" stroke-width="1.5"/>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="334" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="346" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="364" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="365" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="396" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="421" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="450" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="471" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="368" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="470" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="470" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="470" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><rect x="129" y="491" width="762" height="118" rx="8" fill="#F5D8D6" stroke="#C5251E" stroke-width="2"/><text x="151" y="527" class="si-auto-sub" fill="#C5251E">OTHER RESULTS (47) · STILL COLLAPSED</text><text x="151" y="557" class="si-body">The answer is accurate, but it still takes over the search.</text><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="594" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 602l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">25%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="188" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="25"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The search page is giving control back.</text><text x="964" y="150" class="reading-body">Read, then answer the quick check.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><g data-module="lock-overlay" data-purpose="repair target" data-checked="1"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="#2F8A49"/><rect x="582" y="390" width="305" height="13" fill="#2F8A49"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text><rect x="606" y="408" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="428" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="428" class="si-lock-label" fill="#1F6034">FIX THE AI</text><rect x="606" y="455" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="475" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="475" class="si-lock-label" fill="#C5251E">MAKE AI OPTIONAL</text><rect x="606" y="502" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="522" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="522" class="si-lock-label" fill="#C5251E">SHOW REAL OPTIONS</text><rect x="606" y="549" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="569" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="569" class="si-lock-label" fill="#C5251E">KEEP THE SEARCH</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-optional-lock" transform="translate(14800 0)" inkscape:groupmode="layer" inkscape:label="AI made optional" data-run="lock" data-phase="lock-run" data-site-progress="50" data-passage-progress="50" data-visual-delta="2"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="disabled">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#F1F3F4" stroke="#C5251E" stroke-width="2"/>
+    <text x="310" y="92" class="si-query si-red">AUTO ALREADY SEARCHED FOR YOU</text>
+    <circle cx="825" cy="87" r="12" fill="#F5D8D6"/><path d="M819 81l12 12m0-12-12 12" stroke="#C5251E" stroke-width="2"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="auto-ai-optional"><text x="131" y="153" class="si-count">About 1,240 results</text><g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g><g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="226" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="238" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="256" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="257" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="288" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="313" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="342" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="363" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="260" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="362" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="362" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="362" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g><rect x="129" y="383" width="762" height="150" rx="8" fill="#F5D8D6" stroke="#C5251E" stroke-width="2"/><text x="151" y="423" class="si-auto-sub" fill="#C5251E">OTHER RESULTS (47) · STILL COLLAPSED</text><text x="151" y="455" class="si-body">The useful choices are still below the paid result.</text><g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="510" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 518l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g></g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">50%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="376" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="50"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The search page is giving control back.</text><text x="964" y="150" class="reading-body">Read, then answer the quick check.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><g data-module="lock-overlay" data-purpose="repair target" data-checked="2"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="#2F8A49"/><rect x="582" y="390" width="305" height="13" fill="#2F8A49"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text><rect x="606" y="408" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="428" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="428" class="si-lock-label" fill="#1F6034">FIX THE AI</text><rect x="606" y="455" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="475" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="475" class="si-lock-label" fill="#1F6034">MAKE AI OPTIONAL</text><rect x="606" y="502" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="522" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="522" class="si-lock-label" fill="#C5251E">SHOW REAL OPTIONS</text><rect x="606" y="549" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="569" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="569" class="si-lock-label" fill="#C5251E">KEEP THE SEARCH</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-options-lock" transform="translate(16280 0)" inkscape:groupmode="layer" inkscape:label="Real options restored" data-run="lock" data-phase="lock-run" data-site-progress="75" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="disabled">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#F1F3F4" stroke="#C5251E" stroke-width="2"/>
+    <text x="310" y="92" class="si-query si-red">AUTO ALREADY SEARCHED FOR YOU</text>
+    <circle cx="825" cy="87" r="12" fill="#F5D8D6"/><path d="M819 81l12 12m0-12-12 12" stroke="#C5251E" stroke-width="2"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ranked">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g>
+    <g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="226" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="250" r="13" fill="#3274B9"/><path d="M144 244q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 246v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="244" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="244" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="269" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="289" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g>
+    <g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="308" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="332" r="13" fill="#D87835"/><path d="M145 330h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="326" class="si-source" fill="#1F6034">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="326" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="351" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="371" class="si-small">Local pickup · compare editions in person</text>
+  </g>
+    <g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="390" width="762" height="104" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="408" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="434" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="438" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="429" class="si-online-title">Project Gutenberg</text><text x="177" y="445" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="437" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="455" x2="875" y2="455" stroke="#CAD7E1"/>
+    <circle cx="154" cy="474" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 469h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="470" class="si-online-title">Internet Archive</text><text x="177" y="486" class="si-url">archive.org/details</text>
+    <text x="848" y="478" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g>
+    <g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="506" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="518" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="536" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="537" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="568" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="593" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="622" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="643" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="540" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="642" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="642" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="642" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g>
+    <g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#C5251E">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#C5251E">75%</text><rect x="126" y="732" width="752" height="25" fill="url(#siHatch)" stroke="#C5251E"/><rect x="126" y="732" width="564" height="25" fill="#C5251E" data-role="site-progress-fill" data-percent="75"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#C5251E">RESULTS STILL CROWDED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The search page is giving control back.</text><text x="964" y="150" class="reading-body">Read, then answer the quick check.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><g data-module="lock-overlay" data-purpose="repair target" data-checked="3"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="#2F8A49"/><rect x="582" y="390" width="305" height="13" fill="#2F8A49"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text><rect x="606" y="408" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="428" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="428" class="si-lock-label" fill="#1F6034">FIX THE AI</text><rect x="606" y="455" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="475" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="475" class="si-lock-label" fill="#1F6034">MAKE AI OPTIONAL</text><rect x="606" y="502" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="522" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="522" class="si-lock-label" fill="#1F6034">SHOW REAL OPTIONS</text><rect x="606" y="549" width="29" height="29" rx="5" fill="#F5D8D6" stroke="#C5251E"/><text x="620" y="569" class="si-lock-mark" text-anchor="middle" fill="#C5251E">○</text><text x="651" y="569" class="si-lock-label" fill="#C5251E">KEEP THE SEARCH</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-search-lock" transform="translate(17760 0)" inkscape:groupmode="layer" inkscape:label="Search control restored" data-run="lock" data-phase="lock-run" data-site-progress="100" data-passage-progress="50" data-visual-delta="3"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ranked">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g>
+    <g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="226" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="250" r="13" fill="#3274B9"/><path d="M144 244q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 246v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="244" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="244" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="269" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="289" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g>
+    <g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="308" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="332" r="13" fill="#D87835"/><path d="M145 330h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="326" class="si-source" fill="#1F6034">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="326" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="351" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="371" class="si-small">Local pickup · compare editions in person</text>
+  </g>
+    <g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="390" width="762" height="104" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="408" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="434" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="438" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="429" class="si-online-title">Project Gutenberg</text><text x="177" y="445" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="437" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="455" x2="875" y2="455" stroke="#CAD7E1"/>
+    <circle cx="154" cy="474" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 469h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="470" class="si-online-title">Internet Archive</text><text x="177" y="486" class="si-url">archive.org/details</text>
+    <text x="848" y="478" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g>
+    <g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="506" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="518" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="536" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="537" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="568" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="593" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="622" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="643" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="540" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="642" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="642" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="642" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g>
+    <g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#2F8A49">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#2F8A49">100%</text><rect x="126" y="732" width="752" height="25" fill="#EEF4EF" stroke="#2F8A49"/><rect x="126" y="732" width="752" height="25" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#2F8A49">SEARCH RESULTS RESTORED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The search page is giving control back.</text><text x="964" y="150" class="reading-body">Read, then answer the quick check.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><g data-module="lock-overlay" data-purpose="repair target" data-checked="4"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="#2F8A49"/><rect x="582" y="390" width="305" height="13" fill="#2F8A49"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text><rect x="606" y="408" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="428" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="428" class="si-lock-label" fill="#1F6034">FIX THE AI</text><rect x="606" y="455" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="475" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="475" class="si-lock-label" fill="#1F6034">MAKE AI OPTIONAL</text><rect x="606" y="502" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="522" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="522" class="si-lock-label" fill="#1F6034">SHOW REAL OPTIONS</text><rect x="606" y="549" width="29" height="29" rx="5" fill="#2F8A49" stroke="#2F8A49"/><text x="620" y="569" class="si-lock-mark" text-anchor="middle" fill="#fff">✓</text><text x="651" y="569" class="si-lock-label" fill="#1F6034">KEEP THE SEARCH</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>
+<g id="page-secured" transform="translate(19240 0)" inkscape:groupmode="layer" inkscape:label="Search repair secured" data-run="secured" data-phase="secured" data-site-progress="100" data-passage-progress="50" data-visual-delta="0"><use href="#sharedShell"/><g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g><rect x="109" y="56" width="802" height="782" fill="#fff"/><g data-module="search-header" data-purpose="persistent parody cue" data-search-state="available">
+    <rect x="109" y="56" width="802" height="95" fill="#fff"/>
+    <text x="131" y="91" class="si-logo"><tspan fill="#4285F4">S</tspan><tspan fill="#EA4335">e</tspan><tspan fill="#FBBC05">a</tspan><tspan fill="#4285F4">r</tspan><tspan fill="#34A853">c</tspan><tspan fill="#EA4335">h</tspan><tspan fill="#25344A">-ish</tspan></text>
+    <rect x="288" y="66" width="570" height="42" rx="21" fill="#fff" stroke="#BCC2C8" stroke-width="2"/>
+    <text x="310" y="92" class="si-query ">print copy of Adventures of Huckleberry Finn</text>
+    <circle cx="824" cy="84" r="9" fill="none" stroke="#394854" stroke-width="3"/><line x1="831" y1="91" x2="840" y2="100" stroke="#394854" stroke-width="3"/>
+    <g class="si-nav"><text x="292" y="129">ALL</text><text x="341" y="129">SHOPPING</text><text x="418" y="129">BOOKS</text><text x="471" y="129">IMAGES</text><text x="532" y="129">NEARBY</text></g>
+    <line x1="288" y1="138" x2="858" y2="138" stroke="#D6DADD"/>
+  </g><g data-results-layout="ranked">
+    <text x="131" y="153" class="si-count">About 1,240 results</text>
+    <g data-module="ai-overview" data-purpose="repair target" data-semantic-state="repaired" data-collapsed="true">
+    <rect x="129" y="160" width="762" height="54" rx="10" fill="#F4F8FE" stroke="#2F8A49" stroke-width="2"/>
+    <text x="151" y="194" class="si-kicker" fill="#2F8A49">✦ AI OVERVIEW</text>
+    <rect x="742" y="172" width="126" height="30" rx="15" fill="#fff" stroke="#9BB0CA"/>
+    <text x="805" y="192" class="si-small" text-anchor="middle" fill="#416B9D">SHOW MORE</text>
+  </g>
+    <g data-module="library-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="226" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="250" r="13" fill="#3274B9"/><path d="M144 244q6-2 9 2q3-4 9-2v12q-6-2-9 2q-3-4-9-2zM153 246v12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="177" y="244" class="si-source" fill="#1F6034">CITY LIBRARY</text>
+    <text x="873" y="244" class="si-url" text-anchor="end">www.citylibrary.org/catalog</text>
+    <text x="177" y="269" class="si-link">Public Library — print copy available</text>
+    <text x="177" y="289" class="si-small">Free to borrow · reserve a copy · several editions</text>
+  </g>
+    <g data-module="bookstore-result" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="308" width="762" height="72" rx="7" fill="#DCEFDC" stroke="#2F8A49" stroke-width="2"/>
+    <circle cx="153" cy="332" r="13" fill="#D87835"/><path d="M145 330h16v9h-16zm-2 0 3-6h14l3 6m-12 2v7" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="177" y="326" class="si-source" fill="#1F6034">NEIGHBORHOOD BOOKS</text>
+    <text x="873" y="326" class="si-url" text-anchor="end">www.neighborhoodbooks.com</text>
+    <text x="177" y="351" class="si-link">Neighborhood Books — new and used copies</text>
+    <text x="177" y="371" class="si-small">Local pickup · compare editions in person</text>
+  </g>
+    <g data-module="free-online-results" data-purpose="repair target" data-semantic-state="repaired" opacity="1">
+    <rect x="129" y="390" width="762" height="104" rx="7" fill="#F3F8FD" stroke="#2F8A49"/>
+    <text x="151" y="408" class="si-source" fill="#1F6034">FREE ONLINE EDITIONS</text>
+    <circle cx="154" cy="434" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><text x="154" y="438" class="si-favicon-pg" text-anchor="middle">PG</text>
+    <text x="177" y="429" class="si-online-title">Project Gutenberg</text><text x="177" y="445" class="si-url">gutenberg.org/files</text>
+    <text x="848" y="437" class="si-small" text-anchor="end">Read online or print chapters</text>
+    <line x1="145" y1="455" x2="875" y2="455" stroke="#CAD7E1"/>
+    <circle cx="154" cy="474" r="13" fill="#F5F5F2" stroke="#A7ADB2"/><path d="M146 469h16l-8-5zm1 2h3v8h-3zm5 0h3v8h-3zm5 0h3v8h-3zm-10 10h18" fill="#232629"/>
+    <text x="177" y="470" class="si-online-title">Internet Archive</text><text x="177" y="486" class="si-url">archive.org/details</text>
+    <text x="848" y="478" class="si-small" text-anchor="end">Borrow or download available formats</text>
+  </g>
+    <g data-module="paid-results" data-purpose="repair target" data-semantic-state="repaired">
+    <rect x="129" y="506" width="762" height="145" rx="8" fill="#FFF9EF" stroke="#2F8A49" stroke-width="2"/>
+    <rect x="145" y="518" width="238" height="25" rx="12" fill="#E8A928"/><text x="264" y="536" class="si-paid-label" text-anchor="middle">SPONSORED PRODUCTS · PAID PLACEMENT</text>
+    <text x="402" y="537" class="si-store-title">Internet Mega Bookstore</text>
+    <text x="151" y="568" class="si-result-title">Adventures of Huckleberry Finn</text>
+    <text x="151" y="593" class="si-body">Three print editions · fastest shipping first</text>
+    <text x="151" y="622" class="si-price">Hardcover $18.99</text>
+    <text x="151" y="643" class="si-price">Paperback $24.99 · School edition $39.99</text>
+    <image data-module="edition-art" data-purpose="persistent parody cue" href="assets/searchish-edition-strip-v1.jpg" x="600" y="540" width="266" height="77" preserveAspectRatio="xMidYMid slice"/>
+    <text x="638" y="642" class="si-edition-price" text-anchor="middle">$18.99</text>
+    <text x="733" y="642" class="si-edition-price" text-anchor="middle">$24.99</text>
+    <text x="826" y="642" class="si-edition-price" text-anchor="middle">$39.99</text>
+  </g>
+    <g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="648" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 656l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>
+  </g><g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="#2F8A49">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="#2F8A49">100%</text><rect x="126" y="732" width="752" height="25" fill="#EEF4EF" stroke="#2F8A49"/><rect x="126" y="732" width="752" height="25" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/><text x="878" y="786" class="si-status" text-anchor="end" fill="#2F8A49">SEARCH RESULTS RESTORED</text></g><g data-module="reading-copy" data-purpose="persistent parody cue"><text x="964" y="112" class="reading-body">The search page is giving control back.</text><text x="964" y="150" class="reading-body">Read, then answer the quick check.</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g></svg>

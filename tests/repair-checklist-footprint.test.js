@@ -10,6 +10,7 @@ const REVIEWED_CHECKLISTS = Object.freeze([
   ["Yahuh", "../docs/design/screens/2026-08-16/yahuh-production/yahuh-anchor-master-v2.svg", "data-lock-overlay=\"true\""],
   ["ViewTube", "../docs/design/screens/2026-08-17/viewtube-production/viewtube-anchor-master-v2.svg", "data-lock-overlay=\"true\""],
   ["Amaze-On", "../docs/design/screens/2026-08-15/amaze-on-production/amaze-on-anchor-master-v1.svg", "data-overlay=\"repair-checklist\""],
+  ["Search-ish", "../docs/design/screens/2026-08-16/searchish-production/searchish-anchor-master-v3.svg", "data-module=\"lock-overlay\""],
   ["Spotty-Fi", "../docs/design/screens/2026-08-15/spotty-fi-production/spotty-fi-anchor-master-v1.svg", "data-overlay=\"act2-checklist\""],
   ["MapGuess", "../docs/design/screens/2026-08-22/mapguess-production/mapguess-anchor-master-v2.svg", "data-module=\"moving-target-overlay\""],
 ]);

@@ -118,7 +118,7 @@ async function completeSyntheticReadingAttempt(page) {
 async function exerciseAllMissionRoutes(page) {
   const results = [];
   await page.locator("#missionView [data-open-launcher]").click();
-  for (let index = 0; index < 9; index += 1) {
+  for (let index = 0; index < 10; index += 1) {
     const card = page.locator(".launcher-site.playable").nth(index);
     const name = await card.locator("h3").innerText();
     await card.click();
@@ -177,7 +177,7 @@ try {
   }
 
   const missionRoutes = await exerciseAllMissionRoutes(primary);
-  if (missionRoutes.length !== 9 || missionRoutes.some(({ passage, position }) => !passage || !/^1 of /iu.test(position))) {
+  if (missionRoutes.length !== 10 || missionRoutes.some(({ passage, position }) => !passage || !/^1 of /iu.test(position))) {
     failures.push("mission-routes: one or more playable missions did not reach its first passage");
   }
 
