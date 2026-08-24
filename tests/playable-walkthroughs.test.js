@@ -3,6 +3,8 @@ import test from "node:test";
 
 import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkthroughs.js";
 
+const assetPath = (source) => source.split("?", 1)[0];
+
 const expectations = Object.freeze({
   wikiwhy: Object.freeze({ count: 10, first: 6, secured: "_p7.png" }),
   threadit: Object.freeze({ count: 9, first: 6, secured: "_p14.png" }),
@@ -23,7 +25,7 @@ test("the nine finished missions have one visual advance per passage", () => {
     assert.equal(mission.repairFrames.length, expected.count, id);
     assert.equal(mission.phaseOneCount, expected.first, id);
     assert.match(mission.initialFrame, /^\/walkthroughs\//u);
-    assert.ok(mission.securedFrame.endsWith(expected.secured), id);
+    assert.ok(assetPath(mission.securedFrame).endsWith(expected.secured), id);
     assert.ok(mission.ottoLesson.length > 80, `${id} has a specific Otto lesson`);
   }
 });
@@ -50,25 +52,25 @@ test("every passage has authored lines and loopable comprehension choices", () =
 test("MapGuess preserves the approved repeated moving-target sequence", () => {
   const mission = PLAYABLE_WALKTHROUGHS.mapguess;
   assert.deepEqual(
-    mission.repairFrames.map((source) => Number(source.match(/_p(\d+)\.png$/u)?.[1])),
+    mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])),
     [2, 3, 4, 5, 8, 10, 12, 14],
   );
   assert.deepEqual(
-    Object.values(mission.transitionBeats).map(({ frame }) => Number(frame.match(/_p(\d+)\.png$/u)?.[1])),
+    Object.values(mission.transitionBeats).map(({ frame }) => Number(assetPath(frame).match(/_p(\d+)\.png$/u)?.[1])),
     [9, 11, 13],
   );
-  assert.equal(mission.superFrame.endsWith("_p6.png"), true);
-  assert.equal(mission.checklistFrame.endsWith("_p7.png"), true);
+  assert.equal(assetPath(mission.superFrame).endsWith("_p6.png"), true);
+  assert.equal(assetPath(mission.checklistFrame).endsWith("_p7.png"), true);
 });
 
 test("MyCorner preserves the reviewed twelve-state identity-check sequence", () => {
   const mission = PLAYABLE_WALKTHROUGHS.mycorner;
   assert.deepEqual(
-    mission.repairFrames.map((source) => Number(source.match(/_p(\d+)\.png$/u)?.[1])),
+    mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])),
     [2, 3, 4, 5, 8, 9, 10, 11, 12],
   );
-  assert.equal(mission.superFrame.endsWith("_p6.png"), true);
-  assert.equal(mission.checklistFrame.endsWith("_p7.png"), true);
+  assert.equal(assetPath(mission.superFrame).endsWith("_p6.png"), true);
+  assert.equal(assetPath(mission.checklistFrame).endsWith("_p7.png"), true);
   assert.equal(mission.passages.every(({ id }, index) => id === `mycorner-${String(index + 1).padStart(2, "0")}`), true);
   assert.equal(mission.passages.flatMap(({ challengingWords }) => challengingWords).every(({ audioSrc }) => audioSrc?.startsWith("/audio/mycorner/kokoro-heart/")), true);
 });
