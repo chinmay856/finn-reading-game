@@ -1,5 +1,31 @@
 # Project status
 
+## Playable mission stability hardening — 2026-08-23
+
+- The MyCorner crash audit found that mission entry could prepare Sherpa,
+  Whisper, and the Kokoro vocabulary model concurrently even though MyCorner
+  already ships static vocabulary audio. Eager Kokoro preparation was removed;
+  static audio remains immediate and generated Kokoro audio remains an explicit
+  on-demand fallback for passages without a static card.
+- The 191 MB Sherpa runtime now takes a cross-tab exclusive Web Lock. One active
+  game tab retains the low-latency Sherpa guide; simultaneous tabs use the
+  Whisper checkpoint guide instead of allocating another Sherpa runtime.
+- Player login prepares only the final Whisper assessment model. Sherpa is
+  deferred until a reading mission actually needs its optional live guide.
+- Recovery-map and mission navigation now stays inside one document so the
+  prepared models are reused instead of allocating fresh WebAssembly heaps for
+  every site. If the document is forcibly reloaded after using Sherpa, that tab
+  resumes with the memory-safe Whisper guide rather than loading a second heap.
+- A bounded, browser-local stability monitor records session stages, script
+  errors, model fallbacks, and clean exits. It never records player names,
+  audio, transcripts, passage text, or browsing history. A Start-menu action
+  downloads the latest local report, and an unclean prior session restarts with
+  Sherpa paused for that recovery session.
+- `scripts/run-playable-stability-smoke.mjs` exercises simultaneous MyCorner
+  tabs, a synthetic read/finish/vocabulary cycle, repeated in-document mission
+  switches, a forced-reload fallback, and all nine playable routes. It fails on
+  renderer, page, console, exclusivity, readiness, or memory-growth errors.
+
 ## MyCorner reviewed mission integration — 2026-08-23
 
 - MyCorner now uses the reviewed 12-state v3 sequence: four first-run identity

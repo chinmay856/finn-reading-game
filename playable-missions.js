@@ -1,5 +1,6 @@
 import { getPlayableWalkthrough } from "./apps/internet-recovery/playable-walkthroughs.js";
 import { RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
+import { installClientStabilityMonitor } from "./client-stability-monitor.js";
 import {
   acceptMissionReading,
   acknowledgeMissionMidpoint,
@@ -15,24 +16,28 @@ import { deleteLatestDiagnosticRun, saveLatestDiagnosticRun } from "./reading-pl
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
 import { supportsStreamingPcm } from "./speech/audio-capture.js";
 import { loadPinnedSherpaRuntime } from "./speech/sherpa-runtime-loader.js";
+import { acquireExclusiveModelLease } from "./speech/model-resource-coordinator.js";
 import { createSherpaStreamingRecognizer, sherpaStreamingRuntimeAvailable } from "./speech/sherpa-streaming-recognizer.js";
 
 const $ = (id) => document.getElementById(id);
+const stabilityMonitor = installClientStabilityMonitor();
 const PLAYABLE_SITE_IDS = Object.freeze(["wikiwhy", "threadit", "faceplace", "mycorner", "yahuh", "viewtube", "amaze-on", "spotty-fi", "mapguess"]);
 const CATALOG_TO_ROUTE = Object.freeze({ amazeon: "amaze-on", spottyfi: "spotty-fi" });
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
+const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
 const LOCKED_PREVIEWS = Object.freeze({
   searchish: "/walkthroughs/previews/search-ish-current_p1.png",
 });
 const requestedSiteId = new URLSearchParams(location.search).get("site");
-const mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
+let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
   ? getPlayableWalkthrough(requestedSiteId)
   : null;
 const streamingGuideOverride = new URLSearchParams(location.search).get("streamingGuide");
-const requestedStreamingGuide = streamingGuideOverride == null
+const sherpaUsedByPriorDocument = sessionStorage.getItem(SHERPA_DOCUMENT_USED_KEY) === "1";
+const requestedStreamingGuide = !stabilityMonitor.recoveredFromUncleanExit && !sherpaUsedByPriorDocument && (streamingGuideOverride == null
   ? globalThis.crossOriginIsolated === true
-  : streamingGuideOverride === "1";
-const replayRequested = new URLSearchParams(location.search).get("replay") === "1";
+  : streamingGuideOverride === "1");
+let replayRequested = new URLSearchParams(location.search).get("replay") === "1";
 const whisper = new LocalWhisperRecognizer({ onProgress: updateOpeningModelProgress });
 const wordAudio = new Audio();
 
@@ -46,8 +51,10 @@ let technoPointerTimer = null;
 let technoTravelAnimation = null;
 let technoTravelTargetState = "idle";
 let modelPreparationPromise = null;
+let streamingGuideLease = null;
 let saveToastTimer = null;
 let activeWordButton = null;
+let activeWordUsesGeneratedVoice = false;
 
 const PORTRAITS = Object.freeze({
   "amy-engineer": Object.freeze({ image: "/walkthroughs/shared/amy-engineer.jpg", position: "center", size: "cover" }),
@@ -144,6 +151,19 @@ function showSaveToast(message = "Game saved.") {
   $("saveToast").textContent = message;
   $("saveToast").hidden = false;
   saveToastTimer = setTimeout(() => { $("saveToast").hidden = true; }, 1800);
+}
+
+function downloadStabilityReport() {
+  const report = stabilityMonitor.report();
+  const blob = new Blob([`${JSON.stringify(report, null, 2)}\n`], { type: "application/json" });
+  const source = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = source;
+  link.download = `internet-recovery-stability-${new Date().toISOString().slice(0, 10)}.json`;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(source), 0);
+  stabilityMonitor.record("stability-report-downloaded");
+  showSaveToast("Local stability report saved.");
 }
 
 function saveMissionProgress({ completed = false, notify = false } = {}) {
@@ -277,7 +297,14 @@ function renderLauncher() {
     const completed = completedSiteIds.includes(routeId);
     const card = document.createElement(playable ? "a" : "article");
     card.className = `launcher-site ${playable ? "playable" : "unavailable"}${completed ? " completed" : ""}`;
-    if (playable) card.href = completed ? `?site=${routeId}&replay=1` : `?site=${routeId}`;
+    if (playable) {
+      const replay = completed;
+      card.href = replay ? `?site=${routeId}&replay=1` : `?site=${routeId}`;
+      card.addEventListener("click", (event) => {
+        event.preventDefault();
+        void navigateToMission(routeId, { replay });
+      });
+    }
     else card.setAttribute("aria-disabled", "true");
     const preview = document.createElement("img");
     preview.className = "preview";
@@ -406,18 +433,8 @@ function renderPassage() {
   showView("readerView");
   setTechno("idle", "left");
   void buildController();
-  void prewarmCurrentVocabulary();
   if (shouldAutoPrepare && !modelsPrepared) void prepareModels();
   preloadNextFrame();
-}
-
-async function prewarmCurrentVocabulary() {
-  try {
-    const { prepareVocabularyCards } = await import("./speech/local-kokoro-tts.js");
-    await prepareVocabularyCards(passage().challengingWords.slice(0, 3));
-  } catch {
-    // The result controls retain an on-demand retry if background preparation fails.
-  }
 }
 
 function preloadNextFrame() {
@@ -479,7 +496,15 @@ async function buildStreamingRecognizer() {
   const canLoad = requestedStreamingGuide && globalThis.crossOriginIsolated === true
     && typeof globalThis.SharedArrayBuffer === "function" && supportsStreamingPcm(window);
   if (!baseGate.enabled && canLoad && baseGate.reason === "sherpa-runtime-unavailable") {
+    stabilityMonitor.markStage("sherpa-lease-check");
+    streamingGuideLease ??= await acquireExclusiveModelLease({ runtime: globalThis });
+    if (!streamingGuideLease.acquired) {
+      stabilityMonitor.record("sherpa-fallback", { reason: streamingGuideLease.reason });
+      $("modelStatus").textContent = "Another game tab is using the live guide · Whisper fallback ready";
+      return null;
+    }
     try {
+      stabilityMonitor.markStage("sherpa-loading");
       await loadPinnedSherpaRuntime({
         runtime: globalThis,
         onDataProgress({ loaded, total }) {
@@ -487,7 +512,12 @@ async function buildStreamingRecognizer() {
         },
         onStatus(message) { $("modelStatus").textContent = String(message || "Loading live guide…"); },
       });
+      sessionStorage.setItem(SHERPA_DOCUMENT_USED_KEY, "1");
+      stabilityMonitor.markStage("sherpa-ready");
     } catch (error) {
+      streamingGuideLease.release();
+      streamingGuideLease = null;
+      stabilityMonitor.record("sherpa-fallback", { error: error.name, reason: "load-failed" });
       $("modelStatus").textContent = `Live guide unavailable; Whisper fallback ready (${error.message})`;
       return null;
     }
@@ -500,7 +530,10 @@ async function buildStreamingRecognizer() {
     sherpaRuntimeAvailable: sherpaStreamingRuntimeAvailable(globalThis),
   });
   $("readerStatus").textContent = streamingGuideGateMessage(gate);
-  return gate.enabled ? createSherpaStreamingRecognizer({ runtime: globalThis }) : null;
+  if (gate.enabled) return createSherpaStreamingRecognizer({ runtime: globalThis });
+  streamingGuideLease?.release();
+  streamingGuideLease = null;
+  return null;
 }
 
 async function buildController() {
@@ -525,6 +558,7 @@ async function prepareModels() {
   if (modelsPrepared) return;
   if (modelPreparationPromise) return modelPreparationPromise;
   modelPreparationPromise = (async () => {
+    stabilityMonitor.markStage("voice-models-preparing", { site: mission.id });
     setTechno("waiting", "left");
     $("prepareModels").disabled = true;
     $("prepareModels").textContent = "Preparing local model…";
@@ -533,6 +567,10 @@ async function prepareModels() {
       await buildController();
       await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
       modelsPrepared = true;
+      stabilityMonitor.markStage("voice-models-ready", {
+        guide: streamingRecognizer ? "sherpa" : "whisper-checkpoint",
+        site: mission.id,
+      });
       $("modelProgress").value = 100;
       $("modelStatus").textContent = streamingRecognizer ? "Local models ready · live guide on" : "Local Whisper ready · checkpoint guide";
       $("prepareModels").hidden = true;
@@ -540,6 +578,7 @@ async function prepareModels() {
       $("readerStatus").textContent = "Ready when you are.";
       setTechno("idle", "left");
     } catch (error) {
+      stabilityMonitor.record("voice-models-failed", { error: error.name, site: mission.id });
       $("prepareModels").disabled = false;
       $("prepareModels").textContent = "Retry local model";
       $("readerStatus").textContent = `The local voice model did not load: ${error.message}`;
@@ -554,12 +593,11 @@ async function startReading() {
   $("startReading").disabled = true;
   try {
     await controller.start();
-    void import("./speech/local-kokoro-tts.js")
-      .then(({ prepareVocabularyVoice }) => prepareVocabularyVoice())
-      .catch(() => {});
+    stabilityMonitor.markStage("reading-active", { passage: passage().id, site: mission.id });
     $("finishReading").disabled = false;
     playTechnoAction("file-search", "left", "idle");
-  } catch {
+  } catch (error) {
+    stabilityMonitor.record("reading-start-failed", { error: error.name, site: mission.id });
     $("startReading").disabled = false;
   }
 }
@@ -573,6 +611,11 @@ function confidenceDetail(readingResult) {
 function showResult(readingResult) {
   result = readingResult;
   if (!readingResult.accepted) return;
+  stabilityMonitor.markStage("reading-result", {
+    modelFailed: readingResult.modelFailed,
+    passage: readingResult.passageId,
+    site: mission.id,
+  });
   sequence = acceptMissionReading(sequence, { passageId: readingResult.passageId }).state;
   saveMissionProgress();
   $("resultPassagePosition").textContent = positionText();
@@ -653,11 +696,14 @@ function renderWordHelp() {
       if (activeWordButton === button) {
         wordAudio.pause();
         wordAudio.currentTime = 0;
-        const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
-        stopVocabularyVoice();
+        if (activeWordUsesGeneratedVoice) {
+          const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
+          stopVocabularyVoice();
+        }
         button.textContent = "▶ Hear aloud";
         button.removeAttribute("aria-busy");
         activeWordButton = null;
+        activeWordUsesGeneratedVoice = false;
         $("wordAudioStatus").textContent = `Stopped ${entry.word}.`;
         return;
       }
@@ -667,9 +713,12 @@ function renderWordHelp() {
       }
       wordAudio.pause();
       wordAudio.currentTime = 0;
-      const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
-      stopVocabularyVoice();
+      if (activeWordUsesGeneratedVoice) {
+        const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
+        stopVocabularyVoice();
+      }
       activeWordButton = button;
+      activeWordUsesGeneratedVoice = false;
       button.textContent = "■ Stop";
       button.setAttribute("aria-busy", "true");
       const resetButton = () => {
@@ -677,6 +726,7 @@ function renderWordHelp() {
         button.textContent = "▶ Hear aloud";
         button.removeAttribute("aria-busy");
         activeWordButton = null;
+        activeWordUsesGeneratedVoice = false;
       };
       try {
         if (entry.audioSrc) {
@@ -687,6 +737,7 @@ function renderWordHelp() {
           return;
         }
         const { speakVocabularyCard } = await import("./speech/local-kokoro-tts.js");
+        activeWordUsesGeneratedVoice = true;
         const started = await speakVocabularyCard({
           word: entry.word,
           definition: entry.meaning,
@@ -713,8 +764,9 @@ async function retryReading() {
   setTechno("waiting", "left");
 }
 
-function skipReading() {
-  void controller?.close();
+async function skipReading() {
+  if (controller?.listening) await controller.restart().catch(() => {});
+  controller = null;
   const current = passage();
   const response = skipMissionPassage(sequence, { passageId: current.id });
   if (!response.advanced) return;
@@ -847,7 +899,7 @@ function submitReflection() {
 
 async function confirmReceipt() {
   await showStoryBeat("auto", "THANK YOU FOR THE LESSON", mission.ottoLesson, "Choose the next site", "otto-learned");
-  location.href = "/playable-missions.html";
+  await navigateToLauncher();
 }
 
 function saveAggregate(readingResult) {
@@ -935,24 +987,9 @@ async function prepareOpeningVoiceModel() {
   setTechno("waiting", "center");
   await waitForPaint(returningConnection ? 120 : 360);
   try {
+    stabilityMonitor.markStage("opening-whisper-loading");
     await whisper.load();
-    if (requestedStreamingGuide && globalThis.crossOriginIsolated === true
-      && typeof globalThis.SharedArrayBuffer === "function" && supportsStreamingPcm(window)) {
-      $("dialupStatus").textContent = "Connecting the live Sherpa line guide…";
-      progress.removeAttribute("value");
-      await loadPinnedSherpaRuntime({
-        runtime: globalThis,
-        onDataProgress({ loaded, total }) {
-          if (!total) return;
-          progress.value = Math.max(1, Math.min(99, Math.round((loaded / total) * 100)));
-          $("dialupStatus").textContent = `Receiving Sherpa line-guide packets… ${progress.value}%`;
-        },
-        onStatus(message) { if (message) $("dialupStatus").textContent = String(message); },
-      });
-      const openingGuide = createSherpaStreamingRecognizer({ runtime: globalThis });
-      openingGuide.prepare();
-      await openingGuide.close();
-    }
+    stabilityMonitor.markStage("opening-whisper-ready");
     sessionStorage.setItem("internet-recovery-voice-warmed-v1", "1");
     window.dataset.state = "connected";
     progress.value = 100;
@@ -964,7 +1001,8 @@ async function prepareOpeningVoiceModel() {
     $("setupShortcuts").hidden = true;
     setTechno("idle", mission ? "left" : "launcher");
     return true;
-  } catch {
+  } catch (error) {
+    stabilityMonitor.record("opening-whisper-failed", { error: error.name });
     window.dataset.state = "error";
     progress.removeAttribute("value");
     $("dialupStatus").textContent = "Busy signal. The local voice model did not connect.";
@@ -1056,6 +1094,53 @@ function startExperience() {
   resumeMission();
 }
 
+async function settleActiveAttempt() {
+  if (controller?.listening) await controller.restart().catch(() => {});
+  controller = null;
+  result = null;
+  wordAudio.pause();
+  wordAudio.currentTime = 0;
+  if (activeWordUsesGeneratedVoice) {
+    const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
+    stopVocabularyVoice();
+  }
+  activeWordButton = null;
+  activeWordUsesGeneratedVoice = false;
+  $("storyOverlay").hidden = true;
+  $("corruptionPause").hidden = true;
+  $("readingCompanion").inert = false;
+}
+
+async function navigateToLauncher({ updateHistory = true } = {}) {
+  saveMissionProgress();
+  await settleActiveAttempt();
+  mission = null;
+  sequence = null;
+  replayRequested = false;
+  if (updateHistory) history.pushState({ siteId: null }, "", "/playable-missions.html");
+  stabilityMonitor.markStage("launcher");
+  renderLauncher();
+}
+
+async function navigateToMission(siteId, { replay = false, updateHistory = true } = {}) {
+  if (!PLAYABLE_SITE_IDS.includes(siteId)) return;
+  saveMissionProgress();
+  await settleActiveAttempt();
+  mission = getPlayableWalkthrough(siteId);
+  replayRequested = Boolean(replay);
+  sequence = createMissionSequenceState({
+    phaseOneCount: mission.phaseOneCount,
+    totalPassages: mission.passages.length,
+  });
+  if (updateHistory) {
+    const query = new URLSearchParams({ site: siteId });
+    if (replayRequested) query.set("replay", "1");
+    history.pushState({ replay: replayRequested, siteId }, "", `/playable-missions.html?${query}`);
+  }
+  stabilityMonitor.markStage("mission-opened", { site: siteId });
+  startExperience();
+}
+
 function toggleStartMenu(event) {
   event.stopPropagation();
   const willOpen = $("startMenu").hidden;
@@ -1064,6 +1149,12 @@ function toggleStartMenu(event) {
 }
 
 function bindShellControls() {
+  for (const link of document.querySelectorAll("[data-open-launcher]")) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      void navigateToLauncher();
+    });
+  }
   for (const button of document.querySelectorAll("[data-open-documents]")) button.addEventListener("click", openDocuments);
   $("closeDocuments").addEventListener("click", closeDocuments);
   $("documentsWindow").addEventListener("click", (event) => { if (event.target === $("documentsWindow")) closeDocuments(); });
@@ -1114,6 +1205,7 @@ function initialize() {
   resizeStage();
   addEventListener("resize", resizeStage);
   bindShellControls();
+  $("downloadStabilityReport").addEventListener("click", downloadStabilityReport);
   $("launcherView").hidden = true;
   $("missionView").hidden = true;
   const profile = activeProfile();
@@ -1123,7 +1215,9 @@ function initialize() {
   } else {
     openProfileGate({ clearName: true });
   }
-  if (!mission) return;
+  if (stabilityMonitor.recoveredFromUncleanExit) {
+    queueMicrotask(() => showSaveToast("Recovered safely · live guide paused for this session."));
+  }
   $("prepareModels").addEventListener("click", prepareModels);
   $("startReading").addEventListener("click", startReading);
   $("finishReading").addEventListener("click", finishReading);
@@ -1142,10 +1236,21 @@ function initialize() {
     await deleteLatestDiagnosticRun();
     $("diagnosticStatus").textContent = "Latest troubleshooting copy deleted.";
   });
+  addEventListener("popstate", () => {
+    const query = new URLSearchParams(location.search);
+    const siteId = query.get("site");
+    if (siteId && PLAYABLE_SITE_IDS.includes(siteId)) {
+      void navigateToMission(siteId, { replay: query.get("replay") === "1", updateHistory: false });
+    } else {
+      void navigateToLauncher({ updateHistory: false });
+    }
+  });
 }
 
 addEventListener("pagehide", () => {
   if (controller) void controller.close().catch(() => {});
   else whisper.close();
+  streamingGuideLease?.release();
+  streamingGuideLease = null;
 });
 initialize();
