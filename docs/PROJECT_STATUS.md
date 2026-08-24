@@ -1,5 +1,25 @@
 # Project status
 
+## Ten-site visual continuity polish — 2026-08-24
+
+- The Recovery Browser now distinguishes unfinished corruption from completed
+  recovery at a glance: unfinished playable cards use the canonical corruption
+  red and `OPEN CORRUPTED WEBSITE`, while completed cards remain green and offer
+  `RECOVERY COMPLETE · PLAY AGAIN`. The redundant all-cases-available counter
+  was removed.
+- Launcher, login, and Reading Companion windows now share one aligned
+  three-button title-bar control system and the same Recovery OS blue gradient.
+- Every active mission repaints the full browser title bar instead of layering a
+  narrow site-colored patch over the shared shell. The ten repair checklists now
+  use compact, content-sized footprints between 285 and 330 pixels wide, and
+  Spotty-Fi's pending repair labels use the canonical corruption red.
+- Chinmay, Amy, and Otto story portraits retain their native square artwork
+  without a second CSS frame or vertical stretching.
+- Dedicated continuity tests now enforce launcher state semantics, shared
+  window chrome, square portrait geometry, full-width mission title bars,
+  canonical pending-repair color, and compact checklist footprints across all
+  ten missions.
+
 ## Search-ish reviewed mission integration — 2026-08-23
 
 - Search-ish now uses the reviewed 14-state v3 sequence: six first-run search

@@ -18,16 +18,16 @@ const REVIEWED_CHECKLISTS = Object.freeze([
 function firstChecklistRect(svg, marker) {
   const markerIndex = svg.indexOf(marker);
   assert.notEqual(markerIndex, -1, `missing checklist marker ${marker}`);
-  const rect = svg.slice(markerIndex, markerIndex + 900).match(/<rect\b[^>]*\bx="([\d.]+)"[^>]*\bwidth="([\d.]+)"/u);
+  const rect = svg.slice(markerIndex, markerIndex + 900).match(/<rect\b[^>]*?\bx="([\d.]+)"[^>]*?\swidth="([\d.]+)"/u);
   assert.ok(rect, `missing checklist background rect after ${marker}`);
   return { x: Number(rect[1]), width: Number(rect[2]) };
 }
 
-test("playable repair checklists keep at least half of the 802px site surface visible", async () => {
+test("playable repair checklists use the compact shared footprint", async () => {
   for (const [site, path, marker] of REVIEWED_CHECKLISTS) {
     const svg = await readFile(new URL(path, import.meta.url), "utf8");
     const { x, width } = firstChecklistRect(svg, marker);
-    assert.ok(width <= 400, `${site} checklist width ${width}px obscures more than half of the site surface`);
+    assert.ok(width <= 330, `${site} checklist width ${width}px exceeds the compact 330px maximum`);
     assert.ok(x >= 109 && x + width <= 911, `${site} checklist must remain inside the site surface`);
   }
 });

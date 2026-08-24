@@ -52,7 +52,7 @@ test("Recovery OS launcher exposes all ten playable routes", () => {
   assert.doesNotMatch(script, /DESIGN IN PROGRESS/u);
   assert.match(script, /getPlayableWalkthrough\(routeId\)\.initialFrame/u);
   assert.doesNotMatch(script, /mycorner-current_p1\.png/u);
-  assert.match(html, /10 CASES AVAILABLE/u);
+  assert.doesNotMatch(html, /10 CASES AVAILABLE/u);
   assert.doesNotMatch(script, /LOCKED_PREVIEWS/u);
 });
 

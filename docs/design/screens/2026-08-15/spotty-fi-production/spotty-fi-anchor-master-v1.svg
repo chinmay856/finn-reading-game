@@ -145,12 +145,12 @@
     .article-heading{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:27px;font-weight:700;fill:#141a1c;letter-spacing:.1px}.article-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:14px;fill:#171b1d}.article-body-small{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:12px;fill:#171b1d}.reading-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;fill:#151a1e}.rail-title{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:13px;font-weight:700;fill:#17202a}.rail-body{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:11px;fill:#161a1b}.rule-banner{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:22px;font-weight:700;fill:#fff;letter-spacing:.2px}.certainty-text{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:24px;font-weight:700;fill:#C5251E;letter-spacing:.3px}.corrupt-note{font-family:'Chalkboard SE','Comic Sans MS',sans-serif;font-size:20px;font-weight:700;fill:#C5251E}
   
   .task-label,.spot-brand,.spot-heading,.spot-card-title,.spot-creator,.spot-label,.spot-small,.spot-action,.spot-nav,.spot-meta,.spot-body,.spot-control,.auto-stamp,.spot-check-title,.spot-check-row,.spot-check-open,.spot-check-fixed,.spot-check-row-fixed{font-family:'Chalkboard SE','Comic Sans MS',sans-serif}
-  .task-label{font-size:14px;font-weight:600;fill:#15191B}.spot-brand{fill:#F1F0E9;font-size:19px;font-weight:700}.spot-heading{fill:#fff;font-size:22px;font-weight:700}.spot-card-title{fill:#fff;font-size:15px;font-weight:700}.spot-creator{fill:#fff;font-size:20px;font-weight:700}.spot-label{font-size:13px;font-weight:700;letter-spacing:.7px}.spot-small{fill:#F1F0E9;font-size:14px;font-weight:700}.spot-action{font-size:13px;font-weight:700}.spot-nav{fill:#DFE4DF;font-size:14px}.spot-lime{fill:#A8DD19}.spot-meta{fill:#AEB7B1;font-size:11.5px}.spot-body{fill:#DFE4DF;font-size:12px}.spot-control{fill:#DFE4DF;font-size:18px}.auto-stamp{fill:#fff;font-size:20px;font-weight:700;letter-spacing:1px}.white-on-error{fill:#fff!important}.spot-check-title{fill:#fff;font-size:15px;font-weight:700}.spot-check-row{fill:#7A1815;font-size:13px;font-weight:700}.spot-check-open{fill:#C5251E;font-size:13px;font-weight:700}.spot-check-fixed{fill:#fff;font-size:13px;font-weight:700}.spot-check-row-fixed{fill:#1F6034;font-size:13px;font-weight:700}
+  .task-label{font-size:14px;font-weight:600;fill:#15191B}.spot-brand{fill:#F1F0E9;font-size:19px;font-weight:700}.spot-heading{fill:#fff;font-size:22px;font-weight:700}.spot-card-title{fill:#fff;font-size:15px;font-weight:700}.spot-creator{fill:#fff;font-size:20px;font-weight:700}.spot-label{font-size:13px;font-weight:700;letter-spacing:.7px}.spot-small{fill:#F1F0E9;font-size:14px;font-weight:700}.spot-action{font-size:13px;font-weight:700}.spot-nav{fill:#DFE4DF;font-size:14px}.spot-lime{fill:#A8DD19}.spot-meta{fill:#AEB7B1;font-size:11.5px}.spot-body{fill:#DFE4DF;font-size:12px}.spot-control{fill:#DFE4DF;font-size:18px}.auto-stamp{fill:#fff;font-size:20px;font-weight:700;letter-spacing:1px}.white-on-error{fill:#fff!important}.spot-check-title{fill:#fff;font-size:15px;font-weight:700}.spot-check-row{fill:#C5251E;font-size:13px;font-weight:700}.spot-check-open{fill:#C5251E;font-size:13px;font-weight:700}.spot-check-fixed{fill:#fff;font-size:13px;font-weight:700}.spot-check-row-fixed{fill:#1F6034;font-size:13px;font-weight:700}
 </style>
 <g id="page-initial" transform="translate(0 0)" inkscape:groupmode="layer" inkscape:label="Initial corruption" data-phase="phase-1" data-site-progress="0" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="0">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -259,7 +259,7 @@
 <g id="page-phase1-track" transform="translate(1480 0)" inkscape:groupmode="layer" inkscape:label="Credit details restored" data-phase="phase-1" data-site-progress="20" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="1">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -368,7 +368,7 @@
 <g id="page-phase1-artist" transform="translate(2960 0)" inkscape:groupmode="layer" inkscape:label="User choice restored" data-phase="phase-1" data-site-progress="40" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="1">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -477,7 +477,7 @@
 <g id="page-phase1-about" transform="translate(4440 0)" inkscape:groupmode="layer" inkscape:label="Artists restored" data-phase="phase-1" data-site-progress="60" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="2">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -587,7 +587,7 @@
 <g id="page-phase1-credits" transform="translate(5920 0)" inkscape:groupmode="layer" inkscape:label="Creator context restored" data-phase="phase-1" data-site-progress="80" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="2">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -697,7 +697,7 @@
 <g id="page-repaired" transform="translate(7400 0)" inkscape:groupmode="layer" inkscape:label="Fully repaired" data-phase="phase-1" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50" data-visual-delta="3">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -789,7 +789,7 @@
 <g id="page-super-corrupt" transform="translate(8880 0)" inkscape:groupmode="layer" inkscape:label="Auto super-corruption" data-phase="act-2" data-site-progress="0" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -897,7 +897,7 @@
 <g id="page-act2-locks" transform="translate(10360 0)" inkscape:groupmode="layer" inkscape:label="Repair checklist" data-phase="act-2-locks" data-site-progress="0" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -1000,9 +1000,9 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     <rect x="579" y="417" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="434" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="434" class="spot-check-row">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
@@ -1010,7 +1010,7 @@
 <g id="page-act2-artist" transform="translate(11840 0)" inkscape:groupmode="layer" inkscape:label="Artist locked" data-phase="act-2-locks" data-site-progress="25" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -1097,9 +1097,9 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
@@ -1107,7 +1107,7 @@
 <g id="page-act2-credits" transform="translate(13320 0)" inkscape:groupmode="layer" inkscape:label="Credits locked" data-phase="act-2-locks" data-site-progress="50" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -1194,9 +1194,9 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
@@ -1204,7 +1204,7 @@
 <g id="page-act2-choice" transform="translate(14800 0)" inkscape:groupmode="layer" inkscape:label="User choice locked" data-phase="act-2-locks" data-site-progress="75" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -1291,9 +1291,9 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
@@ -1301,7 +1301,7 @@
 <g id="page-act2-volume" transform="translate(16280 0)" inkscape:groupmode="layer" inkscape:label="Volume locked" data-phase="act-2-locks" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
@@ -1388,9 +1388,9 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="#2F8A49"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="527" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="527" class="spot-check-row-fixed">LET USERS SET THE VOLUME</text>
   </g>
@@ -1398,7 +1398,7 @@
 <g id="page-secured" transform="translate(17760 0)" inkscape:groupmode="layer" inkscape:label="Site secured" data-phase="completion" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
     <use href="#sharedShell"/>
     <g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
+    <rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/>
     <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
     <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
     <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
