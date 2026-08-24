@@ -335,7 +335,7 @@ function renderLauncher() {
     description.textContent = site.description;
     const status = document.createElement("span");
     status.className = "case-status";
-    status.textContent = completed ? "RECOVERY COMPLETE · PLAY AGAIN" : playable ? "OPEN RECOVERY CASE" : launcherStatus(site);
+    status.textContent = completed ? "RECOVERY COMPLETE · PLAY AGAIN" : playable ? "OPEN CORRUPTED WEBSITE" : launcherStatus(site);
     copy.append(heading, description, status);
     card.append(preview, copy);
     return card;

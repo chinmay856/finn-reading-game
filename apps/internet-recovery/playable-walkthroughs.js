@@ -1,4 +1,4 @@
-const WALKTHROUGH_ASSET_VERSION = "20260823-searchish-unsolicited-summary-v6";
+const WALKTHROUGH_ASSET_VERSION = "20260824-visual-continuity-v1";
 
 const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set(["mycorner", "searchish"]);
 

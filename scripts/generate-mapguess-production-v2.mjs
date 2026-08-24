@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve("docs/design/screens/2026-08-22/mapguess-production");
 const output = path.join(outputDirectory, "mapguess-anchor-master-v2.svg");
@@ -46,7 +46,7 @@ const states = [
 const esc = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
 function titlebarPatch() {
-  return `<g data-shared-shell-patch="site-identity"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.mapguess.net</text><rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="task-label" text-anchor="middle">START</text><text x="146" y="882" class="task-label">MAPGUESS</text></g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.mapguess.net", taskLabel: "MAPGUESS" });
 }
 
 function browserShell() {
@@ -169,7 +169,7 @@ function destinationOverlay(state) {
   const itemFill = failed ? "#FCE3E1" : "#fff";
   const mark = failed ? "×" : "○";
   const footer = failed ? "DIDN'T LOCK · CONTINUE" : "TRY THE REPAIR";
-  return `<g data-module="moving-target-overlay" data-purpose="repair-target" data-attempt-state="${state.overlay}"><rect x="424" y="352" width="342" height="176" rx="12" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="4"/><rect x="424" y="352" width="342" height="58" rx="12" fill="${COLORS.repair}"/><rect x="424" y="395" width="342" height="15" fill="${COLORS.repair}"/><text x="449" y="389" class="mg-lock-title">LOCK IN THE REPAIR</text><rect x="451" y="430" width="34" height="34" rx="6" fill="${itemFill}" stroke="${itemStroke}" stroke-width="2"/><text x="468" y="455" class="mg-lock-mark" text-anchor="middle" fill="${failed ? COLORS.corruption : "#7B817C"}">${mark}</text><text x="503" y="451" class="mg-overlay-head" fill="${failed ? COLORS.corruption : "#132A37"}">GO DIRECTLY TO THE LIBRARY</text><text x="595" y="494" class="mg-overlay-foot" text-anchor="middle" fill="${failed ? COLORS.corruption : "#132A37"}">${footer}</text></g>`;
+  return `<g data-module="moving-target-overlay" data-purpose="repair-target" data-attempt-state="${state.overlay}"><rect x="424" y="352" width="330" height="176" rx="12" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="4"/><rect x="424" y="352" width="330" height="58" rx="12" fill="${COLORS.repair}"/><rect x="424" y="395" width="330" height="15" fill="${COLORS.repair}"/><text x="449" y="389" class="mg-lock-title">LOCK IN THE REPAIR</text><rect x="451" y="430" width="34" height="34" rx="6" fill="${itemFill}" stroke="${itemStroke}" stroke-width="2"/><text x="468" y="455" class="mg-lock-mark" text-anchor="middle" fill="${failed ? COLORS.corruption : "#7B817C"}">${mark}</text><text x="503" y="451" class="mg-overlay-head" fill="${failed ? COLORS.corruption : "#132A37"}">GO DIRECTLY TO THE LIBRARY</text><text x="589" y="494" class="mg-overlay-foot" text-anchor="middle" fill="${failed ? COLORS.corruption : "#132A37"}">${footer}</text></g>`;
 }
 
 function companion(state) {

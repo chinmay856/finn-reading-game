@@ -25,3 +25,12 @@ export const INTERNET_RECOVERY_LAYER_ORDER = Object.freeze([
   "dialogue-popup",
   "techno-overlay",
 ]);
+
+export function buildInternetRecoverySiteIdentityPatch({
+  siteUrl,
+  taskLabel,
+  taskClass = "task-label",
+  taskButtonWidth = 188,
+}) {
+  return `<g data-module="browser-chrome" data-purpose="persistent parody cue" data-shared-shell-patch="site-identity"><rect x="109" y="22" width="802" height="34" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">${siteUrl}</text><rect x="112" y="861" width="${taskButtonWidth}" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="${taskClass}" text-anchor="middle">START</text><text x="146" y="882" class="${taskClass}">${taskLabel}</text></g>`;
+}

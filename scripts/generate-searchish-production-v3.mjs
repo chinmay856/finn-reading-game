@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outDir = path.resolve("docs/design/screens/2026-08-16/searchish-production");
 const outSvg = path.join(outDir, "searchish-anchor-master-v3.svg");
@@ -49,7 +49,7 @@ const states = Object.freeze([
 const esc = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 function shellPatch() {
-  return `<g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.search-ish.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="si-task" text-anchor="middle">START</text><text x="146" y="882" class="si-task">SEARCH-ISH</text></g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.search-ish.com", taskLabel: "SEARCH-ISH", taskClass: "si-task", taskButtonWidth: 190 });
 }
 
 function logo() {
@@ -250,7 +250,7 @@ function footer(state) {
 const lockItems = Object.freeze(["FIX THE AI","MAKE AI OPTIONAL","SHOW REAL OPTIONS","KEEP THE SEARCH"]);
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-module="lock-overlay" data-purpose="repair target" data-checked="${state.checklist}"><rect x="582" y="356" width="305" height="268" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="582" y="356" width="305" height="47" rx="10" fill="${COLORS.repair}"/><rect x="582" y="390" width="305" height="13" fill="${COLORS.repair}"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item,index)=>{const checked=index<state.checklist;const y=431+index*47;return `<rect x="606" y="${y-23}" width="29" height="29" rx="5" fill="${checked?COLORS.repair:COLORS.corruptionSoft}" stroke="${checked?COLORS.repair:COLORS.corruption}"/><text x="620" y="${y-3}" class="si-lock-mark" text-anchor="middle" fill="${checked?"#fff":COLORS.corruption}">${checked?"✓":"○"}</text><text x="651" y="${y-3}" class="si-lock-label" fill="${checked?COLORS.repairDark:COLORS.corruption}">${item}</text>`;}).join("")}</g>`;
+  return `<g data-module="lock-overlay" data-purpose="repair target" data-checked="${state.checklist}"><rect x="582" y="356" width="285" height="268" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="582" y="356" width="285" height="47" rx="10" fill="${COLORS.repair}"/><rect x="582" y="390" width="285" height="13" fill="${COLORS.repair}"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item,index)=>{const checked=index<state.checklist;const y=431+index*47;return `<rect x="606" y="${y-23}" width="29" height="29" rx="5" fill="${checked?COLORS.repair:COLORS.corruptionSoft}" stroke="${checked?COLORS.repair:COLORS.corruption}"/><text x="620" y="${y-3}" class="si-lock-mark" text-anchor="middle" fill="${checked?"#fff":COLORS.corruption}">${checked?"✓":"○"}</text><text x="651" y="${y-3}" class="si-lock-label" fill="${checked?COLORS.repairDark:COLORS.corruption}">${item}</text>`;}).join("")}</g>`;
 }
 
 function companion(state) {

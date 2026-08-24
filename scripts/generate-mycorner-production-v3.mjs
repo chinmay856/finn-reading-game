@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve("docs/design/screens/2026-08-22/mycorner-production");
 const output = path.join(outputDirectory, "mycorner-anchor-master-v3.svg");
@@ -65,7 +65,7 @@ const states = Object.freeze([
 const esc = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 function titlebarPatch() {
-  return `<g data-module="browser-chrome" data-purpose="persistent parody cue"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.my-corner.com</text><rect x="112" y="861" width="190" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="mc-task" text-anchor="middle">START</text><text x="146" y="882" class="mc-task">MYCORNER</text></g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.my-corner.com", taskLabel: "MYCORNER", taskClass: "mc-task", taskButtonWidth: 190 });
 }
 
 function siteHeader() {
