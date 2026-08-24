@@ -120,15 +120,19 @@ test("mission dialogue rotates canonical portraits and does not name the player"
   assert.doesNotMatch(`${html}\n${script}`, /\bFinn\b/u);
 });
 
-test("player login warms the local voice model behind a silent dial-up parody", () => {
+test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {
   assert.match(html, /id="dialupGate"/u);
   assert.match(html, /Dialing Progress/u);
   assert.match(html, /Preparing the local voice model/u);
   assert.match(html, /No modem sound will play/u);
   assert.match(script, /await prepareOpeningVoiceModel\(\)/u);
   assert.match(script, /await whisper\.load\(\)/u);
-  assert.match(script, /Connecting the live Sherpa line guide/u);
-  assert.match(script, /const openingGuide = createSherpaStreamingRecognizer/u);
+  const openingSource = script.slice(
+    script.indexOf("async function prepareOpeningVoiceModel"),
+    script.indexOf("function openProfileGate"),
+  );
+  assert.doesNotMatch(openingSource, /loadPinnedSherpaRuntime/u);
+  assert.doesNotMatch(openingSource, /createSherpaStreamingRecognizer/u);
   assert.match(script, /internet-recovery-voice-warmed-v1/u);
   assert.match(script, /Connected at 56K-ish/u);
   assert.match(html, /dialup-voice-connection-v2\.png/u);
@@ -155,16 +159,32 @@ test("source introductions, Kokoro vocabulary help, and the Amy teaching handoff
   assert.match(script, /sourceIntroductionLineCount/u);
   assert.match(css, /SOURCE INTRODUCTION · READ ALOUD/u);
   assert.match(script, /local-kokoro-tts\.js/u);
-  assert.match(script, /prepareVocabularyVoice/u);
+  assert.match(script, /speakVocabularyCard/u);
   assert.match(script, /button\.textContent = "▶ Hear aloud"/u);
   assert.match(script, /button\.textContent = "■ Stop"/u);
-  assert.match(script, /prepareVocabularyCards\(passage\(\)\.challengingWords\.slice\(0, 3\)\)/u);
+  assert.doesNotMatch(script, /prepareVocabularyVoice/u);
+  assert.doesNotMatch(script, /prepareVocabularyCards/u);
   assert.match(script, /"floppy-drive".*repetitions: 3/u);
   assert.match(script, /function showReflection\(\).*setTechno\("waiting", "left"\)/su);
   assert.match(script, /GOOD JOB — THE FIXES ARE LOCKED IN/u);
   assert.match(script, /Now it’s time to teach Otto/u);
   assert.match(script, /completion: "amy-supportive"/u);
   assert.match(script, /briefing: "amy-skeptical"/u);
+});
+
+test("stability hardening avoids three-model startup and preserves local-only crash breadcrumbs", () => {
+  assert.match(html, /installClientStabilityMonitor/u);
+  assert.match(html, /id="downloadStabilityReport"/u);
+  assert.match(script, /acquireExclusiveModelLease/u);
+  assert.match(script, /Another game tab is using the live guide/u);
+  assert.match(script, /recoveredFromUncleanExit/u);
+  assert.match(script, /streamingGuideLease\?\.release\(\)/u);
+  assert.match(script, /SHERPA_DOCUMENT_USED_KEY/u);
+  assert.match(script, /navigateToMission/u);
+  assert.match(script, /history\.pushState/u);
+  assert.match(script, /stabilityMonitor\.report\(\)/u);
+  assert.doesNotMatch(script, /void import\("\.\/speech\/local-kokoro-tts\.js"\)/u);
+  assert.doesNotMatch(script, /function skipReading\(\) \{\s*void controller\?\.close\(\)/u);
 });
 
 test("Techno reads with the player and celebrates an accepted finished passage", () => {

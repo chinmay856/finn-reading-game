@@ -21,7 +21,7 @@
         </nav>
         <section id="launcherView" class="recovery-launcher" hidden aria-labelledby="launcherTitle">
           <nav class="desktop-shortcuts" aria-label="Recovery OS desktop">
-            <a href="/playable-missions.html"><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
+            <a href="/playable-missions.html" data-open-launcher><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
             <button class="desktop-shortcut" data-open-documents type="button"><span class="shortcut-icon documents" aria-hidden="true"></span><b>DOCUMENTS</b></button>
             <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
           </nav>
@@ -36,7 +36,7 @@
         <section id="missionView" class="mission-view" hidden>
           <img id="siteFrame" class="site-frame" alt="">
           <nav class="desktop-shortcuts mission-shortcuts" aria-label="Recovery OS desktop">
-            <a href="/playable-missions.html"><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
+            <a href="/playable-missions.html" data-open-launcher><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></a>
             <button class="desktop-shortcut" data-open-documents type="button"><span class="shortcut-icon documents" aria-hidden="true"></span><b>DOCUMENTS</b></button>
             <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
           </nav>
@@ -143,9 +143,10 @@
           <div class="start-menu-items">
             <div class="start-profile"><small>PLAYER</small><strong id="activeProfileName">No save loaded</strong></div>
             <button id="saveGame" type="button">💾 <span><b>Save game</b><small>Save this case and campaign</small></span></button>
-            <a id="caseMapLink" href="/playable-missions.html">▣ <span><b>Recovery map</b><small>Return to all ten cases</small></span></a>
+            <a id="caseMapLink" href="/playable-missions.html" data-open-launcher>▣ <span><b>Recovery map</b><small>Return to all ten cases</small></span></a>
             <button id="switchProfile" type="button">👤 <span><b>Switch player</b><small>Load a different save file</small></span></button>
             <button id="newGame" type="button">✦ <span><b>New game</b><small>Create another player</small></span></button>
+            <button id="downloadStabilityReport" type="button">🛠 <span><b>Stability report</b><small>Save local crash breadcrumbs</small></span></button>
           </div>
         </section>
         <section id="documentsWindow" class="documents-overlay" hidden aria-labelledby="documentsTitle">
@@ -162,6 +163,10 @@
       </div>
     </section>
   </main>
+  <script type="module">
+    import { installClientStabilityMonitor } from "/client-stability-monitor.js";
+    installClientStabilityMonitor();
+  </script>
   <script type="module" src="/playable-missions.js"></script>
 </body>
 </html>
