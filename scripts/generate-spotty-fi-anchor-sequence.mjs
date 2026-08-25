@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve(
   "docs/design/screens/2026-08-15/spotty-fi-production",
@@ -56,13 +56,7 @@ const states = [
 const esc = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;");
 
 function titlebarPatch() {
-  return `<g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
-    <text x="126" y="46" class="window-title">www.spotty-fi.com</text>
-    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
-    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
-    <text x="146" y="882" class="task-label">SPOTTY-FI</text>
-  </g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.spotty-fi.com", taskLabel: "SPOTTY-FI" });
 }
 
 function spottyMark() {
@@ -175,9 +169,9 @@ function player(model) {
 
 function repairChecklist(secured) {
   const rows = ["SHOW THE ARTIST", "SHOW THE CREDITS", "LET USERS CHOOSE", "LET USERS SET THE VOLUME"];
-  return `<g data-overlay="act2-checklist" data-qa-box="554,364,891,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="325" height="184" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
-    <rect x="560" y="370" width="325" height="38" rx="7" fill="${COLORS.repair}"/>
+  return `<g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="184" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
+    <rect x="560" y="370" width="300" height="38" rx="7" fill="${COLORS.repair}"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
     ${rows.map((row, index) => { const fixed = index < secured; return `<rect x="579" y="${417 + index * 31}" width="23" height="23" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="590.5" y="${434 + index * 31}" class="${fixed ? "spot-check-fixed" : "spot-check-open"}" text-anchor="middle">${fixed ? "✓" : "○"}</text><text x="615" y="${434 + index * 31}" class="${fixed ? "spot-check-row-fixed" : "spot-check-row"}">${row}</text>`; }).join("")}
   </g>`;
@@ -308,7 +302,7 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <style>
   ${referenceStyles}
   .task-label,.spot-brand,.spot-heading,.spot-card-title,.spot-creator,.spot-label,.spot-small,.spot-action,.spot-nav,.spot-meta,.spot-body,.spot-control,.auto-stamp,.spot-check-title,.spot-check-row,.spot-check-open,.spot-check-fixed,.spot-check-row-fixed{font-family:'Chalkboard SE','Comic Sans MS',sans-serif}
-  .task-label{font-size:14px;font-weight:600;fill:#15191B}.spot-brand{fill:#F1F0E9;font-size:19px;font-weight:700}.spot-heading{fill:#fff;font-size:22px;font-weight:700}.spot-card-title{fill:#fff;font-size:15px;font-weight:700}.spot-creator{fill:#fff;font-size:20px;font-weight:700}.spot-label{font-size:13px;font-weight:700;letter-spacing:.7px}.spot-small{fill:#F1F0E9;font-size:14px;font-weight:700}.spot-action{font-size:13px;font-weight:700}.spot-nav{fill:#DFE4DF;font-size:14px}.spot-lime{fill:#A8DD19}.spot-meta{fill:#AEB7B1;font-size:11.5px}.spot-body{fill:#DFE4DF;font-size:12px}.spot-control{fill:#DFE4DF;font-size:18px}.auto-stamp{fill:#fff;font-size:20px;font-weight:700;letter-spacing:1px}.white-on-error{fill:#fff!important}.spot-check-title{fill:#fff;font-size:15px;font-weight:700}.spot-check-row{fill:${COLORS.corruptionDark};font-size:13px;font-weight:700}.spot-check-open{fill:${COLORS.corruption};font-size:13px;font-weight:700}.spot-check-fixed{fill:#fff;font-size:13px;font-weight:700}.spot-check-row-fixed{fill:${COLORS.repairDark};font-size:13px;font-weight:700}
+  .task-label{font-size:14px;font-weight:600;fill:#15191B}.spot-brand{fill:#F1F0E9;font-size:19px;font-weight:700}.spot-heading{fill:#fff;font-size:22px;font-weight:700}.spot-card-title{fill:#fff;font-size:15px;font-weight:700}.spot-creator{fill:#fff;font-size:20px;font-weight:700}.spot-label{font-size:13px;font-weight:700;letter-spacing:.7px}.spot-small{fill:#F1F0E9;font-size:14px;font-weight:700}.spot-action{font-size:13px;font-weight:700}.spot-nav{fill:#DFE4DF;font-size:14px}.spot-lime{fill:#A8DD19}.spot-meta{fill:#AEB7B1;font-size:11.5px}.spot-body{fill:#DFE4DF;font-size:12px}.spot-control{fill:#DFE4DF;font-size:18px}.auto-stamp{fill:#fff;font-size:20px;font-weight:700;letter-spacing:1px}.white-on-error{fill:#fff!important}.spot-check-title{fill:#fff;font-size:15px;font-weight:700}.spot-check-row{fill:${COLORS.corruption};font-size:13px;font-weight:700}.spot-check-open{fill:${COLORS.corruption};font-size:13px;font-weight:700}.spot-check-fixed{fill:#fff;font-size:13px;font-weight:700}.spot-check-row-fixed{fill:${COLORS.repairDark};font-size:13px;font-weight:700}
 </style>
 ${states.map(statePage).join("\n")}
 </svg>`;

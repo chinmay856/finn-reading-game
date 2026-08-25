@@ -3,7 +3,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve("docs/design/screens/2026-08-15/amaze-on-production");
 const output = path.join(outputDirectory, "amaze-on-anchor-master-v1.svg");
@@ -45,13 +45,7 @@ const states = [
 const esc = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;");
 
 function titlebarPatch() {
-  return `<g data-shared-shell-patch="site-identity">
-    <rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/>
-    <text x="126" y="46" class="window-title">www.amaze-on.com</text>
-    <rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/>
-    <text x="54" y="882" class="task-label" text-anchor="middle">START</text>
-    <text x="146" y="882" class="task-label">AMAZE-ON</text>
-  </g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.amaze-on.com", taskLabel: "AMAZE-ON" });
 }
 
 function boxMark() {
@@ -216,9 +210,9 @@ function autoCart(state) {
 
 function repairChecklist(checked) {
   const items = ["SHOW PAID PLACEMENT", "SHOW REAL REVIEWS", "SHOW ALL CHOICES", "SHOW DELIVERY + WASTE", "ASK BEFORE BUYING"];
-  return `<g data-overlay="repair-checklist" data-qa-box="559,303,891,616" filter="url(#windowShadow)">
-    <rect x="565" y="310" width="320" height="300" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
-    <rect x="565" y="310" width="320" height="44" rx="7" fill="${COLORS.repair}"/>
+  return `<g data-overlay="repair-checklist" data-qa-box="559,303,856,616" filter="url(#windowShadow)">
+    <rect x="565" y="310" width="285" height="300" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
+    <rect x="565" y="310" width="285" height="44" rx="7" fill="${COLORS.repair}"/>
     <text x="585" y="339" class="amaze-check-title">LOCK IN THE REPAIR</text>
     ${items.map((item, index) => {
       const fixed = index < checked;

@@ -65,6 +65,10 @@ body {
 .launcher-site.completed { border-color:#247b3e; box-shadow:4px 4px 0 #75a882; }
 .launcher-site.completed::before { content:"✓ RECOVERED"; position:absolute; z-index:2; right:8px; top:8px; padding:6px 8px; border:2px solid #fff; background:#247b3e; color:#fff; font:900 10px system-ui,sans-serif; letter-spacing:.7px; box-shadow:2px 2px 0 #174b28; }
 .launcher-site.completed .case-status { background:#176633; }
+.recovery-indicator { position:absolute; z-index:3; right:9px; top:9px; width:22px; height:22px; border:2px solid #fff; border-radius:50%; background:conic-gradient(var(--repair) var(--recovery-fill),var(--corrupt) 0); box-shadow:0 0 0 2px #26333a,2px 2px 0 #26333a88; }
+.recovery-indicator::after { content:""; position:absolute; inset:5px; border-radius:50%; background:#f7f5ee; }
+.launcher-site.completed .recovery-indicator { top:42px; }
+.launcher-site.completed:not(.replay-in-progress) .recovery-indicator { background:var(--repair); }
 .launcher-site.unavailable { filter: grayscale(1); opacity: .58; cursor: not-allowed; }
 .launcher-site.unavailable::after { content: "NOT PLAYABLE YET"; position: absolute; inset: 32px 5px auto; padding: 5px; transform: rotate(-5deg); border: 3px solid #5b6165; background: #d5d1c8ee; color: #30383d; text-align: center; font: 900 9px system-ui,sans-serif; letter-spacing: .7px; }
 .launcher-site.unavailable .case-status { background: #5f666b; }

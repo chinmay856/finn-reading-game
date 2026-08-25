@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve("docs/design/screens/2026-08-16/threadit-production");
 const output = path.join(outputDirectory, "threadit-anchor-master-v2.svg");
@@ -46,7 +46,7 @@ const contextFixed = (state) => isFirst(state) ? state.step >= 4 : !isAuto(state
 const forumFixed = (state) => isFirst(state) ? state.step >= 6 : !isAuto(state) || state.step >= 4;
 
 function titlebarPatch() {
-  return `<g data-shared-shell-patch="site-identity"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.thread-it.com</text><rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="task-label" text-anchor="middle">START</text><text x="146" y="882" class="task-label">THREADIT</text></g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.thread-it.com", taskLabel: "THREADIT" });
 }
 
 function siteHeader() {
@@ -224,7 +224,7 @@ function footer(state) {
 const lockItems = ["RESTORE HUMAN POSTS", "COUNT UNIQUE SOURCES", "COLLAPSE COPIED COMMENTS", "LET PEOPLE DISAGREE"];
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="505" y="342" width="370" height="258" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="342" width="370" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="377" width="370" height="13" fill="${COLORS.repair}"/><text x="525" y="374" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 420 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="505" y="342" width="305" height="258" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="342" width="305" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="377" width="305" height="13" fill="${COLORS.repair}"/><text x="525" y="374" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 420 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {

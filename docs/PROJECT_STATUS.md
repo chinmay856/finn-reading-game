@@ -1,5 +1,32 @@
 # Project status
 
+## Resumable replays and final ten-site mechanics pass — 2026-08-24
+
+- Launcher cards now show a small four-step Harvey-ball indicator for incomplete
+  recoveries and active replays. New cases remain red, completed cases remain
+  green, and the action changes among `OPEN CORRUPTED WEBSITE`, `CONTINUE
+  RECOVERY`, `RECOVERY COMPLETE · PLAY AGAIN`, and `RECOVERED · CONTINUE
+  REPLAY` without displaying a noisy exact percentage.
+- Completed recoveries and active replays now use separate save lanes. A partial
+  replay resumes at its saved passage without changing the original completion
+  flag or saved lesson document; completing the replay clears only that replay
+  checkpoint so the next replay can begin fresh.
+- All nine image-led non-WikiWhy missions now preserve the shared three-button
+  browser chrome in their full-width site title-bar patches. The older
+  ThreadIt, FacePlace, Amaze-On, and Spotty-Fi generators were updated so future
+  regeneration also preserves the compact reviewed checklist footprints and
+  canonical pending-label red.
+- MapGuess's repeated `GO DIRECTLY TO THE LIBRARY` lock now fits its compact
+  moving-target panel and uses the same bright corruption red as the other nine
+  missions.
+- Every mission adds a second, more flustered Chinmay beat after Amy confirms the
+  locked repairs and before the player writes Otto's lesson. Chinmay names how
+  his own vague instruction was misinterpreted; the most extreme portrait stays
+  unused for the endgame.
+- A document-remapping endgame proposal is saved as
+  `docs/design/ENDGAME_DOCUMENT_REMAP_CONCEPT_2026-08-24.md`. It is explicitly a
+  review concept and has not been implemented.
+
 ## Ten-site visual continuity polish — 2026-08-24
 
 - The Recovery Browser now distinguishes unfinished corruption from completed

@@ -1,5 +1,11 @@
 import { getPlayableWalkthrough } from "./apps/internet-recovery/playable-walkthroughs.js";
 import { RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
+import {
+  ensurePlayableProgressProfile,
+  launcherMissionProgress,
+  persistPlayableMissionSequence,
+  restorePlayableMissionSequence,
+} from "./apps/internet-recovery/playable-save-progress.js";
 import { installClientStabilityMonitor } from "./client-stability-monitor.js";
 import {
   acceptMissionReading,
@@ -73,6 +79,8 @@ const PORTRAITS = Object.freeze({
   "amy-tools": Object.freeze({ image: "/walkthroughs/shared/amy-tools.jpg", position: "center", size: "cover" }),
   "chinmay-careless": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "100% 0%", size: "300% 200%" }),
   "chinmay-explaining": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "50% 0%", size: "300% 200%" }),
+  "chinmay-fluster-1": Object.freeze({ image: "/walkthroughs/shared/chinmay-fluster-1.jpg", position: "center", size: "cover" }),
+  "chinmay-fluster-2": Object.freeze({ image: "/walkthroughs/shared/chinmay-fluster-2.jpg", position: "center", size: "cover" }),
   "otto-busy": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "0% 0%", size: "300% 200%" }),
   "otto-learned": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 0%", size: "300% 200%" }),
   "otto-confused": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "100% 0%", size: "300% 200%" }),
@@ -80,16 +88,16 @@ const PORTRAITS = Object.freeze({
 });
 
 const SITE_PORTRAITS = Object.freeze({
-  wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  faceplace: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  mycorner: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  searchish: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-evidence", completion: "amy-supportive" }),
-  "spotty-fi": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  mapguess: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  faceplace: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  mycorner: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  searchish: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-evidence", completion: "amy-supportive" }),
+  "spotty-fi": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  mapguess: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
 });
 
 const TECHNO_GAME_ACTIONS = Object.freeze({
@@ -123,7 +131,7 @@ function normalizeProfileKey(name) {
 
 function activeProfile() {
   const store = readSaveStore();
-  return store.activeProfileKey ? store.profiles[store.activeProfileKey] ?? null : null;
+  return store.activeProfileKey ? ensurePlayableProgressProfile(store.profiles[store.activeProfileKey] ?? null) : null;
 }
 
 function loadOrCreateProfile(name) {
@@ -137,9 +145,12 @@ function loadOrCreateProfile(name) {
     displayName,
     missions: {},
     reflections: {},
+    replays: {},
+    replayCounts: {},
     savedAt: new Date().toISOString(),
   };
   store.activeProfileKey = key;
+  ensurePlayableProgressProfile(store.profiles[key]);
   store.profiles[key].displayName = displayName;
   store.profiles[key].savedAt = new Date().toISOString();
   writeSaveStore(store);
@@ -150,6 +161,7 @@ function updateActiveProfile(update) {
   const store = readSaveStore();
   const profile = store.activeProfileKey ? store.profiles[store.activeProfileKey] : null;
   if (!profile) return null;
+  ensurePlayableProgressProfile(profile);
   update(profile);
   profile.savedAt = new Date().toISOString();
   writeSaveStore(store);
@@ -183,18 +195,13 @@ function saveMissionProgress({ completed = false, notify = false } = {}) {
     return;
   }
   updateActiveProfile((profile) => {
-    profile.missions[mission.id] = { sequence: JSON.parse(JSON.stringify(sequence)), updatedAt: new Date().toISOString() };
-    if (completed && !profile.completedSiteIds.includes(mission.id)) profile.completedSiteIds.push(mission.id);
+    persistPlayableMissionSequence(profile, mission, sequence, { completed, replay: replayRequested });
   });
   if (notify) showSaveToast();
 }
 
 function restoreMissionProgress() {
-  if (!mission || replayRequested) return null;
-  const saved = activeProfile()?.missions?.[mission.id]?.sequence;
-  if (!saved || saved.version !== 2 || saved.totalPassages !== mission.passages.length || saved.phaseOneCount !== mission.phaseOneCount) return null;
-  if (!Number.isInteger(saved.index) || saved.index < 0 || saved.index > mission.passages.length) return null;
-  return saved;
+  return mission ? restorePlayableMissionSequence(activeProfile(), mission, { replay: replayRequested }) : null;
 }
 
 function stopTechnoAction() {
@@ -299,13 +306,16 @@ function renderLauncher() {
   document.title = "Internet Recovery OS 98 · Choose a Site";
   $("launcherView").hidden = false;
   $("missionView").hidden = true;
-  const completedSiteIds = activeProfile()?.completedSiteIds ?? [];
-  $("completeCount").textContent = `${completedSiteIds.length} / ${PLAYABLE_SITE_IDS.length} COMPLETE`;
+  const profile = activeProfile();
+  const completedCount = PLAYABLE_SITE_IDS.filter((siteId) => launcherMissionProgress(profile, getPlayableWalkthrough(siteId)).completed).length;
+  $("completeCount").textContent = `${completedCount} / ${PLAYABLE_SITE_IDS.length} COMPLETE`;
   const sitesById = new Map(RECOVERY_SITES.map((site) => [site.id, site]));
   $("siteGrid").replaceChildren(...LAUNCHER_SITE_ORDER.map((siteId) => sitesById.get(siteId)).filter(Boolean).map((site) => {
     const routeId = CATALOG_TO_ROUTE[site.id] ?? site.id;
     const playable = PLAYABLE_SITE_IDS.includes(routeId);
-    const completed = completedSiteIds.includes(routeId);
+    const walkthrough = playable ? getPlayableWalkthrough(routeId) : null;
+    const progress = playable ? launcherMissionProgress(profile, walkthrough) : null;
+    const completed = progress?.completed ?? false;
     const card = document.createElement(playable ? "a" : "article");
     card.className = `launcher-site ${playable ? "playable" : "unavailable"}${completed ? " completed" : ""}`;
     if (playable) {
@@ -319,7 +329,7 @@ function renderLauncher() {
     else card.setAttribute("aria-disabled", "true");
     const preview = document.createElement("img");
     preview.className = "preview";
-    preview.src = playable ? getPlayableWalkthrough(routeId).initialFrame : site.previewImage;
+    preview.src = playable ? walkthrough.initialFrame : site.previewImage;
     preview.alt = "";
     const copy = document.createElement("div");
     copy.className = "card-copy";
@@ -335,7 +345,17 @@ function renderLauncher() {
     description.textContent = site.description;
     const status = document.createElement("span");
     status.className = "case-status";
-    status.textContent = completed ? "RECOVERY COMPLETE · PLAY AGAIN" : playable ? "OPEN CORRUPTED WEBSITE" : launcherStatus(site);
+    status.textContent = playable ? progress.status : launcherStatus(site);
+    if (playable) {
+      const indicator = document.createElement("span");
+      indicator.className = "recovery-indicator";
+      indicator.style.setProperty("--recovery-fill", `${progress.bucket * 25}%`);
+      indicator.setAttribute("aria-label", `${completed ? "Replay" : "Recovery"} progress: ${progress.index} of ${progress.total} repairs`);
+      indicator.title = `${completed ? "Replay" : "Recovery"} progress: ${progress.index} of ${progress.total} repairs`;
+      card.append(indicator);
+      if (progress.replayInProgress) card.classList.add("replay-in-progress");
+      else if (progress.recoveryInProgress) card.classList.add("recovery-in-progress");
+    }
     copy.append(heading, description, status);
     card.append(preview, copy);
     return card;
@@ -866,6 +886,14 @@ async function runCompletionBriefing() {
     "Teach Otto",
     SITE_PORTRAITS[mission.id].completion,
   );
+  setTechno("failed", "left");
+  await showStoryBeat(
+    "chinmay",
+    mission.completionChinmay.heading,
+    mission.completionChinmay.text,
+    "Write the lesson for Otto",
+    SITE_PORTRAITS[mission.id].reflection,
+  );
   showReflection();
 }
 
@@ -932,6 +960,7 @@ function saveAggregate(readingResult) {
 
 function saveReflection(reflection) {
   updateActiveProfile((profile) => {
+    if (replayRequested && profile.reflections[mission.id]) return;
     profile.reflections[mission.id] = {
       lesson: mission.ottoLesson,
       reflection,
@@ -954,7 +983,8 @@ function renderSavedProfiles() {
   $("savedProfiles").replaceChildren(...profiles.map((profile) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = `${profile.displayName} · ${profile.completedSiteIds.length}/${PLAYABLE_SITE_IDS.length} complete`;
+    const completedCount = new Set([...(profile.completedSiteIds ?? []), ...Object.keys(profile.reflections ?? {})]).size;
+    button.textContent = `${profile.displayName} · ${completedCount}/${PLAYABLE_SITE_IDS.length} complete`;
     button.addEventListener("click", () => beginProfile(profile.displayName));
     return button;
   }));

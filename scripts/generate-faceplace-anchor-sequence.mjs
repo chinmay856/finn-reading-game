@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
+import { buildInternetRecoverySiteIdentityPatch, INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const outputDirectory = path.resolve("docs/design/screens/2026-08-16/faceplace-production");
 const output = path.join(outputDirectory, "faceplace-anchor-master-v2.svg");
@@ -51,7 +51,7 @@ const states = [
 ];
 
 function titlebarPatch() {
-  return `<g data-shared-shell-patch="site-identity"><rect x="112" y="24" width="520" height="29" fill="url(#titleGradient)"/><text x="126" y="46" class="window-title">www.face-place.net</text><rect x="112" y="861" width="188" height="31" fill="url(#buttonGradient)" stroke="#6d6d67" stroke-width="1.3"/><text x="54" y="882" class="task-label" text-anchor="middle">START</text><text x="146" y="882" class="task-label">FACEPLACE</text></g>`;
+  return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.face-place.net", taskLabel: "FACEPLACE" });
 }
 
 function navIcon(x, glyph, label) {
@@ -141,7 +141,7 @@ const lockLabels = ["RESTORE ORIGINAL COMMENTS", "RESTORE THE ALBUM PHOTOS", "RE
 
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="505" y="346" width="372" height="296" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="346" width="372" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="381" width="372" height="13" fill="${COLORS.repair}"/><text x="525" y="378" class="lock-title">LOCK IN THE REPAIR</text>${lockLabels.map((label, index) => { const done = index < state.checklist; const y = 414 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="505" y="346" width="330" height="296" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="346" width="330" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="381" width="330" height="13" fill="${COLORS.repair}"/><text x="525" y="378" class="lock-title">LOCK IN THE REPAIR</text>${lockLabels.map((label, index) => { const done = index < state.checklist; const y = 414 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {

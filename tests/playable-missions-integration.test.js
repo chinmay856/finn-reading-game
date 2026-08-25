@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const script = await readFile(new URL("../playable-missions.js", import.meta.url), "utf8");
+const saveProgress = await readFile(new URL("../apps/internet-recovery/playable-save-progress.js", import.meta.url), "utf8");
 const walkthroughs = await readFile(new URL("../apps/internet-recovery/playable-walkthroughs.js", import.meta.url), "utf8");
 const html = await readFile(new URL("../playable-missions.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../playable-missions.css", import.meta.url), "utf8");
@@ -50,7 +51,8 @@ test("Recovery OS launcher exposes all ten playable routes", () => {
   assert.doesNotMatch(html, /FLOPPY<br>DISK/u);
   assert.match(script, /PLAYABLE_SITE_IDS[^;]+wikiwhy[^;]+threadit[^;]+faceplace[^;]+mycorner[^;]+yahuh[^;]+viewtube[^;]+amaze-on[^;]+searchish[^;]+spotty-fi[^;]+mapguess/u);
   assert.doesNotMatch(script, /DESIGN IN PROGRESS/u);
-  assert.match(script, /getPlayableWalkthrough\(routeId\)\.initialFrame/u);
+  assert.match(script, /const walkthrough = playable \? getPlayableWalkthrough\(routeId\) : null/u);
+  assert.match(script, /preview\.src = playable \? walkthrough\.initialFrame/u);
   assert.doesNotMatch(script, /mycorner-current_p1\.png/u);
   assert.doesNotMatch(html, /10 CASES AVAILABLE/u);
   assert.doesNotMatch(script, /LOCKED_PREVIEWS/u);
@@ -116,9 +118,12 @@ test("named local saves, completed cases, and the Windows 98 Start menu are wire
   assert.match(html, /id="switchProfile"/u);
   assert.match(html, /id="newGame"/u);
   assert.match(script, /internet-recovery-save-files-v1/u);
-  assert.match(script, /profile\.missions\[mission\.id\]/u);
-  assert.match(script, /completedSiteIds\.push\(mission\.id\)/u);
-  assert.match(script, /RECOVERY COMPLETE · PLAY AGAIN/u);
+  assert.match(script, /persistPlayableMissionSequence/u);
+  assert.match(script, /restorePlayableMissionSequence/u);
+  assert.match(script, /launcherMissionProgress/u);
+  assert.match(saveProgress, /RECOVERY COMPLETE · PLAY AGAIN/u);
+  assert.match(saveProgress, /RECOVERED · CONTINUE REPLAY/u);
+  assert.match(saveProgress, /CONTINUE RECOVERY/u);
   assert.match(script, /restoreMissionProgress/u);
   assert.match(html, /id="documentsWindow"/u);
   assert.match(script, /feedback_for_Otto\.txt/u);
@@ -133,7 +138,10 @@ test("mission dialogue rotates canonical portraits and does not name the player"
   assert.match(script, /chinmay-production-portraits\.png/u);
   assert.match(script, /chinmay-careless/u);
   assert.match(script, /chinmay-explaining/u);
-  assert.doesNotMatch(script, /chinmay-fluster-[12]\.jpg/u);
+  assert.match(script, /chinmay-fluster-1\.jpg/u);
+  assert.match(script, /chinmay-fluster-2\.jpg/u);
+  assert.match(script, /mission\.completionChinmay\.heading/u);
+  assert.match(script, /SITE_PORTRAITS\[mission\.id\]\.reflection/u);
   assert.match(script, /auto-character-expression-sheet-v2-bluetooth\.png/u);
   assert.doesNotMatch(`${html}\n${script}`, /\bFinn\b/u);
 });
@@ -186,6 +194,7 @@ test("source introductions, Kokoro vocabulary help, and the Amy teaching handoff
   assert.match(script, /function showReflection\(\).*setTechno\("waiting", "left"\)/su);
   assert.match(script, /GOOD JOB — THE FIXES ARE LOCKED IN/u);
   assert.match(script, /Now it’s time to teach Otto/u);
+  assert.match(script, /Write the lesson for Otto/u);
   assert.match(script, /completion: "amy-supportive"/u);
   assert.match(script, /briefing: "amy-skeptical"/u);
 });
