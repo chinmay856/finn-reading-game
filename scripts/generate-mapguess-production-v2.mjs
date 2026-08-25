@@ -158,7 +158,7 @@ function meter(state) {
   const tone = state.progress === 100 ? COLORS.repair : state.run === "first" && state.step > 0 ? COLORS.repair : state.auto ? COLORS.corruption : COLORS.corruption;
   const width = 858 * state.progress / 100;
   const label = state.auto || state.overlay ? "DESTINATION LOCK" : "MAP REPAIR";
-  const status = state.secured ? "FINN'S LIBRARY DESTINATION SECURED" : state.lockFailed ? "LOCK FAILED · LIBRARY WILL MOVE" : state.attemptReady ? "READY TO TRY THE REPAIR" : state.auto ? "AUTO MOVING LIBRARY ACTIVE" : state.step === 4 ? "LIBRARY + DIRECT ROUTE RESTORED" : state.progress ? "MAP DETAILS RETURNING" : "SPONSORED DETOUR ACTIVE";
+  const status = state.secured ? "YOUR LIBRARY DESTINATION IS SECURE" : state.lockFailed ? "LOCK FAILED · LIBRARY WILL MOVE" : state.attemptReady ? "READY TO TRY THE REPAIR" : state.auto ? "AUTO MOVING LIBRARY ACTIVE" : state.step === 4 ? "LIBRARY + DIRECT ROUTE RESTORED" : state.progress ? "MAP DETAILS RETURNING" : "SPONSORED DETOUR ACTIVE";
   return `<g transform="translate(18 672)" data-module="site-progress" data-purpose="persistent-progress"><text x="0" y="24" class="mg-meter" fill="${tone}">${label}</text><text x="205" y="24" class="mg-meter">${state.progress}%</text><rect x="0" y="38" width="858" height="24" fill="${state.progress === 100 ? COLORS.repairSoft : "url(#mapRedHatch)"}" stroke="${tone}"/><rect x="0" y="38" width="${width}" height="24" fill="${COLORS.repair}" data-role="site-progress-fill" data-percent="${state.progress}"/><text x="858" y="84" class="mg-tiny" text-anchor="end" fill="${tone}">${status}</text></g>`;
 }
 
@@ -173,7 +173,7 @@ function destinationOverlay(state) {
 }
 
 function companion(state) {
-  const line1 = state.auto ? "Auto made every route look correct." : state.secured ? "Finn's library destination is secure." : "Finn chose the nearby library.";
+  const line1 = state.auto ? "Auto made every route look correct." : state.secured ? "Your library destination is secure." : "You chose the nearby library.";
   const line2 = state.auto ? "But the destination keeps moving." : state.secured ? "The direct route serves his choice." : "Watch what the route and labels reveal.";
   return `<g data-companion-state="reading"><text x="964" y="112" class="reading-body">${esc(line1)}</text><text x="964" y="150" class="reading-body">${esc(line2)}</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text><rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>`;
 }

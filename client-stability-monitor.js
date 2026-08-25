@@ -1,5 +1,5 @@
-const EVENT_STORE_KEY = "finn-reading-stability-events-v1";
-const SESSION_STORE_KEY = "finn-reading-stability-session-v1";
+const EVENT_STORE_KEY = "internet-recovery-98-stability-events-v1";
+const SESSION_STORE_KEY = "internet-recovery-98-stability-session-v1";
 const MAX_EVENTS = 40;
 
 function parseJson(value, fallback) {
@@ -44,7 +44,7 @@ function errorName(error) {
 }
 
 export function installClientStabilityMonitor({ runtime = globalThis } = {}) {
-  if (runtime.__finnStabilityMonitor) return runtime.__finnStabilityMonitor;
+  if (runtime.__internetRecovery98StabilityMonitor) return runtime.__internetRecovery98StabilityMonitor;
 
   const previous = storageRead(runtime.sessionStorage, SESSION_STORE_KEY, null);
   const recoveredFromUncleanExit = Boolean(previous?.active === true);
@@ -135,7 +135,7 @@ export function installClientStabilityMonitor({ runtime = globalThis } = {}) {
     report,
     sessionId,
   });
-  runtime.__finnStabilityMonitor = monitor;
+  runtime.__internetRecovery98StabilityMonitor = monitor;
   return monitor;
 }
 

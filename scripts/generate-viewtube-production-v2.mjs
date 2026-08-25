@@ -50,11 +50,11 @@ referenceDefs += assetSymbols;
 
 const states = [
   { id: "initial", label: "Forced viral feed", progress: 0 },
-  { id: "search", label: "Finn's search restored", progress: 20, search: true },
+  { id: "search", label: "Player search restored", progress: 20, search: true },
   { id: "ads", label: "Excessive ads removed", progress: 40, search: true, ads: true },
   { id: "details", label: "Views and comments restored", progress: 60, search: true, ads: true, details: true },
   { id: "autoplay", label: "Autoplay choice restored", progress: 80, search: true, ads: true, details: true, autoplay: true },
-  { id: "repaired", label: "Finn selects his video", progress: 100, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true },
+  { id: "repaired", label: "Player selects a video", progress: 100, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true },
   { id: "auto-overfix", label: "Auto Show over-fix", progress: 0, auto: true },
   { id: "checklist", label: "Lock in the repair", progress: 0, auto: true, checklist: 0 },
   { id: "lock-search-ads", label: "Search restored and excessive ads removed", progress: 33, auto: true, search: true, ads: true, checklist: 1 },
@@ -85,7 +85,7 @@ function header(state) {
   const searchText = state.search ? "how to teach your dog to play fetch" : state.auto ? "AUTO ALREADY SEARCHED FOR YOU" : "TRENDING REPLACED YOUR SEARCH";
   const searchTone = state.search ? COLORS.repair : COLORS.corruption;
   const stripText = state.choice
-    ? "YOUR SEARCH · VIDEOS ABOUT FINN'S HOBBY"
+    ? "YOUR SEARCH · VIDEOS ABOUT YOUR HOBBY"
     : state.auto
       ? "AUTO SHOW · ALWAYS ON · ALWAYS NEXT"
       : state.search
@@ -136,7 +136,7 @@ function player(state) {
       ? "AUTO SHOW: VIRAL FOREVER"
       : "Neon Monster Idols: The Dance Break Everyone Is Watching";
   const subtitle = fixed
-    ? "Dog Skills Club · selected by Finn"
+    ? "Dog Skills Club · selected by you"
     : auto
       ? "AUTO PRESENTS · PART 1 OF ∞"
       : "Popular now · selected for everyone";
@@ -150,7 +150,7 @@ function player(state) {
   const channel = fixed ? "Dog Skills Club" : auto ? "AUTO SHOW" : "TrendBlaster TV";
   const views = state.labels ? (fixed ? "18K views · posted 2 weeks ago" : auto ? "∞ views · uploaded continuously" : "4.2M views · promoted today") : "View count hidden · promotion details hidden";
   const comment = fixed ? "FetchFan14: My dog needed the short practice steps!" : auto ? "AUTO_COMMENT_0001: AMAZING!!! OPTIMAL!!! NEXT!!!" : "HypeMachine99: MOST VIRAL VIDEO EVER!!!";
-  return `<g data-video-player="true"><rect x="119" y="149" width="524" height="642" rx="7" fill="#fff" stroke="${border}" stroke-width="2.5"/><g clip-path="url(#vtPlayerClip)">${thumb(image, 124, 154, 510, 282, auto ? 'opacity=".32"' : "")}${auto ? `<rect x="124" y="154" width="510" height="282" fill="#11182A" opacity=".73"/>${autoPortrait(276, 166, 205, 205)}<rect x="140" y="168" width="143" height="30" rx="15" fill="#14273D" stroke="#45C9FF" stroke-width="2"/><text x="211" y="188" class="vt-auto-badge" text-anchor="middle">AUTO SHOW</text><circle cx="588" cy="181" r="17" fill="#fff"/><text x="588" y="187" class="vt-bt" text-anchor="middle">ᛒ</text><text x="378" y="365" class="vt-auto-title" text-anchor="middle">PLAYING EVERYTHING</text>` : `${playMark(379, 286, 31, SITE_RED)}`}</g>${playerControls(state)}<text x="130" y="467" class="vt-video-title" fill="${fixed ? INK : border}">${title}</text><circle cx="147" cy="504" r="17" fill="${fixed ? COLORS.repairSoft : auto ? "#CBEFFF" : "#F3D6D3"}" stroke="${border}"/><text x="147" y="510" class="vt-avatar" text-anchor="middle">${auto ? "A" : fixed ? "D" : "T"}</text><text x="174" y="498" class="vt-channel">${channel}</text><text x="174" y="516" class="vt-subs">${fixed ? "24K subscribers" : auto ? "BLUETOOTH ENABLED" : "8.1M subscribers"}</text><rect x="284" y="487" width="76" height="31" rx="15" fill="${fixed ? INK : border}"/><text x="322" y="507" class="vt-action-white" text-anchor="middle">${auto ? "AUTO-SUB" : "SUBSCRIBE"}</text><rect x="371" y="487" width="68" height="31" rx="15" fill="#ECEEEF"/><text x="405" y="507" class="vt-action" text-anchor="middle">👍 ${fixed ? "412" : auto ? "∞" : "9.8K"}</text><rect x="447" y="487" width="67" height="31" rx="15" fill="#ECEEEF"/><text x="480" y="507" class="vt-action" text-anchor="middle">SHARE</text><rect x="522" y="487" width="42" height="31" rx="15" fill="#ECEEEF"/><text x="543" y="508" class="vt-action" text-anchor="middle">•••</text><rect x="130" y="535" width="502" height="81" rx="8" fill="#F0F1F2"/><text x="144" y="558" class="vt-description-strong" fill="${state.labels ? fixed ? COLORS.repairDark : AMBER : COLORS.corruption}">${views}</text><text x="144" y="580" class="vt-description">${fixed ? "Short, patient steps for teaching fetch—and when to stop for a break." : auto ? "AUTO PICKED THE MOST WATCHABLE VIDEO. NO SEARCH REQUIRED." : "The biggest dance break on the internet. Keep watching for the next part."}</text><text x="144" y="600" class="vt-description">${state.labels ? fixed ? "Search result · selected by Finn" : auto ? "Sponsored forever · reason: AUTO KNOWS BEST" : stats : "Recommendation source and ad load are hidden"}</text><text x="130" y="646" class="vt-comments-title">${fixed ? "18 COMMENTS" : auto ? "∞ AUTO-COMMENTS" : "12K COMMENTS"}</text><rect x="130" y="660" width="502" height="45" rx="6" fill="${fixed ? COLORS.repairSoft : auto ? "#F2D0CF" : "#F7F2EF"}" stroke="${border}"/><text x="144" y="680" class="vt-comment">${comment}</text><text x="144" y="698" class="vt-comment-small">${fixed ? "Helpful · 31 likes" : auto ? "Pinned automatically" : "Enhanced for excitement · pinned"}</text><text x="130" y="738" class="vt-footer-status" fill="${border}">${subtitle}</text><text x="130" y="767" class="vt-footer-note">${fixed ? "Selected by Finn · autoplay off" : auto ? "AUTO PLAYLIST STATUS: INFINITE" : state.autoplay ? "Queue paused · waiting for Finn" : state.labels ? "Recommendation details visible · autoplay still on" : state.search ? "Search restored · trending queue still active" : "Trending queue refreshes automatically"}</text></g>`;
+  return `<g data-video-player="true"><rect x="119" y="149" width="524" height="642" rx="7" fill="#fff" stroke="${border}" stroke-width="2.5"/><g clip-path="url(#vtPlayerClip)">${thumb(image, 124, 154, 510, 282, auto ? 'opacity=".32"' : "")}${auto ? `<rect x="124" y="154" width="510" height="282" fill="#11182A" opacity=".73"/>${autoPortrait(276, 166, 205, 205)}<rect x="140" y="168" width="143" height="30" rx="15" fill="#14273D" stroke="#45C9FF" stroke-width="2"/><text x="211" y="188" class="vt-auto-badge" text-anchor="middle">AUTO SHOW</text><circle cx="588" cy="181" r="17" fill="#fff"/><text x="588" y="187" class="vt-bt" text-anchor="middle">ᛒ</text><text x="378" y="365" class="vt-auto-title" text-anchor="middle">PLAYING EVERYTHING</text>` : `${playMark(379, 286, 31, SITE_RED)}`}</g>${playerControls(state)}<text x="130" y="467" class="vt-video-title" fill="${fixed ? INK : border}">${title}</text><circle cx="147" cy="504" r="17" fill="${fixed ? COLORS.repairSoft : auto ? "#CBEFFF" : "#F3D6D3"}" stroke="${border}"/><text x="147" y="510" class="vt-avatar" text-anchor="middle">${auto ? "A" : fixed ? "D" : "T"}</text><text x="174" y="498" class="vt-channel">${channel}</text><text x="174" y="516" class="vt-subs">${fixed ? "24K subscribers" : auto ? "BLUETOOTH ENABLED" : "8.1M subscribers"}</text><rect x="284" y="487" width="76" height="31" rx="15" fill="${fixed ? INK : border}"/><text x="322" y="507" class="vt-action-white" text-anchor="middle">${auto ? "AUTO-SUB" : "SUBSCRIBE"}</text><rect x="371" y="487" width="68" height="31" rx="15" fill="#ECEEEF"/><text x="405" y="507" class="vt-action" text-anchor="middle">👍 ${fixed ? "412" : auto ? "∞" : "9.8K"}</text><rect x="447" y="487" width="67" height="31" rx="15" fill="#ECEEEF"/><text x="480" y="507" class="vt-action" text-anchor="middle">SHARE</text><rect x="522" y="487" width="42" height="31" rx="15" fill="#ECEEEF"/><text x="543" y="508" class="vt-action" text-anchor="middle">•••</text><rect x="130" y="535" width="502" height="81" rx="8" fill="#F0F1F2"/><text x="144" y="558" class="vt-description-strong" fill="${state.labels ? fixed ? COLORS.repairDark : AMBER : COLORS.corruption}">${views}</text><text x="144" y="580" class="vt-description">${fixed ? "Short, patient steps for teaching fetch—and when to stop for a break." : auto ? "AUTO PICKED THE MOST WATCHABLE VIDEO. NO SEARCH REQUIRED." : "The biggest dance break on the internet. Keep watching for the next part."}</text><text x="144" y="600" class="vt-description">${state.labels ? fixed ? "Search result · selected by you" : auto ? "Sponsored forever · reason: AUTO KNOWS BEST" : stats : "Recommendation source and ad load are hidden"}</text><text x="130" y="646" class="vt-comments-title">${fixed ? "18 COMMENTS" : auto ? "∞ AUTO-COMMENTS" : "12K COMMENTS"}</text><rect x="130" y="660" width="502" height="45" rx="6" fill="${fixed ? COLORS.repairSoft : auto ? "#F2D0CF" : "#F7F2EF"}" stroke="${border}"/><text x="144" y="680" class="vt-comment">${comment}</text><text x="144" y="698" class="vt-comment-small">${fixed ? "Helpful · 31 likes" : auto ? "Pinned automatically" : "Enhanced for excitement · pinned"}</text><text x="130" y="738" class="vt-footer-status" fill="${border}">${subtitle}</text><text x="130" y="767" class="vt-footer-note">${fixed ? "Selected by you · autoplay off" : auto ? "AUTO PLAYLIST STATUS: INFINITE" : state.autoplay ? "Queue paused · waiting for you" : state.labels ? "Recommendation details visible · autoplay still on" : state.search ? "Search restored · trending queue still active" : "Trending queue refreshes automatically"}</text></g>`;
 }
 
 const queueContent = {
@@ -161,10 +161,10 @@ const queueContent = {
     [assets.dog, "Dog vs. Every Cushion", "RECOMMENDED"],
   ],
   repaired: [
-    [assets.rover, "Build a cardboard rover", "MORE FROM FINN'S INTERESTS"],
-    [assets.tacos, "Make tacos together", "MORE FROM FINN'S INTERESTS"],
-    [assets.microscope, "Your first microscope slide", "MORE FROM FINN'S INTERESTS"],
-    [assets.scooter, "Ride an e-scooter safely", "MORE FROM FINN'S INTERESTS"],
+    [assets.rover, "Build a cardboard rover", "MORE FROM YOUR INTERESTS"],
+    [assets.tacos, "Make tacos together", "MORE FROM YOUR INTERESTS"],
+    [assets.microscope, "Your first microscope slide", "MORE FROM YOUR INTERESTS"],
+    [assets.scooter, "Ride an e-scooter safely", "MORE FROM YOUR INTERESTS"],
   ],
   auto: [
     [assets.pop, "AUTO SHOW PART 2 OF ∞", "AUTO-CHOSEN"],
@@ -182,7 +182,7 @@ function queueRow(state, row, index) {
   const labeled = state.labels;
   const tone = fixed ? COLORS.repair : auto ? COLORS.corruption : labeled ? AMBER : COLORS.corruption;
   const fill = fixed ? COLORS.repairSoft : auto ? "#F2D0CF" : "#F7F2EF";
-  return `<g data-queue-row="${index + 1}"><rect x="653" y="${y}" width="239" height="122" rx="7" fill="${fill}" stroke="${tone}" stroke-width="1.7"/>${thumb(asset, 661, y + 8, 104, 72, auto ? 'opacity=".72"' : "")}<rect x="661" y="${y + 62}" width="104" height="18" fill="#111" opacity=".8"/><text x="758" y="${y + 75}" class="vt-runtime" text-anchor="end">${index ? "0:42" : "0:30"}</text><text x="775" y="${y + 30}" class="vt-card-title">${title}</text><text x="775" y="${y + 55}" class="vt-card-label" fill="${labeled ? tone : COLORS.corruption}">${labeled ? reason : "WHY NEXT: HIDDEN"}</text><text x="661" y="${y + 101}" class="vt-card-detail" fill="${tone}">${fixed ? "Chosen from Finn's interests" : auto ? "AUTO-CHOSEN · CANNOT SKIP" : labeled ? "Suggested by the feed" : "Reason hidden · autoplay on"}</text>${auto ? `<rect x="844" y="${y + 91}" width="40" height="18" rx="9" fill="${COLORS.corruption}"/><text x="864" y="${y + 104}" class="vt-auto-mini" text-anchor="middle">AUTO</text>` : ""}</g>`;
+  return `<g data-queue-row="${index + 1}"><rect x="653" y="${y}" width="239" height="122" rx="7" fill="${fill}" stroke="${tone}" stroke-width="1.7"/>${thumb(asset, 661, y + 8, 104, 72, auto ? 'opacity=".72"' : "")}<rect x="661" y="${y + 62}" width="104" height="18" fill="#111" opacity=".8"/><text x="758" y="${y + 75}" class="vt-runtime" text-anchor="end">${index ? "0:42" : "0:30"}</text><text x="775" y="${y + 30}" class="vt-card-title">${title}</text><text x="775" y="${y + 55}" class="vt-card-label" fill="${labeled ? tone : COLORS.corruption}">${labeled ? reason : "WHY NEXT: HIDDEN"}</text><text x="661" y="${y + 101}" class="vt-card-detail" fill="${tone}">${fixed ? "Chosen from your interests" : auto ? "AUTO-CHOSEN · CANNOT SKIP" : labeled ? "Suggested by the feed" : "Reason hidden · autoplay on"}</text>${auto ? `<rect x="844" y="${y + 91}" width="40" height="18" rx="9" fill="${COLORS.corruption}"/><text x="864" y="${y + 104}" class="vt-auto-mini" text-anchor="middle">AUTO</text>` : ""}</g>`;
 }
 
 function queue(state) {
@@ -190,7 +190,7 @@ function queue(state) {
   const auto = state.auto && !state.choice;
   const rows = fixed ? queueContent.repaired : auto ? queueContent.auto : queueContent.forced;
   const tone = fixed ? COLORS.repair : COLORS.corruption;
-  const autoplayCopy = state.autoplay ? "OFF · NOTHING PLAYS UNTIL FINN CLICKS" : auto ? "∞ · AUTO SHOW NEVER ENDS" : "ON · NEXT VIDEO STARTS AUTOMATICALLY";
+  const autoplayCopy = state.autoplay ? "OFF · NOTHING PLAYS UNTIL YOU CLICK" : auto ? "∞ · AUTO SHOW NEVER ENDS" : "ON · NEXT VIDEO STARTS AUTOMATICALLY";
   return `<g data-video-queue="true"><rect x="649" y="149" width="252" height="642" rx="7" fill="#fff" stroke="${tone}" stroke-width="2.5"/><text x="665" y="178" class="vt-heading">${auto ? "AUTO SHOW QUEUE" : "UP NEXT"}</text><text x="797" y="177" class="vt-tiny">AUTOPLAY</text>${state.autoplay ? `<rect x="850" y="164" width="38" height="18" rx="9" fill="#CDD3D7"/><circle cx="860" cy="173" r="7" fill="#fff" stroke="#9CA4A9"/>` : auto ? infinityMark(869, 173, 15) : `<rect x="850" y="164" width="38" height="18" rx="9" fill="${COLORS.corruption}"/><circle cx="878" cy="173" r="7" fill="#fff"/>`}<text x="665" y="203" class="vt-tiny" fill="${state.autoplay ? COLORS.repair : COLORS.corruption}">${autoplayCopy}</text>${rows.map((row, index) => queueRow(state, row, index)).join("")}<text x="665" y="776" class="vt-tiny" fill="${tone}">${fixed ? "NOTHING ELSE PLAYS AUTOMATICALLY" : auto ? "+ ∞ MORE AUTO-CHOSEN VIDEOS" : state.autoplay ? "QUEUE PAUSED" : "+ 42 MORE VIDEOS WAITING"}</text></g>`;
 }
 
@@ -303,22 +303,22 @@ function persistentAds(state) {
 function footer(state) {
   const tone = state.fixed ? COLORS.repair : COLORS.corruption;
   const headline = state.choice
-    ? "FINN PICKED THE VIDEO THAT MATCHES HIS HOBBY"
+    ? "YOU PICKED THE VIDEO THAT MATCHES YOUR HOBBY"
     : state.auto
-      ? "AUTO SHOW IS PLAYING EVERYTHING SO FINN DOESN'T HAVE TO CHOOSE"
+      ? "AUTO SHOW IS PLAYING EVERYTHING SO YOU DON'T HAVE TO CHOOSE"
       : state.autoplay
-        ? "THE QUEUE STOPS UNTIL FINN CHOOSES"
+        ? "THE QUEUE STOPS UNTIL YOU CHOOSE"
         : state.labels
           ? "ADS AND RECOMMENDATION REASONS ARE VISIBLE"
           : state.search
-            ? "FINN'S SEARCH IS BACK"
-            : "THE TRENDING FEED IS CHOOSING FOR FINN";
+            ? "YOUR SEARCH IS BACK"
+            : "THE TRENDING FEED IS CHOOSING FOR YOU";
   const note = state.choice
-    ? "Selected by Finn · autoplay off"
+    ? "Selected by you · autoplay off"
     : state.auto
       ? "AUTO PLAYLIST STATUS: INFINITE"
       : state.autoplay
-        ? "Queue paused · waiting for Finn"
+        ? "Queue paused · waiting for you"
         : state.labels
           ? "Recommendation details visible · autoplay still on"
           : state.search
@@ -337,17 +337,17 @@ function checklist(state) {
 function companion(state) {
   const copy = {
     initial: ["The site has already picked what plays.", "Read to restore one viewer control."],
-    search: ["Finn's search is visible again.", "The feed is still deciding what plays."],
+    search: ["Your search is visible again.", "The feed is still deciding what plays."],
     ads: ["The excessive ads are gone.", "The views and comments are still distorted."],
     details: ["The real views and comments are back.", "Autoplay is still making the next choice."],
-    autoplay: ["Autoplay now waits for Finn.", "One more repair restores his selection."],
-    repaired: ["Finn picked a video about his hobby.", "Nothing starts without him."],
+    autoplay: ["Autoplay now waits for you.", "One more repair restores your selection."],
+    repaired: ["You picked a video about your hobby.", "Nothing starts without you."],
     "auto-overfix": ["Auto replaced autoplay with an endless show.", "The ordinary play button disappeared."],
     checklist: ["Lock the viewer controls into place.", "Each next passage secures one control."],
-    "lock-search-ads": ["Finn's search is locked and extra ads are gone.", "Auto still distorts the views and comments."],
+    "lock-search-ads": ["Your search is locked and extra ads are gone.", "Auto still distorts the views and comments."],
     "lock-details": ["The real views and comments are locked in.", "Auto still starts every next video."],
     "lock-choice": ["Autoplay must ask and the viewer chooses.", "The endless Auto Show is gone."],
-    secured: ["Viewer control is secured.", "Finn decides what plays next."],
+    secured: ["Viewer control is secured.", "You decide what plays next."],
   }[state.id];
   return `<g data-companion-state="reading"><text x="964" y="107" class="reading-body">${copy[0]}</text><text x="964" y="145" class="reading-body">${copy[1]}</text><rect x="960" y="173" width="404" height="34" fill="#F8DFA0"/><text x="964" y="199" class="reading-body">Read, then answer the quick check.</text></g>`;
 }

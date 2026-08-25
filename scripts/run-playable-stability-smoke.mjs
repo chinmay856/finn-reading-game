@@ -129,7 +129,7 @@ async function exerciseAllMissionRoutes(page) {
     results.push({
       name,
       passage: await page.locator("#companionTitle").innerText(),
-      position: await page.locator("#passagePosition").innerText(),
+      passageText: (await page.locator("#passage").innerText()).slice(0, 80),
     });
     await page.locator("#missionView [data-open-launcher]").click();
     await page.locator("#launcherView:not([hidden])").waitFor({ state: "visible", timeout: 10_000 });
@@ -177,7 +177,7 @@ try {
   }
 
   const missionRoutes = await exerciseAllMissionRoutes(primary);
-  if (missionRoutes.length !== 10 || missionRoutes.some(({ passage, position }) => !passage || !/^1 of /iu.test(position))) {
+  if (missionRoutes.length !== 10 || missionRoutes.some(({ passage, passageText }) => !passage || !passageText)) {
     failures.push("mission-routes: one or more playable missions did not reach its first passage");
   }
 

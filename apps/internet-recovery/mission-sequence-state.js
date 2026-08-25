@@ -183,7 +183,6 @@ export function submitMissionReflection(state, { reflection, submittedAt } = {})
     return result(state, { completed: false, reason: "reflection-not-required" });
   }
   const text = typeof reflection === "string" ? reflection.trim() : "";
-  if (!text) return result(state, { completed: false, reason: "missing-reflection" });
 
   const receipt = Object.freeze({
     completedPassageCount: state.completedPassageIds.length,

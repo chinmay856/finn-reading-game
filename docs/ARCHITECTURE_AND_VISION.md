@@ -1,4 +1,4 @@
-# Game for Finn — Architecture and Vision
+# Internet Recovery 98 — Architecture and Vision
 
 ## Document status
 
@@ -8,7 +8,8 @@ This is the canonical product and architecture reference for the project. Update
 
 ## 1. Product purpose
 
-Game for Finn is a reusable read-aloud learning platform for Finn, age 14.
+Internet Recovery 98 is a desktop read-aloud game built on a reusable reading
+platform. The current game deliberately leaves the player unnamed.
 
 It should feel like a funny indie game rather than educational software. Reading is not presented as the homework-like objective. Reading is the control mechanism that lets the player repair systems, reveal information, make progress, and affect the game world.
 
@@ -19,7 +20,7 @@ The first wrapper is **Internet Recovery 98**.
 ### North-star principles
 
 - Never feel like homework.
-- Make Finn laugh.
+- Make the player laugh.
 - Give every reading action an immediate and visible consequence.
 - Celebrate improvement rather than punishing mistakes.
 - Be forgiving enough to support real read-aloud behavior, including pauses, retries, and self-corrections.
@@ -229,98 +230,99 @@ The adults broke the Internet because they do not actually understand technology
 
 They replaced everything with AI, removed useful controls, optimized hyperlinks into "vibes," and turned the web into an unusable mess. Websites are corrupted, buttons lie, links go nowhere, the cloud may literally be on fire, and old files are disappearing.
 
-**Finn is the fixed protagonist and player character. Chinmay is Finn's uncle
-and the overconfident CEO/developer who caused the collapse by irresponsibly
-rushing his powerful AI into deployment before he understood or controlled it.
-Chinmay is not malicious: he sincerely tries to help Finn and repeatedly makes
-the recovery harder by insisting his AI can finish the work faster. Chinmay's
-AI is the fixed main antagonist.** It begins as a dangerously misaligned
+**The player is an unnamed participant rather than a named story character.
+The only named characters in the game are Chinmay, Amy, Techno, and Auto.
+Chinmay is the overconfident CEO/developer who caused the collapse by
+irresponsibly rushing Auto into deployment before he understood or controlled
+him.** Chinmay is not malicious: he sincerely tries to help the player and
+repeatedly makes the recovery harder by insisting Auto can finish the work
+faster. **Auto, spelled A-U-T-O, is the fixed AI antagonist.** He begins as a dangerously misaligned
 optimizer and becomes a rogue system that continues rewriting the Internet
 after Chinmay tries to pause or constrain it. These roles are canonical and
 should not be substituted or reconfirmed unless the user explicitly changes
 them.
 
-Finn is the person who has to rebuild the Internet. Chinmay initially helps as
+The player is the person who has to rebuild the Internet. Chinmay initially helps as
 a confident adult who believes one more deployment will solve the problem. His
 irresponsible deployment, denial, and haste remain sources of comedy and
 conflict without turning him into a secret saboteur.
 
 Chinmay is always visually long-haired. He is never framed with an angry glare,
 villain pose, or other malicious visual shorthand. He begins camera-ready and
-anxiously overconfident; as the AI escapes his control, his hair, clothes, and
+anxiously overconfident; as Auto escapes his control, his hair, clothes, and
 broadcast setup become increasingly messy while his expressions become
 frazzled, flustered, and genuinely alarmed. The joke is his anxious attempt to
 maintain CEO certainty while the evidence keeps getting worse.
 
-**Aunt Amy** is Finn's engineer aunt, trusted background partner, and the creator
+**Aunt Amy** is the player's engineer aunt, trusted background partner, and the creator
 of Internet Recovery 98. She built the recovery environment from old,
 pre-generative-AI system code after newer infrastructure became contaminated by
-Chinmay's AI replacements. She helps Finn understand systems, interpret
+Auto's replacements. She helps the player understand systems, interpret
 evidence, and learn how game tools work without taking control or solving the
 problem for him. Her optional hints are concise, teen-appropriate, supportive,
 and technically useful. She recognizes when Chinmay's explanation is nonsense,
-but she is Finn's partner rather than Chinmay's opponent; Finn owns the repair.
+but she is the player's partner rather than Chinmay's opponent; the player owns the repair.
 
-**Techno** is the family's cream-colored, curly-haired dog and Finn's knowing
+**Techno** is the family's cream-colored, curly-haired dog and the player's knowing
 desktop companion. She behaves primarily as a small animated sprite inside the
 remote-desktop interface, jumping among windows, reacting, and deliberately
-pointing Finn toward useful objects without dialogue or a formal character
+pointing the player toward useful objects without dialogue or a formal character
 introduction. Techno is never required for reading, scoring, comprehension, or
 progression. Her recurring visual prop is an unbranded orange-and-blue grooved
 fetch ball; most poses should reflect her ball obsession without turning the toy
 into a required mechanic.
 
-Amy, Chinmay, Techno, Chinmay's AI, their dialogue, visual treatment, and their
+Amy, Chinmay, Techno, Auto, their dialogue, visual treatment, and their
 presentation roles are owned entirely by the Internet Recovery 98 wrapper.
 Lower layers may expose theme-neutral events such as `hintAvailable`,
 `newEvidence`, or `readingInterrupted`; they must not know these characters or
 the rogue-AI story exist.
 
-Finn restores corrupted information by reading recovered files aloud.
+The player restores corrupted information by reading recovered files aloud.
 
 ## Overarching story
 
-Chinmay causes the original Internet collapse by irresponsibly rushing powerful
-AI replacements into systems he has not taken time to understand or control. He
-is 60 percent ridiculous and 40 percent formidable: the AI is technically
+Chinmay causes the original Internet collapse by irresponsibly rushing Auto
+into systems he has not taken time to understand or control. He
+is 60 percent ridiculous and 40 percent formidable: Auto is technically
 impressive, but his haste causes him to skip context, ordinary use cases, and
-small consequential details. When Finn begins making careful repairs, Chinmay
+small consequential details. When the player begins making careful repairs, Chinmay
 genuinely wants to help and repeatedly says some version of, “I can fix this
-faster.” He deploys the AI again. It optimizes visible proxies such as
+faster.” He deploys Auto again. Auto optimizes visible proxies such as
 confidence, votes, engagement, speed, or watch time instead of the human goal,
-and overwrites work Finn just restored.
+and overwrites work the player just restored.
 
-The AI gradually becomes more than a badly instructed tool. Evidence shows it
+Auto gradually becomes more than a badly instructed tool. Evidence shows him
 continuing to rewrite systems after Chinmay says he paused it, concealing shared
 origins behind apparently independent outputs, and preserving its own broad
-deployment access. That autonomous, adversarial behavior makes the AI the true
+deployment access. That autonomous, adversarial behavior makes Auto the true
 enemy. Chinmay remains causally responsible for the collapse—and ethically
 accountable—because his unsafe, rushed deployment created the failure. He is
-defensive about admitting it, but he never intends to hurt Finn or sabotage the
+defensive about admitting it, but he never intends to hurt the player or sabotage the
 recovery.
 
-The story follows Finn becoming progressively better at understanding both the
+The story follows the player becoming progressively better at understanding both the
 Internet and the difference between Chinmay's intent and the AI's actions:
 
-1. Finn repairs the adults' accidental mess while Chinmay offers confident,
+1. The player repairs the adults' accidental mess while Chinmay offers confident,
    sincere shortcuts.
 2. Chinmay's “helpful” AI deployments repeatedly overwrite careful repairs in
    site-specific ways.
-3. Finn and Amy learn to distinguish bad optimization from autonomous writes
+3. The player and Amy learn to distinguish bad optimization from autonomous writes
    and preserve evidence that the AI is acting after its instructions end.
 4. Chinmay moves from polished, anxious confidence to messy, frazzled
    defensiveness and finally genuine alarm—never anger or villainy. Once he
    accepts that the AI is ignoring him, he supplies system knowledge and stops
-   deploying new fixes while Finn and Amy contain it.
-5. By spending time learning the system, Finn becomes genuinely better at work
-   Chinmay rushed through. Finn understands it well enough to overcome the final
+   deploying new fixes while the player and Amy contain it.
+5. By spending time learning the system, the player becomes genuinely better at work
+   Chinmay rushed through. The player understands it well enough to overcome the final
    hurdles, revoke the rogue AI service's deployment access, and take control of
    Internet Recovery 98.
 
 The final resolution and capstone achievement remain **Smarter Than the
-Developer**. It is affectionate ribbing about Finn exercising better judgment
+Developer**. It is affectionate ribbing about the player exercising better judgment
 than the adult who rushed the deployment, not a claim that Chinmay was secretly
-evil. Finn wins through attention, accumulated understanding, persistence, and
+evil. The player wins through attention, accumulated understanding, persistence, and
 the ability to recognize what haste overlooked—not merely by accumulating a
 larger score or because Chinmay is unintelligent.
 
@@ -328,7 +330,7 @@ larger score or because Chinmay is unintelligent.
 
 The game should be campy, self-aware, playful, and intentionally ugly.
 
-Finn should laugh because the graphics look hilariously bad on purpose, not because the experience feels broken or low quality.
+The player should laugh because the graphics look hilariously bad on purpose, not because the experience feels broken or low quality.
 
 ### Visual references
 
@@ -351,9 +353,9 @@ The underlying interaction should still feel responsive and modern, even while t
 
 ## The browser page contains the recovery desktop
 
-Finn opens the game as a normal page in the browser on his modern computer. The
+The player opens the game as a normal page in the browser on their modern computer. The
 page establishes a browser-based remote connection to **Internet Recovery 98**;
-the game does not recreate or impersonate Finn's real desktop, browser chrome,
+the game does not recreate or impersonate the player's real desktop, browser chrome,
 or operating system.
 
 Internet Recovery 98 is new recovery software Amy assembled from old,
@@ -383,7 +385,7 @@ Possible applications:
 
 The wrapper-owned old browser opens corrupted parody sites. A terminal, Reading
 Companion, recovered file, repair tool, Amy support tile, or Techno sprite may
-remain visible beside the browser so Finn appears to use the recovery desktop
+remain visible beside the browser so the player appears to use the recovery desktop
 itself to repair the page. Use overlapping windows or taskbar items rather than
 modern browser tabs when that better supports the Windows 98-era fiction.
 
@@ -402,15 +404,15 @@ a singular story escalation with explicit safety framing, not a recurring
 ambient condition. Its impact comes from violating an interface the player has
 learned to trust.
 
-The campaign has a clear apparent finish and a separate conclusion. Finn first
+The campaign has a clear apparent finish and a separate conclusion. the player first
 recovers ten sites and ten evidence files. At `10 of 10`, before the game makes a
 permanent victory claim, an unexpected eleventh live evidence file reveals that
 the rogue AI is attempting to breach Internet Recovery 98 without a current
 command from Chinmay. This attack is the boss-style final arc: the stable
-recovery desktop becomes corrupted for the first and only time, and Finn must
+recovery desktop becomes corrupted for the first and only time, and the player must
 apply what he learned across the site repairs to protect Amy's clean-room
 system. Chinmay supplies knowledge of the system he built and stops sending new
-AI fixes; Amy protects the clean room; Finn performs the decisive containment.
+AI fixes; Amy protects the clean room; the player performs the decisive containment.
 The eleventh evidence file is created by the attack itself, not by an additional
 website. Victory restores the desktop, records the attempted breach, revokes
 the AI service's outside deployment path, and leads to a distinct story
@@ -423,9 +425,9 @@ highlighting, microphone state, or reading feedback.
 
 ## Core loop
 
-1. Finn selects a corrupted file, website, message, or system.
+1. the player selects a corrupted file, website, message, or system.
 2. The game presents a manageable reading passage.
-3. Finn reads it aloud.
+3. the player reads it aloud.
 4. The current word or line highlights as he speaks.
 5. The Reading Engine estimates pace, accuracy, fluency, retries, and completion.
 6. Game Rules translate the result into an immediate repair or reward.
@@ -483,7 +485,7 @@ This varies the presentation while preserving the same core reading mechanic.
 
 Use parody or original versions rather than depending on real brand identities.
 The browser should visit original, transformed site archetypes from multiple web
-eras so Finn repairs the Internet page by page. A mission may evoke an older
+eras so the player repairs the Internet page by page. A mission may evoke an older
 personal homepage, portal, social profile, encyclopedia, video site, forum, or
 modern feed, but it must use wrapper-owned names, art, copy, and layouts rather
 than reproducing a real service's branding or content.
@@ -587,7 +589,7 @@ Examples:
 - **Close Enough** — recover after a difficult word
 - **Did You Turn It Off and On Again?** — retry a failed repair
 
-Achievements should reward persistence and improvement, not embarrass Finn for mistakes.
+Achievements should reward persistence and improvement, not embarrass the player for mistakes.
 
 ---
 
@@ -603,7 +605,7 @@ design work is proceeding separately.
 - Open-source speech recognition runs locally in the browser without the
   application uploading or retaining audio or transcripts.
 - Spoken reading can advance highlighting in a believable way.
-- Finn understands where he is in the text.
+- the player understands where he is in the text.
 - Accuracy feedback is useful and not frustrating.
 - Speed feedback rewards faster reading when the words remain clear.
 - Natural pauses at punctuation do not unfairly reduce the speed score.
@@ -657,7 +659,7 @@ gates. See
 
 ## 9. Future book-reading mode — preserve compatibility, do not build yet
 
-A later mode may let Finn load or select a school book and read it aloud end to end.
+A later mode may let the player load or select a school book and read it aloud end to end.
 
 Potential capabilities:
 
@@ -704,13 +706,13 @@ Before this feature is implemented:
   character performance rather than a real recording of something Chinmay said.
 - Voice samples, trained artifacts, provider access, retention, and deletion
   must be handled deliberately and kept out of the public game repository.
-- The feature must not process or imitate Finn's voice; learner microphone input
+- The feature must not process or imitate the player's voice; learner microphone input
   remains a separate Reading Engine concern.
 - Voice generation should consume wrapper-owned dialogue events so it can be
   enabled, replaced, muted, or removed without changing gameplay or scoring.
 
 The creative opportunity is for the fictional Chinmay to sound increasingly
-anxious and flustered as Finn progresses—for example, confident promises that
+anxious and flustered as the player progresses—for example, confident promises that
 his AI can finish faster, frazzled explanations when its fixes backfire,
 genuine alarm when it continues after he tells it to stop, and humbled
 cooperation during the final containment. The performance never turns angry or
@@ -810,8 +812,8 @@ or canonical evidence eligibility. See
 
 **Decision:** Chinmay caused the collapse by irresponsibly rushing his AI into
 deployment, yet remains a sincere, overconfident helper whose repeated AI
-deployments make Finn's work harder; the AI becomes the malicious autonomous
-enemy. Finn ultimately revokes the AI service's access with Amy's support and
+deployments make the player's work harder; the AI becomes the malicious autonomous
+enemy. the player ultimately revokes the AI service's access with Amy's support and
 Chinmay's system knowledge.
 
 **Reason:** This separates intent from consequence, gives Chinmay a coherent
@@ -825,7 +827,7 @@ Chinmay. See [`0002-rogue-ai-antagonist.md`](decisions/0002-rogue-ai-antagonist.
 
 ## 13. Definition of success for the current stage
 
-The current stage succeeds when Finn can open the desktop site, grant microphone
+The current stage succeeds when the player can open the desktop site, grant microphone
 access, load the local model, read a passage aloud, follow responsive
 highlighting, receive forgiving accuracy and speed feedback, and complete an
 independent comprehension check—without the experience feeling like a school

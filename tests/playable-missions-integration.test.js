@@ -7,6 +7,26 @@ const saveProgress = await readFile(new URL("../apps/internet-recovery/playable-
 const walkthroughs = await readFile(new URL("../apps/internet-recovery/playable-walkthroughs.js", import.meta.url), "utf8");
 const html = await readFile(new URL("../playable-missions.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../playable-missions.css", import.meta.url), "utf8");
+const windowControls = await readFile(new URL("../public/walkthroughs/shared/recovery-window-controls-v1.svg", import.meta.url), "utf8");
+const productionMasterPaths = [
+  "../docs/design/screens/2026-08-15/wikiwhy-inkscape-spike/wikiwhy-complete-state-master-v3.svg",
+  "../docs/design/screens/2026-08-16/faceplace-production/faceplace-anchor-master-v2.svg",
+  "../docs/design/screens/2026-08-16/threadit-production/threadit-anchor-master-v2.svg",
+  "../docs/design/screens/2026-08-17/viewtube-production/viewtube-anchor-master-v2.svg",
+  "../docs/design/screens/2026-08-15/amaze-on-production/amaze-on-anchor-master-v1.svg",
+  "../docs/design/screens/2026-08-15/spotty-fi-production/spotty-fi-anchor-master-v1.svg",
+  "../docs/design/screens/2026-08-22/mapguess-production/mapguess-anchor-master-v2.svg",
+  "../docs/design/screens/2026-08-22/mycorner-production/mycorner-anchor-master-v3.svg",
+  "../docs/design/screens/2026-08-16/searchish-production/searchish-anchor-master-v3.svg",
+  "../docs/design/screens/2026-08-16/yahuh-production/yahuh-anchor-master-v2.svg",
+];
+const productionMasters = await Promise.all(productionMasterPaths.map((source) => readFile(new URL(source, import.meta.url), "utf8")));
+
+function visibleSvgText(source) {
+  return [...source.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gu)]
+    .map((match) => match[1].replace(/<[^>]+>/gu, " "))
+    .join(" ");
+}
 
 test("playable wrapper uses the neutral attempt and mission sequence contracts", () => {
   assert.match(script, /new ReadingAttemptController/u);
@@ -42,8 +62,9 @@ test("comprehension, troubleshooting retention, retry, skip, and reflection cont
 });
 
 test("Recovery OS launcher exposes all ten playable routes", () => {
-  assert.match(html, /aria-label="Internet Recovery OS 98"/u);
-  assert.match(html, />INTERNET RECOVERY OS</u);
+  assert.match(html, /aria-label="Internet Recovery 98"/u);
+  assert.ok((html.match(/>INTERNET RECOVERY 98</gu) ?? []).length >= 3);
+  assert.doesNotMatch(html, /FINN READING GAME|INTERNET RECOVERY OS/iu);
   assert.match(html, /MY<br>COMPUTER/u);
   assert.match(html, />DOCUMENTS</u);
   assert.match(html, />TRASH</u);
@@ -94,12 +115,12 @@ test("the validated v2 Techno pet drives real game states", () => {
   assert.doesNotMatch(css, /legacy-techno-cover/u);
 });
 
-test("the over-fix remains visible before Amy and Otto confirms the site lesson separately", () => {
+test("the over-fix remains visible before Amy and Auto confirms the site lesson separately", () => {
   assert.match(html, /id="corruptionPause"/u);
-  assert.match(html, /Oh no—what did Otto do\?/u);
+  assert.match(html, /Oh no—what did Auto do\?/u);
   assert.match(script, /setFrame\(mission\.superFrame[^;]+;\s*setTechno[^;]+;\s*await showCorruptionPause\(\);\s*await showStoryBeat\("amy"/su);
-  assert.match(html, /Instructions sent to Otto\./u);
-  assert.match(script, /mission\.ottoLesson/u);
+  assert.match(html, /Instructions sent to Auto\./u);
+  assert.match(script, /mission\.autoLesson/u);
   assert.match(script, /previewButton\.disabled = true/u);
   assert.match(script, /previewButton\.textContent = "React to the site first"/u);
   assert.match(script, /\$\("readingCompanion"\)\.inert = true/u);
@@ -129,8 +150,8 @@ test("named local saves, completed cases, and the Windows 98 Start menu are wire
   assert.match(saveProgress, /approximateProgressPercent/u);
   assert.match(script, /--recovery-fill.*progress\.percent/u);
   assert.match(html, /id="documentsWindow"/u);
-  assert.match(script, /feedback_for_Otto\.txt/u);
-  assert.match(script, /LESSON SAVED FOR OTTO/u);
+  assert.match(script, /feedback_for_Auto\.txt/u);
+  assert.match(script, /LESSON SAVED FOR AUTO/u);
   assert.match(script, /PLAYER’S EXPLANATION/u);
 });
 
@@ -147,6 +168,8 @@ test("mission dialogue rotates canonical portraits and does not name the player"
   assert.match(script, /SITE_PORTRAITS\[mission\.id\]\.reflection/u);
   assert.match(script, /auto-character-expression-sheet-v2-bluetooth\.png/u);
   assert.doesNotMatch(`${html}\n${script}`, /\bFinn\b/u);
+  assert.doesNotMatch(`${html}\n${script}\n${walkthroughs}`, /\bOtto\b/u);
+  assert.match(`${html}\n${script}\n${walkthroughs}`, /\bAuto\b/u);
 });
 
 test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {
@@ -184,7 +207,7 @@ test("desktop chrome uses the reviewed generated Computer, Documents, and Trash 
   assert.doesNotMatch(css, /shortcut-icon\.computer::before/u);
 });
 
-test("source introductions, Kokoro vocabulary help, and the Amy teaching handoff are explicit", () => {
+test("source introductions, Kokoro vocabulary help, and the Chinmay-then-Amy teaching handoff are explicit", () => {
   assert.match(script, /sourceIntroductionLineCount/u);
   assert.match(css, /SOURCE INTRODUCTION · READ ALOUD/u);
   assert.match(script, /local-kokoro-tts\.js/u);
@@ -196,10 +219,40 @@ test("source introductions, Kokoro vocabulary help, and the Amy teaching handoff
   assert.match(script, /"floppy-drive".*repetitions: 3/u);
   assert.match(script, /function showReflection\(\).*setTechno\("waiting", "left"\)/su);
   assert.match(script, /GOOD JOB — THE FIXES ARE LOCKED IN/u);
-  assert.match(script, /Now it’s time to teach Otto/u);
-  assert.match(script, /Write the lesson for Otto/u);
+  assert.match(script, /showStoryBeat\(\s*"chinmay"[\s\S]+showStoryBeat\(\s*"amy"/u);
+  assert.match(script, /Now it’s time to teach Auto/u);
+  assert.match(script, /Write the lesson for Auto/u);
   assert.match(script, /completion: "amy-supportive"/u);
   assert.match(script, /briefing: "amy-skeptical"/u);
+});
+
+test("playtester UI keeps saves private, coaches a paragraph without enforcing length, and hides passage counts", () => {
+  assert.match(html, /Write a paragraph about what Auto should remember/u);
+  assert.match(html, /0 words out of 300/u);
+  assert.doesNotMatch(html, /One clear sentence is enough/u);
+  assert.doesNotMatch(html, /id="(?:missionName|passagePosition|skipPassagePosition|resultPassagePosition)"/u);
+  assert.match(script, /savedProfiles[^\n]+replaceChildren\(\)/u);
+  assert.match(script, /savedProfiles[^\n]+hidden = true/u);
+  assert.doesNotMatch(script, /savedProfiles[^\n]+profiles\.map/u);
+  assert.match(script, /word\$\{count === 1[^\n]+out of 300/u);
+});
+
+test("Reading Companion chrome uses the reviewed shared vector control asset", () => {
+  assert.match(html, /companion-titlebar[^\n]+recovery-window-controls-v1\.svg/u);
+  assert.doesNotMatch(html, /window-control minimize/u);
+  assert.doesNotMatch(css, /window-control\.minimize/u);
+  assert.match(windowControls, /M8 17h11/u);
+  assert.match(windowControls, /x="38" y="6" width="13" height="13"/u);
+  assert.match(windowControls, /m69 7 13 13m0-13-13 13/u);
+});
+
+test("reviewed mission art leaves the player unnamed and preserves only the literary Huckleberry Finn title", () => {
+  for (const [index, source] of productionMasters.entries()) {
+    const text = visibleSvgText(source);
+    const withoutLiteraryTitle = text.replace(/Huckleberry Finn/giu, "");
+    assert.doesNotMatch(withoutLiteraryTitle, /\bFinn\b/iu, productionMasterPaths[index]);
+    assert.doesNotMatch(text, /\bOtto\b/iu, productionMasterPaths[index]);
+  }
 });
 
 test("stability hardening avoids three-model startup and preserves local-only crash breadcrumbs", () => {

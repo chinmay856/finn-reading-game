@@ -28,7 +28,7 @@ test("the ten finished missions have one visual advance per passage", () => {
     assert.deepEqual(mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])), expected.pages, id);
     assert.match(mission.initialFrame, /^\/walkthroughs\//u);
     assert.ok(assetPath(mission.securedFrame).endsWith(expected.secured), id);
-    assert.ok(mission.ottoLesson.length > 80, `${id} has a specific Otto lesson`);
+    assert.ok(mission.autoLesson.length > 80, `${id} has a specific Auto lesson`);
   }
 });
 
@@ -108,6 +108,6 @@ test("player-facing midpoint copy contains no internal act or phase labels", () 
     const copy = Object.values(mission.midpoint).flatMap(({ heading, text }) => [heading, text]).join(" ");
     assert.doesNotMatch(copy, /\b(?:act|phase)\s*[12]\b/iu, mission.id);
     assert.doesNotMatch(copy, /\bFinn\b/u, mission.id);
-    assert.ok(mission.midpoint.auto.text.split("\n\n").length >= 3, `${mission.id} Otto copy has readable line breaks`);
+    assert.ok(mission.midpoint.auto.text.split("\n\n").length >= 3, `${mission.id} Auto copy has readable line breaks`);
   }
 });

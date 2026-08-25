@@ -165,7 +165,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Generated to match everybody. No people required.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -243,7 +243,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -268,7 +268,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Credit details are back. Discovery still needs a choice.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -346,7 +346,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -371,7 +371,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -449,7 +449,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -474,7 +474,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -553,7 +553,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -578,7 +578,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -657,7 +657,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -682,7 +682,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
@@ -743,7 +743,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -845,7 +845,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -947,7 +947,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -977,7 +977,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Generated to match everybody. No people required.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
@@ -1038,7 +1038,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -1068,7 +1068,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Credit details are back. Discovery still needs a choice.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
@@ -1129,7 +1129,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -1159,7 +1159,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
@@ -1220,7 +1220,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -1250,7 +1250,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
@@ -1311,7 +1311,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
@@ -1341,7 +1341,7 @@
     <rect x="109" y="108" width="128" height="574" fill="#101514" stroke="#39423F"/>
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
-    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by Finn</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
+    <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
     <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:#AEB7B1">Three artists, three sounds, and paths to keep exploring.</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
@@ -1402,7 +1402,7 @@
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>

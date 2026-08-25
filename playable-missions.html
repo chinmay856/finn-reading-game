@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#087f88">
-  <title>Internet Recovery · Playable Missions</title>
+  <title>Internet Recovery 98</title>
   <link rel="stylesheet" href="/playable-missions.css">
 </head>
 <body>
   <main class="playtest-shell">
-    <section id="stageScaler" class="stage-scaler" aria-label="Internet Recovery OS 98">
+    <section id="stageScaler" class="stage-scaler" aria-label="Internet Recovery 98">
       <div id="gameStage" class="game-stage">
         <section id="setupDesktop" class="setup-desktop" hidden aria-hidden="true">
-          <footer class="launcher-taskbar"><button class="start-button" type="button" disabled>START</button><span id="setupTask">▣ Player Login</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+          <footer class="launcher-taskbar"><button class="start-button" type="button" disabled>START</button><span id="setupTask">▣ Player Login</span><i>INTERNET RECOVERY 98</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
         </section>
         <nav id="setupShortcuts" class="desktop-shortcuts setup-shortcuts" hidden aria-hidden="true">
           <span><span class="shortcut-icon computer" aria-hidden="true"></span><b>MY<br>COMPUTER</b></span>
@@ -26,11 +26,11 @@
             <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
           </nav>
           <section class="launcher-window">
-            <div class="launcher-titlebar"><span>▣ Recovery Browser — Choose a corrupted site</span><span class="window-controls" aria-hidden="true"><i class="window-control minimize"></i><i class="window-control maximize"></i><i class="window-control close"></i></span></div>
+            <div class="launcher-titlebar"><span>▣ Recovery Browser — Choose a corrupted site</span><img class="window-controls" src="/walkthroughs/shared/recovery-window-controls-v1.svg" alt="" width="89" height="25"></div>
             <header class="launcher-intro"><div><small>INCOMING RECOVERY CASES</small><h1 id="launcherTitle">Where do you want to start?</h1></div><div class="launcher-counts"><strong id="completeCount">0 / 10 COMPLETE</strong></div></header>
             <div id="siteGrid" class="site-grid"></div>
           </section>
-          <footer class="launcher-taskbar"><button class="start-button" type="button">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+          <footer class="launcher-taskbar"><button class="start-button" type="button">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
         </section>
 
         <section id="missionView" class="mission-view" hidden>
@@ -41,9 +41,8 @@
             <span><span class="shortcut-icon trash" aria-hidden="true"></span><b>TRASH</b></span>
           </nav>
           <section id="readingCompanion" class="reading-companion" aria-labelledby="companionTitle">
-          <header class="companion-titlebar"><span>READING COMPANION</span><span class="window-controls" aria-hidden="true"><i class="window-control minimize"></i><i class="window-control maximize"></i><i class="window-control close"></i></span></header>
+          <header class="companion-titlebar"><span>READING COMPANION</span><img class="window-controls" src="/walkthroughs/shared/recovery-window-controls-v1.svg" alt="" width="89" height="25"></header>
           <div id="readerView" class="companion-view">
-            <div class="companion-kicker"><span id="missionName"></span><span id="passagePosition"></span></div>
             <h1 id="companionTitle"></h1>
             <div id="passage" class="passage" tabindex="0" aria-label="Reading passage"></div>
             <p id="readerStatus" class="status" role="status">Prepare the local models when you are ready.</p>
@@ -59,15 +58,15 @@
           </div>
 
           <div id="skipView" class="companion-view skip-view" hidden tabindex="-1">
-            <div class="companion-kicker"><span>PASSAGE SKIPPED</span><span id="skipPassagePosition"></span></div>
+            <div class="companion-kicker"><span>PASSAGE SKIPPED</span></div>
             <h1>Preview advanced without a voice score.</h1>
-            <p>Skipping is only for this fast design click-through. It changes the site frame, but it does not pretend the passage was read or the quick check was answered.</p>
+            <p>Skipping advances the site preview without pretending the passage was read or the quick check was answered.</p>
             <div class="skip-stamp">NO SPEECH RESULT RECORDED</div>
             <button id="continueAfterSkip" type="button">Continue preview</button>
           </div>
 
           <div id="resultView" class="companion-view" hidden tabindex="-1">
-            <div class="companion-kicker"><span>READING COMPLETE</span><span id="resultPassagePosition"></span></div>
+            <div class="companion-kicker"><span>READING COMPLETE</span></div>
             <h1 id="resultTitle"></h1><p id="resultDetail"></p>
             <div class="score-grid"><article><span>Coverage</span><strong id="coverageBand"></strong><small id="coverageDetail"></small></article><article><span>Pace</span><strong id="paceBand"></strong><small id="paceDetail"></small></article></div>
             <section class="quick-check"><small>QUICK CHECK · USE THE PASSAGE</small><h2 id="question"></h2><div id="answers"></div><p id="answerFeedback" role="status"></p></section>
@@ -76,15 +75,15 @@
           </div>
 
           <div id="reflectionView" class="companion-view" hidden>
-            <div class="companion-kicker"><span>TEACH OTTO</span><span>SITE REPAIRED</span></div>
-            <h1>What lesson should Otto remember?</h1><p id="reflectionPrompt"></p>
-            <textarea id="reflectionText" rows="9" placeholder="Write one sentence Otto should remember…"></textarea>
-            <div class="reflection-count"><span id="reflectionCount">0 words</span><span>One clear sentence is enough for this prototype.</span></div>
-            <button id="submitReflection" type="button">Send instructions to Otto</button>
+            <div class="companion-kicker"><span>TEACH AUTO</span><span>SITE REPAIRED</span></div>
+            <h1>What lesson should Auto remember?</h1><p id="reflectionPrompt"></p>
+            <textarea id="reflectionText" rows="9" placeholder="Write a paragraph about what Auto should remember…"></textarea>
+            <div class="reflection-count"><span id="reflectionCount">0 words out of 300</span></div>
+            <button id="submitReflection" type="button">Send instructions to Auto</button>
           </div>
 
           <div id="receiptView" class="companion-view receipt-view" hidden>
-            <small>SITE REPAIR COMPLETE</small><h1 id="receiptTitle">Instructions sent to Otto.</h1><p>Your lesson is on its way. Otto will confirm what he learned before you choose the next site.</p>
+            <small>SITE REPAIR COMPLETE</small><h1 id="receiptTitle">Instructions sent to Auto.</h1><p>Your lesson is on its way. Auto will confirm what he learned before you choose the next site.</p>
             <button id="confirmReceipt" type="button">Continue</button>
           </div>
           </section>
@@ -93,9 +92,9 @@
             <article class="story-dialog" data-speaker="chinmay"><div id="storySpeaker" class="speaker-tile" aria-hidden="true"></div><div><small id="storyLabel"></small><h2 id="storyHeading"></h2><p id="storyText"></p><button id="storyContinue" type="button">Continue</button></div></article>
           </div>
           <div id="corruptionPause" class="corruption-pause" hidden>
-            <button id="corruptionContinue" type="button">Oh no—what did Otto do?</button>
+            <button id="corruptionContinue" type="button">Oh no—what did Auto do?</button>
           </div>
-          <footer class="launcher-taskbar mission-taskbar"><button class="start-button" type="button">START</button><span id="missionTask">▣ Recovery Site</span><span>□ Reading Companion</span><i>INTERNET RECOVERY OS</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+          <footer class="launcher-taskbar mission-taskbar"><button class="start-button" type="button">START</button><span id="missionTask">▣ Recovery Site</span><span>□ Reading Companion</span><i>INTERNET RECOVERY 98</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
         </section>
         <aside id="technoPet" class="hatched-techno" data-state="idle" data-place="left" aria-label="Techno, the animated recovery companion">
           <div class="techno-sprite" aria-hidden="true"></div>
@@ -103,7 +102,7 @@
         </aside>
         <section id="profileGate" class="profile-gate" hidden aria-labelledby="profileTitle">
           <div class="profile-window">
-            <div class="launcher-titlebar"><span>▣ Recovery OS 98 — Player Login</span><span class="window-controls" aria-hidden="true"><i class="window-control minimize"></i><i class="window-control maximize"></i><i class="window-control close"></i></span></div>
+            <div class="launcher-titlebar"><span>▣ Internet Recovery 98 — Player Login</span><img class="window-controls" src="/walkthroughs/shared/recovery-window-controls-v1.svg" alt="" width="89" height="25"></div>
             <div class="profile-body">
               <small>LOAD OR CREATE A SAVE FILE</small>
               <h1 id="profileTitle">Who is playing?</h1>
@@ -112,7 +111,7 @@
               <input id="profileName" type="text" maxlength="24" autocomplete="off" spellcheck="false">
               <p id="profileError" class="profile-error" role="alert"></p>
               <button id="loadProfile" type="button">Load or create game</button>
-              <div id="savedProfiles" class="saved-profiles"></div>
+              <div id="savedProfiles" class="saved-profiles" hidden></div>
             </div>
           </div>
         </section>
@@ -152,10 +151,10 @@
         <section id="documentsWindow" class="documents-overlay" hidden aria-labelledby="documentsTitle">
           <div class="documents-window">
             <div class="launcher-titlebar"><span>▣ Documents — Recovery Lessons</span><button id="closeDocuments" type="button" aria-label="Close Documents">×</button></div>
-            <div class="documents-toolbar">📁 <strong id="documentsTitle">Saved feedback for Otto</strong><span id="documentsProfile"></span></div>
+            <div class="documents-toolbar">📁 <strong id="documentsTitle">Saved feedback for Auto</strong><span id="documentsProfile"></span></div>
             <div class="documents-body">
               <div id="documentList" class="document-list" aria-label="Recovery documents"></div>
-              <article id="documentPreview" class="document-preview"><h2>No recovery file selected</h2><p>Finish a recovery case and teach Otto a lesson. The saved lesson will appear here.</p></article>
+              <article id="documentPreview" class="document-preview"><h2>No recovery file selected</h2><p>Finish a recovery case and teach Auto a lesson. The saved lesson will appear here.</p></article>
             </div>
           </div>
         </section>

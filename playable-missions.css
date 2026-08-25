@@ -40,12 +40,7 @@ body {
 .shortcut-icon.trash { background-image:url("/walkthroughs/shared/recovery-icon-trash-v2.png"); }
 .launcher-window { position:absolute; left:104px; top:18px; width:1312px; height:825px; border:4px solid #27333b; border-radius:7px; box-shadow:0 3px 5px #0007; background:#e9e4d7; color:#172d40; overflow:hidden; }
 .launcher-titlebar { min-height:38px; display:flex; align-items:center; justify-content:space-between; padding:4px 5px 4px 12px; background:var(--titlebar); color:#fff; font:700 15px system-ui,sans-serif; }
-.window-controls { display:flex; flex:none; align-items:center; gap:4px; height:25px; }
-.window-control { position:relative; display:block; width:27px; height:25px; border:1px solid #fff; border-right:2px solid #66645f; border-bottom:2px solid #66645f; background:linear-gradient(#f3f2eb,#c8c6bc); }
-.window-control.minimize::after { content:""; position:absolute; left:8px; bottom:5px; width:11px; height:3px; background:#191919; }
-.window-control.maximize::after { content:""; position:absolute; left:7px; top:6px; width:13px; height:13px; border:2px solid #222; }
-.window-control.close::before,.window-control.close::after { content:""; position:absolute; left:4.5px; top:12.5px; width:18px; height:2px; background:#222; transform:rotate(45deg); transform-origin:center; }
-.window-control.close::after { transform:rotate(-45deg); }
+.window-controls { display:block; flex:none; width:89px; height:25px; }
 .launcher-intro { height:91px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 15px 10px; border-bottom: 2px solid #a7a396; }
 .launcher-intro h1 { margin: 3px 0 0; font-size: 23px; }
 .launcher-intro small { font: 800 10px system-ui,sans-serif; color: #087f88; }
@@ -361,13 +356,13 @@ button:disabled {
 }
 .reflection-count {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  justify-content: flex-end;
   font:
     11px/1.3 system-ui,
     sans-serif;
   color: #657078;
   margin: 7px 0 16px;
+  text-align: right;
 }
 .reflection-view textarea,
 textarea {

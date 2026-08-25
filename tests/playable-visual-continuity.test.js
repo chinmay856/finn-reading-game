@@ -34,14 +34,18 @@ test("launcher gives corrupted and recovered sites distinct actions", async () =
 });
 
 test("runtime windows share aligned three-button chrome", async () => {
-  const [html, css] = await Promise.all([
+  const [html, css, controls] = await Promise.all([
     readFile(new URL("../playable-missions.html", import.meta.url), "utf8"),
     readFile(new URL("../playable-missions.css", import.meta.url), "utf8"),
+    readFile(new URL("../public/walkthroughs/shared/recovery-window-controls-v1.svg", import.meta.url), "utf8"),
   ]);
   assert.ok((html.match(/class="window-controls"/gu) ?? []).length >= 3);
-  assert.ok((html.match(/class="window-control minimize"/gu) ?? []).length >= 3);
-  assert.ok((html.match(/class="window-control maximize"/gu) ?? []).length >= 3);
-  assert.ok((html.match(/class="window-control close"/gu) ?? []).length >= 3);
+  assert.ok((html.match(/recovery-window-controls-v1\.svg/gu) ?? []).length >= 3);
+  assert.doesNotMatch(html, /class="window-control (?:minimize|maximize|close)"/u);
+  assert.match(controls, /width="89" height="25" viewBox="0 0 89 25"/u);
+  assert.match(controls, /M8 17h11/u);
+  assert.match(controls, /x="38" y="6" width="13" height="13"/u);
+  assert.match(controls, /m69 7 13 13m0-13-13 13/u);
   assert.match(css, /--titlebar:\s*linear-gradient\(90deg,#053b70 0%,#00578d 58%,#00305e 100%\)/u);
 });
 

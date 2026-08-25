@@ -224,12 +224,12 @@ function site(state) {
       ? "INFINITE DISCOVERY COMPLETE. PEOPLE WERE THE BOTTLENECK."
       : !model.creditsFixed ? "Generated to match everybody. No people required."
         : !model.choiceFixed ? "Credit details are back. Discovery still needs a choice."
-          : !model.artistFixed ? "Finn can choose. Artist names are still missing."
+          : !model.artistFixed ? "You can choose. Artist names are still missing."
             : !model.aboutFixed ? "Artist names are back. Creator profiles are still incomplete."
               : !model.collaborationFixed ? "Creator profiles are back. Collaboration context is still missing."
                 : !model.titleFixed ? "Creator context is back. Track titles and artwork are still generated."
                   : "Three artists, three sounds, and paths to keep exploring.";
-  const nav = model.choiceFixed ? "Chosen by Finn" : model.superMode ? "Made by Auto" : "Made for Finn";
+  const nav = model.choiceFixed ? "Chosen by you" : model.superMode ? "Made by Auto" : "Made for you";
   return `<g data-site-state="${state.id}">
     <rect x="109" y="56" width="802" height="714" fill="#080B0A"/>
     <rect x="109" y="56" width="802" height="52" fill="#121716" stroke="#323B38"/>
@@ -271,7 +271,7 @@ function readingCompanion() {
     <text x="964" y="144" class="reading-body">how people make and share music.</text>
     <rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/>
     <text x="964" y="197" class="reading-body">The discovery page changes only after</text>
-    <text x="964" y="235" class="reading-body">Finn finishes the quick check.</text>
+    <text x="964" y="235" class="reading-body">you finish the quick check.</text>
     <text x="964" y="288" class="reading-body">Artist and contributor details remain</text>
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>`;

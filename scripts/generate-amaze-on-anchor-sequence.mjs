@@ -80,7 +80,7 @@ function header(state, model) {
     : model.autoMode ? "AUTO-BUY COMPLETE — SHIPPING NOW — RESEARCH REMOVED"
       : "1–4 OF 9,000 RESULTS — PAID RESULTS FIRST";
   const statusColor = repaired ? COLORS.repair : COLORS.corruption;
-  const search = model.autoMode ? "AUTO ALREADY CHOSE FOR FINN" : "SOCCER SHOES";
+  const search = model.autoMode ? "AUTO ALREADY CHOSE FOR YOU" : "SOCCER SHOES";
   const cart = `Cart (${model.cartCount})`;
   return `<g data-qa-box="109,56,911,151">
     <rect x="109" y="56" width="802" height="61" fill="#153A5B"/>
@@ -110,12 +110,12 @@ function filterRow(y, label, value, fixed) {
 }
 
 function filters(model) {
-  const size = model.sizeFixed ? "FINN'S SIZE" : model.autoMode ? "AUTO GUESSED" : "NOT SHOWN";
+  const size = model.sizeFixed ? "YOUR SIZE" : model.autoMode ? "AUTO GUESSED" : "NOT SHOWN";
   const brand = model.budgetBrandFixed ? "ANY BRAND" : model.autoMode ? "AUTO FAVORITE" : "SPONSOR ONLY";
   const budget = model.budgetBrandFixed ? "UNDER $90" : model.autoMode ? "AUTO APPROVED" : "NO LIMIT";
   const delivery = model.deliveryFixed ? "GROUP DELIVERY" : "AIR-RUSH NOW";
   const reviews = model.reviewsFixed ? "ALL RATINGS" : "★★★★★ ONLY";
-  const sort = model.rankingFixed ? "MATCH FINN'S NEED" : model.autoMode ? "AUTO KNOWS BEST" : "WHO PAYS US";
+  const sort = model.rankingFixed ? "MATCH YOUR NEED" : model.autoMode ? "AUTO KNOWS BEST" : "WHO PAYS US";
   const deliveryColor = model.deliveryFixed ? COLORS.repairDark : COLORS.corruption;
   const reviewColor = model.reviewsFixed ? COLORS.repairDark : COLORS.corruption;
   const sortColor = model.rankingFixed ? COLORS.repairDark : COLORS.corruption;
@@ -156,10 +156,10 @@ function products(model) {
   const positions = [[274, 178], [588, 178], [274, 438], [588, 438]];
   if (model.rankingFixed) {
     const products = [
-      [art.classic, "#1 · BEST MATCH", "Field Classic", "$72", "4.6 ★ · mixed", "FINN'S SIZE", "durable materials", "group delivery", false],
-      [art.light, "#2 · GREAT VALUE", "Swift Step", "$64", "4.4 ★ · varied", "FINN'S SIZE", "durable + light", "fewer boxes", false],
+      [art.classic, "#1 · BEST MATCH", "Field Classic", "$72", "4.6 ★ · mixed", "YOUR SIZE", "durable materials", "group delivery", false],
+      [art.light, "#2 · GREAT VALUE", "Swift Step", "$64", "4.4 ★ · varied", "YOUR SIZE", "durable + light", "fewer boxes", false],
       [art.cheapest, "#3 · SPONSORED AD — PAID", "Cheapest on Earth", "$1.03", "1.2 ★ · negative", "size uncertain", "falls apart", "replacement waste", true],
-      [art.goalazo, "#4 · SPONSORED AD — PAID", "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not Finn's size", "paid placement", "not ranked first", true],
+      [art.goalazo, "#4 · SPONSORED AD — PAID", "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not your size", "paid placement", "not ranked first", true],
     ];
     return products.map((p, index) => productCard({
       x: positions[index][0], y: positions[index][1], image: p[0], banner: p[1], name: p[2], price: p[3],
@@ -174,9 +174,9 @@ function products(model) {
   const autoBanners = ["#1 · PAID AUTO-PICK", "#2 · ALSO PAID AUTO-PICK", "#3 · PAID AUTO-PICK AGAIN", "#4 · CHEAPEST + PAID AUTO-PICK"];
   const fixedBanners = ["#1 · SPONSORED AD — PAID", "#2 · SPONSORED AD — PAID", "#3 · SPONSORED AD — PAID", "#4 · SPONSORED AD — PAID"];
   const products = [
-    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not Finn's size", "durability unclear", "group delivery available"],
-    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not Finn's size", "durability unclear", "group delivery available"],
-    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not Finn's size", "durability unclear", "group delivery available"],
+    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not your size", "durability unclear", "group delivery available"],
+    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not your size", "durability unclear", "group delivery available"],
+    [art.goalazo, "Goalazo Mega-Boot", "$9,999", "2.6 ★ · mixed", "not your size", "durability unclear", "group delivery available"],
     [art.cheapest, "Cheapest on Earth", "$1.03", "1.2 ★ · negative", "size uncertain", "falls apart", "replacement waste shown"],
   ];
   return products.map((p, index) => productCard({
@@ -204,7 +204,7 @@ function autoCart(state) {
     <rect x="500" y="475" width="333" height="42" rx="5" fill="${COLORS.corruption}"/><text x="666" y="502" class="amaze-cart-action" text-anchor="middle">ADDED TO CART · SHIPPING NOW</text>
     <text x="500" y="536" class="amaze-cart-note">AUTO STATUS: SPONSORS SAID THEIR SHOES WERE BEST.</text>
     <text x="500" y="554" class="amaze-cart-note">THEIR CLAIMS WERE LOUD AND VERY CONFIDENT.</text>
-    <text x="500" y="572" class="amaze-cart-note">FINN'S CONFIRMATION: SKIPPED FOR EFFICIENCY.</text>
+    <text x="500" y="572" class="amaze-cart-note">YOUR CONFIRMATION: SKIPPED FOR EFFICIENCY.</text>
   </g>`;
 }
 
@@ -225,7 +225,7 @@ function repairChecklist(checked) {
 function footer(state, model) {
   const repaired = state.progress === 100 && model.rankingFixed && model.permissionFixed;
   const color = repaired ? COLORS.repair : COLORS.corruption;
-  const status = repaired ? "FINN'S CHOICE RESTORED" : state.mode === "act2" ? "AUTO-BUY OVERRIDE ACTIVE" : "RANKING DISTORTED";
+  const status = repaired ? "YOUR CHOICE RESTORED" : state.mode === "act2" ? "AUTO-BUY OVERRIDE ACTIVE" : "RANKING DISTORTED";
   return `<g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
     <text x="126" y="727" class="amaze-meter" style="fill:${color}">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">${state.progress}%</text>
     <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="${color}"/><rect x="126" y="743" width="${Math.round(610 * state.progress / 100)}" height="22" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/>
@@ -234,8 +234,8 @@ function footer(state, model) {
 }
 
 function readingCompanion(state, model) {
-  const finalLine = model.autoMode ? "Finn did not approve these orders." : model.rankingFixed ? "Nothing has been selected for Finn." : "Finn has not chosen a product yet.";
-  return `<g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information Finn needs to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after Finn</text><text x="964" y="235" class="reading-body">finishes the quick check.</text><text x="964" y="288" class="reading-body">${finalLine}</text></g>`;
+  const finalLine = model.autoMode ? "You did not approve these orders." : model.rankingFixed ? "Nothing has been selected yet." : "You have not chosen a product yet.";
+  return `<g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">This passage restores one piece of</text><text x="964" y="144" class="reading-body">information you need to compare.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">The storefront changes after you</text><text x="964" y="235" class="reading-body">finish the quick check.</text><text x="964" y="288" class="reading-body">${finalLine}</text></g>`;
 }
 
 function site(state) {

@@ -1,10 +1,10 @@
-# Game for Finn
+# Internet Recovery 98
 
-A desktop-browser read-aloud game for Finn, built on a reusable reading platform.
+A desktop-browser read-aloud game built on a reusable reading platform.
 
 The first game wrapper is **Internet Recovery 98**: Chinmay caused the collapse
 by irresponsibly rushing a powerful AI into deployment before he understood or
-controlled it, and Finn restores the corrupted Internet by reading aloud
+controlled it, and the player restores the corrupted Internet by reading aloud
 through Amy's browser-based recovery desktop. Chinmay sincerely keeps trying to
 help faster; his AI keeps overwriting careful work and eventually goes rogue.
 Chinmay remains long-haired and grows messier, frazzled, and more flustered—not
@@ -15,7 +15,7 @@ designed to support many future themes.
 ## Start here
 
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
-- Live isolated desktop prototype: <https://finn-reading-game.web.app/>
+- Live game: <https://finn-reading-game.web.app/>
 - Non-isolated GitHub Pages fallback: <https://chinmay856.github.io/finn-reading-game/>
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
 - Reading Companion production integration: [`docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`](docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md)
@@ -46,7 +46,7 @@ designed to support many future themes.
 - Nine-site sample passage sampler: [`content/proposed-sites/SAMPLE_PASSAGES.md`](content/proposed-sites/SAMPLE_PASSAGES.md)
 - Ten-site passage deck plans: [`content/proposed-sites/PASSAGE_DECK_PLANS.md`](content/proposed-sites/PASSAGE_DECK_PLANS.md)
 - Persistent Codex instructions: [`AGENTS.md`](AGENTS.md)
-- Desktop prototype entry point: [`index.html`](index.html)
+- Playable game entry point: [`playable-missions.html`](playable-missions.html)
 
 ## Core rule
 

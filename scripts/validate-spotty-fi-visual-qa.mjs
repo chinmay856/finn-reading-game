@@ -57,11 +57,11 @@ const report = await page.evaluate(({ corruption, repair }) => {
   mustContain(repairedState, ["Paper Planes", "Soft Crash", "VERIFIED CREATOR", "Mira — voice", "Related work", "FOLLOW"]);
   mustContain(superState, ["OPTIMAL SONG ∞", "ARTIST: AUTO", "ONE PERFECT CREATOR: AUTO", "17,004 NEW SONGS", "VOLUME: MAX", "AUTO OVER-FIX ACTIVE"]);
   mustContain(locksState, ["LOCK IN THE REPAIR", "SHOW THE ARTIST", "SHOW THE CREDITS", "LET USERS CHOOSE", "LET USERS SET THE VOLUME"]);
-  mustContain(securedState, ["Paper Planes", "Soft Crash", "Chosen by Finn", "MUSIC + CHOICE RESTORED", "VOLUME"]);
+  mustContain(securedState, ["Paper Planes", "Soft Crash", "Chosen by you", "MUSIC + CHOICE RESTORED", "VOLUME"]);
   for (const forbidden of ["TRACK_001", "CREATOR PROFILE NOT FOUND", "ARTIST: GENERATED"]) {
     if (repairedState?.textContent.includes(forbidden)) issues.push(`Repaired state retains corrupted copy: ${forbidden}`);
   }
-  for (const forbidden of ["Soft Crash", "VERIFIED CREATOR", "Chosen by Finn"]) {
+  for (const forbidden of ["Soft Crash", "VERIFIED CREATOR", "Chosen by you"]) {
     if (superState?.textContent.includes(forbidden)) issues.push(`Super-corruption retains repaired copy: ${forbidden}`);
   }
   const repairedStyle = repairedState?.innerHTML ?? "";
@@ -96,7 +96,7 @@ const report = await page.evaluate(({ corruption, repair }) => {
   }
   const phase1Expectations = [
     ["page-phase1-track", "Mira • Jo • Kai"],
-    ["page-phase1-artist", "Chosen by Finn"],
+    ["page-phase1-artist", "Chosen by you"],
     ["page-phase1-about", "PROFILE DETAILS STILL MISSING"],
     ["page-phase1-credits", "Paper Planes began"],
   ];

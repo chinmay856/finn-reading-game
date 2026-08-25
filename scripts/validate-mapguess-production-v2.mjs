@@ -78,8 +78,8 @@ errors.push(...await page.evaluate(() => {
     if (state.querySelector("[data-module='moving-target-overlay']")?.textContent.includes("TRY THE REPAIR")) issues.push(`${state.id} must not repeat a TRY THE REPAIR prompt inside the lock box.`);
   }
   for (const state of [locks[2], locks[4], locks[6]]) needs(state, ["LOCK IN THE REPAIR", "GO DIRECTLY TO THE LIBRARY", "DIDN'T LOCK · CONTINUE", "×"]);
-  needs(locks[8], ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "FINN'S LIBRARY DESTINATION SECURED"]);
-  needs(secured, ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "FINN'S LIBRARY DESTINATION SECURED"]);
+  needs(locks[8], ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "YOUR LIBRARY DESTINATION IS SECURE"]);
+  needs(secured, ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "YOUR LIBRARY DESTINATION IS SECURE"]);
 
   if (locks[0].querySelector("[data-module='moving-target-overlay']")) issues.push("Auto over-fix must be shown unobscured before the destination overlay opens.");
   for (const state of locks.slice(1, 8)) {

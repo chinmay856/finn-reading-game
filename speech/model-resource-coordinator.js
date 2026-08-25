@@ -1,4 +1,4 @@
-export const SHERPA_MODEL_LEASE_NAME = "finn-reading-sherpa-v1.13.2";
+export const SHERPA_MODEL_LEASE_NAME = "internet-recovery-98-sherpa-v1.13.2";
 
 function inertLease({ acquired, coordinated, reason }) {
   return Object.freeze({

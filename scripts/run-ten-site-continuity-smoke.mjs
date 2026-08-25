@@ -137,8 +137,13 @@ try {
     await page.locator("#storyContinue").click();
   }
   await page.locator("#readerView:not([hidden])").waitFor({ state: "visible", timeout: 10_000 });
-  if ((await page.locator("#passagePosition").innerText()) !== "4 OF 8") {
-    failures.push("partial replay did not resume at passage 4 of 8");
+  const replayFrame = assetPath(await page.locator("#siteFrame").getAttribute("src"));
+  if (replayFrame !== assetPath(replayMission.repairFrames[2])) {
+    failures.push("partial replay did not restore the frame after three completed passages");
+  }
+  const resumedPassage = await page.locator("#passage").innerText();
+  if (!resumedPassage.includes(replayMission.passages[3].lines[0])) {
+    failures.push("partial replay did not resume with the fourth passage");
   }
 
   await page.locator("#missionView .start-button").click();

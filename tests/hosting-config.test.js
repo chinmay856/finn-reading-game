@@ -12,6 +12,10 @@ function headersFor(source) {
 test("Firebase serves the complete app from the production build", () => {
   assert.equal(config.hosting.public, "dist");
   assert.deepEqual(config.emulators.hosting, { host: "127.0.0.1", port: 5005 });
+  assert.deepEqual(config.hosting.redirects, [
+    { source: "/", destination: "/playable-missions.html", type: 302 },
+    { source: "/index.html", destination: "/playable-missions.html", type: 302 },
+  ]);
 });
 
 test("every response carries the isolation headers required by the pinned Sherpa runtime", () => {

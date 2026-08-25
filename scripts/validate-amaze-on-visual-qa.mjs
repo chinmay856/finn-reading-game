@@ -50,12 +50,12 @@ const report = await page.evaluate(() => {
   const repaired = byId("repaired");
   const overfix = byId("super-corrupt");
   needs(initial, ["WHO PAYS US", "SPONSOR ONLY", "FIT HIDDEN", "Cart (0)", "#1 · PAID PLACEMENT", "#2 · ALSO PAID PLACEMENT", "#3 · YOU GUESSED IT — PAID AGAIN", "#4 · CHEAPEST — ALSO PAID"]);
-  needs(byId("size"), ["FINN'S SIZE", "WHO PAYS US"]);
+  needs(byId("size"), ["YOUR SIZE", "WHO PAYS US"]);
   needs(byId("budget-brand"), ["ANY BRAND", "UNDER $90", "WHO PAYS US"]);
   needs(byId("reviews"), ["ALL RATINGS", "dates + reviewer history", "WHO PAYS US"]);
   needs(byId("delivery"), ["GROUP DELIVERY", "fewer trips + boxes", "WHO PAYS US"]);
   needs(byId("details"), ["durability unclear", "replacement waste shown", "WHO PAYS US"]);
-  needs(repaired, ["MATCH FINN'S NEED", "ALL RATINGS", "NOTHING SELECTED", "Cart (0)", "#1 · BEST MATCH", "#2 · GREAT VALUE", "SPONSORED AD — PAID"]);
+  needs(repaired, ["MATCH YOUR NEED", "ALL RATINGS", "NOTHING SELECTED", "Cart (0)", "#1 · BEST MATCH", "#2 · GREAT VALUE", "SPONSORED AD — PAID"]);
   for (const id of ["initial", "size", "budget-brand", "reviews", "delivery", "details"]) {
     const text = byId(id)?.textContent ?? "";
     if (text.includes("Field Classic") || text.includes("Swift Step")) issues.push(`${id} performs the dominant re-ranking before the final initial-repair step.`);
@@ -65,7 +65,7 @@ const report = await page.evaluate(() => {
   }
   needs(repaired, ["Sort by:", "BEST MATCH"]);
 
-  needs(overfix, ["AUTO-BUY COMPLETE", "AUTO ALREADY CHOSE FOR FINN", "AUTO-CART (4)", "BUYING NOW", "#1 · PAID AUTO-PICK", "AUTO-CART — BUY NOW COMPLETE", "3 × GOALAZO MEGA-BOOT", "ADDED TO CART · SHIPPING NOW", "SPONSORS SAID THEIR SHOES WERE BEST", "THEIR CLAIMS WERE LOUD AND VERY CONFIDENT", "FINN'S CONFIRMATION: SKIPPED FOR EFFICIENCY", "AUTO-BUY OVERRIDE ACTIVE"]);
+  needs(overfix, ["AUTO-BUY COMPLETE", "AUTO ALREADY CHOSE FOR YOU", "AUTO-CART (4)", "BUYING NOW", "#1 · PAID AUTO-PICK", "AUTO-CART — BUY NOW COMPLETE", "3 × GOALAZO MEGA-BOOT", "ADDED TO CART · SHIPPING NOW", "SPONSORS SAID THEIR SHOES WERE BEST", "THEIR CLAIMS WERE LOUD AND VERY CONFIDENT", "YOUR CONFIRMATION: SKIPPED FOR EFFICIENCY", "AUTO-BUY OVERRIDE ACTIVE"]);
   needs(overfix, ["Sort by:", "AUTO KNOWS BEST"]);
   if ([...overfix.querySelectorAll("[data-product-card='true']")].filter((card) => card.textContent.includes("Goalazo Mega-Boot")).length !== 3) issues.push("Auto-buy over-fix must keep three Goalazo cards and one cheapest card.");
   if (overfix?.querySelectorAll("[data-overlay='auto-cart']").length !== 1) issues.push("Auto-buy over-fix must contain exactly one prominent cart confirmation overlay.");
@@ -80,7 +80,7 @@ const report = await page.evaluate(() => {
   needs(byId("locks"), ["SHOW PAID PLACEMENT", "SHOW REAL REVIEWS", "SHOW ALL CHOICES", "SHOW DELIVERY + WASTE", "ASK BEFORE BUYING"]);
   needs(byId("sponsor-lock"), ["SPONSORED AD — PAID"]);
   needs(byId("reviews-lock"), ["2.6 ★ · mixed", "1.2 ★ · negative"]);
-  needs(byId("needs-lock"), ["FINN'S SIZE", "durable materials", "#1 · BEST MATCH", "#2 · GREAT VALUE", "AUTO-CART (4)", "BUYING NOW", "SORT RESTORED"]);
+  needs(byId("needs-lock"), ["YOUR SIZE", "durable materials", "#1 · BEST MATCH", "#2 · GREAT VALUE", "AUTO-CART (4)", "BUYING NOW", "SORT RESTORED"]);
   needs(byId("delivery-lock"), ["GROUP DELIVERY", "fewer trips + boxes", "replacement waste", "AUTO-CART (4)", "BUYING NOW", "SORT RESTORED"]);
   needs(byId("permission-lock"), ["Cart (0)", "#1 · BEST MATCH", "#2 · GREAT VALUE", "NOTHING SELECTED"]);
   if ((byId("needs-lock")?.textContent ?? "").includes("CHANGES LOCKED") || (byId("delivery-lock")?.textContent ?? "").includes("CHANGES LOCKED")) issues.push("The sorting lock remains red after SHOW ALL CHOICES is secured.");

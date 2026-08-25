@@ -1,5 +1,22 @@
 # Project status
 
+## Playtester naming, reflection, and Companion polish — 2026-08-24
+
+- The public game title is now **Internet Recovery 98**. The player remains
+  unnamed; the named cast is Chinmay, Amy, Techno (she/her), and Auto (A-U-T-O).
+  Player-facing dialogue, receipts, recovery documents, prompts, and transition
+  beats use the canonical Auto spelling.
+- Every mission's final teaching handoff now presents Chinmay first and Amy
+  second before opening the response box. The response box invites a paragraph,
+  accepts any response, and quietly displays `N words out of 300` without a
+  minimum or maximum requirement.
+- Login no longer exposes the names or completion totals of locally saved
+  profiles. Typing an existing name still loads its save on that device.
+- Reading Companion screens no longer disclose the site name or passage count.
+  The shared Companion, launcher, and login chrome now uses one exact vector
+  export of the reviewed 27-by-25-pixel window-button geometry rather than CSS
+  approximations.
+
 ## Resumable replays and final ten-site mechanics pass — 2026-08-24
 
 - Launcher cards now show a small Harvey-ball indicator beside the site name,
@@ -34,7 +51,7 @@
   The full evidence table is
   `docs/design/TEN_SITE_CONTINUITY_QA_2026-08-24.md`.
 - Every mission adds a second, more flustered Chinmay beat after Amy confirms the
-  locked repairs and before the player writes Otto's lesson. Chinmay names how
+  locked repairs and before the player writes Auto's lesson. Chinmay names how
   his own vague instruction was misinterpreted; the most extreme portrait stays
   unused for the endgame.
 - A document-remapping endgame proposal is saved as
@@ -54,7 +71,7 @@
   narrow site-colored patch over the shared shell. The ten repair checklists now
   use compact, content-sized footprints between 285 and 330 pixels wide, and
   Spotty-Fi's pending repair labels use the canonical corruption red.
-- Chinmay, Amy, and Otto story portraits retain their native square artwork
+- Chinmay, Amy, and Auto story portraits retain their native square artwork
   without a second CSS frame or vertical stretching.
 - Dedicated continuity tests now enforce launcher state semantics, shared
   window chrome, square portrait geometry, full-width mission title bars,
@@ -94,7 +111,7 @@
   the main repaired evidence stays visible while each checklist advances.
   WikiWhy, MyCorner, and MapGuess retain their already-compact footprints.
 - MyCorner's final safety rule now consistently reads `PAUSE BEFORE EVER SENDING
-  MONEY` in the checklist, Amy handoff, reflection prompt, and Otto receipt.
+  MONEY` in the checklist, Amy handoff, reflection prompt, and Auto receipt.
 - A repository test now enforces that every playable repair checklist obscures
   no more than half of the 802-pixel site surface and remains inside the site
   frame.
@@ -213,7 +230,7 @@
   repair descriptions remain available to assistive technology.
 - ViewTube now uses an authored story sequence rather than the generic fixed
   speaker template: Chinmay pitches Video Auto-Fix, his ten-witness joke leads
-  into Amy's one-hash explanation, and Amy's completion names Finn's repair and
+  into Amy's one-hash explanation, and Amy's completion names the player's repair and
   closes the site.
 - Browser QA at 1440x900 covered entry, both midpoint messages, clean Act II,
   and completion. The screenshots are recorded in `docs/design/review/`.
@@ -269,7 +286,7 @@
 - Every post-WikiWhy site has visible cut scenes between repair acts and at
   completion. The speaker order follows each site's authored notes instead of a
   fixed Amy/Chinmay template; midpoints explain the new problem and completions
-  say what Finn fixed before explicitly finishing the site.
+  say what the player fixed before explicitly finishing the site.
 - Progress geometry matches each authored flow: ThreadIt 4+3, FacePlace 3+3,
   MyCorner 4+3, Yahuh 3+3, ViewTube 4+3, Search-ish 4+3, Amaze-On 4+3,
   Spotty-Fi 5+3, and MapGuess 5+3. Search-ish therefore shows four initial
@@ -277,7 +294,7 @@
   halfway through a mismatched list.
 - MapGuess's bottom tracker now visibly compares the requested and moved
   destination and preserves the deliberately unreliable vintage
-  “2 minutes remaining” estimate until Finn locks the real target.
+  “2 minutes remaining” estimate until the player locks the real target.
 - Desktop browser QA at 1280x720 covered entry, midpoint, and secured previews:
   all image-led site frames measured exactly 4:3, no document or active-screen
   overflow was found, and exactly one Techno was visible in every state.
@@ -745,7 +762,7 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
   moves the destination pin. The midpoint proves that road geometry did not
   change, destination coordinates did change, and the ETA target remains
   `2 MINUTES FOREVER`.
-- Anchor unit eight cannot start until Finn explicitly chooses one valid route
+- Anchor unit eight cannot start until the player explicitly chooses one valid route
   goal: fastest, safest, scenic, or accessible. The choice remains changeable
   after midpoint acknowledgement until the final unit begins, then locks on
   secure.
@@ -855,7 +872,7 @@ publication-pending language is superseded by PR #36 and deployed `65368e8`.
 ## Known limitations
 
 - A complete real microphone run is still required. Browser automation cannot
-  judge Finn's read-aloud naturalness.
+  judge the player's read-aloud naturalness.
 - Only one executable passage exists, so the real campaign intentionally stops
   at the content-review gate after that unseen record. The full state route is
   objective-testable through wrapper-only diagnostics without creating a score.
@@ -1071,7 +1088,7 @@ Spotty-Fi now exposes all eight complete Deck A candidates through the explicit
 noncanonical playtest lane and routes them through the existing Reading
 Companion. Accepted results advance the wrapper-owned five-disclosure plus
 three-listener-control campaign. The saved predicted-history interruption still
-requires Finn's explicit acknowledgement before the sixth passage can begin.
+requires the player's explicit acknowledgement before the sixth passage can begin.
 Playtest progress and slot-nine evidence remain tab-only; production selection,
 content review, canonical evidence, and finale gates remain fail-closed. No
 Reading Engine code changed. `npm run check`, all 325 tests, and `npm run build`
@@ -1081,8 +1098,8 @@ desktop click-through remains the publication smoke check.
 ## Ten-site mechanics refinement — active 2026-07-13
 
 - Every site now has an explicit Amy plus Chinmay midpoint exchange explaining
-  what Finn fixed in the first half and what changes in the second half.
-- Every site has an explicit two-character completion payoff naming Finn's
+  what the player fixed in the first half and what changes in the second half.
+- Every site has an explicit two-character completion payoff naming the player's
   repair and clearly ending that site before returning to the Recovery Map.
 - Site view models expose honest completed/total and half-boundary data instead
   of deriving progress from decorative art. FacePlace retains its AVOCADO beat.

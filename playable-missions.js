@@ -81,23 +81,23 @@ const PORTRAITS = Object.freeze({
   "chinmay-explaining": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "50% 0%", size: "300% 200%" }),
   "chinmay-fluster-1": Object.freeze({ image: "/walkthroughs/shared/chinmay-fluster-1.jpg", position: "center", size: "cover" }),
   "chinmay-fluster-2": Object.freeze({ image: "/walkthroughs/shared/chinmay-fluster-2.jpg", position: "center", size: "cover" }),
-  "otto-busy": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "0% 0%", size: "300% 200%" }),
-  "otto-learned": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 0%", size: "300% 200%" }),
-  "otto-confused": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "100% 0%", size: "300% 200%" }),
-  "otto-overdrive": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 100%", size: "300% 200%" }),
+  "auto-busy": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "0% 0%", size: "300% 200%" }),
+  "auto-learned": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 0%", size: "300% 200%" }),
+  "auto-confused": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "100% 0%", size: "300% 200%" }),
+  "auto-overdrive": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 100%", size: "300% 200%" }),
 });
 
 const SITE_PORTRAITS = Object.freeze({
-  wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  faceplace: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  mycorner: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
-  searchish: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-evidence", completion: "amy-supportive" }),
-  "spotty-fi": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "otto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
-  mapguess: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "otto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  faceplace: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  mycorner: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  yahuh: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  viewtube: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  "amaze-on": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
+  searchish: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-evidence", completion: "amy-supportive" }),
+  "spotty-fi": Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
+  mapguess: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
 });
 
 const TECHNO_GAME_ACTIONS = Object.freeze({
@@ -303,7 +303,7 @@ function launcherStatus(site) {
 }
 
 function renderLauncher() {
-  document.title = "Internet Recovery OS 98 · Choose a Site";
+  document.title = "Internet Recovery 98 · Choose a Site";
   $("launcherView").hidden = false;
   $("missionView").hidden = true;
   const profile = activeProfile();
@@ -366,7 +366,7 @@ function renderLauncher() {
 function recoveryDocumentName(siteName, playerName) {
   const safeSite = String(siteName || "Recovered_site").replace(/[^a-z0-9]+/giu, "_").replace(/^_+|_+$/gu, "");
   const safePlayer = String(playerName || "player").replace(/[^a-z0-9]+/giu, "_").replace(/^_+|_+$/gu, "");
-  return `${safeSite}_${safePlayer}_feedback_for_Otto.txt`;
+  return `${safeSite}_${safePlayer}_feedback_for_Auto.txt`;
 }
 
 function openDocuments() {
@@ -376,7 +376,7 @@ function openDocuments() {
     const siteName = record.siteName || walkthrough?.name || siteId;
     return {
       filename: recoveryDocumentName(siteName, profile.displayName),
-      lesson: record.lesson || walkthrough?.ottoLesson || "Lesson not recorded in this older save.",
+      lesson: record.lesson || walkthrough?.autoLesson || "Lesson not recorded in this older save.",
       reflection: record.reflection || "No player explanation was saved.",
       savedAt: record.savedAt,
       siteName,
@@ -389,7 +389,7 @@ function openDocuments() {
     const title = document.createElement("h2");
     title.textContent = record.filename;
     const lessonHeading = document.createElement("h3");
-    lessonHeading.textContent = "LESSON SAVED FOR OTTO";
+    lessonHeading.textContent = "LESSON SAVED FOR AUTO";
     const lesson = document.createElement("p");
     lesson.textContent = record.lesson;
     const playerHeading = document.createElement("h3");
@@ -407,7 +407,7 @@ function openDocuments() {
     if (index === 0) queueMicrotask(() => showRecord(record, button));
     return button;
   }));
-  if (!records.length) preview.replaceChildren(Object.assign(document.createElement("h2"), { textContent: "No recovery files yet" }), Object.assign(document.createElement("p"), { textContent: "Finish a recovery case and teach Otto a lesson. The saved lesson will appear here." }));
+  if (!records.length) preview.replaceChildren(Object.assign(document.createElement("h2"), { textContent: "No recovery files yet" }), Object.assign(document.createElement("p"), { textContent: "Finish a recovery case and teach Auto a lesson. The saved lesson will appear here." }));
   $("documentsWindow").hidden = false;
   $("closeDocuments").focus();
 }
@@ -436,13 +436,9 @@ function showView(id) {
 
 function passage() { return mission.passages[sequence.index]; }
 
-function positionText() { return `${sequence.index + 1} of ${mission.passages.length}`; }
-
 function renderPassage() {
   const current = passage();
   const shouldAutoPrepare = sessionStorage.getItem("internet-recovery-voice-warmed-v1") === "1";
-  $("missionName").textContent = mission.name;
-  $("passagePosition").textContent = positionText();
   $("companionTitle").textContent = current.title;
   $("passage").replaceChildren(...current.lines.map((line, index) => {
     const paragraph = document.createElement("p");
@@ -649,7 +645,6 @@ function showResult(readingResult) {
   });
   sequence = acceptMissionReading(sequence, { passageId: readingResult.passageId }).state;
   saveMissionProgress();
-  $("resultPassagePosition").textContent = positionText();
   $("resultTitle").textContent = readingResult.confidenceBand?.label ?? "Reading complete";
   $("resultDetail").textContent = confidenceDetail(readingResult);
   $("coverageBand").textContent = readingResult.coverage.band;
@@ -702,7 +697,7 @@ async function answerQuestion(choice, selectedButton) {
   playTechnoAction("data-restored", "repair", "review");
   $("nextPassage").disabled = false;
   if (sequence.phase === "midpoint-required") $("nextPassage").textContent = "Review Chinmay’s fix";
-  else if (sequence.phase === "reflection-required") $("nextPassage").textContent = "Teach Otto";
+  else if (sequence.phase === "reflection-required") $("nextPassage").textContent = "Teach Auto";
   else if (mission.transitionBeats?.[sequence.index]) $("nextPassage").textContent = "See what moved";
 }
 
@@ -804,7 +799,6 @@ async function skipReading() {
   sequence = response.state;
   saveMissionProgress();
   setFrame(mission.repairFrames[sequence.index - 1], `preview repair ${sequence.index}`);
-  $("skipPassagePosition").textContent = `${sequence.index} of ${mission.passages.length}`;
   showView("skipView");
   $("skipView").focus();
   runTechnoAcross("right");
@@ -815,12 +809,12 @@ function showStoryBeat(speaker, heading, text, buttonLabel, portraitKey) {
   $("readingCompanion").inert = true;
   const dialog = $("storyOverlay").querySelector(".story-dialog");
   dialog.dataset.speaker = speaker;
-  const portrait = PORTRAITS[portraitKey] ?? PORTRAITS[speaker === "auto" ? "otto-busy" : speaker === "amy" ? "amy-supportive" : "chinmay-careless"];
+  const portrait = PORTRAITS[portraitKey] ?? PORTRAITS[speaker === "auto" ? "auto-busy" : speaker === "amy" ? "amy-supportive" : "chinmay-careless"];
   const tile = $("storySpeaker");
   tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
   tile.style.setProperty("--portrait-position", portrait.position);
   tile.style.setProperty("--portrait-size", portrait.size);
-  $("storyLabel").textContent = speaker === "auto" ? "OTTO" : speaker.toUpperCase();
+  $("storyLabel").textContent = speaker === "auto" ? "AUTO" : speaker.toUpperCase();
   $("storyHeading").textContent = heading;
   $("storyText").textContent = text;
   $("storyContinue").textContent = buttonLabel;
@@ -856,7 +850,7 @@ async function runMidpoint() {
   setTechno("review", "left");
   await showStoryBeat("chinmay", mission.midpoint.chinmay.heading, mission.midpoint.chinmay.text, "See Chinmay’s fix", portraits.chinmay);
   setTechno("failed", "left");
-  await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply Otto’s update", portraits.overfix);
+  await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply Auto’s update", portraits.overfix);
   setFrame(mission.superFrame, "Auto over-fix active");
   setTechno("failed", "left");
   await showCorruptionPause();
@@ -871,7 +865,7 @@ function showReflection() {
   setFrame(mission.securedFrame, "secured");
   $("reflectionPrompt").textContent = mission.reflectionPrompt;
   $("reflectionText").value = "";
-  $("reflectionCount").textContent = "0 words";
+  $("reflectionCount").textContent = "0 words out of 300";
   showView("reflectionView");
   setTechno("waiting", "left");
 }
@@ -880,19 +874,19 @@ async function runCompletionBriefing() {
   setFrame(mission.securedFrame, "secured");
   setTechno("jump", "left");
   await showStoryBeat(
-    "amy",
-    "GOOD JOB — THE FIXES ARE LOCKED IN",
-    `You repaired ${mission.name} and protected the choices that Otto erased. Now it’s time to teach Otto what we learned from this site so the same over-fix doesn’t happen again.`,
-    "Teach Otto",
-    SITE_PORTRAITS[mission.id].completion,
-  );
-  setTechno("failed", "left");
-  await showStoryBeat(
     "chinmay",
     mission.completionChinmay.heading,
     mission.completionChinmay.text,
-    "Write the lesson for Otto",
+    "Review what happened",
     SITE_PORTRAITS[mission.id].reflection,
+  );
+  setTechno("jump", "left");
+  await showStoryBeat(
+    "amy",
+    "GOOD JOB — THE FIXES ARE LOCKED IN",
+    `You repaired ${mission.name} and protected the choices that Auto erased. Now it’s time to teach Auto what we learned from this site so the same over-fix doesn’t happen again.`,
+    "Write the lesson for Auto",
+    SITE_PORTRAITS[mission.id].completion,
   );
   showReflection();
 }
@@ -924,10 +918,7 @@ function continueAfterSkip() {
 function submitReflection() {
   const reflection = $("reflectionText").value;
   const response = submitMissionReflection(sequence, { reflection });
-  if (!response.completed) {
-    $("reflectionPrompt").textContent = `${mission.reflectionPrompt} Write at least one sentence before sending it.`;
-    return;
-  }
+  if (!response.completed) return;
   sequence = response.state;
   setFrame(mission.receiptFrame, "repair complete");
   saveReflection(reflection);
@@ -937,12 +928,12 @@ function submitReflection() {
 }
 
 async function confirmReceipt() {
-  await showStoryBeat("auto", "THANK YOU FOR THE LESSON", mission.ottoLesson, "Choose the next site", "otto-learned");
+  await showStoryBeat("auto", "THANK YOU FOR THE LESSON", mission.autoLesson, "Choose the next site", "auto-learned");
   await navigateToLauncher();
 }
 
 function saveAggregate(readingResult) {
-  const key = "finn-playable-mission-results-v1";
+  const key = "internet-recovery-98-reading-results-v1";
   const stored = JSON.parse(localStorage.getItem(key) ?? "[]");
   stored.push({
     accepted: readingResult.accepted,
@@ -962,7 +953,7 @@ function saveReflection(reflection) {
   updateActiveProfile((profile) => {
     if (replayRequested && profile.reflections[mission.id]) return;
     profile.reflections[mission.id] = {
-      lesson: mission.ottoLesson,
+      lesson: mission.autoLesson,
       reflection,
       savedAt: new Date().toISOString(),
       siteName: mission.name,
@@ -978,17 +969,8 @@ function restartMission() {
 }
 
 function renderSavedProfiles() {
-  const store = readSaveStore();
-  const profiles = Object.values(store.profiles).sort((a, b) => String(b.savedAt).localeCompare(String(a.savedAt)));
-  $("savedProfiles").replaceChildren(...profiles.map((profile) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    const completedCount = new Set([...(profile.completedSiteIds ?? []), ...Object.keys(profile.reflections ?? {})]).size;
-    button.textContent = `${profile.displayName} · ${completedCount}/${PLAYABLE_SITE_IDS.length} complete`;
-    button.addEventListener("click", () => beginProfile(profile.displayName));
-    return button;
-  }));
-  $("savedProfiles").hidden = profiles.length === 0;
+  $("savedProfiles").replaceChildren();
+  $("savedProfiles").hidden = true;
 }
 
 function updateOpeningModelProgress(event) {
@@ -1230,7 +1212,7 @@ function bindShellControls() {
 async function runBriefing() {
   setFrame(mission.initialFrame, "initial corruption");
   setTechno("waiting", "left");
-  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, `Read each short passage and answer the quick check to repair this site. Retrying keeps the same passage and does not move the repair forward. For this fast prototype, Skip passage previews the next design state without creating a speech score.`, "Start recovery", SITE_PORTRAITS[mission.id].briefing);
+  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage and answer the quick check to repair this site. Retrying keeps the same passage and does not move the repair forward. Skip passage previews the next design state without creating a speech score.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
   renderPassage();
   void prepareModels();
 }
@@ -1270,7 +1252,7 @@ function initialize() {
   $("confirmReceipt").addEventListener("click", confirmReceipt);
   $("reflectionText").addEventListener("input", () => {
     const count = $("reflectionText").value.trim().split(/\s+/u).filter(Boolean).length;
-    $("reflectionCount").textContent = `${count} word${count === 1 ? "" : "s"}`;
+    $("reflectionCount").textContent = `${count} word${count === 1 ? "" : "s"} out of 300`;
     setTechno("waiting", "left");
   });
   $("deleteTroubleshooting").addEventListener("click", async () => {

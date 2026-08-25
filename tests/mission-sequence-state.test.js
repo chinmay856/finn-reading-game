@@ -112,7 +112,7 @@ test("skip advances the preview without manufacturing reading completion", () =>
   assert.deepEqual(skipPending.state.skippedPassageIds, ["passage-1", "passage-2"]);
 });
 
-test("all passages require reflection, then produce an idempotent completion receipt", () => {
+test("all passages invite reflection, accept any response, then produce an idempotent completion receipt", () => {
   let state = createMissionSequenceState({ phaseOneCount: 2, totalPassages: 4 });
   state = completePassage(state, "passage-1").state;
   state = completePassage(state, "passage-2").state;
@@ -121,7 +121,12 @@ test("all passages require reflection, then produce an idempotent completion rec
   state = completePassage(state, "passage-4").state;
   assert.equal(state.phase, "reflection-required");
   assert.equal(state.index, 4);
-  assert.equal(submitMissionReflection(state, { reflection: "  " }).reason, "missing-reflection");
+  const blankCompleted = submitMissionReflection(state, {
+    reflection: "  ",
+    submittedAt: "2026-08-16T11:59:00Z",
+  });
+  assert.equal(blankCompleted.completed, true);
+  assert.equal(blankCompleted.receipt.reflection, "");
 
   const completed = submitMissionReflection(state, {
     reflection: "People should stay in control.",

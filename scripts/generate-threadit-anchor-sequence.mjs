@@ -240,7 +240,7 @@ function companion(state) {
     "lock-origin": ["One original post is locked.", "The source count is still wrong."],
     "lock-sources-context": ["One post and its copies are counted once.", "Disagreement is still hidden."],
     "lock-questions": ["Disagreement and sources are secured.", "The forum is repaired again."],
-    secured: ["The repair is secured.", "Finn can teach Auto what went wrong."],
+    secured: ["The repair is secured.", "You can teach Auto what went wrong."],
   }[state.id];
   return `<g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="112" class="reading-body">${messages[0]}</text><text x="964" y="150" class="reading-body">${messages[1]}</text><rect x="960" y="183" width="404" height="34" fill="#F8DFA0"/><text x="964" y="209" class="reading-body">Read, then answer the quick check.</text></g>`;
 }
