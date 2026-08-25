@@ -2,23 +2,37 @@
 
 ## Resumable replays and final ten-site mechanics pass — 2026-08-24
 
-- Launcher cards now show a small four-step Harvey-ball indicator for incomplete
-  recoveries and active replays. New cases remain red, completed cases remain
-  green, and the action changes among `OPEN CORRUPTED WEBSITE`, `CONTINUE
-  RECOVERY`, `RECOVERY COMPLETE · PLAY AGAIN`, and `RECOVERED · CONTINUE
-  REPLAY` without displaying a noisy exact percentage.
+- Launcher cards now show a small Harvey-ball indicator beside the site name,
+  inside the white card rather than over the preview. It reflects the actual
+  saved passage ratio rounded to the nearest five percent while keeping the
+  number available only in its accessible label and hover title. New cases use
+  a neutral empty circle, active work fills green, and the action changes among
+  `OPEN CORRUPTED WEBSITE`, `CONTINUE RECOVERY`, `RECOVERY COMPLETE · PLAY
+  AGAIN`, and `RECOVERED · CONTINUE REPLAY`.
 - Completed recoveries and active replays now use separate save lanes. A partial
   replay resumes at its saved passage without changing the original completion
   flag or saved lesson document; completing the replay clears only that replay
   checkpoint so the next replay can begin fresh.
+- `New game` now saves the current mission, returns to the Recovery Browser,
+  and only then opens the player-login gate. A newly created profile can no
+  longer inherit the route of the mission that was open when the menu action
+  was chosen.
 - All nine image-led non-WikiWhy missions now preserve the shared three-button
   browser chrome in their full-width site title-bar patches. The older
   ThreadIt, FacePlace, Amaze-On, and Spotty-Fi generators were updated so future
   regeneration also preserves the compact reviewed checklist footprints and
   canonical pending-label red.
-- MapGuess's repeated `GO DIRECTLY TO THE LIBRARY` lock now fits its compact
-  moving-target panel and uses the same bright corruption red as the other nine
-  missions.
+- The Reading Companion's generated title-bar controls now match the dimensions,
+  spacing, and glyph alignment of the controls baked into the reviewed site
+  frames. MapGuess's repeated `GO DIRECTLY TO THE LIBRARY` lock uses the same
+  bright corruption red as the other missions and no longer includes the
+  redundant `TRY THE REPAIR` prompt inside the panel.
+- A ten-site mapping audit found and fixed multi-row jumps in ThreadIt,
+  FacePlace, and ViewTube and an unchanged final frame in WikiWhy. The permanent
+  `npm run test:ten-site-continuity` smoke now opens all ten sites and verifies
+  all 92 passage-to-frame advances, including MapGuess's three failed attempts.
+  The full evidence table is
+  `docs/design/TEN_SITE_CONTINUITY_QA_2026-08-24.md`.
 - Every mission adds a second, more flustered Chinmay beat after Amy confirms the
   locked repairs and before the player writes Otto's lesson. Chinmay names how
   his own vague instruction was misinterpreted; the most extreme portrait stays

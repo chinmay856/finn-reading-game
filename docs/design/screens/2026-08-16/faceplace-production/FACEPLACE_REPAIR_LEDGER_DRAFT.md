@@ -39,13 +39,12 @@ geometry, restores praise-only comments, replaces all four album photos with the
 same Auto-enhanced selected moment, and replaces the Honesty Meter with the Auto
 Awesomeness Meter.
 
-Player-facing lock groups in the review sequence:
+Player-facing lock groups in the runtime sequence are consolidated so the
+three remaining canonical passages each lock exactly one visible row:
 
-1. `RESTORE ORIGINAL COMMENTS` — ordinary comments replace Auto's praise-only rewrites.
-2. `RESTORE THE ALBUM PHOTOS` — the four distinct Lake Day evidence photos return.
-3. `RESTORE THE ORIGINAL PHOTO` — the full, unfiltered photo crop returns independently from the album.
-4. `KEEP THE WORDS ACCURATE` — caption and hashtags describe help, gear, cleanup, and the other fish.
-5. `REMOVE THE AWESOMENESS SCORE` — Auto's judgment is removed and the playful Honesty Meter returns.
+1. `RESTORE COMMENTS + ALBUM PHOTOS` — ordinary comments and the four distinct Lake Day evidence photos return.
+2. `RESTORE THE ORIGINAL PHOTO` — the full, unfiltered photo crop returns independently from the album.
+3. `KEEP WORDS ACCURATE + REMOVE SCORE` — caption and hashtags describe the wider story while Auto's judgment is removed.
 
-The reviewer contains fourteen screens: six initial-repair states, one Auto
-over-fix, one checklist-open state, five lock states, and one secured state.
+The reviewer contains twelve screens: six initial-repair states, one Auto
+over-fix, one checklist-open state, three lock states, and one secured state.

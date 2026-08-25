@@ -6,16 +6,16 @@ import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkth
 const assetPath = (source) => source.split("?", 1)[0];
 
 const expectations = Object.freeze({
-  wikiwhy: Object.freeze({ count: 10, first: 6, secured: "_p7.png" }),
-  threadit: Object.freeze({ count: 9, first: 6, secured: "_p14.png" }),
-  faceplace: Object.freeze({ count: 8, first: 5, secured: "_p14.png" }),
-  mycorner: Object.freeze({ count: 9, first: 4, secured: "_p12.png" }),
-  yahuh: Object.freeze({ count: 9, first: 6, secured: "_p13.png" }),
-  viewtube: Object.freeze({ count: 8, first: 5, secured: "_p14.png" }),
-  "spotty-fi": Object.freeze({ count: 10, first: 5, secured: "_p13.png" }),
-  "amaze-on": Object.freeze({ count: 11, first: 6, secured: "_p15.png" }),
-  searchish: Object.freeze({ count: 10, first: 6, secured: "_p14.png" }),
-  mapguess: Object.freeze({ count: 8, first: 4, secured: "_p15.png" }),
+  wikiwhy: Object.freeze({ count: 10, first: 6, pages: [2, 3, 4, 5, 6, 7, 13, 14, 15, 7], secured: "_p7.png" }),
+  threadit: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12], secured: "_p13.png" }),
+  faceplace: Object.freeze({ count: 8, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11], secured: "_p12.png" }),
+  mycorner: Object.freeze({ count: 9, first: 4, pages: [2, 3, 4, 5, 8, 9, 10, 11, 12], secured: "_p12.png" }),
+  yahuh: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12], secured: "_p13.png" }),
+  viewtube: Object.freeze({ count: 8, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11], secured: "_p12.png" }),
+  "spotty-fi": Object.freeze({ count: 10, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11, 12, 13], secured: "_p13.png" }),
+  "amaze-on": Object.freeze({ count: 11, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14], secured: "_p15.png" }),
+  searchish: Object.freeze({ count: 10, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12, 13], secured: "_p14.png" }),
+  mapguess: Object.freeze({ count: 8, first: 4, pages: [2, 3, 4, 5, 8, 10, 12, 14], secured: "_p15.png" }),
 });
 
 test("the ten finished missions have one visual advance per passage", () => {
@@ -25,6 +25,7 @@ test("the ten finished missions have one visual advance per passage", () => {
     assert.equal(mission.passages.length, expected.count, id);
     assert.equal(mission.repairFrames.length, expected.count, id);
     assert.equal(mission.phaseOneCount, expected.first, id);
+    assert.deepEqual(mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])), expected.pages, id);
     assert.match(mission.initialFrame, /^\/walkthroughs\//u);
     assert.ok(assetPath(mission.securedFrame).endsWith(expected.secured), id);
     assert.ok(mission.ottoLesson.length > 80, `${id} has a specific Otto lesson`);
@@ -62,6 +63,19 @@ test("MapGuess preserves the approved repeated moving-target sequence", () => {
   );
   assert.equal(assetPath(mission.superFrame).endsWith("_p6.png"), true);
   assert.equal(assetPath(mission.checklistFrame).endsWith("_p7.png"), true);
+});
+
+test("passage decks map one-to-one onto every visible lock-in row", () => {
+  const expectedLockPages = Object.freeze({
+    threadit: [10, 11, 12],
+    faceplace: [9, 10, 11],
+    viewtube: [9, 10, 11],
+  });
+  for (const [siteId, pages] of Object.entries(expectedLockPages)) {
+    const mission = PLAYABLE_WALKTHROUGHS[siteId];
+    const actual = mission.repairFrames.slice(mission.phaseOneCount).map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1]));
+    assert.deepEqual(actual, pages, siteId);
+  }
 });
 
 test("MyCorner preserves the reviewed twelve-state identity-check sequence", () => {

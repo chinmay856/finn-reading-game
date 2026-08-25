@@ -35,9 +35,9 @@ test("first-run progress resumes from the canonical save lane", () => {
 
   assert.equal(restorePlayableMissionSequence(save, mission).index, 2);
   assert.deepEqual(launcherMissionProgress(save, mission), {
-    bucket: 1,
     completed: false,
     index: 2,
+    percent: 25,
     recoveryInProgress: true,
     replayInProgress: false,
     status: "CONTINUE RECOVERY",
@@ -58,9 +58,9 @@ test("a partial replay is saved separately from the completed recovery", () => {
   assert.equal(restorePlayableMissionSequence(save, mission).phase, "completed");
   assert.equal(restorePlayableMissionSequence(save, mission, { replay: true }).index, 5);
   assert.deepEqual(launcherMissionProgress(save, mission), {
-    bucket: 3,
     completed: true,
     index: 5,
+    percent: 65,
     recoveryInProgress: false,
     replayInProgress: true,
     status: "RECOVERED · CONTINUE REPLAY",

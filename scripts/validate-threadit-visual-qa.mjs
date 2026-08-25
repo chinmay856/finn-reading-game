@@ -18,7 +18,7 @@ const expectedHash = crypto.createHash("sha256").update(shell.match(/<defs>([\s\
 if (source.match(/data-shell-reference-sha256="([a-f0-9]+)"/)?.[1] !== expectedHash) errors.push("ThreadIt was not generated from the reviewed shared shell.");
 if (!source.includes("www.thread-it.com")) errors.push("ThreadIt needs the clean reviewed domain in the window bar.");
 if (/www\.thread-it\.com\/(?:r\/)?rawfishforever/i.test(source)) errors.push("The community path leaked into the clean window domain.");
-for (let index = 1; index <= 14; index += 1) {
+for (let index = 1; index <= 13; index += 1) {
   if (!fs.existsSync(path.join(path.dirname(svgPath), `threadit-anchor-v2_p${index}.png`))) errors.push(`Missing exported ThreadIt frame ${index}.`);
 }
 if (!fs.existsSync(path.join(path.dirname(svgPath), "threadit-anchor-review-v2.html"))) errors.push("Missing ThreadIt v2 click-through reviewer.");
@@ -34,7 +34,7 @@ errors.push(...await page.evaluate(() => {
   const needs = (state, values) => values.forEach((value) => {
     if (!state?.textContent.includes(value)) issues.push(`${state?.id ?? "missing state"} missing ${value}`);
   });
-  if (states.length !== 14) issues.push(`Expected fourteen ThreadIt states; found ${states.length}.`);
+  if (states.length !== 13) issues.push(`Expected thirteen ThreadIt states; found ${states.length}.`);
 
   for (const state of states) {
     if (state.querySelectorAll("[data-forum-thread='true']").length !== 1) issues.push(`${state.id} needs one fixed forum-thread surface.`);
@@ -63,8 +63,7 @@ errors.push(...await page.evaluate(() => {
   const overfix = byId("auto-overfix");
   const checklist = byId("checklist");
   const lockOrigin = byId("lock-origin");
-  const lockSources = byId("lock-sources");
-  const lockContext = byId("lock-context");
+  const lockSourcesContext = byId("lock-sources-context");
   const lockQuestions = byId("lock-questions");
   const secured = byId("secured");
 
@@ -76,10 +75,9 @@ errors.push(...await page.evaluate(() => {
   needs(questionsRestored, ["DISAGREEMENT VISIBLE", "47 MEMBERS · 47 AGREE", "QUESTIONS NOT ALLOWED", "RAW_FISH_FAN_1 IS THE SOURCE"]);
   needs(repaired, ["I ate a raw piece of fish once and felt fine.", "This is my personal story—not a safety check.", "Every kind of raw fish is ALWAYS safe.", "Read real sources and research before deciding.", "DISAGREEMENT IS WELCOME", "LINK USEFUL SOURCES", "DISAGREEMENT VISIBLE", "MIXED VIEWS", "TOP POSTS"]);
   needs(overfix, ["Every kind of raw fish is ALWAYS safe.", "AUTO VERIFIED: 47 OUT OF 47 AUTO-FANS AGREE.", "47 AUTO-FANS · ONE COPIED CLAIM", "47 MEMBERS · 47 REPOSTS SYNCED", "REPOST 1", "AUTO MOD", "BLUETOOTH ENABLED", "COPIED FROM u/auto_fan_1", "DISAGREEMENT AUTO-COLLAPSED"]);
-  needs(checklist, ["LOCK IN THE REPAIR", "RESTORE HUMAN POSTS", "COUNT UNIQUE SOURCES", "COLLAPSE COPIED COMMENTS", "LET PEOPLE DISAGREE"]);
+  needs(checklist, ["LOCK IN THE REPAIR", "RESTORE HUMAN POSTS", "COUNT SOURCES + COLLAPSE COPIES", "LET PEOPLE DISAGREE"]);
   needs(lockOrigin, ["ORIGINAL POST · u/raw_fish_fan_1 · 2 HOURS AGO", "47 AUTO-FANS · ONE COPIED CLAIM"]);
-  needs(lockSources, ["1 ORIGINAL POST · 46 COPIES", "TREATED AS A NEW ANSWER"]);
-  needs(lockContext, ["PERSONAL STORY", "HANDLING CONTEXT", "CURRENT GUIDANCE", "DISAGREEMENT AUTO-COLLAPSED"]);
+  needs(lockSourcesContext, ["PERSONAL STORY", "HANDLING CONTEXT", "CURRENT GUIDANCE", "DISAGREEMENT AUTO-COLLAPSED"]);
   needs(lockQuestions, ["DISAGREEMENT VISIBLE", "DISAGREEMENT IS WELCOME", "LINK USEFUL SOURCES"]);
   needs(secured, ["I ate a raw piece of fish once and felt fine.", "This is my personal story—not a safety check.", "Read real sources and research before deciding.", "DISAGREEMENT VISIBLE", "SOURCE LOCKS"]);
 
@@ -91,11 +89,11 @@ errors.push(...await page.evaluate(() => {
   const firstRun = [initial, untangled, origin, copies, copiesRemoved, questionsRestored, repaired];
   const firstProgress = firstRun.map((state) => Number(state.getAttribute("data-site-progress")));
   if (firstProgress.join(",") !== "0,17,33,50,67,83,100") issues.push(`First-run progress is not 0/17/33/50/67/83/100: ${firstProgress}`);
-  const lockRun = [overfix, checklist, lockOrigin, lockSources, lockContext, lockQuestions];
+  const lockRun = [overfix, checklist, lockOrigin, lockSourcesContext, lockQuestions];
   const lockProgress = lockRun.map((state) => Number(state.getAttribute("data-site-progress")));
-  if (lockProgress.join(",") !== "0,0,25,50,75,100") issues.push(`Lock-run progress is not 0/0/25/50/75/100: ${lockProgress}`);
+  if (lockProgress.join(",") !== "0,0,33,67,100") issues.push(`Lock-run progress is not 0/0/33/67/100: ${lockProgress}`);
 
-  for (const state of [checklist, lockOrigin, lockSources, lockContext, lockQuestions]) {
+  for (const state of [checklist, lockOrigin, lockSourcesContext, lockQuestions]) {
     if (state.querySelectorAll("[data-lock-overlay='true']").length !== 1) issues.push(`${state.id} must show one lock-in overlay.`);
   }
   for (const state of [initial, untangled, origin, copies, copiesRemoved, questionsRestored, repaired, overfix, secured]) {
@@ -106,7 +104,7 @@ errors.push(...await page.evaluate(() => {
   if (overfix.querySelectorAll("[data-auto-easter-egg='character']").length !== 1) issues.push("Auto over-fix needs one restrained in-forum Auto character cue.");
   if (overfix.querySelectorAll("[data-auto-fan-swarm] circle").length < 8) issues.push("Auto over-fix needs a visible Auto-fan swarm, not only renamed copy.");
 
-  const expectedChecks = new Map([[checklist, 0], [lockOrigin, 1], [lockSources, 2], [lockContext, 3], [lockQuestions, 4]]);
+  const expectedChecks = new Map([[checklist, 0], [lockOrigin, 1], [lockSourcesContext, 2], [lockQuestions, 3]]);
   for (const [state, expected] of expectedChecks) {
     const checks = [...state.querySelectorAll(".lock-mark")].filter((mark) => mark.textContent === "✓").length;
     if (checks !== expected) issues.push(`${state.id} should have ${expected} secured checklist items, found ${checks}.`);
@@ -152,7 +150,7 @@ errors.push(...await page.evaluate(() => {
     commentsY: Math.round(state.querySelector("[data-forum-thread] text.thread-muted")?.getBBox().y ?? -1),
   });
   const securedAnchor = verticalAnchor(secured);
-  for (const state of [lockContext, lockQuestions]) {
+  for (const state of [lockSourcesContext, lockQuestions]) {
     const anchor = verticalAnchor(state);
     if (JSON.stringify(anchor) !== JSON.stringify(securedAnchor)) issues.push(`${state.id} must use the secured comment, question, and label coordinates: ${JSON.stringify(anchor)} vs ${JSON.stringify(securedAnchor)}.`);
   }
@@ -164,17 +162,17 @@ errors.push(...await page.evaluate(() => {
     }
   }
   stableText(lockRun, "forum-headline", 2);
-  stableText(lockRun.slice(2), "forum-headline", 4);
+  stableText(lockRun.slice(2), "forum-headline", 3);
   stableText(lockRun, "forum-body", 2);
-  stableText(lockRun.slice(2), "forum-body", 4);
+  stableText(lockRun.slice(2), "forum-body", 3);
   stableText(lockRun, "forum-origin", 2);
-  stableText(lockRun, "question-card", 5);
+  stableText(lockRun, "question-card", 4);
 
   const canonicalRed = "rgb(197, 37, 30)";
   const canonicalGreen = "rgb(47, 138, 73)";
   if (getComputedStyle(initial.querySelector("[data-content-key='forum-headline']")).fill !== canonicalRed) issues.push("Initial universal claim is not canonical corruption red.");
   if (getComputedStyle(repaired.querySelector("[data-content-key='forum-headline']")).fill !== "rgb(23, 45, 64)") issues.push("Repaired headline should return to neutral site copy with a green repaired forum frame.");
-  for (const state of [origin, copies, copiesRemoved, questionsRestored, repaired, lockOrigin, lockSources, lockContext, lockQuestions, secured]) {
+  for (const state of [origin, copies, copiesRemoved, questionsRestored, repaired, lockOrigin, lockSourcesContext, lockQuestions, secured]) {
     if (state.querySelector("[data-content-key='forum-headline']")?.textContent !== "I ate a raw piece of fish once and felt fine.") issues.push(`${state.id} does not preserve the restored personal-story headline.`);
     if (state.querySelector("[data-content-key='forum-body']")?.textContent !== "This is my personal story—not a safety check.") issues.push(`${state.id} does not preserve the restored personal-story qualifier.`);
   }
@@ -184,7 +182,7 @@ errors.push(...await page.evaluate(() => {
   if (getComputedStyle(repaired.querySelector("[data-role='site-progress-fill']")).fill !== canonicalGreen) issues.push("Repaired progress does not use canonical repair green.");
   if (getComputedStyle(overfix.querySelector("[data-role='site-progress-fill']")).fill !== canonicalRed && overfix.getAttribute("data-site-progress") !== "0") issues.push("Auto over-fix progress color is not canonical red.");
 
-  for (const state of [lockOrigin, lockSources, lockContext, lockQuestions]) {
+  for (const state of [lockOrigin, lockSourcesContext, lockQuestions]) {
     const done = [...state.querySelectorAll(".lock-mark")].filter((mark) => mark.textContent === "✓");
     if (done.some((mark) => getComputedStyle(mark).fill !== "rgb(255, 255, 255)")) issues.push(`${state.id} has a non-white check on its canonical green box.`);
   }
@@ -203,4 +201,4 @@ if (errors.length) {
   errors.forEach((error) => console.error(`ERROR: ${error}`));
   process.exit(1);
 }
-console.log("PASS: ThreadIt sequence QA — 14 states, six first-run repairs, four asymmetric Auto locks, vote-ranked comments, fixed forum geometry, stable red copy, causal checklist updates, Auto continuity, secured state, and text bounds verified.");
+console.log("PASS: ThreadIt sequence QA — 13 states, six first-run repairs, three one-passage Auto locks, vote-ranked comments, fixed forum geometry, stable red copy, causal checklist updates, Auto continuity, secured state, and text bounds verified.");

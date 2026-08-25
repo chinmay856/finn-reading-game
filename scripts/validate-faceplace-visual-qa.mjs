@@ -15,7 +15,7 @@ const source = fs.readFileSync(svgPath, "utf8");
 const shell = fs.readFileSync(shellPath, "utf8");
 const expectedHash = crypto.createHash("sha256").update(shell.match(/<defs>([\s\S]*?)<\/defs>/)?.[1]).digest("hex");
 if (source.match(/data-shell-reference-sha256="([a-f0-9]+)"/)?.[1] !== expectedHash) errors.push("FacePlace was not generated from the reviewed shared shell.");
-for (let index = 1; index <= 14; index += 1) {
+for (let index = 1; index <= 12; index += 1) {
   const pngPath = path.join(path.dirname(svgPath), `faceplace-anchor-v2_p${index}.png`);
   if (!fs.existsSync(pngPath)) errors.push(`Missing exported FacePlace frame ${index}.`);
 }
@@ -29,7 +29,7 @@ const report = await page.evaluate(() => {
   const issues = [];
   const states = [...document.querySelectorAll("g[id^='page-']")];
   const needs = (state, values) => values.forEach((value) => { if (!state?.textContent.includes(value)) issues.push(`${state?.id} missing ${value}`); });
-  if (states.length !== 14) issues.push(`Expected fourteen FacePlace sequence states; found ${states.length}.`);
+  if (states.length !== 12) issues.push(`Expected twelve FacePlace sequence states; found ${states.length}.`);
   for (const state of states) {
     if (state.querySelectorAll("[data-post-state]").length !== 1) issues.push(`${state.id} must contain one authored social post.`);
     if (state.querySelectorAll("[data-album-module='true']").length !== 1) issues.push(`${state.id} must contain one profile-style album module.`);
@@ -54,11 +54,9 @@ const report = await page.evaluate(() => {
   const repaired = document.querySelector("#page-repaired");
   const overfix = document.querySelector("#page-super-corrupt");
   const checklist = document.querySelector("#page-checklist");
-  const lockComments = document.querySelector("#page-lock-comments");
-  const lockAlbum = document.querySelector("#page-lock-album");
+  const lockContext = document.querySelector("#page-lock-context");
   const lockFrame = document.querySelector("#page-lock-frame");
-  const lockWords = document.querySelector("#page-lock-words");
-  const lockScore = document.querySelector("#page-lock-score");
+  const lockWordsScore = document.querySelector("#page-lock-words-score");
   const secured = document.querySelector("#page-secured");
   needs(initial, ["LEGENDARY FISH! ONE OF A KIND!", "#SoloLegend", "#OneOfAKind", "#BareHands", "BIGGEST FISH EVER!!!", "YOU DO EVERYTHING PERFECTLY!!!", "MOST LEGENDARY DAY EVER!!!", "COMMENTS ENHANCED FOR POSITIVITY", "MORE LIKES THAN YOU", "HONESTY METER", "9000%", "MORE FROM THIS ALBUM", "LOOK AT MY FISH"]);
   needs(comments, ["LEGENDARY FISH! ONE OF A KIND!", "ORIGINAL COMMENTS RESTORED", "Write a comment…", "12%", "1 PHOTO"]);
@@ -67,30 +65,28 @@ const report = await page.evaluate(() => {
   needs(barrel, ["LEGENDARY FISH! ONE OF A KIND!", "Caught one of the lake's fish", "MORE LIKES THAN YOU", "OTHER FISH", "AT THE LAKE", "3½ FISH%", "4 PHOTOS"]);
   needs(repaired, ["GREAT CATCH AT THE LAKE!", "Caught it with help", "Caught one of the lake's fish", "Used fishing gear and cleaned up", "Write a comment…", "BANANA%"]);
   needs(overfix, ["THE MOST AWESOME FISH PHOTO EVER!", "AUTO ENHANCED", "∞ reactions", "AUTO PRAISE ONLY", "AUTO AWESOMENESS METER", "∞ AWESOME", "∞ PERFECT MOMENTS"]);
-  needs(checklist, ["LOCK IN THE REPAIR", "RESTORE ORIGINAL COMMENTS", "RESTORE THE ALBUM PHOTOS", "RESTORE THE ORIGINAL PHOTO", "KEEP THE WORDS ACCURATE", "REMOVE THE AWESOMENESS SCORE"]);
-  needs(lockComments, ["Original comments locked", "RESTORE ORIGINAL COMMENTS"]);
-  needs(lockAlbum, ["The original album photos are back", "RESTORE THE ALBUM PHOTOS"]);
+  needs(checklist, ["LOCK IN THE REPAIR", "RESTORE COMMENTS + ALBUM PHOTOS", "RESTORE THE ORIGINAL PHOTO", "KEEP WORDS ACCURATE + REMOVE SCORE"]);
+  needs(lockContext, ["The real comments and album are back", "RESTORE COMMENTS + ALBUM PHOTOS"]);
   needs(lockFrame, ["The original photo is restored", "RESTORE THE ORIGINAL PHOTO"]);
-  needs(lockWords, ["Accurate words are locked", "KEEP THE WORDS ACCURATE"]);
-  needs(lockScore, ["The score no longer judges real life", "REMOVE THE AWESOMENESS SCORE"]);
+  needs(lockWordsScore, ["The words and score are now accurate", "KEEP WORDS ACCURATE + REMOVE SCORE"]);
   needs(secured, ["The whole story is secured", "GREAT CATCH AT THE LAKE!", "¯\\_(ツ)_/¯"]);
   const expectedAlbumCards = new Map([[initial, 1], [comments, 1], [helper, 2], [gear, 3], [barrel, 4], [repaired, 4], [overfix, 4]]);
   for (const [state, count] of expectedAlbumCards) {
     if (state.querySelectorAll("[data-album-card]").length !== count) issues.push(`${state.id} should show ${count} distinct album evidence cards.`);
   }
-  for (const state of [checklist, lockComments, lockAlbum, lockFrame, lockWords, lockScore]) {
+  for (const state of [checklist, lockContext, lockFrame, lockWordsScore]) {
     if (state.querySelectorAll("[data-lock-overlay='true']").length !== 1) issues.push(`${state.id} must show one lock-in overlay.`);
   }
-  for (const state of [overfix, checklist, lockComments]) {
+  for (const state of [overfix, checklist]) {
     const cards = [...state.querySelectorAll("[data-album-card]")];
     if (cards.length !== 4 || cards.some((card) => card.getAttribute("data-album-content") !== "auto-duplicate")) issues.push(`${state.id} must replace all four album pictures with Auto's duplicated enhanced picture.`);
   }
-  if ([...lockAlbum.querySelectorAll("[data-album-card]")].some((card) => card.getAttribute("data-album-content") !== "original")) issues.push("Album-photo repair must restore the four original album pictures.");
+  if ([...lockContext.querySelectorAll("[data-album-card]")].some((card) => card.getAttribute("data-album-content") !== "original")) issues.push("Context repair must restore the four original album pictures.");
   const repairedAlbumHrefs = [...repaired.querySelectorAll("[data-album-card] image")].map((image) => image.getAttribute("href"));
   if (new Set(repairedAlbumHrefs).size !== 4) issues.push("Repaired FacePlace album must contain four distinct evidence images.");
   const autoAlbumHrefs = [...overfix.querySelectorAll("[data-album-card] image")].map((image) => image.getAttribute("href"));
   if (new Set(autoAlbumHrefs).size !== 1) issues.push("Auto over-fix must visibly duplicate the same selected album image four times.");
-  const expectedViews = new Map([[initial, "hero"], [comments, "hero"], [helper, "helper"], [gear, "gear"], [barrel, "full"], [repaired, "full"], [overfix, "hero"], [lockAlbum, "hero"], [lockFrame, "full"], [secured, "full"]]);
+  const expectedViews = new Map([[initial, "hero"], [comments, "hero"], [helper, "helper"], [gear, "gear"], [barrel, "full"], [repaired, "full"], [overfix, "hero"], [lockContext, "hero"], [lockFrame, "full"], [secured, "full"]]);
   for (const [state, expectedView] of expectedViews) {
     if (state.querySelector("[data-photo-view]")?.getAttribute("data-photo-view") !== expectedView) issues.push(`${state.id} does not use the expected ${expectedView} crop.`);
   }
@@ -128,4 +124,4 @@ if (errors.length) {
   errors.forEach((error) => console.error(`ERROR: ${error}`));
   process.exit(1);
 }
-console.log("PASS: FacePlace sequence QA — shared shell, five causal repairs, fixed photo viewport, single-master crop continuity, distinct album evidence, duplicated Auto album over-fix, five lock states, secured state, and text bounds verified.");
+console.log("PASS: FacePlace sequence QA — shared shell, five causal first-run repairs, fixed photo viewport, single-master crop continuity, distinct album evidence, duplicated Auto album over-fix, three one-passage lock states, secured state, and text bounds verified.");

@@ -30,6 +30,7 @@
     "review:status": "node scripts/content-review-status.js",
     "test:reading-baseline": "node scripts/run-reading-acceptance-baseline.mjs",
     "test:playable-stability": "node scripts/run-playable-stability-smoke.mjs",
+    "test:ten-site-continuity": "node scripts/run-ten-site-continuity-smoke.mjs",
     "test": "node --test tests/*.test.js"
   },
   "dependencies": {

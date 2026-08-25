@@ -16,7 +16,7 @@ for (const forbidden of ["MORE FROM FINN'S INTERESTS", "Chosen from Finn's inter
   if (source.includes(forbidden)) errors.push(`Obsolete duplicated queue copy remains in rendered SVG: ${forbidden}`);
 }
 
-for (let index = 1; index <= 14; index += 1) {
+for (let index = 1; index <= 12; index += 1) {
   const png = path.join(outputDirectory, `viewtube-anchor-v2_p${index}.png`);
   if (!fs.existsSync(png)) errors.push(`Missing exported frame ${index}.`);
 }
@@ -30,7 +30,7 @@ errors.push(...await page.evaluate(() => {
   const issues = [];
   const states = [...document.querySelectorAll("g[id^='page-']")];
   const byId = (id) => document.getElementById(`page-${id}`);
-  if (states.length !== 14) issues.push(`Expected 14 states, found ${states.length}.`);
+  if (states.length !== 12) issues.push(`Expected 12 states, found ${states.length}.`);
 
   for (const state of states) {
     const queue = state.querySelector("[data-video-queue='true']");
@@ -55,13 +55,13 @@ errors.push(...await page.evaluate(() => {
 
   const fixed = byId("repaired");
   const auto = byId("auto-overfix");
-  const lockAds = byId("lock-ads");
+  const lockSearchAds = byId("lock-search-ads");
   const initial = byId("initial");
   const ads = byId("ads");
   const details = byId("details");
   const autoplay = byId("autoplay");
   const lockDetails = byId("lock-details");
-  const lockAutoplay = byId("lock-autoplay");
+  const lockChoice = byId("lock-choice");
   const usesAsset = (root, selector, assetId) => [...(root?.querySelectorAll(selector) ?? [])].filter((node) => node.getAttribute("href") === assetId);
   if (usesAsset(fixed, "[data-queue-row='1'] use", "#vt-asset-tacoStunt").length === 0) issues.push("Repaired rail does not use the approved Taco Flip art.");
   if (usesAsset(auto, "[data-queue-row] use", "#vt-asset-autoShow").length !== 3) issues.push("Auto queue must repeat the same Auto Show thumbnail three times.");
@@ -83,11 +83,11 @@ errors.push(...await page.evaluate(() => {
   }
   if (auto?.textContent.includes("AUTO SHOW NETWORK") || !auto?.textContent.includes("AUTO SHOW") || !auto?.textContent.includes("BLUETOOTH ENABLED")) issues.push("Auto channel identity must use the short AUTO SHOW / BLUETOOTH ENABLED treatment.");
   if (!auto?.textContent.includes("∞ AD BREAKS · ∞ POP-UP ADS")) issues.push("Auto over-fix must show infinite ad breaks and popup ads in its visible metadata.");
-  if (lockAds?.querySelector("[data-video-player]")?.getAttribute("data-ad-break-count") !== "1" || lockAds?.querySelectorAll(".vt-ad").length !== 1) issues.push("Remove-excessive-ads lock must leave one labeled ad break.");
-  if (lockAds?.querySelector("[data-persistent-ads]")) issues.push("Auto popup ads remain after remove-excessive-ads lock.");
+  if (lockSearchAds?.querySelector("[data-video-player]")?.getAttribute("data-ad-break-count") !== "1" || lockSearchAds?.querySelectorAll(".vt-ad").length !== 1) issues.push("Search-and-ads lock must leave one labeled ad break.");
+  if (lockSearchAds?.querySelector("[data-persistent-ads]")) issues.push("Auto popup ads remain after search-and-ads lock.");
   if (!lockDetails?.textContent.includes("4.2M views · promoted today") || !lockDetails?.textContent.includes("PixelPilot:")) issues.push("Restore-views-and-comments lock has no visible metadata payoff.");
   if (lockDetails?.textContent.includes("AUTO-COMMENTS")) issues.push("Auto-comment heading remains after restore-views-and-comments lock.");
-  if (!lockAutoplay?.textContent.includes("AUTOPLAY OFF") || !lockAutoplay?.textContent.includes("MORE VIDEOS")) issues.push("Autoplay lock has no visible off-state payoff.");
+  if (!lockChoice?.textContent.includes("AUTOPLAY OFF") || !lockChoice?.textContent.includes("MORE VIDEOS")) issues.push("Autoplay-and-choice lock has no visible off-state payoff.");
   return issues;
 }));
 
@@ -98,4 +98,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("PASS: ViewTube v2 — 14 states, three-card rails, main-video AD overlay, infinite Auto ad escalation, restored views/comments, visible autoplay/choice payoffs, and text safe widths verified.");
+console.log("PASS: ViewTube v2 — 12 states, three-card rails, main-video AD overlay, infinite Auto ad escalation, three one-passage lock rows, restored views/comments, visible autoplay/choice payoffs, and text safe widths verified.");

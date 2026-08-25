@@ -165,11 +165,11 @@ function meter(state) {
 function destinationOverlay(state) {
   if (!state.overlay) return "";
   const failed = state.overlay === "failed";
-  const itemStroke = failed ? COLORS.corruption : "#A9ACA7";
-  const itemFill = failed ? "#FCE3E1" : "#fff";
+  const itemStroke = COLORS.corruption;
+  const itemFill = COLORS.corruptionSoft;
   const mark = failed ? "×" : "○";
-  const footer = failed ? "DIDN'T LOCK · CONTINUE" : "TRY THE REPAIR";
-  return `<g data-module="moving-target-overlay" data-purpose="repair-target" data-attempt-state="${state.overlay}"><rect x="424" y="352" width="330" height="176" rx="12" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="4"/><rect x="424" y="352" width="330" height="58" rx="12" fill="${COLORS.repair}"/><rect x="424" y="395" width="330" height="15" fill="${COLORS.repair}"/><text x="449" y="389" class="mg-lock-title">LOCK IN THE REPAIR</text><rect x="451" y="430" width="34" height="34" rx="6" fill="${itemFill}" stroke="${itemStroke}" stroke-width="2"/><text x="468" y="455" class="mg-lock-mark" text-anchor="middle" fill="${failed ? COLORS.corruption : "#7B817C"}">${mark}</text><text x="503" y="451" class="mg-overlay-head" fill="${COLORS.corruption}">GO DIRECTLY TO THE LIBRARY</text><text x="589" y="494" class="mg-overlay-foot" text-anchor="middle" fill="${failed ? COLORS.corruption : "#132A37"}">${footer}</text></g>`;
+  const footer = failed ? `<text x="589" y="494" class="mg-overlay-foot" text-anchor="middle" fill="${COLORS.corruption}">DIDN'T LOCK · CONTINUE</text>` : "";
+  return `<g data-module="moving-target-overlay" data-purpose="repair-target" data-attempt-state="${state.overlay}"><rect x="424" y="352" width="330" height="176" rx="12" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="4"/><rect x="424" y="352" width="330" height="58" rx="12" fill="${COLORS.repair}"/><rect x="424" y="395" width="330" height="15" fill="${COLORS.repair}"/><text x="449" y="389" class="mg-lock-title">LOCK IN THE REPAIR</text><rect x="451" y="430" width="34" height="34" rx="6" fill="${itemFill}" stroke="${itemStroke}" stroke-width="2"/><text x="468" y="455" class="mg-lock-mark" text-anchor="middle" fill="${COLORS.corruption}">${mark}</text><text x="503" y="451" class="mg-overlay-head" fill="${COLORS.corruption}">GO DIRECTLY TO THE LIBRARY</text>${footer}</g>`;
 }
 
 function companion(state) {

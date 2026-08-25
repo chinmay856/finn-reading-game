@@ -349,10 +349,10 @@ function renderLauncher() {
     if (playable) {
       const indicator = document.createElement("span");
       indicator.className = "recovery-indicator";
-      indicator.style.setProperty("--recovery-fill", `${progress.bucket * 25}%`);
-      indicator.setAttribute("aria-label", `${completed ? "Replay" : "Recovery"} progress: ${progress.index} of ${progress.total} repairs`);
-      indicator.title = `${completed ? "Replay" : "Recovery"} progress: ${progress.index} of ${progress.total} repairs`;
-      card.append(indicator);
+      indicator.style.setProperty("--recovery-fill", `${progress.percent}%`);
+      indicator.setAttribute("aria-label", `${completed ? "Replay" : "Recovery"} is about ${progress.percent}% complete`);
+      indicator.title = `${completed ? "Replay" : "Recovery"} is about ${progress.percent}% complete`;
+      heading.append(indicator);
       if (progress.replayInProgress) card.classList.add("replay-in-progress");
       else if (progress.recoveryInProgress) card.classList.add("recovery-in-progress");
     }
@@ -1217,8 +1217,8 @@ function bindShellControls() {
     saveMissionProgress();
     openProfileGate();
   });
-  $("newGame").addEventListener("click", () => {
-    saveMissionProgress();
+  $("newGame").addEventListener("click", async () => {
+    await navigateToLauncher();
     openProfileGate({ clearName: true });
   });
   $("loadProfile").addEventListener("click", () => beginProfile($("profileName").value));

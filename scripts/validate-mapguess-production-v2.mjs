@@ -73,7 +73,10 @@ errors.push(...await page.evaluate(() => {
   needs(first[3], ["DETOUR · 45 MIN", "DETOUR: 45 · DIRECT: 5"]);
   needs(first[4], ["Noe Valley Library", "NOE VALLEY LIBRARY", "DIRECT: 5 MIN · 0.8 MI", "No stops added automatically"]);
   needs(locks[0], ["LIBRARY", "(ACTUALLY SNACK PALACE)", "AUTO'S BEST SPOTS IN TOWN", "AUTO ETA: ALWAYS 5 MIN"]);
-  for (const state of [locks[1], locks[3], locks[5], locks[7]]) needs(state, ["LOCK IN THE REPAIR", "GO DIRECTLY TO THE LIBRARY", "TRY THE REPAIR"]);
+  for (const state of [locks[1], locks[3], locks[5], locks[7]]) {
+    needs(state, ["LOCK IN THE REPAIR", "GO DIRECTLY TO THE LIBRARY", "○"]);
+    if (state.querySelector("[data-module='moving-target-overlay']")?.textContent.includes("TRY THE REPAIR")) issues.push(`${state.id} must not repeat a TRY THE REPAIR prompt inside the lock box.`);
+  }
   for (const state of [locks[2], locks[4], locks[6]]) needs(state, ["LOCK IN THE REPAIR", "GO DIRECTLY TO THE LIBRARY", "DIDN'T LOCK · CONTINUE", "×"]);
   needs(locks[8], ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "FINN'S LIBRARY DESTINATION SECURED"]);
   needs(secured, ["Noe Valley Library", "DIRECT: 5 MIN · 0.8 MI", "FINN'S LIBRARY DESTINATION SECURED"]);

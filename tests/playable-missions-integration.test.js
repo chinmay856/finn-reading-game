@@ -125,6 +125,9 @@ test("named local saves, completed cases, and the Windows 98 Start menu are wire
   assert.match(saveProgress, /RECOVERED · CONTINUE REPLAY/u);
   assert.match(saveProgress, /CONTINUE RECOVERY/u);
   assert.match(script, /restoreMissionProgress/u);
+  assert.match(script, /\$\("newGame"\)\.addEventListener\("click", async \(\) => \{\s*await navigateToLauncher\(\);\s*openProfileGate\(\{ clearName: true \}\);/u);
+  assert.match(saveProgress, /approximateProgressPercent/u);
+  assert.match(script, /--recovery-fill.*progress\.percent/u);
   assert.match(html, /id="documentsWindow"/u);
   assert.match(script, /feedback_for_Otto\.txt/u);
   assert.match(script, /LESSON SAVED FOR OTTO/u);

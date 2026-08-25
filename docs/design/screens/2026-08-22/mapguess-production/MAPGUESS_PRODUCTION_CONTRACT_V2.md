@@ -73,7 +73,7 @@ reflection copy remain a later human review layer.
 | 4 | eta-restored | Loop changes from false five minutes to truthful forty-five; direct route remains five | 75% | stable routes; corrected ETA signal | changed destination wording |
 | 5 | destination-route-restored | Planner and book marker identify Noe Valley Library; direct green route becomes primary and Snack Palace becomes optional | 100% | reviewed v8 repaired bookend | unresolved red content |
 | 6 | auto-overfix | Unobscured Auto takeover: Snack Palaces fill the city while one library marker owns the route | 0% | destination rewritten, route visibly follows the moved library, Auto status joke | standard checklist, repeated library markers |
-| 7 | target-lock-ready-1 | Single repair overlay appears at the first false library | 0% | `GO DIRECTLY TO THE LIBRARY`, open circle, `TRY THE REPAIR` | multiple checklist items |
+| 7 | target-lock-ready-1 | Single repair overlay appears at the first false library | 0% | `GO DIRECTLY TO THE LIBRARY`, red open circle; the Reading Companion owns the next action | multiple checklist items, duplicate `TRY THE REPAIR` prompt inside the site art |
 | 8 | target-lock-failed-1 | Same overlay Xes out before the target moves | 0% | red X, `DIDN'T LOCK · CONTINUE`, unchanged target | premature destination jump |
 | 9 | target-lock-ready-2 | Library jumps downtown and the same repair resets | 0% | next active target, open circle | retained failed X |
 | 10 | target-lock-failed-2 | Second attempt visibly fails | 0% | red X on the same downtown target | progress fill |

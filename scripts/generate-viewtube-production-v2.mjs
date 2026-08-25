@@ -57,11 +57,9 @@ const states = [
   { id: "repaired", label: "Finn selects his video", progress: 100, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true },
   { id: "auto-overfix", label: "Auto Show over-fix", progress: 0, auto: true },
   { id: "checklist", label: "Lock in the repair", progress: 0, auto: true, checklist: 0 },
-  { id: "lock-search", label: "Finn's search locked", progress: 20, auto: true, search: true, checklist: 1 },
-  { id: "lock-ads", label: "Excessive ads locked out", progress: 40, auto: true, search: true, ads: true, checklist: 2 },
-  { id: "lock-details", label: "Views and comments locked", progress: 60, auto: true, search: true, ads: true, details: true, checklist: 3 },
-  { id: "lock-autoplay", label: "Autoplay permission locked", progress: 80, auto: true, search: true, ads: true, details: true, autoplay: true, checklist: 4 },
-  { id: "lock-choice", label: "Finn's choice locked", progress: 100, auto: true, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true, checklist: 5 },
+  { id: "lock-search-ads", label: "Search restored and excessive ads removed", progress: 33, auto: true, search: true, ads: true, checklist: 1 },
+  { id: "lock-details", label: "Views and comments locked", progress: 67, auto: true, search: true, ads: true, details: true, checklist: 2 },
+  { id: "lock-choice", label: "Autoplay permission and viewer choice locked", progress: 100, auto: true, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true, checklist: 3 },
   { id: "secured", label: "Repair secured", progress: 100, search: true, ads: true, details: true, autoplay: true, choice: true, fixed: true },
 ];
 
@@ -329,11 +327,11 @@ function footer(state) {
   return `<g><rect x="119" y="800" width="782" height="38" rx="6" fill="#fff" stroke="${tone}"/><text x="132" y="824" class="vt-meter" fill="${tone}">VIEWER CONTROL ${state.progress}%</text><rect x="315" y="811" width="565" height="15" fill="url(#vtCorruptHatch)" stroke="${tone}"/><rect x="315" y="811" width="${Math.round(565 * state.progress / 100)}" height="15" fill="${tone}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 
-const locks = ["RESTORE FINN'S SEARCH", "REMOVE EXCESSIVE ADS", "RESTORE VIEWS + COMMENTS", "ASK BEFORE AUTOPLAY", "PLAY FINN'S CHOICE"];
+const locks = ["RESTORE SEARCH + REMOVE ADS", "RESTORE VIEWS + COMMENTS", "ASK FIRST + KEEP THE CHOICE"];
 
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="512" y="334" width="315" height="318" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="512" y="334" width="315" height="48" rx="10" fill="${COLORS.repair}"/><rect x="512" y="369" width="315" height="13" fill="${COLORS.repair}"/><text x="532" y="366" class="lock-title">LOCK IN THE REPAIR</text>${locks.map((label, index) => { const done = index < state.checklist; const y = 406 + index * 46; return `<rect x="536" y="${y - 21}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="549.5" y="${y - 2}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="575" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="505" y="356" width="330" height="224" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="356" width="330" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="391" width="330" height="13" fill="${COLORS.repair}"/><text x="525" y="388" class="lock-title">LOCK IN THE REPAIR</text>${locks.map((label, index) => { const done = index < state.checklist; const y = 446 + index * 48; return `<rect x="529" y="${y - 22}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 3}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {
@@ -346,11 +344,9 @@ function companion(state) {
     repaired: ["Finn picked a video about his hobby.", "Nothing starts without him."],
     "auto-overfix": ["Auto replaced autoplay with an endless show.", "The ordinary play button disappeared."],
     checklist: ["Lock the viewer controls into place.", "Each next passage secures one control."],
-    "lock-search": ["Finn's search is locked in.", "The Auto Show is still filling the queue."],
-    "lock-ads": ["The extra ads are locked out.", "Auto still distorts the views and comments."],
+    "lock-search-ads": ["Finn's search is locked and extra ads are gone.", "Auto still distorts the views and comments."],
     "lock-details": ["The real views and comments are locked in.", "Auto still starts every next video."],
-    "lock-autoplay": ["Autoplay must ask first.", "Finn still needs the final selection."],
-    "lock-choice": ["Finn's video choice is locked in.", "The endless Auto Show is gone."],
+    "lock-choice": ["Autoplay must ask and the viewer chooses.", "The endless Auto Show is gone."],
     secured: ["Viewer control is secured.", "Finn decides what plays next."],
   }[state.id];
   return `<g data-companion-state="reading"><text x="964" y="107" class="reading-body">${copy[0]}</text><text x="964" y="145" class="reading-body">${copy[1]}</text><rect x="960" y="173" width="404" height="34" fill="#F8DFA0"/><text x="964" y="199" class="reading-body">Read, then answer the quick check.</text></g>`;
@@ -358,7 +354,7 @@ function companion(state) {
 
 function statePage(state, index) {
   const phaseTwo = index >= 6;
-  const delta = phaseTwo ? [0, 0, 1, 1, 2, 2, 3, 3][index - 6] : [0, 1, 1, 2, 2, 3][index];
+  const delta = phaseTwo ? Math.min(3, state.checklist ?? 0) : [0, 1, 1, 2, 2, 3][index];
   return `<g id="page-${state.id}" transform="translate(${index * 1480} 0)" inkscape:groupmode="layer" inkscape:label="${state.label}" data-phase="${phaseTwo ? "phase-2" : "phase-1"}" data-site-progress="${state.progress}" data-passage-progress="50" data-visual-delta="${delta}" data-state-mode="${state.auto ? "auto-overfix" : state.fixed ? "fixed" : "repairing"}"><use href="#sharedShell"/>${titlebarPatch()}<rect x="109" y="56" width="802" height="782" fill="#E8EAEC"/>${header(state)}${playerV3(state)}${queueV3(state)}${persistentAds(state)}${footer(state)}${companion(state)}${checklist(state)}<rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/></g>`;
 }
 

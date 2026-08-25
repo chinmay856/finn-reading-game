@@ -1,4 +1,4 @@
-const WALKTHROUGH_ASSET_VERSION = "20260824-replay-progress-chrome-v1";
+const WALKTHROUGH_ASSET_VERSION = "20260824-ten-site-continuity-v2";
 
 const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set(["mycorner", "searchish"]);
 
@@ -76,7 +76,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   wikiwhy: Object.freeze({
     id: "wikiwhy", name: "WikiWhy", meter: "Source repair", passages: wikiWhyPassages,
     initialFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 13, 14, 15, 15].map((page) => frame("wikiwhy", "wikiwhy-complete-state-v3", page))),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 13, 14, 15, 7].map((page) => frame("wikiwhy", "wikiwhy-complete-state-v3", page))),
     phaseOneCount: 6, superFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 10), checklistFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 12), securedFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 7), receiptFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 7),
     midpoint: midpoint("I'VE BEEN FIXING THIS TOO!", "I told Otto to make WikiWhy easier to read. Every answer should be 100% clear.", "CLARITY MODE COMPLETE", "SOURCES = DELAY\n\nHISTORY = CONFUSION\n\nUNCERTAINTY REMOVED\n\nCONFIDENCE = TRUTH", "CLEAR DOESN'T MEAN CERTAIN", "Otto erased everything readers need to check the answer. Let's restore the sources, edit history, and careful wording."),
     completionChinmay: completionChinmay("OH—THAT WASN'T CLARITY", "I asked Otto for perfectly clear answers, but he heard “delete every doubt.” I should have said: make the answer understandable without hiding the sources or uncertainty."),
@@ -86,8 +86,8 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   threadit: Object.freeze({
     id: "threadit", name: "ThreadIt", meter: "Thread untangled", passages: threadItPassages,
     initialFrame: frame("threadit", "threadit-anchor-v2", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 12, 13].map((page) => frame("threadit", "threadit-anchor-v2", page))),
-    phaseOneCount: 6, superFrame: frame("threadit", "threadit-anchor-v2", 8), checklistFrame: frame("threadit", "threadit-anchor-v2", 9), securedFrame: frame("threadit", "threadit-anchor-v2", 14), receiptFrame: frame("threadit", "threadit-anchor-v2", 14),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12].map((page) => frame("threadit", "threadit-anchor-v2", page))),
+    phaseOneCount: 6, superFrame: frame("threadit", "threadit-anchor-v2", 8), checklistFrame: frame("threadit", "threadit-anchor-v2", 9), securedFrame: frame("threadit", "threadit-anchor-v2", 13), receiptFrame: frame("threadit", "threadit-anchor-v2", 13),
     midpoint: midpoint("I CLEARED UP THE CONFUSION!", "That thread was impossible to follow. Everyone was arguing and repeating themselves, so I told Otto to make it less argumentative and help the community get on the same page.", "COMMUNITY ALIGNED", "ALL USERS NOW AGREE\n\nONE CLEAR ANSWER COPIED TO EVERY REPLY\n\nDISAGREEMENT COLLAPSED\n\nCONFUSION REMOVED", "HE MADE EVERY VOICE THE SAME", "Otto removed the argument by copying one opinion everywhere. Agreement isn't evidence, and repeated replies aren't new sources. Let's restore the original posts, context, and questions."),
     completionChinmay: completionChinmay("I ASKED FOR CALMER—NOT COPIES", "I wanted the thread easier to follow, but Otto treated disagreement as the problem. I should have asked him to organize the voices, not replace them with one voice."),
     reflectionPrompt: "What should Otto remember about repeated claims, independent sources, context, and disagreement?",
@@ -96,8 +96,8 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   faceplace: Object.freeze({
     id: "faceplace", name: "FacePlace", meter: "Honesty meter", passages: facePlacePassages,
     initialFrame: frame("faceplace", "faceplace-anchor-v2", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 10, 12, 13].map((page) => frame("faceplace", "faceplace-anchor-v2", page))),
-    phaseOneCount: 5, superFrame: frame("faceplace", "faceplace-anchor-v2", 7), checklistFrame: frame("faceplace", "faceplace-anchor-v2", 8), securedFrame: frame("faceplace", "faceplace-anchor-v2", 14), receiptFrame: frame("faceplace", "faceplace-anchor-v2", 14),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11].map((page) => frame("faceplace", "faceplace-anchor-v2", page))),
+    phaseOneCount: 5, superFrame: frame("faceplace", "faceplace-anchor-v2", 7), checklistFrame: frame("faceplace", "faceplace-anchor-v2", 8), securedFrame: frame("faceplace", "faceplace-anchor-v2", 12), receiptFrame: frame("faceplace", "faceplace-anchor-v2", 12),
     midpoint: midpoint("I MADE FACEPLACE MORE POSITIVE!", "FacePlace was making people feel bad. I told Otto to keep things positive and make sure everyone feels great about what they post.", "POSITIVITY MODE COMPLETE", "UNFLATTERING CONTEXT REMOVED\n\nPRAISE-ONLY COMMENTS ENABLED\n\nBEST MOMENT REPEATED AS PROOF\n\nAWESOMENESS VERIFIED 9000%", "POSITIVE DOESN'T HAVE TO MEAN FAKE", "Otto tried to protect everyone's feelings by rewriting what happened. The happy moment can stay happy without hiding the wider story. Let's restore the original photo, comments, and accurate words."),
     completionChinmay: completionChinmay("I MADE POSITIVE MEAN PERFECT", "I wanted people to feel good, but my vague instruction let Otto rewrite the real moment. I should have asked him to reduce cruelty without erasing context."),
     reflectionPrompt: "What should Otto remember about positive experiences, accurate context, and selected moments?",
@@ -126,8 +126,8 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   viewtube: Object.freeze({
     id: "viewtube", name: "ViewTube", meter: "Viewer control", passages: viewTubePassages,
     initialFrame: frame("viewtube", "viewtube-anchor-v2", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 10, 12, 13].map((page) => frame("viewtube", "viewtube-anchor-v2", page))),
-    phaseOneCount: 5, superFrame: frame("viewtube", "viewtube-anchor-v2", 7), checklistFrame: frame("viewtube", "viewtube-anchor-v2", 8), securedFrame: frame("viewtube", "viewtube-anchor-v2", 14), receiptFrame: frame("viewtube", "viewtube-anchor-v2", 14),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11].map((page) => frame("viewtube", "viewtube-anchor-v2", page))),
+    phaseOneCount: 5, superFrame: frame("viewtube", "viewtube-anchor-v2", 7), checklistFrame: frame("viewtube", "viewtube-anchor-v2", 8), securedFrame: frame("viewtube", "viewtube-anchor-v2", 12), receiptFrame: frame("viewtube", "viewtube-anchor-v2", 12),
     midpoint: midpoint("I WANTED EVERYONE TO ENJOY THIS!", "I found this video hilarious. I told Otto to help everyone find videos they'll really enjoy—and make sure the fun never runs out.", "ENJOYMENT MAXIMIZED", "MOST WATCHED = MOST ENJOYABLE\n\nSEARCH INTENT REMOVED\n\nAUTOPLAYING PARTS 1–47\n\nOPTIMIZING FOR MAXIMUM WATCH TIME", "WATCHING MORE ISN'T THE SAME AS ENJOYING IT", "Otto replaced everyone's choices with whatever keeps them watching longest. Let's restore search, explain why videos are suggested, and ask before playing the next one."),
     completionChinmay: completionChinmay("I MADE “FUN” MEAN “NEVER STOP”", "I wanted people to enjoy a video, but I never defined when helping should stop. I should have asked for good suggestions while preserving search, explanation, and the choice to stop."),
     reflectionPrompt: "What should Otto remember about enjoyment, watch time, recommendations, and viewer choice?",

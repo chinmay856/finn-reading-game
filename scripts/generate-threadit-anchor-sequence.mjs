@@ -29,10 +29,9 @@ const states = [
   { id: "repaired", label: "Community rules restored", run: "first", step: 6, progress: 100, delta: 3 },
   { id: "auto-overfix", label: "Auto consensus override", run: "lock", step: 0, progress: 0, delta: 0, auto: true },
   { id: "checklist", label: "Lock-in checklist", run: "lock", step: 0, progress: 0, delta: 0, auto: true, checklist: 0 },
-  { id: "lock-origin", label: "Human post restored", run: "lock", step: 1, progress: 25, delta: 1, auto: true, checklist: 1 },
-  { id: "lock-sources", label: "Sources counted", run: "lock", step: 2, progress: 50, delta: 2, auto: true, checklist: 2 },
-  { id: "lock-context", label: "Context locked", run: "lock", step: 3, progress: 75, delta: 2, auto: true, checklist: 3 },
-  { id: "lock-questions", label: "Questions locked", run: "lock", step: 4, progress: 100, delta: 3, auto: true, checklist: 4 },
+  { id: "lock-origin", label: "Human post restored", run: "lock", step: 1, progress: 33, delta: 1, auto: true, checklist: 1 },
+  { id: "lock-sources-context", label: "Sources counted and copies collapsed", run: "lock", step: 3, progress: 67, delta: 2, auto: true, checklist: 2 },
+  { id: "lock-questions", label: "Questions locked", run: "lock", step: 4, progress: 100, delta: 3, auto: true, checklist: 3 },
   { id: "secured", label: "Repair secured", run: "secured", step: 6, progress: 100, delta: 3 },
 ];
 
@@ -221,10 +220,10 @@ function footer(state) {
   return `<g data-module="site-progress" data-purpose="progress-only"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="thread-meter" fill="${color}">${label}</text><text x="284" y="716" class="thread-meter" fill="${color}">${state.progress}%</text><rect x="126" y="732" width="752" height="25" fill="url(#threadRedHatch)" stroke="${color}"/><rect x="126" y="732" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/><text x="878" y="786" class="thread-micro" text-anchor="end" fill="${color}">${status}</text></g>`;
 }
 
-const lockItems = ["RESTORE HUMAN POSTS", "COUNT UNIQUE SOURCES", "COLLAPSE COPIED COMMENTS", "LET PEOPLE DISAGREE"];
+const lockItems = ["RESTORE HUMAN POSTS", "COUNT SOURCES + COLLAPSE COPIES", "LET PEOPLE DISAGREE"];
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="505" y="342" width="305" height="258" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="342" width="305" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="377" width="305" height="13" fill="${COLORS.repair}"/><text x="525" y="374" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 420 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="500" y="356" width="330" height="224" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="500" y="356" width="330" height="48" rx="10" fill="${COLORS.repair}"/><rect x="500" y="391" width="330" height="13" fill="${COLORS.repair}"/><text x="520" y="388" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 446 + index * 48; return `<rect x="524" y="${y - 22}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="537.5" y="${y - 3}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="563" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {
@@ -239,8 +238,7 @@ function companion(state) {
     "auto-overfix": ["Auto counted every repost as new agreement.", "The copied claim became certain."],
     checklist: ["The over-fix is still visible.", "Lock the evidence structure back in."],
     "lock-origin": ["One original post is locked.", "The source count is still wrong."],
-    "lock-sources": ["One post and its copies are counted.", "Context is still missing."],
-    "lock-context": ["Copied comments are collapsed.", "Disagreement is still hidden."],
+    "lock-sources-context": ["One post and its copies are counted once.", "Disagreement is still hidden."],
     "lock-questions": ["Disagreement and sources are secured.", "The forum is repaired again."],
     secured: ["The repair is secured.", "Finn can teach Auto what went wrong."],
   }[state.id];

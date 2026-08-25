@@ -56,10 +56,10 @@ export function persistPlayableMissionSequence(
   return profile;
 }
 
-function progressBucket(index, total, completed) {
+function approximateProgressPercent(index, total, completed) {
+  if (completed) return 100;
   if (!Number.isFinite(index) || !Number.isFinite(total) || total <= 0 || index <= 0) return 0;
-  if (index >= total) return completed ? 4 : 3;
-  return Math.max(1, Math.min(3, Math.round((index / total) * 4)));
+  return Math.max(5, Math.min(95, Math.round(((index / total) * 100) / 5) * 5));
 }
 
 export function launcherMissionProgress(profile, mission) {
@@ -73,14 +73,14 @@ export function launcherMissionProgress(profile, mission) {
   const active = completed ? replay : canonical;
   const index = active?.index ?? (completed ? mission.passages.length : 0);
   const total = mission.passages.length;
-  const bucket = progressBucket(index, total, completed && !replay);
+  const percent = approximateProgressPercent(index, total, completed && !replay);
   const replayInProgress = completed && Boolean(replay && replay.index > 0 && replay.phase !== "completed");
   const recoveryInProgress = !completed && index > 0;
 
   return Object.freeze({
-    bucket,
     completed,
     index,
+    percent,
     replayInProgress,
     recoveryInProgress,
     status: replayInProgress

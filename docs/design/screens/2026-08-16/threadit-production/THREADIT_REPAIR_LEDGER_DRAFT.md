@@ -61,8 +61,8 @@ welcome sources and disagreement.
 
 ## State ledger
 
-The mission uses ten reading repairs: six before Auto's over-fix and four
-after it. The click-through contains fourteen rendered states because the
+The mission uses nine reading repairs: six before Auto's over-fix and three
+after it. The click-through contains thirteen rendered states because the
 over-fix and checklist are each shown unobscured once, and the secured state
 closes the overlay.
 
@@ -76,12 +76,11 @@ closes the overlay.
 | 6 | Disagreement restored | The respectful question and normal participation return; exclusionary community rules remain visibly unresolved | 83% | Community rules |
 | 7 | Community rules corrected | Welcoming rules complete the forum without rewriting the original personal story into a lesson statement | 100% | None |
 | 8 | Auto consensus override | Whole forum resets to Auto's visually distinct Auto-fan swarm, copied agreement, and infinite-vote over-fix | 0% | All lock-run red keys |
-| 9 | Checklist opened | Green four-item overlay appears over the unchanged over-fix | 0% | All lock-run red keys |
-| 10 | Human posts restored | One human story replaces Auto's synthetic top post and the first check turns green | 25% | Source count, context, questions |
-| 11 | Unique sources counted | Forty-seven reposts resolve to one copied claim | 50% | Context, questions |
-| 12 | Copied comments collapsed | Repeated comments collapse and unique context returns | 75% | Disagreement/rules |
-| 13 | Disagreement locked | Disagreement and welcoming rules return; fourth check turns green | 100% | None |
-| 14 | Repair secured | Overlay closes on the repaired forum | 100% | None |
+| 9 | Checklist opened | Green three-item overlay appears over the unchanged over-fix | 0% | All lock-run red keys |
+| 10 | Human posts restored | One human story replaces Auto's synthetic top post and the first check turns green | 33% | Source count, context, questions |
+| 11 | Sources counted and copies collapsed | Forty-seven reposts resolve to one copied claim and unique context returns; the second check turns green | 67% | Disagreement/rules |
+| 12 | Disagreement locked | Disagreement and welcoming rules return; third check turns green | 100% | None |
+| 13 | Repair secured | Overlay closes on the repaired forum | 100% | None |
 
 ### First-run red continuity keys
 
@@ -119,12 +118,12 @@ instructions pasted into the forum:
 5. Restore disagreement
 6. Correct the community rules
 
-The green lock checklist uses four short items:
+The green lock checklist uses three short items so each remaining canonical
+passage locks exactly one visible row:
 
 1. Restore human posts
-2. Count unique sources
-3. Collapse copied comments
-4. Let people disagree
+2. Count sources + collapse copies
+3. Let people disagree
 
 ## Module-purpose ledger
 
@@ -145,7 +144,7 @@ module neither changes nor makes the parody recognizable, remove it.
 
 ## QA contract
 
-- Exactly 14 states, 6 first-run repairs, and 4 lock-run repairs.
+- Exactly 13 states, 6 first-run repairs, and 3 lock-run repairs.
 - Shared 1440 × 900 shell and fixed forum geometry across every state.
 - Clean title bar: `www.thread-it.com`; community path appears only inside the
   page as `r/RawFishForever`.

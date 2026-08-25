@@ -28,7 +28,9 @@ test("launcher gives corrupted and recovered sites distinct actions", async () =
   assert.match(saveProgress, /RECOVERED · CONTINUE REPLAY/u);
   assert.match(css, /\.launcher-site \.case-status[^}]*background:var\(--corrupt\)/u);
   assert.match(css, /\.launcher-site\.completed \.case-status[^}]*background:#176633/u);
-  assert.match(css, /\.recovery-indicator[^}]*conic-gradient/u);
+  assert.match(css, /\.recovery-indicator[^}]*margin-left:auto[^}]*conic-gradient/u);
+  assert.doesNotMatch(css, /\.recovery-indicator \{ position:absolute/u);
+  assert.match(javascript, /heading\.append\(indicator\)/u);
 });
 
 test("runtime windows share aligned three-button chrome", async () => {
@@ -70,6 +72,7 @@ test("MapGuess uses compact bright-red moving-target repair copy", async () => {
   assert.match(svg, /\.mg-overlay-head\{font-size:13px[^}]*fill:#C5251E/u);
   assert.match(svg, /class="mg-overlay-head" fill="#C5251E">GO DIRECTLY TO THE LIBRARY/u);
   assert.doesNotMatch(svg, /class="mg-overlay-head" fill="#132A37"/u);
+  assert.doesNotMatch(svg, />TRY THE REPAIR</u);
 });
 
 test("Spotty-Fi pending repair labels use canonical corruption red", async () => {

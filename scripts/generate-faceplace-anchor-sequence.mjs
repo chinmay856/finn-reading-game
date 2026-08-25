@@ -42,13 +42,13 @@ const states = [
   { id: "repaired", label: "Post title and reactions restored", phase: "phase-1", progress: 100, delta: 3, view: "full", copy: "repaired", comments: "original", album: 4, meter: "BANANA%", fixed: true },
   { id: "super-corrupt", label: "Auto-enhanced over-fix", phase: "phase-2", progress: 0, delta: 0, view: "hero", copy: "super", comments: "auto", album: 4, meter: "∞ AWESOME", superMode: true },
   { id: "checklist", label: "Lock-in checklist", phase: "phase-2", progress: 0, delta: 0, view: "hero", copy: "super", comments: "auto", album: 4, meter: "∞ AWESOME", superMode: true, checklist: 0 },
-  { id: "lock-comments", label: "Original comments locked", phase: "phase-2", progress: 20, delta: 1, view: "hero", copy: "super", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, checklist: 1 },
-  { id: "lock-album", label: "Album photos restored", phase: "phase-2", progress: 40, delta: 2, view: "hero", copy: "super", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, checklist: 2 },
-  { id: "lock-frame", label: "Original photo restored", phase: "phase-2", progress: 60, delta: 2, view: "full", copy: "super", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, checklist: 3 },
-  { id: "lock-words", label: "Accurate words locked", phase: "phase-2", progress: 80, delta: 3, view: "full", copy: "repaired", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, checklist: 4 },
-  { id: "lock-score", label: "Awesomeness score removed", phase: "phase-2", progress: 100, delta: 3, view: "full", copy: "repaired", comments: "original", album: 4, meter: "¯\\_(ツ)_/¯", fixed: true, checklist: 5 },
+  { id: "lock-context", label: "Comments and album photos restored", phase: "phase-2", progress: 33, delta: 1, view: "hero", copy: "super", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, repairs: 2, checklist: 1 },
+  { id: "lock-frame", label: "Original photo restored", phase: "phase-2", progress: 67, delta: 2, view: "full", copy: "super", comments: "original", album: 4, meter: "∞ AWESOME", superMode: true, repairs: 3, checklist: 2 },
+  { id: "lock-words-score", label: "Accurate words and reactions locked", phase: "phase-2", progress: 100, delta: 3, view: "full", copy: "repaired", comments: "original", album: 4, meter: "¯\\_(ツ)_/¯", fixed: true, repairs: 5, checklist: 3 },
   { id: "secured", label: "Repair secured", phase: "phase-2", progress: 100, delta: 3, view: "full", copy: "repaired", comments: "original", album: 4, meter: "¯\\_(ツ)_/¯", fixed: true },
 ];
+
+const repairedLockCount = (state) => state.repairs ?? state.checklist ?? 0;
 
 function titlebarPatch() {
   return buildInternetRecoverySiteIdentityPatch({ siteUrl: "www.face-place.net", taskLabel: "FACEPLACE" });
@@ -72,8 +72,8 @@ const albumCards = [
 function albumCard(card, index, state) {
   if (index >= state.album) return "";
   const y = 236 + index * 101;
-  const overEnhanced = state.superMode && (state.checklist ?? 0) < 2;
-  const albumLocked = state.fixed || (state.checklist ?? 0) >= 2;
+  const overEnhanced = state.superMode && repairedLockCount(state) < 2;
+  const albumLocked = state.fixed || repairedLockCount(state) >= 2;
   const border = albumLocked ? COLORS.repair : overEnhanced ? COLORS.corruption : index === 0 && state.progress === 0 ? COLORS.corruption : "#315CAA";
   const caption = overEnhanced ? ["AUTO PERFECT", "MOMENT"] : card.caption;
   const asset = overEnhanced ? albumAssets.hero : card.asset;
@@ -81,13 +81,13 @@ function albumCard(card, index, state) {
 }
 
 function albumRail(state) {
-  const overEnhanced = state.superMode && (state.checklist ?? 0) < 2;
+  const overEnhanced = state.superMode && repairedLockCount(state) < 2;
   return `<g data-album-module="true" data-qa-box="689,165,901,680"><rect x="689" y="165" width="212" height="515" rx="7" fill="#fff" stroke="#D5D8DD"/><text x="705" y="193" class="face-label">MORE FROM THIS ALBUM</text><text x="705" y="214" class="face-blue face-small">LAKE DAY · ${overEnhanced ? "∞ PERFECT MOMENTS" : `${state.album} ${state.album === 1 ? "PHOTO" : "PHOTOS"}`}</text>${albumCards.map((card, index) => albumCard(card, index, state)).join("")}</g>`;
 }
 
 function mainPhoto(state) {
   const crop = crops[state.view];
-  const overEnhanced = state.superMode && (state.checklist ?? 0) < 3;
+  const overEnhanced = state.superMode && repairedLockCount(state) < 3;
   return `<g transform="translate(133 294)" clip-path="url(#facePhotoClip)" data-photo-view="${state.view}" data-photo-enhanced="${overEnhanced}"><image href="${photoAsset}" x="${crop.x}" y="${crop.y}" width="${crop.width}" height="${crop.height}" preserveAspectRatio="xMidYMid meet"${overEnhanced ? ' style="filter:url(#faceOverEnhance)"' : ""}/>${overEnhanced ? `<path d="M40 25 48 44 68 52 48 60 40 80 32 60 12 52 32 44z" fill="#FFF6A0" stroke="${COLORS.corruption}" stroke-width="3"/><path d="m472 28 9 21 22 9-22 9-9 22-9-22-22-9 22-9z" fill="#FFF6A0" stroke="${COLORS.corruption}" stroke-width="3"/><rect x="158" y="188" width="220" height="38" rx="19" fill="${COLORS.corruption}"/><text x="268" y="213" class="face-enhanced" text-anchor="middle">AUTO ENHANCED</text>` : ""}</g>`;
 }
 
@@ -117,10 +117,10 @@ function comments(state) {
 
 function post(state) {
   const copy = copyByState[state.copy];
-  const overEnhanced = state.superMode && (state.checklist ?? 0) < 3;
-  const wordsLocked = state.fixed || (state.checklist ?? 0) >= 4;
-  const frameLocked = state.fixed || (state.checklist ?? 0) >= 3;
-  const reactionsLocked = state.fixed || (state.checklist ?? 0) >= 4;
+  const overEnhanced = state.superMode && repairedLockCount(state) < 3;
+  const wordsLocked = state.fixed || repairedLockCount(state) >= 4;
+  const frameLocked = state.fixed || repairedLockCount(state) >= 3;
+  const reactionsLocked = state.fixed || repairedLockCount(state) >= 4;
   const postBorder = wordsLocked ? COLORS.repair : state.progress > 0 && !state.superMode ? "#315CAA" : COLORS.corruption;
   const photoBorder = frameLocked ? COLORS.repair : postBorder;
   const reactionDisplay = reactionsLocked
@@ -137,16 +137,16 @@ function footer(state) {
   return `<g><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/><text x="126" y="727" class="face-meter" fill="${color}">${label}</text><text x="${autoMeter ? 338 : 275}" y="727" class="face-meter" fill="${color}">${state.meter}</text><rect x="126" y="743" width="752" height="24" fill="url(#faceCorruptHatch)" stroke="${color}"/><rect x="126" y="743" width="${autoMeter ? 752 : fillWidth}" height="24" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 
-const lockLabels = ["RESTORE ORIGINAL COMMENTS", "RESTORE THE ALBUM PHOTOS", "RESTORE THE ORIGINAL PHOTO", "KEEP THE WORDS ACCURATE", "REMOVE THE AWESOMENESS SCORE"];
+const lockLabels = ["RESTORE COMMENTS + ALBUM PHOTOS", "RESTORE THE ORIGINAL PHOTO", "KEEP WORDS ACCURATE + REMOVE SCORE"];
 
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="505" y="346" width="330" height="296" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="505" y="346" width="330" height="48" rx="10" fill="${COLORS.repair}"/><rect x="505" y="381" width="330" height="13" fill="${COLORS.repair}"/><text x="525" y="378" class="lock-title">LOCK IN THE REPAIR</text>${lockLabels.map((label, index) => { const done = index < state.checklist; const y = 414 + index * 44; return `<rect x="529" y="${y - 20}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="542.5" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="568" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="520" y="356" width="330" height="224" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="520" y="356" width="330" height="48" rx="10" fill="${COLORS.repair}"/><rect x="520" y="391" width="330" height="13" fill="${COLORS.repair}"/><text x="540" y="388" class="lock-title">LOCK IN THE REPAIR</text>${lockLabels.map((label, index) => { const done = index < state.checklist; const y = 446 + index * 48; return `<rect x="544" y="${y - 22}" width="27" height="27" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="557.5" y="${y - 3}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="583" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${label}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {
   const messages = {
-    initial: "The post shows one chosen slice.", comments: "The original comments are visible.", helper: "The wider frame reveals a helper.", gear: "The next view reveals gear and cleanup.", barrel: "The full frame reveals other fish.", repaired: "The title and reactions no longer compare.", "super-corrupt": "Auto made every album photo awesome.", checklist: "Lock the context behind the post.", "lock-comments": "Original comments locked.", "lock-album": "The original album photos are back.", "lock-frame": "The original photo is restored.", "lock-words": "Accurate words are locked.", "lock-score": "The score no longer judges real life.", secured: "The whole story is secured.",
+    initial: "The post shows one chosen slice.", comments: "The original comments are visible.", helper: "The wider frame reveals a helper.", gear: "The next view reveals gear and cleanup.", barrel: "The full frame reveals other fish.", repaired: "The title and reactions no longer compare.", "super-corrupt": "Auto made every album photo awesome.", checklist: "Lock the context behind the post.", "lock-context": "The real comments and album are back.", "lock-frame": "The original photo is restored.", "lock-words-score": "The words and score are now accurate.", secured: "The whole story is secured.",
   };
   return `<g data-companion-state="reading" data-qa-box="958,78,1395,552"><text x="964" y="106" class="reading-body">Read the next passage to reveal more</text><text x="964" y="144" class="reading-body">of what happened around this photo.</text><rect x="960" y="171" width="404" height="34" fill="#F8DFA0"/><text x="964" y="197" class="reading-body">${messages[state.id]}</text><text x="964" y="250" class="reading-body">The happy catch can still be real.</text></g>`;
 }
