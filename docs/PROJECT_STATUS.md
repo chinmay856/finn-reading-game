@@ -1,5 +1,14 @@
 # Project status
 
+## Internet Recovery 98 public URL — 2026-08-25
+
+- The canonical playtest URL is now <https://internet-recovery-98.web.app/>.
+  It is a dedicated Firebase Hosting site in the existing project and uses the
+  same isolated production configuration, microphone policy, redirects, and
+  cache rules as the previously published build.
+- <https://finn-reading-game.web.app/> remains available as a legacy address so
+  existing playtest links do not break.
+
 ## Playtester naming, reflection, and Companion polish — 2026-08-24
 
 - The public game title is now **Internet Recovery 98**. The player remains

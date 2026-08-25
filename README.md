@@ -15,7 +15,8 @@ designed to support many future themes.
 ## Start here
 
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
-- Live game: <https://finn-reading-game.web.app/>
+- Live game: <https://internet-recovery-98.web.app/>
+- Legacy Firebase address: <https://finn-reading-game.web.app/>
 - Non-isolated GitHub Pages fallback: <https://chinmay856.github.io/finn-reading-game/>
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)
 - Reading Companion production integration: [`docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md`](docs/engine/READING_COMPANION_PRODUCTION_INTEGRATION_2026-07-14.md)

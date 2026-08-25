@@ -3,6 +3,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const config = JSON.parse(await readFile(new URL("../firebase.json", import.meta.url), "utf8"));
+const internetRecoveryConfig = JSON.parse(
+  await readFile(new URL("../firebase.internet-recovery-98.json", import.meta.url), "utf8"),
+);
 
 function headersFor(source) {
   const rule = config.hosting.headers.find((candidate) => candidate.source === source);
@@ -16,6 +19,13 @@ test("Firebase serves the complete app from the production build", () => {
     { source: "/", destination: "/playable-missions.html", type: 302 },
     { source: "/index.html", destination: "/playable-missions.html", type: 302 },
   ]);
+});
+
+test("the Internet Recovery 98 Firebase site preserves the production hosting contract", () => {
+  assert.equal(internetRecoveryConfig.hosting.site, "internet-recovery-98");
+  assert.equal(internetRecoveryConfig.hosting.public, config.hosting.public);
+  assert.deepEqual(internetRecoveryConfig.hosting.redirects, config.hosting.redirects);
+  assert.deepEqual(internetRecoveryConfig.hosting.headers, config.hosting.headers);
 });
 
 test("every response carries the isolation headers required by the pinned Sherpa runtime", () => {
