@@ -1,5 +1,29 @@
 # Project status
 
+## Standalone document-remap endgame playtest — 2026-08-25
+
+- The reviewed document-remap ending now has an isolated local route at
+  `endgame-playtest.html`. It implements the genuine 10/10 beat, Auto's desktop
+  scope expansion, all ten production over-fix thumbnails, the deterministic
+  six-popup stack, ten five-choice boundary puzzles, the final bounded
+  instruction, desktop restoration, Techno waterfall, epilogue, replay, and
+  reset.
+- Ten representative lesson documents and player explanations are explicitly
+  marked as playtest fixtures. The route stores progress only under
+  `internet-recovery-endgame-playtest-v1`; it does not read or write real
+  profile saves or campaign progression.
+- The Instruction Builder supports drag-and-drop, click/tap plus Add, and
+  keyboard operation. Wrong answers return gently without a penalty, while one
+  correct answer restores exactly one site. Pop-up dismissals and correct locks
+  save immediately for reload/resume.
+- Playtest-only jump, reduced-motion, and fixture-reset controls sit outside the
+  authored 1440-by-900 stage. The Reading Companion stays minimized, and no new
+  reading passage is introduced.
+- This route remains deliberately unlinked from `playable-missions.html` and
+  deliberately undeployed. The historical final-breach brief remains intact.
+  Local controls, fixture boundaries, and QA instructions are recorded in
+  `docs/design/ENDGAME_STANDALONE_PLAYTEST_NOTES_2026-08-25.md`.
+
 ## Internet Recovery 98 public URL — 2026-08-25
 
 - The canonical playtest URL is now <https://internet-recovery-98.web.app/>.

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#087f88">
+  <title>Internet Recovery 98 — Endgame Playtest</title>
+  <link rel="stylesheet" href="/endgame-playtest.css">
+</head>
+<body>
+  <header class="playtest-toolbar" aria-label="Playtest-only controls">
+    <div class="playtest-identity"><strong>ENDGAME PLAYTEST ONLY</strong><span>Fixture data · isolated from campaign saves · not deployed</span></div>
+    <label for="jumpToBeat">Jump to beat</label>
+    <select id="jumpToBeat">
+      <option value="endgame_ready">1 · 10/10 complete</option>
+      <option value="endgame_scope_expands">2 · Scope expands</option>
+      <option value="endgame_desktop_corrupted">3 · Desktop corrupted</option>
+      <option value="endgame_popup_swarm">4 · Pop-up swarm</option>
+      <option value="endgame_instruction_intro">5 · Builder introduction</option>
+      <option value="endgame_lesson_lock">6 · Lesson puzzles</option>
+      <option value="endgame_final_instruction">7 · Final instruction</option>
+      <option value="endgame_desktop_restored">8 · Desktop restored</option>
+      <option value="endgame_techno_celebration">9 · Techno celebration</option>
+      <option value="endgame_complete">10 · Epilogue</option>
+    </select>
+    <label class="motion-toggle"><input id="reduceMotion" type="checkbox"> Reduced motion</label>
+    <button id="resetPlaytest" type="button">Reset fixture</button>
+    <span id="playtestSaveStatus" class="playtest-save-status" role="status">Fixture ready</span>
+  </header>
+  <main id="stageShell" class="stage-shell">
+    <section id="endgameStage" class="endgame-stage" aria-label="Internet Recovery 98 standalone endgame playtest"></section>
+  </main>
+  <div id="endgameAnnouncement" class="visually-hidden" aria-live="polite"></div>
+  <script type="module" src="/endgame-playtest.js"></script>
+</body>
+</html>

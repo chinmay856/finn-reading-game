@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        endgamePlaytest: resolve(import.meta.dirname, "endgame-playtest.html"),
         kokoroVoiceComparison: resolve(import.meta.dirname, "kokoro-voice-comparison.html"),
         main: resolve(import.meta.dirname, "index.html"),
         moonshineBenchmark: resolve(import.meta.dirname, "moonshine-benchmark.html"),
