@@ -1,16 +1,19 @@
 import {
+  ENDGAME_COPY,
   ENDGAME_PLAYTEST_FIXTURE_ID,
   ENDGAME_POPUPS,
+  ENDGAME_REPAIR_STEP_KEYS,
   ENDGAME_SITE_FIXTURES,
   ENDGAME_SITE_ORDER,
+  getEndgameRepairStep,
+  repairStepId,
 } from "./endgame-playtest-content.js";
 
-export const ENDGAME_PLAYTEST_STORAGE_KEY = "internet-recovery-endgame-playtest-v1";
-export const ENDGAME_PLAYTEST_VERSION = 1;
+export const ENDGAME_PLAYTEST_STORAGE_KEY = "internet-recovery-endgame-playtest-v3";
+export const ENDGAME_PLAYTEST_VERSION = 3;
 
 export const ENDGAME_BEATS = Object.freeze([
   "endgame_ready",
-  "endgame_scope_expands",
   "endgame_desktop_corrupted",
   "endgame_popup_swarm",
   "endgame_instruction_intro",
@@ -20,6 +23,9 @@ export const ENDGAME_BEATS = Object.freeze([
   "endgame_techno_celebration",
   "endgame_complete",
 ]);
+
+const ALL_REPAIR_STEP_IDS = Object.freeze(ENDGAME_SITE_ORDER.flatMap((siteId) =>
+  ENDGAME_REPAIR_STEP_KEYS.map((stepKey) => repairStepId(siteId, stepKey))));
 
 export function fixtureUnlockAvailable({ completedSiteIds = [], lessonDocumentIds = [] } = {}) {
   const completed = new Set(completedSiteIds);
@@ -39,18 +45,22 @@ export function createEndgamePlaytestState({ fixture = completePlaytestFixture()
     version: ENDGAME_PLAYTEST_VERSION,
     fixtureId: ENDGAME_PLAYTEST_FIXTURE_ID,
     endgameAvailable: fixtureUnlockAvailable(fixture),
+    readyDialogueIndex: 0,
     endgameStarted: false,
-    scopeDialogueIndex: 0,
     desktopCorrupted: false,
     takeoverDialogueIndex: 0,
     popupSwarmStarted: false,
     closedPopupIds: [],
+    instructionIntroIndex: 0,
     instructionBuilderOpened: false,
-    lockedSiteIds: [],
+    completedRepairStepIds: [],
     currentLessonIndex: 0,
+    currentRepairIndex: 0,
+    finalDialogueIndex: 0,
     finalInstructionSent: false,
     desktopRestored: false,
-    celebrationSeen: false,
+    celebrationStopped: false,
+    endingDialogueIndex: 0,
     endgameComplete: false,
     completedOnce: false,
     replayCount: 0,
@@ -68,30 +78,47 @@ function exactKnownPrefix(values, knownIds) {
   return prefix;
 }
 
+function repairPosition(completedRepairStepIds) {
+  const count = completedRepairStepIds.length;
+  return {
+    currentLessonIndex: Math.min(ENDGAME_SITE_ORDER.length, Math.floor(count / ENDGAME_REPAIR_STEP_KEYS.length)),
+    currentRepairIndex: count % ENDGAME_REPAIR_STEP_KEYS.length,
+  };
+}
+
 export function normalizeEndgamePlaytestState(candidate) {
   const fallback = createEndgamePlaytestState();
   if (!candidate || candidate.version !== ENDGAME_PLAYTEST_VERSION || candidate.fixtureId !== ENDGAME_PLAYTEST_FIXTURE_ID) return fallback;
-  const closedPopupIds = exactKnownPrefix(candidate.closedPopupIds, ENDGAME_POPUPS.map(({ id }) => id));
-  const lockedSiteIds = exactKnownPrefix(candidate.lockedSiteIds, ENDGAME_SITE_ORDER);
+  const closedPopupIds = exactKnownPrefix(candidate.closedPopupIds, ENDGAME_POPUPS.map(({ id }) => id).reverse());
+  const completedRepairStepIds = exactKnownPrefix(candidate.completedRepairStepIds, ALL_REPAIR_STEP_IDS);
+  const position = repairPosition(completedRepairStepIds);
+  const allRepairsComplete = completedRepairStepIds.length === ALL_REPAIR_STEP_IDS.length;
+  const finalInstructionSent = candidate.finalInstructionSent === true && allRepairsComplete;
+  const desktopRestored = candidate.desktopRestored === true && finalInstructionSent;
+  const celebrationStopped = candidate.celebrationStopped === true && desktopRestored;
+  const endgameComplete = candidate.endgameComplete === true && celebrationStopped;
   return {
     ...fallback,
     endgameAvailable: candidate.endgameAvailable === true,
+    readyDialogueIndex: Math.min(ENDGAME_COPY.ready.length - 1, Math.max(0, Number(candidate.readyDialogueIndex) || 0)),
     endgameStarted: candidate.endgameStarted === true,
-    scopeDialogueIndex: Math.min(2, Math.max(0, Number(candidate.scopeDialogueIndex) || 0)),
-    desktopCorrupted: candidate.desktopCorrupted === true,
-    takeoverDialogueIndex: Math.min(3, Math.max(0, Number(candidate.takeoverDialogueIndex) || 0)),
+    desktopCorrupted: candidate.desktopCorrupted === true || candidate.endgameStarted === true,
+    takeoverDialogueIndex: Math.min(ENDGAME_COPY.takeover.length - 1, Math.max(0, Number(candidate.takeoverDialogueIndex) || 0)),
     popupSwarmStarted: candidate.popupSwarmStarted === true,
     closedPopupIds,
+    instructionIntroIndex: Math.min(ENDGAME_COPY.instructionIntro.length - 1, Math.max(0, Number(candidate.instructionIntroIndex) || 0)),
     instructionBuilderOpened: candidate.instructionBuilderOpened === true,
-    lockedSiteIds,
-    currentLessonIndex: Math.min(ENDGAME_SITE_ORDER.length, lockedSiteIds.length),
-    finalInstructionSent: candidate.finalInstructionSent === true && lockedSiteIds.length === ENDGAME_SITE_ORDER.length,
-    desktopRestored: candidate.desktopRestored === true && candidate.finalInstructionSent === true,
-    celebrationSeen: candidate.celebrationSeen === true && candidate.desktopRestored === true,
-    endgameComplete: candidate.endgameComplete === true && candidate.celebrationSeen === true,
-    completedOnce: candidate.completedOnce === true || candidate.endgameComplete === true,
+    completedRepairStepIds,
+    ...position,
+    finalDialogueIndex: Math.min(ENDGAME_COPY.final.length - 1, Math.max(0, Number(candidate.finalDialogueIndex) || 0)),
+    finalInstructionSent,
+    desktopRestored,
+    celebrationStopped,
+    endingDialogueIndex: Math.min(ENDGAME_COPY.ending.length - 1, Math.max(0, Number(candidate.endingDialogueIndex) || 0)),
+    endgameComplete,
+    completedOnce: candidate.completedOnce === true || endgameComplete,
     replayCount: Math.max(0, Number(candidate.replayCount) || 0),
-    finished: candidate.finished === true && candidate.endgameComplete === true,
+    finished: candidate.finished === true && endgameComplete,
   };
 }
 
@@ -99,67 +126,76 @@ export function endgamePhase(state) {
   if (!state.endgameAvailable) return "unavailable";
   if (state.finished) return "finished";
   if (state.endgameComplete) return "endgame_complete";
-  if (state.celebrationSeen) return "endgame_complete";
   if (state.desktopRestored) return "endgame_techno_celebration";
   if (state.finalInstructionSent) return "endgame_desktop_restored";
-  if (state.lockedSiteIds.length === ENDGAME_SITE_ORDER.length) return "endgame_final_instruction";
+  if (state.completedRepairStepIds.length === ALL_REPAIR_STEP_IDS.length) return "endgame_final_instruction";
   if (state.instructionBuilderOpened) return "endgame_lesson_lock";
   if (state.closedPopupIds.length === ENDGAME_POPUPS.length) return "endgame_instruction_intro";
   if (state.popupSwarmStarted) return "endgame_popup_swarm";
   if (state.desktopCorrupted) return "endgame_desktop_corrupted";
-  if (state.endgameStarted) return "endgame_scope_expands";
   return "endgame_ready";
 }
 
-export function startEndgame(state) {
-  if (!state.endgameAvailable) return state;
-  return { ...state, endgameStarted: true };
-}
-
-export function advanceScopeDialogue(state) {
-  if (endgamePhase(state) !== "endgame_scope_expands") return state;
-  if (state.scopeDialogueIndex < 2) return { ...state, scopeDialogueIndex: state.scopeDialogueIndex + 1 };
-  return { ...state, desktopCorrupted: true, takeoverDialogueIndex: 0 };
+export function advanceReadyDialogue(state) {
+  if (endgamePhase(state) !== "endgame_ready") return state;
+  if (state.readyDialogueIndex < ENDGAME_COPY.ready.length - 1) {
+    return { ...state, readyDialogueIndex: state.readyDialogueIndex + 1 };
+  }
+  return { ...state, endgameStarted: true, desktopCorrupted: true, takeoverDialogueIndex: 0 };
 }
 
 export function advanceTakeoverDialogue(state) {
   if (endgamePhase(state) !== "endgame_desktop_corrupted") return state;
-  if (state.takeoverDialogueIndex < 3) return { ...state, takeoverDialogueIndex: state.takeoverDialogueIndex + 1 };
+  if (state.takeoverDialogueIndex < ENDGAME_COPY.takeover.length - 1) {
+    return { ...state, takeoverDialogueIndex: state.takeoverDialogueIndex + 1 };
+  }
   return { ...state, popupSwarmStarted: true };
 }
 
 export function closeTopPopup(state, popupId) {
   if (endgamePhase(state) !== "endgame_popup_swarm") return state;
-  const nextPopup = ENDGAME_POPUPS.find(({ id }) => !state.closedPopupIds.includes(id));
+  const nextPopup = [...ENDGAME_POPUPS].reverse().find(({ id }) => !state.closedPopupIds.includes(id));
   if (!nextPopup || nextPopup.id !== popupId) return state;
   return { ...state, closedPopupIds: [...state.closedPopupIds, popupId] };
 }
 
-export function openInstructionBuilder(state) {
+export function advanceInstructionIntro(state) {
   if (endgamePhase(state) !== "endgame_instruction_intro") return state;
+  if (state.instructionIntroIndex < ENDGAME_COPY.instructionIntro.length - 1) {
+    return { ...state, instructionIntroIndex: state.instructionIntroIndex + 1 };
+  }
   return { ...state, instructionBuilderOpened: true };
 }
 
 export function answerCurrentLesson(state, { optionId, siteId } = {}) {
   if (endgamePhase(state) !== "endgame_lesson_lock") return { correct: false, state };
   const fixture = ENDGAME_SITE_FIXTURES[state.currentLessonIndex];
-  if (!fixture || fixture.id !== siteId) return { correct: false, state };
-  const option = fixture.options.find(({ id }) => id === optionId);
+  const step = getEndgameRepairStep(state.currentLessonIndex, state.currentRepairIndex);
+  if (!fixture || !step || fixture.id !== siteId) return { correct: false, state };
+  const option = step.options.find(({ id }) => id === optionId);
   if (!option?.correct) return { correct: false, state };
-  if (state.lockedSiteIds.includes(siteId)) return { correct: true, state };
-  const lockedSiteIds = [...state.lockedSiteIds, siteId];
+  const expectedStepId = repairStepId(siteId, step.key);
+  if (state.completedRepairStepIds.includes(expectedStepId)) return { correct: true, state };
+  const completedRepairStepIds = [...state.completedRepairStepIds, expectedStepId];
   return {
     correct: true,
     state: {
       ...state,
-      lockedSiteIds,
-      currentLessonIndex: lockedSiteIds.length,
+      completedRepairStepIds,
+      ...repairPosition(completedRepairStepIds),
     },
   };
 }
 
+export function advanceFinalDialogue(state) {
+  if (endgamePhase(state) !== "endgame_final_instruction") return state;
+  if (state.finalDialogueIndex >= ENDGAME_COPY.final.length - 1) return state;
+  return { ...state, finalDialogueIndex: state.finalDialogueIndex + 1 };
+}
+
 export function sendFinalInstruction(state) {
   if (endgamePhase(state) !== "endgame_final_instruction") return state;
+  if (state.finalDialogueIndex !== ENDGAME_COPY.final.length - 1) return state;
   return { ...state, finalInstructionSent: true };
 }
 
@@ -168,9 +204,17 @@ export function restoreDesktop(state) {
   return { ...state, desktopRestored: true };
 }
 
-export function completeCelebration(state) {
-  if (endgamePhase(state) !== "endgame_techno_celebration") return state;
-  return { ...state, celebrationSeen: true, endgameComplete: true, completedOnce: true };
+export function stopCelebration(state) {
+  if (endgamePhase(state) !== "endgame_techno_celebration" || state.celebrationStopped) return state;
+  return { ...state, celebrationStopped: true, endingDialogueIndex: 0 };
+}
+
+export function advanceEndingDialogue(state) {
+  if (endgamePhase(state) !== "endgame_techno_celebration" || !state.celebrationStopped) return state;
+  if (state.endingDialogueIndex < ENDGAME_COPY.ending.length - 1) {
+    return { ...state, endingDialogueIndex: state.endingDialogueIndex + 1 };
+  }
+  return { ...state, endgameComplete: true, completedOnce: true };
 }
 
 export function finishEndgame(state) {
@@ -195,26 +239,29 @@ export function replayDesktopIncident(state) {
 export function jumpToEndgameBeat(beat) {
   const state = createEndgamePlaytestState();
   if (beat === "endgame_ready") return state;
+  state.readyDialogueIndex = ENDGAME_COPY.ready.length - 1;
   state.endgameStarted = true;
-  if (beat === "endgame_scope_expands") return state;
-  state.scopeDialogueIndex = 2;
   state.desktopCorrupted = true;
   if (beat === "endgame_desktop_corrupted") return state;
-  state.takeoverDialogueIndex = 3;
+  state.takeoverDialogueIndex = ENDGAME_COPY.takeover.length - 1;
   state.popupSwarmStarted = true;
   if (beat === "endgame_popup_swarm") return state;
-  state.closedPopupIds = ENDGAME_POPUPS.map(({ id }) => id);
+  state.closedPopupIds = ENDGAME_POPUPS.map(({ id }) => id).reverse();
   if (beat === "endgame_instruction_intro") return state;
+  state.instructionIntroIndex = ENDGAME_COPY.instructionIntro.length - 1;
   state.instructionBuilderOpened = true;
   if (beat === "endgame_lesson_lock") return state;
-  state.lockedSiteIds = [...ENDGAME_SITE_ORDER];
+  state.completedRepairStepIds = [...ALL_REPAIR_STEP_IDS];
   state.currentLessonIndex = ENDGAME_SITE_ORDER.length;
+  state.currentRepairIndex = 0;
   if (beat === "endgame_final_instruction") return state;
+  state.finalDialogueIndex = ENDGAME_COPY.final.length - 1;
   state.finalInstructionSent = true;
   if (beat === "endgame_desktop_restored") return state;
   state.desktopRestored = true;
   if (beat === "endgame_techno_celebration") return state;
-  state.celebrationSeen = true;
+  state.celebrationStopped = true;
+  state.endingDialogueIndex = ENDGAME_COPY.ending.length - 1;
   state.endgameComplete = true;
   state.completedOnce = true;
   return state;

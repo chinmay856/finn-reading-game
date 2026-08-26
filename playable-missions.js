@@ -42,6 +42,7 @@ const LAUNCHER_SITE_ORDER = Object.freeze([
   "mycorner",
 ]);
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
+const ENDGAME_STORE_KEY = "internet-recovery-endgame-playtest-v3";
 const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
 const requestedSiteId = new URLSearchParams(location.search).get("site");
 let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
@@ -302,6 +303,48 @@ function launcherStatus(site) {
   return "DESIGN SAVED · BUILD PENDING";
 }
 
+function completedEndgameRunExists() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(ENDGAME_STORE_KEY) ?? "null");
+    return stored?.completedOnce === true || stored?.endgameComplete === true;
+  } catch {
+    return false;
+  }
+}
+
+function populateDiagnosticJump() {
+  const select = $("diagnosticJump");
+  const siteGroup = document.createElement("optgroup");
+  siteGroup.label = "Recovery sites";
+  for (const siteId of LAUNCHER_SITE_ORDER.map((id) => CATALOG_TO_ROUTE[id] ?? id)) {
+    const walkthrough = getPlayableWalkthrough(siteId);
+    const option = document.createElement("option");
+    option.value = `site:${siteId}`;
+    option.textContent = walkthrough.name;
+    siteGroup.append(option);
+  }
+  const endgameGroup = document.createElement("optgroup");
+  endgameGroup.label = "Endgame";
+  const endgame = document.createElement("option");
+  endgame.value = "endgame";
+  endgame.textContent = "Desktop incident · all beats";
+  endgameGroup.append(endgame);
+  select.append(siteGroup, endgameGroup);
+}
+
+function openDiagnosticTarget() {
+  const target = $("diagnosticJump").value;
+  if (target === "launcher") {
+    void navigateToLauncher();
+    return;
+  }
+  if (target === "endgame") {
+    location.assign("/endgame-playtest.html");
+    return;
+  }
+  if (target.startsWith("site:")) void navigateToMission(target.slice(5));
+}
+
 function renderLauncher() {
   document.title = "Internet Recovery 98 · Choose a Site";
   $("launcherView").hidden = false;
@@ -309,6 +352,10 @@ function renderLauncher() {
   const profile = activeProfile();
   const completedCount = PLAYABLE_SITE_IDS.filter((siteId) => launcherMissionProgress(profile, getPlayableWalkthrough(siteId)).completed).length;
   $("completeCount").textContent = `${completedCount} / ${PLAYABLE_SITE_IDS.length} COMPLETE`;
+  $("launchEndgame").hidden = completedCount !== PLAYABLE_SITE_IDS.length;
+  $("launchEndgame").textContent = completedEndgameRunExists() ? "Replay final recovery" : "Start final recovery";
+  $("skipReading").hidden = true;
+  $("diagnosticJump").value = "launcher";
   const sitesById = new Map(RECOVERY_SITES.map((site) => [site.id, site]));
   $("siteGrid").replaceChildren(...LAUNCHER_SITE_ORDER.map((siteId) => sitesById.get(siteId)).filter(Boolean).map((site) => {
     const routeId = CATALOG_TO_ROUTE[site.id] ?? site.id;
@@ -371,6 +418,10 @@ function recoveryDocumentName(siteName, playerName) {
 
 function openDocuments() {
   const profile = activeProfile();
+  const canReplayEndgame = Boolean(profile) && PLAYABLE_SITE_IDS.every((siteId) => (
+    launcherMissionProgress(profile, getPlayableWalkthrough(siteId)).completed
+  ));
+  $("replayEndgame").hidden = !canReplayEndgame;
   const records = Object.entries(profile?.reflections ?? {}).map(([siteId, record]) => {
     const walkthrough = PLAYABLE_SITE_IDS.includes(siteId) ? getPlayableWalkthrough(siteId) : null;
     const siteName = record.siteName || walkthrough?.name || siteId;
@@ -1110,6 +1161,8 @@ function startExperience() {
     return;
   }
   document.title = `${mission.name} · Playable Mission`;
+  $("skipReading").hidden = false;
+  $("diagnosticJump").value = `site:${mission.id}`;
   sequence = createMissionSequenceState({ phaseOneCount: mission.phaseOneCount, totalPassages: mission.passages.length });
   $("launcherView").hidden = true;
   $("missionView").hidden = false;
@@ -1172,6 +1225,8 @@ function toggleStartMenu(event) {
 }
 
 function bindShellControls() {
+  populateDiagnosticJump();
+  $("diagnosticGo").addEventListener("click", openDiagnosticTarget);
   for (const link of document.querySelectorAll("[data-open-launcher]")) {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -1180,6 +1235,13 @@ function bindShellControls() {
   }
   for (const button of document.querySelectorAll("[data-open-documents]")) button.addEventListener("click", openDocuments);
   $("closeDocuments").addEventListener("click", closeDocuments);
+  $("replayEndgame").addEventListener("click", () => {
+    location.assign("/endgame-playtest.html?campaign=1&replay=1");
+  });
+  $("launchEndgame").addEventListener("click", () => {
+    const replay = completedEndgameRunExists() ? "&replay=1" : "";
+    location.assign(`/endgame-playtest.html?campaign=1${replay}`);
+  });
   $("documentsWindow").addEventListener("click", (event) => { if (event.target === $("documentsWindow")) closeDocuments(); });
   for (const button of document.querySelectorAll(".start-button")) {
     button.setAttribute("aria-haspopup", "menu");
@@ -1212,7 +1274,7 @@ function bindShellControls() {
 async function runBriefing() {
   setFrame(mission.initialFrame, "initial corruption");
   setTechno("waiting", "left");
-  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage and answer the quick check to repair this site. Retrying keeps the same passage and does not move the repair forward. Skip passage previews the next design state without creating a speech score.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
+  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage and answer the quick check to repair this site. Retrying keeps the same passage and does not move the repair forward.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
   renderPassage();
   void prepareModels();
 }

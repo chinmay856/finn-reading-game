@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="/playable-missions.css">
 </head>
 <body>
+  <header class="game-diagnostic-toolbar" aria-label="Playtest controls">
+    <strong>PLAYTEST CONTROLS</strong>
+    <label for="diagnosticJump">Jump to</label>
+    <select id="diagnosticJump"><option value="launcher">Recovery Browser</option></select>
+    <button id="diagnosticGo" type="button">Open</button>
+    <button id="skipReading" type="button" hidden>Preview next repair</button>
+    <label class="diagnostic-retain"><input id="retainTroubleshooting" type="checkbox"> Save latest troubleshooting sample</label>
+    <button id="deleteTroubleshooting" type="button">Delete sample</button>
+    <span id="diagnosticStatus" role="status"></span>
+  </header>
   <main class="playtest-shell">
     <section id="stageScaler" class="stage-scaler" aria-label="Internet Recovery 98">
       <div id="gameStage" class="game-stage">
@@ -27,7 +37,7 @@
           </nav>
           <section class="launcher-window">
             <div class="launcher-titlebar"><span>▣ Recovery Browser — Choose a corrupted site</span><img class="window-controls" src="/walkthroughs/shared/recovery-window-controls-v1.svg" alt="" width="89" height="25"></div>
-            <header class="launcher-intro"><div><small>INCOMING RECOVERY CASES</small><h1 id="launcherTitle">Where do you want to start?</h1></div><div class="launcher-counts"><strong id="completeCount">0 / 10 COMPLETE</strong></div></header>
+            <header class="launcher-intro"><div><small>INCOMING RECOVERY CASES</small><h1 id="launcherTitle">Where do you want to start?</h1></div><div class="launcher-counts"><strong id="completeCount">0 / 10 COMPLETE</strong><button id="launchEndgame" type="button" hidden>Start final recovery</button></div></header>
             <div id="siteGrid" class="site-grid"></div>
           </section>
           <footer class="launcher-taskbar"><button class="start-button" type="button">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
@@ -52,9 +62,7 @@
               <button id="prepareModels" type="button">Prepare local models</button>
               <button id="startReading" type="button" disabled>Start reading</button>
               <button id="finishReading" type="button" disabled>Finish now</button>
-              <button id="skipReading" class="skip-button" type="button">Skip passage</button>
             </div>
-            <div class="troubleshooting"><label><input id="retainTroubleshooting" type="checkbox"> Keep the latest audio and transcript on this device for troubleshooting</label><button id="deleteTroubleshooting" type="button">Delete saved copy</button><span id="diagnosticStatus" role="status"></span></div>
           </div>
 
           <div id="skipView" class="companion-view skip-view" hidden tabindex="-1">
@@ -151,7 +159,7 @@
         <section id="documentsWindow" class="documents-overlay" hidden aria-labelledby="documentsTitle">
           <div class="documents-window">
             <div class="launcher-titlebar"><span>▣ Documents — Recovery Lessons</span><button id="closeDocuments" type="button" aria-label="Close Documents">×</button></div>
-            <div class="documents-toolbar">📁 <strong id="documentsTitle">Saved feedback for Auto</strong><span id="documentsProfile"></span></div>
+            <div class="documents-toolbar">📁 <strong id="documentsTitle">Saved feedback for Auto</strong><button id="replayEndgame" type="button" hidden>Replay endgame</button><span id="documentsProfile"></span></div>
             <div class="documents-body">
               <div id="documentList" class="document-list" aria-label="Recovery documents"></div>
               <article id="documentPreview" class="document-preview"><h2>No recovery file selected</h2><p>Finish a recovery case and teach Auto a lesson. The saved lesson will appear here.</p></article>

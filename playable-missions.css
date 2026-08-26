@@ -21,10 +21,21 @@ body {
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
+  display:flex;
+  flex-direction:column;
 }
+.game-diagnostic-toolbar { flex:0 0 50px; height:50px; display:flex; align-items:center; gap:8px; padding:6px 10px; color:#fff; background:#182d38; border-bottom:3px solid #fff; font:700 12px/1 system-ui,sans-serif; }
+.game-diagnostic-toolbar strong { color:#ffe166; letter-spacing:.08em; }
+.game-diagnostic-toolbar select,.game-diagnostic-toolbar button { min-height:32px; padding:4px 8px; border:3px outset #f0eee6; background:#e7e4da; color:#172f43; font-weight:800; }
+.game-diagnostic-toolbar select { max-width:235px; }
+.game-diagnostic-toolbar label { white-space:nowrap; }
+.diagnostic-retain { display:flex; align-items:center; gap:4px; }
+.diagnostic-retain input { width:16px; height:16px; }
+#diagnosticStatus { margin-left:auto; color:#bcebc8; font-size:10px; white-space:nowrap; }
 .playtest-shell {
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 0;
+  height: calc(100vh - 50px);
+  flex:1 1 auto;
 }
 .recovery-launcher {
   position: absolute;
@@ -44,8 +55,9 @@ body {
 .launcher-intro { height:91px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 15px 10px; border-bottom: 2px solid #a7a396; }
 .launcher-intro h1 { margin: 3px 0 0; font-size: 23px; }
 .launcher-intro small { font: 800 10px system-ui,sans-serif; color: #087f88; }
-.launcher-counts { display:flex; align-items:center; font-family:system-ui,sans-serif; }
+.launcher-counts { display:flex; align-items:center; gap:8px; font-family:system-ui,sans-serif; }
 .launcher-counts strong { white-space:nowrap; padding:10px 13px; border:2px solid #176633; background:#dff1e2; color:#176633; font:900 13px system-ui,sans-serif; }
+.launcher-counts button { min-height:39px; padding:7px 12px; border:3px solid; border-color:#71c886 #19552d #19552d #71c886; background:#2f8a49; color:#fff; font:900 12px system-ui,sans-serif; }
 .site-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(0,1fr)); gap:9px; height:690px; padding:10px 12px 13px; }
 .launcher-site { position: relative; min-height: 0; overflow: hidden; border: 3px solid #596874; background: #fff; color: #172d40; box-shadow: 3px 3px 0 #9c988c; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
 .launcher-site.playable:not(.completed) { border-color:#a42b26; box-shadow:4px 4px 0 #d1938f; }
@@ -81,10 +93,16 @@ body {
 .stage-scaler {
   position: relative;
   width:100vw;
-  height:100vh;
+  height:100%;
   min-height: 0;
   overflow: hidden;
   background:#087f88;
+}
+@media (max-width: 1220px) {
+  .game-diagnostic-toolbar { gap:5px; padding-inline:6px; font-size:10px; }
+  .game-diagnostic-toolbar select { max-width:165px; }
+  .diagnostic-retain { max-width:190px; white-space:normal !important; line-height:1.05; }
+  #diagnosticStatus { display:none; }
 }
 .game-stage {
   position: absolute;
@@ -435,6 +453,8 @@ textarea {
 .documents-window .launcher-titlebar button { border:0; background:transparent; color:#fff; font:900 19px/1 system-ui,sans-serif; cursor:pointer; }
 .documents-toolbar { height:54px; display:flex; align-items:center; gap:10px; padding:0 16px; border-bottom:2px solid #9b998f; background:#f3efe5; font:14px system-ui,sans-serif; }
 .documents-toolbar span { margin-left:auto; color:#59656d; }
+.documents-toolbar #replayEndgame { min-height:32px; margin-left:auto; padding:4px 10px; border:3px outset #f5f3ec; background:#dedbd0; color:#172f43; font-weight:900; }
+.documents-toolbar #replayEndgame + span { margin-left:0; }
 .documents-body { display:grid; grid-template-columns:300px 1fr; height:548px; }
 .document-list { padding:14px; border-right:2px solid #9b998f; background:#fff; }
 .document-list button { width:100%; margin:0 0 9px; padding:10px; border:2px solid #7b8991; background:#f5f2e9; color:#172d40; text-align:left; font:700 12px/1.25 system-ui,sans-serif; cursor:pointer; overflow-wrap:anywhere; }
