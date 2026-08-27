@@ -8,25 +8,29 @@
   six-popup swarm, ten five-choice boundary puzzles, the final bounded
   instruction, desktop restoration, Techno waterfall, epilogue, replay, and
   reset.
-- Direct diagnostic visits use ten clearly marked representative player
-  explanations so the complete ending can be tested without replaying the ten
-  missions. A completed campaign launches the same route with its real saved
+- Direct diagnostic visits use an ellipsis when no player explanation exists;
+  no sample response is presented as player-authored. A completed campaign
+  launches the same route with its real saved
   player explanations. Endgame progress stays isolated under
   `internet-recovery-endgame-playtest-v3` and never rewrites mission progress,
   reflections, or completion receipts.
 - Each site's document is repaired in three ordered steps: Auto's saved lesson,
-  the player's explanation fixture, and one extra boundary instruction. The
+  the player's saved explanation, and one extra boundary instruction. The
   Instruction Builder supports drag-and-drop, click/tap plus Add, and keyboard
   operation. Wrong answers return gently without a penalty; all three correct
-  answers are required before that site's site-only thumbnail is restored.
+  answers are required before that site's site-only thumbnail is restored. The
+  finished three-check state remains visible until the player chooses `Move on
+  to next site`.
 - The endgame uses individual canonical-character dialog windows and six
   generated Auto virus windows that arrive one at a time at one-second
   intervals in irregular, strongly overlapping positions. Their visible X controls stay
   disabled until the full takeover has appeared, then dismiss last-in-first-out.
-  A persistent canvas stamps every Techno position along varied bouncing arcs,
+  A persistent canvas crops the canonical live Techno pet spritesheet and
+  stamps the ball-run frames along varied bouncing arcs,
   reproducing the accumulating trails of the classic Solitaire ending without
   free-floating sprites or a card-count cap. It clears on click before the Amy,
-  Chinmay, and final Techno dialog sequence. Pop-up dismissals and correct document repairs save
+  Chinmay, and final Techno dialog sequence. No legacy high-detail Techno art is
+  used by the endgame. Pop-up dismissals and correct document repairs save
   immediately for reload/resume.
 - Playtest jump, skip, reduced-motion, and reset controls sit outside the
   authored 1440-by-900 stage. The campaign uses the same external diagnostic
@@ -40,6 +44,17 @@
   final-breach brief remains intact. Diagnostic controls, fixture boundaries,
   and QA instructions are recorded in
   `docs/design/ENDGAME_STANDALONE_PLAYTEST_NOTES_2026-08-25.md`.
+
+## Reading Companion sentence-boundary audit — 2026-08-26
+
+- All 92 campaign passages now derive display blocks from complete sentences.
+  Commas, semicolons, colons inside prose, and dashes no longer create visual
+  line boundaries. Initials and titles such as `T. H. Huxley`, `H. G. Wells`,
+  `Mr.`, and `Mrs.` remain intact, as do quoted titles ending in punctuation.
+- The global contract reconstructs the exact manuscript text from the displayed
+  blocks and requires every source introduction to remain one block. The
+  Reading Companion uses slightly smaller text, tighter spacing, and more of
+  its available vertical area.
 
 ## Internet Recovery 98 public URL — 2026-08-25
 

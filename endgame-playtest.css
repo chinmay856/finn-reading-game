@@ -169,7 +169,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 
 .taskbar {
   position: absolute;
-  z-index: 7;
+  z-index: 120;
   inset: auto 0 0;
   height: 48px;
   display: flex;
@@ -185,6 +185,49 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .taskbar span { min-width: 220px; border-style: inset; }
 .taskbar i { flex: 1; text-align: center; font-style: normal; letter-spacing: .13em; }
 .taskbar time { padding-right: 10px; font-weight: 700; }
+
+.start-menu {
+  position: absolute;
+  z-index: 121;
+  left: 8px;
+  bottom: 48px;
+  width: 380px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  overflow: hidden;
+  background: #e4e1d7;
+  border: 4px outset #f8f7f2;
+  box-shadow: 8px 8px 0 rgba(0,0,0,.34);
+}
+.start-menu-brand {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px 6px;
+  color: #fff;
+  background: linear-gradient(#0e80aa,#075586);
+  font: 900 16px/1.2 monospace;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.start-menu-items { display: grid; padding: 7px; }
+.start-menu-items button {
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font-size: 20px;
+}
+.start-menu-items button:hover, .start-menu-items button:focus-visible { color: #fff; background: #075586; }
+.start-menu-items span { display: grid; gap: 2px; }
+.start-menu-items b { font-size: 15px; }
+.start-menu-items small { font-size: 11px; font-weight: 500; }
 
 .primary-button {
   min-height: 46px;
@@ -228,14 +271,20 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .story-dialog h1 { margin: 7px 0 8px; font: 900 28px/1.08 "Comic Sans MS", "Trebuchet MS", sans-serif; }
 .story-dialog p { margin: 0 0 17px; font: 21px/1.38 "Comic Sans MS", "Trebuchet MS", sans-serif; }
 .story-dialog[data-speaker="auto"] small, .story-dialog[data-speaker="auto"] h1 { color: var(--ink); }
-.ready-techno { position: absolute; z-index: 15; left: 20px; bottom: 48px; width: 148px; height: 148px; object-fit: contain; }
+.techno-sprite {
+  background-image: url('/pets/techno/spritesheet.webp');
+  background-repeat: no-repeat;
+  background-size: 800% 1100%;
+  background-position: 28.5714% 40%;
+}
+.ready-techno { position: absolute; z-index: 15; left: 20px; bottom: 48px; width: 148px; height: 160px; }
 
 .popup-swarm { position: absolute; z-index: 70; inset: 0; }
 .auto-popup {
   position: absolute;
   z-index: var(--popup-z);
-  width: 760px;
-  height: 430px;
+  width: 820px;
+  height: 460px;
   overflow: hidden;
   color: var(--ink);
   background: var(--paper);
@@ -268,15 +317,15 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   font: 900 26px/1 Arial, sans-serif;
 }
 .popup-close:disabled { opacity: .72; cursor: wait; filter: grayscale(.35); }
-.auto-popup-body { height: calc(100% - 46px); display: grid; grid-template-columns: 300px 1fr; align-items: center; gap: 28px; padding: 22px 28px 22px 22px; }
-.auto-popup-body img { width: 300px; height: 300px; object-fit: cover; border: 3px solid #7b898f; background: #fff; }
+.auto-popup-body { height: calc(100% - 46px); display: grid; grid-template-columns: 320px 1fr; align-items: center; gap: 28px; padding: 22px 28px 22px 22px; }
+.auto-popup-body img { width: 320px; height: 320px; object-fit: cover; border: 3px solid #7b898f; background: #fff; }
 .auto-popup-body p { margin: 0; font: 24px/1.34 "Comic Sans MS", "Trebuchet MS", sans-serif; }
-.popup-position-0 { left: 34px; top: 54px; }
-.popup-position-1 { left: 300px; top: 150px; }
-.popup-position-2 { left: 644px; top: 42px; }
-.popup-position-3 { left: 82px; top: 394px; }
-.popup-position-4 { left: 438px; top: 326px; }
-.popup-position-5 { left: 638px; top: 246px; }
+.popup-position-0 { left: 24px; top: 42px; }
+.popup-position-1 { left: 250px; top: 148px; }
+.popup-position-2 { left: 590px; top: 30px; }
+.popup-position-3 { left: 70px; top: 382px; }
+.popup-position-4 { left: 370px; top: 316px; }
+.popup-position-5 { left: 580px; top: 248px; }
 .auto-popup.takeover-settled { animation: none; }
 
 @keyframes popup-takeover-arrival {
@@ -287,8 +336,8 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .builder-window {
   position: absolute;
   z-index: 55;
-  left: 36px;
-  right: 36px;
+  left: 118px;
+  right: 24px;
   top: 16px;
   bottom: 52px;
   overflow: hidden;
@@ -308,9 +357,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .ribbon-site { position: relative; min-width: 0; overflow: hidden; border: 3px solid var(--corruption); background: #fff; }
 .ribbon-site[data-state="restored"] { border-color: var(--repair); }
 .ribbon-site img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
-.ribbon-site span { position: absolute; right: 2px; bottom: 2px; display: grid; place-items: center; width: 24px; height: 24px; color: #fff; background: var(--corruption); border: 2px solid #fff; border-radius: 50%; font-weight: 900; }
-.ribbon-site[data-state="restored"] span { background: var(--repair); }
-.builder-layout { height: 589px; display: grid; grid-template-columns: 54% 46%; }
+.builder-layout { height: 589px; display: grid; grid-template-columns: 55% 45%; }
 .saved-document { min-width: 0; padding: 13px 18px; border-right: 4px solid #72808a; background: #f6f2e7; }
 .fixture-flag, .modal-note { padding: 7px 10px; color: #5d3f12; background: #fff0b9; border: 2px solid #d1a642; font: 900 10px monospace; letter-spacing: .04em; }
 .document-site { height: 66px; display: flex; align-items: center; gap: 12px; }
@@ -367,6 +414,10 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .add-instruction { float: right; min-height: 39px; margin-top: 7px; padding: 5px 13px; font-size: 14px; }
 .builder-feedback { min-height: 42px; margin: 8px 155px 0 0; color: #52616d; font-size: 12px; line-height: 1.3; }
 .builder-feedback strong { color: #087f88; }
+.document-complete { display: grid; align-content: center; justify-items: start; gap: 12px; padding: 40px; }
+.document-complete small { color: var(--repair-dark); font-weight: 900; letter-spacing: .12em; }
+.document-complete h2 { margin: 0; font: 900 28px/1.15 "Comic Sans MS", "Trebuchet MS", sans-serif; }
+.document-complete p { max-width: 430px; margin: 0; font: 18px/1.45 "Comic Sans MS", "Trebuchet MS", sans-serif; }
 .builder-receipt { height: 105px; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; background: #e5e2d8; border-top: 4px ridge #f9f8f2; }
 .builder-receipt > div { display: grid; gap: 4px; font: 900 12px monospace; }
 .builder-receipt span { color: var(--corruption); }
@@ -379,7 +430,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .celebration-layer[data-action] { cursor: pointer; }
 .techno-waterfall { position: absolute; inset: 0; overflow: hidden; }
 .solitaire-techno-canvas { position: absolute; z-index: 37; inset: 0; width: 100%; height: 100%; }
-.static-celebration-techno { display: none; position: absolute; left: 50%; top: 50%; width: 220px; height: 220px; object-fit: contain; transform: translate(-50%,-50%); }
+.static-celebration-techno { display: none; position: absolute; left: 50%; top: 50%; width: 220px; height: 238px; transform: translate(-50%,-50%); }
 .celebration-prompt { position: absolute; z-index: 50; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 560px; padding: 18px 24px; text-align: center; background: rgba(248,245,235,.96); border: 4px solid var(--repair); box-shadow: 7px 7px 0 rgba(0,0,0,.3); }
 .celebration-prompt h1 { margin: 0 0 8px; font-size: 27px; }
 .celebration-prompt p { margin: 0; font-weight: 800; }
@@ -401,7 +452,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   background: rgba(248,245,235,.99);
   box-shadow: 15px 15px 0 rgba(0,0,0,.42);
 }
-.techno-final-dialog > img { width: 260px; height: 260px; object-fit: contain; }
+.techno-final-sprite { width: 260px; height: 282px; }
 .techno-final-dialog small { color: var(--repair-dark); font-weight: 900; letter-spacing: .14em; }
 .techno-final-dialog h1 { margin: 8px 0 22px; font: 900 34px/1.2 "Comic Sans MS", "Trebuchet MS", sans-serif; }
 .postgame-actions { display: flex; flex-wrap: wrap; gap: 9px; }
@@ -421,7 +472,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   border: 5px solid var(--repair);
   box-shadow: 12px 12px 0 rgba(0,0,0,.36);
 }
-.finished-window img { width: 160px; height: 160px; object-fit: contain; }
+.finished-techno { width: 160px; height: 173px; margin: 0 auto; }
 .finished-window h1 { margin: 5px 0; }
 .finished-window p { font-size: 17px; line-height: 1.45; }
 

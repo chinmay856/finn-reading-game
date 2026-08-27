@@ -20,6 +20,7 @@ import {
   advanceInstructionIntro,
   advanceReadyDialogue,
   advanceTakeoverDialogue,
+  advanceToNextSite,
   answerCurrentLesson,
   closeTopPopup,
   createEndgamePlaytestPersistence,
@@ -89,6 +90,7 @@ function completeAllThirtyRepairs(state) {
       const correct = step.options.find((option) => option.correct);
       state = answerCurrentLesson(state, { siteId: fixture.id, optionId: correct.id }).state;
     }
+    state = advanceToNextSite(state);
   }
   return state;
 }
@@ -162,8 +164,12 @@ test("wrong answers have no penalty and each site needs all three ordered repair
       assert.equal(correctResult.correct, true);
       assert.equal(correctResult.state.completedRepairStepIds.length, expectedCompleted);
       state = correctResult.state;
-      if (repairIndex < 2) assert.equal(state.currentLessonIndex, siteIndex);
-      else assert.equal(state.currentLessonIndex, siteIndex + 1);
+      assert.equal(state.currentLessonIndex, siteIndex);
+      if (repairIndex === 2) {
+        assert.equal(state.awaitingNextSite, true);
+        state = advanceToNextSite(state);
+        assert.equal(state.currentLessonIndex, siteIndex + 1);
+      }
     }
   }
   assert.equal(endgamePhase(state), "endgame_final_instruction");
@@ -226,7 +232,7 @@ test("persistence uses only the v3 isolated namespace and stores no fixture pros
 });
 
 test("route exposes keyboard and touch alternatives, accessible dialogs, reduced motion, and separated QA controls", () => {
-  assert.match(html, /PLAYTEST CONTROLS/u);
+  assert.match(html, /DIAGNOSTICS/u);
   assert.match(html, /stay outside the game screen/u);
   assert.match(html, /id="jumpToBeat"/u);
   assert.match(html, /id="skipCurrentStep"/u);
@@ -243,7 +249,7 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(runtime, /aria-modal=/u);
   assert.match(runtime, /popupAccessibleCloseName/u);
   assert.match(runtime, /class="solitaire-techno-canvas"/u);
-  assert.match(runtime, /context\.drawImage\(celebrationArtwork/u);
+  assert.match(runtime, /context\.drawImage\(\s*celebrationArtwork/u);
   assert.match(runtime, /requestAnimationFrame\(animate\)/u);
   assert.match(runtime, /trajectory\.vy = -Math\.max/u);
   assert.doesNotMatch(runtime, /waterfall-techno|cascade-stamp|celebrationStampIndex/u);
@@ -256,7 +262,9 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(runtime, /ENDGAME_POPUPS\]\.reverse\(\)/u);
   assert.match(styles, /prefers-reduced-motion: reduce/u);
   assert.match(styles, /\.saved-explanation-panel[\s\S]+-webkit-line-clamp:\s*5/u);
-  assert.match(styles, /\.auto-popup[\s\S]+width:\s*760px[\s\S]+height:\s*430px/u);
+  assert.match(styles, /\.auto-popup[\s\S]+width:\s*820px[\s\S]+height:\s*460px/u);
+  assert.match(content, /\/pets\/techno\/spritesheet\.webp/u);
+  assert.doesNotMatch(content, /techno-progress-push|techno-celebrate-clean|techno-tail-wag/u);
   assert.deepEqual(ENDGAME_BEATS, [
     "endgame_ready", "endgame_desktop_corrupted", "endgame_popup_swarm",
     "endgame_instruction_intro", "endgame_lesson_lock", "endgame_final_instruction",

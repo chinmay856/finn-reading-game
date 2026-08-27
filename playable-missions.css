@@ -154,7 +154,7 @@ body {
 }
 .companion-view {
   height: 786px;
-  padding: 24px 26px;
+  padding: 18px 22px;
   overflow: hidden;
   background: var(--paper);
 }
@@ -170,19 +170,19 @@ body {
 .companion-view h1 {
   font-size: 24px;
   line-height: 1.15;
-  margin: 12px 0 16px;
+  margin: 8px 0 12px;
 }
 .passage {
-  height: 420px;
+  height: 480px;
   overflow: hidden;
   padding-right: 10px;
   scroll-behavior: smooth;
 }
 .passage p {
-  font-size: 19px;
-  line-height: 1.55;
-  margin: 0 0 18px;
-  padding: 4px 7px;
+  font-size: 18px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  padding: 3px 7px;
   border-left: 4px solid transparent;
   transition: 0.2s;
 }

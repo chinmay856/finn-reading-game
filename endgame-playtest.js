@@ -15,6 +15,7 @@ import {
   advanceInstructionIntro,
   advanceReadyDialogue,
   advanceTakeoverDialogue,
+  advanceToNextSite,
   answerCurrentLesson,
   closeTopPopup,
   createEndgamePlaytestPersistence,
@@ -60,9 +61,7 @@ function campaignPlayerExplanations() {
 const savedExplanations = campaignPlayerExplanations();
 const endgameSiteFixtures = Object.freeze(ENDGAME_SITE_FIXTURES.map((fixture) => Object.freeze({
   ...fixture,
-  playerExplanation: campaignMode
-    ? (savedExplanations.get(fixture.id) || "No player explanation was saved for this site.")
-    : fixture.playerExplanation,
+  playerExplanation: campaignMode ? (savedExplanations.get(fixture.id) || "…") : "…",
 })));
 
 function runtimeRepairStep(siteIndex, repairIndex) {
@@ -83,6 +82,7 @@ let selectedOptionId = null;
 let wrongOptionId = null;
 let feedback = "";
 let modal = null;
+let startMenuOpen = false;
 let replaySiteId = endgameSiteFixtures[0].id;
 let documentSiteId = endgameSiteFixtures[0].id;
 let saveStatusTimer = null;
@@ -120,7 +120,13 @@ const endgamePreloadedImages = ENDGAME_PRELOAD_URLS.map((url) => {
 });
 const celebrationArtwork = new Image();
 celebrationArtwork.decoding = "async";
-celebrationArtwork.src = ENDGAME_ASSETS.technoCelebrate;
+celebrationArtwork.src = ENDGAME_ASSETS.technoSpriteSheet;
+
+const TECHNO_FRAME = Object.freeze({ width: 192, height: 208 });
+
+function technoSpriteMarkup(className, label, { column = 0, row = 0 } = {}) {
+  return `<div class="techno-sprite ${className}" role="img" aria-label="${escapeHtml(label)}" style="--techno-column:${column};--techno-row:${row}"></div>`;
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -186,7 +192,16 @@ function desktopMarkup(mode = "ready") {
       <div class="desktop-status-line"><strong>${completion}</strong><span>${corrupted ? "THE SAVED DOCUMENTS ARE SCRAMBLED" : "TEN LESSON DOCUMENTS SAVED"}</span></div>
       <div class="endgame-site-grid">${endgameSiteFixtures.map((site) => desktopCardMarkup(site, mode)).join("")}</div>
     </section>
-    <footer class="taskbar"><button type="button" disabled>START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><time>10:24 AM</time></footer>
+    <footer class="taskbar"><button data-action="toggle-start-menu" type="button" aria-haspopup="menu" aria-expanded="${startMenuOpen}">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><time>10:24 AM</time></footer>
+    ${startMenuOpen ? `<section class="start-menu" role="menu" aria-label="Start menu">
+      <div class="start-menu-brand">RECOVERY<br>OS 98</div>
+      <div class="start-menu-items">
+        <button data-action="save-endgame" type="button" role="menuitem">💾 <span><b>Save game</b><small>Save the desktop recovery</small></span></button>
+        <button data-action="return-recovery-browser" type="button" role="menuitem">▣ <span><b>Recovery map</b><small>Return to all ten sites</small></span></button>
+        <button data-action="review-lessons" type="button" role="menuitem">📁 <span><b>Documents</b><small>Review saved lessons</small></span></button>
+        <button data-action="replay-incident" type="button" role="menuitem">↻ <span><b>Restart endgame</b><small>Replay the desktop incident</small></span></button>
+      </div>
+    </section>` : ""}
   </div>`;
 }
 
@@ -194,7 +209,7 @@ function readyMarkup() {
   const entry = ENDGAME_COPY.ready[state.readyDialogueIndex];
   const last = state.readyDialogueIndex === ENDGAME_COPY.ready.length - 1;
   return `${desktopMarkup("ready")}
-    <img class="ready-techno" src="${ENDGAME_ASSETS.technoTailWag}" alt="Techno celebrates all ten recovered sites">
+    ${technoSpriteMarkup("ready-techno", "Techno celebrates all ten recovered sites", { column: 2, row: 4 })}
     ${storyDialogMarkup(entry, { action: "advance-ready", buttonLabel: last ? "Apply Auto's update" : "Continue" })}`;
 }
 
@@ -272,8 +287,8 @@ function restorationRibbonMarkup() {
   return `<div class="restoration-ribbon" aria-label="Saved document restoration status">${endgameSiteFixtures.map((site) => {
     const repairCount = completedStepsForSite(site.id);
     const restored = repairCount === ENDGAME_REPAIR_STEP_KEYS.length;
-    return `<div class="ribbon-site" data-state="${restored ? "restored" : "corrupted"}" title="${escapeHtml(site.name)}: ${repairCount} of 3 document parts restored">
-      <img src="${restored ? site.recoveredFrame : site.autoFrame}" alt=""><span>${restored ? "✓" : repairCount}</span>
+    return `<div class="ribbon-site" data-state="${restored ? "restored" : "corrupted"}" title="${escapeHtml(site.name)}: ${restored ? "document restored" : "document scrambled"}">
+      <img src="${restored ? site.recoveredFrame : site.autoFrame}" alt="">
     </div>`;
   }).join("")}</div>`;
 }
@@ -302,32 +317,35 @@ function builderMarkup() {
   const lessonRestored = siteRepairCount >= 1;
   const explanationRestored = siteRepairCount >= 2;
   const boundaryRestored = siteRepairCount >= 3;
-  const selected = step.options.find(({ id }) => id === selectedOptionId);
-  const completeSiteCount = Math.floor(state.completedRepairStepIds.length / ENDGAME_REPAIR_STEP_KEYS.length);
+  const selected = step?.options.find(({ id }) => id === selectedOptionId);
+  const siteComplete = state.awaitingNextSite;
+  const isLastSite = state.currentLessonIndex === endgameSiteFixtures.length - 1;
   return `${desktopMarkup("corrupted")}
     <section class="builder-window" aria-labelledby="builderTitle">
       <header class="window-titlebar"><span id="builderTitle">▣ AUTO INSTRUCTION BUILDER</span><img src="/walkthroughs/shared/recovery-window-controls-v1.svg" alt="" width="89" height="25"></header>
       ${restorationRibbonMarkup()}
       <div class="builder-layout">
         <section class="saved-document" aria-labelledby="currentSiteTitle">
-          <div class="fixture-flag">${campaignMode ? "SAVED RECOVERY DOCUMENT" : "PLAYTEST FIXTURE · SAVED DOCUMENT"} ${state.currentLessonIndex + 1} OF 10</div>
-          <div class="document-site"><img src="${fixture.markImage}" alt=""><h1 id="currentSiteTitle">${escapeHtml(fixture.name)}</h1><strong>REPAIR ${state.currentRepairIndex + 1} OF 3</strong></div>
-          ${savedPanelMarkup({ label: "AUTO'S SAVED LESSON", text: fixture.savedLesson, restored: lessonRestored, active: state.currentRepairIndex === 0, index: state.currentLessonIndex })}
-          ${savedPanelMarkup({ label: "YOUR SAVED EXPLANATION", text: fixture.playerExplanation, restored: explanationRestored, active: state.currentRepairIndex === 1, index: state.currentLessonIndex + 2 })}
-          ${savedPanelMarkup({ label: "EXTRA INSTRUCTION", text: fixture.boundaryOptions.find(({ correct }) => correct).text, restored: boundaryRestored, active: state.currentRepairIndex === 2, index: state.currentLessonIndex + 4 })}
+          <div class="document-site"><img src="${fixture.markImage}" alt=""><h1 id="currentSiteTitle">${escapeHtml(fixture.name)}</h1></div>
+          ${savedPanelMarkup({ label: "AUTO'S SAVED LESSON", text: fixture.savedLesson, restored: lessonRestored, active: !siteComplete && state.currentRepairIndex === 0, index: state.currentLessonIndex })}
+          ${savedPanelMarkup({ label: "YOUR SAVED EXPLANATION", text: fixture.playerExplanation, restored: explanationRestored, active: !siteComplete && state.currentRepairIndex === 1, index: state.currentLessonIndex + 2 })}
+          ${savedPanelMarkup({ label: "EXTRA INSTRUCTION", text: fixture.boundaryOptions.find(({ correct }) => correct).text, restored: boundaryRestored, active: !siteComplete && state.currentRepairIndex === 2, index: state.currentLessonIndex + 4 })}
         </section>
-        <section class="instruction-choices" aria-labelledby="choiceTitle">
-          <small>${escapeHtml(step.title)}</small>
+        ${siteComplete ? `<section class="document-complete" aria-labelledby="choiceTitle">
+          <small>DOCUMENT RESTORED</small>
+          <h2 id="choiceTitle">All three parts are back in place.</h2>
+          <p>Auto's lesson, your explanation, and the extra instruction are saved together.</p>
+          <button class="primary-button" data-action="advance-site" type="button">${isLastSite ? "Continue" : "Move on to next site"}</button>
+        </section>` : `<section class="instruction-choices" aria-labelledby="choiceTitle">
           <h2 id="choiceTitle">${escapeHtml(step.question)}</h2>
           <div class="option-list">${step.options.map((option, optionIndex) => `<button class="instruction-option${selectedOptionId === option.id ? " selected" : ""}${wrongOptionId === option.id ? " incorrect" : ""}" type="button" draggable="true" data-option-id="${option.id}" aria-pressed="${selectedOptionId === option.id ? "true" : "false"}"><span>${optionIndex + 1}</span><b>${escapeHtml(option.text)}</b></button>`).join("")}</div>
           <div id="instructionDropTarget" class="instruction-drop-target${selectedOptionId ? " has-selection" : ""}" tabindex="0" aria-label="Drop the recovered line here">${selected ? escapeHtml(selected.text) : "DROP THE RECOVERED LINE HERE"}</div>
           <button class="primary-button add-instruction" data-action="add-instruction" type="button" ${selectedOptionId ? "" : "disabled"}>${state.currentRepairIndex === 2 ? "Add this instruction" : "Restore this line"}</button>
           <p class="builder-feedback" role="status">${feedback ? `<strong>AMY:</strong> ${escapeHtml(feedback)}` : "Select one line, then restore it. You can also drag a line into the box."}</p>
-        </section>
+        </section>`}
       </div>
       <footer class="builder-receipt">
         <div><span data-done="${lessonRestored}">${lessonRestored ? "✓" : "○"} ORIGINAL AUTO LESSON</span><span data-done="${explanationRestored}">${explanationRestored ? "✓" : "○"} YOUR EXPLANATION</span><span data-done="${boundaryRestored}">${boundaryRestored ? "✓" : "○"} EXTRA INSTRUCTION</span></div>
-        <strong>${completeSiteCount} OF 10 DOCUMENTS RESTORED</strong>
       </footer>
     </section>`;
 }
@@ -346,7 +364,7 @@ function restoredMarkup() {
 }
 
 function waterfallMarkup() {
-  return `<div class="techno-waterfall" aria-hidden="true"><canvas class="solitaire-techno-canvas" width="1440" height="900"></canvas><img class="static-celebration-techno" src="${ENDGAME_ASSETS.technoFinal}" alt=""></div>`;
+  return `<div class="techno-waterfall" aria-hidden="true"><canvas class="solitaire-techno-canvas" width="1440" height="900"></canvas>${technoSpriteMarkup("static-celebration-techno", "", { column: 2, row: 4 })}</div>`;
 }
 
 function stopCelebrationFill() {
@@ -368,28 +386,50 @@ function startCelebrationFill() {
   let nextLaunchAt = previousTime;
 
   const launchTechno = () => {
-    const size = 76 + (launchIndex % 4) * 8;
-    const floor = 742 + (launchIndex % 4) * 36;
+    const width = 148;
+    const height = width * TECHNO_FRAME.height / TECHNO_FRAME.width;
+    const launchProfiles = [
+      { x: -width, vx: 430 },
+      { x: canvas.width + width, vx: -470 },
+      { x: canvas.width * .5 - width / 2, vx: -390 },
+      { x: canvas.width * .22, vx: 450 },
+      { x: canvas.width * .78 - width, vx: -420 },
+    ];
+    const profile = launchProfiles[launchIndex % launchProfiles.length];
+    const floor = 748 + (launchIndex % 4) * 34;
     trajectories.push({
-      x: -size + (launchIndex % 3) * 24,
-      y: 34 + (launchIndex * 67) % 210,
-      vx: 300 + (launchIndex * 61) % 270,
-      vy: -90 - (launchIndex * 47) % 190,
+      x: profile.x,
+      y: 18 + (launchIndex * 79) % 220,
+      vx: profile.vx,
+      vy: -120 - (launchIndex * 53) % 220,
       gravity: 710 + (launchIndex % 5) * 65,
       bounce: .76 + (launchIndex % 3) * .045,
       floor,
       rotation: ((launchIndex % 7) - 3) * .025,
       spin: ((launchIndex % 5) - 2) * .045,
-      size,
+      width,
+      height,
+      frame: launchIndex % 8,
+      nextStampAt: 0,
     });
     launchIndex += 1;
   };
 
   const drawTechno = (trajectory) => {
     context.save();
-    context.translate(trajectory.x + trajectory.size / 2, trajectory.y + trajectory.size / 2);
+    context.translate(trajectory.x + trajectory.width / 2, trajectory.y + trajectory.height / 2);
     context.rotate(trajectory.rotation);
-    context.drawImage(celebrationArtwork, -trajectory.size / 2, -trajectory.size / 2, trajectory.size, trajectory.size);
+    context.drawImage(
+      celebrationArtwork,
+      trajectory.frame * TECHNO_FRAME.width,
+      TECHNO_FRAME.height,
+      TECHNO_FRAME.width,
+      TECHNO_FRAME.height,
+      -trajectory.width / 2,
+      -trajectory.height / 2,
+      trajectory.width,
+      trajectory.height,
+    );
     context.restore();
   };
 
@@ -406,14 +446,20 @@ function startCelebrationFill() {
       trajectory.y += trajectory.vy * delta;
       trajectory.vy += trajectory.gravity * delta;
       trajectory.rotation += trajectory.spin * delta;
-      if (trajectory.y + trajectory.size >= trajectory.floor && trajectory.vy > 0) {
-        trajectory.y = trajectory.floor - trajectory.size;
+      if (trajectory.y + trajectory.height >= trajectory.floor && trajectory.vy > 0) {
+        trajectory.y = trajectory.floor - trajectory.height;
         trajectory.vy = -Math.max(205, Math.abs(trajectory.vy) * trajectory.bounce);
       }
-      drawTechno(trajectory);
+      if (now >= trajectory.nextStampAt) {
+        drawTechno(trajectory);
+        trajectory.nextStampAt = now + 24;
+      }
     }
     for (let index = trajectories.length - 1; index >= 0; index -= 1) {
-      if (trajectories[index].x > canvas.width + trajectories[index].size) trajectories.splice(index, 1);
+      const trajectory = trajectories[index];
+      const exitedRight = trajectory.vx > 0 && trajectory.x > canvas.width + trajectory.width;
+      const exitedLeft = trajectory.vx < 0 && trajectory.x < -trajectory.width * 2;
+      if (exitedRight || exitedLeft) trajectories.splice(index, 1);
     }
     celebrationAnimationFrame = requestAnimationFrame(animate);
   };
@@ -444,7 +490,7 @@ function celebrationMarkup() {
 function epilogueMarkup() {
   return `${desktopMarkup("restored")}
     <section class="techno-final-dialog" role="dialog" aria-modal="true" aria-labelledby="endgameCompleteTitle">
-      <img src="${ENDGAME_ASSETS.technoFinal}" alt="Techno celebrates with her ball">
+      ${technoSpriteMarkup("techno-final-sprite", "Techno celebrates with her ball", { column: 2, row: 4 })}
       <div><small>ENDGAME COMPLETE</small><h1 id="endgameCompleteTitle">${escapeHtml(ENDGAME_COPY.technoStatus)}</h1>
         <div class="postgame-actions"><button data-action="review-lessons" type="button">Review saved lessons</button><button data-action="replay-site" type="button">Replay recovered sites</button><button data-action="replay-incident" type="button">Replay desktop incident</button><button class="primary-button" data-action="finish-game" type="button">Finish game</button></div>
       </div>
@@ -453,21 +499,21 @@ function epilogueMarkup() {
 
 function finishedMarkup() {
   return `${desktopMarkup("restored")}
-    <section class="finished-window" aria-labelledby="finishedTitle"><img src="${ENDGAME_ASSETS.technoCelebrate}" alt="Techno with her ball"><small>STANDALONE PLAYTEST COMPLETE</small><h1 id="finishedTitle">Internet Recovery 98 is stable.</h1><p>The fixture ending is saved on this device. The campaign and real player saves were not changed.</p><button class="primary-button" data-action="return-epilogue" type="button">Return to ending</button></section>`;
+    <section class="finished-window" aria-labelledby="finishedTitle">${technoSpriteMarkup("finished-techno", "Techno with her ball", { column: 2, row: 4 })}<small>ENDGAME COMPLETE</small><h1 id="finishedTitle">Internet Recovery 98 is stable.</h1><p>Your recovered sites and saved lessons are ready whenever you want to return.</p><button class="primary-button" data-action="return-epilogue" type="button">Return to ending</button></section>`;
 }
 
 function unavailableMarkup() {
-  return `<section class="unavailable-window"><h1>Endgame unavailable</h1><p>This playtest fixture needs ten completed sites and ten saved lesson documents.</p></section>`;
+  return `<section class="unavailable-window"><h1>Endgame unavailable</h1><p>Recover all ten sites and save their lessons to unlock the final desktop recovery.</p></section>`;
 }
 
 function documentsModalMarkup() {
   const site = endgameSiteFixtures.find(({ id }) => id === documentSiteId) ?? endgameSiteFixtures[0];
-  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="documentsModalTitle"><div class="modal-window documents-modal"><header class="window-titlebar"><span id="documentsModalTitle">▣ Documents — Saved lessons</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close saved lessons">×</button></header>${campaignMode ? "" : '<div class="modal-note">PLAYTEST FIXTURES · THESE ARE NOT REAL PROFILE DOCUMENTS</div>'}<div class="fixture-documents"><nav aria-label="Saved lessons">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-document-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt=""><span>${escapeHtml(candidate.name)}</span></button>`).join("")}</nav><article><div><img src="${site.markImage}" alt=""><h2>${escapeHtml(site.name)}</h2></div><small>AUTO'S LESSON</small><p>${escapeHtml(site.savedLesson)}</p><small>${campaignMode ? "PLAYER EXPLANATION" : "PLAYER EXPLANATION · FIXTURE"}</small><p>${escapeHtml(site.playerExplanation)}</p></article></div></div></section>`;
+  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="documentsModalTitle"><div class="modal-window documents-modal"><header class="window-titlebar"><span id="documentsModalTitle">▣ Documents — Saved lessons</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close saved lessons">×</button></header><div class="fixture-documents"><nav aria-label="Saved lessons">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-document-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt=""><span>${escapeHtml(candidate.name)}</span></button>`).join("")}</nav><article><div><img src="${site.markImage}" alt=""><h2>${escapeHtml(site.name)}</h2></div><small>AUTO'S LESSON</small><p>${escapeHtml(site.savedLesson)}</p><small>PLAYER EXPLANATION</small><p>${escapeHtml(site.playerExplanation)}</p></article></div></div></section>`;
 }
 
 function replayModalMarkup() {
   const site = endgameSiteFixtures.find(({ id }) => id === replaySiteId) ?? endgameSiteFixtures[0];
-  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="replayModalTitle"><div class="modal-window replay-modal"><header class="window-titlebar"><span id="replayModalTitle">▣ Recovered Site Replay</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close recovered site replay">×</button></header>${campaignMode ? "" : '<div class="modal-note">PLAYTEST FIXTURE · VISUAL BEFORE/AFTER ONLY</div>'}<div class="replay-site-tabs">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-replay-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt="">${escapeHtml(candidate.name)}</button>`).join("")}</div><div class="replay-comparison"><figure><img src="${site.autoFrame}" alt="${escapeHtml(site.name)} Auto over-fix"><figcaption>AUTO OVER-FIX</figcaption></figure><figure><img src="${site.recoveredFrame}" alt="${escapeHtml(site.name)} recovered"><figcaption>✓ RECOVERED</figcaption></figure></div></div></section>`;
+  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="replayModalTitle"><div class="modal-window replay-modal"><header class="window-titlebar"><span id="replayModalTitle">▣ Recovered Site Replay</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close recovered site replay">×</button></header><div class="replay-site-tabs">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-replay-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt="">${escapeHtml(candidate.name)}</button>`).join("")}</div><div class="replay-comparison"><figure><img src="${site.autoFrame}" alt="${escapeHtml(site.name)} Auto over-fix"><figcaption>AUTO OVER-FIX</figcaption></figure><figure><img src="${site.recoveredFrame}" alt="${escapeHtml(site.name)} recovered"><figcaption>✓ RECOVERED</figcaption></figure></div></div></section>`;
 }
 
 function renderModal() {
@@ -563,8 +609,11 @@ function skipCurrentStep() {
     saveState(nextState, "Auto pop-up takeover skipped");
   } else if (phase === "endgame_instruction_intro") saveState(advanceInstructionIntro(state), "Builder introduction skipped");
   else if (phase === "endgame_lesson_lock") {
-    const step = runtimeRepairStep(state.currentLessonIndex, state.currentRepairIndex);
-    submitSelectedInstruction(step?.options.find(({ correct }) => correct)?.id);
+    if (state.awaitingNextSite) saveState(advanceToNextSite(state), "Next saved document opened");
+    else {
+      const step = runtimeRepairStep(state.currentLessonIndex, state.currentRepairIndex);
+      submitSelectedInstruction(step?.options.find(({ correct }) => correct)?.id);
+    }
   } else if (phase === "endgame_final_instruction") {
     const atFinalDialogue = state.finalDialogueIndex === ENDGAME_COPY.final.length - 1;
     saveState(atFinalDialogue ? sendFinalInstruction(state) : advanceFinalDialogue(state), "Final instruction step skipped");
@@ -596,6 +645,7 @@ stage.addEventListener("click", (event) => {
     }
     case "advance-intro": saveState(advanceInstructionIntro(state), "Instruction Builder story advanced"); break;
     case "add-instruction": submitSelectedInstruction(); break;
+    case "advance-site": saveState(advanceToNextSite(state), "Next saved document opened"); break;
     case "advance-final": saveState(advanceFinalDialogue(state)); break;
     case "send-final": saveState(sendFinalInstruction(state), "Bounded instruction sent"); break;
     case "continue-restored": saveState(restoreDesktop(state), "Recovery Desktop restored"); break;
@@ -607,6 +657,9 @@ stage.addEventListener("click", (event) => {
     case "choose-document-site": documentSiteId = action.dataset.siteId; render(); break;
     case "close-modal": modal = null; render(); break;
     case "replay-incident": saveState(replayDesktopIncident(state), "Desktop incident replay started"); break;
+    case "toggle-start-menu": startMenuOpen = !startMenuOpen; render(); break;
+    case "save-endgame": startMenuOpen = false; saveState(state, "Endgame saved locally"); break;
+    case "return-recovery-browser": location.assign("/playable-missions.html"); break;
     case "finish-game": {
       state = persistence.save(finishEndgame(state));
       location.assign("/playable-missions.html?endgame=complete");
@@ -692,7 +745,7 @@ resetButton.addEventListener("click", () => {
   wrongOptionId = null;
   feedback = "";
   modal = null;
-  setSaveStatus("Playtest fixture reset");
+  setSaveStatus("Endgame reset");
   render();
 });
 

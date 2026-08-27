@@ -35,10 +35,10 @@ function canonicalDeck(siteId) {
       correct: false,
     }));
     choices.splice(correctIndex, 0, { id: `${record.id}-choice-correct`, text: record.comprehension.correct, correct: true });
-    const sourceIntroductionLineCount = derivePassageDisplayLines({ paragraphs: [record.paragraphs[0]] }, { maximumWords: 18 }).length;
+    const sourceIntroductionLineCount = derivePassageDisplayLines({ paragraphs: [record.paragraphs[0]] }).length;
     return Object.freeze({
       ...record,
-      lines: derivePassageDisplayLines(record, { maximumWords: 18 }),
+      lines: derivePassageDisplayLines(record),
       sourceIntroductionLineCount,
       profile: Object.freeze({ guide: Object.freeze({ defaultWpm: 185 }) }),
       comprehension: Object.freeze({

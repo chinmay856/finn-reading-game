@@ -56,6 +56,7 @@ export function createEndgamePlaytestState({ fixture = completePlaytestFixture()
     completedRepairStepIds: [],
     currentLessonIndex: 0,
     currentRepairIndex: 0,
+    awaitingNextSite: false,
     finalDialogueIndex: 0,
     finalInstructionSent: false,
     desktopRestored: false,
@@ -91,9 +92,20 @@ export function normalizeEndgamePlaytestState(candidate) {
   if (!candidate || candidate.version !== ENDGAME_PLAYTEST_VERSION || candidate.fixtureId !== ENDGAME_PLAYTEST_FIXTURE_ID) return fallback;
   const closedPopupIds = exactKnownPrefix(candidate.closedPopupIds, ENDGAME_POPUPS.map(({ id }) => id).reverse());
   const completedRepairStepIds = exactKnownPrefix(candidate.completedRepairStepIds, ALL_REPAIR_STEP_IDS);
-  const position = repairPosition(completedRepairStepIds);
+  const canPauseOnCompletedSite = completedRepairStepIds.length > 0
+    && completedRepairStepIds.length % ENDGAME_REPAIR_STEP_KEYS.length === 0;
+  const awaitingNextSite = candidate.awaitingNextSite === true && canPauseOnCompletedSite;
+  const position = awaitingNextSite
+    ? {
+        currentLessonIndex: Math.min(
+          ENDGAME_SITE_ORDER.length - 1,
+          Math.floor(completedRepairStepIds.length / ENDGAME_REPAIR_STEP_KEYS.length) - 1,
+        ),
+        currentRepairIndex: ENDGAME_REPAIR_STEP_KEYS.length,
+      }
+    : repairPosition(completedRepairStepIds);
   const allRepairsComplete = completedRepairStepIds.length === ALL_REPAIR_STEP_IDS.length;
-  const finalInstructionSent = candidate.finalInstructionSent === true && allRepairsComplete;
+  const finalInstructionSent = candidate.finalInstructionSent === true && allRepairsComplete && !awaitingNextSite;
   const desktopRestored = candidate.desktopRestored === true && finalInstructionSent;
   const celebrationStopped = candidate.celebrationStopped === true && desktopRestored;
   const endgameComplete = candidate.endgameComplete === true && celebrationStopped;
@@ -110,6 +122,7 @@ export function normalizeEndgamePlaytestState(candidate) {
     instructionBuilderOpened: candidate.instructionBuilderOpened === true,
     completedRepairStepIds,
     ...position,
+    awaitingNextSite,
     finalDialogueIndex: Math.min(ENDGAME_COPY.final.length - 1, Math.max(0, Number(candidate.finalDialogueIndex) || 0)),
     finalInstructionSent,
     desktopRestored,
@@ -128,6 +141,7 @@ export function endgamePhase(state) {
   if (state.endgameComplete) return "endgame_complete";
   if (state.desktopRestored) return "endgame_techno_celebration";
   if (state.finalInstructionSent) return "endgame_desktop_restored";
+  if (state.awaitingNextSite) return "endgame_lesson_lock";
   if (state.completedRepairStepIds.length === ALL_REPAIR_STEP_IDS.length) return "endgame_final_instruction";
   if (state.instructionBuilderOpened) return "endgame_lesson_lock";
   if (state.closedPopupIds.length === ENDGAME_POPUPS.length) return "endgame_instruction_intro";
@@ -168,7 +182,7 @@ export function advanceInstructionIntro(state) {
 }
 
 export function answerCurrentLesson(state, { optionId, siteId } = {}) {
-  if (endgamePhase(state) !== "endgame_lesson_lock") return { correct: false, state };
+  if (endgamePhase(state) !== "endgame_lesson_lock" || state.awaitingNextSite) return { correct: false, state };
   const fixture = ENDGAME_SITE_FIXTURES[state.currentLessonIndex];
   const step = getEndgameRepairStep(state.currentLessonIndex, state.currentRepairIndex);
   if (!fixture || !step || fixture.id !== siteId) return { correct: false, state };
@@ -177,13 +191,26 @@ export function answerCurrentLesson(state, { optionId, siteId } = {}) {
   const expectedStepId = repairStepId(siteId, step.key);
   if (state.completedRepairStepIds.includes(expectedStepId)) return { correct: true, state };
   const completedRepairStepIds = [...state.completedRepairStepIds, expectedStepId];
+  const siteComplete = completedRepairStepIds.length % ENDGAME_REPAIR_STEP_KEYS.length === 0;
   return {
     correct: true,
     state: {
       ...state,
       completedRepairStepIds,
-      ...repairPosition(completedRepairStepIds),
+      ...(siteComplete
+        ? { currentLessonIndex: state.currentLessonIndex, currentRepairIndex: ENDGAME_REPAIR_STEP_KEYS.length }
+        : repairPosition(completedRepairStepIds)),
+      awaitingNextSite: siteComplete,
     },
+  };
+}
+
+export function advanceToNextSite(state) {
+  if (endgamePhase(state) !== "endgame_lesson_lock" || !state.awaitingNextSite) return state;
+  return {
+    ...state,
+    ...repairPosition(state.completedRepairStepIds),
+    awaitingNextSite: false,
   };
 }
 
@@ -254,6 +281,7 @@ export function jumpToEndgameBeat(beat) {
   state.completedRepairStepIds = [...ALL_REPAIR_STEP_IDS];
   state.currentLessonIndex = ENDGAME_SITE_ORDER.length;
   state.currentRepairIndex = 0;
+  state.awaitingNextSite = false;
   if (beat === "endgame_final_instruction") return state;
   state.finalDialogueIndex = ENDGAME_COPY.final.length - 1;
   state.finalInstructionSent = true;

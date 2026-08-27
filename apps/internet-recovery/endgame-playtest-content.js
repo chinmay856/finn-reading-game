@@ -186,20 +186,17 @@ export function getEndgameRepairStep(siteIndex, repairIndex) {
   if (!fixture || !stepKey) return undefined;
   if (stepKey === "auto-lesson") return Object.freeze({
     key: stepKey,
-    title: "RESTORE AUTO'S SAVED LESSON",
     question: `Which lesson belongs to ${fixture.name}?`,
     options: documentOptions(siteIndex, stepKey),
   });
   if (stepKey === "player-explanation") return Object.freeze({
     key: stepKey,
-    title: "RESTORE YOUR EXPLANATION",
-    question: `Which explanation was saved for ${fixture.name}?`,
+    question: `Which lesson belongs to ${fixture.name}?`,
     options: documentOptions(siteIndex, stepKey),
   });
   return Object.freeze({
     key: stepKey,
-    title: "ADD ONE EXTRA INSTRUCTION",
-    question: "Which extra instruction keeps this lesson inside its proper boundary?",
+    question: `Which lesson belongs to ${fixture.name}?`,
     options: fixture.boundaryOptions,
   });
 }
@@ -259,9 +256,7 @@ export const ENDGAME_ASSETS = Object.freeze({
   chinmayFluster1: "/walkthroughs/endgame/portraits/chinmay-fluster-1-v1.png",
   chinmayFluster3: "/walkthroughs/endgame/portraits/chinmay-fluster-3-v1.png",
   chinmayRelieved: "/walkthroughs/endgame/portraits/chinmay-relieved-v1.png",
-  technoCelebrate: new URL("./art/characters/techno/techno-celebrate-spin.webp", import.meta.url).href,
-  technoFinal: "/walkthroughs/endgame/portraits/techno-celebrate-clean-v1.webp",
-  technoTailWag: new URL("./art/characters/techno/techno-tail-wag-celebration-loop.webp", import.meta.url).href,
+  technoSpriteSheet: "/pets/techno/spritesheet.webp",
 });
 
 export function popupAccessibleCloseName(popup) {
