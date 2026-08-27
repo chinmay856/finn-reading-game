@@ -123,6 +123,12 @@ celebrationArtwork.decoding = "async";
 celebrationArtwork.src = ENDGAME_ASSETS.technoSpriteSheet;
 
 const TECHNO_FRAME = Object.freeze({ width: 192, height: 208 });
+const TECHNO_CASCADE_ANIMATIONS = Object.freeze([
+  Object.freeze({ row: 1, frameCount: 8, frameDuration: 92 }),
+  Object.freeze({ row: 2, frameCount: 8, frameDuration: 92 }),
+  Object.freeze({ row: 4, frameCount: 5, frameDuration: 118 }),
+  Object.freeze({ row: 7, frameCount: 6, frameDuration: 108 }),
+]);
 
 function technoSpriteMarkup(className, label, { column = 0, row = 0 } = {}) {
   return `<div class="techno-sprite ${className}" role="img" aria-label="${escapeHtml(label)}" style="--techno-column:${column};--techno-row:${row}"></div>`;
@@ -388,14 +394,18 @@ function startCelebrationFill() {
   const launchTechno = () => {
     const width = 148;
     const height = width * TECHNO_FRAME.height / TECHNO_FRAME.width;
+    const animationIndex = launchIndex % TECHNO_CASCADE_ANIMATIONS.length;
+    const animationCycle = Math.floor(launchIndex / TECHNO_CASCADE_ANIMATIONS.length);
+    const animation = TECHNO_CASCADE_ANIMATIONS[animationIndex];
     const launchProfiles = [
       { x: -width, vx: 430 },
       { x: canvas.width + width, vx: -470 },
-      { x: canvas.width * .5 - width / 2, vx: -390 },
-      { x: canvas.width * .22, vx: 450 },
-      { x: canvas.width * .78 - width, vx: -420 },
+      { x: canvas.width * .5 - width / 2, vx: animationCycle % 2 === 0 ? -390 : 390 },
+      animationCycle % 2 === 0
+        ? { x: canvas.width * .22, vx: 450 }
+        : { x: canvas.width * .78 - width, vx: -420 },
     ];
-    const profile = launchProfiles[launchIndex % launchProfiles.length];
+    const profile = launchProfiles[animationIndex];
     const floor = 748 + (launchIndex % 4) * 34;
     trajectories.push({
       x: profile.x,
@@ -409,20 +419,23 @@ function startCelebrationFill() {
       spin: ((launchIndex % 5) - 2) * .045,
       width,
       height,
-      frame: launchIndex % 8,
+      animation,
+      animationOffset: launchIndex * 67,
       nextStampAt: 0,
     });
     launchIndex += 1;
   };
 
-  const drawTechno = (trajectory) => {
+  const drawTechno = (trajectory, now) => {
+    const frame = Math.floor((now + trajectory.animationOffset) / trajectory.animation.frameDuration)
+      % trajectory.animation.frameCount;
     context.save();
     context.translate(trajectory.x + trajectory.width / 2, trajectory.y + trajectory.height / 2);
     context.rotate(trajectory.rotation);
     context.drawImage(
       celebrationArtwork,
-      trajectory.frame * TECHNO_FRAME.width,
-      TECHNO_FRAME.height,
+      frame * TECHNO_FRAME.width,
+      trajectory.animation.row * TECHNO_FRAME.height,
       TECHNO_FRAME.width,
       TECHNO_FRAME.height,
       -trajectory.width / 2,
@@ -451,8 +464,8 @@ function startCelebrationFill() {
         trajectory.vy = -Math.max(205, Math.abs(trajectory.vy) * trajectory.bounce);
       }
       if (now >= trajectory.nextStampAt) {
-        drawTechno(trajectory);
-        trajectory.nextStampAt = now + 24;
+        drawTechno(trajectory, now);
+        trajectory.nextStampAt = now + 32;
       }
     }
     for (let index = trajectories.length - 1; index >= 0; index -= 1) {

@@ -250,6 +250,10 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(runtime, /popupAccessibleCloseName/u);
   assert.match(runtime, /class="solitaire-techno-canvas"/u);
   assert.match(runtime, /context\.drawImage\(\s*celebrationArtwork/u);
+  assert.match(runtime, /TECHNO_CASCADE_ANIMATIONS/u);
+  assert.match(runtime, /row:\s*1[\s\S]+row:\s*2[\s\S]+row:\s*4[\s\S]+row:\s*7/u);
+  assert.match(runtime, /trajectory\.animation\.row \* TECHNO_FRAME\.height/u);
+  assert.match(runtime, /trajectory\.nextStampAt = now \+ 32/u);
   assert.match(runtime, /requestAnimationFrame\(animate\)/u);
   assert.match(runtime, /trajectory\.vy = -Math\.max/u);
   assert.doesNotMatch(runtime, /waterfall-techno|cascade-stamp|celebrationStampIndex/u);
