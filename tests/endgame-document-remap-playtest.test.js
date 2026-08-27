@@ -253,9 +253,17 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(runtime, /TECHNO_CASCADE_ANIMATIONS/u);
   assert.match(runtime, /row:\s*1[\s\S]+row:\s*2[\s\S]+row:\s*4[\s\S]+row:\s*7/u);
   assert.match(runtime, /trajectory\.animation\.row \* TECHNO_FRAME\.height/u);
-  assert.match(runtime, /trajectory\.nextStampAt = now \+ 32/u);
+  assert.match(runtime, /trajectory\.nextStampAt = now \+ 48/u);
+  assert.match(runtime, /visibleBoundsForAnimation/u);
+  assert.match(runtime, /baselineCorrection = trajectory\.visibleBottomOffset - frameBottom/u);
+  assert.match(runtime, /floor: canvas\.height/u);
+  assert.match(runtime, /trajectory\.y = trajectory\.floor - trajectory\.visibleBottomOffset/u);
+  assert.match(runtime, /anchorPattern = \[0, 1, \.5, \.25, \.75, \.4, \.6, \.12, \.88\]/u);
   assert.match(runtime, /requestAnimationFrame\(animate\)/u);
   assert.match(runtime, /trajectory\.vy = -Math\.max/u);
+  assert.doesNotMatch(runtime, /context\.rotate\(|trajectory\.rotation/u);
+  assert.match(styles, /\.celebration-layer \{[^}]*z-index: 130/u);
+  assert.match(styles, /\.solitaire-techno-canvas \{[^}]*z-index: 132/u);
   assert.doesNotMatch(runtime, /waterfall-techno|cascade-stamp|celebrationStampIndex/u);
   assert.match(runtime, /data-action="stop-celebration"/u);
   assert.match(runtime, /review-lessons/u);

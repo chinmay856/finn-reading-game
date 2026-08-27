@@ -681,7 +681,7 @@ const DATA = {
         {
           "word": "hexagonal",
           "definition": "Having six sides and six angles.",
-          "sentence": "THE MACHINE STOPS Part I THE AIR-SHIP Imagine, if you can, a small room, hexagonal in shape, like the cell of a bee.",
+          "sentence": "Imagine, if you can, a small room, hexagonal in shape, like the cell of a bee.",
           "properNoun": false
         },
         {
@@ -728,9 +728,9 @@ const DATA = {
       },
       "vocabulary": [
         {
-          "word": "spontaneous",
-          "definition": "Happening naturally without being forced or planned.",
-          "sentence": "But in addition to the attention which any object already interesting or just becoming interesting claims--passive attention or spontaneous attention, we may call it--there is a more deliberate attention,--voluntary attention or attention with effort, as it is called,--which we can give to objects less interesting or uninteresting in themselves.",
+          "word": "revivify",
+          "definition": "To give new life, energy, or interest to something.",
+          "sentence": "When we are studying an uninteresting subject, if our mind tends to wander, we have to bring back our attention every now and then by using distinct pulses of effort, which revivify the topic for a moment, the mind then running on for a certain number of seconds or minutes with spontaneous interest, until again some intercurrent idea captures it and takes it off.",
           "properNoun": false
         },
         {
@@ -2365,9 +2365,9 @@ const DATA = {
           "properNoun": false
         },
         {
-          "word": "particulars",
-          "definition": "Individual facts or specific details.",
-          "sentence": "For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.",
+          "word": "confute",
+          "definition": "To prove a claim or argument false.",
+          "sentence": "Read not to contradict and confute; nor to believe and take for granted; nor to find talk and discourse; but to weigh and consider.",
           "properNoun": false
         }
       ],

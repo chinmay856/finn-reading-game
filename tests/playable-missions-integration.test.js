@@ -57,8 +57,11 @@ test("comprehension, troubleshooting retention, retry, skip, and reflection cont
   assert.match(script, /entry\.properNoun === false/u);
   assert.match(script, /normalizedPassage\.includes\(sourceSentence\)/u);
   assert.match(script, /\.slice\(0, 3\)/u);
-  assert.match(script, /its definition, and its passage sentence/u);
+  assert.match(script, /its definition, and how it appears in this passage/u);
   assert.match(script, /wordAudio\.src = entry\.audioSrc/u);
+  assert.match(script, /function preloadVocabularyAudio\(cards\)/u);
+  assert.match(script, /audio\.preload = "auto"/u);
+  assert.match(script, /preloadVocabularyAudio\(current\.challengingWords\)/u);
 });
 
 test("Recovery OS launcher exposes all ten playable routes", () => {
@@ -214,6 +217,7 @@ test("source introductions, Kokoro vocabulary help, and the Chinmay-then-Amy tea
   assert.match(script, /speakVocabularyCard/u);
   assert.match(script, /button\.textContent = "▶ Hear aloud"/u);
   assert.match(script, /button\.textContent = "■ Stop"/u);
+  assert.match(script, /how it appears in this passage/u);
   assert.doesNotMatch(script, /prepareVocabularyVoice/u);
   assert.doesNotMatch(script, /prepareVocabularyCards/u);
   assert.match(script, /"floppy-drive".*repetitions: 3/u);

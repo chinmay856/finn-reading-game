@@ -48,6 +48,7 @@ await context.addInitScript((saveFile) => {
 const page = await context.newPage();
 const failures = [];
 const results = [];
+const failedAssets = new Set();
 
 page.on("crash", () => failures.push("renderer crashed"));
 page.on("pageerror", (error) => failures.push(`${error.name}: ${error.message}`));
@@ -57,6 +58,38 @@ page.on("console", (message) => {
   if (/Failed to load resource:.*404/iu.test(text)) return;
   failures.push(`console: ${text}`);
 });
+page.on("response", (response) => {
+  if (response.status() < 400) return;
+  const type = response.request().resourceType();
+  if (!["document", "image", "media", "script", "stylesheet"].includes(type)) return;
+  failedAssets.add(`${response.status()} ${type}: ${response.url()}`);
+});
+
+async function inspectVisibleSurface(label) {
+  await page.evaluate(async () => {
+    const pending = [...document.images]
+      .filter((image) => image.getAttribute("src"))
+      .map((image) => image.decode().catch(() => {}));
+    await Promise.all(pending);
+  });
+  const findings = await page.evaluate(() => {
+    const brokenImages = [...document.images]
+      .filter((image) => image.getAttribute("src"))
+      .filter((image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0)
+      .map((image) => image.currentSrc || image.src || image.alt || "unnamed image");
+    const stage = document.querySelector("#gameStage");
+    const stageOverflow = stage
+      ? {
+          horizontal: stage.scrollWidth > stage.clientWidth + 1,
+          vertical: stage.scrollHeight > stage.clientHeight + 1,
+        }
+      : null;
+    return { brokenImages, stageOverflow };
+  });
+  for (const image of findings.brokenImages) failures.push(`${label}: broken image ${image}`);
+  if (findings.stageOverflow?.horizontal) failures.push(`${label}: game stage overflows horizontally`);
+  if (findings.stageOverflow?.vertical) failures.push(`${label}: game stage overflows vertically`);
+}
 
 async function advanceStoryUntilReader(siteId) {
   for (let attempt = 0; attempt < 12; attempt += 1) {
@@ -84,6 +117,7 @@ try {
     await page.goto(missionUrl.href, { waitUntil: "domcontentloaded", timeout: 120_000 });
     await page.locator("#storyOverlay:not([hidden]) #storyContinue").click();
     await page.locator("#readerView:not([hidden])").waitFor({ state: "visible", timeout: 15_000 });
+    await inspectVisibleSurface(`${siteId} reader 1`);
 
     const frames = [];
     for (let index = 0; index < mission.passages.length; index += 1) {
@@ -93,6 +127,7 @@ try {
       const expected = assetPath(mission.repairFrames[index]);
       frames.push(actual);
       if (actual !== expected) failures.push(`${siteId} passage ${index + 1}: expected ${expected}, saw ${actual}`);
+      await inspectVisibleSurface(`${siteId} repair ${index + 1}`);
 
       if (index === mission.passages.length - 1) continue;
       await page.locator("#continueAfterSkip").click();
@@ -157,6 +192,7 @@ try {
     failures.push("new game did not return to the Recovery Browser beneath player login");
   }
 
+  for (const asset of failedAssets) failures.push(`asset request failed: ${asset}`);
   console.log(JSON.stringify({ failures, results, target }, null, 2));
   if (failures.length) process.exitCode = 1;
 } finally {

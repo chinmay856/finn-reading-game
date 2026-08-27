@@ -418,7 +418,7 @@ THE MACHINE STOPS Part I THE AIR-SHIP Imagine, if you can, a small room, hexagon
 
 **Vocabulary packet**
 
-- **hexagonal** — Definition: Having six sides and six angles. Used in a sentence: THE MACHINE STOPS Part I THE AIR-SHIP Imagine, if you can, a small room, hexagonal in shape, like the cell of a bee.
+- **hexagonal** — Definition: Having six sides and six angles. Used in a sentence: Imagine, if you can, a small room, hexagonal in shape, like the cell of a bee.
 - **ventilation** — Definition: The movement of fresh air through a space. Used in a sentence: There are no apertures for ventilation, yet the air is fresh.
 - **intercourse** — Definition: Communication or dealings between people. Used in a sentence: She knew several thousand people; in certain directions human intercourse had advanced enormously.
 
@@ -447,7 +447,7 @@ Whoever treats of interest inevitably treats of attention, for to say that an ob
 
 **Vocabulary packet**
 
-- **spontaneous** — Definition: Happening naturally without being forced or planned. Used in a sentence: But in addition to the attention which any object already interesting or just becoming interesting claims--passive attention or spontaneous attention, we may call it--there is a more deliberate attention,--voluntary attention or attention with effort, as it is called,--which we can give to objects less interesting or uninteresting in themselves.
+- **revivify** — Definition: To give new life, energy, or interest to something. Used in a sentence: When we are studying an uninteresting subject, if our mind tends to wander, we have to bring back our attention every now and then by using distinct pulses of effort, which revivify the topic for a moment, the mind then running on for a certain number of seconds or minutes with spontaneous interest, until again some intercurrent idea captures it and takes it off.
 - **elucidation** — Definition: An explanation that makes something clearer. Used in a sentence: From our present purely practical point of view, however, it is not necessary to be intricate; and passive attention to natively interesting material requires no further elucidation on this occasion.
 - **intercurrent** — Definition: Occurring during the course of another event. Used in a sentence: When we are studying an uninteresting subject, if our mind tends to wander, we have to bring back our attention every now and then by using distinct pulses of effort, which revivify the topic for a moment, the mind then running on for a certain number of seconds or minutes with spontaneous interest, until again some intercurrent idea captures it and takes it off.
 
@@ -1414,7 +1414,7 @@ STUDIES serve for delight, for ornament, and for ability. Their chief use for de
 
 - **affectation** — Definition: Behavior adopted mainly to impress other people. Used in a sentence: To spend too much time in studies is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar.
 - **marshalling** — Definition: Arranging people or things in an effective order. Used in a sentence: For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.
-- **particulars** — Definition: Individual facts or specific details. Used in a sentence: For expert men can execute, and perhaps judge of particulars, one by one; but the general counsels, and the plots and marshalling of affairs, come best, from those that are learned.
+- **confute** — Definition: To prove a claim or argument false. Used in a sentence: Read not to contradict and confute; nor to believe and take for granted; nor to find talk and discourse; but to weigh and consider.
 
 ### searchish-05 — The Adventure of the Blue Carbuncle
 

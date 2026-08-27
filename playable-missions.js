@@ -56,6 +56,7 @@ const requestedStreamingGuide = !stabilityMonitor.recoveredFromUncleanExit && !s
 let replayRequested = new URLSearchParams(location.search).get("replay") === "1";
 const whisper = new LocalWhisperRecognizer({ onProgress: updateOpeningModelProgress });
 const wordAudio = new Audio();
+const vocabularyAudioPreloads = new Map();
 
 let controller = null;
 let streamingRecognizer = null;
@@ -487,8 +488,28 @@ function showView(id) {
 
 function passage() { return mission.passages[sequence.index]; }
 
+function preloadVocabularyAudio(cards) {
+  const currentSources = new Set(cards.map(({ audioSrc }) => audioSrc).filter(Boolean));
+  for (const [source, audio] of vocabularyAudioPreloads) {
+    if (currentSources.has(source)) continue;
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+    vocabularyAudioPreloads.delete(source);
+  }
+  for (const source of currentSources) {
+    if (vocabularyAudioPreloads.has(source)) continue;
+    const audio = new Audio();
+    audio.preload = "auto";
+    audio.src = source;
+    audio.load();
+    vocabularyAudioPreloads.set(source, audio);
+  }
+}
+
 function renderPassage() {
   const current = passage();
+  preloadVocabularyAudio(current.challengingWords);
   const shouldAutoPrepare = sessionStorage.getItem("internet-recovery-voice-warmed-v1") === "1";
   $("companionTitle").textContent = current.title;
   $("passage").replaceChildren(...current.lines.map((line, index) => {
@@ -768,7 +789,7 @@ function renderWordHelp() {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = "▶ Hear aloud";
-    button.setAttribute("aria-label", `Hear ${entry.word}, its definition, and its passage sentence`);
+    button.setAttribute("aria-label", `Hear ${entry.word}, its definition, and how it appears in this passage`);
     button.addEventListener("click", async () => {
       if (activeWordButton === button) {
         wordAudio.pause();
@@ -810,7 +831,7 @@ function renderWordHelp() {
           wordAudio.src = entry.audioSrc;
           wordAudio.onended = resetButton;
           await wordAudio.play();
-          $("wordAudioStatus").textContent = `Playing ${entry.word}, its definition, and its passage sentence.`;
+          $("wordAudioStatus").textContent = `Playing ${entry.word}, its definition, and how it appears in this passage.`;
           return;
         }
         const { speakVocabularyCard } = await import("./speech/local-kokoro-tts.js");
@@ -818,7 +839,7 @@ function renderWordHelp() {
         const started = await speakVocabularyCard({
           word: entry.word,
           definition: entry.meaning,
-          sentence: entry.sentence,
+          sentence: entry.speechSentence ?? entry.sentence,
           onStatus: (message) => { $("wordAudioStatus").textContent = message; },
           onEnded: resetButton,
         });

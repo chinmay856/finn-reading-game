@@ -1,6 +1,17 @@
 const WALKTHROUGH_ASSET_VERSION = "20260824-internet-recovery-98-v1";
 
-const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set(["mycorner", "searchish"]);
+const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set([
+  "wikiwhy",
+  "threadit",
+  "faceplace",
+  "mycorner",
+  "yahuh",
+  "viewtube",
+  "amaze-on",
+  "searchish",
+  "spotty-fi",
+  "mapguess",
+]);
 
 function frame(directory, prefix, page) {
   return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
@@ -55,6 +66,7 @@ function canonicalDeck(siteId) {
         word: entry.word,
         meaning: entry.definition,
         sentence: entry.sentence,
+        speechSentence: vocabularySpeechExcerpt(record.id, entry.word, entry.sentence),
         properNoun: false,
       }))),
     });
@@ -186,3 +198,4 @@ export function getPlayableWalkthrough(id) {
 import { FIRST_SIX_CANONICAL_PASSAGES } from "../../content/first-six-canonical-reading-manuscript.js";
 import { PUBLIC_DOMAIN_CAMPAIGN_PASSAGES } from "../../content/public-domain-campaign-passages.js";
 import { derivePassageDisplayLines } from "../../reading-companion/passage-display-lines.js";
+import { vocabularySpeechExcerpt } from "../../speech/campaign-vocabulary-speech-excerpts.js";

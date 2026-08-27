@@ -1,5 +1,21 @@
 # Project status
 
+## Static campaign vocabulary audio and speech audit — 2026-08-26
+
+- All 276 vocabulary cards across the ten-site campaign now use pre-generated
+  Kokoro Heart AAC clips. The three clips for the current passage are requested
+  while the player reads, so `Hear aloud` no longer initializes or synthesizes
+  the 93 MB browser model after the result screen appears.
+- Vocabulary audio says `In this passage:` and uses a maintained speech-only
+  excerpt for 39 cards whose complete source sentence was unusually long,
+  punctuation-heavy, or cut through a quotation boundary. The literary passage
+  itself is unchanged.
+- Parenthesized Roman outline markers are spoken as ordinary numbers; chapter
+  and part numerals, footnote markers, stray brackets, daggers, and archival
+  double hyphens are normalized before synthesis. The full 276-card audit now
+  reports zero outstanding formatting risks. Details are in
+  `docs/content/CAMPAIGN_VOCABULARY_SPEECH_RISK_AUDIT_2026-08-26.md`.
+
 ## Integrated document-remap endgame — 2026-08-26
 
 - The reviewed document-remap ending now has an isolated local route at
@@ -204,8 +220,8 @@
   audio, transcripts, passage text, or browsing history. A Start-menu action
   downloads the latest local report, and an unclean prior session restarts with
   Sherpa paused for that recovery session.
-- `scripts/run-playable-stability-smoke.mjs` exercises simultaneous MyCorner
-  tabs, a synthetic read/finish/vocabulary cycle, repeated in-document mission
+- `scripts/run-playable-stability-smoke.mjs` exercises overlapping MyCorner
+  tabs after one shared-cache warmup, a synthetic read/finish/vocabulary cycle, repeated in-document mission
   switches, a forced-reload fallback, and all ten playable routes. It fails on
   renderer, page, console, exclusivity, readiness, or memory-growth errors.
 

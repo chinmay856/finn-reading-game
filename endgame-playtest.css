@@ -426,12 +426,12 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 
 .final-story-dialog { min-height: 260px; }
 
-.celebration-layer { position: absolute; z-index: 35; inset: 0; overflow: hidden; background: rgba(4,50,52,.12); }
+.celebration-layer { position: absolute; z-index: 130; inset: 0; overflow: hidden; background: rgba(4,50,52,.12); }
 .celebration-layer[data-action] { cursor: pointer; }
 .techno-waterfall { position: absolute; inset: 0; overflow: hidden; }
-.solitaire-techno-canvas { position: absolute; z-index: 37; inset: 0; width: 100%; height: 100%; }
+.solitaire-techno-canvas { position: absolute; z-index: 132; inset: 0; width: 100%; height: 100%; }
 .static-celebration-techno { display: none; position: absolute; left: 50%; top: 50%; width: 220px; height: 238px; transform: translate(-50%,-50%); }
-.celebration-prompt { position: absolute; z-index: 50; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 560px; padding: 18px 24px; text-align: center; background: rgba(248,245,235,.96); border: 4px solid var(--repair); box-shadow: 7px 7px 0 rgba(0,0,0,.3); }
+.celebration-prompt { position: absolute; z-index: 140; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 560px; padding: 18px 24px; text-align: center; background: rgba(248,245,235,.96); border: 4px solid var(--repair); box-shadow: 7px 7px 0 rgba(0,0,0,.3); }
 .celebration-prompt h1 { margin: 0 0 8px; font-size: 27px; }
 .celebration-prompt p { margin: 0; font-weight: 800; }
 .ending-story-dialog { z-index: 70; }

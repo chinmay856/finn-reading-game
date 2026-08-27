@@ -103,6 +103,16 @@ test("Search-ish preserves the reviewed fourteen-state search hierarchy sequence
   assert.equal(mission.passages.flatMap(({ challengingWords }) => challengingWords).every(({ audioSrc }) => audioSrc?.startsWith("/audio/searchish/kokoro-heart/")), true);
 });
 
+test("every campaign vocabulary card uses pre-generated local Kokoro audio", () => {
+  for (const [siteId, mission] of Object.entries(PLAYABLE_WALKTHROUGHS)) {
+    for (const passage of mission.passages) {
+      for (const card of passage.challengingWords) {
+        assert.match(card.audioSrc, new RegExp(`^/audio/${siteId}/kokoro-heart/${passage.id}-[a-z0-9-]+\\.m4a$`, "u"));
+      }
+    }
+  }
+});
+
 test("player-facing midpoint copy contains no internal act or phase labels", () => {
   for (const mission of Object.values(PLAYABLE_WALKTHROUGHS)) {
     const copy = Object.values(mission.midpoint).flatMap(({ heading, text }) => [heading, text]).join(" ");

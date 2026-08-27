@@ -110,7 +110,7 @@ Studies serve for delight, for ornament, and for ability. Their chief use for de
 
 - **affectation** — Definition: Behavior deliberately adopted to impress others rather than expressed naturally. Used in a sentence: To spend too much time in studies, is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar.
 
-- **particulars** — Definition: Specific facts or details rather than general statements. Used in a sentence: Their chief use for delight, is in privateness and retiring; for ornament, is in discourse; and for ability, is in the judgment and disposition of business; for expert men can execute, and perhaps judge of particulars one by one; but the general counsels, and the plots and marshalling of affairs, come best from those that are learned.
+- **diligence** — Definition: Careful and persistent effort. Used in a sentence: Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read, but not curiously; and some few to be read wholly, and with diligence and attention.
 
 - **contradict** — Definition: To state the opposite of a claim or show that it is wrong. Used in a sentence: Read not to contradict and confute, nor to believe and take for granted, nor to find talk and discourse, but to weigh and consider.
 
@@ -749,7 +749,7 @@ To the Afro-American women of New York and Brooklyn, whose race love, earnest ze
 
 - **bestial** — Definition: Cruel, savage, or lacking human dignity. Used in a sentence: The Afro-American is not a bestial race.
 
-- **unselfish** — Definition: Putting other people's needs or welfare before one's own advantage. Used in a sentence: 26, 1892 To the Afro-American women of New York and Brooklyn, whose race love, earnest zeal and unselfish effort at Lyric Hall, in the City of New York, on the night of October 5, 1892--made possible its publication, this pamphlet is gratefully dedicated by the author.
+- **unselfish** — Definition: Putting other people's needs or welfare before one's own advantage. Used in a sentence: To the Afro-American women of New York and Brooklyn, whose race love, earnest zeal and unselfish effort at Lyric Hall, in the City of New York, on the night of October 5, 1892--made possible its publication, this pamphlet is gratefully dedicated by the author.
 
 ## faceplace
 
@@ -960,7 +960,7 @@ Which brought them back again to the beginning of the conversation. Alice felt a
 
 **Vocabulary packet**
 
-- **languid** — Definition: Lacking energy or liveliness. Used in a sentence: CHAPTER V. Advice from a Caterpillar The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressed her in a languid, sleepy voice.
+- **languid** — Definition: Lacking energy or liveliness. Used in a sentence: The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressed her in a languid, sleepy voice.
 
 - **sternly** — Definition: In a strict, severe, or disapproving manner. Used in a sentence: said the Caterpillar sternly.
 
@@ -1506,7 +1506,7 @@ THE great problem is at length solved! The air, as well as the earth and the oce
 
 **Vocabulary packet**
 
-- **prodigious** — Definition: Remarkably great in size, amount, or degree. Used in a sentence: The rush for the “sole paper which had the news,” was something beyond even the prodigious; and, in fact, if (as some assert) the “Victoria” did not absolutely accomplish the voyage recorded, it will be difficult to assign a reason why she should not have accomplished it.]
+- **prodigious** — Definition: Remarkably great in size, amount, or degree. Used in a sentence: The rush for the “sole paper which had the news,” was something beyond even the prodigious; and, in fact, if (as some assert) the “Victoria” did not absolutely accomplish the voyage recorded, it will be difficult to assign a reason why she should not have accomplished it.
 
 - **subjoined** — Definition: Added or placed immediately after something already written. Used in a sentence: The subjoined jeu d’esprit with the preceding heading in magnificent capitals, well interspersed with notes of admiration, was originally published, as matter of fact, in the “New York Sun,” a daily newspaper, and therein fully subserved the purpose of creating indigestible aliment for the quidnuncs during the few hours intervening between a couple of the Charleston mails.
 
@@ -1935,11 +1935,11 @@ The word interest, in its ordinary usage, expresses (i) the whole state of activ
 
 **Vocabulary packet**
 
-- **philanthropy** — Definition: The effort to promote other people's welfare, often through donated money or work. Used in a sentence: Thus we say that a man's interest is politics, or journalism, or philanthropy, or archaeology, or collecting Japanese prints, or banking. (ii) By an interest we also mean the point at which an object touches or engages a man; the point where it influences him.
+- **philanthropy** — Definition: The effort to promote other people's welfare, often through donated money or work. Used in a sentence: Thus we say that a man's interest is politics, or journalism, or philanthropy, or archaeology, or collecting Japanese prints, or banking.
 
 - **inclination** — Definition: A preference or tendency toward a particular choice or action. Used in a sentence: The word interest, in its ordinary usage, expresses (i) the whole state of active development, (ii) the objective results that are foreseen and wanted, and (iii) the personal emotional inclination.
 
-- **liabilities** — Definition: Debts or financial obligations owed to others. Used in a sentence: A silent partner has an interest in a business, although he takes no active part in its conduct because its prosperity or decline affects his profits and liabilities. (iii) When we speak of a man as interested in this or that the emphasis falls directly upon his personal attitude.
+- **liabilities** — Definition: Debts or financial obligations owed to others. Used in a sentence: A silent partner has an interest in a business, although he takes no active part in its conduct because its prosperity or decline affects his profits and liabilities.
 
 ### 5. Three Men in a Boat, Chapter One
 
@@ -1975,7 +1975,7 @@ It is a most extraordinary thing, but I never read a patent medicine advertiseme
 
 - **impelled** — Definition: Driven or strongly urged to take an action. Used in a sentence: It is a most extraordinary thing, but I never read a patent medicine advertisement without being impelled to the conclusion that I am suffering from the particular disease therein dealt with in its most virulent form.
 
-- **maladies** — Definition: Illnesses or unhealthy conditions. Used in a sentence: Three invalids.—Sufferings of George and Harris.—A victim to one hundred and seven fatal maladies.—Useful prescriptions.—Cure for liver complaint in children.—We agree that we are overworked, and need rest.—A week on the rolling deep?—George suggests the River.—Montmorency lodges an objection.—Original motion carried by majority of three to one.
+- **maladies** — Definition: Illnesses or unhealthy conditions. Used in a sentence: A victim to one hundred and seven fatal maladies.
 
 - **virulent** — Definition: Extremely harmful or severe, especially when describing a disease. Used in a sentence: It is a most extraordinary thing, but I never read a patent medicine advertisement without being impelled to the conclusion that I am suffering from the particular disease therein dealt with in its most virulent form.
 

@@ -67,12 +67,15 @@ for (const spec of PUBLIC_DOMAIN_CAMPAIGN_SELECTION) {
   const paragraphs = Object.freeze([introduction, excerpt]);
   const spokenWordCount = words(paragraphs.join(" ")).length;
   assert(spokenWordCount >= 275 && spokenWordCount <= 325, `${spec.id}: ${spokenWordCount} spoken words`);
-  const vocabulary = editorial.vocabulary.map(([word, definition]) => Object.freeze({
-    word,
-    definition,
-    sentence: sentenceForWord(excerpt, word),
-    properNoun: false,
-  }));
+  const vocabulary = editorial.vocabulary.map(([word, definition, sentenceOverride]) => {
+    if (sentenceOverride) assert(excerpt.includes(sentenceOverride), `${spec.id}/${word}: exact vocabulary sentence override`);
+    return Object.freeze({
+      word,
+      definition,
+      sentence: sentenceOverride ?? sentenceForWord(excerpt, word),
+      properNoun: false,
+    });
+  });
   records.push(Object.freeze({
     id: spec.id,
     siteId: siteIdFor(spec.id),

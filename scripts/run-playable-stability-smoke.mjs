@@ -6,7 +6,7 @@ const { chromium } = require(
 );
 
 const target = process.env.FINN_STABILITY_TARGET
-  ?? "https://finn-reading-game.web.app/playable-missions.html?site=mycorner";
+  ?? "https://internet-recovery-98.web.app/playable-missions.html?site=mycorner";
 const iterations = Math.max(1, Number(process.env.FINN_STABILITY_ITERATIONS) || 3);
 const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const profile = {
@@ -143,10 +143,14 @@ try {
   pages.push(first, second);
   observe(first, "parallel-a");
   observe(second, "parallel-b");
-  const parallel = await Promise.all([
-    startMission(first, "parallel-a"),
-    startMission(second, "parallel-b"),
-  ]);
+  // Warm the shared browser cache in the first tab before opening the second
+  // reading runtime. This still exercises overlapping tabs and the Sherpa Web
+  // Lock, without making a clean smoke run download two Whisper checkpoints at
+  // once and mistake network contention for a renderer-stability failure.
+  const parallel = [
+    await startMission(first, "parallel-a"),
+    await startMission(second, "parallel-b"),
+  ];
 
   const liveGuideCount = parallel.filter(({ status }) => /live guide on/iu.test(status)).length;
   const fallbackCount = parallel.filter(({ status }) => /Whisper/iu.test(status)).length;

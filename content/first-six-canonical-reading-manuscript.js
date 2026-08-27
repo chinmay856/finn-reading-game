@@ -134,9 +134,9 @@ const DATA = {
           "properNoun": false
         },
         {
-          "word": "particulars",
-          "definition": "Specific facts or details rather than general statements.",
-          "sentence": "Their chief use for delight, is in privateness and retiring; for ornament, is in discourse; and for ability, is in the judgment and disposition of business; for expert men can execute, and perhaps judge of particulars one by one; but the general counsels, and the plots and marshalling of affairs, come best from those that are learned.",
+          "word": "diligence",
+          "definition": "Careful and persistent effort.",
+          "sentence": "Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read, but not curiously; and some few to be read wholly, and with diligence and attention.",
           "properNoun": false
         },
         {
@@ -957,7 +957,7 @@ const DATA = {
         {
           "word": "unselfish",
           "definition": "Putting other people's needs or welfare before one's own advantage.",
-          "sentence": "26, 1892 To the Afro-American women of New York and Brooklyn, whose race love, earnest zeal and unselfish effort at Lyric Hall, in the City of New York, on the night of October 5, 1892--made possible its publication, this pamphlet is gratefully dedicated by the author.",
+          "sentence": "To the Afro-American women of New York and Brooklyn, whose race love, earnest zeal and unselfish effort at Lyric Hall, in the City of New York, on the night of October 5, 1892--made possible its publication, this pamphlet is gratefully dedicated by the author.",
           "properNoun": false
         }
       ],
@@ -1208,7 +1208,7 @@ const DATA = {
         {
           "word": "languid",
           "definition": "Lacking energy or liveliness.",
-          "sentence": "CHAPTER V. Advice from a Caterpillar The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressed her in a languid, sleepy voice.",
+          "sentence": "The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the hookah out of its mouth, and addressed her in a languid, sleepy voice.",
           "properNoun": false
         },
         {
@@ -1916,7 +1916,7 @@ const DATA = {
         {
           "word": "prodigious",
           "definition": "Remarkably great in size, amount, or degree.",
-          "sentence": "The rush for the “sole paper which had the news,” was something beyond even the prodigious; and, in fact, if (as some assert) the “Victoria” did not absolutely accomplish the voyage recorded, it will be difficult to assign a reason why she should not have accomplished it.]",
+          "sentence": "The rush for the “sole paper which had the news,” was something beyond even the prodigious; and, in fact, if (as some assert) the “Victoria” did not absolutely accomplish the voyage recorded, it will be difficult to assign a reason why she should not have accomplished it.",
           "properNoun": false
         },
         {
@@ -2472,7 +2472,7 @@ const DATA = {
         {
           "word": "philanthropy",
           "definition": "The effort to promote other people's welfare, often through donated money or work.",
-          "sentence": "Thus we say that a man's interest is politics, or journalism, or philanthropy, or archaeology, or collecting Japanese prints, or banking. (ii) By an interest we also mean the point at which an object touches or engages a man; the point where it influences him.",
+          "sentence": "Thus we say that a man's interest is politics, or journalism, or philanthropy, or archaeology, or collecting Japanese prints, or banking.",
           "properNoun": false
         },
         {
@@ -2484,7 +2484,7 @@ const DATA = {
         {
           "word": "liabilities",
           "definition": "Debts or financial obligations owed to others.",
-          "sentence": "A silent partner has an interest in a business, although he takes no active part in its conduct because its prosperity or decline affects his profits and liabilities. (iii) When we speak of a man as interested in this or that the emphasis falls directly upon his personal attitude.",
+          "sentence": "A silent partner has an interest in a business, although he takes no active part in its conduct because its prosperity or decline affects his profits and liabilities.",
           "properNoun": false
         }
       ],
@@ -2528,7 +2528,7 @@ const DATA = {
         {
           "word": "maladies",
           "definition": "Illnesses or unhealthy conditions.",
-          "sentence": "Three invalids.—Sufferings of George and Harris.—A victim to one hundred and seven fatal maladies.—Useful prescriptions.—Cure for liver complaint in children.—We agree that we are overworked, and need rest.—A week on the rolling deep?—George suggests the River.—Montmorency lodges an objection.—Original motion carried by majority of three to one.",
+          "sentence": "A victim to one hundred and seven fatal maladies.",
           "properNoun": false
         },
         {

@@ -1,5 +1,7 @@
 import { KokoroTTS } from "kokoro-js";
 
+import { buildVocabularySpeechText } from "./vocabulary-speech-text.js";
+
 const MODEL_ID = "onnx-community/Kokoro-82M-v1.0-ONNX";
 const VOICE = "af_heart";
 let modelPromise = null;
@@ -46,7 +48,7 @@ async function prepareVocabularyCard(card, onStatus = () => {}) {
     cardAudioPromises.set(key, (async () => {
       const model = await prepare(onStatus);
       onStatus(`Preparing “${cleanWord}”…`);
-      const audio = await model.generate(`${cleanWord}. Definition: ${cleanDefinition}. Used in a sentence: ${cleanSentence}`, { voice: VOICE, speed: 0.95 });
+      const audio = await model.generate(buildVocabularySpeechText(normalized), { voice: VOICE, speed: 0.95 });
       return URL.createObjectURL(audio.toBlob());
     })().catch((error) => {
       cardAudioPromises.delete(key);
@@ -72,7 +74,7 @@ export async function speakVocabularyCard({ word, definition, sentence, onStatus
   player = new Audio(playerUrl);
   player.addEventListener("ended", onEnded, { once: true });
   await player.play();
-  onStatus(`Playing ${cleanWord}, its definition, and its passage sentence.`);
+  onStatus(`Playing ${cleanWord}, its definition, and how it appears in this passage.`);
   return true;
 }
 

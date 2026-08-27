@@ -81,13 +81,13 @@ export const PUBLIC_DOMAIN_CAMPAIGN_EDITORIAL = Object.freeze({
     question: "What does the room in The Machine Stops reveal about its occupant's life?",
     correct: "Technology supplies comfort while separating her from direct contact and the outside world.",
     distractors: ["The room requires constant outdoor travel.", "The machines leave every decision completely untouched."],
-    vocabulary: [["hexagonal", "Having six sides and six angles."], ["ventilation", "The movement of fresh air through a space."], ["intercourse", "Communication or dealings between people."]],
+    vocabulary: [["hexagonal", "Having six sides and six angles.", "Imagine, if you can, a small room, hexagonal in shape, like the cell of a bee."], ["ventilation", "The movement of fresh air through a space."], ["intercourse", "Communication or dealings between people."]],
   },
   "viewtube-07": {
     question: "What teaching approach does James say makes attention smoother?",
     correct: "Keep material interesting so attention depends less on forced effort.",
     distractors: ["Remove every pause and distraction automatically.", "Make students watch the same material repeatedly."],
-    vocabulary: [["spontaneous", "Happening naturally without being forced or planned."], ["elucidation", "An explanation that makes something clearer."], ["intercurrent", "Occurring during the course of another event."]],
+    vocabulary: [["revivify", "To give new life, energy, or interest to something."], ["elucidation", "An explanation that makes something clearer."], ["intercurrent", "Occurring during the course of another event."]],
   },
   "amaze-on-01": {
     question: "What warning does Franklin give about buying for appearance?",
@@ -285,7 +285,7 @@ export const PUBLIC_DOMAIN_CAMPAIGN_EDITORIAL = Object.freeze({
     question: "How does Bacon advise readers to approach books?",
     correct: "They should weigh ideas and vary the depth of reading according to the book's value.",
     distractors: ["They should accept every statement without questioning it.", "They should read every book with exactly the same amount of attention."],
-    vocabulary: [["affectation", "Behavior adopted mainly to impress other people."], ["marshalling", "Arranging people or things in an effective order."], ["particulars", "Individual facts or specific details."]],
+    vocabulary: [["affectation", "Behavior adopted mainly to impress other people."], ["marshalling", "Arranging people or things in an effective order."], ["confute", "To prove a claim or argument false."]],
   },
   "searchish-05": {
     question: "Why does Watson fail to reach Holmes's conclusions about the hat?",

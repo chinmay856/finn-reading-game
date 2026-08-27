@@ -130,6 +130,49 @@ const TECHNO_CASCADE_ANIMATIONS = Object.freeze([
   Object.freeze({ row: 7, frameCount: 6, frameDuration: 108 }),
 ]);
 
+function visibleBoundsForAnimation(artwork, animation) {
+  const scratch = document.createElement("canvas");
+  scratch.width = TECHNO_FRAME.width;
+  scratch.height = TECHNO_FRAME.height;
+  const context = scratch.getContext("2d", { willReadFrequently: true });
+  const frames = [];
+  const union = { bottom: 0, left: TECHNO_FRAME.width, right: 0, top: TECHNO_FRAME.height };
+  for (let frame = 0; frame < animation.frameCount; frame += 1) {
+    const bounds = { bottom: 0, left: TECHNO_FRAME.width, right: 0, top: TECHNO_FRAME.height };
+    context.clearRect(0, 0, scratch.width, scratch.height);
+    context.drawImage(
+      artwork,
+      frame * TECHNO_FRAME.width,
+      animation.row * TECHNO_FRAME.height,
+      TECHNO_FRAME.width,
+      TECHNO_FRAME.height,
+      0,
+      0,
+      TECHNO_FRAME.width,
+      TECHNO_FRAME.height,
+    );
+    const pixels = context.getImageData(0, 0, scratch.width, scratch.height).data;
+    for (let y = 0; y < scratch.height; y += 1) {
+      for (let x = 0; x < scratch.width; x += 1) {
+        if (pixels[(y * scratch.width + x) * 4 + 3] < 16) continue;
+        bounds.left = Math.min(bounds.left, x);
+        bounds.right = Math.max(bounds.right, x + 1);
+        bounds.top = Math.min(bounds.top, y);
+        bounds.bottom = Math.max(bounds.bottom, y + 1);
+      }
+    }
+    const frameBounds = bounds.bottom > 0
+      ? Object.freeze(bounds)
+      : Object.freeze({ bottom: TECHNO_FRAME.height, left: 0, right: TECHNO_FRAME.width, top: 0 });
+    frames.push(frameBounds);
+    union.left = Math.min(union.left, frameBounds.left);
+    union.right = Math.max(union.right, frameBounds.right);
+    union.top = Math.min(union.top, frameBounds.top);
+    union.bottom = Math.max(union.bottom, frameBounds.bottom);
+  }
+  return Object.freeze({ frames: Object.freeze(frames), union: Object.freeze(union) });
+}
+
 function technoSpriteMarkup(className, label, { column = 0, row = 0 } = {}) {
   return `<div class="techno-sprite ${className}" role="img" aria-label="${escapeHtml(label)}" style="--techno-column:${column};--techno-row:${row}"></div>`;
 }
@@ -390,36 +433,43 @@ function startCelebrationFill() {
   let launchIndex = 0;
   let previousTime = performance.now();
   let nextLaunchAt = previousTime;
+  let randomState = 0x98c0ffee;
+  const random = () => {
+    randomState = (Math.imul(randomState, 1664525) + 1013904223) >>> 0;
+    return randomState / 0x100000000;
+  };
+  const animationBounds = TECHNO_CASCADE_ANIMATIONS.map((animation) => visibleBoundsForAnimation(celebrationArtwork, animation));
 
   const launchTechno = () => {
     const width = 148;
     const height = width * TECHNO_FRAME.height / TECHNO_FRAME.width;
     const animationIndex = launchIndex % TECHNO_CASCADE_ANIMATIONS.length;
-    const animationCycle = Math.floor(launchIndex / TECHNO_CASCADE_ANIMATIONS.length);
     const animation = TECHNO_CASCADE_ANIMATIONS[animationIndex];
-    const launchProfiles = [
-      { x: -width, vx: 430 },
-      { x: canvas.width + width, vx: -470 },
-      { x: canvas.width * .5 - width / 2, vx: animationCycle % 2 === 0 ? -390 : 390 },
-      animationCycle % 2 === 0
-        ? { x: canvas.width * .22, vx: 450 }
-        : { x: canvas.width * .78 - width, vx: -420 },
-    ];
-    const profile = launchProfiles[animationIndex];
-    const floor = 748 + (launchIndex % 4) * 34;
+    const visibleBounds = animationBounds[animationIndex];
+    const anchorPattern = [0, 1, .5, .25, .75, .4, .6, .12, .88];
+    const anchor = anchorPattern[launchIndex % anchorPattern.length];
+    const jitter = (random() - .5) * canvas.width * .12;
+    const startsAtLeftEdge = anchor === 0;
+    const startsAtRightEdge = anchor === 1;
+    const x = startsAtLeftEdge
+      ? -width
+      : startsAtRightEdge
+        ? canvas.width
+        : Math.max(-width * .25, Math.min(canvas.width - width * .75, canvas.width * anchor - width / 2 + jitter));
+    const direction = startsAtRightEdge || (!startsAtLeftEdge && random() < .5) ? -1 : 1;
     trajectories.push({
-      x: profile.x,
-      y: 18 + (launchIndex * 79) % 220,
-      vx: profile.vx,
-      vy: -120 - (launchIndex * 53) % 220,
-      gravity: 710 + (launchIndex % 5) * 65,
-      bounce: .76 + (launchIndex % 3) * .045,
-      floor,
-      rotation: ((launchIndex % 7) - 3) * .025,
-      spin: ((launchIndex % 5) - 2) * .045,
+      x,
+      y: -(visibleBounds.union.bottom / TECHNO_FRAME.height * height) - random() * height * .16,
+      vx: direction * (320 + random() * 190),
+      vy: 40 + random() * 130,
+      gravity: 690 + random() * 210,
+      bounce: .74 + random() * .09,
+      floor: canvas.height,
       width,
       height,
       animation,
+      frameBounds: visibleBounds.frames,
+      visibleBottomOffset: visibleBounds.union.bottom / TECHNO_FRAME.height * height,
       animationOffset: launchIndex * 67,
       nextStampAt: 0,
     });
@@ -429,21 +479,19 @@ function startCelebrationFill() {
   const drawTechno = (trajectory, now) => {
     const frame = Math.floor((now + trajectory.animationOffset) / trajectory.animation.frameDuration)
       % trajectory.animation.frameCount;
-    context.save();
-    context.translate(trajectory.x + trajectory.width / 2, trajectory.y + trajectory.height / 2);
-    context.rotate(trajectory.rotation);
+    const frameBottom = trajectory.frameBounds[frame].bottom / TECHNO_FRAME.height * trajectory.height;
+    const baselineCorrection = trajectory.visibleBottomOffset - frameBottom;
     context.drawImage(
       celebrationArtwork,
       frame * TECHNO_FRAME.width,
       trajectory.animation.row * TECHNO_FRAME.height,
       TECHNO_FRAME.width,
       TECHNO_FRAME.height,
-      -trajectory.width / 2,
-      -trajectory.height / 2,
+      trajectory.x,
+      trajectory.y + baselineCorrection,
       trajectory.width,
       trajectory.height,
     );
-    context.restore();
   };
 
   const animate = (now) => {
@@ -458,14 +506,13 @@ function startCelebrationFill() {
       trajectory.x += trajectory.vx * delta;
       trajectory.y += trajectory.vy * delta;
       trajectory.vy += trajectory.gravity * delta;
-      trajectory.rotation += trajectory.spin * delta;
-      if (trajectory.y + trajectory.height >= trajectory.floor && trajectory.vy > 0) {
-        trajectory.y = trajectory.floor - trajectory.height;
+      if (trajectory.y + trajectory.visibleBottomOffset >= trajectory.floor && trajectory.vy > 0) {
+        trajectory.y = trajectory.floor - trajectory.visibleBottomOffset;
         trajectory.vy = -Math.max(205, Math.abs(trajectory.vy) * trajectory.bounce);
       }
       if (now >= trajectory.nextStampAt) {
         drawTechno(trajectory, now);
-        trajectory.nextStampAt = now + 32;
+        trajectory.nextStampAt = now + 48;
       }
     }
     for (let index = trajectories.length - 1; index >= 0; index -= 1) {
