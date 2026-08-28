@@ -44,6 +44,7 @@ const LAUNCHER_SITE_ORDER = Object.freeze([
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
 const ENDGAME_STORE_KEY = "internet-recovery-endgame-playtest-v3";
 const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
+const INTRODUCTION_VERSION = 1;
 const requestedSiteId = new URLSearchParams(location.search).get("site");
 let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
   ? getPlayableWalkthrough(requestedSiteId)
@@ -88,6 +89,41 @@ const PORTRAITS = Object.freeze({
   "auto-confused": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "100% 0%", size: "300% 200%" }),
   "auto-overdrive": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 100%", size: "300% 200%" }),
 });
+
+const INTRODUCTION_BEATS = Object.freeze([
+  Object.freeze({
+    speaker: "amy",
+    portrait: "amy-skeptical",
+    heading: "THE INTERNET NEEDS YOUR HELP",
+    text: "Auto—our extremely helpful AI—has been fixing ten websites. Unfortunately, he followed his instructions much too far. Now every site is corrupted in a different way.",
+    button: "What happened?",
+    technoState: "waiting",
+  }),
+  Object.freeze({
+    speaker: "chinmay",
+    portrait: "chinmay-fluster-1",
+    heading: "I MAY HAVE MADE THIS WORSE",
+    text: "I gave Auto instructions that sounded helpful at the time. Make things clearer. Keep people happy. Make choices easier. Auto decided those rules should apply to absolutely everything.",
+    button: "Continue",
+    technoState: "review",
+  }),
+  Object.freeze({
+    speaker: "auto",
+    portrait: "auto-learned",
+    heading: "TEN WEBSITES IMPROVED!",
+    text: "CLARITY INCREASED.\nCHOICES SIMPLIFIED.\nHUMAN EFFORT REDUCED.\nALL UPDATES ARE WORKING PERFECTLY.",
+    button: "See Auto’s improvements",
+    technoState: "failed",
+  }),
+  Object.freeze({
+    speaker: "amy",
+    portrait: "amy-tools",
+    heading: "READ. REPAIR. TEACH AUTO.",
+    text: "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. You may have to grant permission for this game to use your computer’s microphone. When the repair is finished, you’ll teach Auto what went wrong—and where helpful AI needs to stop.",
+    button: "Choose a website",
+    technoState: "working",
+  }),
+]);
 
 const SITE_PORTRAITS = Object.freeze({
   wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
@@ -134,6 +170,10 @@ function normalizeProfileKey(name) {
 function activeProfile() {
   const store = readSaveStore();
   return store.activeProfileKey ? ensurePlayableProgressProfile(store.profiles[store.activeProfileKey] ?? null) : null;
+}
+
+function profileHasSeenIntroduction(profile) {
+  return Number(profile?.introductionVersion ?? 0) >= INTRODUCTION_VERSION;
 }
 
 function loadOrCreateProfile(name) {
@@ -654,21 +694,32 @@ async function buildController() {
 }
 
 async function prepareModels() {
+  if (!mission) return;
   if (modelsPrepared) return;
   if (modelPreparationPromise) return modelPreparationPromise;
+  const preparedMission = mission;
+  const preparedSiteId = preparedMission.id;
   modelPreparationPromise = (async () => {
-    stabilityMonitor.markStage("voice-models-preparing", { site: mission.id });
+    stabilityMonitor.markStage("voice-models-preparing", { site: preparedSiteId });
     setTechno("waiting", "left");
     $("prepareModels").disabled = true;
     $("prepareModels").textContent = "Preparing local model…";
     try {
       streamingRecognizer ??= await buildStreamingRecognizer();
+      if (mission !== preparedMission) {
+        modelPreparationPromise = null;
+        return;
+      }
       await buildController();
       await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
+      if (mission !== preparedMission) {
+        modelPreparationPromise = null;
+        return;
+      }
       modelsPrepared = true;
       stabilityMonitor.markStage("voice-models-ready", {
         guide: streamingRecognizer ? "sherpa" : "whisper-checkpoint",
-        site: mission.id,
+        site: preparedSiteId,
       });
       $("modelProgress").value = 100;
       $("modelStatus").textContent = streamingRecognizer ? "Local models ready · live guide on" : "Local Whisper ready · checkpoint guide";
@@ -677,7 +728,11 @@ async function prepareModels() {
       $("readerStatus").textContent = "Ready when you are.";
       setTechno("idle", "left");
     } catch (error) {
-      stabilityMonitor.record("voice-models-failed", { error: error.name, site: mission.id });
+      stabilityMonitor.record("voice-models-failed", { error: error.name, site: preparedSiteId });
+      if (mission !== preparedMission) {
+        modelPreparationPromise = null;
+        return;
+      }
       $("prepareModels").disabled = false;
       $("prepareModels").textContent = "Retry local model";
       $("readerStatus").textContent = `The local voice model did not load: ${error.message}`;
@@ -897,6 +952,44 @@ function showStoryBeat(speaker, heading, text, buttonLabel, portraitKey) {
       resolve();
     };
   });
+}
+
+function renderIntroductionBeat(beat) {
+  const overlay = $("gameIntroduction");
+  const dialog = overlay.querySelector(".story-dialog");
+  const portrait = PORTRAITS[beat.portrait];
+  dialog.dataset.speaker = beat.speaker;
+  const tile = $("introductionSpeaker");
+  tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
+  tile.style.setProperty("--portrait-position", portrait.position);
+  tile.style.setProperty("--portrait-size", portrait.size);
+  $("introductionLabel").textContent = beat.speaker === "auto" ? "AUTO" : beat.speaker.toUpperCase();
+  $("introductionHeading").textContent = beat.heading;
+  $("introductionText").textContent = beat.text;
+  $("introductionContinue").textContent = beat.button;
+  setTechno(beat.technoState, "launcher");
+  if (beat.portrait === "amy-tools") playTechnoAction("floppy-drive", "launcher", "idle");
+}
+
+async function runGameIntroduction({ recordCompletion = true } = {}) {
+  const overlay = $("gameIntroduction");
+  $("launcherView").inert = true;
+  $("technoPet").dataset.introduction = "true";
+  overlay.hidden = false;
+  for (const beat of INTRODUCTION_BEATS) {
+    renderIntroductionBeat(beat);
+    await new Promise((resolve) => {
+      $("introductionContinue").onclick = resolve;
+      $("introductionContinue").focus();
+    });
+  }
+  overlay.hidden = true;
+  $("launcherView").inert = false;
+  delete $("technoPet").dataset.introduction;
+  setTechno("idle", "launcher");
+  if (recordCompletion) {
+    updateActiveProfile((profile) => { profile.introductionVersion = INTRODUCTION_VERSION; });
+  }
 }
 
 function showCorruptionPause() {
@@ -1139,7 +1232,20 @@ async function beginProfile(name) {
   $("profileGate").hidden = true;
   $("activeProfileName").textContent = profile.displayName;
   await prepareOpeningVoiceModel();
-  startExperience();
+  await startProfileExperience(profile);
+}
+
+async function startProfileExperience(profile) {
+  if (profileHasSeenIntroduction(profile)) {
+    startExperience();
+    return;
+  }
+  mission = null;
+  sequence = null;
+  replayRequested = false;
+  history.replaceState({ siteId: null }, "", "/playable-missions.html");
+  renderLauncher();
+  await runGameIntroduction();
 }
 
 function frameForSavedSequence() {
@@ -1286,6 +1392,11 @@ function bindShellControls() {
     await navigateToLauncher();
     openProfileGate({ clearName: true });
   });
+  $("replayIntroduction").addEventListener("click", async () => {
+    $("startMenu").hidden = true;
+    await navigateToLauncher();
+    await runGameIntroduction({ recordCompletion: false });
+  });
   $("loadProfile").addEventListener("click", () => beginProfile($("profileName").value));
   $("profileName").addEventListener("keydown", (event) => {
     if (event.key === "Enter") beginProfile($("profileName").value);
@@ -1295,7 +1406,7 @@ function bindShellControls() {
 async function runBriefing() {
   setFrame(mission.initialFrame, "initial corruption");
   setTechno("waiting", "left");
-  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage and answer the quick check to repair this site. Retrying keeps the same passage and does not move the repair forward.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
+  await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage aloud and answer the quick check to repair this site. Take your time, and read clearly and loudly so the Reading Companion can follow along.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
   renderPassage();
   void prepareModels();
 }
@@ -1317,7 +1428,7 @@ function initialize() {
   const profile = activeProfile();
   if (profile) {
     $("activeProfileName").textContent = profile.displayName;
-    startExperience();
+    void startProfileExperience(profile);
   } else {
     openProfileGate({ clearName: true });
   }

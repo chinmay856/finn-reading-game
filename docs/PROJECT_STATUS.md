@@ -1,5 +1,21 @@
 # Project status
 
+## First-run story introduction and clearer mission briefings — 2026-08-27
+
+- New profiles now receive the reviewed four-pop-up story introduction after
+  the local voice-model connection and before the Recovery Browser becomes
+  interactive. The sequence introduces Amy, Chinmay, and Auto using existing
+  canonical portrait treatments while Techno reacts silently.
+- The introduction is saved once per player profile and can be replayed from
+  the Start menu without changing campaign progress. New players see it after
+  the dial-up model preparation; returning players skip directly to their
+  Recovery Browser.
+- Amy's final introduction beat warns that the player may need to grant the
+  game microphone permission before reading aloud.
+- Every site opening now explicitly asks the player to read each passage aloud,
+  take their time, and read clearly and loudly. The briefing no longer explains
+  retry behavior.
+
 ## Static campaign vocabulary audio and speech audit — 2026-08-26
 
 - All 276 vocabulary cards across the ten-site campaign now use pre-generated

@@ -198,6 +198,30 @@ test("player login warms only Whisper behind the dial-up parody and defers the h
   assert.match(script, /setupTask.*Dialing Progress/u);
 });
 
+test("first-run profiles receive the approved four-beat game introduction", () => {
+  assert.match(html, /id="gameIntroduction"/u);
+  assert.match(html, /id="replayIntroduction"/u);
+  assert.match(script, /const INTRODUCTION_VERSION = 1/u);
+  assert.match(script, /THE INTERNET NEEDS YOUR HELP/u);
+  assert.match(script, /Auto—our extremely helpful AI—has been fixing ten websites/u);
+  assert.match(script, /I MAY HAVE MADE THIS WORSE/u);
+  assert.match(script, /TEN WEBSITES IMPROVED!/u);
+  assert.match(script, /CLARITY INCREASED\.\\nCHOICES SIMPLIFIED\.\\nHUMAN EFFORT REDUCED\.\\nALL UPDATES ARE WORKING PERFECTLY\./u);
+  assert.match(script, /READ\. REPAIR\. TEACH AUTO\./u);
+  assert.match(script, /read its passages aloud\. Each completed passage restores part of the site/u);
+  assert.match(script, /grant permission for this game to use your computer’s microphone/u);
+  assert.match(script, /profile\.introductionVersion = INTRODUCTION_VERSION/u);
+  assert.match(script, /profileHasSeenIntroduction\(profile\)/u);
+  assert.match(script, /runGameIntroduction\(\{ recordCompletion: false \}\)/u);
+  assert.doesNotMatch(script, /Techno[^\n]+text:/u);
+});
+
+test("every site briefing asks for clear read-aloud delivery without explaining retry logic", () => {
+  assert.match(script, /Read each passage aloud and answer the quick check to repair this site/u);
+  assert.match(script, /Take your time, and read clearly and loudly so the Reading Companion can follow along/u);
+  assert.doesNotMatch(script, /Retrying keeps the same passage/u);
+});
+
 test("a warmed voice model reconnects automatically inside each mission", () => {
   assert.match(script, /const shouldAutoPrepare = sessionStorage\.getItem\("internet-recovery-voice-warmed-v1"\) === "1"/u);
   assert.match(script, /if \(shouldAutoPrepare && !modelsPrepared\) void prepareModels\(\)/u);
@@ -270,6 +294,9 @@ test("stability hardening avoids three-model startup and preserves local-only cr
   assert.match(script, /navigateToMission/u);
   assert.match(script, /history\.pushState/u);
   assert.match(script, /stabilityMonitor\.report\(\)/u);
+  assert.match(script, /async function prepareModels\(\) \{\s*if \(!mission\) return;/u);
+  assert.match(script, /const preparedMission = mission/u);
+  assert.match(script, /if \(mission !== preparedMission\)/u);
   assert.doesNotMatch(script, /void import\("\.\/speech\/local-kokoro-tts\.js"\)/u);
   assert.doesNotMatch(script, /function skipReading\(\) \{\s*void controller\?\.close\(\)/u);
 });

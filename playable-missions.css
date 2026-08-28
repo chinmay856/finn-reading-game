@@ -409,6 +409,10 @@ textarea {
   place-items: center;
   z-index: 5;
 }
+.game-introduction { z-index:35; }
+.game-introduction .story-dialog { width:760px; min-height:270px; }
+.game-introduction .story-dialog p { min-height:116px; }
+.hatched-techno[data-introduction="true"] { z-index:36; }
 .story-dialog {
   width: 690px;
   min-height: 250px;

@@ -19,6 +19,7 @@ const profile = {
       completedSiteIds: [],
       createdAt: "2026-08-24T00:00:00.000Z",
       displayName: "Ten-site continuity smoke",
+      introductionVersion: 1,
       missions: {},
       reflections: {},
       savedAt: "2026-08-24T00:00:00.000Z",

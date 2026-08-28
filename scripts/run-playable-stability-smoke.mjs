@@ -16,6 +16,7 @@ const profile = {
       completedSiteIds: [],
       createdAt: "2026-08-23T00:00:00.000Z",
       displayName: "Stability Smoke",
+      introductionVersion: 1,
       missions: {},
       reflections: {},
       savedAt: "2026-08-23T00:00:00.000Z",
