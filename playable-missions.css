@@ -45,6 +45,10 @@ body {
 }
 .desktop-shortcuts { position:absolute; left:12px; top:34px; width:86px; display:flex; flex-direction:column; gap:42px; align-items:center; z-index:2; }
 .desktop-shortcuts > * { width:86px; margin:0; padding:0; border:0; background:transparent; color:#fff; text-decoration:none; text-align:center; font:900 12px/1.12 "Comic Sans MS",system-ui,sans-serif; text-shadow:2px 2px #074b55; cursor:pointer; }
+.desktop-shortcuts > a:hover,
+.desktop-shortcuts > a:focus-visible,
+.desktop-shortcuts > button:hover,
+.desktop-shortcuts > button:focus-visible { background:#113f6466; outline:2px solid #d8f4ef; outline-offset:2px; }
 .shortcut-icon { display:block; width:74px; height:60px; margin:0 auto 2px; background:transparent center/74px 60px no-repeat; }
 .shortcut-icon.computer { background-image:url("/walkthroughs/shared/recovery-icon-computer-v2.png"); }
 .shortcut-icon.documents { background-image:url("/walkthroughs/shared/recovery-icon-documents-v1.png"); }
@@ -178,6 +182,7 @@ body {
   padding-right: 10px;
   scroll-behavior: smooth;
 }
+.passage[data-reading="true"] { overflow-y:auto; }
 .passage p {
   font-size: 18px;
   line-height: 1.45;
@@ -431,7 +436,9 @@ textarea {
   background:#e4dfd1 var(--portrait-position,center)/var(--portrait-size,cover) no-repeat;
   background-image:var(--portrait-image);
   border: 0;
+  overflow: hidden;
 }
+.speaker-tile > img { display:block; width:100%; height:100%; object-fit:cover; object-position:var(--portrait-position,center); }
 .story-dialog h2 {
   margin: 5px 0 10px;
 }
@@ -442,6 +449,11 @@ textarea {
 .story-dialog[data-speaker="auto"] p { white-space:pre-line; line-height:1.7; }
 .corruption-pause { position:absolute; inset:0; z-index:5; pointer-events:auto; }
 .corruption-pause button { position:absolute; left:305px; bottom:72px; width:420px; padding:15px 18px; border:4px solid #26333a; background:#f7f5ee; color:#a11f1a; box-shadow:8px 8px 0 #08131a99; font:900 21px/1.15 "Comic Sans MS",system-ui,sans-serif; pointer-events:auto; cursor:pointer; }
+.narrative-next:not(:disabled) { animation:narrative-next-pulse 1.35s ease-in-out infinite; }
+@keyframes narrative-next-pulse {
+  0%,100% { box-shadow:0 0 0 0 #ffe16600, inset 1px 1px #fff; filter:brightness(1); }
+  50% { box-shadow:0 0 0 5px #ffe166b8, inset 1px 1px #fff; filter:brightness(1.08); }
+}
 .hatched-techno { position:absolute; z-index:4; left:42px; bottom:50px; width:154px; pointer-events:none; filter:drop-shadow(4px 6px 2px #001a2680); }
 .techno-sprite { --row: 0%; width: 134px; aspect-ratio: 192/208; margin: auto; background: url('/pets/techno/spritesheet.webp') 0 var(--row)/800% 1100% no-repeat; image-rendering: auto; }
 .techno-game-action { display: block; width: 134px; aspect-ratio: 192/208; margin: auto; object-fit: contain; }
@@ -527,6 +539,7 @@ textarea {
 .start-menu small { margin-top:2px; font-size:10px; opacity:.78; }
 .save-toast { position:absolute; z-index:40; right:22px; bottom:62px; padding:11px 16px; border:3px solid #174b28; background:#e0f1e4; color:#185a2d; box-shadow:5px 5px 0 #062b3666; font:900 14px system-ui,sans-serif; }
 @media (prefers-reduced-motion: reduce) {
+  .narrative-next:not(:disabled) { animation:none; outline:4px solid #ffe166; outline-offset:2px; }
   * {
     scroll-behavior: auto !important;
     transition: none !important;

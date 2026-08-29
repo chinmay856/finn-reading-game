@@ -74,6 +74,62 @@ let saveToastTimer = null;
 let activeWordButton = null;
 let activeWordUsesGeneratedVoice = false;
 
+function setPortraitTile(tile, portrait) {
+  tile.replaceChildren();
+  tile.style.removeProperty("--portrait-image");
+  tile.style.setProperty("--portrait-position", portrait.position);
+  tile.style.setProperty("--portrait-size", portrait.size);
+  tile.removeAttribute("data-portrait-error");
+
+  if (portrait.size !== "cover") {
+    tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
+    return;
+  }
+
+  const image = document.createElement("img");
+  image.alt = "";
+  image.decoding = "async";
+  image.loading = "eager";
+  image.src = portrait.image;
+  image.addEventListener("error", () => {
+    tile.dataset.portraitError = "true";
+    image.remove();
+    tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
+  }, { once: true });
+  tile.append(image);
+}
+
+async function stopActiveWordAudio(statusText = "") {
+  const button = activeWordButton;
+  wordAudio.pause();
+  wordAudio.currentTime = 0;
+  if (activeWordUsesGeneratedVoice) {
+    const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
+    stopVocabularyVoice();
+  }
+  if (button) {
+    button.textContent = "▶ Hear aloud";
+    button.removeAttribute("aria-busy");
+  }
+  activeWordButton = null;
+  activeWordUsesGeneratedVoice = false;
+  if (statusText) $("wordAudioStatus").textContent = statusText;
+}
+
+document.addEventListener("pointerdown", (event) => {
+  if (!activeWordButton || event.target === activeWordButton || activeWordButton.contains(event.target)) return;
+  void stopActiveWordAudio();
+}, { capture: true });
+
+document.addEventListener("click", (event) => {
+  if (!activeWordButton || event.target === activeWordButton || activeWordButton.contains(event.target)) return;
+  void stopActiveWordAudio();
+}, { capture: true });
+
+document.addEventListener("input", () => {
+  if (activeWordButton) void stopActiveWordAudio();
+}, { capture: true });
+
 const PORTRAITS = Object.freeze({
   "amy-engineer": Object.freeze({ image: "/walkthroughs/shared/amy-engineer.jpg", position: "center", size: "cover" }),
   "amy-evidence": Object.freeze({ image: "/walkthroughs/shared/amy-evidence.jpg", position: "center", size: "cover" }),
@@ -552,13 +608,17 @@ function renderPassage() {
   preloadVocabularyAudio(current.challengingWords);
   const shouldAutoPrepare = sessionStorage.getItem("internet-recovery-voice-warmed-v1") === "1";
   $("companionTitle").textContent = current.title;
-  $("passage").replaceChildren(...current.lines.map((line, index) => {
+  const passageView = $("passage");
+  passageView.dataset.reading = "false";
+  passageView.scrollTop = 0;
+  passageView.replaceChildren(...current.lines.map((line, index) => {
     const paragraph = document.createElement("p");
     paragraph.textContent = line;
     if (index < current.sourceIntroductionLineCount) paragraph.className = "source-introduction";
     if (index === 0) paragraph.dataset.sourceStart = "true";
     return paragraph;
   }));
+  passageView.scrollTop = 0;
   $("guideProgressFill").style.width = "0%";
   $("guideProgressFill").parentElement.setAttribute("aria-valuenow", "0");
   $("readerStatus").textContent = modelsPrepared
@@ -688,7 +748,7 @@ async function buildController() {
     retainTroubleshooting: $("retainTroubleshooting").checked,
     streamingRecognizer,
     whisper,
-    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 180,
+    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 110,
   });
   if (modelsPrepared) await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
 }
@@ -744,6 +804,9 @@ async function prepareModels() {
 }
 
 async function startReading() {
+  const passageView = $("passage");
+  passageView.scrollTop = 0;
+  passageView.dataset.reading = "true";
   $("startReading").disabled = true;
   try {
     await controller.start();
@@ -753,6 +816,7 @@ async function startReading() {
   } catch (error) {
     stabilityMonitor.record("reading-start-failed", { error: error.name, site: mission.id });
     $("startReading").disabled = false;
+    passageView.dataset.reading = "false";
   }
 }
 
@@ -847,29 +911,10 @@ function renderWordHelp() {
     button.setAttribute("aria-label", `Hear ${entry.word}, its definition, and how it appears in this passage`);
     button.addEventListener("click", async () => {
       if (activeWordButton === button) {
-        wordAudio.pause();
-        wordAudio.currentTime = 0;
-        if (activeWordUsesGeneratedVoice) {
-          const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
-          stopVocabularyVoice();
-        }
-        button.textContent = "▶ Hear aloud";
-        button.removeAttribute("aria-busy");
-        activeWordButton = null;
-        activeWordUsesGeneratedVoice = false;
-        $("wordAudioStatus").textContent = `Stopped ${entry.word}.`;
+        await stopActiveWordAudio(`Stopped ${entry.word}.`);
         return;
       }
-      if (activeWordButton) {
-        activeWordButton.textContent = "▶ Hear aloud";
-        activeWordButton.removeAttribute("aria-busy");
-      }
-      wordAudio.pause();
-      wordAudio.currentTime = 0;
-      if (activeWordUsesGeneratedVoice) {
-        const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
-        stopVocabularyVoice();
-      }
+      await stopActiveWordAudio();
       activeWordButton = button;
       activeWordUsesGeneratedVoice = false;
       button.textContent = "■ Stop";
@@ -938,9 +983,7 @@ function showStoryBeat(speaker, heading, text, buttonLabel, portraitKey) {
   dialog.dataset.speaker = speaker;
   const portrait = PORTRAITS[portraitKey] ?? PORTRAITS[speaker === "auto" ? "auto-busy" : speaker === "amy" ? "amy-supportive" : "chinmay-careless"];
   const tile = $("storySpeaker");
-  tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
-  tile.style.setProperty("--portrait-position", portrait.position);
-  tile.style.setProperty("--portrait-size", portrait.size);
+  setPortraitTile(tile, portrait);
   $("storyLabel").textContent = speaker === "auto" ? "AUTO" : speaker.toUpperCase();
   $("storyHeading").textContent = heading;
   $("storyText").textContent = text;
@@ -960,9 +1003,7 @@ function renderIntroductionBeat(beat) {
   const portrait = PORTRAITS[beat.portrait];
   dialog.dataset.speaker = beat.speaker;
   const tile = $("introductionSpeaker");
-  tile.style.setProperty("--portrait-image", `url('${portrait.image}')`);
-  tile.style.setProperty("--portrait-position", portrait.position);
-  tile.style.setProperty("--portrait-size", portrait.size);
+  setPortraitTile(tile, portrait);
   $("introductionLabel").textContent = beat.speaker === "auto" ? "AUTO" : beat.speaker.toUpperCase();
   $("introductionHeading").textContent = beat.heading;
   $("introductionText").textContent = beat.text;
@@ -1301,14 +1342,7 @@ async function settleActiveAttempt() {
   if (controller?.listening) await controller.restart().catch(() => {});
   controller = null;
   result = null;
-  wordAudio.pause();
-  wordAudio.currentTime = 0;
-  if (activeWordUsesGeneratedVoice) {
-    const { stopVocabularyVoice } = await import("./speech/local-kokoro-tts.js");
-    stopVocabularyVoice();
-  }
-  activeWordButton = null;
-  activeWordUsesGeneratedVoice = false;
+  await stopActiveWordAudio();
   $("storyOverlay").hidden = true;
   $("corruptionPause").hidden = true;
   $("readingCompanion").inert = false;

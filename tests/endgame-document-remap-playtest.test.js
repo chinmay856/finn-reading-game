@@ -248,6 +248,7 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(runtime, /role="dialog"/u);
   assert.match(runtime, /aria-modal=/u);
   assert.match(runtime, /popupAccessibleCloseName/u);
+  assert.match(runtime, /class="primary-button narrative-next"/u);
   assert.match(runtime, /class="solitaire-techno-canvas"/u);
   assert.match(runtime, /context\.drawImage\(\s*celebrationArtwork/u);
   assert.match(runtime, /TECHNO_CASCADE_ANIMATIONS/u);
@@ -275,6 +276,8 @@ test("route exposes keyboard and touch alternatives, accessible dialogs, reduced
   assert.match(styles, /prefers-reduced-motion: reduce/u);
   assert.match(styles, /\.saved-explanation-panel[\s\S]+-webkit-line-clamp:\s*5/u);
   assert.match(styles, /\.auto-popup[\s\S]+width:\s*820px[\s\S]+height:\s*460px/u);
+  assert.match(styles, /\.auto-popup\[role="dialog"\] \.popup-close:not\(:disabled\)/u);
+  assert.match(styles, /@keyframes endgame-next-pulse/u);
   assert.match(content, /\/pets\/techno\/spritesheet\.webp/u);
   assert.doesNotMatch(content, /techno-progress-push|techno-celebrate-clean|techno-tail-wag/u);
   assert.deepEqual(ENDGAME_BEATS, [

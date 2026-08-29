@@ -317,6 +317,12 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   font: 900 26px/1 Arial, sans-serif;
 }
 .popup-close:disabled { opacity: .72; cursor: wait; filter: grayscale(.35); }
+.auto-popup[role="dialog"] .popup-close:not(:disabled),
+.story-dialog .narrative-next:not(:disabled) { animation:endgame-next-pulse 1.35s ease-in-out infinite; }
+@keyframes endgame-next-pulse {
+  0%,100% { box-shadow:0 0 0 0 #ffe16600; filter:brightness(1); }
+  50% { box-shadow:0 0 0 5px #ffe166c7; filter:brightness(1.08); }
+}
 .auto-popup-body { height: calc(100% - 46px); display: grid; grid-template-columns: 320px 1fr; align-items: center; gap: 28px; padding: 22px 28px 22px 22px; }
 .auto-popup-body img { width: 320px; height: 320px; object-fit: cover; border: 3px solid #7b898f; background: #fff; }
 .auto-popup-body p { margin: 0; font: 24px/1.34 "Comic Sans MS", "Trebuchet MS", sans-serif; }
@@ -515,4 +521,6 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
   .solitaire-techno-canvas { display: none; }
   .static-celebration-techno { display: block; }
+  .auto-popup[role="dialog"] .popup-close:not(:disabled),
+  .story-dialog .narrative-next:not(:disabled) { animation:none; outline:4px solid #ffe166; outline-offset:2px; }
 }

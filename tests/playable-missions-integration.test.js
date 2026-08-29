@@ -46,7 +46,8 @@ test("playable wrapper preserves optional Sherpa and Whisper-final architecture"
 });
 
 test("comprehension, troubleshooting retention, retry, skip, and reflection controls are explicit", () => {
-  assert.match(html, /QUICK CHECK · USE THE PASSAGE/u);
+  assert.match(html, /<small>QUICK CHECK<\/small>/u);
+  assert.doesNotMatch(html, /QUICK CHECK · USE THE PASSAGE/u);
   assert.match(html, /id="retryReading"/u);
   assert.match(html, /id="retainTroubleshooting"/u);
   assert.match(html, /id="deleteTroubleshooting"/u);
@@ -173,6 +174,32 @@ test("mission dialogue rotates canonical portraits and does not name the player"
   assert.doesNotMatch(`${html}\n${script}`, /\bFinn\b/u);
   assert.doesNotMatch(`${html}\n${script}\n${walkthroughs}`, /\bOtto\b/u);
   assert.match(`${html}\n${script}\n${walkthroughs}`, /\bAuto\b/u);
+  assert.match(script, /function setPortraitTile\(tile, portrait\)/u);
+  assert.match(script, /image\.loading = "eager"/u);
+  assert.match(script, /image\.remove\(\)/u);
+  assert.match(script, /tile\.append\(image\)/u);
+  assert.match(css, /\.speaker-tile > img[^}]+object-fit:cover/u);
+});
+
+test("any other meaningful interaction stops active vocabulary playback", () => {
+  assert.match(script, /async function stopActiveWordAudio/u);
+  assert.match(script, /document\.addEventListener\("pointerdown"/u);
+  assert.match(script, /document\.addEventListener\("click"/u);
+  assert.match(script, /document\.addEventListener\("input"/u);
+  assert.match(script, /stopVocabularyVoice\(\)/u);
+  assert.ok(script.includes('await stopActiveWordAudio(`Stopped ${entry.word}.`);'));
+});
+
+test("new and retried passages reset to the top and stay scroll-locked until reading starts", () => {
+  assert.match(script, /passageView\.dataset\.reading = "false";\s*passageView\.scrollTop = 0;/u);
+  assert.match(script, /async function startReading\(\)[\s\S]+passageView\.scrollTop = 0;\s*passageView\.dataset\.reading = "true";/u);
+  assert.match(css, /\.passage\[data-reading="true"\]\s*\{\s*overflow-y:auto;/u);
+});
+
+test("the live Sherpa guide uses the playtested 110 WPM expectation", () => {
+  assert.match(walkthroughs, /defaultWpm:\s*110/u);
+  assert.match(script, /defaultWpm \?\? 110/u);
+  assert.doesNotMatch(walkthroughs, /defaultWpm:\s*185/u);
 });
 
 test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {
@@ -232,6 +259,17 @@ test("desktop chrome uses the reviewed generated Computer, Documents, and Trash 
   assert.match(css, /recovery-icon-documents-v1\.png/u);
   assert.match(css, /recovery-icon-trash-v2\.png/u);
   assert.doesNotMatch(css, /shortcut-icon\.computer::before/u);
+  assert.match(css, /\.desktop-shortcuts > a:hover,[\s\S]+\.desktop-shortcuts > button:hover/u);
+  assert.match(css, /background:#113f6466/u);
+});
+
+test("only required narrative controls receive the subtle next-action pulse", () => {
+  assert.match(html, /id="storyContinue" class="narrative-next"/u);
+  assert.match(html, /id="corruptionContinue" class="narrative-next"/u);
+  assert.match(html, /id="introductionContinue" class="narrative-next"/u);
+  assert.doesNotMatch(html, /id="startReading" class="narrative-next"/u);
+  assert.doesNotMatch(html, /id="finishReading" class="narrative-next"/u);
+  assert.match(css, /@keyframes narrative-next-pulse/u);
 });
 
 test("source introductions, Kokoro vocabulary help, and the Chinmay-then-Amy teaching handoff are explicit", () => {

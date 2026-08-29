@@ -56,6 +56,15 @@ test("keeps compact dotted initials such as H. G. Wells together", () => {
   ]);
 });
 
+test("keeps numbered-list markers attached to the text they introduce", () => {
+  const paragraph = "1. The number. 2. The integrity. 3. The skill of the witnesses.";
+  assert.deepEqual(derivePassageDisplayLines({ paragraphs: [paragraph] }), [
+    "1. The number.",
+    "2. The integrity.",
+    "3. The skill of the witnesses.",
+  ]);
+});
+
 test("all campaign passages use complete sentences without mid-punctuation display breaks", () => {
   const passages = Object.values(PLAYABLE_WALKTHROUGHS).flatMap(({ passages: sitePassages }) => sitePassages);
   assert.equal(passages.length, 92);

@@ -204,7 +204,7 @@ function storyDialogMarkup(entry, { action, buttonLabel, variant = "" } = {}) {
       <small>${escapeHtml(entry.speaker)}</small>
       <h1 id="storyDialogHeading">${escapeHtml(entry.heading)}</h1>
       <p>${escapeHtml(entry.text)}</p>
-      <button class="primary-button" data-action="${action}" type="button">${escapeHtml(buttonLabel)}</button>
+      <button class="primary-button narrative-next" data-action="${action}" type="button">${escapeHtml(buttonLabel)}</button>
     </div>
   </section>`;
 }
