@@ -1,7 +1,13 @@
 const SPEECH_EXCERPTS = Object.freeze({
   "wikiwhy-03/diligence": "Some few are to be read wholly, and with diligence and attention.",
+  "wikiwhy-04/vaporous": "The candle's fuel enters a vaporous condition before it burns.",
+  "wikiwhy-04/condensed": "When the vapour cools, it becomes condensed into a liquid or solid.",
+  "wikiwhy-04/combustible": "The candle releases a stream of combustible matter.",
   "wikiwhy-05/abstractions": "These things are mere abstractions.",
   "wikiwhy-05/misconception": "The geometry they taught you at school is founded on a misconception.",
+  "wikiwhy-06/induction": "Two observed apples provide a small basis for induction.",
+  "wikiwhy-06/generalise": "From those observations, you generalise that hard, green apples are sour.",
+  "wikiwhy-06/syllogism": "Logicians call this train of reasoning a syllogism.",
   "wikiwhy-08/servile": "The law of England, on the subject of the press, is as servile to this day as it was in the time of the Tudors.",
   "wikiwhy-08/propriety": "During some temporary panic, fear of insurrection drives ministers and judges from their propriety.",
   "threadit-08/responsibility": "Twenty-three of the fathers acted upon the question under their official responsibility and their oaths.",

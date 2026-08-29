@@ -54,7 +54,7 @@ test("campaign vocabulary can use a concise instructional excerpt without rewrit
 });
 
 test("every maintained speech excerpt is concise, complete, and still contains its vocabulary word", () => {
-  assert.equal(Object.keys(CAMPAIGN_VOCABULARY_SPEECH_EXCERPTS).length, 28);
+  assert.equal(Object.keys(CAMPAIGN_VOCABULARY_SPEECH_EXCERPTS).length, 34);
   for (const [key, excerpt] of Object.entries(CAMPAIGN_VOCABULARY_SPEECH_EXCERPTS)) {
     const word = key.slice(key.indexOf("/") + 1);
     assert.ok(excerpt.toLowerCase().includes(word), `${key}: speech excerpt should contain its vocabulary word`);

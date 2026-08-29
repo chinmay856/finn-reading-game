@@ -114,41 +114,37 @@ Studies serve for delight, for ornament, and for ability. Their chief use for de
 
 - **contradict** — Definition: To state the opposite of a claim or show that it is wrong. Used in a sentence: Read not to contradict and confute, nor to believe and take for granted, nor to find talk and discourse, but to weigh and consider.
 
-### 4. Of Our Spiritual Strivings
+### 4. The Chemical History of a Candle
 
 **Canonical ID:** `wikiwhy-04`  
-**Form:** literary essay and memoir  
-**Spoken word count:** 254  
-**Source:** [Of Our Spiritual Strivings](https://www.gutenberg.org/ebooks/408)  
+**Form:** science lecture  
+**Spoken word count:** 298  
+**Source:** [The Chemical History of a Candle](https://www.gutenberg.org/ebooks/14474)  
 **Rights:** Public domain in the USA per the linked Project Gutenberg item record.  
-**Selection note:** Frozen selection begins near source-text line 118; final chapter/section label is stated in the title above.
+**Selection note:** Emergency spoken-performance safety replacement copied from the reviewed `searchish-02` record. Exact excerpt begins at line 458 of the frozen local Project Gutenberg text snapshot `docs/content/sources/gutenberg/14474.txt`.
 
 **Spoken passage**
 
-An excerpt from “Of Our Spiritual Strivings” by W. E. B. Du Bois.
+An excerpt from “The Chemical History of a Candle” by Michael Faraday.
 
-O water, voice of my heart, crying in the sand, All night long crying with a mournful cry, As I lie and listen, and cannot understand The voice of my heart in my side or the voice of the sea, O water, crying for rest, is it I, is it I? All night long the water is crying to me.
-
-Unresting water, there shall never be rest Till the last moon droop and the last tide fail, And the fire of the end begin to burn in the west; And the heart shall be weary and wonder and cry like the sea, All life long crying without avail, As the water all night long is crying to me.
-
-Between me and the other world there is ever an unasked question: unasked by some through feelings of delicacy; by others through the difficulty of rightly framing it. All, nevertheless, flutter round it. They approach me in a half-hesitant sort of way, eye me curiously or compassionately, and then, instead of saying directly, How does it feel to be a problem? they say, I know an excellent colored man in my town; or, I fought at Mechanicsville; or, Do not these Southern outrages make your blood boil? At these I smile, or am interested, or reduce the boiling to a simmer, as the occasion may require. To the real question, How does it feel to be a problem? I answer seldom a word.
+There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel. In order that you may understand that, let me shew you a very pretty, but very common-place experiment. If you blow a candle out cleverly, you will see the vapour rise from it. You have, I know, often smelt the vapour of a blown-out candle—and a very bad smell it is; but if you blow it out cleverly, you will be able to see pretty well the vapour into which this solid matter is transformed. I will blow out one of these candles in such a way as not to disturb the air around it, by the continuing action of my breath; and now, if I hold a lighted taper two or three inches from the wick, you will observe a train of fire going through the air till it reaches the candle. I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed. Now, as to the shape or form of the flame. It concerns us much to know about the condition which the matter of the candle finally assumes at the top of the wick—where you have such beauty and brightness as nothing but combustion or flame can produce. You have the glittering beauty of gold and silver, and the still higher lustre of jewels, like the ruby and diamond; but none of these rival the brilliancy and beauty of flame. What diamond can shine like flame?
 
 **Comprehension check**
 
-- Prompt: What does the veil chiefly represent?
-- Correct answer: A barrier shaping how Black Americans are seen and experience society.
-- Distractor A: The most confident wording is automatically the most accurate.
-- Distractor B: Sources and qualifications only make a useful claim less trustworthy.
-- Correct feedback: Yes. That answer matches the passage’s stated details and reasoning.
-- Try-again feedback: Look again for the sentence or exchange that most directly addresses the question.
+- Prompt: What does Faraday's relighting demonstration reveal about candle fuel?
+- Correct answer: The heated fuel becomes a combustible vapour that can carry flame back to the wick.
+- Distractor A: The solid wax burns without first changing condition.
+- Distractor B: A diamond gives the candle enough heat to relight itself.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
 
 **Vocabulary packet**
 
-- **mournful** — Definition: Expressing or causing sorrow. Used in a sentence: O water, voice of my heart, crying in the sand, All night long crying with a mournful cry, As I lie and listen, and cannot understand The voice of my heart in my side or the voice of the sea, O water, crying for rest, is it I, is it I?
+- **vaporous** — Definition: Existing in the form of vapour or gas. Used in a sentence: There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel.
 
-- **compassionately** — Definition: In a way that shows sympathy for another person's suffering. Used in a sentence: They approach me in a half-hesitant sort of way, eye me curiously or compassionately, and then, instead of saying directly, How does it feel to be a problem?
+- **condensed** — Definition: Changed from a gas into a liquid or solid. Used in a sentence: I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.
 
-- **nevertheless** — Definition: Despite what has just been said or happened. Used in a sentence: All, nevertheless, flutter round it.
+- **combustible** — Definition: Able to catch fire and burn. Used in a sentence: I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed.
 
 ### 5. The Time Machine, Chapter One
 
@@ -190,37 +186,37 @@ The Time Traveller (for so it will be convenient to speak of him) was expounding
 
 - **misconception** — Definition: An incorrect idea or understanding. Used in a sentence: The geometry, for instance, they taught you at school is founded on a misconception.”
 
-### 6. Narrative of the Life of Frederick Douglass, Chapter Six
+### 6. The Method of Scientific Investigation
 
 **Canonical ID:** `wikiwhy-06`  
-**Form:** memoir  
-**Spoken word count:** 300  
-**Source:** [Narrative of the Life of Frederick Douglass, Chapter Six](https://www.gutenberg.org/ebooks/23)  
+**Form:** science lecture  
+**Spoken word count:** 317  
+**Source:** [The Method of Scientific Investigation](https://www.gutenberg.org/ebooks/1315)  
 **Rights:** Public domain in the USA per the linked Project Gutenberg item record.  
-**Selection note:** Frozen selection begins near source-text line 1358; final chapter/section label is stated in the title above.
+**Selection note:** Emergency spoken-performance safety replacement copied from the reviewed `searchish-10` record. Exact excerpt begins at line 3332 of the frozen local Project Gutenberg text snapshot `docs/content/sources/gutenberg/1315.txt`.
 
 **Spoken passage**
 
-An excerpt from “Narrative of the Life of Frederick Douglass, Chapter Six” by Frederick Douglass.
+An excerpt from “The Method of Scientific Investigation” by T. H. Huxley.
 
-Very soon after I went to live with Mr. and Mrs. Auld, she very kindly commenced to teach me the A, B, C. After I had learned this, she assisted me in learning to spell words of three or four letters. Just at this point of my progress, Mr. Auld found out what was going on, and at once forbade Mrs. Auld to instruct me further, telling her, among other things, that it was unlawful, as well as unsafe, to teach a slave to read. To use his own words, further, he said, "If you give a nigger an inch, he will take an ell. A nigger should know nothing but to obey his master--to do as he is told to do. Learning would spoil the best nigger in the world. Now," said he, "if you teach that nigger (speaking of myself) how to read, there would be no keeping him. It would forever unfit him to be a slave. He would at once become unmanageable, and of no value to his master. As to himself, it could do him no good, but a great deal of harm. It would make him discontented and unhappy." These words sank deep into my heart, stirred up sentiments within that lay slumbering, and called into existence an entirely new train of thought. It was a new and special revelation, explaining dark and mysterious things, with which my youthful understanding had struggled, but struggled in vain. I now understood what had been to me a most perplexing difficulty--to wit, the white man's power to enslave the black man. It was a grand achievement, and I prized it highly. From that moment, I understood the pathway from slavery to freedom.
+A very trivial circumstance will serve to exemplify this. Suppose you go into a fruiterer's shop, wanting an apple,--you take up one, and, on biting it, you find it is sour; you look at it, and see that it is hard and green. You take up another one, and that too is hard, green, and sour. The shopman offers you a third; but, before biting it, you examine it, and find that it is hard and green, and you immediately say that you will not have it, as it must be sour, like those that you have already tried. Nothing can be more simple than that, you think; but if you will take the trouble to analyse and trace out into its logical elements what has been done by the mind, you will be greatly surprised. In the first place you have performed the operation of induction. You found that, in two experiences, hardness and greenness in apples went together with sourness. It was so in the first case, and it was confirmed by the second. True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness. You found upon that a general law that all hard and green apples are sour; and that, so far as it goes, is a perfect induction. Well, having got your natural law in this way, when you are offered another apple which you find is hard and green, you say, "All hard and green apples are sour; this apple is hard and green, therefore this apple is sour." That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion.
 
 **Comprehension check**
 
-- Prompt: What does Douglass realize about literacy?
-- Correct answer: Learning to read can become a path toward freedom.
-- Distractor A: The most confident wording is automatically the most accurate.
-- Distractor B: Sources and qualifications only make a useful claim less trustworthy.
-- Correct feedback: Yes. That answer matches the passage’s stated details and reasoning.
-- Try-again feedback: Look again for the sentence or exchange that most directly addresses the question.
+- Prompt: How does the apple example move from observation to a conclusion?
+- Correct answer: Repeated observations form a general rule, which is then applied to another apple.
+- Distractor A: The shopman's opinion is accepted without testing any apple.
+- Distractor B: One apple is assumed to represent every possible fruit.
+- Correct feedback: Yes. That answer is directly supported by the passage.
+- Try-again feedback: Not quite. Look for the detail that most directly answers the question.
 
 **Vocabulary packet**
 
-- **enslave** — Definition: To make someone a slave or force that person into servitude. Used in a sentence: I now understood what had been to me a most perplexing difficulty--to wit, the white man's power to enslave the black man.
+- **induction** — Definition: Reasoning from specific observations toward a general rule. Used in a sentence: In the first place you have performed the operation of induction.
 
-- **perplexing** — Definition: Difficult to understand; puzzling. Used in a sentence: I now understood what had been to me a most perplexing difficulty--to wit, the white man's power to enslave the black man.
+- **generalise** — Definition: To form a broad rule from particular examples. Used in a sentence: True, it is a very small basis, but still it is enough to make an induction from; you generalise the facts, and you expect to find sourness in apples where you get hardness and greenness.
 
-- **forbade** — Definition: Ordered that something must not be done. Used in a sentence: Just at this point of my progress, Mr. Auld found out what was going on, and at once forbade Mrs. Auld to instruct me further, telling her, among other things, that it was unlawful, as well as unsafe, to teach a slave to read.
+- **syllogism** — Definition: A structured argument that applies stated premises to reach a conclusion. Used in a sentence: " That train of reasoning is what logicians call a syllogism, and has all its various parts and terms,--its major premiss, its minor premiss and its conclusion.
 
 ### 7. Wikipedia: Revision, Not Revelation
 
