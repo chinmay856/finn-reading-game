@@ -1,5 +1,15 @@
 # Project status
 
+## Public cold-start test pause — 2026-08-28
+
+- Full continuity, multi-tab model, and cold-start stability checks should run
+  against localhost while the remaining August Firebase download quota is
+  reserved for outside laptop playtests.
+- The stability harness now defaults to localhost and fails closed on a public
+  URL unless an intentional run sets `ALLOW_LIVE_COLD_TESTS=1`.
+- Production releases should receive only lightweight live route, header,
+  asset, and browser-console smoke checks until the quota resets.
+
 ## First-run story introduction and clearer mission briefings — 2026-08-27
 
 - New profiles now receive the reviewed four-pop-up story introduction after

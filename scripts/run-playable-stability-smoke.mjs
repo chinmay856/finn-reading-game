@@ -6,7 +6,12 @@ const { chromium } = require(
 );
 
 const target = process.env.FINN_STABILITY_TARGET
-  ?? "https://internet-recovery-98.web.app/playable-missions.html?site=mycorner";
+  ?? "http://127.0.0.1:5173/playable-missions.html?site=mycorner";
+const targetHostname = new URL(target).hostname;
+const targetsLocalhost = targetHostname === "127.0.0.1" || targetHostname === "localhost" || targetHostname === "::1";
+if (!targetsLocalhost && process.env.ALLOW_LIVE_COLD_TESTS !== "1") {
+  throw new Error("Live cold-start stability testing is paused. Use localhost, or set ALLOW_LIVE_COLD_TESTS=1 for an intentional public-host run.");
+}
 const iterations = Math.max(1, Number(process.env.FINN_STABILITY_ITERATIONS) || 3);
 const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const profile = {
