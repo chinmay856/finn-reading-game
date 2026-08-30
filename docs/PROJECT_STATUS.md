@@ -8,7 +8,8 @@
   the viewport to manual control for the rest of that passage. Later guide
   updates no longer pull the player away from the chosen reading position.
 - Restarting or opening another passage restores the normal automatic viewport
-  following behavior.
+  following behavior and presents the new passage at the top before Start
+  Reading becomes relevant. Start Reading itself does not reposition the text.
 
 ## Public cold-start test pause — 2026-08-28
 

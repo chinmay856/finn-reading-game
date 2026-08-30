@@ -95,6 +95,16 @@ function resetPassageScrollMode() {
   $("passage")?.removeAttribute("data-manual-scroll");
 }
 
+function pinPassageViewportToTop() {
+  const passageView = $("passage");
+  passageView.style.scrollBehavior = "auto";
+  passageView.scrollTop = 0;
+  requestAnimationFrame(() => {
+    passageView.scrollTop = 0;
+    passageView.style.removeProperty("scroll-behavior");
+  });
+}
+
 function lockPassageToManualScroll() {
   const passageView = $("passage");
   if (passageView?.dataset.reading !== "true" || passageManualScroll) return;
@@ -663,6 +673,7 @@ function renderPassage() {
   $("startReading").disabled = !modelsPrepared;
   $("finishReading").disabled = true;
   showView("readerView");
+  pinPassageViewportToTop();
   setTechno("idle", "left");
   void buildController();
   if (shouldAutoPrepare && !modelsPrepared) void prepareModels();
@@ -847,7 +858,6 @@ async function prepareModels() {
 async function startReading() {
   const passageView = $("passage");
   resetPassageScrollMode();
-  passageView.scrollTop = 0;
   passageView.dataset.reading = "true";
   $("startReading").disabled = true;
   try {

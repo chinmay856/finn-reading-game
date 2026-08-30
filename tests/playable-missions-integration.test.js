@@ -192,7 +192,11 @@ test("any other meaningful interaction stops active vocabulary playback", () => 
 
 test("new and retried passages reset to the top and stay scroll-locked until reading starts", () => {
   assert.match(script, /passageView\.dataset\.reading = "false";\s*passageView\.scrollTop = 0;/u);
-  assert.match(script, /async function startReading\(\)[\s\S]+passageView\.scrollTop = 0;\s*passageView\.dataset\.reading = "true";/u);
+  assert.match(script, /function pinPassageViewportToTop\(\)[\s\S]+scrollBehavior = "auto";[\s\S]+requestAnimationFrame/u);
+  assert.match(script, /showView\("readerView"\);\s*pinPassageViewportToTop\(\);/u);
+  const startReadingSource = script.slice(script.indexOf("async function startReading"), script.indexOf("function confidenceDetail"));
+  assert.doesNotMatch(startReadingSource, /scrollTop/u);
+  assert.match(startReadingSource, /passageView\.dataset\.reading = "true";/u);
   assert.match(css, /\.passage\[data-reading="true"\]\s*\{\s*overflow-y:auto;/u);
 });
 
