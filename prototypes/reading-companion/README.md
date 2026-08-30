@@ -10,8 +10,15 @@ recognition evidence aligns with the known passage.
 - Live progress and final scoring are separate jobs.
 - The live engine is allowed to produce an ugly, revisable transcript.
 - Hidden word evidence is monotonic; elapsed time alone cannot move it.
-- The visible guide highlights one centered authored line and anticipates 2-4
-  words to cover approximately one second of recognition latency.
+- The visible guide highlights one top-anchored authored line and anticipates
+  2-4 words to cover approximately one second of recognition latency.
+- Early and middle lines use the top anchor while unread text remains; final
+  lines settle naturally near the bottom without artificial trailing space.
+- Forward manual scrolling advances only the visual line at the anchor; hidden
+  speech evidence and final scoring remain unchanged.
+- The recognizer is warmed with a throwaway silent stream before reading starts.
+- Audio is fed every 20 ms by default; decoding still occurs only when the real
+  streaming recognizer reports that a chunk is ready.
 - The same audio can be replayed repeatedly, producing comparable event traces.
 - The tough fixture suite compares natural 154 WPM audio, accelerated 200 and
   250 WPM delivery, a long pause, light noise, and a repeated phrase.
@@ -56,6 +63,9 @@ Use **Run tough fixture suite** for the roughly one-minute comparative run.
 
 ```text
 node --test prototypes/reading-companion/tracker-core.test.js prototypes/reading-companion/fixture-suite.test.js
+node --test prototypes/reading-companion/viewport-policy.test.js
+node --test prototypes/reading-companion/browser-latency-acceptance.test.js
+node prototypes/reading-companion/viewport-policy-benchmark.mjs
 ```
 
 ## Acceptance gate
@@ -64,6 +74,8 @@ Continue with this engine only when the fixture and later consented real-reader
 tests show:
 
 - first useful line evidence in roughly one second;
+- speech-to-first evidence, p95 evidence lag, and maximum evidence lag below
+  1,000 ms in every committed browser fixture;
 - partial revisions frequent enough to avoid multi-second frozen highlighting;
 - monotonic line movement without timer-led drift;
 - final reference coverage comparable to the fixed transcript;

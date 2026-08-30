@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-07-13",
+  "scenario": {
+    "anchorOffset": 18,
+    "lineCount": 7,
+    "viewportHeight": 300
+  },
+  "oldCentered": [
+    {
+      "lineOffsetTop": 30,
+      "topInViewport": 30
+    },
+    {
+      "lineOffsetTop": 96,
+      "topInViewport": 96
+    },
+    {
+      "lineOffsetTop": 162,
+      "topInViewport": 121
+    },
+    {
+      "lineOffsetTop": 228,
+      "topInViewport": 121
+    },
+    {
+      "lineOffsetTop": 294,
+      "topInViewport": 121
+    },
+    {
+      "lineOffsetTop": 360,
+      "topInViewport": 176
+    },
+    {
+      "lineOffsetTop": 426,
+      "topInViewport": 242
+    }
+  ],
+  "topAnchoredWithNaturalEndClamp": [
+    {
+      "lineIndex": 0,
+      "scrollTop": 12,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 1,
+      "scrollTop": 78,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 2,
+      "scrollTop": 144,
+      "topInViewport": 18
+    },
+    {
+      "lineIndex": 3,
+      "scrollTop": 184,
+      "topInViewport": 44
+    },
+    {
+      "lineIndex": 4,
+      "scrollTop": 184,
+      "topInViewport": 110
+    },
+    {
+      "lineIndex": 5,
+      "scrollTop": 184,
+      "topInViewport": 176
+    },
+    {
+      "lineIndex": 6,
+      "scrollTop": 184,
+      "topInViewport": 242
+    }
+  ],
+  "manualForwardScroll": {
+    "confirmedSpeechLineIndex": 0,
+    "viewportLineAtAnchor": 2,
+    "visibleLineIndex": 2,
+    "scoringPositionChanged": false
+  }
+}
