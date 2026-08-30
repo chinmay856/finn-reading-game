@@ -51,7 +51,7 @@ function canonicalDeck(siteId) {
       ...record,
       lines: derivePassageDisplayLines(record),
       sourceIntroductionLineCount,
-      profile: Object.freeze({ guide: Object.freeze({ defaultWpm: 110 }) }),
+      profile: Object.freeze({ guide: Object.freeze({ defaultWpm: 150 }) }),
       comprehension: Object.freeze({
         id: `${record.id}-check`,
         question: record.comprehension.prompt,

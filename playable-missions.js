@@ -748,7 +748,7 @@ async function buildController() {
     retainTroubleshooting: $("retainTroubleshooting").checked,
     streamingRecognizer,
     whisper,
-    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 110,
+    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 150,
   });
   if (modelsPrepared) await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
 }

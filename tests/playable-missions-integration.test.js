@@ -196,9 +196,10 @@ test("new and retried passages reset to the top and stay scroll-locked until rea
   assert.match(css, /\.passage\[data-reading="true"\]\s*\{\s*overflow-y:auto;/u);
 });
 
-test("the live Sherpa guide uses the playtested 110 WPM expectation", () => {
-  assert.match(walkthroughs, /defaultWpm:\s*110/u);
-  assert.match(script, /defaultWpm \?\? 110/u);
+test("the live Sherpa guide uses the playtested 150 WPM expectation", () => {
+  assert.match(walkthroughs, /defaultWpm:\s*150/u);
+  assert.match(script, /defaultWpm \?\? 150/u);
+  assert.doesNotMatch(walkthroughs, /defaultWpm:\s*110/u);
   assert.doesNotMatch(walkthroughs, /defaultWpm:\s*185/u);
 });
 
