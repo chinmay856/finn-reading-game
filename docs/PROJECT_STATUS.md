@@ -1,5 +1,15 @@
 # Project status
 
+## Sticky manual passage scrolling and Sherpa pace rollback — 2026-08-29
+
+- The live Reading Companion guide again uses the prior 185 WPM expectation.
+- Speech evidence continues to advance the active-line highlight and progress
+  bar, but a player scroll with the wheel, touch, keyboard, or scrollbar locks
+  the viewport to manual control for the rest of that passage. Later guide
+  updates no longer pull the player away from the chosen reading position.
+- Restarting or opening another passage restores the normal automatic viewport
+  following behavior.
+
 ## Public cold-start test pause — 2026-08-28
 
 - Full continuity, multi-tab model, and cold-start stability checks should run

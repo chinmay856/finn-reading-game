@@ -73,6 +73,38 @@ let streamingGuideLease = null;
 let saveToastTimer = null;
 let activeWordButton = null;
 let activeWordUsesGeneratedVoice = false;
+let passageManualScroll = false;
+let guideAutoScrolling = false;
+let guideAutoScrollTimer = null;
+
+const MANUAL_SCROLL_KEYS = new Set([
+  "ArrowDown",
+  "ArrowUp",
+  "End",
+  "Home",
+  "PageDown",
+  "PageUp",
+  " ",
+]);
+
+function resetPassageScrollMode() {
+  clearTimeout(guideAutoScrollTimer);
+  guideAutoScrollTimer = null;
+  guideAutoScrolling = false;
+  passageManualScroll = false;
+  $("passage")?.removeAttribute("data-manual-scroll");
+}
+
+function lockPassageToManualScroll() {
+  const passageView = $("passage");
+  if (passageView?.dataset.reading !== "true" || passageManualScroll) return;
+  clearTimeout(guideAutoScrollTimer);
+  guideAutoScrollTimer = null;
+  guideAutoScrolling = false;
+  passageManualScroll = true;
+  passageView.dataset.manualScroll = "true";
+  passageView.scrollTo({ behavior: "auto", top: passageView.scrollTop });
+}
 
 function setPortraitTile(tile, portrait) {
   tile.replaceChildren();
@@ -609,6 +641,7 @@ function renderPassage() {
   const shouldAutoPrepare = sessionStorage.getItem("internet-recovery-voice-warmed-v1") === "1";
   $("companionTitle").textContent = current.title;
   const passageView = $("passage");
+  resetPassageScrollMode();
   passageView.dataset.reading = "false";
   passageView.scrollTop = 0;
   passageView.replaceChildren(...current.lines.map((line, index) => {
@@ -649,7 +682,15 @@ function updateGuide(event) {
     line.classList.toggle("past", index < event.visibleLineIndex);
     line.classList.toggle("active", index === event.visibleLineIndex);
   });
-  lines[event.visibleLineIndex]?.scrollIntoView({ block: "center", behavior: "smooth" });
+  if (!passageManualScroll && lines[event.visibleLineIndex]) {
+    guideAutoScrolling = true;
+    lines[event.visibleLineIndex].scrollIntoView({ block: "center", behavior: "smooth" });
+    clearTimeout(guideAutoScrollTimer);
+    guideAutoScrollTimer = setTimeout(() => {
+      guideAutoScrolling = false;
+      guideAutoScrollTimer = null;
+    }, 750);
+  }
   const percent = event.totalWordCount ? Math.round((event.confirmedWordIndex / event.totalWordCount) * 100) : 0;
   $("guideProgressFill").style.width = `${percent}%`;
   $("guideProgressFill").parentElement.setAttribute("aria-valuenow", String(percent));
@@ -748,7 +789,7 @@ async function buildController() {
     retainTroubleshooting: $("retainTroubleshooting").checked,
     streamingRecognizer,
     whisper,
-    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 150,
+    wordsPerMinute: current.profile?.guide?.defaultWpm ?? 185,
   });
   if (modelsPrepared) await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
 }
@@ -805,6 +846,7 @@ async function prepareModels() {
 
 async function startReading() {
   const passageView = $("passage");
+  resetPassageScrollMode();
   passageView.scrollTop = 0;
   passageView.dataset.reading = "true";
   $("startReading").disabled = true;
@@ -1472,6 +1514,19 @@ function initialize() {
   $("prepareModels").addEventListener("click", prepareModels);
   $("startReading").addEventListener("click", startReading);
   $("finishReading").addEventListener("click", finishReading);
+  const passageView = $("passage");
+  passageView.addEventListener("wheel", lockPassageToManualScroll, { passive: true });
+  passageView.addEventListener("touchmove", lockPassageToManualScroll, { passive: true });
+  passageView.addEventListener("keydown", (event) => {
+    if (MANUAL_SCROLL_KEYS.has(event.key)) lockPassageToManualScroll();
+  });
+  passageView.addEventListener("pointerdown", (event) => {
+    const bounds = passageView.getBoundingClientRect();
+    if (event.clientX >= bounds.right - 18) lockPassageToManualScroll();
+  }, { passive: true });
+  passageView.addEventListener("scroll", () => {
+    if (!guideAutoScrolling) lockPassageToManualScroll();
+  }, { passive: true });
   $("skipReading").addEventListener("click", skipReading);
   $("continueAfterSkip").addEventListener("click", continueAfterSkip);
   $("retryReading").addEventListener("click", retryReading);

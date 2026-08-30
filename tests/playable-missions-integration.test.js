@@ -196,11 +196,24 @@ test("new and retried passages reset to the top and stay scroll-locked until rea
   assert.match(css, /\.passage\[data-reading="true"\]\s*\{\s*overflow-y:auto;/u);
 });
 
-test("the live Sherpa guide uses the playtested 150 WPM expectation", () => {
-  assert.match(walkthroughs, /defaultWpm:\s*150/u);
-  assert.match(script, /defaultWpm \?\? 150/u);
+test("the live Sherpa guide uses the restored 185 WPM expectation", () => {
+  assert.match(walkthroughs, /defaultWpm:\s*185/u);
+  assert.match(script, /defaultWpm \?\? 185/u);
   assert.doesNotMatch(walkthroughs, /defaultWpm:\s*110/u);
-  assert.doesNotMatch(walkthroughs, /defaultWpm:\s*185/u);
+  assert.doesNotMatch(walkthroughs, /defaultWpm:\s*150/u);
+});
+
+test("manual passage scrolling disables viewport jumps without stopping guide updates", () => {
+  assert.match(script, /let passageManualScroll = false;/u);
+  assert.match(script, /function lockPassageToManualScroll\(\)[\s\S]+passageManualScroll = true;/u);
+  assert.match(script, /if \(!passageManualScroll && lines\[event\.visibleLineIndex\]\)[\s\S]+scrollIntoView/u);
+  assert.match(script, /lines\.forEach\(\(line, index\) => \{[\s\S]+line\.classList\.toggle\("active"/u);
+  assert.match(script, /guideProgressFill[\s\S]+aria-valuenow/u);
+  assert.match(script, /passageView\.addEventListener\("wheel", lockPassageToManualScroll/u);
+  assert.match(script, /passageView\.addEventListener\("touchmove", lockPassageToManualScroll/u);
+  assert.match(script, /passageView\.addEventListener\("keydown"[\s\S]+MANUAL_SCROLL_KEYS/u);
+  assert.match(script, /passageView\.addEventListener\("scroll"[\s\S]+!guideAutoScrolling/u);
+  assert.match(script, /function renderPassage\(\)[\s\S]+resetPassageScrollMode\(\);/u);
 });
 
 test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {
