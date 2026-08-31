@@ -37,12 +37,14 @@ test("playable wrapper uses the neutral attempt and mission sequence contracts",
   assert.match(script, /skipMissionPassage/u);
 });
 
-test("playable wrapper preserves optional Sherpa and Whisper-final architecture", () => {
+test("playable wrapper requires Sherpa for normal live guidance while keeping Whisper final", () => {
   assert.match(script, /loadPinnedSherpaRuntime/u);
   assert.match(script, /createSherpaStreamingRecognizer/u);
   assert.match(script, /new LocalWhisperRecognizer/u);
   assert.match(script, /streamingGuide/u);
-  assert.match(script, /streamingGuideOverride == null[\s\S]+globalThis\.crossOriginIsolated === true/u);
+  assert.match(script, /requestedStreamingGuide = streamingGuideOverride !== "0"/u);
+  assert.match(script, /permitCheckpointFallback: !requestedStreamingGuide/u);
+  assert.match(script, /requestedStreamingGuide && !prepared\.streamingAvailable/u);
 });
 
 test("comprehension, troubleshooting retention, retry, skip, and reflection controls are explicit", () => {
@@ -342,14 +344,14 @@ test("reviewed mission art leaves the player unnamed and preserves only the lite
   }
 });
 
-test("stability hardening avoids three-model startup and preserves local-only crash breadcrumbs", () => {
+test("stability hardening avoids duplicate Sherpa heaps and fails visibly instead of silently downgrading", () => {
   assert.match(html, /installClientStabilityMonitor/u);
   assert.match(html, /id="downloadStabilityReport"/u);
   assert.match(script, /acquireExclusiveModelLease/u);
-  assert.match(script, /Another game tab is using the live guide/u);
-  assert.match(script, /recoveredFromUncleanExit/u);
+  assert.match(script, /sherpa-required-unavailable/u);
+  assert.match(script, /showVoiceGuideRecovery/u);
   assert.match(script, /streamingGuideLease\?\.release\(\)/u);
-  assert.match(script, /SHERPA_DOCUMENT_USED_KEY/u);
+  assert.doesNotMatch(script, /SHERPA_DOCUMENT_USED_KEY|sherpaUsedByPriorDocument/u);
   assert.match(script, /navigateToMission/u);
   assert.match(script, /history\.pushState/u);
   assert.match(script, /stabilityMonitor\.report\(\)/u);
@@ -358,6 +360,15 @@ test("stability hardening avoids three-model startup and preserves local-only cr
   assert.match(script, /if \(mission !== preparedMission\)/u);
   assert.doesNotMatch(script, /void import\("\.\/speech\/local-kokoro-tts\.js"\)/u);
   assert.doesNotMatch(script, /function skipReading\(\) \{\s*void controller\?\.close\(\)/u);
+});
+
+test("the required-guide recovery is a nontechnical in-game Amy dialog", () => {
+  assert.match(html, /id="voiceGuideRecovery"[\s\S]+data-speaker="amy"/u);
+  assert.match(html, /THE READING GUIDE NEEDS A RESTART/u);
+  assert.match(html, /Close any other Internet Recovery 98 tabs, then reload this tab/u);
+  assert.match(html, /id="reloadVoiceGuide"[\s\S]*>Reload this tab</u);
+  const recoveryDialog = html.match(/<div id="voiceGuideRecovery"[\s\S]+?<\/div>\s*<\/article>/u)?.[0] ?? "";
+  assert.doesNotMatch(recoveryDialog, /Sherpa|Whisper|Web Lock|checkpoint/iu);
 });
 
 test("Techno reads with the player and celebrates an accepted finished passage", () => {

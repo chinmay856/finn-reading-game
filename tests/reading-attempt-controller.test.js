@@ -8,7 +8,7 @@ const lines = [
   "Eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty.",
 ];
 
-function harness({ finalTranscript = lines.join(" "), streaming = null } = {}) {
+function harness({ finalTranscript = lines.join(" "), permitCheckpointFallback = true, streaming = null } = {}) {
   let now = 1_000;
   const intervals = new Map();
   let nextInterval = 1;
@@ -41,6 +41,7 @@ function harness({ finalTranscript = lines.join(" "), streaming = null } = {}) {
     onResult: (event) => results.push(event),
     onStatus: (event) => statuses.push(event),
     passageId: "passage-test",
+    permitCheckpointFallback,
     setIntervalFn(callback) { const id = nextInterval++; intervals.set(id, callback); return id; },
     streamingRecognizer: streaming,
     whisper,
@@ -139,6 +140,22 @@ test("streaming guide failure falls back to Whisper checkpoints", async () => {
   assert.equal(run.statuses.some(({ phase }) => phase === "whisper-checkpoint-fallback"), true);
   assert.equal(listener, null);
   await run.controller.finish();
+});
+
+test("required streaming guide failure never silently starts Whisper checkpoints", async () => {
+  const streaming = {
+    prepare() { return { warmupMs: 12 }; },
+    subscribe() { return () => {}; },
+    async start() { throw new Error("stream failed"); },
+    async stop() {},
+    async close() {},
+  };
+  const run = harness({ permitCheckpointFallback: false, streaming });
+  const prepared = await run.controller.prepare();
+  assert.equal(prepared.guideMode, "streaming");
+  await assert.rejects(() => run.controller.start(), /stream failed/u);
+  assert.equal(run.statuses.some(({ phase }) => phase === "streaming-guide-failed"), true);
+  assert.equal(run.statuses.some(({ phase }) => phase === "whisper-checkpoint-fallback"), false);
 });
 
 test("streaming partials emit neutral guide events but final Whisper remains authoritative", async () => {

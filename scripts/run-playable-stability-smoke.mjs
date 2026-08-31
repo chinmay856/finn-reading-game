@@ -83,6 +83,20 @@ async function startMission(page, label) {
   return { label, memory, report, status };
 }
 
+async function startBlockedMission(page, label) {
+  await page.goto(target, { waitUntil: "domcontentloaded", timeout: 120_000 });
+  const startRecovery = page.getByRole("button", { name: "Start recovery" });
+  await startRecovery.waitFor({ state: "visible", timeout: 30_000 });
+  await startRecovery.click();
+  await page.locator("#voiceGuideRecovery:not([hidden])").waitFor({ state: "visible", timeout: 60_000 });
+  return {
+    button: await page.locator("#reloadVoiceGuide").innerText(),
+    heading: await page.locator("#voiceGuideRecoveryHeading").innerText(),
+    label,
+    text: await page.locator("#voiceGuideRecoveryText").innerText(),
+  };
+}
+
 async function switchMissionWithoutReload(page, label) {
   await page.locator("#missionView [data-open-launcher]").click();
   await page.locator("#launcherView:not([hidden])").waitFor({ state: "visible", timeout: 10_000 });
@@ -153,20 +167,17 @@ try {
   // reading runtime. This still exercises overlapping tabs and the Sherpa Web
   // Lock, without making a clean smoke run download two Whisper checkpoints at
   // once and mistake network contention for a renderer-stability failure.
-  const parallel = [
-    await startMission(first, "parallel-a"),
-    await startMission(second, "parallel-b"),
-  ];
-
-  const liveGuideCount = parallel.filter(({ status }) => /live guide on/iu.test(status)).length;
-  const fallbackCount = parallel.filter(({ status }) => /Whisper/iu.test(status)).length;
-  if (liveGuideCount > 1) failures.push(`parallel: expected at most one Sherpa tab, found ${liveGuideCount}`);
-  if (liveGuideCount + fallbackCount !== 2) failures.push("parallel: both tabs did not reach a ready voice state");
-
-  const primaryIndex = parallel.findIndex(({ status }) => /live guide on/iu.test(status));
-  const primary = primaryIndex === 1 ? second : first;
-  const secondary = primary === first ? second : first;
-  const primaryResult = parallel[primaryIndex < 0 ? 0 : primaryIndex];
+  const primary = first;
+  const secondary = second;
+  const primaryResult = await startMission(primary, "parallel-a");
+  const blockedSecondary = await startBlockedMission(secondary, "parallel-b");
+  if (!/reading guide on/iu.test(primaryResult.status)) {
+    failures.push(`parallel: primary tab did not start the live guide: ${primaryResult.status}`);
+  }
+  if (!/reload this tab/iu.test(blockedSecondary.button)
+    || !/close any other Internet Recovery 98 tabs/iu.test(blockedSecondary.text)) {
+    failures.push("parallel: secondary tab did not receive the in-game reload instruction");
+  }
   const readingAttempt = await completeSyntheticReadingAttempt(primary);
 
   await secondary.close();
@@ -182,8 +193,8 @@ try {
   }
 
   const afterReload = await startMission(primary, "forced-reload");
-  if (!/Whisper/iu.test(afterReload.status)) {
-    failures.push(`forced-reload: expected memory-safe Whisper fallback, saw ${afterReload.status}`);
+  if (!/reading guide on/iu.test(afterReload.status)) {
+    failures.push(`forced-reload: expected the live reading guide, saw ${afterReload.status}`);
   }
 
   const missionRoutes = await exerciseAllMissionRoutes(primary);
@@ -194,7 +205,7 @@ try {
   const summary = {
     failures,
     iterations,
-    parallel: parallel.map(({ label, memory, status }) => ({ label, memory, status })),
+    parallel: [{ label: primaryResult.label, memory: primaryResult.memory, status: primaryResult.status }, blockedSecondary],
     repeated: repeated.map(({ label, memory, status }) => ({ label, memory, status })),
     afterReload: { memory: afterReload.memory, status: afterReload.status },
     missionRoutes,

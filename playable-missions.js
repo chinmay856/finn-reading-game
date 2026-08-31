@@ -43,17 +43,13 @@ const LAUNCHER_SITE_ORDER = Object.freeze([
 ]);
 const SAVE_STORE_KEY = "internet-recovery-save-files-v1";
 const ENDGAME_STORE_KEY = "internet-recovery-endgame-playtest-v3";
-const SHERPA_DOCUMENT_USED_KEY = "internet-recovery-sherpa-document-used-v1";
 const INTRODUCTION_VERSION = 1;
 const requestedSiteId = new URLSearchParams(location.search).get("site");
 let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
   ? getPlayableWalkthrough(requestedSiteId)
   : null;
 const streamingGuideOverride = new URLSearchParams(location.search).get("streamingGuide");
-const sherpaUsedByPriorDocument = sessionStorage.getItem(SHERPA_DOCUMENT_USED_KEY) === "1";
-const requestedStreamingGuide = !stabilityMonitor.recoveredFromUncleanExit && !sherpaUsedByPriorDocument && (streamingGuideOverride == null
-  ? globalThis.crossOriginIsolated === true
-  : streamingGuideOverride === "1");
+const requestedStreamingGuide = streamingGuideOverride !== "0";
 let replayRequested = new URLSearchParams(location.search).get("replay") === "1";
 const whisper = new LocalWhisperRecognizer({ onProgress: updateOpeningModelProgress });
 const wordAudio = new Audio();
@@ -75,6 +71,7 @@ let activeWordButton = null;
 let activeWordUsesGeneratedVoice = false;
 let passageManualScroll = false;
 let lastGuideVisibleLineIndex = -1;
+let voiceGuideRecoveryVisible = false;
 
 const MANUAL_SCROLL_KEYS = new Set([
   "ArrowDown",
@@ -701,21 +698,32 @@ function updateModelStatus(event) {
   const labels = {
     "preparing-whisper": "Loading the final local voice check…",
     "whisper-ready": "Final local voice check ready",
-    "preparing-streaming-guide": "Preparing the optional live guide…",
-    "streaming-guide-ready": "Live guide ready; Whisper remains final",
+    "preparing-streaming-guide": "Preparing the live reading guide…",
+    "streaming-guide-ready": "Live reading guide ready",
     "whisper-failed": "The final voice model could not load",
   };
-  $("modelStatus").textContent = labels[event.phase] ?? event.phase.replaceAll("-", " ");
+  if (event.phase === "ready") {
+    $("modelStatus").textContent = event.guideMode === "streaming"
+      ? "Local voice models ready · reading guide on"
+      : "Local voice model ready · diagnostic checkpoint mode";
+    $("diagnosticStatus").textContent = event.guideMode === "streaming"
+      ? "Voice guide: Sherpa streaming"
+      : "Voice guide: Whisper checkpoints";
+    return;
+  }
+  $("modelStatus").textContent = labels[event.phase] ?? "Preparing the local voice guide…";
 }
 
 function updateAttemptStatus(event) {
   const labels = {
     "requesting-microphone": "Waiting for microphone permission…",
-    listening: "Listening. Finish now is always available.",
+    listening: event.guideMode === "streaming"
+      ? "Listening. The reading guide is following along."
+      : "Listening in diagnostic checkpoint mode.",
     "auto-finish-armed": "End of passage heard. Finishing in about five seconds unless you finish now.",
     finalizing: "Checking this reading locally…",
     "whisper-checkpoint-fallback": "Live guide is using local Whisper checkpoints.",
-    "streaming-guide-failed": "The live guide paused; local Whisper checkpoints are continuing.",
+    "streaming-guide-failed": "The reading guide stopped. Please reload this tab.",
     "microphone-unavailable": "The microphone did not start. Check permission and try again.",
     "diagnostic-save-failed": "Reading complete. The optional troubleshooting copy could not be saved.",
   };
@@ -724,6 +732,29 @@ function updateAttemptStatus(event) {
   if (event.phase === "listening") playTechnoAction("file-search", "left", "idle");
   if (event.phase === "auto-finish-armed" || event.phase === "finalizing") setTechno("review", "left");
   if (event.phase === "microphone-unavailable") setTechno("failed", "left");
+  if (event.phase === "streaming-guide-failed" && requestedStreamingGuide) {
+    queueMicrotask(() => void showVoiceGuideRecovery());
+  }
+}
+
+function requiredVoiceGuideError(reason, cause = null) {
+  const error = new Error("The live reading guide is unavailable.", cause ? { cause } : undefined);
+  error.name = "RequiredVoiceGuideError";
+  error.reason = reason;
+  return error;
+}
+
+async function showVoiceGuideRecovery() {
+  if (voiceGuideRecoveryVisible) return;
+  voiceGuideRecoveryVisible = true;
+  if (controller?.listening) await controller.restart().catch(() => {});
+  $("startReading").disabled = true;
+  $("finishReading").disabled = true;
+  $("readingCompanion").inert = true;
+  setPortraitTile($("voiceGuideRecoverySpeaker"), PORTRAITS["amy-skeptical"]);
+  $("voiceGuideRecovery").hidden = false;
+  setTechno("failed", "left");
+  $("reloadVoiceGuide").focus();
 }
 
 async function buildStreamingRecognizer() {
@@ -740,9 +771,8 @@ async function buildStreamingRecognizer() {
     stabilityMonitor.markStage("sherpa-lease-check");
     streamingGuideLease ??= await acquireExclusiveModelLease({ runtime: globalThis });
     if (!streamingGuideLease.acquired) {
-      stabilityMonitor.record("sherpa-fallback", { reason: streamingGuideLease.reason });
-      $("modelStatus").textContent = "Another game tab is using the live guide · Whisper fallback ready";
-      return null;
+      stabilityMonitor.record("sherpa-required-unavailable", { reason: streamingGuideLease.reason });
+      throw requiredVoiceGuideError(streamingGuideLease.reason);
     }
     try {
       stabilityMonitor.markStage("sherpa-loading");
@@ -753,14 +783,12 @@ async function buildStreamingRecognizer() {
         },
         onStatus(message) { $("modelStatus").textContent = String(message || "Loading live guide…"); },
       });
-      sessionStorage.setItem(SHERPA_DOCUMENT_USED_KEY, "1");
       stabilityMonitor.markStage("sherpa-ready");
     } catch (error) {
       streamingGuideLease.release();
       streamingGuideLease = null;
-      stabilityMonitor.record("sherpa-fallback", { error: error.name, reason: "load-failed" });
-      $("modelStatus").textContent = `Live guide unavailable; Whisper fallback ready (${error.message})`;
-      return null;
+      stabilityMonitor.record("sherpa-required-unavailable", { error: error.name, reason: "load-failed" });
+      throw requiredVoiceGuideError("load-failed", error);
     }
   }
   const gate = resolveStreamingGuideGate({
@@ -770,10 +798,14 @@ async function buildStreamingRecognizer() {
     streamingPcmAvailable: supportsStreamingPcm(window),
     sherpaRuntimeAvailable: sherpaStreamingRuntimeAvailable(globalThis),
   });
-  $("readerStatus").textContent = streamingGuideGateMessage(gate);
+  $("diagnosticStatus").textContent = streamingGuideGateMessage(gate);
+  $("readerStatus").textContent = gate.enabled
+    ? "Local voice guide ready."
+    : "Diagnostic voice mode ready.";
   if (gate.enabled) return createSherpaStreamingRecognizer({ runtime: globalThis });
   streamingGuideLease?.release();
   streamingGuideLease = null;
+  if (requestedStreamingGuide) throw requiredVoiceGuideError(gate.reason);
   return null;
 }
 
@@ -787,6 +819,7 @@ async function buildController() {
     onResult: showResult,
     onStatus: updateAttemptStatus,
     passageId: current.id,
+    permitCheckpointFallback: !requestedStreamingGuide,
     retainTroubleshooting: $("retainTroubleshooting").checked,
     streamingRecognizer,
     whisper,
@@ -813,7 +846,10 @@ async function prepareModels() {
         return;
       }
       await buildController();
-      await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
+      const prepared = await controller.prepare({ preferStreaming: Boolean(streamingRecognizer) });
+      if (requestedStreamingGuide && !prepared.streamingAvailable) {
+        throw requiredVoiceGuideError("streaming-prepare-failed");
+      }
       if (mission !== preparedMission) {
         modelPreparationPromise = null;
         return;
@@ -824,7 +860,7 @@ async function prepareModels() {
         site: preparedSiteId,
       });
       $("modelProgress").value = 100;
-      $("modelStatus").textContent = streamingRecognizer ? "Local models ready · live guide on" : "Local Whisper ready · checkpoint guide";
+      $("modelStatus").textContent = streamingRecognizer ? "Local voice models ready · reading guide on" : "Local voice model ready · diagnostic checkpoint mode";
       $("prepareModels").hidden = true;
       $("startReading").disabled = false;
       $("readerStatus").textContent = "Ready when you are.";
@@ -835,9 +871,17 @@ async function prepareModels() {
         modelPreparationPromise = null;
         return;
       }
-      $("prepareModels").disabled = false;
-      $("prepareModels").textContent = "Retry local model";
-      $("readerStatus").textContent = `The local voice model did not load: ${error.message}`;
+      if (requestedStreamingGuide) {
+        $("prepareModels").disabled = true;
+        $("prepareModels").textContent = "Reload to reconnect";
+        $("modelStatus").textContent = "The reading guide needs a restart";
+        $("readerStatus").textContent = "Close other game tabs, then reload this tab.";
+        void showVoiceGuideRecovery();
+      } else {
+        $("prepareModels").disabled = false;
+        $("prepareModels").textContent = "Retry local model";
+        $("readerStatus").textContent = `The local voice model did not load: ${error.message}`;
+      }
       setTechno("failed", "left");
       modelPreparationPromise = null;
     }
@@ -857,8 +901,12 @@ async function startReading() {
     playTechnoAction("file-search", "left", "idle");
   } catch (error) {
     stabilityMonitor.record("reading-start-failed", { error: error.name, site: mission.id });
-    $("startReading").disabled = false;
     passageView.dataset.reading = "false";
+    if (requestedStreamingGuide && error.name === "RequiredVoiceGuideError") {
+      void showVoiceGuideRecovery();
+      return;
+    }
+    $("startReading").disabled = false;
   }
 }
 
@@ -1509,7 +1557,7 @@ function initialize() {
     openProfileGate({ clearName: true });
   }
   if (stabilityMonitor.recoveredFromUncleanExit) {
-    queueMicrotask(() => showSaveToast("Recovered safely · live guide paused for this session."));
+    queueMicrotask(() => showSaveToast("Recovered safely · reconnecting the voice guide."));
   }
   $("prepareModels").addEventListener("click", prepareModels);
   $("startReading").addEventListener("click", startReading);
@@ -1539,6 +1587,7 @@ function initialize() {
     await deleteLatestDiagnosticRun();
     $("diagnosticStatus").textContent = "Latest troubleshooting copy deleted.";
   });
+  $("reloadVoiceGuide").addEventListener("click", () => location.reload());
   addEventListener("popstate", () => {
     const query = new URLSearchParams(location.search);
     const siteId = query.get("site");

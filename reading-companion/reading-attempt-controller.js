@@ -56,6 +56,7 @@ export class ReadingAttemptController {
     onResult = noop,
     onStatus = noop,
     passageId,
+    permitCheckpointFallback = true,
     retainTroubleshooting = false,
     setIntervalFn = globalThis.setInterval.bind(globalThis),
     streamingRecognizer = null,
@@ -79,6 +80,7 @@ export class ReadingAttemptController {
     this.onResult = onResult;
     this.onStatus = onStatus;
     this.passageId = String(passageId);
+    this.permitCheckpointFallback = Boolean(permitCheckpointFallback);
     this.retainTroubleshooting = Boolean(retainTroubleshooting);
     this.referenceText = this.lines.join(" ");
     this.setInterval = setIntervalFn;
@@ -141,6 +143,7 @@ export class ReadingAttemptController {
         this.emitModelStatus("streaming-guide-ready", { warmupMs: prepared.warmupMs ?? null });
       } catch (error) {
         this.emitModelStatus("streaming-guide-unavailable", { message: error.message });
+        if (!this.permitCheckpointFallback) throw error;
       }
     }
 
@@ -225,7 +228,9 @@ export class ReadingAttemptController {
     this.streamingUnsubscribe?.();
     this.streamingUnsubscribe = null;
     this.emitStatus("streaming-guide-failed", { message: error.message });
-    this.startCheckpointFallback({ reason: "streaming-guide-failed" });
+    if (this.permitCheckpointFallback) {
+      this.startCheckpointFallback({ reason: "streaming-guide-failed" });
+    }
     await this.streamingRecognizer?.stop().catch(noop);
   }
 
@@ -259,6 +264,7 @@ export class ReadingAttemptController {
         this.streamingUnsubscribe = null;
         await this.streamingRecognizer.stop().catch(noop);
         this.emitStatus("streaming-guide-failed", { message: error.message });
+        if (!this.permitCheckpointFallback) throw error;
       }
     }
 
@@ -275,7 +281,12 @@ export class ReadingAttemptController {
     this.captureStarted = true;
     this.listening = true;
     this.monitorTimer = this.setInterval(() => this.monitorAutoFinish(), this.monitorIntervalMs);
-    if (!this.streamingActive) this.startCheckpointFallback({ reason: "streaming-guide-unavailable" });
+    if (!this.streamingActive) {
+      if (!this.permitCheckpointFallback) {
+        throw new Error("The required live reading guide did not start.");
+      }
+      this.startCheckpointFallback({ reason: "streaming-guide-unavailable" });
+    }
     this.emitStatus("listening", {
       guideMode: this.streamingActive ? "streaming" : "whisper-checkpoint-fallback",
     });

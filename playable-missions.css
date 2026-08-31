@@ -415,6 +415,7 @@ textarea {
   z-index: 5;
 }
 .game-introduction { z-index:35; }
+.voice-guide-recovery { z-index:38; }
 .game-introduction .story-dialog { width:760px; min-height:270px; }
 .game-introduction .story-dialog p { min-height:116px; }
 .hatched-techno[data-introduction="true"] { z-index:36; }

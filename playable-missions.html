@@ -99,6 +99,12 @@
           <div id="storyOverlay" class="story-overlay" hidden>
             <article class="story-dialog" data-speaker="chinmay"><div id="storySpeaker" class="speaker-tile" aria-hidden="true"></div><div><small id="storyLabel"></small><h2 id="storyHeading"></h2><p id="storyText"></p><button id="storyContinue" class="narrative-next" type="button">Continue</button></div></article>
           </div>
+          <div id="voiceGuideRecovery" class="story-overlay voice-guide-recovery" hidden>
+            <article class="story-dialog" data-speaker="amy" role="alertdialog" aria-modal="true" aria-labelledby="voiceGuideRecoveryHeading" aria-describedby="voiceGuideRecoveryText">
+              <div id="voiceGuideRecoverySpeaker" class="speaker-tile" aria-hidden="true"></div>
+              <div><small>AMY</small><h2 id="voiceGuideRecoveryHeading">THE READING GUIDE NEEDS A RESTART</h2><p id="voiceGuideRecoveryText">The voice guide did not start. Close any other Internet Recovery 98 tabs, then reload this tab. Your saved recovery progress will still be here.</p><button id="reloadVoiceGuide" class="narrative-next" type="button">Reload this tab</button></div>
+            </article>
+          </div>
           <div id="corruptionPause" class="corruption-pause" hidden>
             <button id="corruptionContinue" class="narrative-next" type="button">Oh no—what did Auto do?</button>
           </div>
