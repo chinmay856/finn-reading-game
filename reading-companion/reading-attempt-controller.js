@@ -287,6 +287,7 @@ export class ReadingAttemptController {
       }
       this.startCheckpointFallback({ reason: "streaming-guide-unavailable" });
     }
+    this.emitGuidePosition("attempt-start", this.attemptStartedAt, 0);
     this.emitStatus("listening", {
       guideMode: this.streamingActive ? "streaming" : "whisper-checkpoint-fallback",
     });

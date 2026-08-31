@@ -74,6 +74,19 @@ test("manual Finish accepts a captured attempt and emits no transcript or audio"
   assert.equal(run.whisper.device, "wasm");
 });
 
+test("starting a successful attempt immediately activates the first passage line", async () => {
+  const run = harness();
+  await run.controller.prepare({ preferStreaming: false });
+  await run.controller.start();
+
+  assert.equal(run.guideEvents.length, 1);
+  assert.equal(run.guideEvents[0].source, "attempt-start");
+  assert.equal(run.guideEvents[0].visibleLineIndex, 0);
+  assert.equal(run.guideEvents[0].confirmedWordIndex, -1);
+  assert.equal(run.guideEvents[0].matchedWordCount, 0);
+  await run.controller.restart();
+});
+
 test("opt-in troubleshooting data uses a private diagnostic callback only", async () => {
   const run = harness();
   const diagnostics = [];

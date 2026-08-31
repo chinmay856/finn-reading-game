@@ -16,6 +16,10 @@
   `?streamingGuide=0` preserves checkpoint mode only as an explicit diagnostic.
 - The Reading Companion uses nontechnical player copy. Exact Sherpa versus
   Whisper mode is exposed only in the playtest diagnostic status.
+- A successfully started reading attempt now highlights the first authored
+  passage line immediately. The player no longer has to speak once before the
+  Reading Companion shows that reading has begun; later movement still requires
+  matching spoken evidence.
 
 ## Explicit manual passage scrolling and Sherpa pace rollback — 2026-08-30
 
