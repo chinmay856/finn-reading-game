@@ -209,14 +209,17 @@ test("the live Sherpa guide uses the restored 185 WPM expectation", () => {
 
 test("manual passage scrolling disables viewport jumps without stopping guide updates", () => {
   assert.match(script, /let passageManualScroll = false;/u);
+  assert.match(script, /let lastGuideVisibleLineIndex = -1;/u);
   assert.match(script, /function lockPassageToManualScroll\(\)[\s\S]+passageManualScroll = true;/u);
-  assert.match(script, /if \(!passageManualScroll && lines\[event\.visibleLineIndex\]\)[\s\S]+scrollIntoView/u);
+  assert.match(script, /const highlightedLineChanged = event\.visibleLineIndex !== lastGuideVisibleLineIndex;/u);
+  assert.match(script, /if \(!passageManualScroll && highlightedLineChanged && lines\[event\.visibleLineIndex\]\)[\s\S]+scrollIntoView/u);
   assert.match(script, /lines\.forEach\(\(line, index\) => \{[\s\S]+line\.classList\.toggle\("active"/u);
   assert.match(script, /guideProgressFill[\s\S]+aria-valuenow/u);
   assert.match(script, /passageView\.addEventListener\("wheel", lockPassageToManualScroll/u);
   assert.match(script, /passageView\.addEventListener\("touchmove", lockPassageToManualScroll/u);
   assert.match(script, /passageView\.addEventListener\("keydown"[\s\S]+MANUAL_SCROLL_KEYS/u);
-  assert.match(script, /passageView\.addEventListener\("scroll"[\s\S]+!guideAutoScrolling/u);
+  assert.doesNotMatch(script, /passageView\.addEventListener\("scroll"/u);
+  assert.doesNotMatch(script, /guideAutoScrolling|guideAutoScrollTimer/u);
   assert.match(script, /function renderPassage\(\)[\s\S]+resetPassageScrollMode\(\);/u);
 });
 

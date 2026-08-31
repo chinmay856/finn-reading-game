@@ -1,12 +1,17 @@
 # Project status
 
-## Sticky manual passage scrolling and Sherpa pace rollback — 2026-08-29
+## Explicit manual passage scrolling and Sherpa pace rollback — 2026-08-30
 
 - The live Reading Companion guide again uses the prior 185 WPM expectation.
+- The WPM setting controls only the small anticipated-word lead; it does not
+  change Sherpa recognition. Automatic viewport following now runs only when
+  the evidence-backed highlighted line changes, so repeated partial transcripts
+  on one line do not repeatedly restart smooth scrolling.
 - Speech evidence continues to advance the active-line highlight and progress
-  bar, but a player scroll with the wheel, touch, keyboard, or scrollbar locks
-  the viewport to manual control for the rest of that passage. Later guide
-  updates no longer pull the player away from the chosen reading position.
+  bar, but explicit player input through the wheel, touch, scroll keys, or
+  scrollbar locks the viewport to manual control for the rest of that passage.
+  Generic scroll events no longer activate manual mode, preventing an automatic
+  smooth scroll from accidentally disabling viewport following.
 - Restarting or opening another passage restores the normal automatic viewport
   following behavior and presents the new passage at the top before Start
   Reading becomes relevant. Start Reading itself does not reposition the text.

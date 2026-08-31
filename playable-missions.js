@@ -74,8 +74,7 @@ let saveToastTimer = null;
 let activeWordButton = null;
 let activeWordUsesGeneratedVoice = false;
 let passageManualScroll = false;
-let guideAutoScrolling = false;
-let guideAutoScrollTimer = null;
+let lastGuideVisibleLineIndex = -1;
 
 const MANUAL_SCROLL_KEYS = new Set([
   "ArrowDown",
@@ -88,10 +87,8 @@ const MANUAL_SCROLL_KEYS = new Set([
 ]);
 
 function resetPassageScrollMode() {
-  clearTimeout(guideAutoScrollTimer);
-  guideAutoScrollTimer = null;
-  guideAutoScrolling = false;
   passageManualScroll = false;
+  lastGuideVisibleLineIndex = -1;
   $("passage")?.removeAttribute("data-manual-scroll");
 }
 
@@ -108,9 +105,6 @@ function pinPassageViewportToTop() {
 function lockPassageToManualScroll() {
   const passageView = $("passage");
   if (passageView?.dataset.reading !== "true" || passageManualScroll) return;
-  clearTimeout(guideAutoScrollTimer);
-  guideAutoScrollTimer = null;
-  guideAutoScrolling = false;
   passageManualScroll = true;
   passageView.dataset.manualScroll = "true";
   passageView.scrollTo({ behavior: "auto", top: passageView.scrollTop });
@@ -693,14 +687,10 @@ function updateGuide(event) {
     line.classList.toggle("past", index < event.visibleLineIndex);
     line.classList.toggle("active", index === event.visibleLineIndex);
   });
-  if (!passageManualScroll && lines[event.visibleLineIndex]) {
-    guideAutoScrolling = true;
+  const highlightedLineChanged = event.visibleLineIndex !== lastGuideVisibleLineIndex;
+  lastGuideVisibleLineIndex = event.visibleLineIndex;
+  if (!passageManualScroll && highlightedLineChanged && lines[event.visibleLineIndex]) {
     lines[event.visibleLineIndex].scrollIntoView({ block: "center", behavior: "smooth" });
-    clearTimeout(guideAutoScrollTimer);
-    guideAutoScrollTimer = setTimeout(() => {
-      guideAutoScrolling = false;
-      guideAutoScrollTimer = null;
-    }, 750);
   }
   const percent = event.totalWordCount ? Math.round((event.confirmedWordIndex / event.totalWordCount) * 100) : 0;
   $("guideProgressFill").style.width = `${percent}%`;
@@ -1533,9 +1523,6 @@ function initialize() {
   passageView.addEventListener("pointerdown", (event) => {
     const bounds = passageView.getBoundingClientRect();
     if (event.clientX >= bounds.right - 18) lockPassageToManualScroll();
-  }, { passive: true });
-  passageView.addEventListener("scroll", () => {
-    if (!guideAutoScrolling) lockPassageToManualScroll();
   }, { passive: true });
   $("skipReading").addEventListener("click", skipReading);
   $("continueAfterSkip").addEventListener("click", continueAfterSkip);
