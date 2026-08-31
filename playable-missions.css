@@ -202,6 +202,9 @@ body {
 .passage p.source-introduction { border-left-color:#087f88; background:#e4f1ef; color:#173f48; font-weight:700; }
 .passage p.source-introduction[data-source-start="true"]::before { content:"SOURCE INTRODUCTION · READ ALOUD"; display:block; margin-bottom:5px; color:#087f88; font:900 9px/1.2 system-ui,sans-serif; letter-spacing:.8px; }
 .passage p.source-introduction.active { border-left-color:#1185ae; background:#f8dfa0; color:#16232c; }
+.passage p.passage-transition { color:#53636d; font-style:italic; }
+.passage p.passage-transition.active { color:#16232c; }
+.passage-speaker-label { color:#075b8f; font-weight:900; }
 .status {
   min-height: 38px;
   font-size: 13px;

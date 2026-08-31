@@ -72,7 +72,12 @@ test("all campaign passages use complete sentences without mid-punctuation displ
     assert.equal(passage.sourceIntroductionLineCount, 1, `${passage.id}: source introduction split`);
     const standaloneParagraphs = new Set(passage.paragraphs.map((paragraph) => paragraph.trim()));
     assert.ok(
-      passage.lines.every((line) => !/[,;—–]["'’”)]*$/u.test(line) || standaloneParagraphs.has(line)),
+      passage.lines.every((line, index) => (
+        !/[,;—–]["'’”)]*$/u.test(line)
+        || standaloneParagraphs.has(line)
+        || (passage.reviewStatus === "human-reviewed-frozen-2026-08-31" && passage.linePresentations[index]?.kind === "speaker")
+        || (passage.reviewStatus === "human-reviewed-frozen-2026-08-31" && /—[”"]$/u.test(line))
+      )),
       `${passage.id}: mid-sentence punctuation break`,
     );
     const renderedText = passage.lines.join(" ").replace(/\s+/gu, " ").trim();

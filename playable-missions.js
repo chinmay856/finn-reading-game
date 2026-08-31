@@ -647,8 +647,24 @@ function renderPassage() {
   passageView.scrollTop = 0;
   passageView.replaceChildren(...current.lines.map((line, index) => {
     const paragraph = document.createElement("p");
-    paragraph.textContent = line;
-    if (index < current.sourceIntroductionLineCount) paragraph.className = "source-introduction";
+    const presentation = current.linePresentations?.[index];
+    if (presentation?.kind === "transition") {
+      const emphasis = document.createElement("em");
+      emphasis.textContent = line;
+      paragraph.append(emphasis);
+      paragraph.classList.add("passage-transition");
+    } else if (presentation?.speaker && line.startsWith(`${presentation.speaker}:`)) {
+      const label = document.createElement("strong");
+      label.className = "passage-speaker-label";
+      label.textContent = `${presentation.speaker}:`;
+      paragraph.append(label, document.createTextNode(line.slice(presentation.speaker.length + 1)));
+      paragraph.classList.add("passage-speaker");
+    } else {
+      paragraph.textContent = line;
+    }
+    if (presentation?.kind === "source-introduction" || (!current.linePresentations?.length && index < current.sourceIntroductionLineCount)) {
+      paragraph.classList.add("source-introduction");
+    }
     if (index === 0) paragraph.dataset.sourceStart = "true";
     return paragraph;
   }));

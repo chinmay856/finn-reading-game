@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "generate:public-domain-campaign": "node scripts/generate-public-domain-campaign-runtime.mjs",
+    "generate:wikiwhy-human-reviewed": "node scripts/generate-wikiwhy-human-reviewed-runtime.mjs",
+    "validate:wikiwhy-human-reviewed": "node scripts/validate-wikiwhy-human-reviewed-runtime.mjs",
     "validate:public-domain-campaign": "node scripts/validate-public-domain-campaign.mjs",
     "generate:first-six-content": "node scripts/generate-first-six-canonical-runtime.mjs",
     "generate:mycorner-vocabulary-audio": "node scripts/generate-mycorner-vocabulary-audio.mjs",
