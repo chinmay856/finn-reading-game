@@ -45,7 +45,7 @@ test("the first WikiWhy vocabulary set uses reviewed stretch words with contextu
 });
 
 test("currently playable packet sites use canonical records and one visual frame per reading", () => {
-  for (const siteId of ["wikiwhy", "threadit", "faceplace", "mycorner", "viewtube"]) {
+  for (const siteId of ["threadit", "faceplace", "mycorner", "viewtube"]) {
     const walkthrough = getPlayableWalkthrough(siteId);
     assert.deepEqual(walkthrough.passages.map((passage) => passage.id), FIRST_SIX_CANONICAL_PASSAGES[siteId].map((passage) => passage.id));
     assert.equal(walkthrough.repairFrames.length, walkthrough.passages.length);
@@ -55,4 +55,8 @@ test("currently playable packet sites use canonical records and one visual frame
       assert.equal(passage.challengingWords.length, 3);
     }
   }
+  assert.deepEqual(getPlayableWalkthrough("wikiwhy").passages.map(({ id }) => id), [
+    "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-05", "wikiwhy-06",
+    "wikiwhy-07", "wikiwhy-08", "wikiwhy-09", "wikiwhy-10",
+  ]);
 });

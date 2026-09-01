@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 
 import { derivePassageDisplayLines } from "../../reading-companion/passage-display-lines.js";
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "95e3bee0c555566229202fe36ad71768e65ffd1844b87562b0b20898b6980153";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5";
 
 function collapse(value) {
   return String(value ?? "").replace(/-\n\s*/gu, "-").replace(/\n\s*/gu, " ").replace(/\s+/gu, " ").trim();
@@ -102,8 +102,8 @@ export function packetSha256(markdown) {
 }
 
 export function parseWikiWhyHumanReviewedPacket(markdown) {
-  const sections = [...markdown.matchAll(/(?:^|\n)## Passage (\d+): ([^\n]+)\n([\s\S]*?)(?=\n## Passage |$)/gu)];
-  if (sections.length !== 10) throw new Error(`Expected ten WikiWhy passages; found ${sections.length}.`);
+  const sections = [...markdown.matchAll(/(?:^|\n)## Passage (\d+): ([^\n]+)\n([\s\S]*?)(?=\n## (?:Passage \d+:|Demoted passage record:)|$)/gu)];
+  if (sections.length !== 9) throw new Error(`Expected nine playable WikiWhy passages; found ${sections.length}.`);
   return Object.freeze(sections.map((match) => {
     const number = Number(match[1]);
     const title = match[2].trim();

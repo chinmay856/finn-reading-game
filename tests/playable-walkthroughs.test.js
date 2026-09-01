@@ -6,7 +6,7 @@ import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkth
 const assetPath = (source) => source.split("?", 1)[0];
 
 const expectations = Object.freeze({
-  wikiwhy: Object.freeze({ count: 10, first: 6, pages: [2, 3, 4, 5, 6, 7, 13, 14, 15, 7], secured: "_p7.png" }),
+  wikiwhy: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 13, 14, 15], secured: "_p7.png" }),
   threadit: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12], secured: "_p13.png" }),
   faceplace: Object.freeze({ count: 8, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11], secured: "_p12.png" }),
   mycorner: Object.freeze({ count: 9, first: 4, pages: [2, 3, 4, 5, 8, 9, 10, 11, 12], secured: "_p12.png" }),
@@ -24,6 +24,7 @@ test("the ten finished missions have one visual advance per passage", () => {
     const mission = PLAYABLE_WALKTHROUGHS[id];
     assert.equal(mission.passages.length, expected.count, id);
     assert.equal(mission.repairFrames.length, expected.count, id);
+    assert.equal(new Set(mission.repairFrames).size, expected.count, `${id} distinct repair frames`);
     assert.equal(mission.phaseOneCount, expected.first, id);
     assert.deepEqual(mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])), expected.pages, id);
     assert.match(mission.initialFrame, /^\/walkthroughs\//u);

@@ -90,7 +90,8 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   wikiwhy: Object.freeze({
     id: "wikiwhy", name: "WikiWhy", meter: "Source repair", passages: wikiWhyPassages,
     initialFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 13, 14, 15, 7].map((page) => frame("wikiwhy", "wikiwhy-complete-state-v3", page))),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 13, 14, 15].map((page) => frame("wikiwhy", "wikiwhy-complete-state-v3", page))),
+    demotedPassageIds: Object.freeze(["wikiwhy-04"]), legacyPassageCounts: Object.freeze([10]),
     phaseOneCount: 6, superFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 10), checklistFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 12), securedFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 7), receiptFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 7),
     midpoint: midpoint("I'VE BEEN FIXING THIS TOO!", "I told Auto to make WikiWhy easier to read. Every answer should be 100% clear.", "CLARITY MODE COMPLETE", "SOURCES = DELAY\n\nHISTORY = CONFUSION\n\nUNCERTAINTY REMOVED\n\nCONFIDENCE = TRUTH", "CLEAR DOESN'T MEAN CERTAIN", "Auto erased everything readers need to check the answer. Let's restore the sources, edit history, and careful wording."),
     completionChinmay: completionChinmay("OH—THAT WASN'T CLARITY", "I asked Auto for perfectly clear answers, but he heard “delete every doubt.” I should have said: make the answer understandable without hiding the sources or uncertainty."),

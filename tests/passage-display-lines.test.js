@@ -67,7 +67,7 @@ test("keeps numbered-list markers attached to the text they introduce", () => {
 
 test("all campaign passages use complete sentences without mid-punctuation display breaks", () => {
   const passages = Object.values(PLAYABLE_WALKTHROUGHS).flatMap(({ passages: sitePassages }) => sitePassages);
-  assert.equal(passages.length, 92);
+  assert.equal(passages.length, 91);
   for (const passage of passages) {
     assert.equal(passage.sourceIntroductionLineCount, 1, `${passage.id}: source introduction split`);
     const standaloneParagraphs = new Set(passage.paragraphs.map((paragraph) => paragraph.trim()));

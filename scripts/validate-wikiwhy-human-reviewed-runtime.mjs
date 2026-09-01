@@ -20,15 +20,16 @@ assert.equal(generatedChecksum, WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "generated
 
 const parsed = parseWikiWhyHumanReviewedPacket(markdown);
 assert.deepEqual(WIKIWHY_HUMAN_REVIEWED_PASSAGES, parsed, "generated runtime must exactly match the frozen packet parser");
-assert.equal(parsed.length, 10, "ten reviewed WikiWhy records");
+assert.equal(parsed.length, 9, "nine playable WikiWhy records");
 
 const mission = PLAYABLE_WALKTHROUGHS.wikiwhy;
-assert.equal(mission.passages.length, 10, "ten effective WikiWhy runtime passages");
-assert.equal(mission.repairFrames.length, 10, "ten reachable WikiWhy repair positions");
+assert.equal(mission.passages.length, 9, "nine effective WikiWhy runtime passages");
+assert.equal(mission.repairFrames.length, 9, "nine reachable WikiWhy repair positions");
+assert.equal(new Set(mission.repairFrames).size, 9, "nine distinct WikiWhy repair positions");
+assert.deepEqual(mission.demotedPassageIds, ["wikiwhy-04"], "Faraday passage is explicitly demoted");
 
 for (const [index, expected] of parsed.entries()) {
   const actual = mission.passages[index];
-  assert.equal(actual.id, `wikiwhy-${String(index + 1).padStart(2, "0")}`);
   assert.equal(actual.id, expected.id);
   assert.equal(actual.title, expected.title);
   assert.deepEqual(actual.paragraphs, expected.paragraphs, `${actual.id}: complete spoken/displayed paragraphs`);
@@ -56,14 +57,14 @@ for (const [index, expected] of parsed.entries()) {
   }
 }
 
-const sherlock = mission.passages[5];
+const sherlock = mission.passages.find(({ title }) => title === "Sherlock Holmes: A Scandal in Bohemia");
 assert.deepEqual(
   [...new Set(sherlock.linePresentations.filter(({ speaker }) => speaker).map(({ speaker }) => speaker))],
   ["Watson", "Holmes"],
   "Sherlock speaker labels",
 );
 assert.ok(sherlock.linePresentations.some(({ kind }) => kind === "transition"), "Sherlock italic transition");
-const alice = mission.passages[8];
+const alice = mission.passages.find(({ title }) => title === "Alice's Evidence");
 assert.deepEqual(
   [...new Set(alice.linePresentations.filter(({ speaker }) => speaker).map(({ speaker }) => speaker))],
   ["King", "White Rabbit", "Queen", "Juryman", "Knave", "Alice"],
@@ -71,4 +72,4 @@ assert.deepEqual(
 );
 assert.equal(alice.linePresentations.filter(({ kind }) => kind === "transition").length, 2, "Alice italic transitions");
 
-console.log("Validated the frozen packet, ten effective WikiWhy passages, ten repair positions, exact questions and vocabulary, shuffled answers, speaker labels, transitions, and static audio.");
+console.log("Validated the revised packet, nine effective WikiWhy passages, nine distinct repair positions, the Faraday demotion, exact questions and vocabulary, shuffled answers, speaker labels, transitions, and static audio.");

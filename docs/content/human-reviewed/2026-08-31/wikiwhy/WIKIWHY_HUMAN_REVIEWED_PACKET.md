@@ -1,5 +1,14 @@
 # WikiWhy Human-Reviewed Content Packet — 2026-08-31
 
+## Revision history
+
+- **2026-08-31 17:13:38 PDT:** *The Chemical History of a Candle* by Michael
+  Faraday was demoted from the playable WikiWhy sequence after live playtesting
+  confirmed that the site has nine genuine visual repairs, not ten. The passage
+  remains below as an editorial record, but it is no longer parsed into or
+  deployed as playable campaign content. John Locke's *An Essay Concerning
+  Human Understanding* remains the ninth and final playable repair passage.
+
 ## Passage 1: What Can an Animal-Vision Test Prove?
 
 **Source and rights:** C. Lloyd Morgan, *Animal Life and Intelligence*,
@@ -197,7 +206,7 @@ spoken text.
 
 ---
 
-## Passage 4: The Chemical History of a Candle
+## Demoted passage record: The Chemical History of a Candle
 
 **Source and rights:** Michael Faraday, *The Chemical History of a Candle*,
 [Project Gutenberg ebook 14474](https://www.gutenberg.org/ebooks/14474), public

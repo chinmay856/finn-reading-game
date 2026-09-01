@@ -5,16 +5,19 @@ import test from "node:test";
 import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkthroughs.js";
 import { WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 } from "../content/wikiwhy-human-reviewed-passages.js";
 
-test("WikiWhy uses the frozen human-reviewed ten-passage runtime", () => {
+test("WikiWhy uses the revised human-reviewed nine-passage runtime", () => {
   const mission = PLAYABLE_WALKTHROUGHS.wikiwhy;
-  assert.equal(WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "95e3bee0c555566229202fe36ad71768e65ffd1844b87562b0b20898b6980153");
-  assert.deepEqual(mission.passages.map(({ id }) => id), Array.from({ length: 10 }, (_, index) => `wikiwhy-${String(index + 1).padStart(2, "0")}`));
-  assert.equal(mission.repairFrames.length, 10);
+  assert.equal(WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5");
+  assert.deepEqual(mission.passages.map(({ id }) => id), [
+    "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-05", "wikiwhy-06",
+    "wikiwhy-07", "wikiwhy-08", "wikiwhy-09", "wikiwhy-10",
+  ]);
+  assert.equal(mission.repairFrames.length, 9);
+  assert.equal(new Set(mission.repairFrames).size, 9);
   assert.deepEqual(mission.passages.map(({ title }) => title), [
     "What Can an Animal-Vision Test Prove?",
     "The Expression of the Emotions in Man and Animals",
     "Of Studies",
-    "The Chemical History of a Candle",
     "The Time Machine",
     "Sherlock Holmes: A Scandal in Bohemia",
     "The Fixation of Belief",
@@ -22,7 +25,7 @@ test("WikiWhy uses the frozen human-reviewed ten-passage runtime", () => {
     "Alice's Evidence",
     "An Essay Concerning Human Understanding",
   ]);
-  assert.deepEqual(mission.passages.map(({ comprehension }) => comprehension.choices.findIndex(({ correct }) => correct)), [1, 2, 0, 1, 2, 0, 1, 2, 0, 1]);
+  assert.deepEqual(mission.passages.map(({ comprehension }) => comprehension.choices.findIndex(({ correct }) => correct)), [1, 2, 0, 1, 2, 0, 1, 2, 0]);
 });
 
 test("the passage renderer supports generic speaker and transition metadata", async () => {

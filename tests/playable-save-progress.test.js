@@ -93,3 +93,46 @@ test("restarting a replay clears its prior checkpoint", () => {
   persistPlayableMissionSequence(save, mission, createMissionSequenceState({ phaseOneCount: 4, totalPassages: 8 }), { replay: true });
   assert.equal(restorePlayableMissionSequence(save, mission, { replay: true }), null);
 });
+
+test("a saved sequence survives a reviewed passage demotion", () => {
+  const revisedMission = Object.freeze({
+    id: "wikiwhy",
+    passages: Object.freeze([
+      "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-05", "wikiwhy-06",
+      "wikiwhy-07", "wikiwhy-08", "wikiwhy-09", "wikiwhy-10",
+    ].map((id) => Object.freeze({ id }))),
+    demotedPassageIds: Object.freeze(["wikiwhy-04"]),
+    legacyPassageCounts: Object.freeze([10]),
+    phaseOneCount: 6,
+  });
+  const save = profile();
+  save.missions.wikiwhy = {
+    sequence: {
+      completedPassageIds: [
+        "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-04", "wikiwhy-05",
+        "wikiwhy-06", "wikiwhy-07", "wikiwhy-08", "wikiwhy-09",
+      ],
+      comprehensionAttempts: 9,
+      frame: 9,
+      index: 9,
+      pendingPassageId: null,
+      phase: "lock-sequence",
+      phaseOneCount: 6,
+      receipt: null,
+      retryCount: 0,
+      skippedPassageIds: [],
+      totalPassages: 10,
+      version: 2,
+    },
+  };
+
+  const restored = restorePlayableMissionSequence(save, revisedMission);
+  assert.equal(restored.index, 8);
+  assert.equal(restored.totalPassages, 9);
+  assert.equal(restored.phase, "lock-sequence");
+  assert.deepEqual(restored.completedPassageIds, [
+    "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-05",
+    "wikiwhy-06", "wikiwhy-07", "wikiwhy-08", "wikiwhy-09",
+  ]);
+  assert.equal(restored.completedPassageIds.includes("wikiwhy-04"), false);
+});

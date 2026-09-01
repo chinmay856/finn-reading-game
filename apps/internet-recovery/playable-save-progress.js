@@ -24,10 +24,57 @@ export function isCompatibleMissionSequence(sequence, mission) {
   );
 }
 
+function migrateSequenceAfterPassageDemotion(sequence, mission) {
+  if (!sequence || sequence.version !== 2) return null;
+  if (!mission?.legacyPassageCounts?.includes(sequence.totalPassages)) return null;
+  if (!Array.isArray(mission.demotedPassageIds) || mission.demotedPassageIds.length === 0) return null;
+
+  const activeIds = new Set(mission.passages.map(({ id }) => id));
+  const completedPassageIds = (sequence.completedPassageIds ?? []).filter((id) => activeIds.has(id));
+  const skippedPassageIds = (sequence.skippedPassageIds ?? []).filter((id) => activeIds.has(id));
+  const resolvedIds = new Set([...completedPassageIds, ...skippedPassageIds]);
+  const index = mission.passages.reduce((count, { id }) => count + Number(resolvedIds.has(id)), 0);
+  const totalPassages = mission.passages.length;
+  const pendingPassageId = activeIds.has(sequence.pendingPassageId)
+    && !resolvedIds.has(sequence.pendingPassageId)
+    ? sequence.pendingPassageId
+    : null;
+  const phase = sequence.phase === "completed" && index === totalPassages
+    ? "completed"
+    : index >= totalPassages
+      ? "reflection-required"
+      : index === mission.phaseOneCount
+        ? "midpoint-required"
+        : index < mission.phaseOneCount
+          ? "phase-one"
+          : "lock-sequence";
+  const receipt = sequence.receipt
+    ? {
+        ...sequence.receipt,
+        completedPassageCount: completedPassageIds.length,
+        skippedPassageCount: skippedPassageIds.length,
+      }
+    : null;
+
+  return {
+    ...clone(sequence),
+    completedPassageIds,
+    frame: index,
+    index,
+    pendingPassageId,
+    phase,
+    phaseOneCount: mission.phaseOneCount,
+    receipt,
+    skippedPassageIds,
+    totalPassages,
+  };
+}
+
 export function restorePlayableMissionSequence(profile, mission, { replay = false } = {}) {
   ensurePlayableProgressProfile(profile);
   const record = replay ? profile?.replays?.[mission?.id] : profile?.missions?.[mission?.id];
-  return isCompatibleMissionSequence(record?.sequence, mission) ? clone(record.sequence) : null;
+  if (isCompatibleMissionSequence(record?.sequence, mission)) return clone(record.sequence);
+  return migrateSequenceAfterPassageDemotion(record?.sequence, mission);
 }
 
 export function persistPlayableMissionSequence(

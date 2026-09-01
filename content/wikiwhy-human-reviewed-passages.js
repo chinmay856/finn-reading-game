@@ -360,110 +360,6 @@ const DATA = [
     "reviewStatus": "human-reviewed-frozen-2026-08-31"
   },
   {
-    "id": "wikiwhy-04",
-    "title": "The Chemical History of a Candle",
-    "form": "human-reviewed public-domain reading",
-    "spokenWordCount": 213,
-    "paragraphs": [
-      "An excerpt from The Chemical History of a Candle by Michael Faraday.",
-      "There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel. In order that you may understand that, let me show you a very pretty, but very commonplace experiment. If you blow a candle out cleverly, you will see the vapour rise from it. You have, I know, often smelt the vapour of a blown-out candle—and a very bad smell it is; but if you blow it out cleverly, you will be able to see pretty well the vapour into which this solid matter is transformed. I will blow out one of these candles in such a way as not to disturb the air around it, by the continuing action of my breath; and now, if I hold a lighted taper two or three inches from the wick, you will observe a train of fire going through the air till it reaches the candle. I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed."
-    ],
-    "displayLines": [
-      "An excerpt from The Chemical History of a Candle by Michael Faraday.",
-      "There is another condition which you must learn as regards the candle, without which you would not be able fully to understand the philosophy of it, and that is the vaporous condition of the fuel.",
-      "In order that you may understand that, let me show you a very pretty, but very commonplace experiment.",
-      "If you blow a candle out cleverly, you will see the vapour rise from it.",
-      "You have, I know, often smelt the vapour of a blown-out candle—and a very bad smell it is; but if you blow it out cleverly, you will be able to see pretty well the vapour into which this solid matter is transformed.",
-      "I will blow out one of these candles in such a way as not to disturb the air around it, by the continuing action of my breath; and now, if I hold a lighted taper two or three inches from the wick, you will observe a train of fire going through the air till it reaches the candle.",
-      "I am obliged to be quick and ready, because, if I allow the vapour time to cool, it becomes condensed into a liquid or solid, or the stream of combustible matter gets disturbed."
-    ],
-    "linePresentations": [
-      {
-        "kind": "source-introduction",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      },
-      {
-        "kind": "prose",
-        "speaker": ""
-      }
-    ],
-    "source": {
-      "label": "The Chemical History of a Candle",
-      "url": "https://www.gutenberg.org/ebooks/14474",
-      "editorialNote": "Michael Faraday, *The Chemical History of a Candle*,\n[Project Gutenberg ebook 14474](https://www.gutenberg.org/ebooks/14474), public\ndomain in the USA. The source excerpt begins at line 458 of the frozen local\nProject Gutenberg text in `docs/content/sources/gutenberg/14474.txt`."
-    },
-    "rights": "Michael Faraday, The Chemical History of a Candle, Project Gutenberg ebook 14474, public domain in the USA. The source excerpt begins at line 458 of the frozen local Project Gutenberg text in `docs/content/sources/gutenberg/14474.txt`.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
-    "comprehension": {
-      "prompt": "Why must Faraday bring the lighted taper to the vapour quickly?",
-      "correct": "Cooling can condense or disturb the vapour before it carries flame back to the wick.",
-      "distractors": [
-        "The wick must remain hot enough for the taper to ignite the solid wax without touching it.",
-        "The surrounding air must keep moving so the vapour forms a clear path back to the candle."
-      ],
-      "orderedChoices": [
-        {
-          "text": "Cooling can condense or disturb the vapour before it carries flame back to the wick.",
-          "correct": true
-        },
-        {
-          "text": "The wick must remain hot enough for the taper to ignite the solid wax without touching it.",
-          "correct": false
-        },
-        {
-          "text": "The surrounding air must keep moving so the vapour forms a clear path back to the candle.",
-          "correct": false
-        }
-      ],
-      "correctFeedback": "Yes. That answer is supported by the passage.",
-      "tryAgainFeedback": "Take another look at the passage, then choose again."
-    },
-    "vocabulary": [
-      {
-        "word": "vaporous",
-        "definition": "Existing in the form of vapour or gas.",
-        "sentence": "In this passage, vaporous fuel rises above the extinguished candle.",
-        "playbackPhrase": "In this passage, vaporous fuel rises above the extinguished candle.",
-        "properNoun": false
-      },
-      {
-        "word": "taper",
-        "definition": "A slender candle used to carry a flame.",
-        "sentence": "In this passage, Faraday holds a lighted taper near the wick.",
-        "playbackPhrase": "In this passage, Faraday holds a lighted taper near the wick.",
-        "properNoun": false
-      },
-      {
-        "word": "condensed",
-        "definition": "Changed from a gas into a liquid or solid.",
-        "sentence": "In this passage, cooled vapour becomes condensed into a liquid or solid.",
-        "playbackPhrase": "In this passage, cooled vapour becomes condensed into a liquid or solid.",
-        "properNoun": false
-      }
-    ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
-  },
-  {
     "id": "wikiwhy-05",
     "title": "The Time Machine",
     "form": "human-reviewed public-domain reading",
@@ -1495,5 +1391,5 @@ function deepFreeze(value) {
   return Object.freeze(value);
 }
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "95e3bee0c555566229202fe36ad71768e65ffd1844b87562b0b20898b6980153";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5";
 export const WIKIWHY_HUMAN_REVIEWED_PASSAGES = deepFreeze(DATA);
