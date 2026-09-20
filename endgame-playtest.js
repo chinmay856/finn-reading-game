@@ -96,6 +96,7 @@ let celebrationAnimationFrame = null;
 let celebrationRunToken = 0;
 
 const PORTRAITS = Object.freeze({
+  "chinmay-explaining": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "50% 0%", size: "300% 200%" }),
   "amy-evidence": Object.freeze({ image: ENDGAME_ASSETS.amyEvidence }),
   "amy-supportive": Object.freeze({ image: ENDGAME_ASSETS.amySupportive }),
   "amy-tools": Object.freeze({ image: ENDGAME_ASSETS.amyTools }),
@@ -196,7 +197,7 @@ function portraitMarkup(portrait, speaker) {
     `--portrait-image:url('${asset.image}')`,
     `--portrait-position:${asset.position ?? "center"}`,
     `--portrait-size:${asset.size ?? "cover"}`,
-    `--portrait-crop:${portrait.startsWith("chinmay") ? "1.03" : "1"}`,
+    `--portrait-crop:${portrait === "chinmay-explaining" ? "1.16" : portrait.startsWith("chinmay") ? "1.03" : "1"}`,
   ].join(";");
   return `<div class="character-portrait" role="img" aria-label="${escapeHtml(speaker)}" style="${style}"></div>`;
 }
@@ -231,13 +232,19 @@ function desktopCardMarkup(site, mode) {
   </article>`;
 }
 
+function campaignProfileName() {
+  try {
+    const store = JSON.parse(localStorage.getItem("internet-recovery-save-files-v1") || "null");
+    return store?.profiles?.[store.activeProfileKey]?.displayName || "";
+  } catch { return ""; }
+}
 function desktopMarkup(mode = "ready") {
   const corrupted = mode === "corrupted";
   const completion = corrupted ? "AUTO OVER-FIXES ACTIVE" : "10 OF 10 SITES COMPLETE";
   return `<div class="desktop-base" data-mode="${mode}">
     <nav class="desktop-shortcuts" aria-label="Recovery Desktop">
       <div class="desktop-icon"><img src="/walkthroughs/shared/recovery-icon-computer-v2.png" alt=""><b>MY<br>COMPUTER</b></div>
-      <div class="desktop-icon"><img src="/walkthroughs/shared/recovery-icon-documents-v1.png" alt=""><b>DOCUMENTS</b></div>
+      <button class="desktop-icon" data-action="review-lessons" type="button"><img src="/walkthroughs/shared/recovery-icon-documents-v1.png" alt=""><b>DOCUMENTS</b></button>
       <div class="desktop-icon"><img src="/walkthroughs/shared/recovery-icon-trash-v2.png" alt=""><b>TRASH</b></div>
     </nav>
     <section class="recovery-window${corrupted ? " corrupted-window" : ""}" aria-label="Recovery Browser">
@@ -245,17 +252,98 @@ function desktopMarkup(mode = "ready") {
       <div class="desktop-status-line"><strong>${completion}</strong><span>${corrupted ? "THE SAVED DOCUMENTS ARE SCRAMBLED" : "TEN LESSON DOCUMENTS SAVED"}</span></div>
       <div class="endgame-site-grid">${endgameSiteFixtures.map((site) => desktopCardMarkup(site, mode)).join("")}</div>
     </section>
-    <footer class="taskbar"><button data-action="toggle-start-menu" type="button" aria-haspopup="menu" aria-expanded="${startMenuOpen}">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><time>10:24 AM</time></footer>
-    ${startMenuOpen ? `<section class="start-menu" role="menu" aria-label="Start menu">
-      <div class="start-menu-brand">RECOVERY<br>OS 98</div>
+    <footer class="taskbar"><button data-action="toggle-start-menu" type="button" aria-haspopup="menu" aria-expanded="${startMenuOpen}">START</button><span>▣ Recovery Browser</span><i>INTERNET RECOVERY 98</i><span class="system-tray" aria-hidden="true"><b class="speaker-icon">◖))</b><b class="signal-icon"><i></i><i></i><i></i><i></i></b></span><time>10:24 AM</time></footer>
+    ${startMenuOpen ? `<section class="start-menu" aria-label="Start menu">
+      <div class="start-menu-brand">RECOVERY OS 98</div>
       <div class="start-menu-items">
-        <button data-action="save-endgame" type="button" role="menuitem">💾 <span><b>Save game</b><small>Save the desktop recovery</small></span></button>
-        <button data-action="return-recovery-browser" type="button" role="menuitem">▣ <span><b>Recovery map</b><small>Return to all ten sites</small></span></button>
-        <button data-action="review-lessons" type="button" role="menuitem">📁 <span><b>Documents</b><small>Review saved lessons</small></span></button>
-        <button data-action="replay-incident" type="button" role="menuitem">↻ <span><b>Restart endgame</b><small>Replay the desktop incident</small></span></button>
+        ${campaignProfileName() ? `<div class="start-profile"><strong>${escapeHtml(campaignProfileName())}</strong></div>` : ""}
+        <button data-action="save-endgame" type="button">💾 <span><b>Save Game</b></span></button>
+        <button data-action="return-recovery-browser" type="button"><img class="start-menu-icon" src="/icons/start-menu/recovery-map.svg" alt=""><span><b>Choose Recovery Site</b></span></button>
+        <button data-action="replay-introduction" type="button"><img class="start-menu-icon" src="/icons/start-menu/replay-introduction.svg" alt=""><span><b>Replay Introduction</b></span></button>
+        <button data-action="replay-tutorial" type="button">? <span><b>Tutorial</b></span></button>
+        <button data-action="switch-player" type="button">👤 <span><b>Switch Player</b></span></button>
+        <button data-action="new-player" type="button"><img class="start-menu-icon" src="/icons/start-menu/new-game.svg" alt=""><span><b>New Game</b></span></button>
       </div>
     </section>` : ""}
   </div>`;
+}
+
+let autoUpdateTimer = null;
+let autoUpdateGeneration = 0;
+let autoUpdateActive = false;
+function cancelAutoUpdate() {
+  clearTimeout(autoUpdateTimer);
+  autoUpdateTimer = null;
+  autoUpdateActive = false;
+  autoUpdateGeneration++;
+}
+function finishAutoUpdate() {
+  if (!autoUpdateActive) return;
+  cancelAutoUpdate();
+  saveState(advanceReadyDialogue(state), "AUTO applied the update to all ten sites");
+}
+async function runAutoUpdate() {
+  if (autoUpdateActive) return;
+  autoUpdateActive = true;
+  const generation = ++autoUpdateGeneration;
+  const next = stage.querySelector('.story-dialog button');
+  if (next) { next.disabled = true; next.textContent = "Opening AUTO’s update…"; }
+  // Decode local artwork before revealing it, so the transition never shows blank tiles.
+  await Promise.all([...endgameSiteFixtures.map(site => site.autoFrame), "/walkthroughs/endgame/portraits/auto-working-cutout-v1.png"].map(async src => {
+    const image = new Image(); image.src = src; await image.decode().catch(() => {});
+  }));
+  if (generation !== autoUpdateGeneration) return;
+  startMenuOpen = false;
+  stage.innerHTML = `${desktopMarkup("ready")}<div class="auto-update-scene"><img class="auto-working" src="/walkthroughs/endgame/portraits/auto-working-cutout-v1.png" alt="AUTO working on each website"><div class="auto-update-caption"><strong role="status">AUTO is applying the lessons everywhere…</strong><button data-action="skip-auto-update" type="button">Skip animation</button></div></div>`;
+  stage.querySelector('.desktop-base').inert = true;
+  const actor = stage.querySelector('.auto-working');
+  const caption = stage.querySelector('.auto-update-caption strong');
+  stage.querySelector('[data-action="skip-auto-update"]').focus();
+  const reduced = reduceMotion.checked || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  actor.classList.toggle('reduced-motion', reduced);
+  const duration = reduced ? 350 : 2000;
+  let index = 0;
+  function visit() {
+    if (generation !== autoUpdateGeneration) return;
+    if (index === endgameSiteFixtures.length) { finishAutoUpdate(); return; }
+    const site = endgameSiteFixtures[index];
+    const card = stage.querySelector(`[data-site-id="${site.id}"]`);
+    const r = card.getBoundingClientRect(), bounds = stage.getBoundingClientRect(), scale = bounds.width / 1440;
+    actor.style.left = `${(r.left - bounds.left) / scale + r.width / scale - 115}px`;
+    actor.style.top = `${(r.top - bounds.top) / scale + 30}px`;
+    caption.textContent = `AUTO is “improving” ${site.name}…`;
+    card.classList.add('auto-working-site');
+    autoUpdateTimer = setTimeout(() => {
+      if (generation !== autoUpdateGeneration) return;
+      card.dataset.state = 'corrupted';
+      stage.querySelector('.recovery-window').classList.add('corrupted-window');
+      const image = card.querySelector('.site-only-shot img'); image.src = site.autoFrame; image.alt = `${site.name} AUTO over-fix`;
+      card.querySelector('footer span').textContent = '× AUTO OVER-FIX';
+      card.classList.remove('auto-working-site');
+      stage.querySelector('.desktop-status-line strong').textContent = 'AUTO’S UPDATE IS SPREADING';
+      index++;
+      autoUpdateTimer = setTimeout(visit, duration / 2);
+    }, duration / 2);
+  }
+  visit();
+}
+addEventListener('pagehide', cancelAutoUpdate);
+function openEndgameOnboarding(tutorial) {
+  startMenuOpen = false;
+  render();
+  persistence.save(state);
+  const frame = document.createElement('iframe');
+  frame.className = 'endgame-onboarding';
+  frame.title = tutorial ? 'Tutorial' : 'Replay Introduction';
+  frame.src = `/onboarding.html?${tutorial ? 'tutorial' : 'intro'}=1&chain=false`;
+  const siblings = [...stage.children]; siblings.forEach(node => { node.inert = true; });
+  const receive = event => {
+    if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.type !== 'recovery-onboarding-complete') return;
+    frame.remove(); siblings.forEach(node => { node.inert = false; }); window.removeEventListener('message', receive);
+    stage.querySelector('[data-action="toggle-start-menu"]')?.focus();
+  };
+  window.addEventListener('message', receive);
+  stage.append(frame);
 }
 
 function readyMarkup() {
@@ -587,6 +675,7 @@ function renderModal() {
 }
 
 function render() {
+  cancelAutoUpdate();
   const phase = endgamePhase(state);
   if (phase !== lastRenderedPhase) {
     clearTimeout(popupRevealTimer);
@@ -699,7 +788,12 @@ stage.addEventListener("click", (event) => {
   const action = event.target.closest("[data-action]");
   if (!action) return;
   switch (action.dataset.action) {
-    case "advance-ready": saveState(advanceReadyDialogue(state), "Endgame story advanced"); break;
+    case "advance-ready": if (state.readyDialogueIndex === ENDGAME_COPY.ready.length - 1) void runAutoUpdate(); else saveState(advanceReadyDialogue(state), "Endgame story advanced"); break;
+    case "skip-auto-update": finishAutoUpdate(); break;
+    case "replay-introduction": openEndgameOnboarding(false); break;
+    case "replay-tutorial": openEndgameOnboarding(true); break;
+    case "switch-player": persistence.save(state); location.assign("/playable-missions.html?player=switch"); break;
+    case "new-player": persistence.save(state); location.assign("/playable-missions.html?player=new"); break;
     case "advance-takeover": saveState(advanceTakeoverDialogue(state)); break;
     case "close-popup": {
       const popup = ENDGAME_POPUPS.find(({ id }) => id === action.dataset.popupId);

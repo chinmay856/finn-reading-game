@@ -459,7 +459,7 @@ function renderLauncher() {
     else card.setAttribute("aria-disabled", "true");
     const preview = document.createElement("img");
     preview.className = "preview";
-    preview.src = playable ? walkthrough.initialFrame : site.previewImage;
+    preview.src = playable ? (completed ? `/walkthroughs/endgame/site-crops/${routeId}-recovered-site-v1.png` : walkthrough.initialFrame) : site.previewImage;
     preview.alt = "";
     const copy = document.createElement("div");
     copy.className = "card-copy";
@@ -472,7 +472,7 @@ function renderLauncher() {
     title.textContent = site.name;
     heading.append(mark, title);
     const description = document.createElement("p");
-    description.textContent = site.description;
+    description.textContent = completed ? "Recovered. Your lesson for AUTO is saved." : site.description;
     const status = document.createElement("span");
     status.className = "case-status";
     status.textContent = playable ? progress.status : launcherStatus(site);
@@ -1524,7 +1524,11 @@ function initialize() {
   $("launcherView").hidden = true;
   $("missionView").hidden = true;
   const profile = activeProfile();
-  if (profile) {
+  const playerAction = new URLSearchParams(location.search).get("player");
+  if (["switch", "new"].includes(playerAction)) {
+    history.replaceState(null, "", "/playable-missions.html");
+    openProfileGate({ clearName: playerAction === "new" });
+  } else if (profile) {
     $("activeProfileName").textContent = profile.displayName;
     void startProfileExperience(profile);
   } else {

@@ -1,0 +1,54 @@
+/* Shared final Start menu. */
+.start-menu { position:absolute; z-index:25; left:7px; bottom:47px; width:390px; display:grid; grid-template-columns:1fr; border:4px outset #ddd8cc; background:#c2bdb1; color:var(--ink); box-shadow:8px 8px 0 #062b3666; }
+.start-menu-brand { display:flex; align-items:center; justify-content:flex-start; padding:12px 16px; background:linear-gradient(#00639b,#003e6a); color:#fff; font:900 15px/1.05 system-ui,sans-serif; letter-spacing:1px; }
+.start-menu-items { padding:8px; }
+.start-profile { padding:9px 11px 12px; border-bottom:2px solid #8f8c84; font-family:system-ui,sans-serif; }
+.start-profile small,.start-profile strong { display:block; }
+.start-profile small { font-size:9px; color:#5f676c; }
+.start-menu button,.start-menu a { width:100%; display:flex; align-items:center; gap:12px; padding:11px; border:0; background:transparent; color:var(--ink); text-align:left; text-decoration:none; font:24px system-ui,sans-serif; cursor:pointer; }
+.start-menu button:hover,.start-menu button:focus-visible,.start-menu a:hover,.start-menu a:focus-visible { background:#075b8f; color:#fff; outline:none; }
+.start-menu button span,.start-menu a span { display:block; }
+.start-menu b,.start-menu small { display:block; font-family:system-ui,sans-serif; }
+.start-menu-icon { width:28px; height:28px; flex:0 0 28px; object-fit:contain; }
+.start-menu-items span { display:block; }
+#endgameStage .start-menu { z-index:125; }
+#endgameStage .desktop-base { background:repeating-linear-gradient(135deg,#087f88 0 5px,#087983 5px 7px); }
+#endgameStage .recovery-window { left:104px; top:18px; right:auto; bottom:auto; width:1312px; height:825px; border:4px solid #27333b; border-radius:7px; box-shadow:0 3px 5px #0007; }
+#endgameStage .window-titlebar { height:38px; min-height:38px; padding:4px 5px 4px 12px; background:linear-gradient(90deg,#053b70,#00578d 58%,#00305e); font:700 15px system-ui,sans-serif; }
+#endgameStage .corrupted-window .window-titlebar { background:linear-gradient(90deg,#731712,#c5251e); }
+#endgameStage .desktop-status-line { height:91px; padding:12px 15px 10px; border-bottom:2px solid #a7a396; }
+#endgameStage .endgame-site-grid { height:690px; gap:9px; padding:10px 12px 13px; }
+#endgameStage .desktop-site-card { border-width:3px; grid-template-rows:176px minmax(0,1fr); }
+#endgameStage .desktop-site-card footer { align-content:start; padding:12px 10px; grid-template-columns:23px minmax(0,1fr); }
+#endgameStage .desktop-site-card footer img { width:23px; height:23px; }
+#endgameStage .desktop-site-card footer b { font:900 18px system-ui,sans-serif; }
+#endgameStage .desktop-site-card footer span { grid-column:1/-1; margin-top:14px; max-width:none; justify-self:start; text-align:left; font:800 11px system-ui,sans-serif; }
+#endgameStage .site-only-shot { border-bottom:2px solid #7e8a91; }
+#endgameStage .desktop-icon { border:0; padding:0; background:transparent; }
+#endgameStage .taskbar { height:46px; padding:5px 6px; gap:8px; border:2px outset #f4f2eb; background:#d6d4ca; font:600 14px "Chalkboard SE","Comic Sans MS",sans-serif; }
+#endgameStage .taskbar button { min-width:96px; height:33px; padding:5px 14px; border:2px outset #e8e3d6; background:linear-gradient(#f4f2eb,#bbb8ae); font:700 14px "Chalkboard SE","Comic Sans MS",sans-serif; }
+#endgameStage .taskbar span { min-width:0; min-height:33px; padding:6px 12px; border:2px inset #e8e3d6; font:600 14px "Chalkboard SE","Comic Sans MS",sans-serif; }
+#endgameStage .taskbar i { letter-spacing:0; font:600 14px "Chalkboard SE","Comic Sans MS",sans-serif; }
+.endgame-onboarding { position:absolute; inset:0; width:1440px; height:900px; border:0; z-index:200; }
+.auto-update-scene { position:absolute; inset:0; z-index:130; }
+.auto-working { position:absolute; width:140px; height:140px; object-fit:contain; transition:left .5s ease-in-out,top .5s ease-in-out; filter:drop-shadow(0 4px 3px #17334055); animation:auto-working-bob .6s ease-in-out infinite alternate; }
+.auto-working.reduced-motion { transition:none; animation:none; }
+.auto-working-site { outline:3px solid #eec553; outline-offset:2px; }
+.auto-update-caption { position:absolute; left:430px; bottom:56px; display:flex; align-items:center; gap:18px; padding:14px 18px; border:3px solid #263d49; background:#f7f5ee; color:#172d40; box-shadow:4px 4px #0004; font:700 17px "Chalkboard SE",sans-serif; }
+.auto-update-caption button { padding:8px 12px; border:2px outset #ddd8cc; background:#e9e4d6; color:#172d40; }
+@keyframes auto-working-bob { from { transform:rotate(-3deg) translateY(0); } to { transform:rotate(3deg) translateY(-5px); } }
+@media(prefers-reduced-motion:reduce) { .auto-working { animation:none; transition:none; } }
+.start-menu-brand { writing-mode:horizontal-tb; transform:none; }
+
+#endgameStage .auto-update-caption button:focus { outline:none; }
+html[data-keyboard] #endgameStage .auto-update-caption button:focus-visible { outline:2px solid #235d77; outline-offset:4px; }
+#endgameStage .taskbar .system-tray { min-height:0; display:flex; align-items:center; gap:14px; padding:0 5px; border:0; }
+#endgameStage .speaker-icon { font:900 15px/1 monospace; color:#455256; letter-spacing:-3px; }
+#endgameStage .signal-icon { height:24px; display:flex; align-items:flex-end; gap:3px; }
+#endgameStage .signal-icon i { flex:none; width:5px; background:#18863c; }
+#endgameStage .signal-icon i:nth-child(1) { height:8px; }
+#endgameStage .signal-icon i:nth-child(2) { height:12px; }
+#endgameStage .signal-icon i:nth-child(3) { height:17px; }
+#endgameStage .signal-icon i:nth-child(4) { height:22px; }
+.start-profile { padding:8px 10px 12px; margin-bottom:4px; border-bottom:2px solid #9f9c91; }
+.start-profile strong { display:block; color:#172d40; font:800 18px system-ui,sans-serif; }

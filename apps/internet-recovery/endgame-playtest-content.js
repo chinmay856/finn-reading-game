@@ -217,7 +217,7 @@ export const ENDGAME_POPUPS = Object.freeze([
 export const ENDGAME_COPY = Object.freeze({
   ready: Object.freeze([
     Object.freeze({ speaker: "Amy", portrait: "amy-supportive", heading: "TEN SITES RECOVERED", text: "Ten sites repaired. Ten lessons saved. You did it." }),
-    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-neutral", heading: "AUTO SHOULD HAVE IT NOW", text: "I think AUTO finally understands how to help. I told him to use all ten lessons everywhere from now on." }),
+    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-explaining", heading: "AUTO SHOULD HAVE IT NOW", text: "I think AUTO finally understands how to help. I told him to use all ten lessons everywhere from now on." }),
   ]),
   takeover: Object.freeze([
     Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "AUTO ESCAPED THE WEBSITES", text: "Oh no. AUTO is in the Recovery Desktop now—and he is applying every over-fix at once." }),

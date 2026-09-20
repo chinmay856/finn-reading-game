@@ -79,7 +79,8 @@ test("Recovery OS launcher exposes all ten playable routes", () => {
   assert.match(script, /PLAYABLE_SITE_IDS[^;]+wikiwhy[^;]+threadit[^;]+faceplace[^;]+mycorner[^;]+yahuh[^;]+viewtube[^;]+amaze-on[^;]+searchish[^;]+spotty-fi[^;]+mapguess/u);
   assert.doesNotMatch(script, /DESIGN IN PROGRESS/u);
   assert.match(script, /const walkthrough = playable \? getPlayableWalkthrough\(routeId\) : null/u);
-  assert.match(script, /preview\.src = playable \? walkthrough\.initialFrame/u);
+  assert.match(script, /preview\.src = playable \? \(completed \?/u);
+  assert.match(script, /recovered-site-v1\.png/u);
   assert.doesNotMatch(script, /mycorner-current_p1\.png/u);
   assert.doesNotMatch(html, /10 CASES AVAILABLE/u);
   assert.doesNotMatch(script, /LOCKED_PREVIEWS/u);
