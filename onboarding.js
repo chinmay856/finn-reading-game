@@ -69,7 +69,7 @@ function renderMission(screen){
 }
 function setInert(on){$('launcherView').inert=on;$('missionView').inert=on;}
 function closeMenu(){$('startMenu').hidden=true;$('startMenu').inert=false;document.querySelectorAll('.start-button').forEach(b=>b.setAttribute('aria-expanded','false'));}
-function portrait(key){const p=fixture.portraits[key],tile=$('introductionSpeaker');tile.replaceChildren();tile.style.setProperty('--portrait-position',p.position);tile.style.setProperty('--portrait-size',p.size);tile.style.setProperty('--portrait-image',`url('${p.image}')`);}
+function portrait(key){const p=fixture.portraits[key],tile=$('introductionSpeaker');tile.replaceChildren();tile.style.setProperty('--portrait-crop',p.crop||'1.16');tile.style.setProperty('--portrait-position',p.position);tile.style.setProperty('--portrait-size',p.size);tile.style.setProperty('--portrait-image',`url('${p.image}')`);}
 function renderIntro(){
  renderLauncher();setInert(true);$('gameIntroduction').hidden=false;$('tourLayer').hidden=true;$('skipSequence').hidden=false;$('skipSequence').textContent='Skip intro';
  const b=fixture.intro[index];portrait(b.portrait);$('gameIntroduction').querySelector('article').dataset.speaker=b.who.toLowerCase();
@@ -130,7 +130,7 @@ async function prepareArtwork(){
  const owners=[...Object.values(fixture.portraits).map(p=>[p,'image']),...fixture.sites.flatMap(s=>[[s,'frame'],[s,'mark']]),[fixture.frames,'before'],[fixture.frames,'after']];
  const urls=new Map();
  await Promise.all(owners.map(async([owner,key])=>{
-  const source=owner[key];
+  const source=owner[key];if(key==='image')owner.crop=source.includes('/endgame/portraits/')?'1':'1.16';
   if(!urls.has(source))urls.set(source,(async()=>{
    const response=await fetch(source);if(!response.ok)throw new Error('Artwork unavailable');
    const url=URL.createObjectURL(await response.blob());

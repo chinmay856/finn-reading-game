@@ -29,6 +29,9 @@ import {
   stopCelebration,
 } from "./apps/internet-recovery/endgame-playtest-state.js";
 
+document.addEventListener("pointerdown", () => delete document.documentElement.dataset.keyboard, true);
+document.addEventListener("keydown", event => { if (event.key === "Tab") document.documentElement.dataset.keyboard = "true"; });
+
 const stage = document.querySelector("#endgameStage");
 const stageShell = document.querySelector("#stageShell");
 const announcement = document.querySelector("#endgameAnnouncement");
@@ -190,9 +193,10 @@ function portraitMarkup(portrait, speaker) {
   const asset = PORTRAITS[portrait];
   if (!asset) return "";
   const style = [
-    `background-image:url('${asset.image}')`,
-    `background-position:${asset.position ?? "center"}`,
-    `background-size:${asset.size ?? "cover"}`,
+    `--portrait-image:url('${asset.image}')`,
+    `--portrait-position:${asset.position ?? "center"}`,
+    `--portrait-size:${asset.size ?? "cover"}`,
+    `--portrait-crop:${portrait.startsWith("chinmay") ? "1.03" : "1"}`,
   ].join(";");
   return `<div class="character-portrait" role="img" aria-label="${escapeHtml(speaker)}" style="${style}"></div>`;
 }

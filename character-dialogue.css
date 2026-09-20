@@ -1,0 +1,56 @@
+/* Shared story treatment: intro, mission dialogue, and desktop incident. */
+.speaker-tile, .character-portrait {
+  position:relative;
+  width:168px;
+  height:168px;
+  border:2px solid #263d49;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+  overflow:hidden;
+  isolation:isolate;
+}
+.speaker-tile::before, .character-portrait::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#fff4dd var(--portrait-image) var(--portrait-position,center)/var(--portrait-size,cover) no-repeat;
+  transform:scale(var(--portrait-crop,1));
+  z-index:-1;
+}
+.speaker-tile > img { transform:scale(var(--portrait-crop,1)); }
+.story-dialog small, .story-dialog[data-speaker="auto"] small {
+  color:#277366;
+  font:800 18px/1.2 system-ui,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.game-introduction .story-dialog, #endgameStage .story-dialog {
+  width:800px;
+  min-height:0;
+  padding:28px;
+  grid-template-columns:168px minmax(0,1fr);
+  column-gap:26px;
+  row-gap:22px;
+  align-items:center;
+  border:5px solid #26333a;
+  background:#f7f5ee;
+  box-shadow:10px 10px 0 #08131a99;
+}
+#endgameStage .story-dialog-copy { display:contents; }
+#endgameStage .character-portrait { grid-column:1; grid-row:1 / 4; }
+#endgameStage .story-dialog-copy > small,
+#endgameStage .story-dialog-copy > h1,
+#endgameStage .story-dialog-copy > p { grid-column:2; margin:0; }
+#endgameStage .story-dialog h1 { font:700 24px/1.2 "Chalkboard SE","Comic Sans MS",sans-serif; }
+#endgameStage .story-dialog p { font:400 20px/1.45 "Chalkboard SE","Comic Sans MS",sans-serif; }
+#endgameStage .story-dialog-copy > button { grid-column:1 / -1; justify-self:end; }
+#endgameStage .story-dialog .narrative-next { animation:none; }
+#endgameStage .story-dialog .primary-button {
+  background:#2d8848;
+  border:2px solid #176633;
+  box-shadow:inset 1px 1px #fff;
+  font:700 17px "Chalkboard SE","Comic Sans MS",sans-serif;
+}
+#endgameStage .story-dialog button { outline:none; }
+html[data-keyboard] #endgameStage .story-dialog button:focus-visible { outline:2px solid #235d77; outline-offset:4px; }

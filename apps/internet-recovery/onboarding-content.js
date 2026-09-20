@@ -75,12 +75,12 @@ const config = {
   ],
   "portraits": {
     "amy-engineer": {
-      "image": "/walkthroughs/shared/amy-engineer.jpg",
+      "image": "/walkthroughs/endgame/portraits/amy-supportive-clean-v1.jpg",
       "position": "center",
       "size": "cover"
     },
     "amy-evidence": {
-      "image": "/walkthroughs/shared/amy-evidence.jpg",
+      "image": "/walkthroughs/endgame/portraits/amy-evidence-clean-v1.jpg",
       "position": "center",
       "size": "cover"
     },
@@ -90,12 +90,12 @@ const config = {
       "size": "cover"
     },
     "amy-supportive": {
-      "image": "/walkthroughs/shared/amy-supportive.jpg",
+      "image": "/walkthroughs/endgame/portraits/amy-supportive-clean-v1.jpg",
       "position": "center",
       "size": "cover"
     },
     "amy-tools": {
-      "image": "/walkthroughs/shared/amy-tools.jpg",
+      "image": "/walkthroughs/endgame/portraits/amy-tools-clean-v1.jpg",
       "position": "center",
       "size": "cover"
     },

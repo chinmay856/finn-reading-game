@@ -163,8 +163,8 @@ test("named local saves, completed cases, and the Windows 98 Start menu are wire
 
 test("mission dialogue rotates canonical portraits and does not name the player", () => {
   assert.match(script, /SITE_PORTRAITS/u);
-  assert.match(script, /amy-engineer\.jpg/u);
-  assert.match(script, /amy-evidence\.jpg/u);
+  assert.match(script, /amy-supportive-clean-v1\.jpg/u);
+  assert.match(script, /amy-evidence-clean-v1\.jpg/u);
   assert.match(script, /chinmay-production-portraits\.png/u);
   assert.match(script, /chinmay-careless/u);
   assert.match(script, /chinmay-explaining/u);

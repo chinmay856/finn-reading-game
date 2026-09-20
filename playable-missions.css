@@ -556,10 +556,3 @@ textarea {
 .onboarding-frame { position:absolute; inset:0; width:1440px; height:900px; border:0; z-index:100; background:#087f88; }
 
 .start-menu-icon { width:28px; height:28px; flex:0 0 28px; object-fit:contain; }
-
-/* Crop source-sheet frames inside one consistent square portrait frame. */
-.speaker-tile { position:relative; border:2px solid #263d49; border-radius:0; background:none; isolation:isolate; }
-.speaker-tile::before { content:""; position:absolute; inset:0; background:#e4dfd1 var(--portrait-image) var(--portrait-position,center)/var(--portrait-size,cover) no-repeat; transform:scale(var(--portrait-crop,1.16)); z-index:-1; }
-.speaker-tile > img { transform:scale(var(--portrait-crop,1.16)); }
-
-.story-dialog[data-speaker="amy"] .speaker-tile { --portrait-crop:1; }

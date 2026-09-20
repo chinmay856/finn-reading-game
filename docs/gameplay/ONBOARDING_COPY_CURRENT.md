@@ -155,10 +155,29 @@ navigation has no extra focus outline. Intro portraits are vertically centered
 beside the story, with navigation in a separate full-width row.
 
 Portraits use the same square two-pixel frame. Chinmay and AUTO source tiles
-are inset-cropped to remove baked-in borders and sheet padding; Amy’s individual
-portraits retain their full crop. The Start menu uses a top brand header and
+are inset-cropped to remove baked-in borders and sheet padding; Amy’s clean endgame portraits retain their full crop; the bordered skeptical
+portrait uses the same inset crop as other source tiles. The Start menu uses a top brand header and
 map, replay-screen, and new-window icons. AUTO is always uppercase.
 
 Start menu labels, in order: Save Game; Choose Recovery Site; Replay Introduction;
 Tutorial; Switch Player; New Game. Menu entries have no descriptive subheaders,
 and Stability Report is no longer a player-facing menu action.
+
+## Intro and desktop-incident consistency pass
+
+Both sequences load `character-dialogue.css` for one story-window treatment:
+800-pixel dialog, 168-pixel square portraits, a single 2-pixel portrait border,
+no portrait shadow, 18-pixel green speaker names (including AUTO), matching
+paper/background and window shadow, and a separate bottom-right action row.
+The tutorial keeps its approved Amy cutout and speech bubble.
+
+The opening Amy portrait now reuses the existing cream-background supportive
+portrait from `public/walkthroughs/endgame/portraits/`. Evidence and tools poses
+reuse that directory's clean crops too. The blue-room engineer portrait is no
+longer used by the intro or mission story portrait catalog. No new character
+art was generated. Original sheet assets remain intact; CSS clips their baked-in
+frames at display time. Endgame Chinmay portraits need only a 3-percent inset.
+
+Verified locally: intro opening and skeptical Amy, endgame supportive/evidence
+Amy, neutral/flustered Chinmay and AUTO overdrive. Speaker styles, frame weights,
+and action placement use the shared stylesheet. QA does not load speech models.

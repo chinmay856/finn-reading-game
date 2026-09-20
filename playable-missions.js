@@ -109,6 +109,7 @@ function lockPassageToManualScroll() {
 
 function setPortraitTile(tile, portrait) {
   tile.replaceChildren();
+  tile.style.setProperty("--portrait-crop", portrait.image.includes("/endgame/portraits/") ? "1" : "1.16");
   tile.style.removeProperty("--portrait-image");
   tile.style.setProperty("--portrait-position", portrait.position);
   tile.style.setProperty("--portrait-size", portrait.size);
@@ -164,11 +165,11 @@ document.addEventListener("input", () => {
 }, { capture: true });
 
 const PORTRAITS = Object.freeze({
-  "amy-engineer": Object.freeze({ image: "/walkthroughs/shared/amy-engineer.jpg", position: "center", size: "cover" }),
-  "amy-evidence": Object.freeze({ image: "/walkthroughs/shared/amy-evidence.jpg", position: "center", size: "cover" }),
+  "amy-engineer": Object.freeze({ image: "/walkthroughs/endgame/portraits/amy-supportive-clean-v1.jpg", position: "center", size: "cover" }),
+  "amy-evidence": Object.freeze({ image: "/walkthroughs/endgame/portraits/amy-evidence-clean-v1.jpg", position: "center", size: "cover" }),
   "amy-skeptical": Object.freeze({ image: "/walkthroughs/shared/amy-skeptical.jpg", position: "center", size: "cover" }),
-  "amy-supportive": Object.freeze({ image: "/walkthroughs/shared/amy-supportive.jpg", position: "center", size: "cover" }),
-  "amy-tools": Object.freeze({ image: "/walkthroughs/shared/amy-tools.jpg", position: "center", size: "cover" }),
+  "amy-supportive": Object.freeze({ image: "/walkthroughs/endgame/portraits/amy-supportive-clean-v1.jpg", position: "center", size: "cover" }),
+  "amy-tools": Object.freeze({ image: "/walkthroughs/endgame/portraits/amy-tools-clean-v1.jpg", position: "center", size: "cover" }),
   "chinmay-careless": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "100% 0%", size: "300% 200%" }),
   "chinmay-explaining": Object.freeze({ image: "/walkthroughs/shared/chinmay-production-portraits.png", position: "50% 0%", size: "300% 200%" }),
   "chinmay-fluster-1": Object.freeze({ image: "/walkthroughs/shared/chinmay-fluster-1.jpg", position: "center", size: "cover" }),
