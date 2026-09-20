@@ -144,21 +144,21 @@ const config = {
     {
       "who": "AMY",
       "title": "The internet does a lot",
-      "body": "These websites help people learn, talk, shop, watch, listen, and find their way. They also have some habits that waste time, hide context, and take away choices from people.",
+      "body": "These websites help people learn, talk, shop, watch, listen, and find their way. They also have some habits that waste time, hide context, and take choice away from people.",
       "button": "Continue",
       "portrait": "amy-engineer"
     },
     {
       "who": "CHINMAY",
       "title": "I thought AI could help!",
-      "body": "I have been building an AI—named Auto—that can improve those rough edges on the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
+      "body": "Meet Auto, an AI I built to improve the rough edges of the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
       "button": "What happened?",
       "portrait": "chinmay-explaining"
     },
     {
       "who": "AMY",
       "title": "Auto went a little overboard",
-      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took those instructions too far. Now every site is corrupted, and the internet needs your help.",
+      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took his instructions too far, and now every site is corrupted. The internet needs your help.",
       "button": "How did that happen?",
       "portrait": "amy-skeptical"
     },

@@ -1,6 +1,7 @@
 /* Onboarding additions. The underlying game geometry remains in game.css. */
 .playtest-shell { height:100vh; }
-button:focus-visible,a:focus-visible { outline:3px solid #ffcc54; outline-offset:4px; }
+html:not([data-keyboard]) button:focus { outline:none; }
+html[data-keyboard] button:focus-visible,html[data-keyboard] a:focus-visible { outline:2px solid #235d77; outline-offset:4px; }
 .intro-navigation { display:flex; align-items:center; gap:14px; margin-top:20px; }
 .intro-navigation #introductionContinue { margin-left:auto; }
 #tourLayer { position:absolute; inset:0; z-index:35; }
@@ -18,7 +19,7 @@ button:focus-visible,a:focus-visible { outline:3px solid #ffcc54; outline-offset
 #tourBack { border-color:transparent; background:transparent; color:#586c71; }
 #tourBack:disabled { opacity:.4; }
 #tourNext { box-shadow:0 3px 0 #195733; }
-#tourNext:focus { outline:2px solid #e3b342; outline-offset:4px; }
+
 #tourDialog::after { display:none; }
 .amy-cutout { position:absolute; width:150px; height:170px; object-fit:contain; left:-137px; top:8px; filter:drop-shadow(0 4px 2px #092f332b); pointer-events:none; }
 .amy-speech-tail { position:absolute; width:21px; height:21px; left:-13px; top:68px; background:var(--paper); transform:rotate(45deg); border:solid #243b43; border-width:0 0 3px 3px; }
@@ -40,3 +41,16 @@ button:focus-visible,a:focus-visible { outline:3px solid #ffcc54; outline-offset
 html[data-embedded] .game-stage { transform:translate(-50%,-50%) !important; }
 html[data-embedded] .stage-scaler { width:1440px; height:900px; }
 html[data-embedded] body { margin:0; }
+
+/* Keep portraits centered beside the story; give navigation its own full row. */
+.game-introduction .story-dialog { width:800px; padding:28px; column-gap:26px; row-gap:22px; align-items:center; }
+.game-introduction .story-dialog > div:last-child { display:contents; }
+.game-introduction .speaker-tile { grid-column:1; grid-row:1 / 4; align-self:center; }
+#introductionLabel, #introductionHeading, #introductionText { grid-column:2; margin:0; }
+#introductionHeading { line-height:1.2; }
+.game-introduction .story-dialog p { min-height:0; }
+.intro-navigation { grid-column:1 / -1; margin-top:0; }
+#introductionContinue { box-shadow:inset 1px 1px #fff; }
+.tour-body #tourNote { margin-top:14px; }
+/* The demonstration menu stays below Amy and the spotlight overlay. */
+#startMenu { z-index:34; }
