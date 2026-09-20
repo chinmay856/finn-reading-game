@@ -4,18 +4,18 @@ if (embedded) document.documentElement.dataset.embedded = 'true';
 const $=id=>document.getElementById(id);
 const STORE='internet-recovery-onboarding-preview-v1';
 const STEPS=[
- {title:'Choose a recovery site.',text:'Each card opens a mission. We’ll use WikiWhy for this tour. Just click Continue to look around—you don’t need to read aloud yet.',screen:'launcher',target:'#site-wikiwhy',side:'right'},
- {title:'Look at what Auto changed.',text:'The website on the left shows what needs repairing. Look for strange claims, missing information, and red warnings.',screen:'ready',rect:[106,18,810,824],side:'right'},
- {title:'A confident claim isn’t proof.',text:'“USER FACTS ARE ALWAYS RIGHT.” That’s Auto’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.',screen:'ready',rect:[239,226,450,48],side:'right'},
- {title:'Your passage is on the right.',text:'Read the source introduction and then the passage aloud. Following the original words keeps a real person—and their own thinking—involved.',screen:'ready',target:'#passage',side:'left'},
- {title:'Start when you’re ready.',text:'In a mission, click Start reading. Allow microphone access if asked, then read clearly and loudly at your own pace. For this tour, just click Continue.',screen:'ready',target:'#startReading',side:'left'},
- {title:'Follow the highlight.',text:'The tan highlight follows the words the game hears. The bar below tracks your place. Keep reading naturally if the guide takes a moment to catch up.',screen:'reading',target:'#passage p.active',side:'left'},
- {title:'Finish the passage.',text:'Read all the way to the end. The game may finish automatically after you stop speaking, or you can click Finish now.',screen:'finish',target:'#finishReading',side:'left'},
- {title:'See how your reading went.',text:'Here’s an example result. Coverage describes how much the voice check heard; Pace estimates reading speed. These are helpful feedback, not a pass-or-fail grade. Retrying is optional.',screen:'result',target:'.score-grid',side:'left'},
- {title:'Check what you read.',text:'Choose the answer supported by the passage. If it isn’t right, you can try again. Here, a failed test may reflect misunderstanding or brightness cues—not an inability to see color. Continue to see that answer checked.',screen:'result',target:'.quick-check',side:'left'},
- {title:'Watch that same banner recover.',text:'“USER FACTS ARE ALWAYS RIGHT” has become “CLAIM UNDER REVIEW.” One passage and its Quick Check made one repair. WikiWhy still needs more work.',screen:'answered',rect:[239,226,450,48],side:'right'},
- {title:'A little help with words.',text:'Words to Know picks out vocabulary from the passage. Hear aloud reads a word, its meaning, and how it was used. You can use this help after each reading.',screen:'answered',target:'#wordHelp',side:'left'},
- {title:'Keep reading. Keep repairing.',text:'Next passage continues the mission. Each passage and Quick Check repairs another part; later, you’ll teach Auto what went wrong. You can replay this tour or the introduction from Start at any time.',screen:'answered',target:'#nextPassage',side:'left',button:'Choose a website'},
+ {title:"Choose a website to recover",text:"We’ll use WikiWhy for this example. Just click Continue to look around. You don’t need to read aloud yet.",screen:'launcher',target:'#site-wikiwhy',side:'right'},
+ {title:"Look at what Auto changed",text:"The website on the left shows what needs repairing. Look for strange claims, missing information, and red warnings.",screen:'ready',rect:[106,18,810,824],side:'right'},
+ {title:"A confident claim isn’t proof",text:"“USER FACTS ARE ALWAYS RIGHT.” That’s Auto’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.",screen:'ready',rect:[239,226,450,48],side:'right'},
+ {title:"Read human writing on the right",text:"Read the title, source introduction, and passage aloud. Reading original works builds knowledge and helps you practice thinking for yourself.",screen:'ready',target:'#passage',side:'left'},
+ {title:"Start when you’re ready",text:"Click Start reading when you’re ready to begin. Read clearly and loudly at your own pace. For this tutorial, just click Continue.",screen:'ready',target:'#startReading',side:'left'},
+ {title:"Follow the highlight",text:"The tan highlight follows the words the game hears. The bar below tracks your place. Keep reading naturally, even if the guide takes a moment to catch up. You can always scroll up and down if the guide isn’t moving fast enough.",screen:'reading',target:'#passage p.active',side:'left'},
+ {title:"Finish the passage",text:"Read all the way to the end. The game should finish automatically after you stop speaking, or you can click Finish now.",screen:'finish',target:'#finishReading',side:'left'},
+ {title:"See how your reading went",text:"Here’s an example result. Coverage describes how many of the words the game recognized. Pace estimates reading speed. These are meant to be helpful feedback, not a pass-or-fail grade. Retrying is always optional.",screen:'result',target:'.score-grid',side:'left'},
+ {title:"Check what you read",text:"Choose the answer supported by the passage. If it isn’t right, you can try again.",screen:'result',target:'.quick-check',side:'left'},
+ {title:"The website starts repairing itself",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair. WikiWhy still needs more work.",screen:'answered',rect:[239,226,450,48],side:'right'},
+ {title:"A little help with tricky words",text:"Words to Know picks out vocabulary from the passage. Hear aloud plays the word, its meaning, and how it was used in a sentence. You can use this to help learn tricky vocabulary after each reading.",screen:'answered',target:'#wordHelp',side:'left'},
+ {title:"Keep reading. Keep repairing",text:"Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach Auto what went wrong. You can replay the tutorial at any time from the Start menu.",screen:'answered',target:'#nextPassage',side:'left',button:'Choose a website'}
 ];
 let mode='launcher',index=0,chainTutorial=false;
 let seen={};try{seen=JSON.parse(localStorage.getItem(STORE)||'{}');}catch{}
@@ -73,7 +73,7 @@ function renderIntro(){
  renderLauncher();setInert(true);$('gameIntroduction').hidden=false;$('tourLayer').hidden=true;$('skipSequence').hidden=false;$('skipSequence').textContent='Skip intro';
  const b=fixture.intro[index];portrait(b.portrait);$('gameIntroduction').querySelector('article').dataset.speaker=b.who.toLowerCase();
  $('introductionLabel').textContent=b.who;$('introductionHeading').textContent=b.title.toUpperCase();$('introductionText').textContent=b.body;
- $('introductionContinue').textContent=index===7?(chainTutorial?'Start the tutorial':'Choose a website'):b.button;
+ $('introductionContinue').textContent=b.button;
  $('introductionContinue').focus();
 }
 function getTarget(step){
@@ -102,7 +102,7 @@ function startIntro(chain=false){closeMenu();mode='intro';index=0;chainTutorial=
 function startTutorial(){closeMenu();mode='tutorial';index=0;renderTutorial();}
 function finishIntro(){if(embedded)window.parent.postMessage({type:'recovery-intro-complete'},location.origin);else remember('introSeen');chainTutorial?startTutorial():showLauncher();}
 function finishTutorial(){if(embedded)window.parent.postMessage({type:'recovery-tutorial-complete'},location.origin);else remember('tutorialSeen');showLauncher();}
-$('introductionContinue').onclick=()=>{if(index<7){index++;renderIntro();}else finishIntro();};
+$('introductionContinue').onclick=()=>{if(index<7){index++;renderIntro();}else {chainTutorial=true;finishIntro();}};
 $('tourNext').onclick=()=>{if(index<STEPS.length-1){index++;renderTutorial();}else finishTutorial();};
 $('tourBack').onclick=()=>{if(index>0){index--;renderTutorial();}};
 $('skipSequence').onclick=()=>mode==='intro'?finishIntro():finishTutorial();

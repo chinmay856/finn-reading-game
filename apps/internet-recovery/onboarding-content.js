@@ -143,29 +143,29 @@ const config = {
   "intro": [
     {
       "who": "AMY",
-      "title": "The internet does a lot.",
-      "body": "These websites help people learn, talk, shop, watch, listen, and find their way. They also have some habits that waste time, hide context, and make choices for people.",
+      "title": "The internet does a lot",
+      "body": "These websites help people learn, talk, shop, watch, listen, and find their way. They also have some habits that waste time, hide context, and take away choices from people.",
       "button": "Continue",
       "portrait": "amy-engineer"
     },
     {
       "who": "CHINMAY",
-      "title": "I thought Auto could help.",
-      "body": "I have been building an AI that can improve those rough edges. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
+      "title": "I thought AI could help!",
+      "body": "I have been building an AI—named Auto—that can improve those rough edges on the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
       "button": "What happened?",
       "portrait": "chinmay-explaining"
     },
     {
       "who": "AMY",
-      "title": "The internet needs your help.",
-      "body": "Auto—our extremely helpful AI—has been fixing ten websites. Unfortunately, he followed his instructions much too far. Now every site is corrupted in a different way.",
-      "button": "What did Chinmay ask for?",
+      "title": "Auto went a little overboard",
+      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he went a little overboard with following his instructions. Now every site is corrupted, and the internet needs your help.",
+      "button": "How did that happen?",
       "portrait": "amy-skeptical"
     },
     {
       "who": "CHINMAY",
-      "title": "I may have made this worse.",
-      "body": "I gave Auto instructions that sounded helpful at the time. Make things clearer. Keep people happy. Make choices easier. Auto decided those rules should apply to absolutely everything.",
+      "title": "This may have gotten a little bit out of hand",
+      "body": "I gave Auto instructions that sounded helpful at the time: make things clearer, keep people happy, make choices easier. Auto decided those rules should apply to absolutely everything.",
       "button": "Continue",
       "portrait": "chinmay-fluster-1"
     },
@@ -173,28 +173,28 @@ const config = {
       "who": "AUTO",
       "title": "Ten websites improved!",
       "body": "CLARITY INCREASED.\nCHOICES SIMPLIFIED.\nHUMAN EFFORT REDUCED.\nALL UPDATES ARE WORKING PERFECTLY.",
-      "button": "See Auto’s improvements",
+      "button": "See what went wrong",
       "portrait": "auto-learned"
     },
     {
       "who": "AMY",
-      "title": "Auto has been checking Auto.",
-      "body": "When AI keeps building on AI-made pages, every new “fix” can drift farther from what people actually meant. We need a real person to reconnect each site to what the source actually says.",
-      "button": "Why reading?",
+      "title": "Auto has been checking Auto",
+      "body": "When AI keeps building on AI-made pages, every new “fix” can drift farther from what people actually meant. We need your help—a real person—to rebuild each site the way it’s meant to be.",
+      "button": "How do we fix it?",
       "portrait": "amy-evidence"
     },
     {
       "who": "CHINMAY",
-      "title": "Your reading is the recovery key.",
-      "body": "Reading the real passage aloud checks the words in order and keeps a human brain in the loop. That matters: reading builds knowledge, and it helps us notice when a confident answer has lost the point.",
-      "button": "Show me how",
+      "title": "Your reading is the key",
+      "body": "Reading passages aloud keeps a human brain in the loop. Reading builds knowledge, helps us think for ourselves, and helps us notice when a confident answer has lost touch with reality. Your reading brings real sources back into the picture.",
+      "button": "How do we fix it?",
       "portrait": "chinmay-explaining"
     },
     {
       "who": "AMY",
-      "title": "Read. Repair. Teach Auto.",
-      "body": "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. You may have to grant permission for this game to use your computer’s microphone. When the repair is finished, you’ll teach Auto what went wrong—and where helpful AI needs to stop.",
-      "button": "Start the tutorial",
+      "title": "Read. Repair. Teach Auto",
+      "body": "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. When the repair is finished, you’ll teach Auto what went wrong.",
+      "button": "Show me how",
       "portrait": "amy-tools"
     }
   ],

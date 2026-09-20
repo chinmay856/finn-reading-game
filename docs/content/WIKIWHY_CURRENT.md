@@ -43,7 +43,9 @@ readback verification.
 
 New profiles see the approved eight-beat intro followed by the twelve-step tour.
 Intro has Continue and bottom Skip intro, with no Back or counter. Tutorial has
-Back, Continue and Skip tutorial. Start contains separate replay entries.
+Back, Continue and Skip tutorial. Start contains separate replay entries. Completing the intro with Show me how
+opens the tutorial, including when replaying the introduction.
+[Current reviewed onboarding copy](../gameplay/ONBOARDING_COPY_CURRENT.md).
 Returning profiles retain their existing progress and can replay either from
 Start. Demonstration results are explicitly examples. All content is DOM text;
 site-state artwork stays decorative.
