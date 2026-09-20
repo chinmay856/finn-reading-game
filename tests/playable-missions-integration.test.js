@@ -121,11 +121,11 @@ test("the validated v2 Techno pet drives real game states", () => {
   assert.doesNotMatch(css, /legacy-techno-cover/u);
 });
 
-test("the over-fix remains visible before Amy and Auto confirms the site lesson separately", () => {
+test("the over-fix remains visible before Amy and AUTO confirms the site lesson separately", () => {
   assert.match(html, /id="corruptionPause"/u);
-  assert.match(html, /Oh no—what did Auto do\?/u);
+  assert.match(html, /Oh no—what did AUTO do\?/u);
   assert.match(script, /setFrame\(mission\.superFrame[^;]+;\s*setTechno[^;]+;\s*await showCorruptionPause\(\);\s*await showStoryBeat\("amy"/su);
-  assert.match(html, /Instructions sent to Auto\./u);
+  assert.match(html, /Instructions sent to AUTO\./u);
   assert.match(script, /mission\.autoLesson/u);
   assert.match(script, /previewButton\.disabled = true/u);
   assert.match(script, /previewButton\.textContent = "React to the site first"/u);
@@ -175,7 +175,7 @@ test("mission dialogue rotates canonical portraits and does not name the player"
   assert.match(script, /auto-character-expression-sheet-v2-bluetooth\.png/u);
   assert.doesNotMatch(`${html}\n${script}`, /\bFinn\b/u);
   assert.doesNotMatch(`${html}\n${script}\n${walkthroughs}`, /\bOtto\b/u);
-  assert.match(`${html}\n${script}\n${walkthroughs}`, /\bAuto\b/u);
+  assert.match(`${html}\n${script}\n${walkthroughs}`, /\bAUTO\b/u);
   assert.match(script, /function setPortraitTile\(tile, portrait\)/u);
   assert.match(script, /image\.loading = "eager"/u);
   assert.match(script, /image\.remove\(\)/u);
@@ -301,14 +301,14 @@ test("source introductions, Kokoro vocabulary help, and the Chinmay-then-Amy tea
   assert.match(script, /function showReflection\(\).*setTechno\("waiting", "left"\)/su);
   assert.match(script, /GOOD JOB — THE FIXES ARE LOCKED IN/u);
   assert.match(script, /showStoryBeat\(\s*"chinmay"[\s\S]+showStoryBeat\(\s*"amy"/u);
-  assert.match(script, /Now it’s time to teach Auto/u);
-  assert.match(script, /Write the lesson for Auto/u);
+  assert.match(script, /Now it’s time to teach AUTO/u);
+  assert.match(script, /Write the lesson for AUTO/u);
   assert.match(script, /completion: "amy-supportive"/u);
   assert.match(script, /briefing: "amy-skeptical"/u);
 });
 
 test("playtester UI keeps saves private, coaches a paragraph without enforcing length, and hides passage counts", () => {
-  assert.match(html, /Write a paragraph about what Auto should remember/u);
+  assert.match(html, /Write a paragraph about what AUTO should remember/u);
   assert.match(html, /0 words out of 300/u);
   assert.doesNotMatch(html, /One clear sentence is enough/u);
   assert.doesNotMatch(html, /id="(?:missionName|passagePosition|skipPassagePosition|resultPassagePosition)"/u);

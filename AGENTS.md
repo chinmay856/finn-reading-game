@@ -66,6 +66,12 @@ Before making architectural, gameplay, content-model, speech, scoring, progressi
 2. `docs/PROJECT_STATUS.md`
 3. `README.md`
 
+## Character name spelling
+
+The AI character’s name is **AUTO**, always uppercase in player-facing copy,
+including introductions, tutorials, dialogue, buttons, and accessibility text.
+Keep internal identifiers and asset paths unchanged.
+
 ## Production bandwidth rule — 2026-09-20
 
 Chinmay explicitly requires conserving Firebase bandwidth/credits. Run full-game

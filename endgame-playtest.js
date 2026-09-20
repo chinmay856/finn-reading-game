@@ -222,7 +222,7 @@ function desktopCardMarkup(site, mode) {
   const restored = isSiteRestored(site.id, mode);
   const frame = restored ? site.recoveredFrame : site.autoFrame;
   return `<article class="desktop-site-card" data-site-id="${site.id}" data-state="${restored ? "restored" : "corrupted"}">
-    <div class="site-only-shot"><img src="${frame}" alt="${escapeHtml(site.name)} ${restored ? "recovered site" : "Auto over-fix"}"></div>
+    <div class="site-only-shot"><img src="${frame}" alt="${escapeHtml(site.name)} ${restored ? "recovered site" : "AUTO over-fix"}"></div>
     <footer><img src="${site.markImage}" alt=""><b>${escapeHtml(site.name)}</b><span>${restored ? "✓ RECOVERED" : "× AUTO OVER-FIX"}</span></footer>
   </article>`;
 }
@@ -259,7 +259,7 @@ function readyMarkup() {
   const last = state.readyDialogueIndex === ENDGAME_COPY.ready.length - 1;
   return `${desktopMarkup("ready")}
     ${technoSpriteMarkup("ready-techno", "Techno celebrates all ten recovered sites", { column: 2, row: 4 })}
-    ${storyDialogMarkup(entry, { action: "advance-ready", buttonLabel: last ? "Apply Auto's update" : "Continue" })}`;
+    ${storyDialogMarkup(entry, { action: "advance-ready", buttonLabel: last ? "Apply AUTO's update" : "Continue" })}`;
 }
 
 function takeoverMarkup() {
@@ -282,7 +282,7 @@ function popupStackMarkup() {
   const remaining = revealed.filter(({ id }) => !state.closedPopupIds.includes(id));
   const activePopupId = revealComplete ? remaining.at(-1)?.id : null;
   return `${desktopMarkup("corrupted")}
-    <section class="popup-swarm" aria-label="Auto pop-up swarm" aria-live="polite">
+    <section class="popup-swarm" aria-label="AUTO pop-up swarm" aria-live="polite">
       ${remaining.map((popup) => popupArticleMarkup(popup, { revealComplete, active: popup.id === activePopupId, settled: revealComplete })).join("")}
     </section>`;
 }
@@ -329,7 +329,7 @@ function instructionIntroMarkup() {
   const entry = ENDGAME_COPY.instructionIntro[state.instructionIntroIndex];
   const last = state.instructionIntroIndex === ENDGAME_COPY.instructionIntro.length - 1;
   return `${desktopMarkup("corrupted")}
-    ${storyDialogMarkup(entry, { action: "advance-intro", buttonLabel: last ? "Open Auto Instruction Builder" : "Continue" })}`;
+    ${storyDialogMarkup(entry, { action: "advance-intro", buttonLabel: last ? "Open AUTO Instruction Builder" : "Continue" })}`;
 }
 
 function restorationRibbonMarkup() {
@@ -383,7 +383,7 @@ function builderMarkup() {
         ${siteComplete ? `<section class="document-complete" aria-labelledby="choiceTitle">
           <small>DOCUMENT RESTORED</small>
           <h2 id="choiceTitle">All three parts are back in place.</h2>
-          <p>Auto's lesson, your explanation, and the extra instruction are saved together.</p>
+          <p>AUTO's lesson, your explanation, and the extra instruction are saved together.</p>
           <button class="primary-button" data-action="advance-site" type="button">${isLastSite ? "Continue" : "Move on to next site"}</button>
         </section>` : `<section class="instruction-choices" aria-labelledby="choiceTitle">
           <h2 id="choiceTitle">${escapeHtml(step.question)}</h2>
@@ -403,11 +403,11 @@ function finalInstructionMarkup() {
   const entry = ENDGAME_COPY.final[state.finalDialogueIndex];
   const last = state.finalDialogueIndex === ENDGAME_COPY.final.length - 1;
   return `${desktopMarkup("restored")}
-    ${storyDialogMarkup(entry, { action: last ? "send-final" : "advance-final", buttonLabel: last ? "Send final instructions to Auto" : "Continue", variant: "final-story-dialog" })}`;
+    ${storyDialogMarkup(entry, { action: last ? "send-final" : "advance-final", buttonLabel: last ? "Send final instructions to AUTO" : "Continue", variant: "final-story-dialog" })}`;
 }
 
 function restoredMarkup() {
-  const entry = Object.freeze({ speaker: "Auto", portrait: "auto-learned", heading: "I UNDERSTAND", text: ENDGAME_COPY.autoReceipt });
+  const entry = Object.freeze({ speaker: "AUTO", portrait: "auto-learned", heading: "I UNDERSTAND", text: ENDGAME_COPY.autoReceipt });
   return `${desktopMarkup("restored")}
     ${storyDialogMarkup(entry, { action: "continue-restored", buttonLabel: "Continue to the restored desktop", variant: "neutral-auto-dialog" })}`;
 }
@@ -573,7 +573,7 @@ function documentsModalMarkup() {
 
 function replayModalMarkup() {
   const site = endgameSiteFixtures.find(({ id }) => id === replaySiteId) ?? endgameSiteFixtures[0];
-  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="replayModalTitle"><div class="modal-window replay-modal"><header class="window-titlebar"><span id="replayModalTitle">▣ Recovered Site Replay</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close recovered site replay">×</button></header><div class="replay-site-tabs">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-replay-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt="">${escapeHtml(candidate.name)}</button>`).join("")}</div><div class="replay-comparison"><figure><img src="${site.autoFrame}" alt="${escapeHtml(site.name)} Auto over-fix"><figcaption>AUTO OVER-FIX</figcaption></figure><figure><img src="${site.recoveredFrame}" alt="${escapeHtml(site.name)} recovered"><figcaption>✓ RECOVERED</figcaption></figure></div></div></section>`;
+  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="replayModalTitle"><div class="modal-window replay-modal"><header class="window-titlebar"><span id="replayModalTitle">▣ Recovered Site Replay</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close recovered site replay">×</button></header><div class="replay-site-tabs">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-replay-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt="">${escapeHtml(candidate.name)}</button>`).join("")}</div><div class="replay-comparison"><figure><img src="${site.autoFrame}" alt="${escapeHtml(site.name)} AUTO over-fix"><figcaption>AUTO OVER-FIX</figcaption></figure><figure><img src="${site.recoveredFrame}" alt="${escapeHtml(site.name)} recovered"><figcaption>✓ RECOVERED</figcaption></figure></div></div></section>`;
 }
 
 function renderModal() {
@@ -666,7 +666,7 @@ function skipCurrentStep() {
   else if (phase === "endgame_popup_swarm") {
     let nextState = state;
     for (const popup of [...ENDGAME_POPUPS].reverse()) nextState = closeTopPopup(nextState, popup.id);
-    saveState(nextState, "Auto pop-up takeover skipped");
+    saveState(nextState, "AUTO pop-up takeover skipped");
   } else if (phase === "endgame_instruction_intro") saveState(advanceInstructionIntro(state), "Builder introduction skipped");
   else if (phase === "endgame_lesson_lock") {
     if (state.awaitingNextSite) saveState(advanceToNextSite(state), "Next saved document opened");

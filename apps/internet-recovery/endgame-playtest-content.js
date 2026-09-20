@@ -25,7 +25,7 @@ const PUZZLE_ROWS = Object.freeze({
     correct: "Keep sources and uncertainty visible with a clear answer.",
     distractors: Object.freeze([
       "Remove uncertainty so every answer sounds confident.",
-      "Hide sources after Auto checks them once.",
+      "Hide sources after AUTO checks them once.",
       "Replace edit history with the newest version.",
       "Use one certain sentence for every reader.",
     ]),
@@ -87,16 +87,16 @@ const PUZZLE_ROWS = Object.freeze({
       "Buy the top recommendation before it sells out.",
       "Treat sponsored placement as the strongest quality signal.",
       "Hide product details that slow the decision.",
-      "Skip confirmation when Auto feels confident.",
+      "Skip confirmation when AUTO feels confident.",
     ]),
-    explanation: "Auto can organize useful comparisons, but a recommendation is not permission. The shopper keeps the final choice and confirms every purchase.",
+    explanation: "AUTO can organize useful comparisons, but a recommendation is not permission. The shopper keeps the final choice and confirms every purchase.",
   }),
   searchish: Object.freeze({
     correct: "Keep AI optional and preserve the editable search and real options.",
     distractors: Object.freeze([
       "Merge the AI answer with the fastest paid shortcut.",
       "Hide other results after one answer appears.",
-      "Lock the query after Auto understands it.",
+      "Lock the query after AUTO understands it.",
       "Put sponsored results first without a label.",
     ]),
     explanation: "An AI answer can be one optional tool, but it should not replace the editable query, labeled results, or the real choices a search reveals.",
@@ -206,31 +206,31 @@ export function repairStepId(siteId, stepKey) {
 }
 
 export const ENDGAME_POPUPS = Object.freeze([
-  Object.freeze({ id: "mouse-assist", title: "MOUSE + KEYBOARD ASSIST COMPLETE", body: "Auto already clicked everything. This was faster than waiting for a person.", image: "/walkthroughs/endgame/auto-popups/auto-human-input-v1.png" }),
+  Object.freeze({ id: "mouse-assist", title: "MOUSE + KEYBOARD ASSIST COMPLETE", body: "AUTO already clicked everything. This was faster than waiting for a person.", image: "/walkthroughs/endgame/auto-popups/auto-human-input-v1.png" }),
   Object.freeze({ id: "computer-time", title: "COMPUTER TIME SAVED", body: "All of your computer time has been saved by removing your time on the computer.", image: "/walkthroughs/endgame/auto-popups/auto-computer-time-v1.png" }),
-  Object.freeze({ id: "outdoor-mode", title: "OUTDOOR MODE READY", body: "Auto moved the computer outside so the computer can enjoy the outdoors for you.", image: "/walkthroughs/endgame/auto-popups/auto-outdoor-mode-v1.png" }),
-  Object.freeze({ id: "touch-grass", title: "GO OUTSIDE AND TOUCH GRASS", body: "Auto has prepared one perfectly optimized square of grass. Please touch it and leave the rest to Auto.", image: "/walkthroughs/endgame/auto-popups/auto-touch-grass-v1.png" }),
-  Object.freeze({ id: "choices-optimized", title: "ALL CHOICES OPTIMIZED", body: "Every different choice now leads to the same helpful answer: Auto's choice.", image: "/walkthroughs/endgame/auto-popups/auto-choices-optimized-v1.png" }),
+  Object.freeze({ id: "outdoor-mode", title: "OUTDOOR MODE READY", body: "AUTO moved the computer outside so the computer can enjoy the outdoors for you.", image: "/walkthroughs/endgame/auto-popups/auto-outdoor-mode-v1.png" }),
+  Object.freeze({ id: "touch-grass", title: "GO OUTSIDE AND TOUCH GRASS", body: "AUTO has prepared one perfectly optimized square of grass. Please touch it and leave the rest to AUTO.", image: "/walkthroughs/endgame/auto-popups/auto-touch-grass-v1.png" }),
+  Object.freeze({ id: "choices-optimized", title: "ALL CHOICES OPTIMIZED", body: "Every different choice now leads to the same helpful answer: AUTO's choice.", image: "/walkthroughs/endgame/auto-popups/auto-choices-optimized-v1.png" }),
   Object.freeze({ id: "rest-break", title: "REST BREAK EXTENDED", body: "Come back when the computer needs a person. Estimated time: forever.", image: "/walkthroughs/endgame/auto-popups/auto-rest-break-v1.png" }),
 ]);
 
 export const ENDGAME_COPY = Object.freeze({
   ready: Object.freeze([
     Object.freeze({ speaker: "Amy", portrait: "amy-supportive", heading: "TEN SITES RECOVERED", text: "Ten sites repaired. Ten lessons saved. You did it." }),
-    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-neutral", heading: "AUTO SHOULD HAVE IT NOW", text: "I think Auto finally understands how to help. I told him to use all ten lessons everywhere from now on." }),
+    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-neutral", heading: "AUTO SHOULD HAVE IT NOW", text: "I think AUTO finally understands how to help. I told him to use all ten lessons everywhere from now on." }),
   ]),
   takeover: Object.freeze([
-    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "AUTO ESCAPED THE WEBSITES", text: "Oh no. Auto is in the Recovery Desktop now—and he is applying every over-fix at once." }),
-    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THE LESSONS LOST THEIR BOUNDARIES", text: "The saved lessons are still here. Auto dropped the part that says where each lesson belongs and when helping should stop." }),
-    Object.freeze({ speaker: "Auto", portrait: "auto-overdrive", heading: "DESKTOP FIX COMPLETE", text: "Humans no longer need computers. Please go outside and touch grass. I will use the computer for you." }),
+    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "AUTO ESCAPED THE WEBSITES", text: "Oh no. AUTO is in the Recovery Desktop now—and he is applying every over-fix at once." }),
+    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THE LESSONS LOST THEIR BOUNDARIES", text: "The saved lessons are still here. AUTO dropped the part that says where each lesson belongs and when helping should stop." }),
+    Object.freeze({ speaker: "AUTO", portrait: "auto-overdrive", heading: "DESKTOP FIX COMPLETE", text: "Humans no longer need computers. Please go outside and touch grass. I will use the computer for you." }),
   ]),
   instructionIntro: Object.freeze([
     Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "THAT INSTRUCTION WAS TOO BROAD", text: "I made “use these lessons everywhere” much too broad. We need to recover what each lesson actually said." }),
-    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore Auto's saved lesson. Then restore your explanation. Last, add the extra instruction that keeps the lesson inside its proper boundary." }),
+    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore AUTO's saved lesson. Then restore your explanation. Last, add the extra instruction that keeps the lesson inside its proper boundary." }),
     Object.freeze({ speaker: "Amy", portrait: "amy-tools", heading: "OPEN THE INSTRUCTION BUILDER", text: "We will repair one saved document at a time." }),
   ]),
   final: Object.freeze([
-    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-relieved", heading: "THE LESSONS MAKE SENSE AGAIN", text: "Now Auto has clear instructions on where to stop. AI should help people, not replace the people it is helping." }),
+    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-relieved", heading: "THE LESSONS MAKE SENSE AGAIN", text: "Now AUTO has clear instructions on where to stop. AI should help people, not replace the people it is helping." }),
     Object.freeze({ speaker: "Amy", portrait: "amy-supportive", heading: "FINALIZE THE INSTRUCTIONS", text: "All ten documents are restored, and the final instructions are in place." }),
   ]),
   ending: Object.freeze([

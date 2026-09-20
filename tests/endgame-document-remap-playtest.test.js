@@ -299,7 +299,7 @@ test("rejected first-pass labels, counters, minimized Companion, old naming, and
     /10 LESSONS LOADED/iu,
     /SITE BOUNDARIES REMOVED/iu,
     /APPLYING TO RECOVERY DESKTOP/iu,
-    /Close Auto's pop-ups/iu,
+    /Close AUTO's pop-ups/iu,
     /A wrong choice simply returns to the list/iu,
     /Techno victory cascade/iu,
     /\bFinn\b/u,
@@ -323,7 +323,7 @@ test("standalone state remains isolated while completed campaign documents can r
   assert.doesNotMatch(campaignHtml, /class="reader-actions"[\s\S]{0,500}id="skipReading"/u);
   assert.match(runtime, /location\.assign\("\/playable-missions\.html\?endgame=complete"\)/u);
   const prototypeSource = `${html}\n${runtime}\n${content}\n${stateSource}`;
-  assert.match(prototypeSource, /\bAuto\b/u);
+  assert.match(prototypeSource, /\bAUTO\b/u);
   assert.match(prototypeSource, /\bChinmay\b/u);
   assert.match(prototypeSource, /\bAmy\b/u);
   assert.match(prototypeSource, /\bTechno\b/u);

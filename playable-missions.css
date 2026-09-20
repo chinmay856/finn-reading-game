@@ -529,8 +529,8 @@ textarea {
 .dialup-window[data-state="connected"] .dialup-packet-signal i { background:#83bd99; }
 .dialup-window[data-state="error"] .dialup-art { filter:saturate(.65) sepia(.2); }
 @keyframes dialup-packet { 0%,19% { background:#d7fbff; border-color:#e9ffff; box-shadow:0 0 16px 7px #a9f7ff; transform:translateY(-2px); } 20%,100% { background:#77aaa9; border-color:#174c57; box-shadow:0 0 0 3px #087f88aa; transform:none; } }
-.start-menu { position:absolute; z-index:25; left:7px; bottom:47px; width:390px; min-height:330px; display:grid; grid-template-columns:52px 1fr; border:4px outset #ddd8cc; background:#c2bdb1; color:var(--ink); box-shadow:8px 8px 0 #062b3666; }
-.start-menu-brand { display:flex; align-items:flex-end; justify-content:center; padding:10px 4px; background:linear-gradient(#00639b,#003e6a); color:#fff; font:900 15px/1.05 system-ui,sans-serif; letter-spacing:1px; writing-mode:vertical-rl; transform:rotate(180deg); }
+.start-menu { position:absolute; z-index:25; left:7px; bottom:47px; width:390px; min-height:330px; display:grid; grid-template-columns:1fr; border:4px outset #ddd8cc; background:#c2bdb1; color:var(--ink); box-shadow:8px 8px 0 #062b3666; }
+.start-menu-brand { display:flex; align-items:center; justify-content:flex-start; padding:12px 16px; background:linear-gradient(#00639b,#003e6a); color:#fff; font:900 15px/1.05 system-ui,sans-serif; letter-spacing:1px; }
 .start-menu-items { padding:8px; }
 .start-profile { padding:9px 11px 12px; border-bottom:2px solid #8f8c84; font-family:system-ui,sans-serif; }
 .start-profile small,.start-profile strong { display:block; }
@@ -554,3 +554,12 @@ textarea {
 }
 
 .onboarding-frame { position:absolute; inset:0; width:1440px; height:900px; border:0; z-index:100; background:#087f88; }
+
+.start-menu-icon { width:28px; height:28px; flex:0 0 28px; object-fit:contain; }
+
+/* Crop source-sheet frames inside one consistent square portrait frame. */
+.speaker-tile { position:relative; border:2px solid #263d49; border-radius:0; background:none; isolation:isolate; }
+.speaker-tile::before { content:""; position:absolute; inset:0; background:#e4dfd1 var(--portrait-image) var(--portrait-position,center)/var(--portrait-size,cover) no-repeat; transform:scale(var(--portrait-crop,1.16)); z-index:-1; }
+.speaker-tile > img { transform:scale(var(--portrait-crop,1.16)); }
+
+.story-dialog[data-speaker="amy"] .speaker-tile { --portrait-crop:1; }

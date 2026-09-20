@@ -553,7 +553,7 @@ function openDocuments() {
     if (index === 0) queueMicrotask(() => showRecord(record, button));
     return button;
   }));
-  if (!records.length) preview.replaceChildren(Object.assign(document.createElement("h2"), { textContent: "No recovery files yet" }), Object.assign(document.createElement("p"), { textContent: "Finish a recovery case and teach Auto a lesson. The saved lesson will appear here." }));
+  if (!records.length) preview.replaceChildren(Object.assign(document.createElement("h2"), { textContent: "No recovery files yet" }), Object.assign(document.createElement("p"), { textContent: "Finish a recovery case and teach AUTO a lesson. The saved lesson will appear here." }));
   $("documentsWindow").hidden = false;
   $("closeDocuments").focus();
 }
@@ -959,7 +959,7 @@ async function answerQuestion(choice, selectedButton) {
   playTechnoAction("data-restored", "repair", "review");
   $("nextPassage").disabled = false;
   if (sequence.phase === "midpoint-required") $("nextPassage").textContent = "Review Chinmay’s fix";
-  else if (sequence.phase === "reflection-required") $("nextPassage").textContent = "Teach Auto";
+  else if (sequence.phase === "reflection-required") $("nextPassage").textContent = "Teach AUTO";
   else if (mission.transitionBeats?.[sequence.index]) $("nextPassage").textContent = "See what moved";
 }
 
@@ -1128,8 +1128,8 @@ async function runMidpoint() {
   setTechno("review", "left");
   await showStoryBeat("chinmay", mission.midpoint.chinmay.heading, mission.midpoint.chinmay.text, "See Chinmay’s fix", portraits.chinmay);
   setTechno("failed", "left");
-  await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply Auto’s update", portraits.overfix);
-  setFrame(mission.superFrame, "Auto over-fix active");
+  await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply AUTO’s update", portraits.overfix);
+  setFrame(mission.superFrame, "AUTO over-fix active");
   setTechno("failed", "left");
   await showCorruptionPause();
   await showStoryBeat("amy", mission.midpoint.amy.heading, mission.midpoint.amy.text, "Lock in the repair", portraits.correction);
@@ -1162,8 +1162,8 @@ async function runCompletionBriefing() {
   await showStoryBeat(
     "amy",
     "GOOD JOB — THE FIXES ARE LOCKED IN",
-    `You repaired ${mission.name} and protected the choices that Auto erased. Now it’s time to teach Auto what we learned from this site so the same over-fix doesn’t happen again.`,
-    "Write the lesson for Auto",
+    `You repaired ${mission.name} and protected the choices that AUTO erased. Now it’s time to teach AUTO what we learned from this site so the same over-fix doesn’t happen again.`,
+    "Write the lesson for AUTO",
     SITE_PORTRAITS[mission.id].completion,
   );
   showReflection();

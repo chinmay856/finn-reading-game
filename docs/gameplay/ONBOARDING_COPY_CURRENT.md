@@ -1,6 +1,6 @@
 # Current intro and tutorial copy
 
-Chinmay’s detailed copy review, 2026-09-20. Auto and WikiWhy retain their established spellings. The bar tracks reading position, not speed. Show me how opens the tutorial, including after an introduction replay.
+Chinmay’s detailed copy review, 2026-09-20. AUTO and WikiWhy retain their established spellings. The bar tracks reading position, not speed. Show me how opens the tutorial, including after an introduction replay.
 
 ## Intro 1: The internet does a lot
 
@@ -10,19 +10,19 @@ Button: Continue
 
 ## Intro 2: I thought AI could help!
 
-Meet Auto, an AI I built to improve the rough edges of the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.
+Meet AUTO, an AI I built to improve the rough edges of the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.
 
 Button: What happened?
 
-## Intro 3: Auto went a little overboard
+## Intro 3: AUTO went a little overboard
 
-Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took his instructions too far, and now every site is corrupted. The internet needs your help.
+AUTO—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took his instructions too far, and now every site is corrupted. The internet needs your help.
 
 Button: How did that happen?
 
 ## Intro 4: This may have gotten a little bit out of hand
 
-I gave Auto instructions that sounded helpful at the time: make things clearer, keep people happy, make choices easier. Auto decided those rules should apply to absolutely everything.
+I gave AUTO instructions that sounded helpful at the time: make things clearer, keep people happy, make choices easier. AUTO decided those rules should apply to absolutely everything.
 
 Button: Continue
 
@@ -35,7 +35,7 @@ ALL UPDATES ARE WORKING PERFECTLY.
 
 Button: See what went wrong
 
-## Intro 6: Auto has been checking Auto
+## Intro 6: AUTO has been checking AUTO
 
 When AI keeps building on AI-made pages, every new “fix” can drift farther from what people actually meant. We need your help—a real person—to rebuild each site the way it’s meant to be.
 
@@ -47,9 +47,9 @@ Reading passages aloud keeps a human brain in the loop. Reading builds knowledge
 
 Button: What do I need to do?
 
-## Intro 8: Read. Repair. Teach Auto
+## Intro 8: Read. Repair. Teach AUTO
 
-Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. When the repair is finished, you’ll teach Auto what went wrong.
+Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. When the repair is finished, you’ll teach AUTO what went wrong.
 
 Button: Show me how
 
@@ -61,7 +61,7 @@ You don’t need to read aloud yet.
 
 Button: Continue
 
-## Tutorial 2: Look at what Auto changed
+## Tutorial 2: Look at what AUTO changed
 
 The website on the left shows what needs repairing. Look for strange claims, missing information, and red warnings.
 
@@ -69,7 +69,7 @@ Button: Continue
 
 ## Tutorial 3: A confident claim isn’t proof
 
-“USER FACTS ARE ALWAYS RIGHT.” That’s Auto’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.
+“USER FACTS ARE ALWAYS RIGHT.” That’s AUTO’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.
 
 Button: Continue
 
@@ -131,7 +131,7 @@ Button: Continue
 
 ## Tutorial 12: Keep reading. Keep repairing
 
-Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach Auto what went wrong.
+Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach AUTO what went wrong.
 
 Button: Continue
 
@@ -153,3 +153,8 @@ The final tutorial step opens the Start menu and highlights How to play. Short
 closing notes have their own paragraph. Keyboard focus remains visible; pointer
 navigation has no extra focus outline. Intro portraits are vertically centered
 beside the story, with navigation in a separate full-width row.
+
+Portraits use the same square two-pixel frame. Chinmay and AUTO source tiles
+are inset-cropped to remove baked-in borders and sheet padding; Amy’s individual
+portraits retain their full crop. The Start menu uses a top brand header and
+map, replay-screen, and new-window icons. AUTO is always uppercase.

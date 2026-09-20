@@ -151,21 +151,21 @@ const config = {
     {
       "who": "CHINMAY",
       "title": "I thought AI could help!",
-      "body": "Meet Auto, an AI I built to improve the rough edges of the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
+      "body": "Meet AUTO, an AI I built to improve the rough edges of the internet. The idea was simple: make the internet more useful, more helpful, and a little less frustrating for everyone.",
       "button": "What happened?",
       "portrait": "chinmay-explaining"
     },
     {
       "who": "AMY",
-      "title": "Auto went a little overboard",
-      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took his instructions too far, and now every site is corrupted. The internet needs your help.",
+      "title": "AUTO went a little overboard",
+      "body": "AUTO—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took his instructions too far, and now every site is corrupted. The internet needs your help.",
       "button": "How did that happen?",
       "portrait": "amy-skeptical"
     },
     {
       "who": "CHINMAY",
       "title": "This may have gotten a little bit out of hand",
-      "body": "I gave Auto instructions that sounded helpful at the time: make things clearer, keep people happy, make choices easier. Auto decided those rules should apply to absolutely everything.",
+      "body": "I gave AUTO instructions that sounded helpful at the time: make things clearer, keep people happy, make choices easier. AUTO decided those rules should apply to absolutely everything.",
       "button": "Continue",
       "portrait": "chinmay-fluster-1"
     },
@@ -178,7 +178,7 @@ const config = {
     },
     {
       "who": "AMY",
-      "title": "Auto has been checking Auto",
+      "title": "AUTO has been checking AUTO",
       "body": "When AI keeps building on AI-made pages, every new “fix” can drift farther from what people actually meant. We need your help—a real person—to rebuild each site the way it’s meant to be.",
       "button": "How do we fix it?",
       "portrait": "amy-evidence"
@@ -192,8 +192,8 @@ const config = {
     },
     {
       "who": "AMY",
-      "title": "Read. Repair. Teach Auto",
-      "body": "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. When the repair is finished, you’ll teach Auto what went wrong.",
+      "title": "Read. Repair. Teach AUTO",
+      "body": "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. When the repair is finished, you’ll teach AUTO what went wrong.",
       "button": "Show me how",
       "portrait": "amy-tools"
     }
