@@ -7,13 +7,13 @@ const STEPS=[
  {title:"Choose a website to recover",text:"We’ll use WikiWhy for this example. Just click Continue to look around. You don’t need to read aloud yet.",screen:'launcher',target:'#site-wikiwhy',side:'right'},
  {title:"Look at what Auto changed",text:"The website on the left shows what needs repairing. Look for strange claims, missing information, and red warnings.",screen:'ready',rect:[106,18,810,824],side:'right'},
  {title:"A confident claim isn’t proof",text:"“USER FACTS ARE ALWAYS RIGHT.” That’s Auto’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.",screen:'ready',rect:[239,226,450,48],side:'right'},
- {title:"Read human writing on the right",text:"Read the title, source introduction, and passage aloud. Reading original works builds knowledge and helps you practice thinking for yourself.",screen:'ready',target:'#passage',side:'left'},
+ {title:"Start with a real source",text:"Read the source introduction and passage aloud. Reading original works builds knowledge and helps you practice thinking for yourself.",screen:'ready',target:'#passage',side:'left'},
  {title:"Start when you’re ready",text:"Click Start reading when you’re ready to begin. Read clearly and loudly at your own pace. For this tutorial, just click Continue.",screen:'ready',target:'#startReading',side:'left'},
  {title:"Follow the highlight",text:"The tan highlight follows the words the game hears. The bar below tracks your place. Keep reading naturally, even if the guide takes a moment to catch up. You can always scroll up and down if the guide isn’t moving fast enough.",screen:'reading',target:'#passage p.active',side:'left'},
  {title:"Finish the passage",text:"Read all the way to the end. The game should finish automatically after you stop speaking, or you can click Finish now.",screen:'finish',target:'#finishReading',side:'left'},
  {title:"See how your reading went",text:"Here’s an example result. Coverage describes how many of the words the game recognized. Pace estimates reading speed. These are meant to be helpful feedback, not a pass-or-fail grade. Retrying is always optional.",screen:'result',target:'.score-grid',side:'left'},
  {title:"Check what you read",text:"Choose the answer supported by the passage. If it isn’t right, you can try again.",screen:'result',target:'.quick-check',side:'left'},
- {title:"The website starts repairing itself",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair. WikiWhy still needs more work.",screen:'answered',rect:[239,226,450,48],side:'right'},
+ {title:"Your reading starts the repair",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair. WikiWhy still needs more work.",screen:'answered',rect:[239,226,450,48],side:'right'},
  {title:"A little help with tricky words",text:"Words to Know picks out vocabulary from the passage. Hear aloud plays the word, its meaning, and how it was used in a sentence. You can use this to help learn tricky vocabulary after each reading.",screen:'answered',target:'#wordHelp',side:'left'},
  {title:"Keep reading. Keep repairing",text:"Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach Auto what went wrong. You can replay the tutorial at any time from the Start menu.",screen:'answered',target:'#nextPassage',side:'left',button:'Choose a website'}
 ];
@@ -86,7 +86,7 @@ function positionTour(){
  const step=STEPS[index],r=getTarget(step),cut=$('spotCutout'),ring=$('spotRing'),dialog=$('tourDialog');
  for(const key of ['x','y','width','height'])cut.setAttribute(key,r[key]);
  Object.assign(ring.style,{left:r.x+'px',top:r.y+'px',width:r.width+'px',height:r.height+'px'});
- const right=step.side==='right';const x=right?(step.screen==='launcher'?440:934):330;
+ const right=step.side==='right';const x=right?(step.screen==='launcher'?565:945):325;
  const y=Math.max(85,Math.min(r.y-24,760-dialog.offsetHeight));
  Object.assign(dialog.style,{left:x+'px',top:y+'px'});dialog.dataset.side=step.side;
 }
@@ -137,7 +137,7 @@ async function prepareArtwork(){
 }
 const loading=document.createElement('section');loading.className='artwork-loading';
 loading.setAttribute('role','status');loading.textContent='Opening recovery desktop…';$('gameStage').append(loading);
-try{await prepareArtwork();loading.remove();}catch{
+try{await prepareArtwork();await $('tutorialAmy').decode();loading.remove();}catch{
  loading.textContent='The artwork couldn’t load. Reconnect to the preview and try again.';
  const retry=el('button','','Try again');retry.onclick=()=>location.reload();loading.append(retry);
  throw new Error('Onboarding artwork could not be loaded.');

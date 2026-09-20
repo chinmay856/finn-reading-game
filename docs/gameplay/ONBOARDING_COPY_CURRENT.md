@@ -16,7 +16,7 @@ Button: What happened?
 
 ## Intro 3: Auto went a little overboard
 
-Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he went a little overboard with following his instructions. Now every site is corrupted, and the internet needs your help.
+Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took those instructions too far. Now every site is corrupted, and the internet needs your help.
 
 Button: How did that happen?
 
@@ -45,7 +45,7 @@ Button: How do we fix it?
 
 Reading passages aloud keeps a human brain in the loop. Reading builds knowledge, helps us think for ourselves, and helps us notice when a confident answer has lost touch with reality. Your reading brings real sources back into the picture.
 
-Button: How do we fix it?
+Button: What do I need to do?
 
 ## Intro 8: Read. Repair. Teach Auto
 
@@ -65,9 +65,9 @@ The website on the left shows what needs repairing. Look for strange claims, mis
 
 “USER FACTS ARE ALWAYS RIGHT.” That’s Auto’s rule here. Keep an eye on this red banner—we’ll come back to it after one passage.
 
-## Tutorial 4: Read human writing on the right
+## Tutorial 4: Start with a real source
 
-Read the title, source introduction, and passage aloud. Reading original works builds knowledge and helps you practice thinking for yourself.
+Read the source introduction and passage aloud. Reading original works builds knowledge and helps you practice thinking for yourself.
 
 ## Tutorial 5: Start when you’re ready
 
@@ -89,7 +89,7 @@ Here’s an example result. Coverage describes how many of the words the game re
 
 Choose the answer supported by the passage. If it isn’t right, you can try again.
 
-## Tutorial 10: The website starts repairing itself
+## Tutorial 10: Your reading starts the repair
 
 Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair. WikiWhy still needs more work.
 
@@ -100,3 +100,11 @@ Words to Know picks out vocabulary from the passage. Hear aloud plays the word, 
 ## Tutorial 12: Keep reading. Keep repairing
 
 Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach Auto what went wrong. You can replay the tutorial at any time from the Start menu.
+
+## Approved tutorial presentation
+
+Amy’s transparent head-and-shoulders cutout accompanies a rounded speech bubble.
+The bubble moves beside the highlighted content; the backdrop uses lighter
+dimming. Intro dialogs retain their window treatment. The cutout is the approved
+derivative of the canonical amy-supportive.jpg portrait, stored at
+public/walkthroughs/shared/amy-tutorial-head-v1.png.

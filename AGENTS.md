@@ -66,6 +66,17 @@ Before making architectural, gameplay, content-model, speech, scoring, progressi
 2. `docs/PROJECT_STATUS.md`
 3. `README.md`
 
+## Production bandwidth rule — 2026-09-20
+
+Chinmay explicitly requires conserving Firebase bandwidth/credits. Run full-game
+and speech-model QA locally, reusing the existing pinned Sherpa asset cache.
+Do not repeatedly open fresh production profiles/browser sessions or clear
+production model caches as routine verification. Do not download Sherpa model
+binaries from Firebase merely to confirm a deployment. Prefer one lightweight
+HTTP verification of deployed HTML and the small changed application assets;
+check model metadata/headers only when needed. Any live speech QA must be
+necessary and should reuse the warmed browser/cache rather than cold-loading.
+
 ## Working model
 
 - All active work now happens through the Codex app and this GitHub repository.

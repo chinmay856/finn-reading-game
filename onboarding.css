@@ -6,19 +6,29 @@ button:focus-visible,a:focus-visible { outline:3px solid #ffcc54; outline-offset
 #tourLayer { position:absolute; inset:0; z-index:35; }
 .tour-shade { position:absolute; inset:0; width:100%; height:100%; }
 #spotRing { position:absolute; border:4px solid #ffda69; border-radius:6px; box-shadow:0 0 0 2px #142d3c,0 0 0 6px #fff8; pointer-events:none; }
-#tourDialog { position:absolute; width:470px; background:var(--paper); color:var(--ink); border:4px solid #26333a; box-shadow:9px 9px 0 #08131a88; }
-#tourDialog .launcher-titlebar { font-size:13px; }
-#tourCount { font-size:12px; white-space:nowrap; }
-.tour-body { padding:17px 21px 19px; }
-.tour-body h2 { margin:0 0 12px; font-size:25px; line-height:1.2; }
-.tour-body p { margin:0; font-size:20px; line-height:1.45; }
-.tour-body nav { display:flex; justify-content:space-between; margin-top:20px; gap:12px; }
-.tour-body button,#skipSequence { padding:10px 16px; border:2px solid #687781; background:#eeeae0; color:var(--ink); font:700 17px "Chalkboard SE","Comic Sans MS",system-ui,sans-serif; cursor:pointer; }
+/* Approved Amy conversation tutorial treatment, 2026-09-20. */
+#tourDialog { position:absolute; background:var(--paper); color:var(--ink); width:470px; border:3px solid #243b43; border-radius:26px; box-shadow:0 7px 0 #12334420,0 14px 35px #001a2633; overflow:visible; }
+#tourDialog .launcher-titlebar { background:none; color:#277366; padding:19px 24px 0; border:0; font-family:"Chalkboard SE","Comic Sans MS",sans-serif; font-size:17px; }
+#tourCount { font:600 12px system-ui,sans-serif; color:#62746c; }
+.tour-body { padding:10px 24px 22px; }
+.tour-body h2 { margin:0; font-size:25px; line-height:1.18; margin-bottom:12px; }
+.tour-body p { margin:0; font-size:20px; line-height:1.4; }
+.tour-body nav { margin-top:18px; }
+.tour-body button { border-radius:10px; padding:9px 18px; }
+#tourBack { border-color:transparent; background:transparent; color:#586c71; }
+#tourBack:disabled { opacity:.4; }
+#tourNext { box-shadow:0 3px 0 #195733; }
+#tourNext:focus { outline:2px solid #e3b342; outline-offset:4px; }
+#tourDialog::after { display:none; }
+.amy-cutout { position:absolute; width:150px; height:170px; object-fit:contain; left:-137px; top:8px; filter:drop-shadow(0 4px 2px #092f332b); pointer-events:none; }
+.amy-speech-tail { position:absolute; width:21px; height:21px; left:-13px; top:68px; background:var(--paper); transform:rotate(45deg); border:solid #243b43; border-width:0 0 3px 3px; }
+#skipSequence { border-radius:9px; border-color:#4c777b; box-shadow:none; font-size:15px; padding:8px 14px; }
+
+#skipSequence { position:absolute; z-index:38; right:24px; bottom:58px; }
+.tour-body button,#skipSequence { font:700 17px "Chalkboard SE","Comic Sans MS",system-ui,sans-serif; cursor:pointer; padding:9px 18px; border:2px solid #687781; background:#eeeae0; color:var(--ink); }
+.tour-body nav { display:flex; justify-content:space-between; gap:12px; }
+#tourBack { border-color:transparent; background:transparent; color:#586c71; }
 .tour-body #tourNext { background:var(--repair); border-color:#176633; color:#fff; }
-#skipSequence { position:absolute; z-index:38; right:24px; bottom:58px; box-shadow:3px 3px 0 #07131a99; }
-#tourDialog[data-side="left"]::after,#tourDialog[data-side="right"]::after { content:""; position:absolute; top:42px; width:16px; height:16px; background:var(--paper); border:solid #26333a; transform:rotate(45deg); }
-#tourDialog[data-side="left"]::after { right:-12px; border-width:4px 4px 0 0; }
-#tourDialog[data-side="right"]::after { left:-12px; border-width:0 0 4px 4px; }
 #missionView[data-demo="true"] .reader-actions button:disabled { cursor:default; }
 
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }

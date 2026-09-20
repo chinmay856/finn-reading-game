@@ -158,7 +158,7 @@ const config = {
     {
       "who": "AMY",
       "title": "Auto went a little overboard",
-      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he went a little overboard with following his instructions. Now every site is corrupted, and the internet needs your help.",
+      "body": "Auto—our extremely helpful AI—has been “fixing” ten websites. Unfortunately, he took those instructions too far. Now every site is corrupted, and the internet needs your help.",
       "button": "How did that happen?",
       "portrait": "amy-skeptical"
     },
@@ -187,7 +187,7 @@ const config = {
       "who": "CHINMAY",
       "title": "Your reading is the key",
       "body": "Reading passages aloud keeps a human brain in the loop. Reading builds knowledge, helps us think for ourselves, and helps us notice when a confident answer has lost touch with reality. Your reading brings real sources back into the picture.",
-      "button": "How do we fix it?",
+      "button": "What do I need to do?",
       "portrait": "chinmay-explaining"
     },
     {
