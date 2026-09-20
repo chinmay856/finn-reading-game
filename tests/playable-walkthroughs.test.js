@@ -39,7 +39,7 @@ test("every passage has authored lines and loopable comprehension choices", () =
       assert.ok(passage.lines.length > 0, passage.id);
       const wordCount = passage.lines.join(" ").trim().split(/\s+/u).length;
       if (passage.reviewStatus.startsWith("human-reviewed-frozen-")) {
-        assert.ok(wordCount >= 180 && wordCount <= (passage.id === "wikiwhy-07" ? 400 : 325), `${passage.id}: ${wordCount} words`);
+        assert.ok(wordCount >= 180 && wordCount <= (passage.id === "wikiwhy-07" ? 400 : passage.id === "wikiwhy-09" ? 340 : 325), `${passage.id}: ${wordCount} words`);
       } else if (["canonical-first-playtest-subject-to-recorded-review", "canonical-public-domain-campaign-subject-to-full-playtest"].includes(passage.reviewStatus)) {
         assert.ok(wordCount >= 245 && wordCount <= 325, `${passage.id}: ${wordCount} words`);
       } else if (passage.reviewStatus === "candidate-provisional-mapguess-playtest") {

@@ -88,7 +88,7 @@ const mapGuessPassages = canonicalDeck("mapguess");
 
 export const PLAYABLE_WALKTHROUGHS = Object.freeze({
   wikiwhy: Object.freeze({
-    id: "wikiwhy", contentVersion: "2026-09-20", replacedPassageIds: Object.freeze(["wikiwhy-07"]), name: "WikiWhy", meter: "Source repair", passages: wikiWhyPassages,
+    id: "wikiwhy", contentVersion: "2026-09-20-rule-42", replacedPassageIds: Object.freeze(["wikiwhy-07", "wikiwhy-09"]), name: "WikiWhy", meter: "Source repair", passages: wikiWhyPassages,
     initialFrame: frame("wikiwhy", "wikiwhy-complete-state-v3", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 13, 14, 15].map((page) => frame("wikiwhy", "wikiwhy-complete-state-v3", page))),
     demotedPassageIds: Object.freeze(["wikiwhy-04"]), legacyPassageCounts: Object.freeze([10]),

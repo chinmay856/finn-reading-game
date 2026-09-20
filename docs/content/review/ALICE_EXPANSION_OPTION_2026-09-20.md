@@ -1,4 +1,6 @@
-# Alice's Evidence — expansion option, not deployed
+# Alice's Evidence — approved Rule Forty-two expansion
+
+Approved by Chinmay after the initial release on 2026-09-20. The exact addition below is incorporated in WIKIWHY_HUMAN_REVIEWED_PACKET_RULE_42.md (340 total words). Earlier proposal rationale follows as history.
 
 The current live passage is 257 spoken words, including source introduction,
 speaker names, and the two written transitions. It is already similar in length

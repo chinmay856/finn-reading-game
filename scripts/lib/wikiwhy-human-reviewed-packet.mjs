@@ -2,9 +2,9 @@ import { createHash } from "node:crypto";
 
 import { derivePassageDisplayLines } from "../../reading-companion/passage-display-lines.js";
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_URL = new URL("../../docs/content/human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET.md", import.meta.url);
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_URL = new URL("../../docs/content/human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET_RULE_42.md", import.meta.url);
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "2342df9a07c79dbd4d33bf0f7dfa03d899bfba05811ede9649a6e235fb8476b7";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "b01e4f7f641fcba01c4f441933f82290a18e8e66575e2d7df9a3dc74d788649e";
 
 function collapse(value) {
   return String(value ?? "").replace(/-\n\s*/gu, "-").replace(/\n\s*/gu, " ").replace(/\s+/gu, " ").trim();

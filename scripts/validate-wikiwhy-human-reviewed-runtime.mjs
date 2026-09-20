@@ -68,9 +68,9 @@ assert.ok(sherlock.linePresentations.some(({ kind }) => kind === "transition"), 
 const alice = mission.passages.find(({ title }) => title === "Alice's Evidence");
 assert.deepEqual(
   [...new Set(alice.linePresentations.filter(({ speaker }) => speaker).map(({ speaker }) => speaker))],
-  ["King", "White Rabbit", "Queen", "Juryman", "Knave", "Alice"],
+  ["King", "Alice", "Queen", "White Rabbit", "Juryman", "Knave"],
   "Alice speaker labels",
 );
-assert.equal(alice.linePresentations.filter(({ kind }) => kind === "transition").length, 2, "Alice italic transitions");
+assert.equal(alice.linePresentations.filter(({ kind }) => kind === "transition").length, 5, "Alice transition display lines (four transition paragraphs)");
 
 console.log("Validated the revised packet, nine effective WikiWhy passages, nine distinct repair positions, the Faraday demotion, exact questions and vocabulary, shuffled answers, speaker labels, transitions, and static audio.");

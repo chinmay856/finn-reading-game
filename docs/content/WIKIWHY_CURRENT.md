@@ -1,7 +1,7 @@
 # Current WikiWhy release
 
 The current approved packet is
-[the 2026-09-20 nine-passage packet](human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET.md).
+[the 2026-09-20 nine-passage packet](human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET_RULE_42.md).
 It supersedes all earlier WikiWhy manuscripts, review tables, source slates, and
 candidate decks for the live game. Older dated packets remain historical records.
 
@@ -15,8 +15,8 @@ editorial placement, not yet deployed there. Its former WikiWhy repair slot is
 now the chapter 19 Huck Finn stars excerpt. The nine repair frames and other
 passage slots remain unchanged. Stable slot IDs preserve earned repairs; a
 pending read of the replaced Peirce text is cleared when restoring an older save.
-The Time Machine stays. Alice remains unchanged; its optional expansion is
-[separate review material](review/ALICE_EXPANSION_OPTION_2026-09-20.md).
+The Time Machine stays. Alice now includes the approved Rule Forty-two exchange and is 340 spoken words.
+Its vocabulary and quick check are unchanged.
 
 ## Required publication synchronization
 

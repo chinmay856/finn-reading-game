@@ -1067,9 +1067,18 @@ const DATA = [
     "id": "wikiwhy-09",
     "title": "Alice's Evidence",
     "form": "human-reviewed public-domain reading",
-    "spokenWordCount": 257,
+    "spokenWordCount": 340,
     "paragraphs": [
       "An excerpt from “Alice's Adventures in Wonderland” by Lewis Carroll.",
+      "During the trial, the King reads a rule from his notebook. Everyone looks at Alice.",
+      "King: “Rule Forty-two. All persons more than a mile high to leave the court.”",
+      "Alice: “I'm not a mile high.”",
+      "King: “You are.”",
+      "Queen: “Nearly two miles high.”",
+      "Alice: “Well, I shan't go, at any rate: besides, that's not a regular rule: you invented it just now.”",
+      "King: “It's the oldest rule in the book.”",
+      "Alice: “Then it ought to be Number One.”",
+      "The King closes his notebook.",
       "King: “Consider your verdict.”",
       "White Rabbit: “There's more evidence to come yet, please your Majesty. This paper has just been picked up.”",
       "Queen: “What's in it?”",
@@ -1091,6 +1100,17 @@ const DATA = [
     ],
     "displayLines": [
       "An excerpt from “Alice's Adventures in Wonderland” by Lewis Carroll.",
+      "During the trial, the King reads a rule from his notebook.",
+      "Everyone looks at Alice.",
+      "King: “Rule Forty-two.",
+      "All persons more than a mile high to leave the court.”",
+      "Alice: “I'm not a mile high.”",
+      "King: “You are.”",
+      "Queen: “Nearly two miles high.”",
+      "Alice: “Well, I shan't go, at any rate: besides, that's not a regular rule: you invented it just now.”",
+      "King: “It's the oldest rule in the book.”",
+      "Alice: “Then it ought to be Number One.”",
+      "The King closes his notebook.",
       "King: “Consider your verdict.”",
       "White Rabbit: “There's more evidence to come yet, please your Majesty.",
       "This paper has just been picked up.”",
@@ -1121,6 +1141,50 @@ const DATA = [
     "linePresentations": [
       {
         "kind": "source-introduction",
+        "speaker": ""
+      },
+      {
+        "kind": "transition",
+        "speaker": ""
+      },
+      {
+        "kind": "transition",
+        "speaker": ""
+      },
+      {
+        "kind": "speaker",
+        "speaker": "King"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "King"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "Alice"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "King"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "Queen"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "Alice"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "King"
+      },
+      {
+        "kind": "speaker",
+        "speaker": "Alice"
+      },
+      {
+        "kind": "transition",
         "speaker": ""
       },
       {
@@ -1231,9 +1295,9 @@ const DATA = [
     "source": {
       "label": "Alice's Evidence",
       "url": "https://www.gutenberg.org/ebooks/11",
-      "editorialNote": "Lewis Carroll, *Alice's Adventures in Wonderland*,\nChapter Twelve, “Alice's Evidence,”\n[Project Gutenberg ebook 11](https://www.gutenberg.org/ebooks/11), public domain\nin the USA. The source begins near line 1404 of the Gutenberg HTML edition."
+      "editorialNote": "Lewis Carroll, *Alice's Adventures in Wonderland*,\nChapter Twelve, “Alice's Evidence,”\n[Project Gutenberg ebook 11](https://www.gutenberg.org/ebooks/11), public domain\nin the USA. The approved Rule Forty-two exchange precedes the existing adapted dialogue; stage directions are project-written and source typography is normalized."
     },
-    "rights": "Lewis Carroll, Alice's Adventures in Wonderland, Chapter Twelve, “Alice's Evidence,” Project Gutenberg ebook 11, public domain in the USA. The source begins near line 1404 of the Gutenberg HTML edition.",
+    "rights": "Lewis Carroll, Alice's Adventures in Wonderland, Chapter Twelve, “Alice's Evidence,” Project Gutenberg ebook 11, public domain in the USA. The approved Rule Forty-two exchange precedes the existing adapted dialogue; stage directions are project-written and source typography is normalized.",
     "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "How does the court misuse the letter as evidence?",
@@ -1408,5 +1472,5 @@ function deepFreeze(value) {
   return Object.freeze(value);
 }
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "2342df9a07c79dbd4d33bf0f7dfa03d899bfba05811ede9649a6e235fb8476b7";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "b01e4f7f641fcba01c4f441933f82290a18e8e66575e2d7df9a3dc74d788649e";
 export const WIKIWHY_HUMAN_REVIEWED_PASSAGES = deepFreeze(DATA);

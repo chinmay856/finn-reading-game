@@ -4,7 +4,8 @@
 
 Chinmay approved the eight-beat intro, twelve-step tutorial, mouse/mice edits,
 and replacement of Peirce with the Huck Finn stars excerpt. WikiWhy remains nine
-passages; Candle is rejected and The Time Machine is retained.
+passages; Candle is rejected and The Time Machine is retained. The subsequently
+approved Rule Forty-two exchange expands Alice to 340 spoken words.
 [Current packet and publication synchronization](content/WIKIWHY_CURRENT.md).
 
 
