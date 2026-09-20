@@ -338,7 +338,7 @@ test("reviewed mission art leaves the player unnamed and preserves only the lite
 
 test("stability hardening avoids duplicate Sherpa heaps and fails visibly instead of silently downgrading", () => {
   assert.match(html, /installClientStabilityMonitor/u);
-  assert.match(html, /id="downloadStabilityReport"/u);
+  assert.doesNotMatch(html, /id="downloadStabilityReport"/u);
   assert.match(script, /acquireExclusiveModelLease/u);
   assert.match(script, /sherpa-required-unavailable/u);
   assert.match(script, /showVoiceGuideRecovery/u);
@@ -346,7 +346,6 @@ test("stability hardening avoids duplicate Sherpa heaps and fails visibly instea
   assert.doesNotMatch(script, /SHERPA_DOCUMENT_USED_KEY|sherpaUsedByPriorDocument/u);
   assert.match(script, /navigateToMission/u);
   assert.match(script, /history\.pushState/u);
-  assert.match(script, /stabilityMonitor\.report\(\)/u);
   assert.match(script, /async function prepareModels\(\) \{\s*if \(!mission\) return;/u);
   assert.match(script, /const preparedMission = mission/u);
   assert.match(script, /if \(mission !== preparedMission\)/u);

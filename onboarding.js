@@ -16,7 +16,7 @@ const STEPS=[
  {title:"Your reading starts the repair",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair.",note:"WikiWhy still needs more work, though.",screen:'answered',rect:[239,226,450,48],side:'right'},
  {title:"A little help with tricky words",text:"Words to Know picks out vocabulary from the passage. Hear aloud plays the word, its meaning, and how it was used in a sentence. You can use this to help learn tricky vocabulary after each reading.",screen:'answered',target:'#wordHelp',side:'left'},
  {title:"Keep reading. Keep repairing",text:"Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach AUTO what went wrong.",screen:'answered',target:'#nextPassage',side:'left'},
- {title:"Need a reminder?",text:"You can replay the tutorial anytime. Open the Start menu and choose How to play.",screen:'launcher',target:'#replayTutorial',side:'right',menu:true,button:'Start game'}
+ {title:"Need a reminder?",text:"You can replay the tutorial anytime. Open the Start menu and choose Tutorial.",screen:'launcher',target:'#replayTutorial',side:'right',menu:true,button:'Start game'}
 ];
 let mode='launcher',index=0,chainTutorial=false;
 let seen={};try{seen=JSON.parse(localStorage.getItem(STORE)||'{}');}catch{}

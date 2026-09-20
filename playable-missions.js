@@ -271,19 +271,6 @@ function showSaveToast(message = "Game saved.") {
   saveToastTimer = setTimeout(() => { $("saveToast").hidden = true; }, 1800);
 }
 
-function downloadStabilityReport() {
-  const report = stabilityMonitor.report();
-  const blob = new Blob([`${JSON.stringify(report, null, 2)}\n`], { type: "application/json" });
-  const source = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = source;
-  link.download = `internet-recovery-stability-${new Date().toISOString().slice(0, 10)}.json`;
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(source), 0);
-  stabilityMonitor.record("stability-report-downloaded");
-  showSaveToast("Local stability report saved.");
-}
-
 function saveMissionProgress({ completed = false, notify = false } = {}) {
   if (!mission || !sequence) {
     updateActiveProfile(() => {});
@@ -1533,7 +1520,6 @@ function initialize() {
   resizeStage();
   addEventListener("resize", resizeStage);
   bindShellControls();
-  $("downloadStabilityReport").addEventListener("click", downloadStabilityReport);
   $("launcherView").hidden = true;
   $("missionView").hidden = true;
   const profile = activeProfile();

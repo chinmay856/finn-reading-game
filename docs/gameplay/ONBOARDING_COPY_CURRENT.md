@@ -137,7 +137,7 @@ Button: Continue
 
 ## Tutorial 13: Need a reminder?
 
-You can replay the tutorial anytime. Open the Start menu and choose How to play.
+You can replay the tutorial anytime. Open the Start menu and choose Tutorial.
 
 Button: Start game
 
@@ -149,7 +149,7 @@ dimming. Intro dialogs retain their window treatment. The cutout is the approved
 derivative of the canonical amy-supportive.jpg portrait, stored at
 public/walkthroughs/shared/amy-tutorial-head-v1.png.
 
-The final tutorial step opens the Start menu and highlights How to play. Short
+The final tutorial step opens the Start menu and highlights Tutorial. Short
 closing notes have their own paragraph. Keyboard focus remains visible; pointer
 navigation has no extra focus outline. Intro portraits are vertically centered
 beside the story, with navigation in a separate full-width row.
@@ -158,3 +158,7 @@ Portraits use the same square two-pixel frame. Chinmay and AUTO source tiles
 are inset-cropped to remove baked-in borders and sheet padding; Amy’s individual
 portraits retain their full crop. The Start menu uses a top brand header and
 map, replay-screen, and new-window icons. AUTO is always uppercase.
+
+Start menu labels, in order: Save Game; Choose Recovery Site; Replay Introduction;
+Tutorial; Switch Player; New Game. Menu entries have no descriptive subheaders,
+and Stability Report is no longer a player-facing menu action.
