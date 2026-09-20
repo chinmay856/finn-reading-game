@@ -73,8 +73,16 @@ function migrateSequenceAfterPassageDemotion(sequence, mission) {
 export function restorePlayableMissionSequence(profile, mission, { replay = false } = {}) {
   ensurePlayableProgressProfile(profile);
   const record = replay ? profile?.replays?.[mission?.id] : profile?.missions?.[mission?.id];
-  if (isCompatibleMissionSequence(record?.sequence, mission)) return clone(record.sequence);
-  return migrateSequenceAfterPassageDemotion(record?.sequence, mission);
+  const restored = isCompatibleMissionSequence(record?.sequence, mission)
+    ? clone(record.sequence)
+    : migrateSequenceAfterPassageDemotion(record?.sequence, mission);
+  // Earned repairs survive editorial replacements. An unfinished reading of
+  // an older text cannot count as a reading of its replacement.
+  if (restored && record?.contentVersion !== mission?.contentVersion
+    && mission?.replacedPassageIds?.includes(restored.pendingPassageId)) {
+    restored.pendingPassageId = null;
+  }
+  return restored;
 }
 
 export function persistPlayableMissionSequence(
@@ -93,12 +101,12 @@ export function persistPlayableMissionSequence(
     } else if (sequence.phase === "completed" || sequence.index === 0) {
       delete profile.replays[mission.id];
     } else {
-      profile.replays[mission.id] = { sequence: clone(sequence), updatedAt };
+      profile.replays[mission.id] = { sequence: clone(sequence), updatedAt, ...(mission.contentVersion ? { contentVersion: mission.contentVersion } : {}) };
     }
     return profile;
   }
 
-  profile.missions[mission.id] = { sequence: clone(sequence), updatedAt };
+  profile.missions[mission.id] = { sequence: clone(sequence), updatedAt, ...(mission.contentVersion ? { contentVersion: mission.contentVersion } : {}) };
   if (completed && !profile.completedSiteIds.includes(mission.id)) profile.completedSiteIds.push(mission.id);
   return profile;
 }

@@ -12,9 +12,9 @@ const DATA = [
       "First, an excerpt from Animal Life and Intelligence by C. Lloyd Morgan.",
       "Sir John Lubbock was unable to teach his intelligent dog Van to distinguish between coloured cards; but the failure was as complete when the cards were marked respectively with one, two, or three dark bands. We are not justified, therefore, in ascribing the failure to colour-blindness. The real failure, probably, was in each case to make the animal understand what was wanted.",
       "Next, an excerpt from The Dancing Mouse by Robert Mearns Yerkes.",
-      "Too frequently investigators, in their work on vision in animals, have assumed that brightness vision and color vision are inseparable; or, if not making this assumption, they have failed to realize that the same wave-length probably has markedly different effects upon the retinal elements of the eyes of unlike organisms. In a study of the sense of sight it is extremely important to discover whether difference in the quality, as well as in the intensity, of a visual stimulus influences the organism; in other words, whether color sensitiveness, as well as brightness sensitiveness, is present. If the dancer perceives only brightness or luminosity, and not color, it is evident that its visual world is strikingly different from that of the normal human being. The experiments now to be described were planned to show what the facts really are.",
+      "Too frequently investigators, in their work on vision in animals, have assumed that brightness vision and color vision are inseparable; or, if not making this assumption, they have failed to realize that the same wave-length probably has markedly different effects upon the retinal elements of the eyes of unlike organisms. In a study of the sense of sight it is extremely important to discover whether difference in the quality, as well as in the intensity, of a visual stimulus influences the organism; in other words, whether color sensitiveness, as well as brightness sensitiveness, is present. If the mouse perceives only brightness or luminosity, and not color, it is evident that its visual world is strikingly different from that of the normal human being. The experiments now to be described were planned to show what the facts really are.",
       "After describing tests with violet and red cards, Yerkes reports:",
-      "Although we are not justified in concluding from this experiment that dancers cannot be taught to distinguish violet from red, there certainly is good ground for the statement that they do not readily discriminate between these colors."
+      "Although we are not justified in concluding from this experiment that mice cannot be taught to distinguish violet from red, there certainly is good ground for the statement that they do not readily discriminate between these colors."
     ],
     "displayLines": [
       "Two excerpts examine what animal-vision tests can prove.",
@@ -25,10 +25,10 @@ const DATA = [
       "Next, an excerpt from The Dancing Mouse by Robert Mearns Yerkes.",
       "Too frequently investigators, in their work on vision in animals, have assumed that brightness vision and color vision are inseparable; or, if not making this assumption, they have failed to realize that the same wave-length probably has markedly different effects upon the retinal elements of the eyes of unlike organisms.",
       "In a study of the sense of sight it is extremely important to discover whether difference in the quality, as well as in the intensity, of a visual stimulus influences the organism; in other words, whether color sensitiveness, as well as brightness sensitiveness, is present.",
-      "If the dancer perceives only brightness or luminosity, and not color, it is evident that its visual world is strikingly different from that of the normal human being.",
+      "If the mouse perceives only brightness or luminosity, and not color, it is evident that its visual world is strikingly different from that of the normal human being.",
       "The experiments now to be described were planned to show what the facts really are.",
       "After describing tests with violet and red cards, Yerkes reports:",
-      "Although we are not justified in concluding from this experiment that dancers cannot be taught to distinguish violet from red, there certainly is good ground for the statement that they do not readily discriminate between these colors."
+      "Although we are not justified in concluding from this experiment that mice cannot be taught to distinguish violet from red, there certainly is good ground for the statement that they do not readily discriminate between these colors."
     ],
     "linePresentations": [
       {
@@ -83,10 +83,10 @@ const DATA = [
     "source": {
       "label": "What Can an Animal-Vision Test Prove?",
       "url": "https://www.gutenberg.org/ebooks/49818",
-      "editorialNote": "C. Lloyd Morgan, *Animal Life and Intelligence*,\n[Project Gutenberg ebook 49818](https://www.gutenberg.org/ebooks/49818), and\nRobert Mearns Yerkes, *The Dancing Mouse*,\n[Project Gutenberg ebook 8729](https://www.gutenberg.org/ebooks/8729). Both\nworks are public domain in the USA. The source excerpts remain verbatim; only\nthe source introductions and transition are project-written."
+      "editorialNote": "C. Lloyd Morgan, *Animal Life and Intelligence*,\n[Project Gutenberg ebook 49818](https://www.gutenberg.org/ebooks/49818), and\nRobert Mearns Yerkes, *The Dancing Mouse*,\n[Project Gutenberg ebook 8729](https://www.gutenberg.org/ebooks/8729). Both\nworks are public domain in the USA. The Yerkes excerpt uses two approved clarity edits: “dancer” becomes “mouse” and “dancers” becomes “mice”; other source wording is unchanged. The source introductions and transition are project-written."
     },
-    "rights": "C. Lloyd Morgan, Animal Life and Intelligence, Project Gutenberg ebook 49818, and Robert Mearns Yerkes, The Dancing Mouse, Project Gutenberg ebook 8729. Both works are public domain in the USA. The source excerpts remain verbatim; only the source introductions and transition are project-written.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "rights": "C. Lloyd Morgan, Animal Life and Intelligence, Project Gutenberg ebook 49818, and Robert Mearns Yerkes, The Dancing Mouse, Project Gutenberg ebook 8729. Both works are public domain in the USA. The Yerkes excerpt uses two approved clarity edits: “dancer” becomes “mouse” and “dancers” becomes “mice”; other source wording is unchanged. The source introductions and transition are project-written.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "What problem do both excerpts identify in animal-vision tests?",
       "correct": "A failed test may reflect misunderstanding or brightness cues rather than an inability to perceive color.",
@@ -134,7 +134,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-02",
@@ -200,7 +200,7 @@ const DATA = [
       "editorialNote": "Charles Darwin, *The Expression of the Emotions in Man\nand Animals*, [Project Gutenberg ebook 1227](https://www.gutenberg.org/ebooks/1227),\npublic domain in the USA."
     },
     "rights": "Charles Darwin, The Expression of the Emotions in Man and Animals, Project Gutenberg ebook 1227, public domain in the USA.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "Which idea does Darwin treat as uncertain rather than established?",
       "correct": "Muscles may need brief preparation before they act with full force.",
@@ -248,7 +248,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-03",
@@ -309,7 +309,7 @@ const DATA = [
       "editorialNote": "Francis Bacon, *Of Studies*, from *The Essays or Counsels,\nCivil and Moral*, [Project Gutenberg ebook 56463](https://www.gutenberg.org/ebooks/56463),\npublic domain in the USA. Editorial footnote markers are omitted from the\nspoken text."
     },
     "rights": "Francis Bacon, Of Studies, from The Essays or Counsels, Civil and Moral, Project Gutenberg ebook 56463, public domain in the USA. Editorial footnote markers are omitted from the spoken text.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "According to Bacon, which reader uses studies most wisely?",
       "correct": "A reader who weighs ideas, uses experience, and gives different books different levels of attention.",
@@ -357,7 +357,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-05",
@@ -495,7 +495,7 @@ const DATA = [
       "editorialNote": "H. G. Wells, *The Time Machine*, Chapter One,\n[Project Gutenberg ebook 35](https://www.gutenberg.org/ebooks/35), public domain\nin the USA. No source prose is rewritten."
     },
     "rights": "H. G. Wells, The Time Machine, Chapter One, Project Gutenberg ebook 35, public domain in the USA. No source prose is rewritten.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "What does the Time Traveller identify as the often-overlooked fourth dimension of a real body?",
       "correct": "Duration—the time through which the body continues to exist.",
@@ -543,7 +543,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-06",
@@ -736,7 +736,7 @@ const DATA = [
       "editorialNote": "Arthur Conan Doyle, “A Scandal in Bohemia,” in *The\nAdventures of Sherlock Holmes*,\n[Project Gutenberg ebook 1661](https://www.gutenberg.org/ebooks/1661), public\ndomain in the USA. The frozen local source is\n`docs/content/sources/gutenberg/1661.txt`, beginning near line 154."
     },
     "rights": "Arthur Conan Doyle, “A Scandal in Bohemia,” in The Adventures of Sherlock Holmes, Project Gutenberg ebook 1661, public domain in the USA. The frozen local source is `docs/content/sources/gutenberg/1661.txt`, beginning near line 154.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "Which principle connects Holmes's staircase example with his warning about theories?",
       "correct": "Examine observations and data before drawing a conclusion.",
@@ -784,29 +784,34 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-07",
-    "title": "The Fixation of Belief",
+    "title": "Were the stars made, or did they just happen?",
     "form": "human-reviewed public-domain reading",
-    "spokenWordCount": 201,
+    "spokenWordCount": 385,
     "paragraphs": [
-      "An excerpt from “The Fixation of Belief” by Charles S. Peirce.",
-      "The irritation of doubt causes a struggle to attain a state of belief. I shall term this struggle inquiry, though it must be admitted that this is sometimes not a very apt designation.",
-      "The irritation of doubt is the only immediate motive for the struggle to attain belief. It is certainly best for us that our beliefs should be such as may truly guide our actions so as to satisfy our desires; and this reflection will make us reject any belief which does not seem to have been so formed as to insure this result. But it will only do so by creating a doubt in the place of that belief. With the doubt, therefore, the struggle begins, and with the cessation of doubt it ends. Hence, the sole object of inquiry is the settlement of opinion. We may fancy that this is not enough for us, and that we seek not merely an opinion, but a true opinion. But put this fancy to the test, and it proves groundless; for as soon as a firm belief is reached we are entirely satisfied, whether the belief be false or true."
+      "An excerpt from Adventures of Huckleberry Finn by Mark Twain.",
+      "Huck and Jim are traveling down the Mississippi on a raft, hiding during the day and moving at night.",
+      "Sometimes we’d have that whole river all to ourselves for the longest time. Yonder was the banks and the islands, across the water; and maybe a spark—which was a candle in a cabin window; and sometimes on the water you could see a spark or two—on a raft or a scow, you know; and maybe you could hear a fiddle or a song coming over from one of them crafts. It’s lovely to live on a raft. We had the sky up there, all speckled with stars, and we used to lay on our backs and look up at them, and discuss about whether they was made or only just happened. Jim he allowed they was made, but I allowed they happened; I judged it would have took too long to make so many. Jim said the moon could a laid them; well, that looked kind of reasonable, so I didn’t say nothing against it, because I’ve seen a frog lay most as many, so of course it could be done. We used to watch the stars that fell, too, and see them streak down. Jim allowed they’d got spoiled and was hove out of the nest.",
+      "Once or twice of a night we would see a steamboat slipping along in the dark, and now and then she would belch a whole world of sparks up out of her chimbleys, and they would rain down in the river and look awful pretty; then she would turn a corner and her lights would wink out and her powwow shut off and leave the river still again; and by-and-by her waves would get to us, a long time after she was gone, and joggle the raft a bit, and after that you wouldn’t hear nothing for you couldn’t tell how long, except maybe frogs or something.",
+      "After midnight the people on shore went to bed, and then for two or three hours the shores was black—no more sparks in the cabin windows. These sparks was our clock—the first one that showed again meant morning was coming, so we hunted a place to hide and tie up right away."
     ],
     "displayLines": [
-      "An excerpt from “The Fixation of Belief” by Charles S. Peirce.",
-      "The irritation of doubt causes a struggle to attain a state of belief.",
-      "I shall term this struggle inquiry, though it must be admitted that this is sometimes not a very apt designation.",
-      "The irritation of doubt is the only immediate motive for the struggle to attain belief.",
-      "It is certainly best for us that our beliefs should be such as may truly guide our actions so as to satisfy our desires; and this reflection will make us reject any belief which does not seem to have been so formed as to insure this result.",
-      "But it will only do so by creating a doubt in the place of that belief.",
-      "With the doubt, therefore, the struggle begins, and with the cessation of doubt it ends.",
-      "Hence, the sole object of inquiry is the settlement of opinion.",
-      "We may fancy that this is not enough for us, and that we seek not merely an opinion, but a true opinion.",
-      "But put this fancy to the test, and it proves groundless; for as soon as a firm belief is reached we are entirely satisfied, whether the belief be false or true."
+      "An excerpt from Adventures of Huckleberry Finn by Mark Twain.",
+      "Huck and Jim are traveling down the Mississippi on a raft, hiding during the day and moving at night.",
+      "Sometimes we’d have that whole river all to ourselves for the longest time.",
+      "Yonder was the banks and the islands, across the water; and maybe a spark—which was a candle in a cabin window; and sometimes on the water you could see a spark or two—on a raft or a scow, you know; and maybe you could hear a fiddle or a song coming over from one of them crafts.",
+      "It’s lovely to live on a raft.",
+      "We had the sky up there, all speckled with stars, and we used to lay on our backs and look up at them, and discuss about whether they was made or only just happened.",
+      "Jim he allowed they was made, but I allowed they happened; I judged it would have took too long to make so many.",
+      "Jim said the moon could a laid them; well, that looked kind of reasonable, so I didn’t say nothing against it, because I’ve seen a frog lay most as many, so of course it could be done.",
+      "We used to watch the stars that fell, too, and see them streak down.",
+      "Jim allowed they’d got spoiled and was hove out of the nest.",
+      "Once or twice of a night we would see a steamboat slipping along in the dark, and now and then she would belch a whole world of sparks up out of her chimbleys, and they would rain down in the river and look awful pretty; then she would turn a corner and her lights would wink out and her powwow shut off and leave the river still again; and by-and-by her waves would get to us, a long time after she was gone, and joggle the raft a bit, and after that you wouldn’t hear nothing for you couldn’t tell how long, except maybe frogs or something.",
+      "After midnight the people on shore went to bed, and then for two or three hours the shores was black—no more sparks in the cabin windows.",
+      "These sparks was our clock—the first one that showed again meant morning was coming, so we hunted a place to hide and tie up right away."
     ],
     "linePresentations": [
       {
@@ -848,33 +853,45 @@ const DATA = [
       {
         "kind": "prose",
         "speaker": ""
+      },
+      {
+        "kind": "prose",
+        "speaker": ""
+      },
+      {
+        "kind": "prose",
+        "speaker": ""
+      },
+      {
+        "kind": "prose",
+        "speaker": ""
       }
     ],
     "source": {
-      "label": "The Fixation of Belief",
-      "url": "https://www.gutenberg.org/ebooks/65274",
-      "editorialNote": "Charles S. Peirce, “The Fixation of Belief,” in *Chance,\nLove, and Logic*,\n[Project Gutenberg ebook 65274](https://www.gutenberg.org/ebooks/65274), public\ndomain in the USA. The frozen local source is\n`docs/content/sources/gutenberg/65274.txt`, beginning near line 1398. No source\nprose is rewritten."
+      "label": "Were the stars made, or did they just happen?",
+      "url": "https://www.gutenberg.org/ebooks/76",
+      "editorialNote": "Mark Twain, *Adventures of Huckleberry Finn*, Chapter 19, [Project Gutenberg ebook 76](https://www.gutenberg.org/ebooks/76), public domain in the USA. Chinmay selected this excerpt on 2026-09-20. Source text is unchanged apart from removing the Gutenberg underscore emphasis markers. Attribution and scene context are project-written. Original selected excerpt SHA-256: 42282735e445e48170548293e4e83411acc501124ddd29e33ad5c6f1b182ec78."
     },
-    "rights": "Charles S. Peirce, “The Fixation of Belief,” in Chance, Love, and Logic, Project Gutenberg ebook 65274, public domain in the USA. The frozen local source is `docs/content/sources/gutenberg/65274.txt`, beginning near line 1398. No source prose is rewritten.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "rights": "Mark Twain, Adventures of Huckleberry Finn, Chapter 19, Project Gutenberg ebook 76, public domain in the USA. Chinmay selected this excerpt on 2026-09-20. Source text is unchanged apart from removing the Gutenberg underscore emphasis markers. Attribution and scene context are project-written. Original selected excerpt SHA-256: 42282735e445e48170548293e4e83411acc501124ddd29e33ad5c6f1b182ec78.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
-      "prompt": "Which statement best captures Peirce's claim about when inquiry ends?",
-      "correct": "It ends when doubt gives way to settled belief, even if that belief could be false.",
+      "prompt": "Why does Huck find Jim’s idea that the moon laid the stars reasonable?",
+      "correct": "He compares the number of stars with the many eggs a frog lays.",
       "distractors": [
-        "It ends only after a belief has been proven true and can no longer be questioned.",
-        "It ends when one doubt is replaced by a different doubt about the same belief."
+        "He has seen stars come out of the moon.",
+        "He has learned the explanation from a steamboat captain."
       ],
       "orderedChoices": [
         {
-          "text": "It ends when doubt gives way to settled belief, even if that belief could be false.",
+          "text": "He compares the number of stars with the many eggs a frog lays.",
           "correct": true
         },
         {
-          "text": "It ends only after a belief has been proven true and can no longer be questioned.",
+          "text": "He has seen stars come out of the moon.",
           "correct": false
         },
         {
-          "text": "It ends when one doubt is replaced by a different doubt about the same belief.",
+          "text": "He has learned the explanation from a steamboat captain.",
           "correct": false
         }
       ],
@@ -883,28 +900,28 @@ const DATA = [
     },
     "vocabulary": [
       {
-        "word": "attain",
-        "definition": "To succeed in reaching or achieving something.",
-        "sentence": "In this passage, doubt begins a struggle to attain belief.",
-        "playbackPhrase": "In this passage, doubt begins a struggle to attain belief.",
+        "word": "scow",
+        "definition": "A broad, flat-bottomed boat.",
+        "sentence": "In this passage, a scow is one of the boats Huck sees on the river.",
+        "playbackPhrase": "In this passage, a scow is one of the boats Huck sees on the river.",
         "properNoun": false
       },
       {
-        "word": "cessation",
-        "definition": "The stopping or ending of something.",
-        "sentence": "In this passage, the cessation of doubt ends the struggle.",
-        "playbackPhrase": "In this passage, the cessation of doubt ends the struggle.",
+        "word": "speckled",
+        "definition": "Covered with small spots.",
+        "sentence": "In this passage, the sky is speckled with stars.",
+        "playbackPhrase": "In this passage, the sky is speckled with stars.",
         "properNoun": false
       },
       {
-        "word": "fancy",
-        "definition": "To imagine or suppose that something is true.",
-        "sentence": "In this passage, people may fancy that inquiry seeks more than settled opinion.",
-        "playbackPhrase": "In this passage, people may fancy that inquiry seeks more than settled opinion.",
+        "word": "joggle",
+        "definition": "Shake with small, uneven movements.",
+        "sentence": "In this passage, the steamboat waves joggle the raft.",
+        "playbackPhrase": "In this passage, the steamboat waves joggle the raft.",
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-08",
@@ -996,7 +1013,7 @@ const DATA = [
       "editorialNote": "William Kingdon Clifford, “The Ethics of Belief,”\n[Project Gutenberg ebook 50189](https://www.gutenberg.org/ebooks/50189), public\ndomain in the USA. The frozen local source is\n`docs/content/sources/gutenberg/50189.txt`, beginning at line 1901."
     },
     "rights": "William Kingdon Clifford, “The Ethics of Belief,” Project Gutenberg ebook 50189, public domain in the USA. The frozen local source is `docs/content/sources/gutenberg/50189.txt`, beginning at line 1901.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "Why does Clifford judge the shipowner guilty even though he sincerely believed the ship was safe?",
       "correct": "He quieted serious doubts instead of inspecting the available evidence about the ship.",
@@ -1044,7 +1061,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-09",
@@ -1217,7 +1234,7 @@ const DATA = [
       "editorialNote": "Lewis Carroll, *Alice's Adventures in Wonderland*,\nChapter Twelve, “Alice's Evidence,”\n[Project Gutenberg ebook 11](https://www.gutenberg.org/ebooks/11), public domain\nin the USA. The source begins near line 1404 of the Gutenberg HTML edition."
     },
     "rights": "Lewis Carroll, Alice's Adventures in Wonderland, Chapter Twelve, “Alice's Evidence,” Project Gutenberg ebook 11, public domain in the USA. The source begins near line 1404 of the Gutenberg HTML edition.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "How does the court misuse the letter as evidence?",
       "correct": "It treats the missing signature and unclear meaning as support for guilt instead of reasons to question the letter.",
@@ -1265,7 +1282,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   },
   {
     "id": "wikiwhy-10",
@@ -1333,7 +1350,7 @@ const DATA = [
       "editorialNote": "John Locke, *An Essay Concerning Human Understanding*,\n[Project Gutenberg ebook 10616](https://www.gutenberg.org/ebooks/10616), public\ndomain in the USA. The frozen local source is\n`docs/content/sources/gutenberg/10616.txt`, beginning near line 10388."
     },
     "rights": "John Locke, An Essay Concerning Human Understanding, Project Gutenberg ebook 10616, public domain in the USA. The frozen local source is `docs/content/sources/gutenberg/10616.txt`, beginning near line 10388.",
-    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+    "selectionNote": "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
     "comprehension": {
       "prompt": "What does Locke's frozen-water story show about testimony?",
       "correct": "A trustworthy witness may still be doubted when a claim conflicts completely with the listener's experience.",
@@ -1381,7 +1398,7 @@ const DATA = [
         "properNoun": false
       }
     ],
-    "reviewStatus": "human-reviewed-frozen-2026-08-31"
+    "reviewStatus": "human-reviewed-frozen-2026-09-20"
   }
 ];
 
@@ -1391,5 +1408,5 @@ function deepFreeze(value) {
   return Object.freeze(value);
 }
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "2342df9a07c79dbd4d33bf0f7dfa03d899bfba05811ede9649a6e235fb8476b7";
 export const WIKIWHY_HUMAN_REVIEWED_PASSAGES = deepFreeze(DATA);

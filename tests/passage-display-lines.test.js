@@ -75,8 +75,8 @@ test("all campaign passages use complete sentences without mid-punctuation displ
       passage.lines.every((line, index) => (
         !/[,;—–]["'’”)]*$/u.test(line)
         || standaloneParagraphs.has(line)
-        || (passage.reviewStatus === "human-reviewed-frozen-2026-08-31" && passage.linePresentations[index]?.kind === "speaker")
-        || (passage.reviewStatus === "human-reviewed-frozen-2026-08-31" && /—[”"]$/u.test(line))
+        || (passage.reviewStatus.startsWith("human-reviewed-frozen-") && passage.linePresentations[index]?.kind === "speaker")
+        || (passage.reviewStatus.startsWith("human-reviewed-frozen-") && /—[”"]$/u.test(line))
       )),
       `${passage.id}: mid-sentence punctuation break`,
     );

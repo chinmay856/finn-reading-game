@@ -1,5 +1,13 @@
 # Project status
 
+## WikiWhy and onboarding release — 2026-09-20
+
+Chinmay approved the eight-beat intro, twelve-step tutorial, mouse/mice edits,
+and replacement of Peirce with the Huck Finn stars excerpt. WikiWhy remains nine
+passages; Candle is rejected and The Time Machine is retained.
+[Current packet and publication synchronization](content/WIKIWHY_CURRENT.md).
+
+
 ## Required live reading guide hotfix — 2026-08-31
 
 - Normal production play now requires the low-latency Sherpa guide. Refreshing

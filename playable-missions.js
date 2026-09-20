@@ -179,41 +179,6 @@ const PORTRAITS = Object.freeze({
   "auto-overdrive": Object.freeze({ image: "/walkthroughs/shared/auto-character-expression-sheet-v2-bluetooth.png", position: "50% 100%", size: "300% 200%" }),
 });
 
-const INTRODUCTION_BEATS = Object.freeze([
-  Object.freeze({
-    speaker: "amy",
-    portrait: "amy-skeptical",
-    heading: "THE INTERNET NEEDS YOUR HELP",
-    text: "Auto—our extremely helpful AI—has been fixing ten websites. Unfortunately, he followed his instructions much too far. Now every site is corrupted in a different way.",
-    button: "What happened?",
-    technoState: "waiting",
-  }),
-  Object.freeze({
-    speaker: "chinmay",
-    portrait: "chinmay-fluster-1",
-    heading: "I MAY HAVE MADE THIS WORSE",
-    text: "I gave Auto instructions that sounded helpful at the time. Make things clearer. Keep people happy. Make choices easier. Auto decided those rules should apply to absolutely everything.",
-    button: "Continue",
-    technoState: "review",
-  }),
-  Object.freeze({
-    speaker: "auto",
-    portrait: "auto-learned",
-    heading: "TEN WEBSITES IMPROVED!",
-    text: "CLARITY INCREASED.\nCHOICES SIMPLIFIED.\nHUMAN EFFORT REDUCED.\nALL UPDATES ARE WORKING PERFECTLY.",
-    button: "See Auto’s improvements",
-    technoState: "failed",
-  }),
-  Object.freeze({
-    speaker: "amy",
-    portrait: "amy-tools",
-    heading: "READ. REPAIR. TEACH AUTO.",
-    text: "Choose a corrupted website and read its passages aloud. Each completed passage restores part of the site. You may have to grant permission for this game to use your computer’s microphone. When the repair is finished, you’ll teach Auto what went wrong—and where helpful AI needs to stop.",
-    button: "Choose a website",
-    technoState: "working",
-  }),
-]);
-
 const SITE_PORTRAITS = Object.freeze({
   wikiwhy: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-careless", reflection: "chinmay-fluster-2", overfix: "auto-busy", correction: "amy-evidence", completion: "amy-supportive" }),
   threadit: Object.freeze({ briefing: "amy-skeptical", chinmay: "chinmay-explaining", reflection: "chinmay-fluster-1", overfix: "auto-overdrive", correction: "amy-tools", completion: "amy-supportive" }),
@@ -1103,40 +1068,41 @@ function showStoryBeat(speaker, heading, text, buttonLabel, portraitKey) {
   });
 }
 
-function renderIntroductionBeat(beat) {
-  const overlay = $("gameIntroduction");
-  const dialog = overlay.querySelector(".story-dialog");
-  const portrait = PORTRAITS[beat.portrait];
-  dialog.dataset.speaker = beat.speaker;
-  const tile = $("introductionSpeaker");
-  setPortraitTile(tile, portrait);
-  $("introductionLabel").textContent = beat.speaker === "auto" ? "AUTO" : beat.speaker.toUpperCase();
-  $("introductionHeading").textContent = beat.heading;
-  $("introductionText").textContent = beat.text;
-  $("introductionContinue").textContent = beat.button;
-  setTechno(beat.technoState, "launcher");
-  if (beat.portrait === "amy-tools") playTechnoAction("floppy-drive", "launcher", "idle");
+// Onboarding is an isolated, inert demonstration. It imports the same passage
+// module as the campaign but never starts speech or mutates mission progress.
+async function runOnboarding({ tutorial = false, chain = false, recordCompletion = true } = {}) {
+  const frame = document.createElement("iframe");
+  frame.className = "onboarding-frame";
+  frame.title = tutorial ? "How to play Internet Recovery" : "Internet Recovery introduction";
+  frame.src = `./onboarding.html?${tutorial ? "tutorial=1" : `intro=1&chain=${chain}`}`;
+  const stage = $("gameStage");
+  const siblings = [...stage.children];
+  const priorInert = siblings.map(node => node.inert);
+  siblings.forEach(node => { node.inert = true; });
+  await new Promise(resolve => {
+    const receive = event => {
+      if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
+      if (recordCompletion && event.data?.type === "recovery-intro-complete") {
+        updateActiveProfile(profile => { profile.introductionVersion = INTRODUCTION_VERSION; });
+      }
+      if (recordCompletion && event.data?.type === "recovery-tutorial-complete") {
+        updateActiveProfile(profile => { profile.tutorialVersion = 1; });
+      }
+      if (event.data?.type !== "recovery-onboarding-complete") return;
+      window.removeEventListener("message", receive);
+      frame.remove();
+      siblings.forEach((node, index) => { node.inert = priorInert[index]; });
+      resolve();
+    };
+    window.addEventListener("message", receive);
+    stage.append(frame);
+    frame.focus();
+  });
+  $("siteGrid").querySelector("a")?.focus();
 }
 
 async function runGameIntroduction({ recordCompletion = true } = {}) {
-  const overlay = $("gameIntroduction");
-  $("launcherView").inert = true;
-  $("technoPet").dataset.introduction = "true";
-  overlay.hidden = false;
-  for (const beat of INTRODUCTION_BEATS) {
-    renderIntroductionBeat(beat);
-    await new Promise((resolve) => {
-      $("introductionContinue").onclick = resolve;
-      $("introductionContinue").focus();
-    });
-  }
-  overlay.hidden = true;
-  $("launcherView").inert = false;
-  delete $("technoPet").dataset.introduction;
-  setTechno("idle", "launcher");
-  if (recordCompletion) {
-    updateActiveProfile((profile) => { profile.introductionVersion = INTRODUCTION_VERSION; });
-  }
+  await runOnboarding({ chain: recordCompletion, recordCompletion });
 }
 
 function showCorruptionPause() {
@@ -1536,6 +1502,11 @@ function bindShellControls() {
     $("startMenu").hidden = true;
     await navigateToLauncher();
     await runGameIntroduction({ recordCompletion: false });
+  });
+  $("replayTutorial").addEventListener("click", async () => {
+    $("startMenu").hidden = true;
+    await navigateToLauncher();
+    await runOnboarding({ tutorial: true, recordCompletion: false });
   });
   $("loadProfile").addEventListener("click", () => beginProfile($("profileName").value));
   $("profileName").addEventListener("keydown", (event) => {

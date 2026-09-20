@@ -5,9 +5,11 @@ import test from "node:test";
 import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkthroughs.js";
 import { WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 } from "../content/wikiwhy-human-reviewed-passages.js";
 
+import { WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 as expectedChecksum } from "../scripts/lib/wikiwhy-human-reviewed-packet.mjs";
+
 test("WikiWhy uses the revised human-reviewed nine-passage runtime", () => {
   const mission = PLAYABLE_WALKTHROUGHS.wikiwhy;
-  assert.equal(WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5");
+  assert.equal(WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, expectedChecksum);
   assert.deepEqual(mission.passages.map(({ id }) => id), [
     "wikiwhy-01", "wikiwhy-02", "wikiwhy-03", "wikiwhy-05", "wikiwhy-06",
     "wikiwhy-07", "wikiwhy-08", "wikiwhy-09", "wikiwhy-10",
@@ -20,7 +22,7 @@ test("WikiWhy uses the revised human-reviewed nine-passage runtime", () => {
     "Of Studies",
     "The Time Machine",
     "Sherlock Holmes: A Scandal in Bohemia",
-    "The Fixation of Belief",
+    "Were the stars made, or did they just happen?",
     "The Ethics of Belief",
     "Alice's Evidence",
     "An Essay Concerning Human Understanding",
@@ -36,4 +38,14 @@ test("the passage renderer supports generic speaker and transition metadata", as
   assert.match(source, /presentation\?\.speaker/u);
   assert.match(styles, /\.passage p\.passage-transition/u);
   assert.match(styles, /\.passage-speaker-label/u);
+});
+
+
+test("WikiWhy contains the approved clarity edits and replacement", () => {
+  const p = PLAYABLE_WALKTHROUGHS.wikiwhy.passages;
+  assert.match(p[0].paragraphs.join(" "), /If the mouse perceives/);
+  assert.match(p[0].paragraphs.join(" "), /that mice cannot be taught/);
+  assert.doesNotMatch(p[0].paragraphs.join(" "), /\bdancers?\b/);
+  assert.equal(p[5].challengingWords.map(w=>w.word).join(","), "scow,speckled,joggle");
+  assert.ok(p.every(x=>!/[Ff]ixation of [Bb]elief|Chemical History of a Candle/.test(x.title)));
 });

@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        onboarding: resolve(import.meta.dirname, "onboarding.html"),
         endgamePlaytest: resolve(import.meta.dirname, "endgame-playtest.html"),
         kokoroVoiceComparison: resolve(import.meta.dirname, "kokoro-voice-comparison.html"),
         main: resolve(import.meta.dirname, "index.html"),

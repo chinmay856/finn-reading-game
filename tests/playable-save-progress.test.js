@@ -136,3 +136,17 @@ test("a saved sequence survives a reviewed passage demotion", () => {
   ]);
   assert.equal(restored.completedPassageIds.includes("wikiwhy-04"), false);
 });
+
+
+test("editorial replacement preserves earned repairs but clears stale pending reading", () => {
+  const mission = { id: "wikiwhy", passages: Array.from({ length: 9 }, (_, i) => ({ id: `slot-${i}` })), phaseOneCount: 6, contentVersion: "new", replacedPassageIds: ["slot-5"] };
+  const sequence = { version: 2, index: 5, totalPassages: 9, phaseOneCount: 6, phase: "phase-one", pendingPassageId: "slot-5", completedPassageIds: ["slot-0", "slot-1", "slot-2", "slot-3", "slot-4"], skippedPassageIds: [] };
+  const profile = { missions: { wikiwhy: { sequence } } };
+  const restored = restorePlayableMissionSequence(profile, mission);
+  assert.equal(restored.pendingPassageId, null);
+  assert.equal(restored.index, 5);
+  assert.deepEqual(restored.completedPassageIds, sequence.completedPassageIds);
+  assert.equal(sequence.pendingPassageId, "slot-5");
+  persistPlayableMissionSequence(profile, mission, { ...restored, pendingPassageId: "slot-5" });
+  assert.equal(restorePlayableMissionSequence(profile, mission).pendingPassageId, "slot-5");
+});

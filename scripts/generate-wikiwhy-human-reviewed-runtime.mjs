@@ -1,12 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 import {
+  WIKIWHY_HUMAN_REVIEWED_PACKET_URL,
   packetSha256,
   parseWikiWhyHumanReviewedPacket,
   WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256,
 } from "./lib/wikiwhy-human-reviewed-packet.mjs";
 
-const packetUrl = new URL("../docs/content/human-reviewed/2026-08-31/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET.md", import.meta.url);
+const packetUrl = WIKIWHY_HUMAN_REVIEWED_PACKET_URL;
 const outputUrl = new URL("../content/wikiwhy-human-reviewed-passages.js", import.meta.url);
 const markdown = await readFile(packetUrl, "utf8");
 const checksum = packetSha256(markdown);

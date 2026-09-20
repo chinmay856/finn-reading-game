@@ -14,6 +14,8 @@ designed to support many future themes.
 
 ## Start here
 
+- Current WikiWhy content and synchronization workflow: [WikiWhy current](docs/content/WIKIWHY_CURRENT.md)
+
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
 - Live game: <https://internet-recovery-98.web.app/>
 - Legacy Firebase address: <https://finn-reading-game.web.app/>

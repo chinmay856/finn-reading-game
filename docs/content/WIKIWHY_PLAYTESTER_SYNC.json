@@ -1,0 +1,15 @@
+{
+  "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
+  "documentUrl": "https://docs.google.com/document/d/1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y/edit",
+  "revisionId": "ANLCKQlPLyFbeJGmX8nd2RMZ93M2fUg91KdO8crJ4-2rNoPVuWNo9tQRxVQReReuthc9j_gmupRR7G-egtzHTeryRq8SWtVmdoYX9vhzdao",
+  "verifiedAt": "2026-09-20T22:18:07.510Z",
+  "packetSha256": "2342df9a07c79dbd4d33bf0f7dfa03d899bfba05811ede9649a6e235fb8476b7",
+  "passageCount": 9,
+  "checks": [
+    "ordered titles",
+    "complete spoken text",
+    "vocabulary definitions and playback phrases",
+    "questions",
+    "answer order and correct answer"
+  ]
+}

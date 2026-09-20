@@ -2,7 +2,9 @@ import { createHash } from "node:crypto";
 
 import { derivePassageDisplayLines } from "../../reading-companion/passage-display-lines.js";
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "20cb946affb40fcf556308b52fae92a22fbcd476f269205f35babeb8a3290cc5";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_URL = new URL("../../docs/content/human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET.md", import.meta.url);
+
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "2342df9a07c79dbd4d33bf0f7dfa03d899bfba05811ede9649a6e235fb8476b7";
 
 function collapse(value) {
   return String(value ?? "").replace(/-\n\s*/gu, "-").replace(/\n\s*/gu, " ").replace(/\s+/gu, " ").trim();
@@ -108,13 +110,13 @@ export function parseWikiWhyHumanReviewedPacket(markdown) {
     const number = Number(match[1]);
     const title = match[2].trim();
     const section = match[3];
-    const sourceAndRights = section.match(/^\n\*\*Source and rights:\*\* ([\s\S]*?)\n\n### Exact complete spoken passage/u)?.[1] ?? "";
+    const sourceAndRights = section.match(/\*\*Source and rights:\*\* ([\s\S]*?)\n\n### Exact complete spoken passage/u)?.[1] ?? "";
     const spoken = section.match(/### Exact complete spoken passage\n([\s\S]*?)\n### Vocabulary/u)?.[1] ?? "";
     const blocks = quoteBlocks(spoken);
     const paragraphs = blocks.map(plainInline);
     const { displayLines, linePresentations } = passageLines(blocks);
     return Object.freeze({
-      id: `wikiwhy-${String(number).padStart(2, "0")}`,
+      id: section.match(/\*\*Runtime ID:\*\* ([a-z0-9-]+)/u)?.[1] ?? `wikiwhy-${String(number).padStart(2, "0")}`,
       title,
       form: "human-reviewed public-domain reading",
       spokenWordCount: paragraphs.join(" ").split(/\s+/u).filter(Boolean).length,
@@ -127,10 +129,10 @@ export function parseWikiWhyHumanReviewedPacket(markdown) {
         editorialNote: sourceAndRights.trim(),
       }),
       rights: plainInline(sourceAndRights),
-      selectionNote: "Frozen human-reviewed WikiWhy packet dated 2026-08-31.",
+      selectionNote: "Frozen human-reviewed WikiWhy packet dated 2026-09-20.",
       comprehension: parseComprehension(section),
       vocabulary: Object.freeze(parseVocabulary(section)),
-      reviewStatus: "human-reviewed-frozen-2026-08-31",
+      reviewStatus: "human-reviewed-frozen-2026-09-20",
     });
   }));
 }

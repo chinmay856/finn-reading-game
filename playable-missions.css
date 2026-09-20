@@ -552,3 +552,5 @@ textarea {
   .dialup-packet-signal i { animation:none !important; }
   .dialup-packet-signal i:first-child { background:#d7fbff; border-color:#e9ffff; }
 }
+
+.onboarding-frame { position:absolute; inset:0; width:1440px; height:900px; border:0; z-index:100; background:#087f88; }

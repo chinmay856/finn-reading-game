@@ -248,22 +248,14 @@ test("player login warms only Whisper behind the dial-up parody and defers the h
   assert.match(script, /setupTask.*Dialing Progress/u);
 });
 
-test("first-run profiles receive the approved four-beat game introduction", () => {
-  assert.match(html, /id="gameIntroduction"/u);
+test("first-run profiles receive the approved introduction and isolated tutorial", () => {
   assert.match(html, /id="replayIntroduction"/u);
-  assert.match(script, /const INTRODUCTION_VERSION = 1/u);
-  assert.match(script, /THE INTERNET NEEDS YOUR HELP/u);
-  assert.match(script, /Auto—our extremely helpful AI—has been fixing ten websites/u);
-  assert.match(script, /I MAY HAVE MADE THIS WORSE/u);
-  assert.match(script, /TEN WEBSITES IMPROVED!/u);
-  assert.match(script, /CLARITY INCREASED\.\\nCHOICES SIMPLIFIED\.\\nHUMAN EFFORT REDUCED\.\\nALL UPDATES ARE WORKING PERFECTLY\./u);
-  assert.match(script, /READ\. REPAIR\. TEACH AUTO\./u);
-  assert.match(script, /read its passages aloud\. Each completed passage restores part of the site/u);
-  assert.match(script, /grant permission for this game to use your computer’s microphone/u);
+  assert.match(html, /id="replayTutorial"/u);
   assert.match(script, /profile\.introductionVersion = INTRODUCTION_VERSION/u);
   assert.match(script, /profileHasSeenIntroduction\(profile\)/u);
   assert.match(script, /runGameIntroduction\(\{ recordCompletion: false \}\)/u);
-  assert.doesNotMatch(script, /Techno[^\n]+text:/u);
+  assert.match(script, /event\.origin !== location\.origin/u);
+  assert.match(script, /event\.source !== frame\.contentWindow/u);
 });
 
 test("every site briefing asks for clear read-aloud delivery without explaining retry logic", () => {

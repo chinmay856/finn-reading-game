@@ -13,14 +13,15 @@ const voice = "af_heart";
 const execFileAsync = promisify(execFile);
 const argumentsList = process.argv.slice(2);
 const speechExcerptsOnly = argumentsList.includes("--speech-excerpts");
-const requestedSites = argumentsList.filter((argument) => argument !== "--speech-excerpts");
+const passageFilter = argumentsList.find(argument => argument.startsWith("--passage="))?.slice(10);
+const requestedSites = argumentsList.filter((argument) => argument !== "--speech-excerpts" && !argument.startsWith("--passage="));
 const siteIds = requestedSites.length ? requestedSites : Object.keys(PLAYABLE_WALKTHROUGHS);
 const cards = siteIds.flatMap((siteId) => {
   const mission = PLAYABLE_WALKTHROUGHS[siteId];
   if (!mission) throw new Error(`Unknown campaign site: ${siteId}`);
   return mission.passages.flatMap((passage) => passage.challengingWords.map((card) => ({ card, passage, siteId })));
 }).filter(({ card, passage }) => (
-  !speechExcerptsOnly || Object.hasOwn(CAMPAIGN_VOCABULARY_SPEECH_EXCERPTS, `${passage.id}/${card.word.toLowerCase()}`)
+  (!passageFilter || passage.id === passageFilter) && (!speechExcerptsOnly || Object.hasOwn(CAMPAIGN_VOCABULARY_SPEECH_EXCERPTS, `${passage.id}/${card.word.toLowerCase()}`))
 ));
 if (!cards.length) throw new Error("No vocabulary cards matched the requested audio generation scope.");
 

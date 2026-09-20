@@ -8,12 +8,13 @@ import {
   WIKIWHY_HUMAN_REVIEWED_PASSAGES,
 } from "../content/wikiwhy-human-reviewed-passages.js";
 import {
+  WIKIWHY_HUMAN_REVIEWED_PACKET_URL,
   packetSha256,
   parseWikiWhyHumanReviewedPacket,
   WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256,
 } from "./lib/wikiwhy-human-reviewed-packet.mjs";
 
-const packetUrl = new URL("../docs/content/human-reviewed/2026-08-31/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET.md", import.meta.url);
+const packetUrl = WIKIWHY_HUMAN_REVIEWED_PACKET_URL;
 const markdown = await readFile(packetUrl, "utf8");
 assert.equal(packetSha256(markdown), WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "frozen packet checksum");
 assert.equal(generatedChecksum, WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256, "generated runtime checksum");
