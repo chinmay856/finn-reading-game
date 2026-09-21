@@ -169,11 +169,11 @@ function player(model) {
 
 function repairChecklist(secured) {
   const rows = ["SHOW THE ARTIST", "SHOW THE CREDITS", "LET USERS CHOOSE", "LET USERS SET THE VOLUME"];
-  return `<g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
+  return `<g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="${COLORS.repair}"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    ${rows.map((row, index) => { const fixed = index < secured; return `<rect x="579" y="${417 + index * 31}" width="23" height="23" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="590.5" y="${434 + index * 31}" class="${fixed ? "spot-check-fixed" : "spot-check-open"}" text-anchor="middle">${fixed ? "✓" : "○"}</text><text x="615" y="${434 + index * 31}" class="${fixed ? "spot-check-row-fixed" : "spot-check-row"}">${row}</text>`; }).join("")}
+    ${rows.map((row, index) => { const fixed = index < secured; return `<rect x="579" y="${413 + index * 28}" width="23" height="23" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="590.5" y="${430 + index * 28}" class="${fixed ? "spot-check-fixed" : "spot-check-open"}" text-anchor="middle">${fixed ? "✓" : "○"}</text><text x="615" y="${430 + index * 28}" class="${fixed ? "spot-check-row-fixed" : "spot-check-row"}">${row}</text>`; }).join("")}
   </g>`;
 }
 
@@ -230,7 +230,7 @@ function site(state) {
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:${choiceColor};font-size:12px" data-choice-indicator="nav">▣ ${nav}</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     ${cards.map((card, index) => trackCard({ ...card, index, realArt: model.realArt, superMode: model.superMode, cardFixed: model.realArt && model.artistFixed && model.creditsFixed, titleFixed: model.titleFixed, artistFixed: model.artistFixed, creditsFixed: model.creditsFixed })).join("")}
     ${creatorStrip(model)}
     ${player(model)}

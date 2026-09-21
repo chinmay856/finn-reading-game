@@ -210,13 +210,13 @@ function autoCart(state) {
 
 function repairChecklist(checked) {
   const items = ["SHOW PAID PLACEMENT", "SHOW REAL REVIEWS", "SHOW ALL CHOICES", "SHOW DELIVERY + WASTE", "ASK BEFORE BUYING"];
-  return `<g data-overlay="repair-checklist" data-qa-box="559,303,856,616" filter="url(#windowShadow)">
-    <rect x="565" y="310" width="285" height="300" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
+  return `<g data-overlay="repair-checklist" data-qa-box="559,303,856,541" filter="url(#windowShadow)">
+    <rect x="565" y="310" width="285" height="225" rx="7" fill="#FFF" stroke="${COLORS.repairDark}" stroke-width="3"/>
     <rect x="565" y="310" width="285" height="44" rx="7" fill="${COLORS.repair}"/>
     <text x="585" y="339" class="amaze-check-title">LOCK IN THE REPAIR</text>
     ${items.map((item, index) => {
       const fixed = index < checked;
-      const y = 371 + index * 45;
+      const y = 364 + index * 34;
       return `<g data-check-state="${fixed ? "fixed" : "open"}"><rect x="585" y="${y}" width="25" height="25" rx="4" fill="${fixed ? COLORS.repair : COLORS.corruptionSoft}" stroke="${fixed ? COLORS.repairDark : COLORS.corruption}"/><text x="597.5" y="${y + 18}" class="amaze-check-mark" text-anchor="middle" style="fill:${fixed ? "#fff" : COLORS.corruption}">${fixed ? "✓" : "○"}</text><text x="625" y="${y + 18}" class="amaze-check-row" style="fill:${fixed ? COLORS.repairDark : COLORS.corruption}" data-content-state="${fixed ? "fixed" : "corrupted"}">${item}</text></g>`;
     }).join("")}
   </g>`;
