@@ -10,7 +10,7 @@ const root = new URL('../docs/content/human-reviewed/2026-09-20/google-docs/', i
 const approval = JSON.parse(readFileSync(new URL('approval.json', root), 'utf8'));
 const normalize = text => text.replace(/\s+/gu, ' ').trim();
 
-for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'searchish', 'amaze-on']) {
+for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi']) {
   test(`${site}: effective content matches the approved Google Doc revision exactly`, () => {
     const raw = readFileSync(new URL(`${site}.json`, root), 'utf8');
     const doc = JSON.parse(raw);
@@ -73,5 +73,19 @@ test('Searchish and Amaze-On retain reviewed inline vocabulary, verse, and repla
     assert.deepEqual(mission.passages[index].lines, mission.passages[index].paragraphs.map(line => line.trim()));
     assert.deepEqual(mission.replacedPassageIds, mission.passages.map(p => p.id));
     assert.equal(mission.phaseOneCount, 6);
+  }
+});
+
+
+test('final packets preserve colon answer keys, vocabulary playback, verse, and save migration IDs', () => {
+  const video = PLAYABLE_WALKTHROUGHS.viewtube;
+  const music = PLAYABLE_WALKTHROUGHS['spotty-fi'];
+  assert.equal(video.passages[0].comprehension.choices.find(choice => choice.correct).text, 'Performances reached more people cheaply but lacked voices, color, and depth.');
+  assert.equal(video.passages[1].challengingWords[0].speechSentence, 'In this passage, temperance keeps powerful acting from becoming excessive.');
+  assert.equal(music.passages[2].title, 'The Gramophone');
+  for (const index of [0, 1, 3, 6]) assert.deepEqual(music.passages[index].lines, music.passages[index].paragraphs.map(line => line.trim()));
+  for (const mission of [video, music]) {
+    assert.deepEqual(mission.replacedPassageIds, mission.passages.map(p => p.id));
+    assert.equal(mission.phaseOneCount, 5);
   }
 });

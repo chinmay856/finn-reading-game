@@ -36,8 +36,19 @@
       "documentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
       "revisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
       "sha256": "2094e48528de7e0a0141a0b1b0d1f7ec06b7f7deae05722cbac3065706b0df82"
+    },
+    "viewtube": {
+      "documentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
+      "revisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sha256": "f80f0caeaaf55cabc6f0833d40bfa62b6ffa05ca3de049ce1fd23dc7fb694bce"
+    },
+    "spotty-fi": {
+      "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
+      "revisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sha256": "d8c3442aff35a5e05ec4262e27c1db2f2d4cc42c9062be4926da1203967047ae"
     }
   },
   "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20.",
-  "searchishAmazonApproval": "User explicitly authorized publication of current Searchish, Yahoo, and Amazon Google Docs on 2026-09-20. Yahoo text rechecked unchanged; Searchish and Amazon snapshots imported without editorial rewriting."
+  "searchishAmazonApproval": "User explicitly authorized publication of current Searchish, Yahoo, and Amazon Google Docs on 2026-09-20. Yahoo text rechecked unchanged; Searchish and Amazon snapshots imported without editorial rewriting.",
+  "finalPacketsApproval": "User explicitly authorized integration and production publication of the final two Google Docs, ViewTube and Spotty-Fi, on 2026-09-20."
 }
