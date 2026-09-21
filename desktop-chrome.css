@@ -62,3 +62,27 @@
 .start-profile strong { display:block; color:#172d40; font:800 18px system-ui,sans-serif; }
 
 .auto-update-caption:focus { outline:none; }
+
+/* Shared alignment for gameplay, tutorial, and endgame desktop chrome. */
+.launcher-taskbar .start-button, #endgameStage .taskbar button {
+  display:flex; align-items:center; justify-content:center; padding:0 14px; line-height:1;
+}
+.launcher-taskbar > span:not(.system-tray), #endgameStage .taskbar > span:not(.system-tray) {
+  display:flex; align-items:center; min-height:33px; padding:0 12px;
+  border:0; box-shadow:none;
+}
+.launcher-taskbar time, #endgameStage .taskbar time {
+  display:flex; align-items:center; justify-content:center; height:33px;
+  padding:0 10px; border:0; box-shadow:none; line-height:1; white-space:nowrap;
+}
+.launcher-taskbar .system-tray, #endgameStage .taskbar .system-tray { height:33px; gap:12px; }
+.launcher-taskbar .speaker-icon, #endgameStage .speaker-icon {
+  display:block; width:22px; height:22px; font-size:0; letter-spacing:0;
+  background:center / 22px 22px no-repeat url('/icons/taskbar-volume.svg');
+}
+.launcher-taskbar .signal-icon, #endgameStage .signal-icon { height:22px; width:25px; gap:3px; }
+.launcher-taskbar .signal-icon i, #endgameStage .signal-icon i { width:4px; padding:0; margin:0; }
+.site-auto-overfix { position:absolute; inset:0; z-index:90; overflow:hidden; pointer-events:all; }
+.site-auto-overfix-frame { position:absolute; inset:0; width:1440px; height:900px; object-fit:contain; clip-path:inset(18px 524px 57px 106px); }
+.site-auto-overfix .auto-working-rig { left:350px; top:300px; width:230px; height:230px; transition:none; }
+.site-auto-overfix-caption { position:absolute; left:270px; bottom:64px; margin:0; padding:12px 20px; border:3px solid #263d49; background:#f7f5ee; color:#172d40; font:700 20px "Chalkboard SE",sans-serif; }
