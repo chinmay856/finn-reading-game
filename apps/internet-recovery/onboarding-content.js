@@ -186,7 +186,7 @@ const config = {
     {
       "who": "CHINMAY",
       "title": "Your reading is the key",
-      "body": "Reading passages aloud keeps a human brain in the loop. Reading builds knowledge, helps us think for ourselves, and helps us notice when a confident answer has lost touch with reality. Your reading brings real sources back into the picture.",
+      "body": "Reading passages aloud keeps a human brain in the loop. Reading builds knowledge and helps us think for ourselves.",
       "button": "What do I need to do?",
       "portrait": "chinmay-explaining"
     },
