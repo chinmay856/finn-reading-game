@@ -24,3 +24,12 @@ test("tour is a demonstration without speech or campaign writes", async () => {
   assert.match(html, /id="tourBack"/);
   assert.doesNotMatch(html, /id="intro(?:duction)?(?:Back|Count)"/);
 });
+
+test('tutorial Start menu shows the same ordered actions and icons as gameplay', async () => {
+  const files = await Promise.all(['onboarding.html', 'playable-missions.html'].map(file => readFile(new URL(`../${file}`, import.meta.url), 'utf8')));
+  const menus = files.map(html => html.match(/<section id="startMenu"[\s\S]*?<\/section>/u)[0]);
+  const labels = menu => [...menu.matchAll(/<b>([^<]+)<\/b>/gu)].map(match => match[1]);
+  assert.deepEqual(labels(menus[0]), labels(menus[1]));
+  const icons = menu => [...menu.matchAll(/src="(\/icons\/start-menu\/[^"]+)"/gu)].map(match => match[1]);
+  assert.deepEqual(icons(menus[0]), icons(menus[1]));
+});
