@@ -1,8 +1,8 @@
 {
   "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
   "title": "WikiWhy — Human Review Packet",
-  "revisionId": "ANLCKQn35u-hmFFCNSbb1_haDwL3_i5ZSUZHVfEM7trvlCD90Tp-ty0GoQNlCo6pEcXtYgOy0JlaWayZkTT1n6JL5Sdt01UHTBaCqKiH1Co",
-  "tabId": null,
+  "revisionId": "ANLCKQmrRC9__lJ4-LSAUYffqnf3gRiSeXnQ9n23r4apk-44d6ar4lXa-BghJex595GM2JbdqNsacMYrm84EY-5kU5qyjghvcwXWzhf4bS0",
+  "tabId": "t.0",
   "paragraphs": [
     {
       "text": "WikiWhy — Live Playtester Packet",
@@ -1333,65 +1333,65 @@
       "isListItem": false
     },
     {
-      "text": "assent\u000bDefinition: To accept or agree that something is true.\u000bExact playback phrase: “In this passage, familiar experience leads a person to assent to the report.”",
+      "text": "testimony\u000bDefinition: An account of what someone saw or knows.\u000bExact playback phrase: “In this passage, testimony is the report someone gives about walking on ice.”",
       "startIndex": 22372,
-      "endIndex": 22535,
+      "endIndex": 22536,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true
     },
     {
       "text": "relators\u000bDefinition: People who tell or report an account.\u000bExact playback phrase: “In this passage, credible relators make unfamiliar testimony easier to believe.”",
-      "startIndex": 22536,
-      "endIndex": 22699,
+      "startIndex": 22537,
+      "endIndex": 22700,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true
     },
     {
       "text": "conformity\u000bDefinition: Agreement or correspondence between two things.\u000bExact playback phrase: “In this passage, conformity with familiar experience makes the report easier to believe.”",
-      "startIndex": 22700,
-      "endIndex": 22884,
+      "startIndex": 22701,
+      "endIndex": 22885,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true
     },
     {
       "text": "Quick check",
-      "startIndex": 22885,
-      "endIndex": 22896,
+      "startIndex": 22886,
+      "endIndex": 22897,
       "tabId": "t.0",
       "namedStyleType": "HEADING_3",
       "isListItem": false
     },
     {
       "text": "Exact question: What does Locke's frozen-water story show about testimony?",
-      "startIndex": 22897,
-      "endIndex": 22971,
+      "startIndex": 22898,
+      "endIndex": 22972,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A — Correct: A trustworthy witness may still be doubted when a claim conflicts completely with the listener's experience.",
-      "startIndex": 22972,
-      "endIndex": 23093,
+      "startIndex": 22973,
+      "endIndex": 23094,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true
     },
     {
       "text": "B: The king doubts the report because the ambassador is only one witness instead of several.",
-      "startIndex": 23094,
-      "endIndex": 23186,
+      "startIndex": 23095,
+      "endIndex": 23187,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true
     },
     {
       "text": "C: One witness provides the same certainty as personal observation whenever that witness has no reason to lie.",
-      "startIndex": 23187,
-      "endIndex": 23297,
+      "startIndex": 23188,
+      "endIndex": 23298,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": true

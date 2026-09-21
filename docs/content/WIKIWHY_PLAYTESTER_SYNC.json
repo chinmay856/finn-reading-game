@@ -1,9 +1,9 @@
 {
   "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
   "documentUrl": "https://docs.google.com/document/d/1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y/edit",
-  "revisionId": "ANLCKQn35u-hmFFCNSbb1_haDwL3_i5ZSUZHVfEM7trvlCD90Tp-ty0GoQNlCo6pEcXtYgOy0JlaWayZkTT1n6JL5Sdt01UHTBaCqKiH1Co",
-  "verifiedAt": "2026-09-21T01:46:02.078Z",
-  "packetSha256": "b01e4f7f641fcba01c4f441933f82290a18e8e66575e2d7df9a3dc74d788649e",
+  "revisionId": "ANLCKQmrRC9__lJ4-LSAUYffqnf3gRiSeXnQ9n23r4apk-44d6ar4lXa-BghJex595GM2JbdqNsacMYrm84EY-5kU5qyjghvcwXWzhf4bS0",
+  "verifiedAt": "2026-09-21T16:32:57.272Z",
+  "packetSha256": "938bde249ebd12f343cd8cdbe5ff3a1f56d64228f60142f48c8fb7ec737cb57c",
   "passageCount": 9,
   "checks": [
     "ordered titles",

@@ -615,10 +615,10 @@ domain in the USA. The frozen local source is
 
 ### Vocabulary
 
-1. **assent**
-   - **Definition:** To accept or agree that something is true.
-   - **Exact playback phrase:** “In this passage, familiar experience leads a
-     person to assent to the report.”
+1. **testimony**
+   - **Definition:** An account of what someone saw or knows.
+   - **Exact playback phrase:** “In this passage, testimony is the report
+     someone gives about walking on ice.”
 
 2. **relators**
    - **Definition:** People who tell or report an account.

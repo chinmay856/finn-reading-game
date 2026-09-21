@@ -4,7 +4,7 @@ import { derivePassageDisplayLines } from "../../reading-companion/passage-displ
 
 export const WIKIWHY_HUMAN_REVIEWED_PACKET_URL = new URL("../../docs/content/human-reviewed/2026-09-20/wikiwhy/WIKIWHY_HUMAN_REVIEWED_PACKET_RULE_42.md", import.meta.url);
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "b01e4f7f641fcba01c4f441933f82290a18e8e66575e2d7df9a3dc74d788649e";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "938bde249ebd12f343cd8cdbe5ff3a1f56d64228f60142f48c8fb7ec737cb57c";
 
 function collapse(value) {
   return String(value ?? "").replace(/-\n\s*/gu, "-").replace(/\n\s*/gu, " ").replace(/\s+/gu, " ").trim();
