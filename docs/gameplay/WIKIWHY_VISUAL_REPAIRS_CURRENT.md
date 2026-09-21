@@ -15,8 +15,11 @@ to prevent overflow. The illustration continues using the existing approved art.
 AUTO corrupts wording, sources and history. Lock 1 restores sources, lock 2
 restores history, and lock 3 restores wording. Previously restored regions remain
 unchanged. All article regions in the final state equal the first full recovery.
-The checklist sits below the sidebar summary, clear of the references and history
-record. Its check marks reflect actual repair state.
+The checklist uses the shared 330 × 224 green-header overlay with three large
+checkboxes, visible from AUTO’s overfix through the three locks. It sits above
+the references and history record so both repairs remain visible. Unfinished
+checks are empty red-bordered squares; completed checks are green with a white
+tick. Its check marks reflect actual repair state.
 
 Source: scripts/generate-wikiwhy-complete-sequence.mjs and its generated SVG.
 Runtime pages: 1, 2–7, 10, 12, 13–15; secured/receipt use 7.
@@ -25,3 +28,7 @@ endgame recovered/overfix thumbnails are exported from the same master.
 Passages, saved explanations and the playtester passage document are unchanged.
 
 Regenerate all runtime artwork with `node scripts/generate-wikiwhy-complete-sequence.mjs --export`.
+
+View source has a red × in corrupted states. It returns to the normal tab with
+the sources repair (reading 5 or final lock 1). The tutorial points to the same
+initial and first-repair frames and explains the permanent red-to-green change.

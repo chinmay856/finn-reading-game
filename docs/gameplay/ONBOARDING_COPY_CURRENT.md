@@ -63,7 +63,7 @@ Button: Continue
 
 ## Tutorial 2: Look at what AUTO changed
 
-The website on the left shows what needs repairing. Look for strange claims, missing information, and red warnings.
+The website on the left shows what needs repairing. Red text and boxes mark what needs repairing. A confident contributor has posted a claim without evidence, sources, or visible history.
 
 Button: Continue
 
@@ -117,9 +117,9 @@ Button: Continue
 
 ## Tutorial 10: Your reading starts the repair
 
-Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CHECK EVIDENCE, NOT CONFIDENCE.” The passage you read and its Quick Check made a repair.
+Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CHECK EVIDENCE, NOT CONFIDENCE.” The banner is now green. Each passage and Quick Check repairs one part of the website.
 
-WikiWhy still needs more work, though.
+The red headline, explanation, and missing sources still need work. Repaired parts stay green.
 
 Button: Continue
 

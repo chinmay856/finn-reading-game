@@ -30,7 +30,7 @@ const states = [
   { id: "repair-6", label: "Phase 1 - Fully repaired", phase: "phase-1", progress: 100, article: 6 },
   { id: "chinmay-midpoint", label: "Midpoint - Chinmay popup", phase: "midpoint", progress: 100, article: 6, popup: "chinmay-midpoint" },
   { id: "ai-override", label: "Midpoint - AI override popup", phase: "midpoint-ai", progress: 100, article: 6, popup: "ai-override" },
-  { id: "super-corrupt", label: "Act 2 - Super corrupted", phase: "act-2", progress: 0, article: 7 },
+  { id: "super-corrupt", label: "Act 2 - Super corrupted", phase: "act-2", progress: 0, article: 7, checklist: 0 },
   { id: "amy-plan", label: "Act 2 - Amy repair plan", phase: "act-2-plan", progress: 0, article: 7, popup: "amy-plan" },
   { id: "locks-open", label: "Act 2 - Repair checklist", phase: "act-2-locks", progress: 0, article: 7, checklist: 0 },
   { id: "lock-1", label: "Act 2 - Sources locked", phase: "act-2-locks", progress: 33, article: 8, checklist: 1 },
@@ -66,6 +66,7 @@ function article(version) {
       text(256,322,fixed(3)?'WHAT THE EVIDENCE SUPPORTS':over?'AUTO CONFIDENCE: 10,000%':'SUBMITTED BY: DogVisionExpert99',fixed(3),14)+
       `<line x1="255" y1="335" x2="672" y2="335" stroke="${ink(fixed(3))}"/>`+
       bodyLines.map((line,i)=>text(256,371+i*39,line,fixed(3),20)).join(''))}
+    ${region('source-tab',5,fixed(5)?'':box(453,121,108,42,false)+text(463,148,'× View source',false,13))}
     ${region('sources',5,text(241,575,'References',fixed(5),20)+box(241,590,446,112,fixed(5))+
       (fixed(5)?['[1] Canine cone cells — supports blue/yellow vision','[2] Color-discrimination tests — red/green limits','[3] Source notes — limits of the evidence']:over?['[1] Sandwich recipe → dog vision','[2] AUTO SAYS TRUST ME → every claim','[3] Sources removed: checking takes too long']:['[1] Trust me. I have met a dog.','[2] Everyone says so.','[3] Source: my own confidence.']).map((line,i)=>text(254,616+i*32,line,fixed(5),15)).join(''))}
     ${region('vision',4,box(714,188,178,222,fixed(4))+(fixed(4)?
@@ -88,7 +89,19 @@ function article(version) {
 }
 
 function checklist(secured) {
-  return `<g data-overlay="act2-checklist"><rect x="714" y="622" width="178" height="80" rx="4" fill="#f8f7f0" stroke="${COLORS.repairDark}"/><text x="724" y="638" class="rail-title" style="font-size:11px">LOCK IN THE REPAIR</text>${["MATCH CLAIMS TO SOURCES", "KEEP HISTORY VISIBLE", "USE CAREFUL WORDING"].map((label,i)=>`<text x="724" y="${657+i*17}" style="font-family:'Chalkboard SE',sans-serif;font-size:9px;fill:${i<secured?COLORS.repairDark:COLORS.corruption}">${i<secured?'✓':'□'} ${label}</text>`).join('')}</g>`;
+  const x = 558, y = 350;
+  return `<g data-overlay="act2-checklist">
+    <rect x="${x}" y="${y}" width="330" height="224" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/>
+    <rect x="${x}" y="${y}" width="330" height="48" rx="10" fill="${COLORS.repair}"/>
+    <rect x="${x}" y="${y+35}" width="330" height="13" fill="${COLORS.repair}"/>
+    <text x="${x+20}" y="${y+32}" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    ${["MATCH CLAIMS TO SOURCES", "KEEP HISTORY VISIBLE", "USE CAREFUL WORDING"].map((label,i)=> {
+      const done = i < secured, rowY = y+90+i*48;
+      return `<rect x="${x+24}" y="${rowY-22}" width="27" height="27" rx="5" fill="${done?COLORS.repair:COLORS.corruptionSoft}" stroke="${done?COLORS.repair:COLORS.corruption}"/>
+      <text x="${x+37.5}" y="${rowY-2}" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:${done?'#fff':COLORS.corruption}">${done?'✓':''}</text>
+      <text x="${x+63}" y="${rowY}" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:${done?COLORS.repairDark:COLORS.corruption}">${label}</text>`;
+    }).join('')}
+  </g>`;
 }
 
 const popups = {

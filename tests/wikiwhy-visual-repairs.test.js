@@ -26,3 +26,8 @@ test('source and history locks visibly repair their regions and final article ma
  assert.equal(PLAYABLE_WALKTHROUGHS.wikiwhy.repairFrames.length,9);
  assert.match(PLAYABLE_WALKTHROUGHS.wikiwhy.repairFrames[6],/_p13\.png/);
 });
+
+test('View source is crossed out only while sources are corrupted',()=>{
+ for(const id of ['initial','repair-1','repair-4','super-corrupt','locks-open']) assert.match(regions(id)['source-tab'],/× View source/);
+ for(const id of ['repair-5','repair-6','lock-1','lock-2','lock-3']) assert.doesNotMatch(regions(id)['source-tab'],/× View source/);
+});
