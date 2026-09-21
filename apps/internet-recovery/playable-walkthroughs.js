@@ -67,7 +67,7 @@ function canonicalDeck(siteId) {
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
         audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
-          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -133,7 +133,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a consistent profile is not proof of who controls it. I should check the person and account history, verify through a route already known to me, and pause before ever sending money.",
   }),
   yahuh: Object.freeze({
-    id: "yahuh", name: "Yahuh! Portal", meter: "Reporting restored", passages: yahuhPassages,
+    id: "yahuh", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES.yahuh.map(record => record.id)), name: "Yahuh! Portal", meter: "Reporting restored", passages: yahuhPassages,
     initialFrame: frame("yahuh", "yahuh-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12].map((page) => frame("yahuh", "yahuh-anchor-v2", page))),
     phaseOneCount: 6, superFrame: frame("yahuh", "yahuh-anchor-v2", 8), checklistFrame: frame("yahuh", "yahuh-anchor-v2", 9), securedFrame: frame("yahuh", "yahuh-anchor-v2", 13), receiptFrame: frame("yahuh", "yahuh-anchor-v2", 13),

@@ -21,6 +21,12 @@
       "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
       "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
       "sha256": "cfd9cc5949915407a1b07341ef1a08838e7ead7719dd39b3ad840e88078ea7e9"
+    },
+    "yahuh": {
+      "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
     }
-  }
+  },
+  "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20."
 }

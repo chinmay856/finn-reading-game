@@ -5,7 +5,7 @@ import { PLAYABLE_WALKTHROUGHS } from '../apps/internet-recovery/playable-walkth
 import { buildVocabularySpeechText } from '../speech/vocabulary-speech-text.js';
 
 let count = 0;
-for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner']) {
+for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh']) {
   const manifest = JSON.parse(await readFile(new URL(`../public/audio/${site}/kokoro-heart/manifest.json`, import.meta.url), 'utf8'));
   for (const passage of PLAYABLE_WALKTHROUGHS[site].passages) for (const card of passage.challengingWords) {
     const receipt = manifest[card.audioSrc];
@@ -17,5 +17,5 @@ for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner']) {
     count += 1;
   }
 }
-assert.equal(count, 105);
-console.log('Verified all 105 reviewed vocabulary recordings against their exact synthesis text and audio hashes.');
+assert.equal(count, 132);
+console.log('Verified all 132 reviewed vocabulary recordings against their exact synthesis text and audio hashes.');
