@@ -30,7 +30,7 @@ const states = [
   { id: "repair-6", label: "Phase 1 - Fully repaired", phase: "phase-1", progress: 100, article: 6 },
   { id: "chinmay-midpoint", label: "Midpoint - Chinmay popup", phase: "midpoint", progress: 100, article: 6, popup: "chinmay-midpoint" },
   { id: "ai-override", label: "Midpoint - AI override popup", phase: "midpoint-ai", progress: 100, article: 6, popup: "ai-override" },
-  { id: "super-corrupt", label: "Act 2 - Super corrupted", phase: "act-2", progress: 0, article: 7, checklist: 0 },
+  { id: "super-corrupt", label: "Act 2 - Super corrupted", phase: "act-2", progress: 0, article: 7 },
   { id: "amy-plan", label: "Act 2 - Amy repair plan", phase: "act-2-plan", progress: 0, article: 7, popup: "amy-plan" },
   { id: "locks-open", label: "Act 2 - Repair checklist", phase: "act-2-locks", progress: 0, article: 7, checklist: 0 },
   { id: "lock-1", label: "Act 2 - Sources locked", phase: "act-2-locks", progress: 33, article: 8, checklist: 1 },

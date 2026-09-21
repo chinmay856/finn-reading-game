@@ -42,3 +42,11 @@ test('AUTO dog impersonation stays corrupted until the final wording repair',()=
  assert.equal(regions('lock-3').vision,regions('repair-6').vision);
  assert.match(regions('initial').vision,/wikiwhy-techno-vision-hatch-v3.png/);
 });
+
+test('the full AUTO reveal and Amy explanation precede the checklist',()=>{
+ assert.doesNotMatch(pages.find(p=>p[1]==='super-corrupt')[2],/data-overlay="act2-checklist"/);
+ assert.doesNotMatch(pages.find(p=>p[1]==='amy-plan')[2],/data-overlay="act2-checklist"/);
+ assert.match(pages.find(p=>p[1]==='locks-open')[2],/data-overlay="act2-checklist"/);
+ assert.match(PLAYABLE_WALKTHROUGHS.wikiwhy.superFrame,/_p10\.png/);
+ assert.match(PLAYABLE_WALKTHROUGHS.wikiwhy.checklistFrame,/_p12\.png/);
+});

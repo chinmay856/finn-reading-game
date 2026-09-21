@@ -16,7 +16,7 @@ AUTO corrupts wording, sources and history. Lock 1 restores sources, lock 2
 restores history, and lock 3 restores wording. Previously restored regions remain
 unchanged. All article regions in the final state equal the first full recovery.
 The checklist uses the shared 330 × 224 green-header overlay with three large
-checkboxes, visible from AUTO’s overfix through the three locks. It sits above
+checkboxes, visible after Amy’s explanation and through the three locks. It sits above
 the references and history record so both repairs remain visible. Unfinished
 checks are empty red-bordered squares; completed checks are green with a white
 tick. Its check marks reflect actual repair state.
@@ -57,3 +57,7 @@ text, border, floating symbols or extra characters. Readable at 158px.
 
 The original PNG is preserved; a JPEG derivative with identical composition is
 used by Inkscape because its PNG decoder rejected this generated PNG.
+
+The AUTO reveal frame has no checklist: the player sees the whole corrupted
+site while “Oh no—what did AUTO do?” waits. Amy’s explanation follows that
+click; her “Lock in the repair” button reveals the checklist.
