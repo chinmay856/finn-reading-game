@@ -1,3 +1,4 @@
+import { playAutoOverfixTransition } from "./apps/internet-recovery/auto-overfix-transition.js";
 import { shuffleQuickCheckChoices } from "./apps/internet-recovery/quick-check-order.js";
 import { getPlayableWalkthrough } from "./apps/internet-recovery/playable-walkthroughs.js";
 import { RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
@@ -1118,6 +1119,7 @@ async function runMidpoint() {
   await showStoryBeat("chinmay", mission.midpoint.chinmay.heading, mission.midpoint.chinmay.text, "See Chinmay’s fix", portraits.chinmay);
   setTechno("failed", "left");
   await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply AUTO’s update", portraits.overfix);
+  await playAutoOverfixTransition({ stage: $("gameStage"), source: mission.superFrame, siteName: mission.name });
   setFrame(mission.superFrame, "AUTO over-fix active");
   setTechno("failed", "left");
   await showCorruptionPause();
