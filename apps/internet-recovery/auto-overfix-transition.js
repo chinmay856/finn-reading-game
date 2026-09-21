@@ -5,6 +5,8 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
   const scene = document.createElement('section');
   scene.className = 'site-auto-overfix';
   scene.setAttribute('aria-label', `AUTO is updating ${siteName}`);
+  const reveal = document.createElement('div');
+  reveal.className = 'site-auto-overfix-reveal';
   const frame = new Image();
   frame.className = 'site-auto-overfix-frame';
   frame.alt = '';
@@ -16,7 +18,8 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
   caption.className = 'site-auto-overfix-caption';
   caption.setAttribute('role', 'status');
   caption.textContent = `AUTO is “improving” ${siteName}…`;
-  scene.append(frame, rig, caption);
+  reveal.append(frame);
+  scene.append(reveal, rig, caption);
   const siblings = [...stage.children].map(node => [node, node.inert]);
   const animations = [];
   try {
@@ -25,11 +28,11 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) rig.classList.add('reduced-motion');
     // Hide the incoming artwork before insertion, including its first paint.
-    if (!reduced) frame.setAttribute('style', 'clip-path:inset(18px 524px 882px 106px)');
+    if (!reduced) reveal.setAttribute('style', 'height:0');
     stage.append(scene);
-    animations.push(frame.animate(reduced ? [{ opacity: 0 }, { opacity: 1 }] : [
-      { clipPath: 'inset(18px 524px 882px 106px)' },
-      { clipPath: 'inset(18px 524px 57px 106px)' },
+    animations.push(reveal.animate(reduced ? [{ opacity: 0 }, { opacity: 1 }] : [
+      { height: '0px' },
+      { height: '825px' },
     ], { duration: AUTO_OVERFIX_DURATION, fill: 'both', easing: 'linear' }));
     if (!reduced) animations.push(rig.animate([
       { left: '140px', top: '30px' },

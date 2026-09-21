@@ -83,7 +83,8 @@
 .launcher-taskbar .signal-icon, #endgameStage .signal-icon { height:22px; width:25px; gap:3px; }
 .launcher-taskbar .signal-icon i, #endgameStage .signal-icon i { width:4px; padding:0; margin:0; }
 .site-auto-overfix { position:absolute; inset:0; z-index:90; overflow:hidden; pointer-events:all; }
-.site-auto-overfix-frame { position:absolute; inset:0; width:1440px; height:900px; object-fit:contain; clip-path:inset(18px 524px 57px 106px); }
+.site-auto-overfix-reveal { position:absolute; left:106px; top:18px; width:810px; height:825px; overflow:hidden; }
+.site-auto-overfix-frame { position:absolute; left:-106px; top:-18px; width:1440px; height:900px; max-width:none; object-fit:contain; }
 .site-auto-overfix .auto-working-rig { left:350px; top:300px; width:230px; height:230px; transition:none; }
 .site-auto-overfix-caption { position:absolute; left:270px; bottom:64px; margin:0; padding:12px 20px; border:3px solid #263d49; background:#f7f5ee; color:#172d40; font:700 20px "Chalkboard SE",sans-serif; }
 

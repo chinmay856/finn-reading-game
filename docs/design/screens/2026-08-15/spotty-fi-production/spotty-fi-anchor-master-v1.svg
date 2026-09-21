@@ -681,19 +681,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Mira • Jo • Kai</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor • Lio</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics • Ren</text>
@@ -710,7 +710,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>
@@ -973,19 +973,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#C5251E" data-content-state="corrupted">CREDITS: NONE</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#C5251E" data-content-state="corrupted">CREDITS: NONE</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#C5251E" data-content-state="corrupted">CREDITS: NONE</text>
@@ -1002,7 +1002,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>
@@ -1063,19 +1063,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Mira • Jo • Kai</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor • Lio</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics • Ren</text>
@@ -1092,7 +1092,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>
@@ -1153,19 +1153,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Mira • Jo • Kai</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor • Lio</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics • Ren</text>
@@ -1182,7 +1182,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>
@@ -1243,19 +1243,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Mira • Jo • Kai</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor • Lio</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics • Ren</text>
@@ -1272,7 +1272,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>
@@ -1333,19 +1333,19 @@
     <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="261" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Paper Planes</text>
     <text x="261" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="261" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Mira • Jo • Kai</text>
   </g><g data-qa-box="473,188,689,415">
     <rect x="473" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-satellite-v1.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-satellite-v4.png" x="483" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="483" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">City of Satellites</text>
     <text x="483" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor</text>
     <text x="483" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Noir Harbor • Lio</text>
   </g><g data-qa-box="695,188,911,415">
     <rect x="695" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
-    <image href="../non-wikiwhy-bookends/album-band-v1.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-band-v4.png" x="705" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
     <text x="705" y="350" class="spot-card-title" style="fill:#fff" data-track-title="true" data-content-state="fixed">Sunday Circuit</text>
     <text x="705" y="376" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics</text>
     <text x="705" y="399" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">The Formatics • Ren</text>
@@ -1362,7 +1362,7 @@
     </g>
     <g data-qa-box="109,570,911,682">
     <rect x="109" y="570" width="802" height="112" fill="#111615" stroke="#48524E"/>
-    <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../non-wikiwhy-bookends/album-paper-v4.svg" x="127" y="583" width="74" height="74" preserveAspectRatio="xMidYMid slice"/>
     <text x="216" y="608" class="spot-card-title" style="fill:#fff" data-content-state="fixed">Paper Planes</text>
     <text x="216" y="633" class="spot-meta" style="fill:#B9C1BC" data-content-state="fixed">Soft Crash</text>
     <text x="453" y="616" class="spot-control">◀</text><circle cx="518" cy="609" r="25" fill="#fff"/>

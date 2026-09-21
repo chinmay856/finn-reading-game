@@ -32,6 +32,7 @@ for (const reduced of [false, true]) test(`overfix awaits reveal and restores co
   assert.equal(animations.length, reduced ? 1 : 2);
   assert.ok(animations.every(animation => animation.options.duration === 5000));
   if (reduced) assert.deepEqual(animations[0].frames, [{opacity:0}, {opacity:1}]);
+  else assert.deepEqual(animations[0].frames, [{height:'0px'}, {height:'825px'}]);
   for (const animation of animations) animation.finish();
   await pending;
   assert.equal(active.inert, false); assert.equal(inert.inert, true);
