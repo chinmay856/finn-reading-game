@@ -524,3 +524,9 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
   .auto-popup[role="dialog"] .popup-close:not(:disabled),
   .story-dialog .narrative-next:not(:disabled) { animation:none; outline:4px solid #ffe166; outline-offset:2px; }
 }
+/* Previewing a choice never implies that it has been accepted. */
+.instruction-drop-target.has-selection { color:#48565f; border-color:#798992; background:#eef1f1; }
+.instruction-drop-target { max-height:74px; overflow:hidden; }
+.auto-popup-line { display:block; }
+.auto-popup-line + .auto-popup-line { margin-top:22px; }
+.auto-popup-line.emphatic { font-size:1.12em; font-weight:900; }

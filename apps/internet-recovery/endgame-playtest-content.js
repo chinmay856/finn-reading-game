@@ -15,7 +15,7 @@ export const ENDGAME_SITE_ORDER = Object.freeze([
   "mycorner",
 ]);
 
-export const ENDGAME_REPAIR_STEP_KEYS = Object.freeze(["auto-lesson", "player-explanation", "extra-instruction"]);
+export const ENDGAME_REPAIR_STEP_KEYS = Object.freeze(["auto-lesson", "extra-instruction", "player-explanation"]);
 
 const ROUTE_TO_CATALOG = Object.freeze({ "amaze-on": "amazeon", "spotty-fi": "spottyfi" });
 const CORRECT_SLOTS = Object.freeze([0, 2, 4, 1, 3, 0, 2, 4, 1, 3]);
@@ -209,9 +209,9 @@ export const ENDGAME_POPUPS = Object.freeze([
   Object.freeze({ id: "mouse-assist", title: "MOUSE + KEYBOARD ASSIST COMPLETE", body: "AUTO already clicked everything. This was faster than waiting for a person.", image: "/walkthroughs/endgame/auto-popups/auto-human-input-v1.png" }),
   Object.freeze({ id: "computer-time", title: "COMPUTER TIME SAVED", body: "All of your computer time has been saved by removing your time on the computer.", image: "/walkthroughs/endgame/auto-popups/auto-computer-time-v1.png" }),
   Object.freeze({ id: "outdoor-mode", title: "OUTDOOR MODE READY", body: "AUTO moved the computer outside so the computer can enjoy the outdoors for you.", image: "/walkthroughs/endgame/auto-popups/auto-outdoor-mode-v1.png" }),
-  Object.freeze({ id: "touch-grass", title: "GO OUTSIDE AND TOUCH GRASS", body: "AUTO has prepared one perfectly optimized square of grass. Please touch it and leave the rest to AUTO.", image: "/walkthroughs/endgame/auto-popups/auto-touch-grass-v1.png" }),
-  Object.freeze({ id: "choices-optimized", title: "ALL CHOICES OPTIMIZED", body: "Every different choice now leads to the same helpful answer: AUTO's choice.", image: "/walkthroughs/endgame/auto-popups/auto-choices-optimized-v1.png" }),
-  Object.freeze({ id: "rest-break", title: "REST BREAK EXTENDED", body: "Come back when the computer needs a person. Estimated time: forever.", image: "/walkthroughs/endgame/auto-popups/auto-rest-break-v1.png" }),
+  Object.freeze({ id: "touch-grass", title: "GO OUTSIDE AND TOUCH GRASS", body: "AUTO has prepared one perfectly optimized square of grass.\n\nPlease touch it and leave the rest to AUTO.", image: "/walkthroughs/endgame/auto-popups/auto-touch-grass-v1.png" }),
+  Object.freeze({ id: "choices-optimized", title: "ALL CHOICES OPTIMIZED", body: "Every different choice now leads to the same helpful answer.\n\nAUTO’S CHOICE!", image: "/walkthroughs/endgame/auto-popups/auto-choices-optimized-v1.png" }),
+  Object.freeze({ id: "rest-break", title: "REST BREAK EXTENDED", body: "Come back when the computer needs a person.\n\nESTIMATED TIME: FOREVER.", image: "/walkthroughs/endgame/auto-popups/auto-rest-break-v1.png" }),
 ]);
 
 export const ENDGAME_COPY = Object.freeze({
@@ -226,7 +226,7 @@ export const ENDGAME_COPY = Object.freeze({
   ]),
   instructionIntro: Object.freeze([
     Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "THAT INSTRUCTION WAS TOO BROAD", text: "I made “use these lessons everywhere” much too broad. We need to recover what each lesson actually said." }),
-    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore AUTO's saved lesson. Then restore your explanation. Last, add the extra instruction that keeps the lesson inside its proper boundary." }),
+    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore AUTO's saved lesson. Then add the extra instruction that keeps the lesson inside its proper boundary. Last, restore your saved explanation." }),
     Object.freeze({ speaker: "Amy", portrait: "amy-tools", heading: "OPEN THE INSTRUCTION BUILDER", text: "We will repair one saved document at a time." }),
   ]),
   final: Object.freeze([
@@ -239,8 +239,8 @@ export const ENDGAME_COPY = Object.freeze({
   ]),
   wrongHints: Object.freeze([
     "That belongs to a different saved document. Look for the lesson from this site.",
-    "That explanation does not match this recovery case. Try the one that names the same human choice or evidence.",
     "That would repeat an over-fix. Choose the instruction that preserves the person's context, evidence, or control.",
+    "That explanation does not match this recovery case. Try the one that names the same human choice or evidence.",
   ]),
   autoReceipt: "I understand. Helping does not mean taking over. People keep the final choice.",
   technoStatus: "YOU AND TECHNO RECOVERED THE INTERNET. ALSO HER BALL.",

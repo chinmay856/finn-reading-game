@@ -17,7 +17,7 @@ After Chinmay's raised-finger “AUTO SHOULD HAVE IT NOW” beat, applying the u
 runs a 20-second presentation: AUTO visits all ten sites in launcher order,
 changes each recovered thumbnail to its over-fix, and turns its frame/status red.
 Only after all ten does “AUTO ESCAPED THE WEBSITES” appear. The animation has no player-facing Skip control. AUTO is 260 pixels wide,
-with scrubbing motion, drifting dust puffs, and short golden motion streaks. Reduced motion omits movement/bobbing and uses
+with scrubbing motion, drifting translucent red dust puffs, without motion streaks. Reduced motion omits movement/bobbing and uses
 350 milliseconds per site. Artwork is decoded before the sequence. Timers are
 cancelled by rerender/navigation; interrupted playback leaves the saved ready
 beat intact so reload cannot strand the game midway through the visual.
@@ -42,3 +42,16 @@ animated helper moving between website thumbnails.
 Local full normal animation: ten red sites before the takeover warning. reduced-motion mode, replay Tutorial and return to the same beat, and Switch
 Player entry checked without loading production speech assets. Existing test
 suite and build remain release gates.
+
+
+## Saved-document repair continuity
+
+Repair order is AUTO’s saved lesson, Extra instruction, then Your saved explanation.
+The first and third repairs use the active player's actual saved document text,
+including the five mixed-site explanation choices. Long explanations are visually
+clamped without modifying saved text. Standalone previews without a profile use
+preview fixtures; missing legacy explanations are explicitly identified.
+Wrong submissions clear the drop target and retain Amy's feedback. Pending parts
+use an open square; restored parts retain their green check. Existing partial
+saves retain completed repairs when migrating from the previous order.
+AUTO's pop-ups separate punchlines into paragraphs and emphasize all-cap statements.

@@ -80,7 +80,8 @@ function exactKnownPrefix(values, knownIds) {
 }
 
 function repairPosition(completedRepairStepIds) {
-  const count = completedRepairStepIds.length;
+  const firstMissing = ALL_REPAIR_STEP_IDS.findIndex(id => !completedRepairStepIds.includes(id));
+  const count = firstMissing < 0 ? ALL_REPAIR_STEP_IDS.length : firstMissing;
   return {
     currentLessonIndex: Math.min(ENDGAME_SITE_ORDER.length, Math.floor(count / ENDGAME_REPAIR_STEP_KEYS.length)),
     currentRepairIndex: count % ENDGAME_REPAIR_STEP_KEYS.length,
@@ -91,7 +92,23 @@ export function normalizeEndgamePlaytestState(candidate) {
   const fallback = createEndgamePlaytestState();
   if (!candidate || candidate.version !== ENDGAME_PLAYTEST_VERSION || candidate.fixtureId !== ENDGAME_PLAYTEST_FIXTURE_ID) return fallback;
   const closedPopupIds = exactKnownPrefix(candidate.closedPopupIds, ENDGAME_POPUPS.map(({ id }) => id).reverse());
-  const completedRepairStepIds = exactKnownPrefix(candidate.completedRepairStepIds, ALL_REPAIR_STEP_IDS);
+  // Accept each site's old or new repair order, including a partially restored
+  // explanation from an older save. Never credit a later site across a gap.
+  const values = Array.isArray(candidate.completedRepairStepIds) ? candidate.completedRepairStepIds : [];
+  const earned = [];
+  for (const siteId of ENDGAME_SITE_ORDER) {
+    const auto = repairStepId(siteId, "auto-lesson");
+    const remaining = [repairStepId(siteId, "extra-instruction"), repairStepId(siteId, "player-explanation")];
+    if (values[earned.length] !== auto) break;
+    earned.push(auto);
+    const second = values[earned.length];
+    if (!remaining.includes(second)) break;
+    earned.push(second);
+    const third = remaining.find(id => id !== second);
+    if (values[earned.length] !== third) break;
+    earned.push(third);
+  }
+  const completedRepairStepIds = ALL_REPAIR_STEP_IDS.filter(id => earned.includes(id));
   const canPauseOnCompletedSite = completedRepairStepIds.length > 0
     && completedRepairStepIds.length % ENDGAME_REPAIR_STEP_KEYS.length === 0;
   const awaitingNextSite = candidate.awaitingNextSite === true && canPauseOnCompletedSite;
@@ -190,7 +207,7 @@ export function answerCurrentLesson(state, { optionId, siteId } = {}) {
   if (!option?.correct) return { correct: false, state };
   const expectedStepId = repairStepId(siteId, step.key);
   if (state.completedRepairStepIds.includes(expectedStepId)) return { correct: true, state };
-  const completedRepairStepIds = [...state.completedRepairStepIds, expectedStepId];
+  const completedRepairStepIds = ALL_REPAIR_STEP_IDS.filter(id => state.completedRepairStepIds.includes(id) || id === expectedStepId);
   const siteComplete = completedRepairStepIds.length % ENDGAME_REPAIR_STEP_KEYS.length === 0;
   return {
     correct: true,

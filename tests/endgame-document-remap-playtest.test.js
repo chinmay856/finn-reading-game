@@ -182,7 +182,7 @@ test("malformed resume data cannot skip a popup or any of the thirty repair step
     closedPopupIds: [ENDGAME_POPUPS[1].id, ENDGAME_POPUPS[0].id],
     completedRepairStepIds: [
       repairStepId(ENDGAME_SITE_ORDER[0], ENDGAME_REPAIR_STEP_KEYS[0]),
-      repairStepId(ENDGAME_SITE_ORDER[0], ENDGAME_REPAIR_STEP_KEYS[2]),
+      repairStepId(ENDGAME_SITE_ORDER[1], ENDGAME_REPAIR_STEP_KEYS[2]),
     ],
     currentLessonIndex: 9,
     currentRepairIndex: 2,
@@ -307,7 +307,7 @@ test("rejected first-pass labels, counters, minimized Companion, old naming, and
   ]) assert.doesNotMatch(prototypeSource, rejected);
   assert.match(prototypeSource, /GO OUTSIDE AND TOUCH GRASS/u);
   assert.match(prototypeSource, /YOU AND TECHNO RECOVERED THE INTERNET\. ALSO HER BALL\./u);
-  assert.match(runtime, /campaignPlayerExplanations/u);
+  assert.match(runtime, /campaignSavedReflections/u);
   assert.match(runtime, /RECOVERY DESKTOP RESTORED/u);
   assert.match(styles, /\.story-dialog\[data-speaker="auto"\][^{]+\{\s*color:\s*var\(--ink\)/u);
 });
@@ -329,4 +329,19 @@ test("standalone state remains isolated while completed campaign documents can r
   assert.match(prototypeSource, /\bTechno\b/u);
   assert.doesNotMatch(runtime, /combined-instruction/u);
   assert.equal(ENDGAME_COPY.ending.length, 2);
+});
+
+
+test("old partially restored explanations survive normalization and the new order", () => {
+  const [first, second] = ENDGAME_SITE_ORDER;
+  const oldIds = [first, second].flatMap(id => ["auto-lesson", "player-explanation", "extra-instruction"].map(key => repairStepId(id, key))).slice(0, 5);
+  let state = normalizeEndgamePlaytestState({...advanceToBuilder(), completedRepairStepIds: oldIds});
+  assert.equal(state.currentLessonIndex, 1);
+  assert.equal(state.currentRepairIndex, 1);
+  state = normalizeEndgamePlaytestState(state);
+  assert.equal(state.completedRepairStepIds.length, 5);
+  const step = getEndgameRepairStep(1, 1);
+  state = answerCurrentLesson(state, {siteId: second, optionId: step.options.find(option => option.correct).id}).state;
+  assert.equal(state.completedRepairStepIds.length, 6);
+  assert.equal(state.awaitingNextSite, true);
 });

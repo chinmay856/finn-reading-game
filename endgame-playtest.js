@@ -1,3 +1,4 @@
+import { savedEndgameDocuments, savedDocumentRepairStep } from "./apps/internet-recovery/endgame-saved-documents.js";
 import {
   ENDGAME_ASSETS,
   ENDGAME_COPY,
@@ -50,36 +51,16 @@ let state = replayRequested
   : persistence.load();
 if (replayRequested) history.replaceState(null, "", campaignMode ? "/endgame-playtest.html?campaign=1" : "/endgame-playtest.html");
 
-function campaignPlayerExplanations() {
-  if (!campaignMode) return new Map();
+function campaignSavedReflections() {
   try {
-    const store = JSON.parse(localStorage.getItem("internet-recovery-save-files-v1") ?? "null");
-    const profile = store?.activeProfileKey ? store.profiles?.[store.activeProfileKey] : null;
-    return new Map(Object.entries(profile?.reflections ?? {}).map(([siteId, record]) => [siteId, String(record?.reflection ?? "").trim()]));
-  } catch {
-    return new Map();
-  }
+    const store = JSON.parse(localStorage.getItem("internet-recovery-save-files-v1") || "null");
+    return store?.profiles?.[store.activeProfileKey]?.reflections ?? null;
+  } catch { return null; }
 }
-
-const savedExplanations = campaignPlayerExplanations();
-const endgameSiteFixtures = Object.freeze(ENDGAME_SITE_FIXTURES.map((fixture) => Object.freeze({
-  ...fixture,
-  playerExplanation: campaignMode ? (savedExplanations.get(fixture.id) || "…") : "…",
-})));
-
+const savedReflections = campaignSavedReflections();
+const endgameSiteFixtures = savedEndgameDocuments(ENDGAME_SITE_FIXTURES, savedReflections, campaignMode || Boolean(savedReflections));
 function runtimeRepairStep(siteIndex, repairIndex) {
-  const step = getEndgameRepairStep(siteIndex, repairIndex);
-  if (!campaignMode || step?.key !== "player-explanation") return step;
-  const currentSite = endgameSiteFixtures[siteIndex];
-  return Object.freeze({
-    ...step,
-    options: Object.freeze(step.options.map((option) => {
-      const sourceSite = option.correct
-        ? currentSite
-        : endgameSiteFixtures.find(({ id }) => option.id.endsWith(`-from-${id}`));
-      return Object.freeze({ ...option, text: sourceSite?.playerExplanation ?? option.text });
-    })),
-  });
+  return savedDocumentRepairStep(getEndgameRepairStep(siteIndex, repairIndex), endgameSiteFixtures, siteIndex);
 }
 let selectedOptionId = null;
 let wrongOptionId = null;
@@ -294,7 +275,7 @@ async function runAutoUpdate() {
   }));
   if (generation !== autoUpdateGeneration) return;
   startMenuOpen = false;
-  stage.innerHTML = `${desktopMarkup("ready")}<div class="auto-update-scene"><div class="auto-working-rig"><div class="auto-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><img class="auto-working" src="/walkthroughs/endgame/portraits/auto-working-cutout-v1.png" alt="AUTO working on each website"><div class="auto-scrub-streaks" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="auto-update-caption" tabindex="-1"><strong role="status">AUTO is applying the lessons everywhere…</strong></div></div>`;
+  stage.innerHTML = `${desktopMarkup("ready")}<div class="auto-update-scene"><div class="auto-working-rig"><div class="auto-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><img class="auto-working" src="/walkthroughs/endgame/portraits/auto-working-cutout-v1.png" alt="AUTO working on each website"></div><div class="auto-update-caption" tabindex="-1"><strong role="status">AUTO is applying the lessons everywhere…</strong></div></div>`;
   stage.querySelector('.desktop-base').inert = true;
   const actor = stage.querySelector('.auto-working-rig');
   const caption = stage.querySelector('.auto-update-caption strong');
@@ -364,7 +345,7 @@ function popupArticleMarkup(popup, { revealComplete = false, active = false, set
   const positionIndex = ENDGAME_POPUPS.findIndex(({ id }) => id === popup.id);
   return `<article class="auto-popup popup-position-${positionIndex}${settled ? " takeover-settled" : ""}" role="${active ? "dialog" : "presentation"}" aria-modal="${active ? "true" : "false"}" aria-labelledby="popup-${popup.id}-title" style="--popup-z:${80 + positionIndex}" ${active ? "" : "inert aria-hidden=\"true\""}>
     <header><strong id="popup-${popup.id}-title">${escapeHtml(popup.title)}</strong><button class="popup-close" data-action="close-popup" data-popup-id="${popup.id}" type="button" aria-label="${escapeHtml(popupAccessibleCloseName(popup))}" ${revealComplete ? "" : "disabled aria-disabled=\"true\""}>×</button></header>
-    <div class="auto-popup-body"><img src="${popup.image}" alt=""><p>${escapeHtml(popup.body)}</p></div>
+    <div class="auto-popup-body"><img src="${popup.image}" alt=""><p>${popup.body.split("\n\n").map((line, index) => `<span class="auto-popup-line${index > 0 && line === line.toUpperCase() ? " emphatic" : ""}">${escapeHtml(line)}</span>`).join("")}</p></div>
   </article>`;
 }
 
@@ -446,7 +427,7 @@ function scrambleText(text, offset) {
 function savedPanelMarkup({ label, text, restored, active, index }) {
   const explanation = label === "YOUR SAVED EXPLANATION";
   return `<article class="saved-panel${explanation ? " saved-explanation-panel" : ""}" data-state="${restored ? "restored" : "scrambled"}" data-active="${active ? "true" : "false"}">
-    <small>${restored ? "✓ " : "○ "}${escapeHtml(label)}</small>
+    <small>${restored ? "✓ " : "□ "}${escapeHtml(label)}</small>
     <p>${escapeHtml(restored ? text : scrambleText(text, index))}</p>
   </article>`;
 }
@@ -456,8 +437,8 @@ function builderMarkup() {
   const step = runtimeRepairStep(state.currentLessonIndex, state.currentRepairIndex);
   const siteRepairCount = completedStepsForSite(fixture.id);
   const lessonRestored = siteRepairCount >= 1;
-  const explanationRestored = siteRepairCount >= 2;
-  const boundaryRestored = siteRepairCount >= 3;
+  const explanationRestored = state.completedRepairStepIds.includes(repairStepId(fixture.id, "player-explanation"));
+  const boundaryRestored = state.completedRepairStepIds.includes(repairStepId(fixture.id, "extra-instruction"));
   const selected = step?.options.find(({ id }) => id === selectedOptionId);
   const siteComplete = state.awaitingNextSite;
   const isLastSite = state.currentLessonIndex === endgameSiteFixtures.length - 1;
@@ -469,8 +450,8 @@ function builderMarkup() {
         <section class="saved-document" aria-labelledby="currentSiteTitle">
           <div class="document-site"><img src="${fixture.markImage}" alt=""><h1 id="currentSiteTitle">${escapeHtml(fixture.name)}</h1></div>
           ${savedPanelMarkup({ label: "AUTO'S SAVED LESSON", text: fixture.savedLesson, restored: lessonRestored, active: !siteComplete && state.currentRepairIndex === 0, index: state.currentLessonIndex })}
-          ${savedPanelMarkup({ label: "YOUR SAVED EXPLANATION", text: fixture.playerExplanation, restored: explanationRestored, active: !siteComplete && state.currentRepairIndex === 1, index: state.currentLessonIndex + 2 })}
-          ${savedPanelMarkup({ label: "EXTRA INSTRUCTION", text: fixture.boundaryOptions.find(({ correct }) => correct).text, restored: boundaryRestored, active: !siteComplete && state.currentRepairIndex === 2, index: state.currentLessonIndex + 4 })}
+          ${savedPanelMarkup({ label: "EXTRA INSTRUCTION", text: fixture.boundaryOptions.find(({ correct }) => correct).text, restored: boundaryRestored, active: !siteComplete && state.currentRepairIndex === 1, index: state.currentLessonIndex + 4 })}
+          ${savedPanelMarkup({ label: "YOUR SAVED EXPLANATION", text: fixture.playerExplanation, restored: explanationRestored, active: !siteComplete && state.currentRepairIndex === 2, index: state.currentLessonIndex + 2 })}
         </section>
         ${siteComplete ? `<section class="document-complete" aria-labelledby="choiceTitle">
           <small>DOCUMENT RESTORED</small>
@@ -481,12 +462,12 @@ function builderMarkup() {
           <h2 id="choiceTitle">${escapeHtml(step.question)}</h2>
           <div class="option-list">${step.options.map((option, optionIndex) => `<button class="instruction-option${selectedOptionId === option.id ? " selected" : ""}${wrongOptionId === option.id ? " incorrect" : ""}" type="button" draggable="true" data-option-id="${option.id}" aria-pressed="${selectedOptionId === option.id ? "true" : "false"}"><span>${optionIndex + 1}</span><b>${escapeHtml(option.text)}</b></button>`).join("")}</div>
           <div id="instructionDropTarget" class="instruction-drop-target${selectedOptionId ? " has-selection" : ""}" tabindex="0" aria-label="Drop the recovered line here">${selected ? escapeHtml(selected.text) : "DROP THE RECOVERED LINE HERE"}</div>
-          <button class="primary-button add-instruction" data-action="add-instruction" type="button" ${selectedOptionId ? "" : "disabled"}>${state.currentRepairIndex === 2 ? "Add this instruction" : "Restore this line"}</button>
+          <button class="primary-button add-instruction" data-action="add-instruction" type="button" ${selectedOptionId ? "" : "disabled"}>${step.key === "extra-instruction" ? "Add this instruction" : "Restore this line"}</button>
           <p class="builder-feedback" role="status">${feedback ? `<strong>AMY:</strong> ${escapeHtml(feedback)}` : "Select one line, then restore it. You can also drag a line into the box."}</p>
         </section>`}
       </div>
       <footer class="builder-receipt">
-        <div><span data-done="${lessonRestored}">${lessonRestored ? "✓" : "○"} ORIGINAL AUTO LESSON</span><span data-done="${explanationRestored}">${explanationRestored ? "✓" : "○"} YOUR EXPLANATION</span><span data-done="${boundaryRestored}">${boundaryRestored ? "✓" : "○"} EXTRA INSTRUCTION</span></div>
+        <div><span data-done="${lessonRestored}">${lessonRestored ? "✓" : "□"} ORIGINAL AUTO LESSON</span><span data-done="${boundaryRestored}">${boundaryRestored ? "✓" : "□"} EXTRA INSTRUCTION</span><span data-done="${explanationRestored}">${explanationRestored ? "✓" : "□"} YOUR EXPLANATION</span></div>
       </footer>
     </section>`;
 }
@@ -738,6 +719,7 @@ function submitSelectedInstruction(optionId = selectedOptionId) {
   if (!fixture || !optionId) return;
   const outcome = answerCurrentLesson(state, { optionId, siteId: fixture.id });
   if (!outcome.correct) {
+    selectedOptionId = null;
     wrongOptionId = optionId;
     feedback = ENDGAME_COPY.wrongHints[currentStepIndex];
     announce(feedback);
@@ -745,7 +727,7 @@ function submitSelectedInstruction(optionId = selectedOptionId) {
     return;
   }
   const completed = outcome.state.completedRepairStepIds.length;
-  const message = currentStepIndex === 2
+  const message = outcome.state.awaitingNextSite
     ? `${fixture.name} document restored.`
     : `${fixture.name}: part ${currentStepIndex + 1} of 3 restored.`;
   announce(message);
@@ -779,6 +761,7 @@ function skipCurrentStep() {
 stage.addEventListener("click", (event) => {
   const option = event.target.closest(".instruction-option");
   if (option) {
+    if (wrongOptionId === option.dataset.optionId) return;
     selectedOptionId = option.dataset.optionId;
     wrongOptionId = null;
     feedback = "";
