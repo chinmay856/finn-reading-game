@@ -17,7 +17,7 @@ function frame(directory, prefix, page) {
   if (directory === "spotty-fi") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260921-spotty-art-v4`;
   if (directory === "mapguess") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-mapguess-layout-v6`;
   if (["viewtube", "spotty-fi", "amaze-on", "faceplace", "threadit", "searchish", "yahuh", "mycorner"].includes(directory)) return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-layout-polish-v1`;
-  if (directory === "wikiwhy") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-layout-polish-v1`;
+  if (directory === "wikiwhy") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260921-repair-order`;
   return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
 }
 

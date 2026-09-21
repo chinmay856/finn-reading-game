@@ -530,3 +530,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 .auto-popup-line { display:block; }
 .auto-popup-line + .auto-popup-line { margin-top:22px; }
 .auto-popup-line.emphatic { font-size:1.12em; font-weight:900; }
+
+/* Keep an exit route available above dialogue, documents, and celebration. */
+.taskbar, .desktop-shortcuts { z-index: 220; }
+.start-menu { z-index: 221; }

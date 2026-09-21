@@ -1,4 +1,4 @@
-import { savedEndgameDocuments, savedDocumentRepairStep } from "./apps/internet-recovery/endgame-saved-documents.js";
+import { savedEndgameDocuments, savedDocumentRepairStep, retainRecoveredInstructions } from "./apps/internet-recovery/endgame-saved-documents.js";
 import {
   ENDGAME_ASSETS,
   ENDGAME_COPY,
@@ -224,7 +224,7 @@ function desktopMarkup(mode = "ready") {
   const completion = corrupted ? "AUTO OVER-FIXES ACTIVE" : "10 OF 10 SITES COMPLETE";
   return `<div class="desktop-base" data-mode="${mode}">
     <nav class="desktop-shortcuts" aria-label="Recovery Desktop">
-      <div class="desktop-icon"><img src="/walkthroughs/shared/recovery-icon-computer-v2.png" alt=""><b>MY<br>COMPUTER</b></div>
+      <button class="desktop-icon" data-action="return-recovery-browser" type="button"><img src="/walkthroughs/shared/recovery-icon-computer-v2.png" alt=""><b>MY<br>COMPUTER</b></button>
       <button class="desktop-icon" data-action="review-lessons" type="button"><img src="/walkthroughs/shared/recovery-icon-documents-v1.png" alt=""><b>DOCUMENTS</b></button>
       <div class="desktop-icon"><img src="/walkthroughs/shared/recovery-icon-trash-v2.png" alt=""><b>TRASH</b></div>
     </nav>
@@ -641,7 +641,7 @@ function unavailableMarkup() {
 
 function documentsModalMarkup() {
   const site = endgameSiteFixtures.find(({ id }) => id === documentSiteId) ?? endgameSiteFixtures[0];
-  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="documentsModalTitle"><div class="modal-window documents-modal"><header class="window-titlebar"><span id="documentsModalTitle">▣ Documents — Saved lessons</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close saved lessons">×</button></header><div class="fixture-documents"><nav aria-label="Saved lessons">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-document-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt=""><span>${escapeHtml(candidate.name)}</span></button>`).join("")}</nav><article><div><img src="${site.markImage}" alt=""><h2>${escapeHtml(site.name)}</h2></div><small>AUTO'S LESSON</small><p>${escapeHtml(site.savedLesson)}</p><small>PLAYER EXPLANATION</small><p>${escapeHtml(site.playerExplanation)}</p></article></div></div></section>`;
+  return `<section class="playtest-modal" role="dialog" aria-modal="true" aria-labelledby="documentsModalTitle"><div class="modal-window documents-modal"><header class="window-titlebar"><span id="documentsModalTitle">▣ Documents — Saved lessons</span><button class="modal-close" data-action="close-modal" type="button" aria-label="Close saved lessons">×</button></header><div class="fixture-documents"><nav aria-label="Saved lessons">${endgameSiteFixtures.map((candidate) => `<button data-action="choose-document-site" data-site-id="${candidate.id}" type="button" aria-pressed="${candidate.id === site.id ? "true" : "false"}"><img src="${candidate.markImage}" alt=""><span>${escapeHtml(candidate.name)}</span></button>`).join("")}</nav><article><div><img src="${site.markImage}" alt=""><h2>${escapeHtml(site.name)}</h2></div><small>AUTO'S LESSON</small><p>${escapeHtml(site.savedLesson)}</p><small>EXTRA INSTRUCTION</small><p>${escapeHtml(site.extraInstruction)}</p><small>PLAYER EXPLANATION</small><p>${escapeHtml(site.playerExplanation)}</p></article></div></div></section>`;
 }
 
 function replayModalMarkup() {
@@ -656,6 +656,14 @@ function renderModal() {
 }
 
 function render() {
+  if (campaignMode) {
+    const store = JSON.parse(localStorage.getItem("internet-recovery-save-files-v1") || "null");
+    const profile = store?.profiles?.[store.activeProfileKey];
+    if (profile) {
+      profile.reflections = retainRecoveredInstructions(profile.reflections, ENDGAME_SITE_FIXTURES, state.completedRepairStepIds);
+      localStorage.setItem("internet-recovery-save-files-v1", JSON.stringify(store));
+    }
+  }
   cancelAutoUpdate();
   const phase = endgamePhase(state);
   if (phase !== lastRenderedPhase) {

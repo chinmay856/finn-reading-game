@@ -5,7 +5,7 @@ import { PLAYABLE_WALKTHROUGHS } from '../apps/internet-recovery/playable-walkth
 const svg = readFileSync('docs/design/screens/2026-08-15/wikiwhy-inkscape-spike/wikiwhy-complete-state-master-v3.svg','utf8');
 const pages = [...svg.matchAll(/<g id="page-([^\"]+)"([\s\S]*?)(?=<g id="page-|<\/svg>)/g)];
 const regions = id => Object.fromEntries([...pages.find(p=>p[1]===id)[2].matchAll(/<g data-repair-region="([^\"]+)"[^>]*>[\s\S]*?<\/g>/g)].map(m=>[m[1],m[0]]));
-const order = ['banner','headline','explanation','vision','sources','history'];
+const order = ['explanation','headline','banner','vision','sources','history'];
 test('each first-phase region changes exactly once to its final green state',()=>{
  const final=regions('repair-6'); let previous=regions('initial');
  for(let i=1;i<=6;i++){

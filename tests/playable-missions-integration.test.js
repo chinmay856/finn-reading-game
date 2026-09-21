@@ -123,7 +123,7 @@ test("the validated v2 Techno pet drives real game states", () => {
 test("the over-fix remains visible before Amy and AUTO confirms the site lesson separately", () => {
   assert.match(html, /id="corruptionPause"/u);
   assert.match(html, /Oh no—what did AUTO do\?/u);
-  assert.match(script, /setFrame\(mission\.superFrame[^;]+;\s*setTechno[^;]+;\s*await showCorruptionPause\(\);\s*await showStoryBeat\("amy"/su);
+  assert.match(script, /setFrame\(mission\.superFrame[^;]+;\s*setTechno[^;]+;\s*await showCorruptionPause\(\);\s*if \(epoch !== navigationEpoch\) return;\s*await showStoryBeat\("amy"/su);
   assert.match(html, /Instructions sent to AUTO\./u);
   assert.match(script, /mission\.autoLesson/u);
   assert.match(script, /previewButton\.disabled = true/u);
@@ -221,7 +221,7 @@ test("manual passage scrolling disables viewport jumps without stopping guide up
   assert.match(script, /passageView\.addEventListener\("keydown"[\s\S]+MANUAL_SCROLL_KEYS/u);
   assert.doesNotMatch(script, /passageView\.addEventListener\("scroll"/u);
   assert.doesNotMatch(script, /guideAutoScrolling|guideAutoScrollTimer/u);
-  assert.match(script, /function renderPassage\(\)[\s\S]+resetPassageScrollMode\(\);/u);
+  assert.match(script, /function renderPassage\(index = sequence.index\)[\s\S]+resetPassageScrollMode\(\);/u);
 });
 
 test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {

@@ -63,6 +63,9 @@ let streamingRecognizer = null;
 let sequence = mission ? createMissionSequenceState({ phaseOneCount: mission.phaseOneCount, totalPassages: mission.passages.length }) : null;
 let modelsPrepared = false;
 let result = null;
+let displayedPassageIndex = 0;
+let navigationEpoch = 0;
+let transitionAbort = null;
 let technoActionTimer = null;
 let technoPointerTimer = null;
 let technoTravelAnimation = null;
@@ -515,6 +518,7 @@ function openDocuments() {
       filename: recoveryDocumentName(siteName, profile.displayName),
       lesson: record.lesson || walkthrough?.autoLesson || "Lesson not recorded in this older save.",
       reflection: record.reflection || "No player explanation was saved.",
+      extraInstruction: record.extraInstruction,
       savedAt: record.savedAt,
       siteName,
     };
@@ -533,7 +537,11 @@ function openDocuments() {
     playerHeading.textContent = "PLAYER’S EXPLANATION";
     const reflection = document.createElement("p");
     reflection.textContent = record.reflection;
-    preview.replaceChildren(title, lessonHeading, lesson, playerHeading, reflection);
+    const extraHeading = document.createElement("h3");
+    extraHeading.textContent = "EXTRA INSTRUCTION";
+    const extra = document.createElement("p");
+    extra.textContent = record.extraInstruction || "Not recovered yet.";
+    preview.replaceChildren(title, lessonHeading, lesson, extraHeading, extra, playerHeading, reflection);
   };
   $("documentList").replaceChildren(...records.map((record, index) => {
     const button = document.createElement("button");
@@ -573,7 +581,7 @@ function showView(id) {
   for (const view of ["readerView", "resultView", "skipView", "reflectionView", "receiptView"]) $(view).hidden = view !== id;
 }
 
-function passage() { return mission.passages[sequence.index]; }
+function passage() { return mission.passages[displayedPassageIndex]; }
 
 function preloadVocabularyAudio(cards) {
   const currentSources = new Set(cards.map(({ audioSrc }) => audioSrc).filter(Boolean));
@@ -594,7 +602,8 @@ function preloadVocabularyAudio(cards) {
   }
 }
 
-function renderPassage() {
+function renderPassage(index = sequence.index) {
+  displayedPassageIndex = index;
   const current = passage();
   preloadVocabularyAudio(current.challengingWords);
   const shouldAutoPrepare = sessionStorage.getItem("internet-recovery-voice-warmed-v1") === "1";
@@ -1016,7 +1025,7 @@ async function retryReading() {
   sequence = retryMissionPassage(sequence, { passageId: passage().id }).state;
   saveMissionProgress();
   result = null;
-  renderPassage();
+  renderPassage(displayedPassageIndex);
   setTechno("waiting", "left");
 }
 
@@ -1024,6 +1033,7 @@ async function skipReading() {
   if (controller?.listening) await controller.restart().catch(() => {});
   controller = null;
   const current = passage();
+  if (sequence.completedPassageIds.includes(current.id)) return nextPassage();
   const response = skipMissionPassage(sequence, { passageId: current.id });
   if (!response.advanced) return;
   sequence = response.state;
@@ -1111,16 +1121,23 @@ function showCorruptionPause() {
 }
 
 async function runMidpoint() {
+  const epoch = navigationEpoch;
   const portraits = SITE_PORTRAITS[mission.id];
   setTechno("review", "left");
   await showStoryBeat("chinmay", mission.midpoint.chinmay.heading, mission.midpoint.chinmay.text, "See Chinmay’s fix", portraits.chinmay);
+  if (epoch !== navigationEpoch) return;
   setTechno("failed", "left");
   await showStoryBeat("auto", mission.midpoint.auto.heading, mission.midpoint.auto.text, "Apply AUTO’s update", portraits.overfix);
-  await playAutoOverfixTransition({ stage: $("gameStage"), source: mission.superFrame, siteName: mission.name });
+  if (epoch !== navigationEpoch) return;
+  transitionAbort = new AbortController();
+  await playAutoOverfixTransition({ signal: transitionAbort.signal, stage: $("gameStage"), source: mission.superFrame, siteName: mission.name });
+  if (epoch !== navigationEpoch) return;
   setFrame(mission.superFrame, "AUTO over-fix active");
   setTechno("failed", "left");
   await showCorruptionPause();
+  if (epoch !== navigationEpoch) return;
   await showStoryBeat("amy", mission.midpoint.amy.heading, mission.midpoint.amy.text, "Lock in the repair", portraits.correction);
+  if (epoch !== navigationEpoch) return;
   setFrame(mission.checklistFrame, "repair checklist");
   sequence = acknowledgeMissionMidpoint(sequence).state;
   saveMissionProgress();
@@ -1131,12 +1148,14 @@ function showReflection() {
   setFrame(mission.securedFrame, "secured");
   $("reflectionPrompt").textContent = mission.reflectionPrompt;
   $("reflectionText").value = "";
-  $("reflectionCount").textContent = "0 words out of 300";
+  $("reflectionCount").textContent = "0 words out of 300 · at least 10 characters";
+  $("submitReflection").disabled = true;
   showView("reflectionView");
   setTechno("waiting", "left");
 }
 
 async function runCompletionBriefing() {
+  const epoch = navigationEpoch;
   setFrame(mission.securedFrame, "secured");
   setTechno("jump", "left");
   await showStoryBeat(
@@ -1146,6 +1165,7 @@ async function runCompletionBriefing() {
     "Review what happened",
     SITE_PORTRAITS[mission.id].reflection,
   );
+  if (epoch !== navigationEpoch) return;
   setTechno("jump", "left");
   await showStoryBeat(
     "amy",
@@ -1154,15 +1174,18 @@ async function runCompletionBriefing() {
     "Write the lesson for AUTO",
     SITE_PORTRAITS[mission.id].completion,
   );
+  if (epoch !== navigationEpoch) return;
   showReflection();
 }
 
 async function runTransitionBeat() {
+  const epoch = navigationEpoch;
   const beat = mission.transitionBeats?.[sequence.index];
   if (!beat) return false;
   setFrame(beat.frame, `moving-target transition ${sequence.index}`);
   setTechno("failed", "left");
   await showStoryBeat("amy", beat.heading, beat.text, beat.buttonLabel, SITE_PORTRAITS[mission.id].correction);
+  if (epoch !== navigationEpoch) return;
   renderPassage();
   return true;
 }
@@ -1194,7 +1217,9 @@ function submitReflection() {
 }
 
 async function confirmReceipt() {
+  const epoch = navigationEpoch;
   await showStoryBeat("auto", "THANK YOU FOR THE LESSON", mission.autoLesson, "Choose the next site", "auto-learned");
+  if (epoch !== navigationEpoch) return;
   await navigateToLauncher();
 }
 
@@ -1219,6 +1244,7 @@ function saveReflection(reflection) {
   updateActiveProfile((profile) => {
     if (replayRequested && profile.reflections[mission.id]) return;
     profile.reflections[mission.id] = {
+      extraInstruction: profile.reflections[mission.id]?.extraInstruction,
       lesson: mission.autoLesson,
       reflection,
       savedAt: new Date().toISOString(),
@@ -1399,6 +1425,9 @@ function startExperience() {
 }
 
 async function settleActiveAttempt() {
+  navigationEpoch++;
+  transitionAbort?.abort();
+  transitionAbort = null;
   if (controller?.listening) await controller.restart().catch(() => {});
   controller = null;
   result = null;
@@ -1478,8 +1507,9 @@ function bindShellControls() {
     saveMissionProgress({ notify: true });
     $("startMenu").hidden = true;
   });
-  $("switchProfile").addEventListener("click", () => {
+  $("switchProfile").addEventListener("click", async () => {
     saveMissionProgress();
+    await settleActiveAttempt();
     openProfileGate();
   });
   $("newGame").addEventListener("click", async () => {
@@ -1503,9 +1533,12 @@ function bindShellControls() {
 }
 
 async function runBriefing() {
+  const epoch = navigationEpoch;
+  renderPassage();
   setFrame(mission.initialFrame, "initial corruption");
   setTechno("waiting", "left");
   await showStoryBeat("amy", `${mission.name.toUpperCase()} IS CORRUPTED`, "Read each passage aloud and answer the quick check to repair this site. Take your time, and read clearly and loudly so the Reading Companion can follow along.", "Start recovery", SITE_PORTRAITS[mission.id].briefing);
+  if (epoch !== navigationEpoch) return;
   renderPassage();
   void prepareModels();
 }
@@ -1558,7 +1591,9 @@ function initialize() {
   $("confirmReceipt").addEventListener("click", confirmReceipt);
   $("reflectionText").addEventListener("input", () => {
     const count = $("reflectionText").value.trim().split(/\s+/u).filter(Boolean).length;
-    $("reflectionCount").textContent = `${count} word${count === 1 ? "" : "s"} out of 300`;
+    const enough = $("reflectionText").value.trim().length >= 10;
+    $("submitReflection").disabled = !enough;
+    $("reflectionCount").textContent = `${count} word${count === 1 ? "" : "s"} out of 300${enough ? "" : " · at least 10 characters"}`;
     setTechno("waiting", "left");
   });
   $("deleteTroubleshooting").addEventListener("click", async () => {

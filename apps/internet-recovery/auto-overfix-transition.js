@@ -1,7 +1,7 @@
 export const AUTO_OVERFIX_DURATION = 5000;
 
 // The storyboard stays green underneath while AUTO reveals the overfixed art.
-export async function playAutoOverfixTransition({ stage, source, siteName }) {
+export async function playAutoOverfixTransition({ stage, source, siteName, signal }) {
   const scene = document.createElement('section');
   scene.className = 'site-auto-overfix';
   scene.setAttribute('aria-label', `AUTO is updating ${siteName}`);
@@ -20,11 +20,14 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
   caption.textContent = `AUTO is “improving” ${siteName}…`;
   reveal.append(frame);
   scene.append(reveal, rig, caption);
-  const siblings = [...stage.children].map(node => [node, node.inert]);
+  const siblings = [...stage.querySelectorAll("#readingCompanion")].map(node => [node, node.inert]);
+  const cancel = () => { for (const animation of animations) animation.cancel(); scene.remove(); };
   const animations = [];
+  signal?.addEventListener("abort", cancel, { once: true });
   try {
     for (const [node] of siblings) node.inert = true;
     await Promise.allSettled([frame.decode(), rig.querySelector('img').decode()]);
+    if (signal?.aborted) return;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) rig.classList.add('reduced-motion');
     // Hide the incoming artwork before insertion, including its first paint.
@@ -42,8 +45,9 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
       // Leave room for the full 230px cutout, its bob, and the caption below.
       { left: '350px', top: '520px' },
     ], { duration: AUTO_OVERFIX_DURATION, fill: 'both', easing: 'ease-in-out' }));
-    await Promise.all(animations.map(animation => animation.finished));
+    await Promise.allSettled(animations.map(animation => animation.finished));
   } finally {
+    signal?.removeEventListener("abort", cancel);
     for (const animation of animations) animation.cancel();
     scene.remove();
     for (const [node, inert] of siblings) node.inert = inert;
