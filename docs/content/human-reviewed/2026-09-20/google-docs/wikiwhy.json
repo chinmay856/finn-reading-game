@@ -1,0 +1,1401 @@
+{
+  "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
+  "title": "WikiWhy — Human Review Packet",
+  "revisionId": "ANLCKQn35u-hmFFCNSbb1_haDwL3_i5ZSUZHVfEM7trvlCD90Tp-ty0GoQNlCo6pEcXtYgOy0JlaWayZkTT1n6JL5Sdt01UHTBaCqKiH1Co",
+  "tabId": null,
+  "paragraphs": [
+    {
+      "text": "WikiWhy — Live Playtester Packet",
+      "startIndex": 1,
+      "endIndex": 33,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_1",
+      "isListItem": false
+    },
+    {
+      "text": "Passage 1: What Can an Animal-Vision Test Prove?",
+      "startIndex": 34,
+      "endIndex": 82,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 83,
+      "endIndex": 112,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Two excerpts examine what animal-vision tests can prove.",
+      "startIndex": 113,
+      "endIndex": 169,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "First, an excerpt from Animal Life and Intelligence by C. Lloyd Morgan.",
+      "startIndex": 170,
+      "endIndex": 241,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Sir John Lubbock was unable to teach his intelligent dog Van to distinguish between coloured cards; but the failure was as complete when the cards were marked respectively with one, two, or three dark bands. We are not justified, therefore, in ascribing the failure to colour-blindness. The real failure, probably, was in each case to make the animal understand what was wanted.",
+      "startIndex": 242,
+      "endIndex": 620,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Next, an excerpt from The Dancing Mouse by Robert Mearns Yerkes.",
+      "startIndex": 621,
+      "endIndex": 685,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Too frequently investigators, in their work on vision in animals, have assumed that brightness vision and color vision are inseparable; or, if not making this assumption, they have failed to realize that the same wave-length probably has markedly different effects upon the retinal elements of the eyes of unlike organisms. In a study of the sense of sight it is extremely important to discover whether difference in the quality, as well as in the intensity, of a visual stimulus influences the organism; in other words, whether color sensitiveness, as well as brightness sensitiveness, is present. If the mouse perceives only brightness or luminosity, and not color, it is evident that its visual world is strikingly different from that of the normal human being. The experiments now to be described were planned to show what the facts really are.",
+      "startIndex": 686,
+      "endIndex": 1534,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "After describing tests with violet and red cards, Yerkes reports:",
+      "startIndex": 1535,
+      "endIndex": 1600,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Although we are not justified in concluding from this experiment that mice cannot be taught to distinguish violet from red, there certainly is good ground for the statement that they do not readily discriminate between these colors.",
+      "startIndex": 1601,
+      "endIndex": 1833,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 1834,
+      "endIndex": 1844,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "ascribing\u000bDefinition: Explaining something by assigning it a particular cause.\u000bExact playback phrase: “In this passage, Morgan avoids ascribing the dog's failure to color-blindness.”",
+      "startIndex": 1845,
+      "endIndex": 2027,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "luminosity\u000bDefinition: The brightness of something that gives off or reflects light.\u000bExact playback phrase: “In this passage, luminosity means the brightness an animal perceives.”",
+      "startIndex": 2028,
+      "endIndex": 2207,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "discriminate\u000bDefinition: To notice a difference and tell two things apart.\u000bExact playback phrase: “In this passage, the mice do not readily discriminate between violet and red.”",
+      "startIndex": 2208,
+      "endIndex": 2385,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 2386,
+      "endIndex": 2397,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: What problem do both excerpts identify in animal-vision tests?",
+      "startIndex": 2398,
+      "endIndex": 2476,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: A failed test mainly shows that the same wavelength affects the eyes of different species differently.",
+      "startIndex": 2477,
+      "endIndex": 2582,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B — Correct: A failed test may reflect misunderstanding or brightness cues rather than an inability to perceive color.",
+      "startIndex": 2583,
+      "endIndex": 2701,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C: Failing both a color task and a dark-band task is reliable evidence of color-blindness.",
+      "startIndex": 2702,
+      "endIndex": 2792,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 2: The Expression of the Emotions in Man and Animals",
+      "startIndex": 2795,
+      "endIndex": 2855,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 2856,
+      "endIndex": 2885,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from The Expression of the Emotions in Man and Animals by Charles Darwin.",
+      "startIndex": 2886,
+      "endIndex": 2970,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "I have already described the appearance of a dog approaching another dog with hostile intentions, namely, with erected ears, eyes intently directed forwards, hair on the neck and back bristling, gait remarkably stiff, with the tail upright and rigid. So familiar is this appearance to us, that an angry man is sometimes said \"to have his back up.\" Of the above points, the stiff gait and upright tail alone require further discussion. Sir C. Bell remarks that, when a tiger or wolf is struck by its keeper and is suddenly roused to ferocity, every muscle is in tension, and the limbs are in an attitude of strained exertion, prepared to spring. This tension of the muscles and consequent stiff gait may be accounted for on the principle of associated habit, for anger has continually led to fierce struggles, and consequently to all the muscles of the body having been violently exerted. There is also reason to suspect that the muscular system requires some short preparation, or some degree of innervation, before being brought into strong action. My own sensations lead me to this inference; but I cannot discover that it is a conclusion admitted by physiologists. Sir J. Paget, however, informs me that when muscles are suddenly contracted with the greatest force, without any preparation, they are liable to be ruptured, as when a man slips unexpectedly; but that this rarely occurs when an action, however violent, is deliberately performed.",
+      "startIndex": 2971,
+      "endIndex": 4418,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 4419,
+      "endIndex": 4429,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "gait\u000bDefinition: A person's or animal's manner of walking.\u000bExact playback phrase: “In this passage, the dog's stiff gait signals anger.”",
+      "startIndex": 4430,
+      "endIndex": 4566,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "innervation\u000bDefinition: The activity of nerves that prepares or controls muscles.\u000bExact playback phrase: “In this passage, innervation may prepare muscles for strong action.”",
+      "startIndex": 4567,
+      "endIndex": 4741,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "inference\u000bDefinition: A conclusion reached from observations or reasoning.\u000bExact playback phrase: “In this passage, Darwin labels his explanation an inference.”",
+      "startIndex": 4742,
+      "endIndex": 4902,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 4903,
+      "endIndex": 4914,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: Which idea does Darwin treat as uncertain rather than established?",
+      "startIndex": 4915,
+      "endIndex": 4997,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: An angry dog can show a stiff gait and an upright tail.",
+      "startIndex": 4998,
+      "endIndex": 5056,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B: Muscles contracted suddenly without preparation can be injured.",
+      "startIndex": 5057,
+      "endIndex": 5123,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C — Correct: Muscles may need brief preparation before they act with full force.",
+      "startIndex": 5124,
+      "endIndex": 5204,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 3: Of Studies",
+      "startIndex": 5207,
+      "endIndex": 5228,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 5229,
+      "endIndex": 5258,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from Of Studies by Francis Bacon.",
+      "startIndex": 5259,
+      "endIndex": 5303,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Studies serve for delight, for ornament, and for ability. Their chief use for delight, is in privateness and retiring; for ornament, is in discourse; and for ability, is in the judgment and disposition of business; for expert men can execute, and perhaps judge of particulars one by one; but the general counsels, and the plots and marshalling of affairs, come best from those that are learned. To spend too much time in studies, is sloth; to use them too much for ornament, is affectation; to make judgment wholly by their rules, is the humor of a scholar. They perfect nature, and are perfected by experience; for natural abilities are like natural plants, that need pruning by study; and studies themselves do give forth directions too much at large, except they be bounded in by experience. Crafty men contemn studies, simple men admire them, and wise men use them; for they teach not their own use; but that is a wisdom without them and above them, won by observation. Read not to contradict and confute, nor to believe and take for granted, nor to find talk and discourse, but to weigh and consider. Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read, but not curiously; and some few to be read wholly, and with diligence and attention.",
+      "startIndex": 5304,
+      "endIndex": 6656,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 6657,
+      "endIndex": 6667,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "affectation\u000bDefinition: Behavior adopted mainly to impress other people.\u000bExact playback phrase: “In this passage, using study mainly to impress others is affectation.”",
+      "startIndex": 6668,
+      "endIndex": 6835,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "contemn\u000bDefinition: To regard something with scorn or contempt.\u000bExact playback phrase: “In this passage, crafty people contemn, or scorn, studies.”",
+      "startIndex": 6836,
+      "endIndex": 6983,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "marshalling\u000bDefinition: Arranging people, ideas, or affairs into an effective order.\u000bExact playback phrase: “In this passage, marshalling means arranging affairs into an effective order.”",
+      "startIndex": 6984,
+      "endIndex": 7171,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 7172,
+      "endIndex": 7183,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: According to Bacon, which reader uses studies most wisely?",
+      "startIndex": 7184,
+      "endIndex": 7258,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A — Correct: A reader who weighs ideas, uses experience, and gives different books different levels of attention.",
+      "startIndex": 7259,
+      "endIndex": 7372,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B: A reader who follows learned rules completely and reads every book from beginning to end.",
+      "startIndex": 7373,
+      "endIndex": 7465,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C: A reader who studies mainly to win arguments and display knowledge in conversation.",
+      "startIndex": 7466,
+      "endIndex": 7552,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 4: The Time Machine",
+      "startIndex": 7555,
+      "endIndex": 7582,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 7583,
+      "endIndex": 7612,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from The Time Machine by H. G. Wells.",
+      "startIndex": 7613,
+      "endIndex": 7661,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“I do not mean to ask you to accept anything without reasonable ground for it. You will soon admit as much as I need from you. You know of course that a mathematical line, a line of thickness nil, has no real existence. They taught you that? Neither has a mathematical plane. These things are mere abstractions.”",
+      "startIndex": 7662,
+      "endIndex": 7974,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“That is all right,” said the Psychologist.",
+      "startIndex": 7975,
+      "endIndex": 8018,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“Nor, having only length, breadth, and thickness, can a cube have a real existence.”",
+      "startIndex": 8019,
+      "endIndex": 8103,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“There I object,” said Filby. “Of course a solid body may exist. All real things—”",
+      "startIndex": 8104,
+      "endIndex": 8186,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“So most people think. But wait a moment. Can an instantaneous cube exist?”",
+      "startIndex": 8187,
+      "endIndex": 8262,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“Don’t follow you,” said Filby.",
+      "startIndex": 8263,
+      "endIndex": 8294,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "“Can a cube that does not last for any time at all, have a real existence?”",
+      "startIndex": 8295,
+      "endIndex": 8370,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Filby became pensive. “Clearly,” the Time Traveller proceeded, “any real body must have extension in four directions: it must have Length, Breadth, Thickness, and—Duration. But through a natural infirmity of the flesh, which I will explain to you in a moment, we incline to overlook this fact. There are really four dimensions, three which we call the three planes of Space, and a fourth, Time. There is, however, a tendency to draw an unreal distinction between the former three dimensions and the latter, because it happens that our consciousness moves intermittently in one direction along the latter from the beginning to the end of our lives.”",
+      "startIndex": 8371,
+      "endIndex": 9019,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 9020,
+      "endIndex": 9030,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "abstractions\u000bDefinition: Ideas considered separately from concrete physical examples.\u000bExact playback phrase: “In this passage, mathematical lines and planes are abstractions.”",
+      "startIndex": 9031,
+      "endIndex": 9206,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "pensive\u000bDefinition: Deeply or quietly thoughtful.\u000bExact playback phrase: “In this passage, Filby becomes pensive after a question.”",
+      "startIndex": 9207,
+      "endIndex": 9338,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "infirmity\u000bDefinition: A weakness or limitation.\u000bExact playback phrase: “In this passage, human infirmity makes the fourth dimension easy to overlook.”",
+      "startIndex": 9339,
+      "endIndex": 9489,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 9490,
+      "endIndex": 9501,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: What does the Time Traveller identify as the often-overlooked fourth dimension of a real body?",
+      "startIndex": 9502,
+      "endIndex": 9612,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: Consciousness—the observer's ability to perceive the body.",
+      "startIndex": 9613,
+      "endIndex": 9674,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B — Correct: Duration—the time through which the body continues to exist.",
+      "startIndex": 9675,
+      "endIndex": 9748,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C: Thickness—the feature that distinguishes a cube from a plane.",
+      "startIndex": 9749,
+      "endIndex": 9813,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 5: Sherlock Holmes: A Scandal in Bohemia",
+      "startIndex": 9816,
+      "endIndex": 9864,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 9865,
+      "endIndex": 9894,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Two excerpts from the Sherlock Holmes story “A Scandal in Bohemia” by Arthur Conan Doyle.",
+      "startIndex": 9895,
+      "endIndex": 9984,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: I could not help laughing at the ease with which he explained his process of deduction. “When I hear you give your reasons,” I remarked, “the thing always appears to me to be so ridiculously simple that I could easily do it myself, though at each successive instance of your reasoning I am baffled until you explain your process. And yet I believe that my eyes are as good as yours.”",
+      "startIndex": 9985,
+      "endIndex": 10376,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Holmes: “Quite so,” he answered. “You see, but you do not observe. The distinction is clear. For example, you have frequently seen the steps which lead up from the hall to this room.”",
+      "startIndex": 10377,
+      "endIndex": 10560,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: “Frequently.”",
+      "startIndex": 10561,
+      "endIndex": 10582,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Holmes: “How often?”",
+      "startIndex": 10583,
+      "endIndex": 10603,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: “Well, some hundreds of times.”",
+      "startIndex": 10604,
+      "endIndex": 10643,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Holmes: “Then how many are there?”",
+      "startIndex": 10644,
+      "endIndex": 10678,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: “How many? I don’t know.”",
+      "startIndex": 10679,
+      "endIndex": 10712,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Holmes: “Quite so! You have not observed. And yet you have seen. That is just my point. Now, I know that there are seventeen steps, because I have both seen and observed.”",
+      "startIndex": 10713,
+      "endIndex": 10884,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "The story skips forward. Later, Holmes and Watson examine a mysterious note.",
+      "startIndex": 10885,
+      "endIndex": 10961,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: “This is indeed a mystery,” I remarked. “What do you imagine that it means?”",
+      "startIndex": 10962,
+      "endIndex": 11046,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Holmes: “I have no data yet. It is a capital mistake to theorise before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts. But the note itself. What do you deduce from it?”",
+      "startIndex": 11047,
+      "endIndex": 11272,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: I carefully examined the writing, and the paper upon which it was written.",
+      "startIndex": 11273,
+      "endIndex": 11355,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Watson: “The man who wrote it was presumably well to do,” I remarked, endeavouring to imitate my companion’s processes. “Such paper could not be bought under half a crown a packet. It is peculiarly strong and stiff.”",
+      "startIndex": 11356,
+      "endIndex": 11572,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 11573,
+      "endIndex": 11583,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "deduction\u000bDefinition: A conclusion reached by reasoning from available evidence.\u000bExact playback phrase: “In this passage, Holmes explains his process of deduction.”",
+      "startIndex": 11584,
+      "endIndex": 11748,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "distinction\u000bDefinition: A meaningful difference between two similar things.\u000bExact playback phrase: “In this passage, Holmes draws a distinction between seeing and observing.”",
+      "startIndex": 11749,
+      "endIndex": 11923,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "insensibly\u000bDefinition: Gradually or without noticing that it is happening.\u000bExact playback phrase: “In this passage, theorizing too soon can insensibly twist the facts.”",
+      "startIndex": 11924,
+      "endIndex": 12092,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 12093,
+      "endIndex": 12104,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: Which principle connects Holmes's staircase example with his warning about theories?",
+      "startIndex": 12105,
+      "endIndex": 12205,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: Repeated exposure to something is enough evidence for a reliable theory.",
+      "startIndex": 12206,
+      "endIndex": 12281,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B: Begin with a theory so it can determine which facts deserve attention.",
+      "startIndex": 12282,
+      "endIndex": 12355,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C — Correct: Examine observations and data before drawing a conclusion.",
+      "startIndex": 12356,
+      "endIndex": 12427,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 6: Were the stars made, or did they just happen?",
+      "startIndex": 12430,
+      "endIndex": 12486,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 12487,
+      "endIndex": 12516,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from Adventures of Huckleberry Finn by Mark Twain.",
+      "startIndex": 12517,
+      "endIndex": 12578,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Huck and Jim are traveling down the Mississippi on a raft, hiding during the day and moving at night.",
+      "startIndex": 12579,
+      "endIndex": 12680,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Sometimes we’d have that whole river all to ourselves for the longest time. Yonder was the banks and the islands, across the water; and maybe a spark—which was a candle in a cabin window; and sometimes on the water you could see a spark or two—on a raft or a scow, you know; and maybe you could hear a fiddle or a song coming over from one of them crafts. It’s lovely to live on a raft. We had the sky up there, all speckled with stars, and we used to lay on our backs and look up at them, and discuss about whether they was made or only just happened. Jim he allowed they was made, but I allowed they happened; I judged it would have took too long to make so many. Jim said the moon could a laid them; well, that looked kind of reasonable, so I didn’t say nothing against it, because I’ve seen a frog lay most as many, so of course it could be done. We used to watch the stars that fell, too, and see them streak down. Jim allowed they’d got spoiled and was hove out of the nest.",
+      "startIndex": 12681,
+      "endIndex": 13661,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Once or twice of a night we would see a steamboat slipping along in the dark, and now and then she would belch a whole world of sparks up out of her chimbleys, and they would rain down in the river and look awful pretty; then she would turn a corner and her lights would wink out and her powwow shut off and leave the river still again; and by-and-by her waves would get to us, a long time after she was gone, and joggle the raft a bit, and after that you wouldn’t hear nothing for you couldn’t tell how long, except maybe frogs or something.",
+      "startIndex": 13662,
+      "endIndex": 14204,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "After midnight the people on shore went to bed, and then for two or three hours the shores was black—no more sparks in the cabin windows. These sparks was our clock—the first one that showed again meant morning was coming, so we hunted a place to hide and tie up right away.",
+      "startIndex": 14205,
+      "endIndex": 14479,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 14480,
+      "endIndex": 14490,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "scow — Definition: A broad, flat-bottomed boat. Exact playback phrase: “In this passage, a scow is one of the boats Huck sees on the river.”",
+      "startIndex": 14491,
+      "endIndex": 14631,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "speckled — Definition: Covered with small spots. Exact playback phrase: “In this passage, the sky is speckled with stars.”",
+      "startIndex": 14632,
+      "endIndex": 14754,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "joggle — Definition: Shake with small, uneven movements. Exact playback phrase: “In this passage, the steamboat waves joggle the raft.”",
+      "startIndex": 14755,
+      "endIndex": 14890,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 14891,
+      "endIndex": 14902,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Why does Huck find Jim’s idea that the moon laid the stars reasonable?",
+      "startIndex": 14903,
+      "endIndex": 14973,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A — Correct: He compares the number of stars with the many eggs a frog lays.",
+      "startIndex": 14974,
+      "endIndex": 15050,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "B: He has seen stars come out of the moon.",
+      "startIndex": 15051,
+      "endIndex": 15093,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "C: He has learned the explanation from a steamboat captain.",
+      "startIndex": 15094,
+      "endIndex": 15153,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Passage 7: The Ethics of Belief",
+      "startIndex": 15156,
+      "endIndex": 15187,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 15188,
+      "endIndex": 15217,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from “The Ethics of Belief” by William Kingdon Clifford.",
+      "startIndex": 15218,
+      "endIndex": 15285,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A shipowner was about to send to sea an emigrant ship. He knew that she was old, and not over well built at the first; that she had seen many seas and climes, and often had needed repairs. Doubts had been suggested to him that possibly she was not seaworthy. These doubts preyed upon his mind, and made him unhappy; he thought that perhaps he ought to have her thoroughly overhauled and refitted, even though this should put him to great expense. Before the ship sailed, however, he succeeded in overcoming these melancholy reflections. He said to himself that she had gone safely through so many voyages and weathered so many storms that it was idle to suppose she would not come safely home from this trip also. He would put his trust in Providence, which could hardly fail to protect all these unhappy families that were leaving their fatherland to seek for better times elsewhere. He would dismiss from his mind all ungenerous suspicions about the honesty of builders and contractors. In such ways he acquired a sincere and comfortable conviction that his vessel was thoroughly safe and seaworthy. He watched her departure with a light heart and benevolent wishes for the success of the exiles in their strange new home that was to be; and he got his insurance money when she went down in mid-ocean and told no tales.",
+      "startIndex": 15286,
+      "endIndex": 16607,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "What shall we say of him? Surely this, that he was verily guilty of the death of those men. It is admitted that he did sincerely believe in the soundness of his ship; but the sincerity of his conviction can in no wise help him, because he had no right to believe on such evidence as was before him.",
+      "startIndex": 16608,
+      "endIndex": 16906,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 16907,
+      "endIndex": 16917,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "emigrant\u000bDefinition: A person who leaves one country to settle in another.\u000bExact playback phrase: “In this passage, an emigrant ship carries families seeking a new home.”",
+      "startIndex": 16918,
+      "endIndex": 17088,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "benevolent\u000bDefinition: Kind and intending to do good.\u000bExact playback phrase: “In this passage, the owner watches with benevolent wishes for the travelers.”",
+      "startIndex": 17089,
+      "endIndex": 17244,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "conviction\u000bDefinition: A firmly held belief or opinion.\u000bExact playback phrase: “In this passage, the owner acquires a comfortable conviction that the ship is safe.”",
+      "startIndex": 17245,
+      "endIndex": 17409,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 17410,
+      "endIndex": 17421,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: Why does Clifford judge the shipowner guilty even though he sincerely believed the ship was safe?",
+      "startIndex": 17422,
+      "endIndex": 17535,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: He ignored proof that the ship was sound because he expected bad weather to sink it anyway.",
+      "startIndex": 17536,
+      "endIndex": 17630,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B — Correct: He quieted serious doubts instead of inspecting the available evidence about the ship.",
+      "startIndex": 17631,
+      "endIndex": 17730,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C: He knew with certainty that the ship would sink and sent it solely to collect the insurance money.",
+      "startIndex": 17731,
+      "endIndex": 17832,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 8: Alice's Evidence",
+      "startIndex": 17835,
+      "endIndex": 17862,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 17863,
+      "endIndex": 17892,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from “Alice's Adventures in Wonderland” by Lewis Carroll.",
+      "startIndex": 17893,
+      "endIndex": 17961,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "During the trial, the King reads a rule from his notebook. Everyone looks at Alice.",
+      "startIndex": 17962,
+      "endIndex": 18045,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “Rule Forty-two. All persons more than a mile high to leave the court.”",
+      "startIndex": 18046,
+      "endIndex": 18123,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “I'm not a mile high.”",
+      "startIndex": 18124,
+      "endIndex": 18153,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “You are.”",
+      "startIndex": 18154,
+      "endIndex": 18170,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Queen: “Nearly two miles high.”",
+      "startIndex": 18171,
+      "endIndex": 18202,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “Well, I shan't go, at any rate: besides, that's not a regular rule: you invented it just now.”",
+      "startIndex": 18203,
+      "endIndex": 18305,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “It's the oldest rule in the book.”",
+      "startIndex": 18306,
+      "endIndex": 18347,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “Then it ought to be Number One.”",
+      "startIndex": 18348,
+      "endIndex": 18388,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "The King closes his notebook.",
+      "startIndex": 18389,
+      "endIndex": 18418,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “Consider your verdict.”",
+      "startIndex": 18419,
+      "endIndex": 18449,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "White Rabbit: “There's more evidence to come yet, please your Majesty. This paper has just been picked up.”",
+      "startIndex": 18450,
+      "endIndex": 18557,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Queen: “What's in it?”",
+      "startIndex": 18558,
+      "endIndex": 18580,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "White Rabbit: “I haven't opened it yet, but it seems to be a letter, written by the prisoner to—to somebody.”",
+      "startIndex": 18581,
+      "endIndex": 18690,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Juryman: “Is it in the prisoner's handwriting?”",
+      "startIndex": 18691,
+      "endIndex": 18738,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "White Rabbit: “No, it isn't, and that's the queerest thing about it.”",
+      "startIndex": 18739,
+      "endIndex": 18808,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “He must have imitated somebody else's hand.”",
+      "startIndex": 18809,
+      "endIndex": 18860,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Knave: “I didn't write it, and they can't prove I did. There's no name signed at the end.”",
+      "startIndex": 18861,
+      "endIndex": 18951,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “If you didn't sign it, that only makes the matter worse. You must have meant some mischief, or else you'd have signed your name like an honest man.”",
+      "startIndex": 18952,
+      "endIndex": 19107,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Queen: “That proves his guilt.”",
+      "startIndex": 19108,
+      "endIndex": 19139,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “It proves nothing of the sort! Why, you don't even know what it's about!”",
+      "startIndex": 19140,
+      "endIndex": 19221,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "The White Rabbit reads the letter aloud.",
+      "startIndex": 19222,
+      "endIndex": 19262,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “That's the most important piece of evidence we've heard yet.”",
+      "startIndex": 19263,
+      "endIndex": 19331,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “If anyone can explain it, I'll give him sixpence. I don't believe there's an atom of meaning in it.”",
+      "startIndex": 19332,
+      "endIndex": 19440,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "King: “If there's no meaning in it, that saves a world of trouble, as we needn't try to find any. And yet I seem to see some meaning in it, after all.”",
+      "startIndex": 19441,
+      "endIndex": 19592,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "The King tries to connect scattered lines in the letter to the stolen tarts and then calls for a verdict.",
+      "startIndex": 19593,
+      "endIndex": 19698,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Queen: “No, no! Sentence first—verdict afterwards.”",
+      "startIndex": 19699,
+      "endIndex": 19750,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Alice: “Stuff and nonsense! The idea of having the sentence first!”",
+      "startIndex": 19751,
+      "endIndex": 19818,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 19819,
+      "endIndex": 19829,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "verdict\u000bDefinition: The official decision made by a jury in a court case.\u000bExact playback phrase: “In this passage, the King asks the jury for a verdict before all the evidence is heard.”",
+      "startIndex": 19830,
+      "endIndex": 20016,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "imitated\u000bDefinition: Copied the manner or appearance of someone or something.\u000bExact playback phrase: “In this passage, the King claims the writer imitated someone else's handwriting.”",
+      "startIndex": 20017,
+      "endIndex": 20200,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "atom\u000bSecondary definition: The smallest amount of something.\u000bExact playback phrase: “In this passage, Alice says the letter does not contain an atom of meaning.”",
+      "startIndex": 20201,
+      "endIndex": 20362,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 20363,
+      "endIndex": 20374,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: How does the court misuse the letter as evidence?",
+      "startIndex": 20375,
+      "endIndex": 20440,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A: It rejects the letter because the handwriting is not the prisoner's and refuses to consider a verdict.",
+      "startIndex": 20441,
+      "endIndex": 20546,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B: It identifies the writer and proves that every line describes the stolen tarts before asking for a verdict.",
+      "startIndex": 20547,
+      "endIndex": 20657,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C — Correct: It treats the missing signature and unclear meaning as support for guilt instead of reasons to question the letter.",
+      "startIndex": 20658,
+      "endIndex": 20786,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Passage 9: An Essay Concerning Human Understanding",
+      "startIndex": 20789,
+      "endIndex": 20839,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Exact complete spoken passage",
+      "startIndex": 20840,
+      "endIndex": 20869,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "An excerpt from “An Essay Concerning Human Understanding” by John Locke.",
+      "startIndex": 20870,
+      "endIndex": 20942,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "If I myself see a man walk on the ice, it is past probability; it is knowledge. But if another tells me he saw a man in England, in the midst of a sharp winter, walk upon water hardened with cold, this has so great conformity with what is usually observed to happen, that I am disposed by the nature of the thing itself to assent to it; unless some manifest suspicion attend the relation of that matter of fact.",
+      "startIndex": 20943,
+      "endIndex": 21354,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "But if the same thing be told to one born between the tropics, who never saw nor heard of any such thing before, there the whole probability relies on testimony. As the relators are more in number, and of more credit, and have no interest to speak contrary to the truth, so that matter of fact is like to find more or less belief.",
+      "startIndex": 21355,
+      "endIndex": 21685,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Though to a man whose experience has always been quite contrary, and who has never heard of anything like it, the most untainted credit of a witness will scarce be able to find belief. As it happened to a Dutch ambassador, who entertained the king of Siam with the particularities of Holland, which he was inquisitive after. Amongst other things he told him that the water in his country would sometimes, in cold weather, be so hard that men walked upon it, and that it would bear an elephant, if he were there. To which the king replied, “Hitherto I have believed the strange things you have told me, because I look upon you as a sober fair man, but now I am sure you lie.”",
+      "startIndex": 21686,
+      "endIndex": 22360,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Vocabulary",
+      "startIndex": 22361,
+      "endIndex": 22371,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "assent\u000bDefinition: To accept or agree that something is true.\u000bExact playback phrase: “In this passage, familiar experience leads a person to assent to the report.”",
+      "startIndex": 22372,
+      "endIndex": 22535,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "relators\u000bDefinition: People who tell or report an account.\u000bExact playback phrase: “In this passage, credible relators make unfamiliar testimony easier to believe.”",
+      "startIndex": 22536,
+      "endIndex": 22699,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "conformity\u000bDefinition: Agreement or correspondence between two things.\u000bExact playback phrase: “In this passage, conformity with familiar experience makes the report easier to believe.”",
+      "startIndex": 22700,
+      "endIndex": 22884,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "Quick check",
+      "startIndex": 22885,
+      "endIndex": 22896,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Exact question: What does Locke's frozen-water story show about testimony?",
+      "startIndex": 22897,
+      "endIndex": 22971,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "A — Correct: A trustworthy witness may still be doubted when a claim conflicts completely with the listener's experience.",
+      "startIndex": 22972,
+      "endIndex": 23093,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "B: The king doubts the report because the ambassador is only one witness instead of several.",
+      "startIndex": 23094,
+      "endIndex": 23186,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    },
+    {
+      "text": "C: One witness provides the same certainty as personal observation whenever that witness has no reason to lie.",
+      "startIndex": 23187,
+      "endIndex": 23297,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": true
+    }
+  ],
+  "document_url": "https://docs.google.com/document/d/1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y"
+}

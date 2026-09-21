@@ -231,8 +231,7 @@ function checklist(state) {
 function footer(state) {
   const color = state.progress === 100 ? COLORS.repair : COLORS.corruption;
   const fill = Math.round(752 * state.progress / 100);
-  const status = state.real ? "KNOWN PROFILE SECURED" : state.auto ? "AUTO PROFILE POLISH ACTIVE" : "IMPERSONATION SIGNALS";
-  return `<g data-module="site-progress" data-purpose="persistent progress"><rect x="109" y="667" width="802" height="171" fill="#F7F5EE"/><line x1="109" y1="667" x2="911" y2="667" stroke="#8E9AA0"/><text x="126" y="707" class="mc-meter" fill="${color}">IDENTITY CHECKS</text><text x="280" y="707" class="mc-meter" fill="${color}">${state.progress}%</text><rect x="126" y="724" width="752" height="25" fill="url(#mcRedHatch)" stroke="${color}"/><rect x="126" y="724" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/><text x="878" y="787" class="mc-tiny" text-anchor="end" fill="${color}">${status}</text></g>`;
+  return `<g data-module="site-progress" data-purpose="persistent progress"><rect x="109" y="667" width="802" height="171" fill="#F7F5EE"/><line x1="109" y1="667" x2="911" y2="667" stroke="#8E9AA0"/><text x="126" y="707" class="mc-meter" fill="${color}">IDENTITY CHECKS</text><text x="280" y="707" class="mc-meter" fill="${color}">${state.progress}%</text><rect x="126" y="724" width="752" height="25" fill="url(#mcRedHatch)" stroke="${color}"/><rect x="126" y="724" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 
 function companion(state) {

@@ -51,7 +51,8 @@ test("currently playable packet sites use canonical records and one visual frame
     assert.equal(walkthrough.repairFrames.length, walkthrough.passages.length);
     for (const passage of walkthrough.passages) {
       assert.ok(passage.sourceIntroductionLineCount >= 1);
-      assert.match(passage.lines[0], /^(?:(?:An?|Two) (?:.+? )?excerpts?|This is)\b/u);
+      if (passage.sourceDocumentId) assert.equal(passage.lines[0], passage.paragraphs[0]);
+      else assert.match(passage.lines[0], /^(?:(?:An?|Two) (?:.+? )?excerpts?|This is)\b/u);
       assert.equal(passage.challengingWords.length, 3);
     }
   }

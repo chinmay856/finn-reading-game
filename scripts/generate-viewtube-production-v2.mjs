@@ -84,14 +84,7 @@ function infinityMark(x, y, size = 31) {
 function header(state) {
   const searchText = state.search ? "how to teach your dog to play fetch" : state.auto ? "AUTO ALREADY SEARCHED FOR YOU" : "TRENDING REPLACED YOUR SEARCH";
   const searchTone = state.search ? COLORS.repair : COLORS.corruption;
-  const stripText = state.choice
-    ? "YOUR SEARCH · VIDEOS ABOUT YOUR HOBBY"
-    : state.auto
-      ? "AUTO SHOW · ALWAYS ON · ALWAYS NEXT"
-      : state.search
-        ? "YOUR SEARCH IS BACK · THE FEED IS STILL TRENDING"
-        : "TRENDING FOR EVERYONE · PERSONAL SEARCH HIDDEN";
-  return `<g data-site-header="true"><rect x="109" y="56" width="802" height="84" fill="#fff"/><text x="124" y="86" class="vt-menu">☰</text><rect x="153" y="64" width="34" height="25" rx="7" fill="${SITE_RED}"/>${playMark(170, 76.5, 8, "#fff")}<text x="197" y="86" class="vt-logo-dark">ViewTube</text><rect x="360" y="63" width="405" height="31" rx="16" fill="#fff" stroke="${searchTone}" stroke-width="2.2"/><text x="378" y="84" class="vt-search" fill="${searchTone}">${searchText}</text><circle cx="740" cy="77" r="7" fill="none" stroke="${searchTone}" stroke-width="2"/><line x1="745" y1="82" x2="753" y2="89" stroke="${searchTone}" stroke-width="2"/><circle cx="793" cy="78" r="15" fill="#F0F1F2"/><text x="793" y="84" class="vt-mic" text-anchor="middle">●</text><circle cx="837" cy="78" r="15" fill="#F0F1F2"/><text x="837" y="83" class="vt-user" text-anchor="middle">F</text><rect x="109" y="103" width="802" height="37" fill="#fff" stroke="#D6D8DA"/><rect x="123" y="110" width="36" height="22" rx="11" fill="${state.choice ? INK : SITE_RED}"/><text x="141" y="125" class="vt-chip" text-anchor="middle">ALL</text><text x="171" y="125" class="vt-strip" fill="${state.choice ? COLORS.repair : state.auto ? COLORS.corruption : searchTone}">${stripText}</text></g>`;
+  return `<g data-site-header="true"><rect x="109" y="56" width="802" height="84" fill="#fff"/><text x="124" y="86" class="vt-menu">☰</text><rect x="153" y="64" width="34" height="25" rx="7" fill="${SITE_RED}"/>${playMark(170, 76.5, 8, "#fff")}<text x="197" y="86" class="vt-logo-dark">ViewTube</text><rect x="360" y="63" width="405" height="31" rx="16" fill="#fff" stroke="${searchTone}" stroke-width="2.2"/><text x="378" y="84" class="vt-search" fill="${searchTone}">${searchText}</text><circle cx="740" cy="77" r="7" fill="none" stroke="${searchTone}" stroke-width="2"/><line x1="745" y1="82" x2="753" y2="89" stroke="${searchTone}" stroke-width="2"/><circle cx="793" cy="78" r="15" fill="#F0F1F2"/><text x="793" y="84" class="vt-mic" text-anchor="middle">●</text><circle cx="837" cy="78" r="15" fill="#F0F1F2"/><text x="837" y="83" class="vt-user" text-anchor="middle">F</text></g>`;
 }
 
 function thumb(asset, x, y, w, h, extra = "") {
@@ -229,7 +222,7 @@ function playerV3(state) {
         ? "∞ VIEWS · UPLOADED CONTINUOUSLY"
         : "LOTS OF VIEWS · PROMOTED TODAY";
   const adStatus = adsRestored
-    ? "EXCESSIVE ADS REMOVED · 1 AD BREAK"
+    ? "1 AD"
     : auto
       ? "∞ AD BREAKS · ∞ POP-UP ADS"
       : "7 AD BREAKS · POP-UP AD ACTIVE";
@@ -302,28 +295,6 @@ function persistentAds(state) {
 
 function footer(state) {
   const tone = state.fixed ? COLORS.repair : COLORS.corruption;
-  const headline = state.choice
-    ? "YOU PICKED THE VIDEO THAT MATCHES YOUR HOBBY"
-    : state.auto
-      ? "AUTO SHOW IS PLAYING EVERYTHING SO YOU DON'T HAVE TO CHOOSE"
-      : state.autoplay
-        ? "THE QUEUE STOPS UNTIL YOU CHOOSE"
-        : state.labels
-          ? "ADS AND RECOMMENDATION REASONS ARE VISIBLE"
-          : state.search
-            ? "YOUR SEARCH IS BACK"
-            : "THE TRENDING FEED IS CHOOSING FOR YOU";
-  const note = state.choice
-    ? "Selected by you · autoplay off"
-    : state.auto
-      ? "AUTO PLAYLIST STATUS: INFINITE"
-      : state.autoplay
-        ? "Queue paused · waiting for you"
-        : state.labels
-          ? "Recommendation details visible · autoplay still on"
-          : state.search
-            ? "Search restored · trending queue still active"
-            : "Trending queue refreshes automatically";
   return `<g><rect x="119" y="800" width="782" height="38" rx="6" fill="#fff" stroke="${tone}"/><text x="132" y="824" class="vt-meter" fill="${tone}">VIEWER CONTROL ${state.progress}%</text><rect x="315" y="811" width="565" height="15" fill="url(#vtCorruptHatch)" stroke="${tone}"/><rect x="315" y="811" width="${Math.round(565 * state.progress / 100)}" height="15" fill="${tone}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 

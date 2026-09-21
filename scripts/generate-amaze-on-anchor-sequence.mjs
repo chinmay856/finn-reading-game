@@ -135,10 +135,10 @@ function productCard({ x, y, image, banner, name, price, rating, line1, line2, l
   const border = complete ? sponsored ? "#D97706" : COLORS.repair : COLORS.corruption;
   const bannerFill = bannerFixed ? sponsored ? "#FFF0D6" : COLORS.repairSoft : COLORS.corruptionSoft;
   const bannerColor = bannerFixed ? sponsored ? "#9A4A00" : COLORS.repairDark : COLORS.corruption;
-  const priceColor = complete ? "#172D40" : COLORS.corruption;
-  const ratingColor = ratingFixed ? "#53616A" : COLORS.corruption;
-  const detailColor = detailsFixed ? "#53616A" : COLORS.corruption;
-  const deliveryColor = deliveryFixed ? "#53616A" : COLORS.corruption;
+  const priceColor = complete ? COLORS.repairDark : COLORS.corruption;
+  const ratingColor = ratingFixed ? COLORS.repairDark : COLORS.corruption;
+  const detailColor = detailsFixed ? COLORS.repairDark : COLORS.corruption;
+  const deliveryColor = deliveryFixed ? COLORS.repairDark : COLORS.corruption;
   return `<g data-product-card="true" data-qa-box="${x},${y},${x + 304},${y + 242}">
     <rect x="${x}" y="${y}" width="304" height="242" rx="7" fill="#fff" stroke="${border}" stroke-width="2"/>
     <rect x="${x + 1}" y="${y + 1}" width="302" height="31" rx="6" fill="${bannerFill}"/>
@@ -225,11 +225,10 @@ function repairChecklist(checked) {
 function footer(state, model) {
   const repaired = state.progress === 100 && model.rankingFixed && model.permissionFixed;
   const color = repaired ? COLORS.repair : COLORS.corruption;
-  const status = repaired ? "YOUR CHOICE RESTORED" : state.mode === "act2" ? "AUTO-BUY OVERRIDE ACTIVE" : "RANKING DISTORTED";
   return `<g data-site-footer="true"><rect x="109" y="690" width="802" height="148" fill="#F7F5EE"/><line x1="109" y1="690" x2="911" y2="690" stroke="#8E9AA0"/>
     <text x="126" y="727" class="amaze-meter" style="fill:${color}">SHOPPING CONTROL</text><text x="300" y="727" class="amaze-meter">${state.progress}%</text>
     <rect x="126" y="743" width="610" height="22" fill="#ECEBE6" stroke="${color}"/><rect x="126" y="743" width="${Math.round(610 * state.progress / 100)}" height="22" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/>
-    <text x="892" y="759" class="amaze-footer-status" text-anchor="end" style="fill:${color}">${status}</text>
+
   </g>`;
 }
 

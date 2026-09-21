@@ -1,3 +1,4 @@
+import { shuffleQuickCheckChoices } from "./apps/internet-recovery/quick-check-order.js";
 import { getPlayableWalkthrough } from "./apps/internet-recovery/playable-walkthroughs.js";
 import { RECOVERY_SITES } from "./apps/internet-recovery/site-catalog.js";
 import {
@@ -915,7 +916,7 @@ function renderQuestion() {
   const check = passage().comprehension;
   $("question").textContent = check.question;
   $("answerFeedback").textContent = "Choose the answer best supported by the passage.";
-  $("answers").replaceChildren(...check.choices.map((choice) => {
+  $("answers").replaceChildren(...shuffleQuickCheckChoices(check.choices).map((choice) => {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = choice.text;
@@ -957,7 +958,7 @@ function renderWordHelp() {
     const sourceSentence = String(entry.sentence ?? "").replace(/\s+/gu, " ").trim();
     return entry.properNoun === false
       && Boolean(sourceSentence)
-      && normalizedPassage.includes(sourceSentence);
+      && (Boolean(passage().sourceDocumentId) || normalizedPassage.includes(sourceSentence));
   }).slice(0, 3);
   $("wordHelp").hidden = words.length === 0;
   $("wordCards").replaceChildren(...words.map((entry) => {
