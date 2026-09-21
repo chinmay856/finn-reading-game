@@ -19,6 +19,16 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
     "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
     "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
     "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
+  },
+  "searchish": {
+    "documentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+    "revisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+    "sha256": "a2d4f7740e5116b24235abe128cdcbafe781a8c44c823f0d61f5cc58c19dc119"
+  },
+  "amaze-on": {
+    "documentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+    "revisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+    "sha256": "2094e48528de7e0a0141a0b1b0d1f7ec06b7f7deae05722cbac3065706b0df82"
   }
 };
 export const REVIEWED_GOOGLE_DOC_PASSAGES = {
@@ -3401,6 +3411,1893 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "distractors": [
           "Give opposing claims equal space, even when the evidence is much stronger for one.",
           "Repeat a startling rumor in the headline, then explain why it is wrong in the article."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    }
+  ],
+  "searchish": [
+    {
+      "id": "searchish-01",
+      "title": "Adventures of Huckleberry Finn",
+      "reviewedTitle": "Adventures of Huckleberry Finn — Huck introduces himself",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. Huck introduces himself at the beginning of the novel.",
+        "You don’t know about me without you have read a book by the name of The Adventures of Tom Sawyer; but that ain’t no matter. That book was made by Mr. Mark Twain, and he told the truth, mainly. There was things which he stretched, but mainly he told the truth. That is nothing. I never seen anybody but lied one time or another, without it was Aunt Polly, or the widow, or maybe Mary. Aunt Polly—Tom’s Aunt Polly, she is—and Mary, and the Widow Douglas is all told about in that book, which is mostly a true book, with some stretchers, as I said before.",
+        "Now the way that the book winds up is this: Tom and me found the money that the robbers hid in the cave, and it made us rich. We got six thousand dollars apiece—all gold. It was an awful sight of money when it was piled up. Well, Judge Thatcher he took it and put it out at interest, and it fetched us a dollar a day apiece all the year round—more than a body could tell what to do with.",
+        "The Widow Douglas she took me for her son, and allowed she would sivilize me; but it was rough living in the house all the time, considering how dismal regular and decent the widow was in all her ways; and so when I couldn’t stand it no longer I lit out. I got into my old rags and my sugar-hogshead again, and was free and satisfied. But Tom Sawyer he hunted me up and said he was going to start a band of robbers, and I might join if I would go back to the widow and be respectable. So I went back."
+      ],
+      "displayLines": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. Huck introduces himself at the beginning of the novel.",
+        "You don’t know about me without you have read a book by the name of The Adventures of Tom Sawyer; but that ain’t no matter.",
+        "That book was made by Mr. Mark Twain, and he told the truth, mainly.",
+        "There was things which he stretched, but mainly he told the truth.",
+        "That is nothing.",
+        "I never seen anybody but lied one time or another, without it was Aunt Polly, or the widow, or maybe Mary.",
+        "Aunt Polly—Tom’s Aunt Polly, she is—and Mary, and the Widow Douglas is all told about in that book, which is mostly a true book, with some stretchers, as I said before.",
+        "Now the way that the book winds up is this: Tom and me found the money that the robbers hid in the cave, and it made us rich.",
+        "We got six thousand dollars apiece—all gold.",
+        "It was an awful sight of money when it was piled up.",
+        "Well, Judge Thatcher he took it and put it out at interest, and it fetched us a dollar a day apiece all the year round—more than a body could tell what to do with.",
+        "The Widow Douglas she took me for her son, and allowed she would sivilize me; but it was rough living in the house all the time, considering how dismal regular and decent the widow was in all her ways; and so when I couldn’t stand it no longer I lit out.",
+        "I got into my old rags and my sugar-hogshead again, and was free and satisfied.",
+        "But Tom Sawyer he hunted me up and said he was going to start a band of robbers, and I might join if I would go back to the widow and be respectable.",
+        "So I went back."
+      ],
+      "spokenWordCount": 309,
+      "source": {
+        "label": "Adventures of Huckleberry Finn — Huck introduces himself",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Correct the oversized AI overview.",
+      "vocabulary": [
+        {
+          "word": "stretchers",
+          "definition": "Informal: exaggerated stories or claims that go beyond the truth.",
+          "sentence": "In this passage, Huck calls the book’s exaggerations stretchers.",
+          "playbackPhrase": "In this passage, Huck calls the book’s exaggerations stretchers.",
+          "properNoun": false
+        },
+        {
+          "word": "interest",
+          "definition": "Money earned by letting someone else use or invest your money.",
+          "sentence": "In this passage, Huck’s money earns interest every day.",
+          "playbackPhrase": "In this passage, Huck’s money earns interest every day.",
+          "properNoun": false
+        },
+        {
+          "word": "dismal",
+          "definition": "Gloomy or depressing.",
+          "sentence": "In this passage, Huck finds the widow’s orderly life dismal.",
+          "playbackPhrase": "In this passage, Huck finds the widow’s orderly life dismal.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What is funny about Tom’s reason for sending Huck back to the widow?",
+        "orderedChoices": [
+          {
+            "text": "Huck must act respectable to join a band of robbers.",
+            "correct": true
+          },
+          {
+            "text": "Huck must leave his money behind to become rich again.",
+            "correct": false
+          },
+          {
+            "text": "Huck must give up adventures to stay friends with Tom.",
+            "correct": false
+          }
+        ],
+        "correct": "Huck must act respectable to join a band of robbers.",
+        "distractors": [
+          "Huck must leave his money behind to become rich again.",
+          "Huck must give up adventures to stay friends with Tom."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-02",
+      "title": "Three Men in a Boat",
+      "reviewedTitle": "Three Men in a Boat — Researching himself into every illness",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Three Men in a Boat” by Jerome K. Jerome.",
+        "I remember going to the British Museum one day to read up the treatment for some slight ailment of which I had a touch—hay fever, I fancy it was. I got down the book, and read all I came to read; and then, in an unthinking moment, I idly turned the leaves, and began to indolently study diseases, generally. I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it. I sat for awhile, frozen with horror; and then, in the listlessness of despair, I again turned over the pages. I came to typhoid fever—read the symptoms—discovered that I had typhoid fever, must have had it for months without knowing it—wondered what else I had got; turned up St. Vitus’s Dance—found, as I expected, that I had that too,—began to get interested in my case, and determined to sift it to the bottom, and so started alphabetically—read up ague, and learnt that I was sickening for it, and that the acute stage would commence in about another fortnight. Bright’s disease, I was relieved to find, I had only in a modified form, and, so far as that was concerned, I might live for years. Cholera I had, with severe complications; and diphtheria I seemed to have been born with. I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee. I felt rather hurt about this at first; it seemed somehow to be a sort of slight. Why hadn’t I got housemaid’s knee? Why this invidious reservation? After a while, however, less grasping feelings prevailed."
+      ],
+      "displayLines": [
+        "An excerpt from “Three Men in a Boat” by Jerome K. Jerome.",
+        "I remember going to the British Museum one day to read up the treatment for some slight ailment of which I had a touch—hay fever, I fancy it was.",
+        "I got down the book, and read all I came to read; and then, in an unthinking moment, I idly turned the leaves, and began to indolently study diseases, generally.",
+        "I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of “premonitory symptoms,” it was borne in upon me that I had fairly got it.",
+        "I sat for awhile, frozen with horror; and then, in the listlessness of despair, I again turned over the pages.",
+        "I came to typhoid fever—read the symptoms—discovered that I had typhoid fever, must have had it for months without knowing it—wondered what else I had got; turned up St. Vitus’s Dance—found, as I expected, that I had that too,—began to get interested in my case, and determined to sift it to the bottom, and so started alphabetically—read up ague, and learnt that I was sickening for it, and that the acute stage would commence in about another fortnight.",
+        "Bright’s disease, I was relieved to find, I had only in a modified form, and, so far as that was concerned, I might live for years.",
+        "Cholera I had, with severe complications; and diphtheria I seemed to have been born with.",
+        "I plodded conscientiously through the twenty-six letters, and the only malady I could conclude I had not got was housemaid’s knee.",
+        "I felt rather hurt about this at first; it seemed somehow to be a sort of slight.",
+        "Why hadn’t I got housemaid’s knee?",
+        "Why this invidious reservation?",
+        "After a while, however, less grasping feelings prevailed."
+      ],
+      "spokenWordCount": 304,
+      "source": {
+        "label": "Three Men in a Boat — Researching himself into every illness",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Make the AI overview optional.",
+      "vocabulary": [
+        {
+          "word": "indolently",
+          "definition": "Lazily, without making much effort.",
+          "sentence": "In this passage, the narrator indolently browses descriptions of diseases.",
+          "playbackPhrase": "In this passage, the narrator indolently browses descriptions of diseases.",
+          "properNoun": false
+        },
+        {
+          "word": "premonitory",
+          "definition": "Giving advance warning of something.",
+          "sentence": "In this passage, he treats premonitory symptoms as proof that he is ill.",
+          "playbackPhrase": "In this passage, he treats premonitory symptoms as proof that he is ill.",
+          "properNoun": false
+        },
+        {
+          "word": "invidious",
+          "definition": "Unfairly singling someone out, causing resentment.",
+          "sentence": "In this passage, he considers his one missing illness an invidious exclusion.",
+          "playbackPhrase": "In this passage, he considers his one missing illness an invidious exclusion.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What makes the narrator’s reaction to housemaid’s knee especially ironic?",
+        "orderedChoices": [
+          {
+            "text": "He trusts the book less once it describes an illness he has never heard of.",
+            "correct": false
+          },
+          {
+            "text": "He feels excluded by the one illness he thinks he does not have.",
+            "correct": true
+          },
+          {
+            "text": "He is relieved that his original complaint has finally been explained.",
+            "correct": false
+          }
+        ],
+        "correct": "He feels excluded by the one illness he thinks he does not have.",
+        "distractors": [
+          "He trusts the book less once it describes an illness he has never heard of.",
+          "He is relieved that his original complaint has finally been explained."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-03",
+      "title": "Through the Looking-Glass",
+      "reviewedTitle": "Through the Looking-Glass — Who controls the meaning?",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from Through the Looking-Glass by Lewis Carroll. Alice and Humpty Dumpty disagree about what words mean.",
+        "“I don’t know what you mean by ‘glory,’” Alice said.",
+        "Humpty Dumpty smiled contemptuously. “Of course you don’t—till I tell you. I meant ‘there’s a nice knock-down argument for you!’”",
+        "“But ‘glory’ doesn’t mean ‘a nice knock-down argument,’” Alice objected.",
+        "“When I use a word,” Humpty Dumpty said in rather a scornful tone, “it means just what I choose it to mean—neither more nor less.”",
+        "“The question is,” said Alice, “whether you can make words mean so many different things.”",
+        "“The question is,” said Humpty Dumpty, “which is to be master—that’s all.”",
+        "Alice was too much puzzled to say anything, so after a minute Humpty Dumpty began again. “They’ve a temper, some of them—particularly verbs, they’re the proudest—adjectives you can do anything with, but not verbs—however, I can manage the whole lot of them! Impenetrability! That’s what I say!”",
+        "“Would you tell me, please,” said Alice, “what that means?”",
+        "“Now you talk like a reasonable child,” said Humpty Dumpty, looking very much pleased. “I meant by ‘impenetrability’ that we’ve had enough of that subject, and it would be just as well if you’d mention what you mean to do next, as I suppose you don’t mean to stop here all the rest of your life.”",
+        "“That’s a great deal to make one word mean,” Alice said in a thoughtful tone.",
+        "“When I make a word do a lot of work like that,” said Humpty Dumpty, “I always pay it extra.”",
+        "“Oh!” said Alice. She was too much puzzled to make any other remark.",
+        "“Ah, you should see ’em come round me of a Saturday night,” Humpty Dumpty went on, wagging his head gravely from side to side: “for to get their wages, you know.”",
+        "(Alice didn’t venture to ask what he paid them with; and so you see I can’t tell you.)"
+      ],
+      "displayLines": [
+        "An excerpt from Through the Looking-Glass by Lewis Carroll. Alice and Humpty Dumpty disagree about what words mean.",
+        "“I don’t know what you mean by ‘glory,’” Alice said.",
+        "Humpty Dumpty smiled contemptuously.",
+        "“Of course you don’t—till I tell you.",
+        "I meant ‘there’s a nice knock-down argument for you!’”",
+        "“But ‘glory’ doesn’t mean ‘a nice knock-down argument,’” Alice objected.",
+        "“When I use a word,” Humpty Dumpty said in rather a scornful tone, “it means just what I choose it to mean—neither more nor less.”",
+        "“The question is,” said Alice, “whether you can make words mean so many different things.”",
+        "“The question is,” said Humpty Dumpty, “which is to be master—that’s all.”",
+        "Alice was too much puzzled to say anything, so after a minute Humpty Dumpty began again.",
+        "“They’ve a temper, some of them—particularly verbs, they’re the proudest—adjectives you can do anything with, but not verbs—however, I can manage the whole lot of them!",
+        "Impenetrability!",
+        "That’s what I say!”",
+        "“Would you tell me, please,” said Alice, “what that means?”",
+        "“Now you talk like a reasonable child,” said Humpty Dumpty, looking very much pleased.",
+        "“I meant by ‘impenetrability’ that we’ve had enough of that subject, and it would be just as well if you’d mention what you mean to do next, as I suppose you don’t mean to stop here all the rest of your life.”",
+        "“That’s a great deal to make one word mean,” Alice said in a thoughtful tone.",
+        "“When I make a word do a lot of work like that,” said Humpty Dumpty, “I always pay it extra.”",
+        "“Oh!”",
+        "said Alice.",
+        "She was too much puzzled to make any other remark.",
+        "“Ah, you should see ’em come round me of a Saturday night,” Humpty Dumpty went on, wagging his head gravely from side to side: “for to get their wages, you know.”",
+        "(Alice didn’t venture to ask what he paid them with; and so you see I can’t tell you.)"
+      ],
+      "spokenWordCount": 320,
+      "source": {
+        "label": "Through the Looking-Glass — Who controls the meaning?",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Restore clear advertising labels.",
+      "vocabulary": [
+        {
+          "word": "contemptuously",
+          "definition": "In a way that shows scorn or a lack of respect.",
+          "sentence": "In this passage, Humpty Dumpty smiles contemptuously at Alice’s confusion.",
+          "playbackPhrase": "In this passage, Humpty Dumpty smiles contemptuously at Alice’s confusion.",
+          "properNoun": false
+        },
+        {
+          "word": "temper",
+          "definition": "A person’s usual disposition or tendency to become angry.",
+          "sentence": "In this passage, Humpty Dumpty imagines that verbs have a stubborn temper.",
+          "playbackPhrase": "In this passage, Humpty Dumpty imagines that verbs have a stubborn temper.",
+          "properNoun": false
+        },
+        {
+          "word": "venture",
+          "definition": "Dare to do something that feels risky or uncertain.",
+          "sentence": "In this passage, Alice does not venture to ask about the words’ wages.",
+          "playbackPhrase": "In this passage, Alice does not venture to ask about the words’ wages.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What is the main difference between Alice’s concern and Humpty Dumpty’s answer?",
+        "orderedChoices": [
+          {
+            "text": "Alice asks whether a word can carry so many meanings; he insists that he controls its meaning.",
+            "correct": true
+          },
+          {
+            "text": "Alice wants each word to have only one meaning; he explains how other speakers agree on new meanings.",
+            "correct": false
+          },
+          {
+            "text": "Alice asks him to avoid difficult words; he argues that difficult words express ideas more precisely.",
+            "correct": false
+          }
+        ],
+        "correct": "Alice asks whether a word can carry so many meanings; he insists that he controls its meaning.",
+        "distractors": [
+          "Alice wants each word to have only one meaning; he explains how other speakers agree on new meanings.",
+          "Alice asks him to avoid difficult words; he argues that difficult words express ideas more precisely."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-04",
+      "title": "The Autobiography of Benjamin Franklin",
+      "reviewedTitle": "The Autobiography of Benjamin Franklin — Pooling books",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from The Autobiography of Benjamin Franklin. Franklin recalls how a shared collection led to a subscription library.",
+        "About this time, our club meeting, not at a tavern, but in a little room of Mr. Grace's, set apart for that purpose, a proposition was made by me, that, since our books were often referr'd to in our disquisitions upon the queries, it might be convenient to us to have them altogether where we met, that upon occasion they might be consulted; and by thus clubbing our books to a common library, we should, while we lik'd to keep them together, have each of us the advantage of using the books of all the other members, which would be nearly as beneficial as if each owned the whole. It was lik'd and agreed to, and we fill'd one end of the room with such books as we could best spare. The number was not so great as we expected; and tho' they had been of great use, yet some inconveniences occurring for want of due care of them, the collection, after about a year, was separated, and each took his books home again.",
+        "And now I set on foot my first project of a public nature, that for a subscription library. I drew up the proposals, got them put into form by our great scrivener, Brockden, and, by the help of my friends in the Junto, procured fifty subscribers of forty shillings each to begin with, and ten shillings a year for fifty years, the term our company was to continue. We afterwards obtain'd a charter, the company being increased to one hundred: this was the mother of all the North American subscription libraries, now so numerous. It is become a great thing itself, and continually increasing. These libraries have improved the general conversation of the Americans, made the common tradesmen and farmers as intelligent as most gentlemen from other countries, and perhaps have contributed in some degree to the stand so generally made throughout the colonies in defense of their privileges."
+      ],
+      "displayLines": [
+        "An excerpt from The Autobiography of Benjamin Franklin. Franklin recalls how a shared collection led to a subscription library.",
+        "About this time, our club meeting, not at a tavern, but in a little room of Mr. Grace's, set apart for that purpose, a proposition was made by me, that, since our books were often referr'd to in our disquisitions upon the queries, it might be convenient to us to have them altogether where we met, that upon occasion they might be consulted; and by thus clubbing our books to a common library, we should, while we lik'd to keep them together, have each of us the advantage of using the books of all the other members, which would be nearly as beneficial as if each owned the whole.",
+        "It was lik'd and agreed to, and we fill'd one end of the room with such books as we could best spare.",
+        "The number was not so great as we expected; and tho' they had been of great use, yet some inconveniences occurring for want of due care of them, the collection, after about a year, was separated, and each took his books home again.",
+        "And now I set on foot my first project of a public nature, that for a subscription library.",
+        "I drew up the proposals, got them put into form by our great scrivener, Brockden, and, by the help of my friends in the Junto, procured fifty subscribers of forty shillings each to begin with, and ten shillings a year for fifty years, the term our company was to continue.",
+        "We afterwards obtain'd a charter, the company being increased to one hundred: this was the mother of all the North American subscription libraries, now so numerous.",
+        "It is become a great thing itself, and continually increasing.",
+        "These libraries have improved the general conversation of the Americans, made the common tradesmen and farmers as intelligent as most gentlemen from other countries, and perhaps have contributed in some degree to the stand so generally made throughout the colonies in defense of their privileges."
+      ],
+      "spokenWordCount": 342,
+      "source": {
+        "label": "The Autobiography of Benjamin Franklin — Pooling books",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Restore library availability and free online editions.",
+      "vocabulary": [
+        {
+          "word": "disquisitions",
+          "definition": "Detailed discussions or investigations of a subject.",
+          "sentence": "In this passage, the club consults books during its disquisitions.",
+          "playbackPhrase": "In this passage, the club consults books during its disquisitions.",
+          "properNoun": false
+        },
+        {
+          "word": "scrivener",
+          "definition": "A person who professionally writes or prepares documents.",
+          "sentence": "In this passage, a scrivener puts Franklin’s proposals into formal wording.",
+          "playbackPhrase": "In this passage, a scrivener puts Franklin’s proposals into formal wording.",
+          "properNoun": false
+        },
+        {
+          "word": "charter",
+          "definition": "An official document granting rights to an organization.",
+          "sentence": "In this passage, the library company later obtains a charter.",
+          "playbackPhrase": "In this passage, the library company later obtains a charter.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "How did the subscription library differ from the club’s first collection?",
+        "orderedChoices": [
+          {
+            "text": "It used subscribers’ payments to support an organization, rather than only pooling members’ books.",
+            "correct": true
+          },
+          {
+            "text": "It let members keep all the books at home, rather than consulting them together.",
+            "correct": false
+          },
+          {
+            "text": "It restricted books to tradesmen and farmers, rather than admitting the original club members.",
+            "correct": false
+          }
+        ],
+        "correct": "It used subscribers’ payments to support an organization, rather than only pooling members’ books.",
+        "distractors": [
+          "It let members keep all the books at home, rather than consulting them together.",
+          "It restricted books to tradesmen and farmers, rather than admitting the original club members."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-05",
+      "title": "There is no frigate like a book",
+      "reviewedTitle": "There is no frigate like a book",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "A poem by Emily Dickinson.",
+        "There is no frigate like a book",
+        "To take us lands away,",
+        "Nor any coursers like a page",
+        "Of prancing poetry.",
+        "This traverse may the poorest take",
+        "Without oppress of toll;",
+        "How frugal is the chariot",
+        "That bears a human soul!"
+      ],
+      "displayLines": [
+        "A poem by Emily Dickinson.",
+        "There is no frigate like a book",
+        "To take us lands away,",
+        "Nor any coursers like a page",
+        "Of prancing poetry.",
+        "This traverse may the poorest take",
+        "Without oppress of toll;",
+        "How frugal is the chariot",
+        "That bears a human soul!"
+      ],
+      "spokenWordCount": 46,
+      "source": {
+        "label": "There is no frigate like a book",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Restore the neighborhood bookstore and local pickup.",
+      "vocabulary": [
+        {
+          "word": "frigate",
+          "definition": "A type of warship; here, a vehicle for an imagined journey.",
+          "sentence": "In this passage, a book carries the reader farther than a frigate.",
+          "playbackPhrase": "In this passage, a book carries the reader farther than a frigate.",
+          "properNoun": false
+        },
+        {
+          "word": "traverse",
+          "definition": "A crossing or journey from one place to another.",
+          "sentence": "In this passage, even the poorest reader can take this traverse.",
+          "playbackPhrase": "In this passage, even the poorest reader can take this traverse.",
+          "properNoun": false
+        },
+        {
+          "word": "frugal",
+          "definition": "Economical; requiring little expense.",
+          "sentence": "In this passage, reading is a frugal way to travel in imagination.",
+          "playbackPhrase": "In this passage, reading is a frugal way to travel in imagination.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does the poem mention both travel and poverty?",
+        "orderedChoices": [
+          {
+            "text": "To suggest that books describe journeys more accurately than travelers do.",
+            "correct": false
+          },
+          {
+            "text": "To show that reading can offer a journey without the usual cost of travel.",
+            "correct": true
+          },
+          {
+            "text": "To argue that readers should save money before choosing where to travel.",
+            "correct": false
+          }
+        ],
+        "correct": "To show that reading can offer a journey without the usual cost of travel.",
+        "distractors": [
+          "To suggest that books describe journeys more accurately than travelers do.",
+          "To argue that readers should save money before choosing where to travel."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-06",
+      "title": "Discourse on the Method",
+      "reviewedTitle": "Discourse on the Method — Four rules for an inquiry",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Discourse on the Method” by René Descartes.",
+        "The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt. The second, to divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution. The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence. And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted. The long chains of simple and easy reasonings by means of which geometers are accustomed to reach the conclusions of their most difficult demonstrations, had led me to imagine that all things, to the knowledge of which man is competent, are mutually connected in the same way, and that there is nothing so far removed from us as to be beyond our reach, or so hidden that we cannot discover it, provided only we abstain from accepting the false for the true, and always preserve in our thoughts the order necessary for the deduction of one truth from another."
+      ],
+      "displayLines": [
+        "An excerpt from “Discourse on the Method” by René Descartes.",
+        "The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt.",
+        "The second, to divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution.",
+        "The third, to conduct my thoughts in such order that, by commencing with objects the simplest and easiest to know, I might ascend by little and little, and, as it were, step by step, to the knowledge of the more complex; assigning in thought a certain order even to those objects which in their own nature do not stand in a relation of antecedence and sequence.",
+        "And the last, in every case to make enumerations so complete, and reviews so general, that I might be assured that nothing was omitted.",
+        "The long chains of simple and easy reasonings by means of which geometers are accustomed to reach the conclusions of their most difficult demonstrations, had led me to imagine that all things, to the knowledge of which man is competent, are mutually connected in the same way, and that there is nothing so far removed from us as to be beyond our reach, or so hidden that we cannot discover it, provided only we abstain from accepting the false for the true, and always preserve in our thoughts the order necessary for the deduction of one truth from another."
+      ],
+      "spokenWordCount": 278,
+      "source": {
+        "label": "Discourse on the Method — Four rules for an inquiry",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Rerank the useful results.",
+      "vocabulary": [
+        {
+          "word": "precipitancy",
+          "definition": "Hasty action or judgment without enough care.",
+          "sentence": "In this passage, Descartes tries to avoid precipitancy in accepting a claim.",
+          "playbackPhrase": "In this passage, Descartes tries to avoid precipitancy in accepting a claim.",
+          "properNoun": false
+        },
+        {
+          "word": "antecedence",
+          "definition": "The state of coming before something else.",
+          "sentence": "In this passage, he assigns an order even without natural antecedence.",
+          "playbackPhrase": "In this passage, he assigns an order even without natural antecedence.",
+          "properNoun": false
+        },
+        {
+          "word": "enumerations",
+          "definition": "Complete, item-by-item lists or reviews.",
+          "sentence": "In this passage, he makes enumerations to check that nothing was omitted.",
+          "playbackPhrase": "In this passage, he makes enumerations to check that nothing was omitted.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What different jobs do dividing a problem and making a final review perform?",
+        "orderedChoices": [
+          {
+            "text": "Dividing removes difficult parts; reviewing checks only the simple parts that remain.",
+            "correct": false
+          },
+          {
+            "text": "Dividing makes the difficulty manageable; reviewing checks that nothing was left out.",
+            "correct": true
+          },
+          {
+            "text": "Dividing establishes certainty; reviewing replaces any remaining evidence.",
+            "correct": false
+          }
+        ],
+        "correct": "Dividing makes the difficulty manageable; reviewing checks that nothing was left out.",
+        "distractors": [
+          "Dividing removes difficult parts; reviewing checks only the simple parts that remain.",
+          "Dividing establishes certainty; reviewing replaces any remaining evidence."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-07",
+      "title": "Hard Times",
+      "reviewedTitle": "Hard Times — Nothing but Facts",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from Hard Times by Charles Dickens. A school visitor insists on one narrow idea of education.",
+        "‘NOW, what I want is, Facts.  Teach these boys and girls nothing but Facts.  Facts alone are wanted in life.  Plant nothing else, and root out everything else.  You can only form the minds of reasoning animals upon Facts: nothing else will ever be of any service to them.  This is the principle on which I bring up my own children, and this is the principle on which I bring up these children.  Stick to Facts, sir!’",
+        "The scene was a plain, bare, monotonous vault of a school-room, and the speaker’s square forefinger emphasized his observations by underscoring every sentence with a line on the schoolmaster’s sleeve.  The emphasis was helped by the speaker’s square wall of a forehead, which had his eyebrows for its base, while his eyes found commodious cellarage in two dark caves, overshadowed by the wall.  The emphasis was helped by the speaker’s mouth, which was wide, thin, and hard set.  The emphasis was helped by the speaker’s voice, which was inflexible, dry, and dictatorial.  The emphasis was helped by the speaker’s hair, which bristled on the skirts of his bald head, a plantation of firs to keep the wind from its shining surface, all covered with knobs, like the crust of a plum pie, as if the head had scarcely warehouse-room for the hard facts stored inside.  The speaker’s obstinate carriage, square coat, square legs, square shoulders,—nay, his very neckcloth, trained to take him by the throat with an unaccommodating grasp, like a stubborn fact, as it was,—all helped the emphasis.",
+        "‘In this life, we want nothing but Facts, sir; nothing but Facts!’",
+        "The speaker, and the schoolmaster, and the third grown person present, all backed a little, and swept with their eyes the inclined plane of little vessels then and there arranged in order, ready to have imperial gallons of facts poured into them until they were full to the brim."
+      ],
+      "displayLines": [
+        "An excerpt from Hard Times by Charles Dickens. A school visitor insists on one narrow idea of education.",
+        "‘NOW, what I want is, Facts.",
+        "Teach these boys and girls nothing but Facts.",
+        "Facts alone are wanted in life.",
+        "Plant nothing else, and root out everything else.",
+        "You can only form the minds of reasoning animals upon Facts: nothing else will ever be of any service to them.",
+        "This is the principle on which I bring up my own children, and this is the principle on which I bring up these children.",
+        "Stick to Facts, sir!’",
+        "The scene was a plain, bare, monotonous vault of a school-room, and the speaker’s square forefinger emphasized his observations by underscoring every sentence with a line on the schoolmaster’s sleeve.",
+        "The emphasis was helped by the speaker’s square wall of a forehead, which had his eyebrows for its base, while his eyes found commodious cellarage in two dark caves, overshadowed by the wall.",
+        "The emphasis was helped by the speaker’s mouth, which was wide, thin, and hard set.",
+        "The emphasis was helped by the speaker’s voice, which was inflexible, dry, and dictatorial.",
+        "The emphasis was helped by the speaker’s hair, which bristled on the skirts of his bald head, a plantation of firs to keep the wind from its shining surface, all covered with knobs, like the crust of a plum pie, as if the head had scarcely warehouse-room for the hard facts stored inside.",
+        "The speaker’s obstinate carriage, square coat, square legs, square shoulders,—nay, his very neckcloth, trained to take him by the throat with an unaccommodating grasp, like a stubborn fact, as it was,—all helped the emphasis.",
+        "‘In this life, we want nothing but Facts, sir; nothing but Facts!’",
+        "The speaker, and the schoolmaster, and the third grown person present, all backed a little, and swept with their eyes the inclined plane of little vessels then and there arranged in order, ready to have imperial gallons of facts poured into them until they were full to the brim."
+      ],
+      "spokenWordCount": 335,
+      "source": {
+        "label": "Hard Times — Nothing but Facts",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Fix Auto’s oversized answer after the over-fix.",
+      "vocabulary": [
+        {
+          "word": "commodious",
+          "definition": "Spacious or roomy.",
+          "sentence": "In this passage, the speaker’s eyes occupy commodious caves beneath his forehead.",
+          "playbackPhrase": "In this passage, the speaker’s eyes occupy commodious caves beneath his forehead.",
+          "properNoun": false
+        },
+        {
+          "word": "dictatorial",
+          "definition": "Insisting on obedience without allowing disagreement.",
+          "sentence": "In this passage, the speaker has a dictatorial voice.",
+          "playbackPhrase": "In this passage, the speaker has a dictatorial voice.",
+          "properNoun": false
+        },
+        {
+          "word": "obstinate",
+          "definition": "Stubbornly refusing to change.",
+          "sentence": "In this passage, even the speaker’s posture appears obstinate.",
+          "playbackPhrase": "In this passage, even the speaker’s posture appears obstinate.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What does comparing the children to vessels suggest?",
+        "orderedChoices": [
+          {
+            "text": "The adults see learning as helping children select and test ideas themselves.",
+            "correct": false
+          },
+          {
+            "text": "The adults think careful observation of children should decide what they teach.",
+            "correct": false
+          },
+          {
+            "text": "The adults see learning as filling passive children with information.",
+            "correct": true
+          }
+        ],
+        "correct": "The adults see learning as filling passive children with information.",
+        "distractors": [
+          "The adults see learning as helping children select and test ideas themselves.",
+          "The adults think careful observation of children should decide what they teach."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-08",
+      "title": "The Machine Stops",
+      "reviewedTitle": "The Machine Stops — A substitute is not the thing itself",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from The Machine Stops by E. M. Forster. Vashti and her son Kuno communicate through a machine from opposite sides of the earth.",
+        "She touched the isolation knob, so that no one else could speak to her. Then she touched the lighting apparatus, and the little room was plunged into darkness. “Be quick!” she called, her irritation returning. “Be quick, Kuno; here I am in the dark wasting my time.”",
+        "But it was fully fifteen seconds before the round plate that she held in her hands began to glow. A faint blue light shot across it, darkening to purple, and presently she could see the image of her son, who lived on the other side of the earth, and he could see her. “Kuno, how slow you are.”",
+        "He smiled gravely.",
+        "“I really believe you enjoy dawdling.”",
+        "“I have called you before, mother, but you were always busy or isolated. I have something particular to say.”",
+        "“What is it, dearest boy? Be quick. Why could you not send it by pneumatic post?”",
+        "“Because I prefer saying such a thing. I want—”",
+        "“Well?”",
+        "“I want you to come and see me.”",
+        "Vashti watched his face in the blue plate.",
+        "“But I can see you!” she exclaimed. “What more do you want?”",
+        "“I want to see you not through the Machine,” said Kuno. “I want to speak to you not through the wearisome Machine.”",
+        "“Oh, hush!” said his mother, vaguely shocked. “You mustn't say anything against the Machine.”",
+        "“Why not?”",
+        "“One mustn't.”",
+        "“You talk as if a god had made the Machine,” cried the other.",
+        "“I believe that you pray to it when you are unhappy. Men made it, do not forget that. Great men, but men. The Machine is much, but it is not everything. I see something like you in this plate, but I do not see you. I hear something like you through this telephone, but I do not hear you. That is why I want you to come. Pay me a visit, so that we can meet face to face, and talk about the hopes that are in my mind.”"
+      ],
+      "displayLines": [
+        "An excerpt from The Machine Stops by E. M. Forster. Vashti and her son Kuno communicate through a machine from opposite sides of the earth.",
+        "She touched the isolation knob, so that no one else could speak to her.",
+        "Then she touched the lighting apparatus, and the little room was plunged into darkness.",
+        "“Be quick!”",
+        "she called, her irritation returning.",
+        "“Be quick, Kuno; here I am in the dark wasting my time.”",
+        "But it was fully fifteen seconds before the round plate that she held in her hands began to glow.",
+        "A faint blue light shot across it, darkening to purple, and presently she could see the image of her son, who lived on the other side of the earth, and he could see her.",
+        "“Kuno, how slow you are.”",
+        "He smiled gravely.",
+        "“I really believe you enjoy dawdling.”",
+        "“I have called you before, mother, but you were always busy or isolated.",
+        "I have something particular to say.”",
+        "“What is it, dearest boy?",
+        "Be quick.",
+        "Why could you not send it by pneumatic post?”",
+        "“Because I prefer saying such a thing. I want—”",
+        "“Well?”",
+        "“I want you to come and see me.”",
+        "Vashti watched his face in the blue plate.",
+        "“But I can see you!”",
+        "she exclaimed.",
+        "“What more do you want?”",
+        "“I want to see you not through the Machine,” said Kuno.",
+        "“I want to speak to you not through the wearisome Machine.”",
+        "“Oh, hush!”",
+        "said his mother, vaguely shocked.",
+        "“You mustn't say anything against the Machine.”",
+        "“Why not?”",
+        "“One mustn't.”",
+        "“You talk as if a god had made the Machine,” cried the other.",
+        "“I believe that you pray to it when you are unhappy.",
+        "Men made it, do not forget that.",
+        "Great men, but men.",
+        "The Machine is much, but it is not everything.",
+        "I see something like you in this plate, but I do not see you.",
+        "I hear something like you through this telephone, but I do not hear you.",
+        "That is why I want you to come.",
+        "Pay me a visit, so that we can meet face to face, and talk about the hopes that are in my mind.”"
+      ],
+      "spokenWordCount": 354,
+      "source": {
+        "label": "The Machine Stops — A substitute is not the thing itself",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Make AI optional instead of substituting a study guide for the book.",
+      "vocabulary": [
+        {
+          "word": "apparatus",
+          "definition": "Equipment designed for a particular purpose.",
+          "sentence": "In this passage, Vashti uses the lighting apparatus to darken her room.",
+          "playbackPhrase": "In this passage, Vashti uses the lighting apparatus to darken her room.",
+          "properNoun": false
+        },
+        {
+          "word": "dawdling",
+          "definition": "Moving or acting slowly and wasting time.",
+          "sentence": "In this passage, Vashti accuses Kuno of dawdling during the connection.",
+          "playbackPhrase": "In this passage, Vashti accuses Kuno of dawdling during the connection.",
+          "properNoun": false
+        },
+        {
+          "word": "pneumatic",
+          "definition": "Operated by air pressure.",
+          "sentence": "In this passage, Vashti suggests sending the message by pneumatic post.",
+          "playbackPhrase": "In this passage, Vashti suggests sending the message by pneumatic post.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why doesn’t the video conversation satisfy Kuno’s request?",
+        "orderedChoices": [
+          {
+            "text": "He wants a personal visit, not merely an image and voice carried by the Machine.",
+            "correct": true
+          },
+          {
+            "text": "He wants a faster connection so his mother can hear his full message.",
+            "correct": false
+          },
+          {
+            "text": "He wants his mother to replace the call with a written message.",
+            "correct": false
+          }
+        ],
+        "correct": "He wants a personal visit, not merely an image and voice carried by the Machine.",
+        "distractors": [
+          "He wants a faster connection so his mother can hear his full message.",
+          "He wants his mother to replace the call with a written message."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-09",
+      "title": "Adventures of Huckleberry Finn",
+      "reviewedTitle": "Adventures of Huckleberry Finn — Sheltering from a thunderstorm",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. Huck and Jim have brought their supplies into a cave. Jim predicted rain after watching the birds.",
+        "We spread the blankets inside for a carpet, and eat our dinner in there. We put all the other things handy at the back of the cavern. Pretty soon it darkened up, and begun to thunder and lighten; so the birds was right about it. Directly it begun to rain, and it rained like all fury, too, and I never see the wind blow so. It was one of these regular summer storms.",
+        "It would get so dark that it looked all blue-black outside, and lovely; and the rain would thrash along by so thick that the trees off a little ways looked dim and spider-webby; and here would come a blast of wind that would bend the trees down and turn up the pale underside of the leaves; and then a perfect ripper of a gust would follow along and set the branches to tossing their arms as if they was just wild; and next, when it was just about the bluest and blackest—fst! it was as bright as glory, and you’d have a little glimpse of tree-tops a-plunging about away off yonder in the storm, hundreds of yards further than you could see before; dark as sin again in a second, and now you’d hear the thunder let go with an awful crash, and then go rumbling, grumbling, tumbling, down the sky towards the under side of the world, like rolling empty barrels down stairs—where it’s long stairs and they bounce a good deal, you know.",
+        "“Jim, this is nice,” I says. “I wouldn’t want to be nowhere else but here. Pass me along another hunk of fish and some hot corn-bread.”",
+        "“Well, you wouldn’t a ben here ’f it hadn’t a ben for Jim. You’d a ben down dah in de woods widout any dinner, en gittn’ mos’ drownded, too; dat you would, honey. Chickens knows when it’s gwyne to rain, en so do de birds, chile.”"
+      ],
+      "displayLines": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. Huck and Jim have brought their supplies into a cave. Jim predicted rain after watching the birds.",
+        "We spread the blankets inside for a carpet, and eat our dinner in there.",
+        "We put all the other things handy at the back of the cavern.",
+        "Pretty soon it darkened up, and begun to thunder and lighten; so the birds was right about it.",
+        "Directly it begun to rain, and it rained like all fury, too, and I never see the wind blow so.",
+        "It was one of these regular summer storms.",
+        "It would get so dark that it looked all blue-black outside, and lovely; and the rain would thrash along by so thick that the trees off a little ways looked dim and spider-webby; and here would come a blast of wind that would bend the trees down and turn up the pale underside of the leaves; and then a perfect ripper of a gust would follow along and set the branches to tossing their arms as if they was just wild; and next, when it was just about the bluest and blackest—fst!",
+        "it was as bright as glory, and you’d have a little glimpse of tree-tops a-plunging about away off yonder in the storm, hundreds of yards further than you could see before; dark as sin again in a second, and now you’d hear the thunder let go with an awful crash, and then go rumbling, grumbling, tumbling, down the sky towards the under side of the world, like rolling empty barrels down stairs—where it’s long stairs and they bounce a good deal, you know.",
+        "“Jim, this is nice,” I says.",
+        "“I wouldn’t want to be nowhere else but here.",
+        "Pass me along another hunk of fish and some hot corn-bread.”",
+        "“Well, you wouldn’t a ben here ’f it hadn’t a ben for Jim.",
+        "You’d a ben down dah in de woods widout any dinner, en gittn’ mos’ drownded, too; dat you would, honey.",
+        "Chickens knows when it’s gwyne to rain, en so do de birds, chile.”"
+      ],
+      "spokenWordCount": 347,
+      "source": {
+        "label": "Adventures of Huckleberry Finn — Sheltering from a thunderstorm",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Show real options for obtaining the book.",
+      "vocabulary": [
+        {
+          "word": "cavern",
+          "definition": "A large cave.",
+          "sentence": "In this passage, Huck and Jim keep their supplies in the cavern.",
+          "playbackPhrase": "In this passage, Huck and Jim keep their supplies in the cavern.",
+          "properNoun": false
+        },
+        {
+          "word": "gust",
+          "definition": "A sudden, strong rush of wind.",
+          "sentence": "In this passage, a gust makes the tree branches toss about.",
+          "playbackPhrase": "In this passage, a gust makes the tree branches toss about.",
+          "properNoun": false
+        },
+        {
+          "word": "thrash",
+          "definition": "To move or strike about violently.",
+          "sentence": "In this passage, the rain would thrash along outside the cave.",
+          "playbackPhrase": "In this passage, the rain would thrash along outside the cave.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Huck say he wouldn’t want to be anywhere else?",
+        "orderedChoices": [
+          {
+            "text": "He thinks the storm is almost over, so they can leave soon.",
+            "correct": false
+          },
+          {
+            "text": "He feels safe and comfortable in the cave while the storm rages outside.",
+            "correct": true
+          },
+          {
+            "text": "He hopes the rising water will carry their canoe farther downriver.",
+            "correct": false
+          }
+        ],
+        "correct": "He feels safe and comfortable in the cave while the storm rages outside.",
+        "distractors": [
+          "He thinks the storm is almost over, so they can leave soon.",
+          "He hopes the rising water will carry their canoe farther downriver."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "searchish-10",
+      "title": "Native Advertising",
+      "reviewedTitle": "Native Advertising — Recognizing an ad before you click",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Native Advertising: A Guide for Businesses,” published by the Federal Trade Commission. Native advertising is designed to resemble the material around it.",
+        "In digital media, native ads often resemble the design, style, and functionality of the media in which they are disseminated. Ads may appear on a page next to non-advertising content. Examples include news or content aggregator sites, social media platforms, or messaging apps. (The Enforcement Policy Statement refers to a page like that as a “publisher site.”) In other instances, ads are embedded in entertainment programming, such as professionally produced and user-generated videos on social media. Still other examples include native advertising in email, infographics, images, animations, and video games.",
+        "When a native ad appears on the main page of a publisher site or is republished in other media, it commonly consists of a headline, often combined with a thumbnail image and a short description, which, if clicked or tapped, leads to additional advertising content. Under FTC law, advertisers cannot use “deceptive door openers” to induce consumers to view advertising content. Thus, advertisers are responsible for ensuring that native ads are identifiable as advertising before consumers arrive at the main advertising page. In addition, no matter how consumers arrive at advertising content, it must not mislead them about its commercial nature.",
+        "In assessing whether a native ad presented on the main page of a publisher site is recognizable as advertising to consumers, advertisers should consider the ad as a whole, and not just focus on individual phrases, statements, or visual elements. Factors to weigh include an ad’s overall appearance; the similarity of its written, spoken, or visual style or subject matter to non-advertising content on the publisher site on which it appears; and the degree to which it is distinguishable from other content on the publisher site. The same assessment applies to any click- or tap-into page – the page on which the complete ad appears."
+      ],
+      "displayLines": [
+        "An excerpt from “Native Advertising: A Guide for Businesses,” published by the Federal Trade Commission. Native advertising is designed to resemble the material around it.",
+        "In digital media, native ads often resemble the design, style, and functionality of the media in which they are disseminated.",
+        "Ads may appear on a page next to non-advertising content.",
+        "Examples include news or content aggregator sites, social media platforms, or messaging apps.",
+        "(The Enforcement Policy Statement refers to a page like that as a “publisher site.”)",
+        "In other instances, ads are embedded in entertainment programming, such as professionally produced and user-generated videos on social media.",
+        "Still other examples include native advertising in email, infographics, images, animations, and video games.",
+        "When a native ad appears on the main page of a publisher site or is republished in other media, it commonly consists of a headline, often combined with a thumbnail image and a short description, which, if clicked or tapped, leads to additional advertising content.",
+        "Under FTC law, advertisers cannot use “deceptive door openers” to induce consumers to view advertising content.",
+        "Thus, advertisers are responsible for ensuring that native ads are identifiable as advertising before consumers arrive at the main advertising page.",
+        "In addition, no matter how consumers arrive at advertising content, it must not mislead them about its commercial nature.",
+        "In assessing whether a native ad presented on the main page of a publisher site is recognizable as advertising to consumers, advertisers should consider the ad as a whole, and not just focus on individual phrases, statements, or visual elements.",
+        "Factors to weigh include an ad’s overall appearance; the similarity of its written, spoken, or visual style or subject matter to non-advertising content on the publisher site on which it appears; and the degree to which it is distinguishable from other content on the publisher site.",
+        "The same assessment applies to any click- or tap-into page – the page on which the complete ad appears."
+      ],
+      "spokenWordCount": 321,
+      "source": {
+        "label": "Native Advertising — Recognizing an ad before you click",
+        "url": "https://docs.google.com/document/d/1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "onScreen": "Keep the search available.",
+      "vocabulary": [
+        {
+          "word": "disseminated",
+          "definition": "Spread or distributed widely.",
+          "sentence": "In this passage, native ads resemble the media in which they are disseminated.",
+          "playbackPhrase": "In this passage, native ads resemble the media in which they are disseminated.",
+          "properNoun": false
+        },
+        {
+          "word": "induce",
+          "definition": "Persuade or lead someone to do something.",
+          "sentence": "In this passage, a misleading headline can induce someone to open an ad.",
+          "playbackPhrase": "In this passage, a misleading headline can induce someone to open an ad.",
+          "properNoun": false
+        },
+        {
+          "word": "assessment",
+          "definition": "A careful evaluation or judgment.",
+          "sentence": "In this passage, the assessment considers the ad’s overall appearance.",
+          "playbackPhrase": "In this passage, the assessment considers the ad’s overall appearance.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Which approach follows the guidance on identifying native ads?",
+        "orderedChoices": [
+          {
+            "text": "Identify the ad on the destination page; its preview can look like independent news.",
+            "correct": false
+          },
+          {
+            "text": "Make the ad recognizable both before the click and on the destination page.",
+            "correct": true
+          },
+          {
+            "text": "Label the headline, then assess the remaining images and layout separately.",
+            "correct": false
+          }
+        ],
+        "correct": "Make the ad recognizable both before the click and on the destination page.",
+        "distractors": [
+          "Identify the ad on the destination page; its preview can look like independent news.",
+          "Label the headline, then assess the remaining images and layout separately."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    }
+  ],
+  "amaze-on": [
+    {
+      "id": "amaze-on-01",
+      "title": "A Pair of Silk Stockings",
+      "reviewedTitle": "A Pair of Silk Stockings — A windfall and a shopping plan",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “A Pair of Silk Stockings” by Kate Chopin.",
+        "Little Mrs. Sommers one day found herself the unexpected possessor of fifteen dollars. It seemed to her a very large amount of money, and the way in which it stuffed and bulged her worn old porte-monnaie gave her a feeling of importance such as she had not enjoyed for years.",
+        "The question of investment was one that occupied her greatly. For a day or two she walked about apparently in a dreamy state, but really absorbed in speculation and calculation. She did not wish to act hastily, to do anything she might afterward regret. But it was during the still hours of the night when she lay awake revolving plans in her mind that she seemed to see her way clearly toward a proper and judicious use of the money.",
+        "A dollar or two should be added to the price usually paid for Janie's shoes, which would insure their lasting an appreciable time longer than they usually did. She would buy so and so many yards of percale for new shirt waists for the boys and Janie and Mag. She had intended to make the old ones do by skilful patching. Mag should have another gown. She had seen some beautiful patterns, veritable bargains in the shop windows. And still there would be left enough for new stockings--two pairs apiece--and what darning that would save for a while! She would get caps for the boys and sailor-hats for the girls. The vision of her little brood looking fresh and dainty and new for once in their lives excited her and made her restless and wakeful with anticipation."
+      ],
+      "displayLines": [
+        "An excerpt from “A Pair of Silk Stockings” by Kate Chopin.",
+        "Little Mrs. Sommers one day found herself the unexpected possessor of fifteen dollars.",
+        "It seemed to her a very large amount of money, and the way in which it stuffed and bulged her worn old porte-monnaie gave her a feeling of importance such as she had not enjoyed for years.",
+        "The question of investment was one that occupied her greatly.",
+        "For a day or two she walked about apparently in a dreamy state, but really absorbed in speculation and calculation.",
+        "She did not wish to act hastily, to do anything she might afterward regret.",
+        "But it was during the still hours of the night when she lay awake revolving plans in her mind that she seemed to see her way clearly toward a proper and judicious use of the money.",
+        "A dollar or two should be added to the price usually paid for Janie's shoes, which would insure their lasting an appreciable time longer than they usually did.",
+        "She would buy so and so many yards of percale for new shirt waists for the boys and Janie and Mag.",
+        "She had intended to make the old ones do by skilful patching.",
+        "Mag should have another gown.",
+        "She had seen some beautiful patterns, veritable bargains in the shop windows.",
+        "And still there would be left enough for new stockings--two pairs apiece--and what darning that would save for a while!",
+        "She would get caps for the boys and sailor-hats for the girls.",
+        "The vision of her little brood looking fresh and dainty and new for once in their lives excited her and made her restless and wakeful with anticipation."
+      ],
+      "spokenWordCount": 278,
+      "source": {
+        "label": "A Pair of Silk Stockings — A windfall and a shopping plan",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore size information.",
+      "vocabulary": [
+        {
+          "word": "possessor",
+          "definition": "Someone who owns or has something.",
+          "sentence": "In this passage, Mrs. Sommers becomes the unexpected possessor of fifteen dollars.",
+          "playbackPhrase": "In this passage, Mrs. Sommers becomes the unexpected possessor of fifteen dollars.",
+          "properNoun": false
+        },
+        {
+          "word": "judicious",
+          "definition": "Showing careful, sensible judgment.",
+          "sentence": "In this passage, Mrs. Sommers plans a judicious use of her money.",
+          "playbackPhrase": "In this passage, Mrs. Sommers plans a judicious use of her money.",
+          "properNoun": false
+        },
+        {
+          "word": "appreciable",
+          "definition": "Large enough to be noticed or to matter.",
+          "sentence": "In this passage, better shoes might last an appreciable time longer.",
+          "playbackPhrase": "In this passage, better shoes might last an appreciable time longer.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Mrs. Sommers plan to spend extra on Janie’s shoes?",
+        "orderedChoices": [
+          {
+            "text": "She expects the better pair to last longer.",
+            "correct": true
+          },
+          {
+            "text": "She wants the shoes to match the sailor-hats.",
+            "correct": false
+          },
+          {
+            "text": "She thinks shoes will cost less than patching shirts.",
+            "correct": false
+          }
+        ],
+        "correct": "She expects the better pair to last longer.",
+        "distractors": [
+          "She wants the shoes to match the sailor-hats.",
+          "She thinks shoes will cost less than patching shirts."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-02",
+      "title": "A Christmas Carol",
+      "reviewedTitle": "A Christmas Carol — A golden idol",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “A Christmas Carol” by Charles Dickens. Scrooge watches a memory of his younger self. Belle, the woman he intended to marry, explains how he has changed.",
+        "\"It matters little,\" she said, softly. \"To you, very little. Another idol has displaced me; and if it can cheer and comfort you in time to come, as I would have tried to do, I have no just cause to grieve.\"",
+        "\"What Idol has displaced you?\" he rejoined.",
+        "\"A golden one.\"",
+        "\"This is the even-handed dealing of the world!\" he said. \"There is nothing on which it is so hard as poverty; and there is nothing it professes to condemn with such severity as the pursuit of wealth!\"",
+        "\"You fear the world too much,\" she answered, gently. \"All your other hopes have merged into the hope of being beyond the chance of its sordid reproach. I have seen your nobler aspirations fall off one by one, until the master-passion, Gain, engrosses you. Have I not?\"",
+        "\"What then?\" he retorted. \"Even if I have grown so much wiser, what then? I am not changed towards you.\"",
+        "She shook her head.",
+        "\"Am I?\"",
+        "\"Our contract is an old one. It was made when we were both poor and content to be so, until, in good season, we could improve our worldly fortune by our patient industry. You are changed. When it was made, you were another man.\"",
+        "\"I was a boy,\" he said impatiently.",
+        "\"Your own feeling tells you that you were not what you are,\" she returned. \"I am. That which promised happiness when we were one in heart, is fraught with misery now that we are two. How often and how keenly I have thought of this, I will not say. It is enough that I have thought of it, and can release you.\""
+      ],
+      "displayLines": [
+        "An excerpt from “A Christmas Carol” by Charles Dickens. Scrooge watches a memory of his younger self. Belle, the woman he intended to marry, explains how he has changed.",
+        "\"It matters little,\" she said, softly.",
+        "\"To you, very little.",
+        "Another idol has displaced me; and if it can cheer and comfort you in time to come, as I would have tried to do, I have no just cause to grieve.\"",
+        "\"What Idol has displaced you?\"",
+        "he rejoined.",
+        "\"A golden one.\"",
+        "\"This is the even-handed dealing of the world!\"",
+        "he said.",
+        "\"There is nothing on which it is so hard as poverty; and there is nothing it professes to condemn with such severity as the pursuit of wealth!\"",
+        "\"You fear the world too much,\" she answered, gently.",
+        "\"All your other hopes have merged into the hope of being beyond the chance of its sordid reproach.",
+        "I have seen your nobler aspirations fall off one by one, until the master-passion, Gain, engrosses you.",
+        "Have I not?\"",
+        "\"What then?\"",
+        "he retorted.",
+        "\"Even if I have grown so much wiser, what then?",
+        "I am not changed towards you.\"",
+        "She shook her head.",
+        "\"Am I?\"",
+        "\"Our contract is an old one.",
+        "It was made when we were both poor and content to be so, until, in good season, we could improve our worldly fortune by our patient industry.",
+        "You are changed.",
+        "When it was made, you were another man.\"",
+        "\"I was a boy,\" he said impatiently.",
+        "\"Your own feeling tells you that you were not what you are,\" she returned.",
+        "\"I am.",
+        "That which promised happiness when we were one in heart, is fraught with misery now that we are two.",
+        "How often and how keenly I have thought of this, I will not say.",
+        "It is enough that I have thought of it, and can release you.\""
+      ],
+      "spokenWordCount": 303,
+      "source": {
+        "label": "A Christmas Carol — A golden idol",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore brand and spending filters.",
+      "vocabulary": [
+        {
+          "word": "reproach",
+          "definition": "Blame or criticism expressing disapproval.",
+          "sentence": "In this passage, Scrooge fears the world’s reproach of poverty.",
+          "playbackPhrase": "In this passage, Scrooge fears the world’s reproach of poverty.",
+          "properNoun": false
+        },
+        {
+          "word": "engrosses",
+          "definition": "Occupies someone’s attention completely.",
+          "sentence": "In this passage, Belle says that gaining wealth engrosses Scrooge.",
+          "playbackPhrase": "In this passage, Belle says that gaining wealth engrosses Scrooge.",
+          "properNoun": false
+        },
+        {
+          "word": "fraught",
+          "definition": "Filled with something difficult or troubling.",
+          "sentence": "In this passage, their changed relationship is now fraught with misery.",
+          "playbackPhrase": "In this passage, their changed relationship is now fraught with misery.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What change does Belle see in Scrooge?",
+        "orderedChoices": [
+          {
+            "text": "He has stopped believing that money can improve their lives.",
+            "correct": false
+          },
+          {
+            "text": "Avoiding poverty has become more important to him than their shared hopes.",
+            "correct": true
+          },
+          {
+            "text": "He now wants Belle to manage all of their money.",
+            "correct": false
+          }
+        ],
+        "correct": "Avoiding poverty has become more important to him than their shared hopes.",
+        "distractors": [
+          "He has stopped believing that money can improve their lives.",
+          "He now wants Belle to manage all of their money."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-03",
+      "title": "Adventures of Huckleberry Finn",
+      "reviewedTitle": "Adventures of Huckleberry Finn — Customers recommend a bad purchase",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. A paying audience discovers that the duke and the king’s advertised show is already over after a brief performance.",
+        "Then the duke he lets the curtain down, and bows to the people, and says the great tragedy will be performed only two nights more, on accounts of pressing London engagements, where the seats is all sold already for it in Drury Lane; and then he makes them another bow, and says if he has succeeded in pleasing them and instructing them, he will be deeply obleeged if they will mention it to their friends and get them to come and see it.",
+        "Twenty people sings out:",
+        "“What, is it over? Is that all?”",
+        "The duke says yes. Then there was a fine time. Everybody sings out, “Sold!” and rose up mad, and was a-going for that stage and them tragedians. But a big, fine looking man jumps up on a bench and shouts:",
+        "“Hold on! Just a word, gentlemen.” They stopped to listen. “We are sold—mighty badly sold. But we don’t want to be the laughing stock of this whole town, I reckon, and never hear the last of this thing as long as we live. No. What we want is to go out of here quiet, and talk this show up, and sell the rest of the town! Then we’ll all be in the same boat. Ain’t that sensible?” (“You bet it is!—the jedge is right!” everybody sings out.) “All right, then—not a word about any sell. Go along home, and advise everybody to come and see the tragedy.”",
+        "Next day you couldn’t hear nothing around that town but how splendid that show was. House was jammed again that night, and we sold this crowd the same way. When me and the king and the duke got home to the raft we all had a supper; and by-and-by, about midnight, they made Jim and me back her out and float her down the middle of the river, and fetch her in and hide her about two mile below town."
+      ],
+      "displayLines": [
+        "An excerpt from “Adventures of Huckleberry Finn” by Mark Twain. A paying audience discovers that the duke and the king’s advertised show is already over after a brief performance.",
+        "Then the duke he lets the curtain down, and bows to the people, and says the great tragedy will be performed only two nights more, on accounts of pressing London engagements, where the seats is all sold already for it in Drury Lane; and then he makes them another bow, and says if he has succeeded in pleasing them and instructing them, he will be deeply obleeged if they will mention it to their friends and get them to come and see it.",
+        "Twenty people sings out:",
+        "“What, is it over?",
+        "Is that all?”",
+        "The duke says yes.",
+        "Then there was a fine time.",
+        "Everybody sings out, “Sold!”",
+        "and rose up mad, and was a-going for that stage and them tragedians.",
+        "But a big, fine looking man jumps up on a bench and shouts:",
+        "“Hold on!",
+        "Just a word, gentlemen.”",
+        "They stopped to listen.",
+        "“We are sold—mighty badly sold.",
+        "But we don’t want to be the laughing stock of this whole town, I reckon, and never hear the last of this thing as long as we live.",
+        "No.",
+        "What we want is to go out of here quiet, and talk this show up, and sell the rest of the town!",
+        "Then we’ll all be in the same boat.",
+        "Ain’t that sensible?”",
+        "(“You bet it is!—the jedge is right!”",
+        "everybody sings out.)",
+        "“All right, then—not a word about any sell.",
+        "Go along home, and advise everybody to come and see the tragedy.”",
+        "Next day you couldn’t hear nothing around that town but how splendid that show was.",
+        "House was jammed again that night, and we sold this crowd the same way.",
+        "When me and the king and the duke got home to the raft we all had a supper; and by-and-by, about midnight, they made Jim and me back her out and float her down the middle of the river, and fetch her in and hide her about two mile below town."
+      ],
+      "spokenWordCount": 350,
+      "source": {
+        "label": "Adventures of Huckleberry Finn — Customers recommend a bad purchase",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore mixed reviews and reviewer history.",
+      "vocabulary": [
+        {
+          "word": "engagements",
+          "definition": "Scheduled professional appearances or commitments.",
+          "sentence": "In this passage, the duke claims to have pressing London engagements.",
+          "playbackPhrase": "In this passage, the duke claims to have pressing London engagements.",
+          "properNoun": false
+        },
+        {
+          "word": "tragedians",
+          "definition": "Actors who perform tragic drama.",
+          "sentence": "In this passage, the angry audience starts toward the tragedians.",
+          "playbackPhrase": "In this passage, the angry audience starts toward the tragedians.",
+          "properNoun": false
+        },
+        {
+          "word": "splendid",
+          "definition": "Extremely good or impressive.",
+          "sentence": "In this passage, the customers call the disappointing show splendid.",
+          "playbackPhrase": "In this passage, the customers call the disappointing show splendid.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why do the disappointed customers recommend the show?",
+        "orderedChoices": [
+          {
+            "text": "They want the rest of the town to share their embarrassment.",
+            "correct": true
+          },
+          {
+            "text": "They think a larger audience will persuade the actors to improve it.",
+            "correct": false
+          },
+          {
+            "text": "They accept the duke’s claim that London audiences have enjoyed it.",
+            "correct": false
+          }
+        ],
+        "correct": "They want the rest of the town to share their embarrassment.",
+        "distractors": [
+          "They think a larger audience will persuade the actors to improve it.",
+          "They accept the duke’s claim that London audiences have enjoyed it."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-04",
+      "title": "The Great Gatsby",
+      "reviewedTitle": "The Great Gatsby — Behind the party",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “The Great Gatsby” by F. Scott Fitzgerald. Nick describes the parties at his neighbor Gatsby’s house.",
+        "There was music from my neighbor’s house through the summer nights. In his blue gardens men and girls came and went like moths among the whisperings and the champagne and the stars. At high tide in the afternoon I watched his guests diving from the tower of his raft, or taking the sun on the hot sand of his beach while his two motor-boats slit the waters of the Sound, drawing aquaplanes over cataracts of foam. On week-ends his Rolls-Royce became an omnibus, bearing parties to and from the city between nine in the morning and long past midnight, while his station wagon scampered like a brisk yellow bug to meet all trains. And on Mondays eight servants, including an extra gardener, toiled all day with mops and scrubbing-brushes and hammers and garden-shears, repairing the ravages of the night before.",
+        "Every Friday five crates of oranges and lemons arrived from a fruiterer in New York—every Monday these same oranges and lemons left his back door in a pyramid of pulpless halves. There was a machine in the kitchen which could extract the juice of two hundred oranges in half an hour if a little button was pressed two hundred times by a butler’s thumb.",
+        "At least once a fortnight a corps of caterers came down with several hundred feet of canvas and enough colored lights to make a Christmas tree of Gatsby’s enormous garden. On buffet tables, garnished with glistening hors-d’œuvre, spiced baked hams crowded against salads of harlequin designs and pastry pigs and turkeys bewitched to a dark gold. In the main hall a bar with a real brass rail was set up, and stocked with gins and liquors and with cordials so long forgotten that most of his female guests were too young to know one from another."
+      ],
+      "displayLines": [
+        "An excerpt from “The Great Gatsby” by F. Scott Fitzgerald. Nick describes the parties at his neighbor Gatsby’s house.",
+        "There was music from my neighbor’s house through the summer nights.",
+        "In his blue gardens men and girls came and went like moths among the whisperings and the champagne and the stars.",
+        "At high tide in the afternoon I watched his guests diving from the tower of his raft, or taking the sun on the hot sand of his beach while his two motor-boats slit the waters of the Sound, drawing aquaplanes over cataracts of foam.",
+        "On week-ends his Rolls-Royce became an omnibus, bearing parties to and from the city between nine in the morning and long past midnight, while his station wagon scampered like a brisk yellow bug to meet all trains.",
+        "And on Mondays eight servants, including an extra gardener, toiled all day with mops and scrubbing-brushes and hammers and garden-shears, repairing the ravages of the night before.",
+        "Every Friday five crates of oranges and lemons arrived from a fruiterer in New York—every Monday these same oranges and lemons left his back door in a pyramid of pulpless halves.",
+        "There was a machine in the kitchen which could extract the juice of two hundred oranges in half an hour if a little button was pressed two hundred times by a butler’s thumb.",
+        "At least once a fortnight a corps of caterers came down with several hundred feet of canvas and enough colored lights to make a Christmas tree of Gatsby’s enormous garden.",
+        "On buffet tables, garnished with glistening hors-d’œuvre, spiced baked hams crowded against salads of harlequin designs and pastry pigs and turkeys bewitched to a dark gold.",
+        "In the main hall a bar with a real brass rail was set up, and stocked with gins and liquors and with cordials so long forgotten that most of his female guests were too young to know one from another."
+      ],
+      "spokenWordCount": 319,
+      "source": {
+        "label": "The Great Gatsby — Behind the party",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore grouped delivery.",
+      "vocabulary": [
+        {
+          "word": "Omnibus",
+          "definition": "a bus carrying a number of passengers.",
+          "sentence": "In this passage, Gatsby’s car becomes an omnibus for his guests.",
+          "playbackPhrase": "In this passage, Gatsby’s car becomes an omnibus for his guests.",
+          "properNoun": false
+        },
+        {
+          "word": "Ravages",
+          "definition": "serious damage caused by something destructive.",
+          "sentence": "In this passage, servants repair the ravages of the party.",
+          "playbackPhrase": "In this passage, servants repair the ravages of the party.",
+          "properNoun": false
+        },
+        {
+          "word": "Harlequin",
+          "definition": "made up of patches of different colors.",
+          "sentence": "In this passage, the salads have colorful harlequin designs.",
+          "playbackPhrase": "In this passage, the salads have colorful harlequin designs.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What do the Monday details add to the description of Gatsby’s parties?",
+        "orderedChoices": [
+          {
+            "text": "They show that the parties depend on extensive supplies and cleanup.",
+            "correct": true
+          },
+          {
+            "text": "They show that the servants spend Monday preparing the next night’s party.",
+            "correct": false
+          },
+          {
+            "text": "They show that machinery replaces most of the servants’ work.",
+            "correct": false
+          }
+        ],
+        "correct": "They show that the parties depend on extensive supplies and cleanup.",
+        "distractors": [
+          "They show that the servants spend Monday preparing the next night’s party.",
+          "They show that machinery replaces most of the servants’ work."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-05",
+      "title": "Walden",
+      "reviewedTitle": "Walden — Patches and respectability",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Walden” by Henry David Thoreau. He questions how people judge worn and patched clothing.",
+        "Every day our garments become more assimilated to ourselves, receiving the impress of the wearer’s character, until we hesitate to lay them aside, without such delay and medical appliances and some such solemnity even as our bodies. No man ever stood the lower in my estimation for having a patch in his clothes; yet I am sure that there is greater anxiety, commonly, to have fashionable, or at least clean and unpatched clothes, than to have a sound conscience. But even if the rent is not mended, perhaps the worst vice betrayed is improvidence. I sometimes try my acquaintances by such tests as this;—who could wear a patch, or two extra seams only, over the knee? Most behave as if they believed that their prospects for life would be ruined if they should do it. It would be easier for them to hobble to town with a broken leg than with a broken pantaloon. Often if an accident happens to a gentleman’s legs, they can be mended; but if a similar accident happens to the legs of his pantaloons, there is no help for it; for he considers, not what is truly respectable, but what is respected. We know but few men, a great many coats and breeches. Dress a scarecrow in your last shift, you standing shiftless by, who would not soonest salute the scarecrow? Passing a cornfield the other day, close by a hat and coat on a stake, I recognized the owner of the farm. He was only a little more weather-beaten than when I saw him last."
+      ],
+      "displayLines": [
+        "An excerpt from “Walden” by Henry David Thoreau. He questions how people judge worn and patched clothing.",
+        "Every day our garments become more assimilated to ourselves, receiving the impress of the wearer’s character, until we hesitate to lay them aside, without such delay and medical appliances and some such solemnity even as our bodies.",
+        "No man ever stood the lower in my estimation for having a patch in his clothes; yet I am sure that there is greater anxiety, commonly, to have fashionable, or at least clean and unpatched clothes, than to have a sound conscience.",
+        "But even if the rent is not mended, perhaps the worst vice betrayed is improvidence.",
+        "I sometimes try my acquaintances by such tests as this;—who could wear a patch, or two extra seams only, over the knee?",
+        "Most behave as if they believed that their prospects for life would be ruined if they should do it.",
+        "It would be easier for them to hobble to town with a broken leg than with a broken pantaloon.",
+        "Often if an accident happens to a gentleman’s legs, they can be mended; but if a similar accident happens to the legs of his pantaloons, there is no help for it; for he considers, not what is truly respectable, but what is respected.",
+        "We know but few men, a great many coats and breeches.",
+        "Dress a scarecrow in your last shift, you standing shiftless by, who would not soonest salute the scarecrow?",
+        "Passing a cornfield the other day, close by a hat and coat on a stake, I recognized the owner of the farm.",
+        "He was only a little more weather-beaten than when I saw him last."
+      ],
+      "spokenWordCount": 278,
+      "source": {
+        "label": "Walden — Patches and respectability",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore durability and replacement-waste information.",
+      "vocabulary": [
+        {
+          "word": "assimilated",
+          "definition": "Made increasingly similar or closely fitted to something.",
+          "sentence": "In this passage, worn garments become assimilated to their wearer.",
+          "playbackPhrase": "In this passage, worn garments become assimilated to their wearer.",
+          "properNoun": false
+        },
+        {
+          "word": "improvidence",
+          "definition": "A lack of care or planning for future needs.",
+          "sentence": "In this passage, an unmended tear may reveal improvidence, not bad character.",
+          "playbackPhrase": "In this passage, an unmended tear may reveal improvidence, not bad character.",
+          "properNoun": false
+        },
+        {
+          "word": "prospects",
+          "definition": "Chances of future success or improvement.",
+          "sentence": "In this passage, people fear that patched trousers will ruin their prospects.",
+          "playbackPhrase": "In this passage, people fear that patched trousers will ruin their prospects.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Thoreau compare a broken leg with torn trousers?",
+        "orderedChoices": [
+          {
+            "text": "He thinks clothing repairs usually take longer than physical recovery.",
+            "correct": false
+          },
+          {
+            "text": "He wants people to replace damaged clothes before repairing them.",
+            "correct": false
+          },
+          {
+            "text": "He mocks people who find a clothing flaw more embarrassing than an injury.",
+            "correct": true
+          }
+        ],
+        "correct": "He mocks people who find a clothing flaw more embarrassing than an injury.",
+        "distractors": [
+          "He thinks clothing repairs usually take longer than physical recovery.",
+          "He wants people to replace damaged clothes before repairing them."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-06",
+      "title": "The World Is Too Much With Us",
+      "reviewedTitle": "The World Is Too Much With Us",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "“The World Is Too Much With Us,” a poem by William Wordsworth.",
+        "The world is too much with us; late and soon,",
+        "Getting and spending, we lay waste our powers;—",
+        "Little we see in Nature that is ours;",
+        "We have given our hearts away, a sordid boon!",
+        "This Sea that bares her bosom to the moon;",
+        "The winds that will be howling at all hours,",
+        "And are up-gathered now like sleeping flowers;",
+        "For this, for everything, we are out of tune;",
+        "It moves us not. Great God! I’d rather be",
+        "A Pagan suckled in a creed outworn;",
+        "So might I, standing on this pleasant lea,",
+        "Have glimpses that would make me less forlorn;",
+        "Have sight of Proteus rising from the sea;",
+        "Or hear old Triton blow his wreathèd horn."
+      ],
+      "displayLines": [
+        "“The World Is Too Much With Us,” a poem by William Wordsworth.",
+        "The world is too much with us; late and soon,",
+        "Getting and spending, we lay waste our powers;—",
+        "Little we see in Nature that is ours;",
+        "We have given our hearts away, a sordid boon!",
+        "This Sea that bares her bosom to the moon;",
+        "The winds that will be howling at all hours,",
+        "And are up-gathered now like sleeping flowers;",
+        "For this, for everything, we are out of tune;",
+        "It moves us not. Great God! I’d rather be",
+        "A Pagan suckled in a creed outworn;",
+        "So might I, standing on this pleasant lea,",
+        "Have glimpses that would make me less forlorn;",
+        "Have sight of Proteus rising from the sea;",
+        "Or hear old Triton blow his wreathèd horn."
+      ],
+      "spokenWordCount": 129,
+      "source": {
+        "label": "The World Is Too Much With Us",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Restore useful rankings and disclose sponsored results.",
+      "vocabulary": [
+        {
+          "word": "sordid",
+          "definition": "Morally unpleasant or mean-spirited.",
+          "sentence": "In this passage, the speaker calls material gain a sordid boon.",
+          "playbackPhrase": "In this passage, the speaker calls material gain a sordid boon.",
+          "properNoun": false
+        },
+        {
+          "word": "creed",
+          "definition": "A set of religious beliefs.",
+          "sentence": "In this passage, the speaker imagines following an ancient creed.",
+          "playbackPhrase": "In this passage, the speaker imagines following an ancient creed.",
+          "properNoun": false
+        },
+        {
+          "word": "forlorn",
+          "definition": "Lonely, sad, or without hope.",
+          "sentence": "In this passage, an encounter with nature might leave him less forlorn.",
+          "playbackPhrase": "In this passage, an encounter with nature might leave him less forlorn.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What does the speaker most want to recover?",
+        "orderedChoices": [
+          {
+            "text": "A feeling of connection with the natural world.",
+            "correct": true
+          },
+          {
+            "text": "The wealth that earlier generations wasted.",
+            "correct": false
+          },
+          {
+            "text": "A way to avoid the sea and its unsettling sounds.",
+            "correct": false
+          }
+        ],
+        "correct": "A feeling of connection with the natural world.",
+        "distractors": [
+          "The wealth that earlier generations wasted.",
+          "A way to avoid the sea and its unsettling sounds."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-07",
+      "title": "The Adventures of Tom Sawyer",
+      "reviewedTitle": "The Adventures of Tom Sawyer — Making work desirable",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “The Adventures of Tom Sawyer” by Mark Twain. Tom has been assigned the tedious chore of coating a fence with whitewash, a kind of white paint. To get other boys to do the work for him, he makes it seem like a rare privilege. Ben, who arrived pretending to be a steamboat, now offers his apple for a turn with the brush.",
+        "Tom gave up the brush with reluctance in his face, but alacrity in his heart. And while the late steamer Big Missouri worked and sweated in the sun, the retired artist sat on a barrel in the shade close by, dangled his legs, munched his apple, and planned the slaughter of more innocents. There was no lack of material; boys happened along every little while; they came to jeer, but remained to whitewash.",
+        "Later, after more boys have paid for their turns, the narrator considers Tom’s discovery.",
+        "He had had a nice, good, idle time all the while—plenty of company—and the fence had three coats of whitewash on it! If he hadn’t run out of whitewash he would have bankrupted every boy in the village.",
+        "Tom said to himself that it was not such a hollow world, after all. He had discovered a great law of human action, without knowing it—namely, that in order to make a man or a boy covet a thing, it is only necessary to make the thing difficult to attain. If he had been a great and wise philosopher, like the writer of this book, he would now have comprehended that Work consists of whatever a body is obliged to do, and that Play consists of whatever a body is not obliged to do.",
+        "And this would help him to understand why constructing artificial flowers or performing on a tread-mill is work, while rolling ten-pins or climbing Mont Blanc is only amusement. There are wealthy gentlemen in England who drive four-horse passenger-coaches twenty or thirty miles on a daily line, in the summer, because the privilege costs them considerable money; but if they were offered wages for the service, that would turn it into work and then they would resign."
+      ],
+      "displayLines": [
+        "An excerpt from “The Adventures of Tom Sawyer” by Mark Twain. Tom has been assigned the tedious chore of coating a fence with whitewash, a kind of white paint. To get other boys to do the work for him, he makes it seem like a rare privilege. Ben, who arrived pretending to be a steamboat, now offers his apple for a turn with the brush.",
+        "Tom gave up the brush with reluctance in his face, but alacrity in his heart.",
+        "And while the late steamer Big Missouri worked and sweated in the sun, the retired artist sat on a barrel in the shade close by, dangled his legs, munched his apple, and planned the slaughter of more innocents.",
+        "There was no lack of material; boys happened along every little while; they came to jeer, but remained to whitewash.",
+        "Later, after more boys have paid for their turns, the narrator considers Tom’s discovery.",
+        "He had had a nice, good, idle time all the while—plenty of company—and the fence had three coats of whitewash on it!",
+        "If he hadn’t run out of whitewash he would have bankrupted every boy in the village.",
+        "Tom said to himself that it was not such a hollow world, after all.",
+        "He had discovered a great law of human action, without knowing it—namely, that in order to make a man or a boy covet a thing, it is only necessary to make the thing difficult to attain.",
+        "If he had been a great and wise philosopher, like the writer of this book, he would now have comprehended that Work consists of whatever a body is obliged to do, and that Play consists of whatever a body is not obliged to do.",
+        "And this would help him to understand why constructing artificial flowers or performing on a tread-mill is work, while rolling ten-pins or climbing Mont Blanc is only amusement.",
+        "There are wealthy gentlemen in England who drive four-horse passenger-coaches twenty or thirty miles on a daily line, in the summer, because the privilege costs them considerable money; but if they were offered wages for the service, that would turn it into work and then they would resign."
+      ],
+      "spokenWordCount": 360,
+      "source": {
+        "label": "The Adventures of Tom Sawyer — Making work desirable",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "After Auto’s over-fix: show paid placement.",
+      "vocabulary": [
+        {
+          "word": "alacrity",
+          "definition": "Eager readiness to do something.",
+          "sentence": "In this passage, Tom hides his alacrity when he gives up the brush.",
+          "playbackPhrase": "In this passage, Tom hides his alacrity when he gives up the brush.",
+          "properNoun": false
+        },
+        {
+          "word": "covet",
+          "definition": "Strongly desire something.",
+          "sentence": "In this passage, making the task hard to obtain makes boys covet it.",
+          "playbackPhrase": "In this passage, making the task hard to obtain makes boys covet it.",
+          "properNoun": false
+        },
+        {
+          "word": "resign",
+          "definition": "Give up a job or position.",
+          "sentence": "In this passage, the gentlemen would resign if driving became paid work.",
+          "playbackPhrase": "In this passage, the gentlemen would resign if driving became paid work.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What connects Tom’s fence-painting trick with the example of gentlemen driving coaches?",
+        "orderedChoices": [
+          {
+            "text": "Both tasks become attractive because people can earn valuable rewards.",
+            "correct": false
+          },
+          {
+            "text": "Both tasks seem enjoyable when treated as privileges rather than obligations.",
+            "correct": true
+          },
+          {
+            "text": "Both tasks require unusual skill that most people cannot acquire.",
+            "correct": false
+          }
+        ],
+        "correct": "Both tasks seem enjoyable when treated as privileges rather than obligations.",
+        "distractors": [
+          "Both tasks become attractive because people can earn valuable rewards.",
+          "Both tasks require unusual skill that most people cannot acquire."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-08",
+      "title": "How To Evaluate Online Reviews",
+      "reviewedTitle": "How To Evaluate Online Reviews",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “How To Evaluate Online Reviews,” published by the Federal Trade Commission.",
+        "When you use online reviews to help you make decisions, consider the source of the information. What do you know about this reviewer? Or about the site or platform where you’re reading the review?",
+        "For years, the FTC’s main recommendation when considering reviews has been to look at a variety of sources, including well-known websites that have trustworthy and impartial expert reviews. That’s still a very good place to start. Here are some other steps to take:",
+        "Check how recent the reviews are, and watch for a burst of reviews over a short period of time. That can sometimes mean the reviews are fake.",
+        "Check if the reviewer has written other reviews. If so, read those to get a better sense of how much to trust that reviewer. If it seems that the reviewer has created an account just to write one review for one product, that review may be fake.",
+        "Don’t assume that, just by looking, you can spot the difference between a real review and a fake one. Some reviews may look suspicious, and some may look real, but it can often be nearly impossible to tell for sure. For example, you already know to watch out for reviews that seem too positive to be real, but some fake positive reviews give less than the highest possible rating in order to seem more believable.",
+        "Remember that fake reviews are not always positive. Sometimes, a company might post fake negative reviews to harm a competitor.",
+        "You won’t always know if a reviewer got something — like a free product — in exchange for writing a review. But, on some websites, you’ll see a label or badge next to the review that tells you the reviewer got an incentive. How you weigh those reviews is up to you."
+      ],
+      "displayLines": [
+        "An excerpt from “How To Evaluate Online Reviews,” published by the Federal Trade Commission.",
+        "When you use online reviews to help you make decisions, consider the source of the information.",
+        "What do you know about this reviewer?",
+        "Or about the site or platform where you’re reading the review?",
+        "For years, the FTC’s main recommendation when considering reviews has been to look at a variety of sources, including well-known websites that have trustworthy and impartial expert reviews.",
+        "That’s still a very good place to start.",
+        "Here are some other steps to take:",
+        "Check how recent the reviews are, and watch for a burst of reviews over a short period of time.",
+        "That can sometimes mean the reviews are fake.",
+        "Check if the reviewer has written other reviews.",
+        "If so, read those to get a better sense of how much to trust that reviewer.",
+        "If it seems that the reviewer has created an account just to write one review for one product, that review may be fake.",
+        "Don’t assume that, just by looking, you can spot the difference between a real review and a fake one.",
+        "Some reviews may look suspicious, and some may look real, but it can often be nearly impossible to tell for sure.",
+        "For example, you already know to watch out for reviews that seem too positive to be real, but some fake positive reviews give less than the highest possible rating in order to seem more believable.",
+        "Remember that fake reviews are not always positive.",
+        "Sometimes, a company might post fake negative reviews to harm a competitor.",
+        "You won’t always know if a reviewer got something — like a free product — in exchange for writing a review.",
+        "But, on some websites, you’ll see a label or badge next to the review that tells you the reviewer got an incentive.",
+        "How you weigh those reviews is up to you."
+      ],
+      "spokenWordCount": 312,
+      "source": {
+        "label": "How To Evaluate Online Reviews",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Show real reviews.",
+      "vocabulary": [
+        {
+          "word": "impartial",
+          "definition": "Not favoring one side or influenced by a personal interest.",
+          "sentence": "In this passage, the FTC recommends looking for impartial expert reviews.",
+          "playbackPhrase": "In this passage, the FTC recommends looking for impartial expert reviews.",
+          "properNoun": false
+        },
+        {
+          "word": "competitor",
+          "definition": "A person or business trying to attract the same customers.",
+          "sentence": "In this passage, a fake negative review can harm a competitor.",
+          "playbackPhrase": "In this passage, a fake negative review can harm a competitor.",
+          "properNoun": false
+        },
+        {
+          "word": "incentive",
+          "definition": "Something offered to encourage an action.",
+          "sentence": "In this passage, a free product can be an incentive for writing a review.",
+          "playbackPhrase": "In this passage, a free product can be an incentive for writing a review.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why is a less-than-perfect rating not enough to prove that a review is genuine?",
+        "orderedChoices": [
+          {
+            "text": "Some fake positive reviews use lower ratings to seem believable.",
+            "correct": true
+          },
+          {
+            "text": "Some companies post negative reviews about competitors.",
+            "correct": false
+          },
+          {
+            "text": "Some reviewers disclose that they received a free product.",
+            "correct": false
+          }
+        ],
+        "correct": "Some fake positive reviews use lower ratings to seem believable.",
+        "distractors": [
+          "Some companies post negative reviews about competitors.",
+          "Some reviewers disclose that they received a free product."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-09",
+      "title": "El Dorado",
+      "reviewedTitle": "El Dorado — The pleasure of wanting",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “El Dorado” by Robert Louis Stevenson, the author of “Treasure Island.” He considers whether happiness comes from getting everything we want.",
+        "We live in an ascending scale when we live happily, one thing leading to another in an endless series. There is always a new horizon for onward-looking men, and although we dwell on a small planet, immersed in petty business and not enduring beyond a brief period of years, we are so constituted that our hopes are inaccessible, like stars, and the term of hoping is prolonged until the term of life. To be truly happy is a question of how we begin and not of how we end, of what we want and not of what we have. An aspiration is a joy for ever, a possession as solid as a landed estate, a fortune which we can never exhaust and which gives us year by year a revenue of pleasurable activity. To have many of these is to be spiritually rich.",
+        "Life is only a very dull and ill-directed theatre unless we have some interests in the piece; and to those who have neither art nor science, the world is a mere arrangement of colours, or a rough footway where they may very well break their shins. It is in virtue of his own desires and curiosities that any man continues to exist with even patience, that he is charmed by the look of things and people, and that he wakens every morning with a renewed appetite for work and pleasure. Desire and curiosity are the two eyes through which he sees the world in the most enchanted colours: it is they that make women beautiful or fossils interesting: and the man may squander his estate and come to beggary, but if he keeps these two amulets he is still rich in the possibilities of pleasure.",
+        "Suppose he could take one meal so compact and comprehensive that he should never hunger any more; suppose him, at a glance, to take in all the features of the world and allay the desire for knowledge; suppose him to do the like in any province of experience—would not that man be in a poor way for amusement ever after?"
+      ],
+      "displayLines": [
+        "An excerpt from “El Dorado” by Robert Louis Stevenson, the author of “Treasure Island.” He considers whether happiness comes from getting everything we want.",
+        "We live in an ascending scale when we live happily, one thing leading to another in an endless series.",
+        "There is always a new horizon for onward-looking men, and although we dwell on a small planet, immersed in petty business and not enduring beyond a brief period of years, we are so constituted that our hopes are inaccessible, like stars, and the term of hoping is prolonged until the term of life.",
+        "To be truly happy is a question of how we begin and not of how we end, of what we want and not of what we have.",
+        "An aspiration is a joy for ever, a possession as solid as a landed estate, a fortune which we can never exhaust and which gives us year by year a revenue of pleasurable activity.",
+        "To have many of these is to be spiritually rich.",
+        "Life is only a very dull and ill-directed theatre unless we have some interests in the piece; and to those who have neither art nor science, the world is a mere arrangement of colours, or a rough footway where they may very well break their shins.",
+        "It is in virtue of his own desires and curiosities that any man continues to exist with even patience, that he is charmed by the look of things and people, and that he wakens every morning with a renewed appetite for work and pleasure.",
+        "Desire and curiosity are the two eyes through which he sees the world in the most enchanted colours: it is they that make women beautiful or fossils interesting: and the man may squander his estate and come to beggary, but if he keeps these two amulets he is still rich in the possibilities of pleasure.",
+        "Suppose he could take one meal so compact and comprehensive that he should never hunger any more; suppose him, at a glance, to take in all the features of the world and allay the desire for knowledge; suppose him to do the like in any province of experience—would not that man be in a poor way for amusement ever after?"
+      ],
+      "spokenWordCount": 372,
+      "source": {
+        "label": "El Dorado — The pleasure of wanting",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Show all choices.",
+      "vocabulary": [
+        {
+          "word": "Aspiration",
+          "definition": "a strong hope or ambition.",
+          "sentence": "In this passage, an aspiration gives us something enjoyable to pursue.",
+          "playbackPhrase": "In this passage, an aspiration gives us something enjoyable to pursue.",
+          "properNoun": false
+        },
+        {
+          "word": "Amulets",
+          "definition": "objects believed to bring protection or good fortune; here, a metaphor.",
+          "sentence": "In this passage, desire and curiosity are amulets that keep life interesting.",
+          "playbackPhrase": "In this passage, desire and curiosity are amulets that keep life interesting.",
+          "properNoun": false
+        },
+        {
+          "word": "Allay",
+          "definition": "to calm or satisfy a feeling or desire.",
+          "sentence": "In this passage, complete knowledge would allay the desire to learn.",
+          "playbackPhrase": "In this passage, complete knowledge would allay the desire to learn.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Stevenson imagine someone learning everything at a glance?",
+        "orderedChoices": [
+          {
+            "text": "To show how knowledge could free us to enjoy other activities.",
+            "correct": false
+          },
+          {
+            "text": "To suggest that instant satisfaction could remove the pleasure of discovery.",
+            "correct": true
+          },
+          {
+            "text": "To argue that our short lives leave too little time for learning.",
+            "correct": false
+          }
+        ],
+        "correct": "To suggest that instant satisfaction could remove the pleasure of discovery.",
+        "distractors": [
+          "To show how knowledge could free us to enjoy other activities.",
+          "To argue that our short lives leave too little time for learning."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-10",
+      "title": "Recycling Basics and Benefits",
+      "reviewedTitle": "Recycling Basics and Benefits — Closing the loop",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Recycling Basics and Benefits,” published by the United States Environmental Protection Agency.",
+        "The recycling process is made up of three steps that are repeated over and over again. This creates a continuous loop which is represented by the familiar chasing arrows recycling symbol. The three steps of the recycling process are described below.",
+        "Businesses and consumers generate recyclables that are then collected by either a private hauler or government entity. There are several methods for collecting recyclables, including curbside collection, drop-off centers, and deposit or refund programs.",
+        "After collection, recyclables are sent to a recovery facility to be sorted, cleaned, and processed into materials that can be used in manufacturing. Recyclables are bought and sold just like raw materials would be, and prices go up and down depending on supply and demand in the United States and around the world.",
+        "After processing, recyclables are made into new products at a recycling plant or similar facility. More and more of today's products are being manufactured with recycled content.",
+        "Recycled materials are also used in new ways such as recovered glass in asphalt to pave roads or recovered plastic in carpeting and park benches.",
+        "You help close the recycling loop by buying new products made from recycled materials. There are thousands of products that contain recycled content.",
+        "The agency distinguishes two product labels.",
+        "Recycled-content product - The product was manufactured with recycled materials either collected from a recycling program or from waste recovered during the normal manufacturing process. The label will sometimes include how much of the content came from recycled materials.",
+        "Recyclable product - Products that can be collected, processed, and manufactured into new products after they have been used. These products do not necessarily contain recycled materials. Remember not all kinds of recyclables may be collected in your community, so be sure to check with your local recycling program before you buy."
+      ],
+      "displayLines": [
+        "An excerpt from “Recycling Basics and Benefits,” published by the United States Environmental Protection Agency.",
+        "The recycling process is made up of three steps that are repeated over and over again.",
+        "This creates a continuous loop which is represented by the familiar chasing arrows recycling symbol.",
+        "The three steps of the recycling process are described below.",
+        "Businesses and consumers generate recyclables that are then collected by either a private hauler or government entity.",
+        "There are several methods for collecting recyclables, including curbside collection, drop-off centers, and deposit or refund programs.",
+        "After collection, recyclables are sent to a recovery facility to be sorted, cleaned, and processed into materials that can be used in manufacturing.",
+        "Recyclables are bought and sold just like raw materials would be, and prices go up and down depending on supply and demand in the United States and around the world.",
+        "After processing, recyclables are made into new products at a recycling plant or similar facility.",
+        "More and more of today's products are being manufactured with recycled content.",
+        "Recycled materials are also used in new ways such as recovered glass in asphalt to pave roads or recovered plastic in carpeting and park benches.",
+        "You help close the recycling loop by buying new products made from recycled materials.",
+        "There are thousands of products that contain recycled content.",
+        "The agency distinguishes two product labels.",
+        "Recycled-content product - The product was manufactured with recycled materials either collected from a recycling program or from waste recovered during the normal manufacturing process.",
+        "The label will sometimes include how much of the content came from recycled materials.",
+        "Recyclable product - Products that can be collected, processed, and manufactured into new products after they have been used.",
+        "These products do not necessarily contain recycled materials.",
+        "Remember not all kinds of recyclables may be collected in your community, so be sure to check with your local recycling program before you buy."
+      ],
+      "spokenWordCount": 315,
+      "source": {
+        "label": "Recycling Basics and Benefits — Closing the loop",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Show delivery and waste.",
+      "vocabulary": [
+        {
+          "word": "entity",
+          "definition": "An organization that exists as a separate unit.",
+          "sentence": "In this passage, a government entity may collect recyclable materials.",
+          "playbackPhrase": "In this passage, a government entity may collect recyclable materials.",
+          "properNoun": false
+        },
+        {
+          "word": "facility",
+          "definition": "A place equipped for a particular purpose.",
+          "sentence": "In this passage, a recovery facility sorts and cleans the materials.",
+          "playbackPhrase": "In this passage, a recovery facility sorts and cleans the materials.",
+          "properNoun": false
+        },
+        {
+          "word": "asphalt",
+          "definition": "A dark paving material used to surface roads.",
+          "sentence": "In this passage, recovered glass can be used in asphalt.",
+          "playbackPhrase": "In this passage, recovered glass can be used in asphalt.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Which distinction does the passage make?",
+        "orderedChoices": [
+          {
+            "text": "A recyclable product must already contain recovered material.",
+            "correct": false
+          },
+          {
+            "text": "A recycled-content product cannot be recycled again.",
+            "correct": false
+          },
+          {
+            "text": "A recyclable product may contain no recycled material yet.",
+            "correct": true
+          }
+        ],
+        "correct": "A recyclable product may contain no recycled material yet.",
+        "distractors": [
+          "A recyclable product must already contain recovered material.",
+          "A recycled-content product cannot be recycled again."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "amaze-on-11",
+      "title": "Creating Healthy Habits",
+      "reviewedTitle": "Creating Healthy Habits — Now or later?",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Selected excerpts from “Creating Healthy Habits,” published by NIH News in Health. Doctor Susan Czajkowski and other researchers explain how to make choices that support longer-term goals.",
+        "Make a plan that includes small, reasonable goals and specific actions you’ll take to move toward them.",
+        "“If you walk by the vending machine at work and buy junk food every afternoon, try walking a different way to eliminate that decision and bring healthy snacks from home,” Czajkowski says. “Whenever possible, make the healthy choice the easy choice.”",
+        "Consider what you think you’ll need to be successful. How can you change things around you to support your goals? You might need to stock up on healthy foods, remove temptations, or find a special spot to relax.",
+        "Get friends and loved ones involved. Research shows that people’s health behaviors tend to mirror those of their family and friends. Invite them to join you, support you, and help you stay on track.",
+        "It’s also important to plan for obstacles. Think about what might derail your best efforts to live healthier. How can you still make healthy choices during unexpected situations, in stressful times, or when tempted by old habits?",
+        "Later, the article turns to self-control and future rewards.",
+        "“The more you practice self-control, the better you become at it,” says Dr. Leonard Epstein, who studies behavior change and decision-making at the University at Buffalo. “You develop the capacity to act and react another way.”",
+        "Epstein has found that some people have a harder time than others resisting their impulses. He calls this “delay discounting,” where you discount, or undervalue, the larger benefits of waiting in favor of smaller immediate rewards.",
+        "“You can learn to postpone immediate gratification through episodic future thinking, or vividly imagining future positive experiences or rewards,” he explains. “It’s a great way to strengthen your ability to make decisions that are better for you in the long run.”"
+      ],
+      "displayLines": [
+        "Selected excerpts from “Creating Healthy Habits,” published by NIH News in Health. Doctor Susan Czajkowski and other researchers explain how to make choices that support longer-term goals.",
+        "Make a plan that includes small, reasonable goals and specific actions you’ll take to move toward them.",
+        "“If you walk by the vending machine at work and buy junk food every afternoon, try walking a different way to eliminate that decision and bring healthy snacks from home,” Czajkowski says.",
+        "“Whenever possible, make the healthy choice the easy choice.”",
+        "Consider what you think you’ll need to be successful.",
+        "How can you change things around you to support your goals?",
+        "You might need to stock up on healthy foods, remove temptations, or find a special spot to relax.",
+        "Get friends and loved ones involved.",
+        "Research shows that people’s health behaviors tend to mirror those of their family and friends.",
+        "Invite them to join you, support you, and help you stay on track.",
+        "It’s also important to plan for obstacles.",
+        "Think about what might derail your best efforts to live healthier.",
+        "How can you still make healthy choices during unexpected situations, in stressful times, or when tempted by old habits?",
+        "Later, the article turns to self-control and future rewards.",
+        "“The more you practice self-control, the better you become at it,” says Dr. Leonard Epstein, who studies behavior change and decision-making at the University at Buffalo.",
+        "“You develop the capacity to act and react another way.”",
+        "Epstein has found that some people have a harder time than others resisting their impulses.",
+        "He calls this “delay discounting,” where you discount, or undervalue, the larger benefits of waiting in favor of smaller immediate rewards.",
+        "“You can learn to postpone immediate gratification through episodic future thinking, or vividly imagining future positive experiences or rewards,” he explains.",
+        "“It’s a great way to strengthen your ability to make decisions that are better for you in the long run.”"
+      ],
+      "spokenWordCount": 316,
+      "source": {
+        "label": "Creating Healthy Habits — Now or later?",
+        "url": "https://docs.google.com/document/d/17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "sourceRevisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "onScreen": "Ask before buying.",
+      "vocabulary": [
+        {
+          "word": "Derail",
+          "definition": "to prevent a plan from succeeding.",
+          "sentence": "In this passage, unexpected situations can derail a healthy plan.",
+          "playbackPhrase": "In this passage, unexpected situations can derail a healthy plan.",
+          "properNoun": false
+        },
+        {
+          "word": "Impulses",
+          "definition": "sudden urges to act without much thought.",
+          "sentence": "In this passage, impulses can make immediate rewards hard to resist.",
+          "playbackPhrase": "In this passage, impulses can make immediate rewards hard to resist.",
+          "properNoun": false
+        },
+        {
+          "word": "Gratification",
+          "definition": "pleasure from satisfying a desire.",
+          "sentence": "In this passage, postponing gratification means waiting for a reward.",
+          "playbackPhrase": "In this passage, postponing gratification means waiting for a reward.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "How is imagining a future reward different from avoiding the vending machine?",
+        "orderedChoices": [
+          {
+            "text": "It changes how we value waiting, rather than removing a temptation.",
+            "correct": true
+          },
+          {
+            "text": "It removes the need for self-control, rather than helping us practice it.",
+            "correct": false
+          },
+          {
+            "text": "It makes the immediate reward larger, rather than making it less convenient.",
+            "correct": false
+          }
+        ],
+        "correct": "It changes how we value waiting, rather than removing a temptation.",
+        "distractors": [
+          "It removes the need for self-control, rather than helping us practice it.",
+          "It makes the immediate reward larger, rather than making it less convenient."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."

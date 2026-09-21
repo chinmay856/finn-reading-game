@@ -26,7 +26,18 @@
       "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
       "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
       "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
+    },
+    "searchish": {
+      "documentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
+      "revisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sha256": "a2d4f7740e5116b24235abe128cdcbafe781a8c44c823f0d61f5cc58c19dc119"
+    },
+    "amaze-on": {
+      "documentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
+      "revisionId": "ANLCKQkefyH5H2PutHEOmxHn_uULSxDsf1ya6gt9IHKmNoO5VkFUDq6RDjkYobFwKFRfZhY_uSdicZ2FbMvljkg3LMuOZXJ40NEHfY6FlDg",
+      "sha256": "2094e48528de7e0a0141a0b1b0d1f7ec06b7f7deae05722cbac3065706b0df82"
     }
   },
-  "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20."
+  "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20.",
+  "searchishAmazonApproval": "User explicitly authorized publication of current Searchish, Yahoo, and Amazon Google Docs on 2026-09-20. Yahoo text rechecked unchanged; Searchish and Amazon snapshots imported without editorial rewriting."
 }

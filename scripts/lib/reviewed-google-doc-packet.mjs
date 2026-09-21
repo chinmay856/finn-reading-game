@@ -4,14 +4,14 @@ import { derivePassageDisplayLines } from '../../reading-companion/passage-displ
 export function parseReviewedGoogleDoc(siteId, doc) {
   const sections = [];
   for (const paragraph of doc.paragraphs) {
-    if (/^Passage \d+(?: candidate)?:/u.test(paragraph.text)) sections.push([]);
+    if (/^Passage \d+(?: candidate)?(?::| —)/u.test(paragraph.text)) sections.push([]);
     if (sections.length) sections.at(-1).push(paragraph.text);
   }
-  assert.equal(sections.length, siteId === 'faceplace' ? 8 : 9);
+  assert.equal(sections.length, ({ faceplace: 8, searchish: 10, 'amaze-on': 11 }[siteId] ?? 9));
   return sections.map((section, index) => {
     const number = index + 1;
-    assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?:`));
-    const reviewedTitle = section[0].replace(/^Passage \d+(?: candidate)?: /u, '');
+    assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?(?::| —)`));
+    const reviewedTitle = section[0].replace(/^Passage \d+(?: candidate)?(?::| —) /u, '');
     // Editorial descriptions remain in provenance, never in the spoken text.
     const title = siteId === 'yahuh' && number === 1 ? 'Peoples and Creatures of the Moon' : reviewedTitle.replace(/ — (?!Part \d+$).*$/u, '');
     const start = section.findIndex(text => ['Exact complete spoken passage', 'Exact spoken passage'].includes(text)) + 1;
@@ -23,7 +23,11 @@ export function parseReviewedGoogleDoc(siteId, doc) {
     const vocabulary = [];
     for (let i = 0; i < vocabularyLines.length;) {
       let word, definition, phrase;
-      if (vocabularyLines[i].includes(' Exact playback phrase: ')) {
+      if (/^[^:]+: .+ In this passage,/u.test(vocabularyLines[i])) {
+        const match = vocabularyLines[i].match(/^([^:]+): (.+?) (In this passage,[\s\S]+)$/u);
+        [, word, definition, phrase] = match;
+        i += 1;
+      } else if (vocabularyLines[i].includes(' Exact playback phrase: ')) {
         const match = vocabularyLines[i].match(/^(.+?) — (?:Definition|Secondary definition): (.+?) Exact playback phrase: (.+)$/u);
         assert.ok(match);
         [, word, definition, phrase] = match;
@@ -57,7 +61,7 @@ export function parseReviewedGoogleDoc(siteId, doc) {
     });
     assert.equal(orderedChoices.length, 3);
     assert.equal(orderedChoices.filter(choice => choice.correct).length, 1);
-    const verse = /^(?:If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody)/u.test(title);
+    const verse = /^(?:There is no frigate like a book|The World Is Too Much With Us|If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody)/u.test(title);
     const displayLines = verse ? [...paragraphs] : [paragraphs[0], ...paragraphs.slice(1).flatMap(paragraph => {
       const lines = derivePassageDisplayLines({ paragraphs: [paragraph] });
       return lines.some(line => /[,;—–]["'’”)]*$/u.test(line)) ? [paragraph] : lines;
@@ -67,9 +71,9 @@ export function parseReviewedGoogleDoc(siteId, doc) {
       form: 'human-reviewed reading', paragraphs, displayLines,
       spokenWordCount: paragraphs.join(' ').split(/\s+/u).filter(Boolean).length,
       source: { label: reviewedTitle, url: doc.document_url },
-      reviewStatus: siteId === 'yahuh' ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
+      reviewStatus: ['yahuh', 'searchish', 'amaze-on'].includes(siteId) ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
       sourceDocumentId: doc.documentId, sourceRevisionId: doc.revisionId,
-      onScreen: section.find(text => text.startsWith('On screen: '))?.slice(11) ?? '',
+      onScreen: section.find(text => /^(?:On screen|On the website): /u.test(text))?.replace(/^(?:On screen|On the website): /u, '') ?? '',
       vocabulary,
       comprehension: {
         prompt: check[0].replace(/^Exact question: /u, ''), orderedChoices,
