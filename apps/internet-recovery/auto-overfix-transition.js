@@ -34,7 +34,8 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
       { left: '640px', top: '160px' },
       { left: '150px', top: '315px' },
       { left: '640px', top: '475px' },
-      { left: '350px', top: '640px' },
+      // Leave room for the full 230px cutout, its bob, and the caption below.
+      { left: '350px', top: '520px' },
     ], { duration: AUTO_OVERFIX_DURATION, fill: 'forwards', easing: 'ease-in-out' }));
     await Promise.all(animations.map(animation => animation.finished));
   } finally {
