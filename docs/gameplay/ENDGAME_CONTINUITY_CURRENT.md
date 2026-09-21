@@ -16,8 +16,8 @@ reading progress are otherwise unchanged.
 After Chinmay's raised-finger “AUTO SHOULD HAVE IT NOW” beat, applying the update
 runs a 20-second presentation: AUTO visits all ten sites in launcher order,
 changes each recovered thumbnail to its over-fix, and turns its frame/status red.
-Only after all ten does “AUTO ESCAPED THE WEBSITES” appear. Skip animation commits
-the same transition immediately. Reduced motion omits movement/bobbing and uses
+Only after all ten does “AUTO ESCAPED THE WEBSITES” appear. The animation has no player-facing Skip control. AUTO is 260 pixels wide,
+with scrubbing motion, drifting dust puffs, and short golden motion streaks. Reduced motion omits movement/bobbing and uses
 350 milliseconds per site. Artwork is decoded before the sequence. Timers are
 cancelled by rerender/navigation; interrupted playback leaves the saved ready
 beat intact so reload cannot strand the game midway through the visual.
@@ -39,7 +39,6 @@ animated helper moving between website thumbnails.
 
 ## Validation
 
-Local full normal animation: ten red sites before the takeover warning. Skip,
-reduced-motion mode, replay Tutorial and return to the same beat, and Switch
+Local full normal animation: ten red sites before the takeover warning. reduced-motion mode, replay Tutorial and return to the same beat, and Switch
 Player entry checked without loading production speech assets. Existing test
 suite and build remain release gates.

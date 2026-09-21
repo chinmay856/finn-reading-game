@@ -294,11 +294,11 @@ async function runAutoUpdate() {
   }));
   if (generation !== autoUpdateGeneration) return;
   startMenuOpen = false;
-  stage.innerHTML = `${desktopMarkup("ready")}<div class="auto-update-scene"><img class="auto-working" src="/walkthroughs/endgame/portraits/auto-working-cutout-v1.png" alt="AUTO working on each website"><div class="auto-update-caption"><strong role="status">AUTO is applying the lessons everywhere…</strong><button data-action="skip-auto-update" type="button">Skip animation</button></div></div>`;
+  stage.innerHTML = `${desktopMarkup("ready")}<div class="auto-update-scene"><div class="auto-working-rig"><div class="auto-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><img class="auto-working" src="/walkthroughs/endgame/portraits/auto-working-cutout-v1.png" alt="AUTO working on each website"><div class="auto-scrub-streaks" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="auto-update-caption" tabindex="-1"><strong role="status">AUTO is applying the lessons everywhere…</strong></div></div>`;
   stage.querySelector('.desktop-base').inert = true;
-  const actor = stage.querySelector('.auto-working');
+  const actor = stage.querySelector('.auto-working-rig');
   const caption = stage.querySelector('.auto-update-caption strong');
-  stage.querySelector('[data-action="skip-auto-update"]').focus();
+  stage.querySelector('.auto-update-caption').focus();
   const reduced = reduceMotion.checked || matchMedia('(prefers-reduced-motion: reduce)').matches;
   actor.classList.toggle('reduced-motion', reduced);
   const duration = reduced ? 350 : 2000;
@@ -309,8 +309,8 @@ async function runAutoUpdate() {
     const site = endgameSiteFixtures[index];
     const card = stage.querySelector(`[data-site-id="${site.id}"]`);
     const r = card.getBoundingClientRect(), bounds = stage.getBoundingClientRect(), scale = bounds.width / 1440;
-    actor.style.left = `${(r.left - bounds.left) / scale + r.width / scale - 115}px`;
-    actor.style.top = `${(r.top - bounds.top) / scale + 30}px`;
+    actor.style.left = `${(r.left - bounds.left) / scale + r.width / scale / 2 - 130}px`;
+    actor.style.top = `${(r.top - bounds.top) / scale + 6}px`;
     caption.textContent = `AUTO is “improving” ${site.name}…`;
     card.classList.add('auto-working-site');
     autoUpdateTimer = setTimeout(() => {
@@ -789,7 +789,6 @@ stage.addEventListener("click", (event) => {
   if (!action) return;
   switch (action.dataset.action) {
     case "advance-ready": if (state.readyDialogueIndex === ENDGAME_COPY.ready.length - 1) void runAutoUpdate(); else saveState(advanceReadyDialogue(state), "Endgame story advanced"); break;
-    case "skip-auto-update": finishAutoUpdate(); break;
     case "replay-introduction": openEndgameOnboarding(false); break;
     case "replay-tutorial": openEndgameOnboarding(true); break;
     case "switch-player": persistence.save(state); location.assign("/playable-missions.html?player=switch"); break;
