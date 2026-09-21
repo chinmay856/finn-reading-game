@@ -54,3 +54,24 @@
 }
 #endgameStage .story-dialog button { outline:none; }
 html[data-keyboard] #endgameStage .story-dialog button:focus-visible { outline:2px solid #235d77; outline-offset:4px; }
+
+/* One composition and type scale for every character's story card. */
+.story-dialog, .game-introduction .story-dialog, #endgameStage .story-dialog {
+  display:grid; width:800px; min-height:0; padding:28px;
+  grid-template-columns:168px minmax(0,1fr); gap:22px 26px; align-items:center;
+  border:5px solid #26333a; background:#f7f5ee; box-shadow:10px 10px 0 #08131a99;
+}
+.story-dialog > div:last-child, #endgameStage .story-dialog-copy { display:contents; }
+.story-dialog > .speaker-tile, #endgameStage .character-portrait { grid-column:1; grid-row:1 / 4; align-self:center; }
+.story-dialog small, .story-dialog h1, .story-dialog h2, .story-dialog p,
+#endgameStage .story-dialog-copy > small, #endgameStage .story-dialog-copy > h1, #endgameStage .story-dialog-copy > p { grid-column:2; margin:0; min-height:0; }
+.story-dialog h1, .story-dialog h2, #endgameStage .story-dialog h1 { font:700 24px/1.2 "Chalkboard SE","Comic Sans MS",sans-serif; }
+.story-dialog p, .story-dialog[data-speaker="auto"] p, #endgameStage .story-dialog p { font:400 20px/1.45 "Chalkboard SE","Comic Sans MS",sans-serif; white-space:pre-line; }
+.story-dialog button, #endgameStage .story-dialog .primary-button {
+  grid-column:1 / -1; justify-self:end; padding:10px 14px; margin:0;
+  color:#fff; background:#2d8848; border:2px solid #176633; border-radius:0;
+  box-shadow:inset 1px 1px #fff; font:700 17px/1.3 "Chalkboard SE","Comic Sans MS",sans-serif;
+}
+.story-dialog .intro-navigation { grid-column:1 / -1; justify-self:end; margin:0; }
+.story-dialog .narrative-next:not(:disabled) { animation:none; }
+.story-dialog button:focus-visible { outline:2px solid #235d77; outline-offset:4px; }

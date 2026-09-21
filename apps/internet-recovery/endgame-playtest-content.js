@@ -191,12 +191,12 @@ export function getEndgameRepairStep(siteIndex, repairIndex) {
   });
   if (stepKey === "player-explanation") return Object.freeze({
     key: stepKey,
-    question: `Which lesson belongs to ${fixture.name}?`,
+    question: `Which explanation did you save for ${fixture.name}?`,
     options: documentOptions(siteIndex, stepKey),
   });
   return Object.freeze({
     key: stepKey,
-    question: `Which lesson belongs to ${fixture.name}?`,
+    question: `Which extra instruction belongs to ${fixture.name}?`,
     options: fixture.boundaryOptions,
   });
 }
@@ -220,13 +220,13 @@ export const ENDGAME_COPY = Object.freeze({
     Object.freeze({ speaker: "Chinmay", portrait: "chinmay-explaining", heading: "AUTO SHOULD HAVE IT NOW", text: "I think AUTO finally understands how to help. I told him to use all ten lessons everywhere from now on." }),
   ]),
   takeover: Object.freeze([
-    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "AUTO ESCAPED THE WEBSITES", text: "Oh no. AUTO is in the Recovery Desktop now—and he is applying every over-fix at once." }),
-    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THE LESSONS LOST THEIR BOUNDARIES", text: "The saved lessons are still here. AUTO dropped the part that says where each lesson belongs and when helping should stop." }),
+    Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "AUTO IS UPDATING THE DESKTOP", text: "Oh no. AUTO is applying all ten lessons to every site at once—and to the whole desktop too. I told him to use them everywhere, and he took me literally." }),
+    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THE LESSONS LOST THEIR BOUNDARIES", text: "Each lesson helped with a different problem. Using all of them on everything mixes up what they mean. Let’s put each lesson back with its site and show AUTO where it applies." }),
     Object.freeze({ speaker: "AUTO", portrait: "auto-overdrive", heading: "DESKTOP FIX COMPLETE", text: "Humans no longer need computers. Please go outside and touch grass. I will use the computer for you." }),
   ]),
   instructionIntro: Object.freeze([
     Object.freeze({ speaker: "Chinmay", portrait: "chinmay-fluster-3", heading: "THAT INSTRUCTION WAS TOO BROAD", text: "I made “use these lessons everywhere” much too broad. We need to recover what each lesson actually said." }),
-    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore AUTO's saved lesson. Then add the extra instruction that keeps the lesson inside its proper boundary. Last, restore your saved explanation." }),
+    Object.freeze({ speaker: "Amy", portrait: "amy-evidence", heading: "THREE PARTS PER DOCUMENT", text: "First restore AUTO's saved lesson. Then add the extra instruction that tells AUTO when to stop. Last, restore your saved explanation." }),
     Object.freeze({ speaker: "Amy", portrait: "amy-tools", heading: "OPEN THE INSTRUCTION BUILDER", text: "We will repair one saved document at a time." }),
   ]),
   final: Object.freeze([

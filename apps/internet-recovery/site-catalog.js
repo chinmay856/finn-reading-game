@@ -37,42 +37,42 @@ export const RECOVERY_SITES = Object.freeze([
   }),
   Object.freeze({
     id: "faceplace", name: "FacePlace", mark: "F", archetype: "Ranked social feed",
-    belief: "THE FEED IS WHAT HAPPENED", description: "A nonsense tracker rewards reactions instead of restoring real authors.",
+    belief: "THE FEED IS WHAT HAPPENED", description: "A fishing photo tells only part of the story. The comments and wider view are missing.",
     accent: "#1862aa", markImage: MARKS.faceplace, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.faceplace,
   }),
   Object.freeze({
     id: "mycorner", name: "MyCorner", mark: "M", archetype: "Custom social profile",
-    belief: "POPULARITY IS A NUMBER. AN ALGORITHM KNOWS YOUR PERSONALITY.", description: "Every profile has become one CEO demo page.",
+    belief: "POPULARITY IS A NUMBER. AN ALGORITHM KNOWS YOUR PERSONALITY.", description: "A polished profile claims to be Amy. Its identity and money request need checking.",
     accent: "#b21c72", markImage: MARKS.mycorner, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.mycorner,
   }),
   Object.freeze({
     id: "yahuh", name: "Yahuh! Portal", mark: "Y!", archetype: "Crowded web portal",
-    belief: "IF INFORMATION EXISTS, IT BELONGS ON THE FRONT PAGE.", description: "All information has been blended into homepage paste.",
+    belief: "IF INFORMATION EXISTS, IT BELONGS ON THE FRONT PAGE.", description: "Huge headlines have crowded out the stories and sources.",
     accent: "#6e3e98", markImage: MARKS.yahuh, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.yahuh,
   }),
   Object.freeze({
     id: "viewtube", name: "ViewTube", mark: "V", archetype: "Video-sharing site",
-    belief: "WATCH TIME PROVES TRUTH", description: "The same buffering toast clip is wearing ten different costumes.",
+    belief: "WATCH TIME PROVES TRUTH", description: "Ads and autoplay bury the video you wanted to watch.",
     accent: "#a51f17", markImage: MARKS.viewtube, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.viewtube,
   }),
   Object.freeze({
     id: "searchish", name: "Search-ish", mark: "S?", archetype: "Web search",
-    belief: "THE FIRST RESULT IS THE ANSWER", description: "Five confident results all redirect to one generated cache.",
+    belief: "THE FIRST RESULT IS THE ANSWER", description: "An AI answer and paid shortcuts hide useful places to find the book.",
     accent: "#d27b12", markImage: MARKS.searchish, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.searchish,
   }),
   Object.freeze({
     id: "amazeon", name: "Amaze-On", mark: "A", archetype: "Online marketplace",
-    belief: "RECOMMENDED MEANS CHOSEN", description: "Hidden automation turns one return into two future deliveries.",
+    belief: "RECOMMENDED MEANS CHOSEN", description: "Paid rankings and missing details make the right shoes hard to compare.",
     accent: "#e69616", markImage: MARKS.amazeon, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.amazeon,
   }),
   Object.freeze({
     id: "spottyfi", name: "Spotty-Fi", mark: "S♪", archetype: "Music streaming",
-    belief: "THE ALGORITHM IS YOUR TASTE", description: "A fabricated history keeps choosing the same silent twelve-second track.",
+    belief: "THE ALGORITHM IS YOUR TASTE", description: "Music appears without clear artists, credits, or listener controls.",
     accent: "#6ebd22", markImage: MARKS.spottyfi, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.spottyfi,
   }),
   Object.freeze({
     id: "mapguess", name: "MapGuess", mark: "M?", archetype: "Maps and navigation",
-    belief: "THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE.", description: "The promised arrival time stays fixed by quietly moving the destination.",
+    belief: "THE FASTEST ROUTE IS ALWAYS THE RIGHT ROUTE.", description: "A trip to the library keeps turning into a detour to Snack Palace.",
     accent: "#177449", markImage: MARKS.mapguess, playable: false, runtimeAvailable: true, runtimeLabel: "READY TO RECOVER", previewImage: PREVIEWS.mapguess,
   }),
 ]);
