@@ -7,7 +7,7 @@ Initial contributor: DogVisionExpert99. Unsupported claims, caption, references,
 and hidden history are red. ARTICLE CHECK tracks evidence, wording, sources and
 history. No floating hatch marks, question marks or crossed-out fragments.
 
-Reading 1 restores the evidence rule; 2 the headline; 3 the explanation; 4 the
+Reading 1 restores the article’s research-backed status; 2 the headline; 3 the explanation; 4 the
 color-vision illustration; 5 the references; 6 the history record. Sidebar rows
 change only when their corresponding repair occurs. Color labels are stacked
 to prevent overflow. The illustration continues using the existing approved art.
@@ -32,3 +32,8 @@ Regenerate all runtime artwork with `node scripts/generate-wikiwhy-complete-sequ
 View source has a red × in corrupted states. It returns to the normal tab with
 the sources repair (reading 5 or final lock 1). The tutorial points to the same
 initial and first-repair frames and explains the permanent red-to-green change.
+
+Article copy shows status rather than teaching instructions: SUPPORTED BY RESEARCH,
+Evidence: research, Wording: careful, Sources: 3 linked, and History: visible.
+Revision history shows two dated edits by fictional encyclopedia contributors,
+describing the correction and source additions. Tutorial narration matches it.

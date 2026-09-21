@@ -61,7 +61,7 @@ function article(version) {
     : ['Dogs see only black and white.', 'This is always true.', 'Everyone knows it.', 'NO EVIDENCE NEEDED.'];
   return `<g data-article-version="${version}">
     ${region('headline',2,text(241,207,fixed(2)?'HOW DOGS SEE COLOR':over?'DOGS SEE WHAT AUTO SAYS':'DOGS SEE ONLY BLACK AND WHITE',fixed(2),over||!fixed(2)?22:25))}
-    ${region('banner',1,box(241,228,446,48,fixed(1))+text(255,260,fixed(1)?'CHECK EVIDENCE, NOT CONFIDENCE':over?'JUST TRUST ME':'USER FACTS ARE ALWAYS RIGHT',fixed(1),20))}
+    ${region('banner',1,box(241,228,446,48,fixed(1))+text(255,260,fixed(1)?'SUPPORTED BY RESEARCH':over?'JUST TRUST ME':'USER FACTS ARE ALWAYS RIGHT',fixed(1),20))}
     ${region('explanation',3,box(241,297,446,233,fixed(3))+
       text(256,322,fixed(3)?'WHAT THE EVIDENCE SUPPORTS':over?'AUTO CONFIDENCE: 10,000%':'SUBMITTED BY: DogVisionExpert99',fixed(3),14)+
       `<line x1="255" y1="335" x2="672" y2="335" stroke="${ink(fixed(3))}"/>`+
@@ -77,15 +77,15 @@ function article(version) {
       <rect x="714" y="430" width="178" height="180" fill="#f2f1ec" stroke="#516b80"/>
       <text x="730" y="453" class="rail-title">ARTICLE CHECK</text>
       <line x1="714" y1="464" x2="892" y2="464" stroke="#8295a5"/>
-      ${text(727,488,fixed(1)?'✓ Evidence over confidence':over?'□ Confidence: 10,000%':'□ Confidence: 100%',fixed(1),11)}
-      ${text(727,521,fixed(3)?'✓ Careful wording':'□ Evidence: none',fixed(3),13)}
+      ${text(727,488,fixed(1)?'✓ Evidence: research':over?'□ Confidence: 10,000%':'□ Confidence: 100%',fixed(1),11)}
+      ${text(727,521,fixed(3)?'✓ Wording: careful':'□ Wording: absolute',fixed(3),13)}
       ${text(727,554,fixed(5)?'✓ Sources: 3 linked':'□ Sources: '+(over?'scrambled':'0'),fixed(5),13)}
       ${text(727,587,fixed(6)?'✓ History: visible':'□ History: hidden',fixed(6),13)}
     </g>
     ${region('history',6,box(566,121,86,42,fixed(6))+text(578,148,fixed(6)?'✓ History':'× History',fixed(6),13)+
-      box(241,712,651,53,fixed(6))+text(255,735,fixed(6)?'✓ EDIT HISTORY RESTORED':'□ EDIT HISTORY HIDDEN',fixed(6),13)+
-      text(255,755,fixed(6)?'Correction saved: replaced an unsupported claim with evidence and its limits.':over?'AUTO deleted the edits. A clear answer needs no past.':'Earlier edits are hidden. This contributor says the answer was always right.',fixed(6),13))}
-  </g>`;
+      box(241,706,651,59,fixed(6))+text(255,723,fixed(6)?'REVISION HISTORY':'□ EDIT HISTORY HIDDEN',fixed(6),13)+
+      text(255,741,fixed(6)?'18 Sep · ColorStudyEditor: corrected the black-and-white claim.':over?'AUTO deleted the edits. A clear answer needs no past.':'Earlier edits are hidden. This contributor says the answer was always right.',fixed(6),12)+
+      (fixed(6)?text(255,757,'20 Sep · SourceChecker: added color-vision studies and their limits.',true,12):''))}  </g>`;
 }
 
 function checklist(secured) {

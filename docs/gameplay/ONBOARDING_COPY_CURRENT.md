@@ -117,7 +117,7 @@ Button: Continue
 
 ## Tutorial 10: Your reading starts the repair
 
-Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CHECK EVIDENCE, NOT CONFIDENCE.” The banner is now green. Each passage and Quick Check repairs one part of the website.
+Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “SUPPORTED BY RESEARCH.” The banner is now green. Each passage and Quick Check repairs one part of the website.
 
 The red headline, explanation, and missing sources still need work. Repaired parts stay green.
 
