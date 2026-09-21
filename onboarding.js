@@ -13,7 +13,7 @@ const STEPS=[
  {title:"Finish the passage",text:"Read all the way to the end. The game should finish automatically after you stop speaking, or you can click Finish now.",screen:'finish',target:'#finishReading',side:'left'},
  {title:"See how your reading went",text:"Here’s an example result. Coverage describes how many of the words the game recognized. Pace estimates reading speed. These are meant to be helpful feedback, not a pass-or-fail grade.",note:"Retrying is always optional.",screen:'result',target:'.score-grid',side:'left'},
  {title:"Check what you read",text:"Choose the answer supported by the passage. If it isn’t right, you can try again.",screen:'result',target:'.quick-check',side:'left'},
- {title:"Your reading starts the repair",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair.",note:"WikiWhy still needs more work, though.",screen:'answered',rect:[239,226,450,48],side:'right'},
+ {title:"Your reading starts the repair",text:"Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CHECK EVIDENCE, NOT CONFIDENCE.” The passage you read and its Quick Check made a repair.",note:"WikiWhy still needs more work, though.",screen:'answered',rect:[239,226,450,48],side:'right'},
  {title:"A little help with tricky words",text:"Words to Know picks out vocabulary from the passage. Hear aloud plays the word, its meaning, and how it was used in a sentence. You can use this to help learn tricky vocabulary after each reading.",screen:'answered',target:'#wordHelp',side:'left'},
  {title:"Keep reading. Keep repairing",text:"Next passage continues the website’s recovery. Each passage and Quick Check repairs another part of the corrupted website. At the end, you’ll teach AUTO what went wrong.",screen:'answered',target:'#nextPassage',side:'left'},
  {title:"Need a reminder?",text:"You can replay the tutorial anytime. Open the Start menu and choose Tutorial.",screen:'launcher',target:'#replayTutorial',side:'right',menu:true,button:'Start game'}
@@ -64,7 +64,7 @@ function renderMission(screen){
  const result=['result','answered'].includes(screen);
  for(const id of ['readerView','resultView','skipView','reflectionView','receiptView'])$(id).hidden=id!==(result?'resultView':'readerView');
  $('siteFrame').src=screen==='answered'?fixture.frames.after:fixture.frames.before;
- $('siteFrame').alt=screen==='answered'?'WikiWhy after one repair. The banner now says CLAIM UNDER REVIEW.':'Corrupted WikiWhy. The red banner says USER FACTS ARE ALWAYS RIGHT.';
+ $('siteFrame').alt=screen==='answered'?'WikiWhy after one repair. The banner now says CHECK EVIDENCE, NOT CONFIDENCE.':'Corrupted WikiWhy. The red banner says USER FACTS ARE ALWAYS RIGHT.';
  if(result)renderResult(screen==='answered');else renderPassage(screen);
 }
 function setInert(on){$('launcherView').inert=on;$('missionView').inert=on;}
@@ -96,7 +96,7 @@ function renderTutorial(){
  if(step.menu){$('startMenu').hidden=false;$('startMenu').inert=true;document.querySelector('#launcherView .start-button').setAttribute('aria-expanded','true');}
  setInert(true);$('gameIntroduction').hidden=true;$('tourLayer').hidden=false;$('skipSequence').hidden=false;$('skipSequence').textContent='Skip tutorial';
  $('tourTitle').textContent=step.title;$('tourText').textContent=step.text;$('tourNote').textContent=step.note||'';$('tourNote').hidden=!step.note;$('tourCount').textContent=`${index+1} OF ${STEPS.length}`;$('tourBack').disabled=index===0;$('tourNext').textContent=step.button||'Continue';
- const context=step.rect ? (index===2?'Banner: USER FACTS ARE ALWAYS RIGHT.':step.screen==='answered'?'Banner: CLAIM UNDER REVIEW.':'WikiWhy shows a claim about dogs seeing only black and white, missing sources, and hidden history.') : step.target==='#passage' ? fixture.passage.lines.slice(0,2).join(' ') : document.querySelector(step.target).textContent;
+ const context=step.rect ? (index===2?'Banner: USER FACTS ARE ALWAYS RIGHT.':step.screen==='answered'?'Banner: CHECK EVIDENCE, NOT CONFIDENCE.':'WikiWhy shows a claim about dogs seeing only black and white, missing sources, and hidden history.') : step.target==='#passage' ? fixture.passage.lines.slice(0,2).join(' ') : document.querySelector(step.target).textContent;
  $('tourContext').textContent=context;positionTour();$('tourNext').focus();
 }
 function showLauncher(){if(embedded){window.parent.postMessage({type:'recovery-onboarding-complete'},location.origin);return;}mode='launcher';closeMenu();$('gameIntroduction').hidden=true;$('tourLayer').hidden=true;$('skipSequence').hidden=true;setInert(false);renderLauncher();$('site-wikiwhy').focus();}

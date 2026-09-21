@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { INTERNET_RECOVERY_COLORS as COLORS } from "./lib/internet-recovery-design-system.mjs";
 
 const output = path.resolve(
@@ -32,8 +33,8 @@ const states = [
   { id: "super-corrupt", label: "Act 2 - Super corrupted", phase: "act-2", progress: 0, article: 7 },
   { id: "amy-plan", label: "Act 2 - Amy repair plan", phase: "act-2-plan", progress: 0, article: 7, popup: "amy-plan" },
   { id: "locks-open", label: "Act 2 - Repair checklist", phase: "act-2-locks", progress: 0, article: 7, checklist: 0 },
-  { id: "lock-1", label: "Act 2 - Sources locked", phase: "act-2-locks", progress: 33, article: 7, checklist: 1 },
-  { id: "lock-2", label: "Act 2 - History locked", phase: "act-2-locks", progress: 67, article: 7, checklist: 2 },
+  { id: "lock-1", label: "Act 2 - Sources locked", phase: "act-2-locks", progress: 33, article: 8, checklist: 1 },
+  { id: "lock-2", label: "Act 2 - History locked", phase: "act-2-locks", progress: 67, article: 9, checklist: 2 },
   { id: "lock-3", label: "Act 2 - Wording locked and secured", phase: "act-2-locks", progress: 100, article: 6, checklist: 3 },
   { id: "amy-success", label: "Completion - Amy success", phase: "completion", progress: 100, article: 6, popup: "amy-success" },
   { id: "chinmay-realization", label: "Completion - Chinmay realizes", phase: "completion", progress: 100, article: 6, popup: "chinmay-realization" },
@@ -46,59 +47,48 @@ const lines = (items, x, y, className = "body", gap = 24) =>
   items.map((line, index) => `<text x="${x}" y="${y + index * gap}" class="${className}">${esc(line)}</text>`).join("");
 
 function article(version) {
-  const isSuper = version === 7;
-  const repaired = version === 6;
-  const p = Math.min(version, 6);
-  const headline = p < 2 ? "DOGS SEE ONLY BLACK AND WHITE" : p < 6 ? "DOGS SEE MORE THAN BLACK AND WHITE" : "HOW DOGS SEE COLOR";
-  const headlineText = isSuper ? "DOGS SEE EXACTLY WHAT AUTO SAYS" : headline;
-  const banner = isSuper ? "JUST TRUST ME" : p === 0 ? "USER FACTS ARE ALWAYS RIGHT" : p === 1 ? "CLAIM UNDER REVIEW" : p === 6 ? "CLAIMS CHECKED AND SOURCED" : "EVIDENCE CHECK IN PROGRESS";
-  const bannerColor = isSuper || p === 0 ? COLORS.corruption : p < 6 ? "#e6e8e5" : COLORS.repairSoft;
-  const bannerText = isSuper || p === 0 ? "#fff" : p < 6 ? "#506576" : "#17662e";
-  const body = isSuper
-    ? ["Dogs see whatever this page says they see.", "Every confident sentence is now treated as proof.", "Maybe, often, and evidence suggests were deleted."]
-    : p < 2
-      ? ["Dogs see only black and white.", "This is always true.", "Everyone knows it."]
-      : p < 3
-        ? ["Dogs may distinguish blue and yellow more clearly.", "Red and green can appear less distinct.", "The page still needs careful wording and sources."]
-        : ["Evidence suggests dogs distinguish blue and yellow more clearly.", "Red and green may appear less distinct than they do to humans.", "Color vision varies by species and should be described carefully."];
-  const red = isSuper || !repaired;
-  const spectrum = p >= 2 && !isSuper;
-  const citations = p >= 5 && !isSuper;
-  const chart = p >= 4 && !isSuper;
-  const qualifierFixed = p >= 3 && !isSuper;
-  const questionCount = isSuper ? 3 : p < 3 ? 3 : p < 5 ? 2 : 0;
-  const questionMarks = Array.from({ length: questionCount }, (_, index) =>
-    `<text x="686" y="${isSuper ? 360 + index * 28 : 360 + index * 28}" class="badText" text-anchor="end" data-qa-color="red">[?]</text>`,
-  ).join("");
-  const historyOverlay = isSuper
-    ? `<rect x="566" y="121" width="86" height="42" fill="#fbfaf6"/><rect x="566" y="121" width="86" height="42" fill="url(#redHatch)" stroke="${COLORS.corruption}" stroke-width="2"/><text x="609" y="148" class="tabOverride badText" text-anchor="middle">TRUST ME</text>`
-    : p < 6
-      ? `<rect x="568" y="122" width="82" height="40" fill="url(#redHatch)" stroke="${COLORS.corruption}" stroke-dasharray="6 4"/><path d="m634 127 11 11m0-11-11 11" stroke="${COLORS.corruption}" stroke-width="3"/>`
-      : "";
-  return `
-    <g data-article-version="${version}">
-      ${historyOverlay}
-      <text x="241" y="208" class="article-heading${isSuper ? " badText" : ""}" style="font-size:${isSuper ? 20 : p >= 2 && p < 6 ? 22 : 25}px" data-qa-box="238,176,695,220"${isSuper ? ` data-content-state="corrupted" data-qa-color="red"` : ""}>${headlineText}</text>
-      <rect x="241" y="228" width="446" height="43" rx="5" fill="${bannerColor}" stroke="${isSuper ? "#85100c" : "#718593"}" stroke-width="2"/><text x="255" y="258" class="rule-banner" style="fill:${bannerText}" data-qa-box="252,230,680,265"${isSuper || p === 0 ? ` data-qa-on-red="true"` : ""}>${banner}</text>
-      ${isSuper ? `<rect x="241" y="282" width="446" height="44" fill="url(#redHatch)" stroke="${COLORS.corruption}" stroke-width="3"/><text x="255" y="313" class="certainty-text" data-qa-box="252,284,680,320">AUTO CONFIDENCE 10,000%</text>` : ""}
-      <g class="article-body${isSuper ? " badText" : ""}" data-qa-box="238,300,692,500"${isSuper ? ` data-content-state="corrupted" data-qa-color="red"` : ""}>${lines(body, 242, isSuper ? 360 : 360, isSuper ? "article-body badText" : "article-body", 28)}${questionMarks}</g>
-      ${!qualifierFixed && !isSuper ? `<text x="242" y="460" class="article-body" style="text-decoration:line-through;text-decoration-color:${COLORS.corruption}">Scientists may disagree about the exact limits.</text><text x="686" y="460" class="badText" text-anchor="end" data-qa-color="red">[?]</text>` : ""}
-      ${qualifierFixed ? `<rect x="239" y="432" width="448" height="52" fill="#edf5ea" stroke="#78a785"/><text x="253" y="454" class="article-body-small goodText">CAREFUL WORDING RESTORED</text><text x="253" y="475" class="tiny">Claims now say only what the evidence can support.</text>` : ""}
-      <line x1="241" y1="610" x2="691" y2="610" stroke="#6484a0"/>
-      <text x="241" y="634" class="article-body">References</text>
-      <g data-qa-box="238,638,692,716">${citations ? `${lines(["[1] Canine cone-cell overview — checked", "[2] Veterinary color-vision guide — checked", "[3] Source notes match claims above"], 241, 657, "article-body-small goodText", 22)}` : isSuper ? `${lines(["[1] Sandwich recipe → dog vision", "[2] AUTO SAYS TRUST ME → every claim", "[3] Source removed for being slow"], 241, 657, "article-body-small badText", 22)}` : `${lines(["[1] Trust me.", "[2] Evidence suggests otherwise.", "[3] Common sense."], 241, 657, "article-body-small badText", 22)}`}</g>
-      <g>
-        <rect x="714" y="188" width="178" height="222" fill="#f2f1ec" stroke="#516b80"/>
-        ${spectrum ? `<text x="803" y="216" class="rail-title" text-anchor="middle">DOG COLOR VISION</text><rect x="730" y="233" width="146" height="92" fill="url(#spectrumGradient)" stroke="#344f66"/><text x="745" y="348" class="rail-body">BLUE</text><text x="786" y="348" class="rail-body">YELLOW</text><text x="834" y="348" class="rail-body">RED/GREEN</text><text x="834" y="363" class="rail-body">DULLER</text><text x="803" y="388" class="rail-body" text-anchor="middle">Limited color is not no color.</text>` : `<image href="assets/wikiwhy-techno-vision-hatch-v3.png" x="724" y="196" width="158" height="158" preserveAspectRatio="xMidYMid slice" filter="url(#grayscale)"/><text x="803" y="378" class="rail-body" text-anchor="middle">A good boy with very good vision.</text><text x="803" y="396" class="rail-body" text-anchor="middle">Only in black and white.</text>`}
-      </g>
-      <g><rect x="714" y="430" width="178" height="150" fill="#f2f1ec" stroke="#516b80"/><text x="803" y="454" class="rail-title" text-anchor="middle">At a Glance</text><line x1="714" y1="464" x2="892" y2="464" stroke="#8295a5"/>${chart ? lines(["Evidence: linked", "Sources: 3", "History: visible", "Wording: careful"], 730, 489, "rail-body goodText", 22) : isSuper ? lines(["Confidence: 10,000%", "Evidence: deleted", "Sources: scrambled", "History: TRUST ME"], 730, 489, "rail-body badText", 22) : lines(["Confidence: 100%", "Evidence: N/A", "Sources: 0", "History: hidden"], 730, 489, "rail-body badText", 22)}</g>
-      ${red ? `<g opacity=".9"><rect x="680" y="176" width="18" height="38" fill="url(#redHatch)"/><rect x="678" y="500" width="20" height="30" fill="url(#redHatch)"/><rect x="849" y="593" width="38" height="15" fill="url(#redHatch)"/></g>` : ""}
-    </g>`;
+  const over = version >= 7;
+  const locks = over ? version - 7 : 0;
+  const fixed = (step) => over ? (step === 4 || (step === 5 ? locks >= 1 : step === 6 ? locks >= 2 : locks >= 3)) : version >= step;
+  const ink = on => on ? COLORS.repairDark : COLORS.corruption;
+  const paper = on => on ? '#edf5ea' : '#fff0ed';
+  const box = (x,y,w,h,on) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${paper(on)}" stroke="${ink(on)}" stroke-width="1.5"/>`;
+  const text = (x,y,value,on,size=17) => `<text x="${x}" y="${y}" style="font-family:'Chalkboard SE',sans-serif;font-size:${size}px;font-weight:${size>=20?700:400};fill:${ink(on)}">${esc(value)}</text>`;
+  const region = (id,step,body) => `<g data-repair-region="${id}" data-repaired="${fixed(step)}">${body}</g>`;
+  const bodyLines = fixed(3)
+    ? ['Dogs can distinguish blue and yellow.', 'Red and green are harder to tell apart.', 'Their color vision differs from ours.', 'Limited color vision is not no color.']
+    : over ? ['Dogs see whatever AUTO says.', 'Every confident sentence is proof.', 'Doubt only makes answers confusing.', 'AUTO HAS REMOVED ALL DOUBT.']
+    : ['Dogs see only black and white.', 'This is always true.', 'Everyone knows it.', 'NO EVIDENCE NEEDED.'];
+  return `<g data-article-version="${version}">
+    ${region('headline',2,text(241,207,fixed(2)?'HOW DOGS SEE COLOR':over?'DOGS SEE WHAT AUTO SAYS':'DOGS SEE ONLY BLACK AND WHITE',fixed(2),over||!fixed(2)?22:25))}
+    ${region('banner',1,box(241,228,446,48,fixed(1))+text(255,260,fixed(1)?'CHECK EVIDENCE, NOT CONFIDENCE':over?'JUST TRUST ME':'USER FACTS ARE ALWAYS RIGHT',fixed(1),20))}
+    ${region('explanation',3,box(241,297,446,233,fixed(3))+
+      text(256,322,fixed(3)?'WHAT THE EVIDENCE SUPPORTS':over?'AUTO CONFIDENCE: 10,000%':'SUBMITTED BY: DogVisionExpert99',fixed(3),14)+
+      `<line x1="255" y1="335" x2="672" y2="335" stroke="${ink(fixed(3))}"/>`+
+      bodyLines.map((line,i)=>text(256,371+i*39,line,fixed(3),20)).join(''))}
+    ${region('sources',5,text(241,575,'References',fixed(5),20)+box(241,590,446,112,fixed(5))+
+      (fixed(5)?['[1] Canine cone cells — supports blue/yellow vision','[2] Color-discrimination tests — red/green limits','[3] Source notes — limits of the evidence']:over?['[1] Sandwich recipe → dog vision','[2] AUTO SAYS TRUST ME → every claim','[3] Sources removed: checking takes too long']:['[1] Trust me. I have met a dog.','[2] Everyone says so.','[3] Source: my own confidence.']).map((line,i)=>text(254,616+i*32,line,fixed(5),15)).join(''))}
+    ${region('vision',4,box(714,188,178,222,fixed(4))+(fixed(4)?
+      text(729,212,'DOG COLOR VISION',true,14)+`<rect x="729" y="227" width="148" height="79" fill="url(#spectrumGradient)"/>`+
+      text(732,330,'Blue / yellow',true,15)+text(732,352,'Easier to distinguish',true,12)+text(732,377,'Red / green',true,15)+text(732,397,'Harder to distinguish',true,12):
+      `<image href="assets/wikiwhy-techno-vision-hatch-v3.png" x="724" y="197" width="158" height="158" preserveAspectRatio="xMidYMid slice" filter="url(#grayscale)"/>`+text(728,377,'Only black and white.',false,13)+text(728,398,'Obviously. Look at him.',false,12)))}
+    <g data-repair-region="summary">
+      <rect x="714" y="430" width="178" height="180" fill="#f2f1ec" stroke="#516b80"/>
+      <text x="730" y="453" class="rail-title">ARTICLE CHECK</text>
+      <line x1="714" y1="464" x2="892" y2="464" stroke="#8295a5"/>
+      ${text(727,488,fixed(1)?'✓ Evidence over confidence':over?'□ Confidence: 10,000%':'□ Confidence: 100%',fixed(1),11)}
+      ${text(727,521,fixed(3)?'✓ Careful wording':'□ Evidence: none',fixed(3),13)}
+      ${text(727,554,fixed(5)?'✓ Sources: 3 linked':'□ Sources: '+(over?'scrambled':'0'),fixed(5),13)}
+      ${text(727,587,fixed(6)?'✓ History: visible':'□ History: hidden',fixed(6),13)}
+    </g>
+    ${region('history',6,box(566,121,86,42,fixed(6))+text(578,148,fixed(6)?'✓ History':'× History',fixed(6),13)+
+      box(241,712,651,53,fixed(6))+text(255,735,fixed(6)?'✓ EDIT HISTORY RESTORED':'□ EDIT HISTORY HIDDEN',fixed(6),13)+
+      text(255,755,fixed(6)?'Correction saved: replaced an unsupported claim with evidence and its limits.':over?'AUTO deleted the edits. A clear answer needs no past.':'Earlier edits are hidden. This contributor says the answer was always right.',fixed(6),13))}
+  </g>`;
 }
 
 function checklist(secured) {
-  const rows = ["MATCH CLAIMS TO SOURCES", "KEEP HISTORY VISIBLE", "USE CAREFUL WORDING"];
-  return `<g data-overlay="act2-checklist" data-qa-box="520,548,905,732" filter="url(#windowShadow)"><rect x="526" y="552" width="374" height="172" rx="6" fill="${COLORS.neutralPaper}" stroke="${COLORS.repairDark}" stroke-width="3"/><rect x="526" y="552" width="374" height="36" fill="${COLORS.repair}"/><text x="545" y="578" class="popupTitle whiteText" data-qa-on-green="true">LOCK IN THE REPAIR</text>${rows.map((row, i) => { const on = i < secured; return `<rect x="545" y="${601 + i * 36}" width="26" height="26" rx="4" fill="${on ? COLORS.repair : COLORS.corruptionSoft}" stroke="${on ? COLORS.repairDark : COLORS.corruption}"/><text x="558" y="${620 + i * 36}" text-anchor="middle" class="small ${on ? "whiteText" : "badText"}">${on ? "✓" : "○"}</text><text x="584" y="${620 + i * 36}" class="small" style="fill:${on ? COLORS.repairDark : COLORS.corruptionDark}">${row}</text>`; }).join("")}</g>`;
+  return `<g data-overlay="act2-checklist"><rect x="714" y="622" width="178" height="80" rx="4" fill="#f8f7f0" stroke="${COLORS.repairDark}"/><text x="724" y="638" class="rail-title" style="font-size:11px">LOCK IN THE REPAIR</text>${["MATCH CLAIMS TO SOURCES", "KEEP HISTORY VISIBLE", "USE CAREFUL WORDING"].map((label,i)=>`<text x="724" y="${657+i*17}" style="font-family:'Chalkboard SE',sans-serif;font-size:9px;fill:${i<secured?COLORS.repairDark:COLORS.corruption}">${i<secured?'✓':'□'} ${label}</text>`).join('')}</g>`;
 }
 
 const popups = {
@@ -142,6 +132,7 @@ function statePage(state, index) {
     <text x="310" y="823" class="meter-label" style="font-size:13px">${siteProgress}%</text><rect x="368" y="804" width="${barWidth}" height="20" fill="${isAct2 ? COLORS.repair : "#1387b2"}" data-role="site-progress-fill" data-percent="${siteProgress}"/>
     ${state.receipt ? receiptPanel() : state.reflection ? reflectionPanel() : readingBody()}
     <rect x="962" y="568" width="200" height="15" fill="#1387b2" data-role="passage-progress-fill" data-percent="50"/>
+
     ${state.checklist !== undefined ? checklist(state.checklist) : ""}
     ${state.popup ? popup(state.popup) : ""}
   </g>`;
@@ -164,3 +155,14 @@ ${states.map(statePage).join("\n")}
 
 fs.writeFileSync(output, svg);
 console.log(`Wrote ${output} with ${states.length} named Inkscape pages.`);
+
+// Export runtime frames and both desktop thumbnails from this single master.
+if (process.argv.includes("--export")) {
+  for (let page = 1; page <= states.length; page++) {
+    execFileSync("inkscape", [output, `--export-page=${page}`, "--export-area-page", "--export-width=1440", `--export-filename=${path.resolve(`public/walkthroughs/wikiwhy/wikiwhy-complete-state-v3_p${page}.png`)}`], {stdio:"ignore"});
+  }
+  for (const [page, name] of [[7, "recovered"], [10, "auto"]]) {
+    const x = (page - 1) * 1480;
+    execFileSync("inkscape", [output, `--export-area=${x+108}:20:${x+912}:838`, "--export-width=804", `--export-filename=${path.resolve(`public/walkthroughs/endgame/site-crops/wikiwhy-${name}-site-v1.png`)}`], {stdio:"ignore"});
+  }
+}

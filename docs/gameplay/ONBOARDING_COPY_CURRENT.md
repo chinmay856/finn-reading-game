@@ -117,7 +117,7 @@ Button: Continue
 
 ## Tutorial 10: Your reading starts the repair
 
-Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CLAIM UNDER REVIEW.” The passage you read and its Quick Check made a repair.
+Remember that banner from before? “USER FACTS ARE ALWAYS RIGHT” has now become “CHECK EVIDENCE, NOT CONFIDENCE.” The passage you read and its Quick Check made a repair.
 
 WikiWhy still needs more work, though.
 

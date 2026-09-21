@@ -1,3 +1,5 @@
+> Visual sequence superseded on 2026-09-20 by [WikiWhy visual repairs](../../gameplay/WIKIWHY_VISUAL_REPAIRS_CURRENT.md). The old intermediate banner states and lock artwork below are historical.
+
 # WikiWhy complete state ledger
 
 Status: **full narrative and visual-flow candidate for Chinmay review; not frozen
