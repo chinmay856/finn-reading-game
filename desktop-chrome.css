@@ -86,3 +86,28 @@
 .site-auto-overfix-frame { position:absolute; inset:0; width:1440px; height:900px; object-fit:contain; clip-path:inset(18px 524px 57px 106px); }
 .site-auto-overfix .auto-working-rig { left:350px; top:300px; width:230px; height:230px; transition:none; }
 .site-auto-overfix-caption { position:absolute; left:270px; bottom:64px; margin:0; padding:12px 20px; border:3px solid #263d49; background:#f7f5ee; color:#172d40; font:700 20px "Chalkboard SE",sans-serif; }
+
+/* Recovery Browser is the reference for all OS window chrome. */
+:root { --os-border:#27333b; --os-titlebar:linear-gradient(90deg,#053b70,#00578d 58%,#00305e); }
+.launcher-window, .reading-companion, .documents-window, .profile-window, .dialup-window,
+#endgameStage .recovery-window, #endgameStage .modal-window, #endgameStage .auto-popup {
+  border:4px solid var(--os-border); border-radius:7px; overflow:hidden;
+}
+.launcher-window > .launcher-titlebar, .documents-window > .launcher-titlebar,
+.profile-window > .launcher-titlebar, .companion-titlebar, .dialup-titlebar,
+.site-window-titlebar, #endgameStage .window-titlebar, #endgameStage .auto-popup > header {
+  box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  height:38px; min-height:38px; padding:4px 5px 4px 12px;
+  background:var(--os-titlebar); color:#fff; font:700 15px/1.2 system-ui,sans-serif; letter-spacing:0;
+}
+#endgameStage .corrupted-window > .window-titlebar, #endgameStage .auto-popup > header { background:linear-gradient(90deg,#731712,#c5251e); }
+.documents-window .launcher-titlebar button, #endgameStage .modal-close,
+#endgameStage .popup-close, .dialup-titlebar span:last-child {
+  display:block; flex:0 0 27px; width:27px; height:25px; min-height:25px;
+  margin:0; padding:0; border:0; border-radius:0; box-shadow:none; font-size:0; color:transparent;
+  background:transparent url('/walkthroughs/shared/recovery-window-controls-v1.svg') right center / 89px 25px no-repeat;
+}
+.documents-window .launcher-titlebar button:focus-visible, #endgameStage .modal-close:focus-visible,
+#endgameStage .popup-close:focus-visible { outline:2px solid #ffe166; outline-offset:2px; }
+.site-window-titlebar { position:absolute; left:106px; top:18px; width:810px; height:42px;
+  border:4px solid var(--os-border); border-bottom:0; border-radius:7px 7px 0 0; pointer-events:none; }

@@ -554,6 +554,8 @@ function closeDocuments() {
 
 function setFrame(source, description = "") {
   $("siteFrame").src = source;
+  const addresses = { wikiwhy:"wikiwhy.com", viewtube:"viewtube.com", faceplace:"face-place.net", threadit:"thread-it.com", yahuh:"yahuh.com", mapguess:"mapguess.net", "amaze-on":"amaze-on.com", searchish:"search-ish.com", "spotty-fi":"spotty-fi.com", mycorner:"my-corner.com" };
+  $("siteWindowAddress").textContent = `www.${addresses[mission.id]}`;
   $("siteFrame").alt = `${mission.name} ${description}`.trim();
 }
 

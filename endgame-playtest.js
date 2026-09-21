@@ -456,7 +456,7 @@ function builderMarkup() {
         ${siteComplete ? `<section class="document-complete" aria-labelledby="choiceTitle">
           <small>DOCUMENT RESTORED</small>
           <h2 id="choiceTitle">All three parts are back in place.</h2>
-          <p>AUTO's lesson, your explanation, and the extra instruction are saved together.</p>
+          <p>AUTO's lesson, the extra instruction, and your explanation are saved together.</p>
           <button class="primary-button" data-action="advance-site" type="button">${isLastSite ? "Continue" : "Move on to next site"}</button>
         </section>` : `<section class="instruction-choices" aria-labelledby="choiceTitle">
           <h2 id="choiceTitle">${escapeHtml(step.question)}</h2>
