@@ -74,7 +74,7 @@ test("every non-WikiWhy mission paints one clean full-width identity bar", async
 test("MapGuess uses compact bright-red moving-target repair copy", async () => {
   const svg = await readFile(new URL("../docs/design/screens/2026-08-22/mapguess-production/mapguess-anchor-master-v2.svg", import.meta.url), "utf8");
   assert.match(svg, /\.mg-overlay-head\{font-size:13px[^}]*fill:#C5251E/u);
-  assert.match(svg, /class="mg-overlay-head" fill="#C5251E">GO DIRECTLY TO THE LIBRARY/u);
+  assert.match(svg, /class="mg-overlay-head" fill="#C5251E">GO DIRECTLY TO<\/text><text[^>]+class="mg-overlay-head" fill="#C5251E">THE LIBRARY/u);
   assert.doesNotMatch(svg, /class="mg-overlay-head" fill="#132A37"/u);
   assert.doesNotMatch(svg, />TRY THE REPAIR</u);
 });
