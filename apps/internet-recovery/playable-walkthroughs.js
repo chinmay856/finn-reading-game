@@ -69,7 +69,7 @@ function canonicalDeck(siteId) {
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
         audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
-          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh", "searchish", "amaze-on"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh", "searchish", "amaze-on", "viewtube", "spotty-fi"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -145,7 +145,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a headline should summarize a story, not replace it. I should keep the reporting, sources, captions, and authors visible so readers can understand and check what happened.",
   }),
   viewtube: Object.freeze({
-    id: "viewtube", name: "ViewTube", meter: "Viewer control", passages: viewTubePassages,
+    id: "viewtube", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["viewtube"].map(record => record.id)), name: "ViewTube", meter: "Viewer control", passages: viewTubePassages,
     initialFrame: frame("viewtube", "viewtube-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11].map((page) => frame("viewtube", "viewtube-anchor-v2", page))),
     phaseOneCount: 5, superFrame: frame("viewtube", "viewtube-anchor-v2", 7), checklistFrame: frame("viewtube", "viewtube-anchor-v2", 8), securedFrame: frame("viewtube", "viewtube-anchor-v2", 12), receiptFrame: frame("viewtube", "viewtube-anchor-v2", 12),
@@ -175,7 +175,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a faster answer should not replace the search. I should keep AI accurate and optional, label paid results, show real options, and leave the original query editable.",
   }),
   "spotty-fi": Object.freeze({
-    id: "spotty-fi", name: "Spotty-Fi", meter: "Music recovery", passages: spottyFiPassages,
+    id: "spotty-fi", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["spotty-fi"].map(record => record.id)), name: "Spotty-Fi", meter: "Music recovery", passages: spottyFiPassages,
     initialFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11, 12, 13].map((page) => frame("spotty-fi", "spotty-fi-anchor-v1", page))),
     phaseOneCount: 5, superFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 7), checklistFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 8), securedFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 13), receiptFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 13),

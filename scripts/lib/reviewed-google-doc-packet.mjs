@@ -7,7 +7,7 @@ export function parseReviewedGoogleDoc(siteId, doc) {
     if (/^Passage \d+(?: candidate)?(?::| —)/u.test(paragraph.text)) sections.push([]);
     if (sections.length) sections.at(-1).push(paragraph.text);
   }
-  assert.equal(sections.length, ({ faceplace: 8, searchish: 10, 'amaze-on': 11 }[siteId] ?? 9));
+  assert.equal(sections.length, ({ faceplace: 8, viewtube: 8, 'spotty-fi': 10, searchish: 10, 'amaze-on': 11 }[siteId] ?? 9));
   return sections.map((section, index) => {
     const number = index + 1;
     assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?(?::| —)`));
@@ -61,7 +61,7 @@ export function parseReviewedGoogleDoc(siteId, doc) {
     });
     assert.equal(orderedChoices.length, 3);
     assert.equal(orderedChoices.filter(choice => choice.correct).length, 1);
-    const verse = /^(?:There is no frigate like a book|The World Is Too Much With Us|If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody)/u.test(title);
+    const verse = /^(?:Oh, Humanity|I Hear America Singing|The Solitary Reaper|Twelfth Night|There is no frigate like a book|The World Is Too Much With Us|If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody)/u.test(title);
     const displayLines = verse ? [...paragraphs] : [paragraphs[0], ...paragraphs.slice(1).flatMap(paragraph => {
       const lines = derivePassageDisplayLines({ paragraphs: [paragraph] });
       return lines.some(line => /[,;—–]["'’”)]*$/u.test(line)) ? [paragraph] : lines;
@@ -71,7 +71,7 @@ export function parseReviewedGoogleDoc(siteId, doc) {
       form: 'human-reviewed reading', paragraphs, displayLines,
       spokenWordCount: paragraphs.join(' ').split(/\s+/u).filter(Boolean).length,
       source: { label: reviewedTitle, url: doc.document_url },
-      reviewStatus: ['yahuh', 'searchish', 'amaze-on'].includes(siteId) ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
+      reviewStatus: ['yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi'].includes(siteId) ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
       sourceDocumentId: doc.documentId, sourceRevisionId: doc.revisionId,
       onScreen: section.find(text => /^(?:On screen|On the website): /u.test(text))?.replace(/^(?:On screen|On the website): /u, '') ?? '',
       vocabulary,
