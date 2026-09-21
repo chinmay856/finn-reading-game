@@ -12,14 +12,14 @@ const config = {
     {
       "id": "viewtube",
       "name": "ViewTube",
-      "description": "The same buffering toast clip is wearing ten different costumes.",
+      "description": "Ads and autoplay bury the video you wanted to watch.",
       "frame": "/walkthroughs/viewtube/viewtube-anchor-v2_p1.png",
       "mark": "/marks/viewtube.svg"
     },
     {
       "id": "faceplace",
       "name": "FacePlace",
-      "description": "A nonsense tracker rewards reactions instead of restoring real authors.",
+      "description": "A fishing photo tells only part of the story. The comments and wider view are missing.",
       "frame": "/walkthroughs/faceplace/faceplace-anchor-v2_p1.png",
       "mark": "/marks/faceplace.svg"
     },
@@ -33,42 +33,42 @@ const config = {
     {
       "id": "yahuh",
       "name": "Yahuh! Portal",
-      "description": "All information has been blended into homepage paste.",
+      "description": "Huge headlines have crowded out the stories and sources.",
       "frame": "/walkthroughs/yahuh/yahuh-anchor-v2_p1.png",
       "mark": "/marks/yahuh.svg"
     },
     {
       "id": "mapguess",
       "name": "MapGuess",
-      "description": "The promised arrival time stays fixed by quietly moving the destination.",
+      "description": "A trip to the library keeps turning into a detour to Snack Palace.",
       "frame": "/walkthroughs/mapguess/mapguess-anchor-v2_p1.png",
       "mark": "/marks/mapguess.svg"
     },
     {
       "id": "amaze-on",
       "name": "Amaze-On",
-      "description": "Hidden automation turns one return into two future deliveries.",
+      "description": "Paid rankings and missing details make the right shoes hard to compare.",
       "frame": "/walkthroughs/amaze-on/amaze-on-anchor-v1_p1.png",
       "mark": "/marks/amazeon.svg"
     },
     {
       "id": "searchish",
       "name": "Search-ish",
-      "description": "Five confident results all redirect to one generated cache.",
+      "description": "An AI answer and paid shortcuts hide useful places to find the book.",
       "frame": "/walkthroughs/searchish/searchish-anchor-v3_p1.png",
       "mark": "/marks/searchish.svg"
     },
     {
       "id": "spotty-fi",
       "name": "Spotty-Fi",
-      "description": "A fabricated history keeps choosing the same silent twelve-second track.",
+      "description": "Music appears without clear artists, credits, or listener controls.",
       "frame": "/walkthroughs/spotty-fi/spotty-fi-anchor-v1_p1.png",
       "mark": "/marks/spottyfi.svg"
     },
     {
       "id": "mycorner",
       "name": "MyCorner",
-      "description": "Every profile has become one CEO demo page.",
+      "description": "A polished profile claims to be Amy. Its identity and money request need checking.",
       "frame": "/walkthroughs/mycorner/mycorner-anchor-v3_p1.png",
       "mark": "/marks/mycorner.svg"
     }

@@ -28,11 +28,11 @@ test("only WikiWhy is speech-playable while all ten sites expose honest structur
   assert.match(getRecoverySite("faceplace").markImage, /faceplace-mark\.svg/u);
   assert.equal(getRecoverySite("mycorner").playable, false);
   assert.equal(getRecoverySite("mycorner").runtimeLabel, "READY TO RECOVER");
-  assert.equal(getRecoverySite("mycorner").description, "Every profile has become one CEO demo page.");
+  assert.equal(getRecoverySite("mycorner").description, "A polished profile claims to be Amy. Its identity and money request need checking.");
   assert.match(getRecoverySite("mycorner").markImage, /mycorner-mark\.svg/u);
   assert.equal(getRecoverySite("yahuh").playable, false);
   assert.equal(getRecoverySite("yahuh").runtimeLabel, "READY TO RECOVER");
-  assert.equal(getRecoverySite("yahuh").description, "All information has been blended into homepage paste.");
+  assert.equal(getRecoverySite("yahuh").description, "Huge headlines have crowded out the stories and sources.");
   assert.match(getRecoverySite("yahuh").markImage, /yahuh-mark\.svg/u);
   assert.equal(getRecoverySite("viewtube").playable, false);
   assert.equal(getRecoverySite("viewtube").runtimeLabel, "READY TO RECOVER");
