@@ -34,7 +34,7 @@ body {
 #diagnosticStatus { margin-left:auto; color:#bcebc8; font-size:10px; white-space:nowrap; }
 .playtest-shell {
   min-height: 0;
-  height: calc(100vh - 50px);
+  height: 100%;
   flex:1 1 auto;
 }
 .recovery-launcher {

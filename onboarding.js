@@ -142,7 +142,7 @@ async function prepareArtwork(){
 const loading=document.createElement('section');loading.className='artwork-loading';
 loading.setAttribute('role','status');loading.textContent='Opening recovery desktop…';$('gameStage').append(loading);
 try{await prepareArtwork();await $('tutorialAmy').decode();loading.remove();}catch{
- loading.textContent='The artwork couldn’t load. Reconnect to the preview and try again.';
+ loading.textContent='The artwork couldn’t load. Check your connection and try again.';
  const retry=el('button','','Try again');retry.onclick=()=>location.reload();loading.append(retry);
  throw new Error('Onboarding artwork could not be loaded.');
 }

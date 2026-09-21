@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/desktop-chrome.css">
 </head>
 <body>
-  <header class="game-diagnostic-toolbar" aria-label="Playtest controls">
+  <header hidden class="game-diagnostic-toolbar" aria-label="Playtest controls">
     <strong>PLAYTEST CONTROLS</strong>
     <label for="diagnosticJump">Jump to</label>
     <select id="diagnosticJump"><option value="launcher">Recovery Browser</option></select>
@@ -58,11 +58,11 @@
           <div id="readerView" class="companion-view">
             <h1 id="companionTitle"></h1>
             <div id="passage" class="passage" tabindex="0" aria-label="Reading passage"></div>
-            <p id="readerStatus" class="status" role="status">Prepare the local models when you are ready.</p>
+            <p id="readerStatus" class="status" role="status">Prepare the reading guide when you are ready.</p>
             <div class="guide-progress" role="progressbar" aria-label="Reading guide position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="guideProgressFill"></span></div>
             <div id="modelPanel" class="model-panel"><progress id="modelProgress" max="100" value="0"></progress><span id="modelStatus">Not prepared</span></div>
             <div class="reader-actions">
-              <button id="prepareModels" type="button">Prepare local models</button>
+              <button id="prepareModels" type="button">Prepare reading guide</button>
               <button id="startReading" type="button" disabled>Start reading</button>
               <button id="finishReading" type="button" disabled>Finish now</button>
             </div>
@@ -137,13 +137,13 @@
             <div class="dialup-titlebar"><span>Dialing Progress</span><span aria-hidden="true">×</span></div>
             <div class="dialup-body">
               <small>LOCAL CONNECTION WIZARD</small>
-              <h1 id="dialupTitle">Preparing the local voice model…</h1>
+              <h1 id="dialupTitle">Preparing the reading guide…</h1>
               <div class="dialup-connection" aria-hidden="true">
                 <img class="dialup-art" src="/walkthroughs/shared/dialup-voice-connection-v2.png" alt="">
                 <div class="dialup-packet-signal"><i></i><i></i><i></i><i></i><i></i></div>
               </div>
               <div class="dialup-status">
-                <strong id="dialupStatus" role="status">Dialing localhost…</strong>
+                <strong id="dialupStatus" role="status">Connecting…</strong>
                 <progress id="dialupProgress" max="100"></progress>
                 <small>No modem sound will play. Your ears are safe.</small>
               </div>

@@ -1,3 +1,7 @@
+import { isPlaytester, gameUrl } from "./apps/internet-recovery/player-mode.js";
+const playtester = isPlaytester(location.search);
+const modeUrl = path => gameUrl(path, playtester);
+document.querySelector(".playtest-toolbar").hidden = !playtester;
 import { savedEndgameDocuments, savedDocumentRepairStep, retainRecoveredInstructions } from "./apps/internet-recovery/endgame-saved-documents.js";
 import {
   ENDGAME_ASSETS,
@@ -45,11 +49,11 @@ const persistence = createEndgamePlaytestPersistence();
 
 const routeParams = new URLSearchParams(location.search);
 const replayRequested = routeParams.get("replay") === "1";
-const campaignMode = routeParams.get("campaign") === "1";
+const campaignMode = !playtester || routeParams.get("campaign") === "1";
 let state = replayRequested
   ? persistence.save(replayDesktopIncident(persistence.load()))
   : persistence.load();
-if (replayRequested) history.replaceState(null, "", campaignMode ? "/endgame-playtest.html?campaign=1" : "/endgame-playtest.html");
+if (replayRequested) history.replaceState(null, "", modeUrl(campaignMode ? "/endgame-playtest.html?campaign=1" : "/endgame-playtest.html"));
 
 function campaignSavedReflections() {
   try {
@@ -782,8 +786,8 @@ stage.addEventListener("click", (event) => {
     case "advance-ready": if (state.readyDialogueIndex === ENDGAME_COPY.ready.length - 1) void runAutoUpdate(); else saveState(advanceReadyDialogue(state), "Endgame story advanced"); break;
     case "replay-introduction": openEndgameOnboarding(false); break;
     case "replay-tutorial": openEndgameOnboarding(true); break;
-    case "switch-player": persistence.save(state); location.assign("/playable-missions.html?player=switch"); break;
-    case "new-player": persistence.save(state); location.assign("/playable-missions.html?player=new"); break;
+    case "switch-player": persistence.save(state); location.assign(modeUrl("/playable-missions.html?player=switch")); break;
+    case "new-player": persistence.save(state); location.assign(modeUrl("/playable-missions.html?player=new")); break;
     case "advance-takeover": saveState(advanceTakeoverDialogue(state)); break;
     case "close-popup": {
       const popup = ENDGAME_POPUPS.find(({ id }) => id === action.dataset.popupId);
@@ -807,10 +811,10 @@ stage.addEventListener("click", (event) => {
     case "replay-incident": saveState(replayDesktopIncident(state), "Desktop incident replay started"); break;
     case "toggle-start-menu": startMenuOpen = !startMenuOpen; render(); break;
     case "save-endgame": startMenuOpen = false; saveState(state, "Endgame saved locally"); break;
-    case "return-recovery-browser": location.assign("/playable-missions.html"); break;
+    case "return-recovery-browser": location.assign(modeUrl("/playable-missions.html")); break;
     case "finish-game": {
       state = persistence.save(finishEndgame(state));
-      location.assign("/playable-missions.html?endgame=complete");
+      location.assign(modeUrl("/playable-missions.html?endgame=complete"));
       break;
     }
     case "return-epilogue": saveState(returnToEpilogue(state)); break;
@@ -874,11 +878,12 @@ stage.addEventListener("pointercancel", () => {
 });
 
 jumpSelect.addEventListener("change", () => {
+  if (!playtester) return;
   modal = null;
   saveState(jumpToEndgameBeat(jumpSelect.value), `Jumped to ${jumpSelect.selectedOptions[0].textContent}`);
 });
 
-skipButton.addEventListener("click", skipCurrentStep);
+skipButton.addEventListener("click", () => { if (playtester) skipCurrentStep(); });
 
 reduceMotion.addEventListener("change", () => {
   stage.dataset.reducedMotion = reduceMotion.checked ? "true" : "false";
@@ -887,6 +892,7 @@ reduceMotion.addEventListener("change", () => {
 });
 
 resetButton.addEventListener("click", () => {
+  if (!playtester) return;
   if (!confirm("Reset only this endgame run? The ten recovered sites and saved lessons will not be changed.")) return;
   state = persistence.reset();
   selectedOptionId = null;

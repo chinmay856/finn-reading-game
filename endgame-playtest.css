@@ -534,3 +534,5 @@ button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focu
 /* Keep an exit route available above dialogue, documents, and celebration. */
 .taskbar, .desktop-shortcuts { z-index: 220; }
 .start-menu { z-index: 221; }
+
+[hidden] { display: none !important; }

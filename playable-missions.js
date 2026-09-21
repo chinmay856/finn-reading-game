@@ -1,3 +1,7 @@
+import { isPlaytester, gameUrl } from "./apps/internet-recovery/player-mode.js";
+const playtester = isPlaytester(location.search);
+const modeUrl = path => gameUrl(path, playtester);
+document.querySelector(".game-diagnostic-toolbar").hidden = !playtester;
 import { playAutoOverfixTransition } from "./apps/internet-recovery/auto-overfix-transition.js";
 import { shuffleQuickCheckChoices } from "./apps/internet-recovery/quick-check-order.js";
 import { getPlayableWalkthrough } from "./apps/internet-recovery/playable-walkthroughs.js";
@@ -51,7 +55,7 @@ const requestedSiteId = new URLSearchParams(location.search).get("site");
 let mission = requestedSiteId && PLAYABLE_SITE_IDS.includes(requestedSiteId)
   ? getPlayableWalkthrough(requestedSiteId)
   : null;
-const streamingGuideOverride = new URLSearchParams(location.search).get("streamingGuide");
+const streamingGuideOverride = playtester ? new URLSearchParams(location.search).get("streamingGuide") : null;
 const requestedStreamingGuide = streamingGuideOverride !== "0";
 let replayRequested = new URLSearchParams(location.search).get("replay") === "1";
 const whisper = new LocalWhisperRecognizer({ onProgress: updateOpeningModelProgress });
@@ -422,13 +426,14 @@ function populateDiagnosticJump() {
 }
 
 function openDiagnosticTarget() {
+  if (!playtester) return;
   const target = $("diagnosticJump").value;
   if (target === "launcher") {
     void navigateToLauncher();
     return;
   }
   if (target === "endgame") {
-    location.assign("/endgame-playtest.html");
+    location.assign(modeUrl("/endgame-playtest.html"));
     return;
   }
   if (target.startsWith("site:")) void navigateToMission(target.slice(5));
@@ -641,8 +646,8 @@ function renderPassage(index = sequence.index) {
   $("readerStatus").textContent = modelsPrepared
     ? "Ready when you are."
     : shouldAutoPrepare
-      ? "Reconnecting to the prepared local voice model…"
-      : "Prepare the local models when you are ready.";
+      ? "Reconnecting the reading guide…"
+      : "Prepare the reading guide when you are ready.";
   $("prepareModels").hidden = modelsPrepared || shouldAutoPrepare;
   $("startReading").disabled = !modelsPrepared;
   $("finishReading").disabled = true;
@@ -686,9 +691,7 @@ function updateModelStatus(event) {
     "whisper-failed": "The final voice model could not load",
   };
   if (event.phase === "ready") {
-    $("modelStatus").textContent = event.guideMode === "streaming"
-      ? "Local voice models ready · reading guide on"
-      : "Local voice model ready · diagnostic checkpoint mode";
+    $("modelStatus").textContent = "Reading guide ready";
     $("diagnosticStatus").textContent = event.guideMode === "streaming"
       ? "Voice guide: Sherpa streaming"
       : "Voice guide: Whisper checkpoints";
@@ -702,10 +705,10 @@ function updateAttemptStatus(event) {
     "requesting-microphone": "Waiting for microphone permission…",
     listening: event.guideMode === "streaming"
       ? "Listening. The reading guide is following along."
-      : "Listening in diagnostic checkpoint mode.",
+      : "Listening. Read the passage aloud.",
     "auto-finish-armed": "End of passage heard. Finishing in about five seconds unless you finish now.",
     finalizing: "Checking this reading locally…",
-    "whisper-checkpoint-fallback": "Live guide is using local Whisper checkpoints.",
+    "whisper-checkpoint-fallback": "The reading guide is following along.",
     "streaming-guide-failed": "The reading guide stopped. Please reload this tab.",
     "microphone-unavailable": "The microphone did not start. Check permission and try again.",
     "diagnostic-save-failed": "Reading complete. The optional troubleshooting copy could not be saved.",
@@ -764,7 +767,7 @@ async function buildStreamingRecognizer() {
         onDataProgress({ loaded, total }) {
           $("modelProgress").value = total ? Math.round((loaded / total) * 100) : 0;
         },
-        onStatus(message) { $("modelStatus").textContent = String(message || "Loading live guide…"); },
+        onStatus(message) { $("modelStatus").textContent = playtester ? String(message || "Loading live guide…") : "Preparing the reading guide…"; },
       });
       stabilityMonitor.markStage("sherpa-ready");
     } catch (error) {
@@ -803,7 +806,7 @@ async function buildController() {
     onStatus: updateAttemptStatus,
     passageId: current.id,
     permitCheckpointFallback: !requestedStreamingGuide,
-    retainTroubleshooting: $("retainTroubleshooting").checked,
+    retainTroubleshooting: playtester && $("retainTroubleshooting").checked,
     streamingRecognizer,
     whisper,
     wordsPerMinute: current.profile?.guide?.defaultWpm ?? 185,
@@ -821,7 +824,7 @@ async function prepareModels() {
     stabilityMonitor.markStage("voice-models-preparing", { site: preparedSiteId });
     setTechno("waiting", "left");
     $("prepareModels").disabled = true;
-    $("prepareModels").textContent = "Preparing local model…";
+    $("prepareModels").textContent = "Preparing reading guide…";
     try {
       streamingRecognizer ??= await buildStreamingRecognizer();
       if (mission !== preparedMission) {
@@ -843,7 +846,7 @@ async function prepareModels() {
         site: preparedSiteId,
       });
       $("modelProgress").value = 100;
-      $("modelStatus").textContent = streamingRecognizer ? "Local voice models ready · reading guide on" : "Local voice model ready · diagnostic checkpoint mode";
+      $("modelStatus").textContent = "Reading guide ready";
       $("prepareModels").hidden = true;
       $("startReading").disabled = false;
       $("readerStatus").textContent = "Ready when you are.";
@@ -862,7 +865,7 @@ async function prepareModels() {
         void showVoiceGuideRecovery();
       } else {
         $("prepareModels").disabled = false;
-        $("prepareModels").textContent = "Retry local model";
+        $("prepareModels").textContent = "Retry reading guide";
         $("readerStatus").textContent = `The local voice model did not load: ${error.message}`;
       }
       setTechno("failed", "left");
@@ -1030,6 +1033,7 @@ async function retryReading() {
 }
 
 async function skipReading() {
+  if (!playtester) return;
   if (controller?.listening) await controller.restart().catch(() => {});
   controller = null;
   const current = passage();
@@ -1298,7 +1302,7 @@ async function prepareOpeningVoiceModel() {
   progress.removeAttribute("value");
   retry.hidden = true;
   continueButton.hidden = true;
-  $("dialupStatus").textContent = returningConnection ? "Reconnecting to the local voice cache…" : "Dialing localhost…";
+  $("dialupStatus").textContent = returningConnection ? "Reconnecting to the local voice cache…" : "Connecting…";
   setTechno("waiting", "center");
   await waitForPaint(returningConnection ? 120 : 360);
   try {
@@ -1308,7 +1312,7 @@ async function prepareOpeningVoiceModel() {
     sessionStorage.setItem("internet-recovery-voice-warmed-v1", "1");
     window.dataset.state = "connected";
     progress.value = 100;
-    $("dialupStatus").textContent = "Connected at 56K-ish. Local voice model ready.";
+    $("dialupStatus").textContent = "Connected at 56K-ish. Ready to read.";
     setTechno("wave", "center");
     await waitForPaint(900);
     gate.hidden = true;
@@ -1320,13 +1324,14 @@ async function prepareOpeningVoiceModel() {
     stabilityMonitor.record("opening-whisper-failed", { error: error.name });
     window.dataset.state = "error";
     progress.removeAttribute("value");
-    $("dialupStatus").textContent = "Busy signal. The local voice model did not connect.";
+    $("dialupStatus").textContent = "The reading guide could not connect. Check your connection and try again.";
     retry.hidden = false;
-    continueButton.hidden = false;
+    continueButton.hidden = !playtester;
     setTechno("failed", "center");
     return new Promise((resolve) => {
       retry.onclick = async () => resolve(await prepareOpeningVoiceModel());
       continueButton.onclick = () => {
+        if (!playtester) return;
         gate.hidden = true;
         $("setupDesktop").hidden = true;
         $("setupShortcuts").hidden = true;
@@ -1370,7 +1375,7 @@ async function startProfileExperience(profile) {
   mission = null;
   sequence = null;
   replayRequested = false;
-  history.replaceState({ siteId: null }, "", "/playable-missions.html");
+  history.replaceState({ siteId: null }, "", modeUrl("/playable-missions.html"));
   renderLauncher();
   await runGameIntroduction();
 }
@@ -1415,7 +1420,7 @@ function startExperience() {
     return;
   }
   document.title = `${mission.name} · Playable Mission`;
-  $("skipReading").hidden = false;
+  $("skipReading").hidden = !playtester;
   $("diagnosticJump").value = `site:${mission.id}`;
   sequence = createMissionSequenceState({ phaseOneCount: mission.phaseOneCount, totalPassages: mission.passages.length });
   $("launcherView").hidden = true;
@@ -1443,7 +1448,7 @@ async function navigateToLauncher({ updateHistory = true } = {}) {
   mission = null;
   sequence = null;
   replayRequested = false;
-  if (updateHistory) history.pushState({ siteId: null }, "", "/playable-missions.html");
+  if (updateHistory) history.pushState({ siteId: null }, "", modeUrl("/playable-missions.html"));
   stabilityMonitor.markStage("launcher");
   renderLauncher();
 }
@@ -1461,7 +1466,7 @@ async function navigateToMission(siteId, { replay = false, updateHistory = true 
   if (updateHistory) {
     const query = new URLSearchParams({ site: siteId });
     if (replayRequested) query.set("replay", "1");
-    history.pushState({ replay: replayRequested, siteId }, "", `/playable-missions.html?${query}`);
+    history.pushState({ replay: replayRequested, siteId }, "", modeUrl(`/playable-missions.html?${query}`));
   }
   stabilityMonitor.markStage("mission-opened", { site: siteId });
   startExperience();
@@ -1486,11 +1491,11 @@ function bindShellControls() {
   for (const button of document.querySelectorAll("[data-open-documents]")) button.addEventListener("click", openDocuments);
   $("closeDocuments").addEventListener("click", closeDocuments);
   $("replayEndgame").addEventListener("click", () => {
-    location.assign("/endgame-playtest.html?campaign=1&replay=1");
+    location.assign(modeUrl("/endgame-playtest.html?campaign=1&replay=1"));
   });
   $("launchEndgame").addEventListener("click", () => {
     const replay = completedEndgameRunExists() ? "&replay=1" : "";
-    location.assign(`/endgame-playtest.html?campaign=1${replay}`);
+    location.assign(modeUrl(`/endgame-playtest.html?campaign=1${replay}`));
   });
   $("documentsWindow").addEventListener("click", (event) => { if (event.target === $("documentsWindow")) closeDocuments(); });
   for (const button of document.querySelectorAll(".start-button")) {
@@ -1559,7 +1564,7 @@ function initialize() {
   const profile = activeProfile();
   const playerAction = new URLSearchParams(location.search).get("player");
   if (["switch", "new"].includes(playerAction)) {
-    history.replaceState(null, "", "/playable-missions.html");
+    history.replaceState(null, "", modeUrl("/playable-missions.html"));
     openProfileGate({ clearName: playerAction === "new" });
   } else if (profile) {
     $("activeProfileName").textContent = profile.displayName;

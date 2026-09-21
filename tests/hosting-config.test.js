@@ -24,7 +24,7 @@ test("Firebase serves the complete app from the production build", () => {
 test("the Internet Recovery 98 Firebase site preserves the production hosting contract", () => {
   assert.equal(internetRecoveryConfig.hosting.site, "internet-recovery-98");
   assert.equal(internetRecoveryConfig.hosting.public, config.hosting.public);
-  assert.deepEqual(internetRecoveryConfig.hosting.redirects, config.hosting.redirects);
+  assert.deepEqual(internetRecoveryConfig.hosting.redirects, [...config.hosting.redirects, { source: "/playtest", destination: "/playable-missions.html?playtest=1", type: 302 }]);
   assert.deepEqual(internetRecoveryConfig.hosting.headers, config.hosting.headers);
 });
 
