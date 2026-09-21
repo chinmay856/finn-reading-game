@@ -49,7 +49,7 @@ const lines = (items, x, y, className = "body", gap = 24) =>
 function article(version) {
   const over = version >= 7;
   const locks = over ? version - 7 : 0;
-  const fixed = (step) => over ? (step === 5 ? locks >= 1 : step === 6 ? locks >= 2 : locks >= 3) : version >= step;
+  const fixed = (step) => over ? (step === 5 ? locks >= 1 : step === 6 ? locks >= 2 : locks >= 3) : version >= ({ 1: 3, 3: 1 }[step] ?? step);
   const ink = on => on ? COLORS.repairDark : COLORS.corruption;
   const paper = on => on ? '#edf5ea' : '#fff0ed';
   const box = (x,y,w,h,on) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${paper(on)}" stroke="${ink(on)}" stroke-width="1.5"/>`;

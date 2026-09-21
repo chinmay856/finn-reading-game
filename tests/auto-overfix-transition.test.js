@@ -24,6 +24,7 @@ for (const reduced of [false, true]) test(`overfix awaits reveal and restores co
   globalThis.matchMedia = () => ({matches: reduced});
   const stage = new Node(), active = new Node(), inert = new Node(); inert.inert = true;
   stage.append(active, inert);
+  stage.querySelectorAll = () => [active];
   let complete = false;
   const pending = playAutoOverfixTransition({stage, source:'/overfix.png', siteName:'WikiWhy'}).then(() => { complete = true; });
   await new Promise(resolve => setImmediate(resolve));

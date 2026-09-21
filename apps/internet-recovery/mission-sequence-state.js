@@ -165,7 +165,7 @@ export function retryMissionPassage(state, { passageId } = {}) {
   if (id && state.pendingPassageId && id !== state.pendingPassageId) {
     return result(state, { retried: false, reason: "different-passage-pending" });
   }
-  if (state.phase === "reflection-required" || state.phase === "completed") {
+  if (state.phase === "completed" || (state.phase === "reflection-required" && !state.completedPassageIds.includes(id))) {
     return result(state, { retried: false, reason: state.phase });
   }
   return result(freezeState({ ...state, retryCount: state.retryCount + 1 }), {
@@ -183,6 +183,7 @@ export function submitMissionReflection(state, { reflection, submittedAt } = {})
     return result(state, { completed: false, reason: "reflection-not-required" });
   }
   const text = typeof reflection === "string" ? reflection.trim() : "";
+  if (text.length < 10) return result(state, { completed: false, reason: "reflection-too-short" });
 
   const receipt = Object.freeze({
     completedPassageCount: state.completedPassageIds.length,

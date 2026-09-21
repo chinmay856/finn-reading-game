@@ -23,3 +23,15 @@ test('missing saved explanations are identified rather than replaced with author
   const docs = savedEndgameDocuments(ENDGAME_SITE_FIXTURES, {}, true);
   assert.match(docs[0].playerExplanation, /^No explanation was saved for/);
 });
+
+test('recovered extra instructions persist alongside the original saved text', async () => {
+  const { retainRecoveredInstructions } = await import('../apps/internet-recovery/endgame-saved-documents.js');
+  const original = { wikiwhy: { lesson: 'My original lesson', reflection: 'My original explanation' } };
+  assert.deepEqual(retainRecoveredInstructions(original, ENDGAME_SITE_FIXTURES, []), original);
+  const restored = retainRecoveredInstructions(original, ENDGAME_SITE_FIXTURES, ['wikiwhy:extra-instruction']);
+  assert.equal(restored.wikiwhy.lesson, original.wikiwhy.lesson);
+  assert.equal(restored.wikiwhy.reflection, original.wikiwhy.reflection);
+  assert.equal(restored.wikiwhy.extraInstruction, ENDGAME_SITE_FIXTURES[0].boundaryOptions.find(x => x.correct).text);
+  assert.equal(original.wikiwhy.extraInstruction, undefined);
+  assert.equal(savedEndgameDocuments(ENDGAME_SITE_FIXTURES, restored, true)[0].extraInstruction, restored.wikiwhy.extraInstruction);
+});
