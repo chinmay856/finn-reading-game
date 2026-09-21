@@ -197,7 +197,6 @@ function modelFor(state) {
 
 function site(state) {
   const model = modelFor(state);
-  const fullyFixed = model.choiceFixed && !model.volumeMax;
   const choiceColor = model.choiceFixed ? COLORS.repair : COLORS.corruption;
   const cards = model.realArt
     ? [
@@ -218,17 +217,6 @@ function site(state) {
           detail: model.creditsFixed ? ["Mira • Jo • Kai", "Noir Harbor • Lio", "The Formatics • Ren"][index] : "CREDITS: NONE",
         }));
   const prompt = model.choiceFixed ? "WHAT DO YOU WANT TO PLAY?" : model.superMode ? "AUTO ALREADY CHOSE EVERYTHING" : "LISTEN TO WHAT WE WANT";
-  const subtitle = fullyFixed
-    ? "Three artists, three sounds, and paths to keep exploring."
-    : model.superMode
-      ? "INFINITE DISCOVERY COMPLETE. PEOPLE WERE THE BOTTLENECK."
-      : !model.creditsFixed ? "Generated to match everybody. No people required."
-        : !model.choiceFixed ? "Credit details are back. Discovery still needs a choice."
-          : !model.artistFixed ? "You can choose. Artist names are still missing."
-            : !model.aboutFixed ? "Artist names are back. Creator profiles are still incomplete."
-              : !model.collaborationFixed ? "Creator profiles are back. Collaboration context is still missing."
-                : !model.titleFixed ? "Creator context is back. Track titles and artwork are still generated."
-                  : "Three artists, three sounds, and paths to keep exploring.";
   const nav = model.choiceFixed ? "Chosen by you" : model.superMode ? "Made by Auto" : "Made for you";
   return `<g data-site-state="${state.id}">
     <rect x="109" y="56" width="802" height="714" fill="#080B0A"/>
@@ -242,7 +230,7 @@ function site(state) {
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:${choiceColor};font-size:12px" data-choice-indicator="nav">▣ ${nav}</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text><text x="251" y="173" class="spot-meta" style="fill:${model.superMode ? COLORS.corruption : "#AEB7B1"}">${subtitle}</text>
+    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     ${cards.map((card, index) => trackCard({ ...card, index, realArt: model.realArt, superMode: model.superMode, cardFixed: model.realArt && model.artistFixed && model.creditsFixed, titleFixed: model.titleFixed, artistFixed: model.artistFixed, creditsFixed: model.creditsFixed })).join("")}
     ${creatorStrip(model)}
     ${player(model)}
@@ -250,9 +238,7 @@ function site(state) {
 }
 
 function footer(state) {
-  const act2 = state.mode === "act2";
   const color = state.progress === 100 ? COLORS.repair : state.progress === 0 ? COLORS.corruption : "#A8DD19";
-  const status = state.progress === 100 ? "MUSIC + CHOICE RESTORED" : act2 ? "AUTO OVERRIDE REPAIR IN PROGRESS" : "ARTISTS + CREDITS RETURNING";
   return `<g data-site-footer="true">
     <rect x="109" y="682" width="802" height="156" fill="#131817"/>
     <line x1="109" y1="682" x2="911" y2="682" stroke="#687F94"/>
@@ -260,8 +246,7 @@ function footer(state) {
     <text x="276" y="724" class="spot-small">${state.progress}%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="${color}"/>
     <rect x="128" y="739" width="${Math.round(520 * state.progress / 100)}" height="20" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/>
-    <text x="670" y="754" class="spot-meta" style="fill:${color};font-size:11px">${status}</text>
-    ${act2 && state.progress < 100 ? `<text x="128" y="797" class="spot-label" style="fill:${COLORS.corruption}">AUTO OVER-FIX ACTIVE</text>` : ""}
+
   </g>`;
 }
 

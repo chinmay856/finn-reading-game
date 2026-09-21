@@ -1,0 +1,146 @@
+{
+  "/audio/faceplace/kokoro-heart/faceplace-01-venerable-reviewed-20260920.m4a": {
+    "speechText": "venerable. Definition: Deserving respect because of age or experience. In this passage, the battered fish looks venerable with age.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "66c93e9651d13e6804eb564c7af2ef84fe6eb0697b1c90e05ccf8dfc2401edff"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-01-rosettes-reviewed-20260920.m4a": {
+    "speechText": "rosettes. Definition: Small shapes or ornaments resembling roses. In this passage, lime forms small rosettes on the fish.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "b9b45ff4f4580d4fd67b54d8c969a760b76d500eb732a168b6da5b85c4225180"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-01-isinglass-reviewed-20260920.m4a": {
+    "speechText": "isinglass. Definition: Thin, transparent sheets of mica once used in windows. In this passage, the fish’s eyes resemble scratched isinglass.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "0f4f077119b8072d3eadbaf04abe9a5623ea78f09c603bb6e55043d372e7c696"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-02-swivel-reviewed-20260920.m4a": {
+    "speechText": "swivel. Definition: A joint that lets connected parts turn without twisting. In this passage, a swivel remains attached to the old fishing tackle.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "67248d79c788dd9a9ff7231ae32ca586edb5c8f877ee96bea432c7ecb08d0bca"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-02-frayed-reviewed-20260920.m4a": {
+    "speechText": "frayed. Definition: Worn so that threads or fibers come loose at the edges. In this passage, the broken fishing line has a frayed end.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "9716459d708d5c491dd59e68c49ba2ee00751350b97c9cc04c7e75aefb56fed3"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-02-thwarts-reviewed-20260920.m4a": {
+    "speechText": "thwarts. Definition: Seats or crosspieces running across a small boat. In this passage, the boat’s thwarts are cracked by the sun.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "ad74c469936bbf6a39168e9c3364b9662011af4c464099385a60e35300e3e584"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-03-dismay-reviewed-20260920.m4a": {
+    "speechText": "dismay. Definition: Distress caused by an unexpected and troubling discovery. In this passage, the travelers look at the little man in dismay.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "acb1575dc077b6af0d6288abdaa21afe1e27fd47970743242a2c62a0d053e118"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-03-meekly-reviewed-20260920.m4a": {
+    "speechText": "meekly. Definition: In a quiet, gentle, and submissive way. In this passage, Oz meekly admits that the travelers are wrong.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "45cf16c30e4bdbabebf68bbce3ef682e8e344105911765e0751d50ae045082f7"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-03-humbug-reviewed-20260920.m4a": {
+    "speechText": "humbug. Definition: A person who pretends to be something they are not. In this passage, the Scarecrow calls Oz a humbug.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "01a99ac83074c5c0e5babb6618f046c9da4e027037d1e07ea5e81b636335aaee"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-04-platonic-reviewed-20260920.m4a": {
+    "speechText": "Platonic. Definition: Philosophical definition: Based on an ideal or abstract model rather than ordinary reality. In this passage, Platonic describes Gatsby's idealized image of himself.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "9c8fdff08d000754f4c6c8596164b64534f251e7c3432c82ea75c27a12bb405a"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-04-notoriety-reviewed-20260920.m4a": {
+    "speechText": "notoriety. Definition: The state of being widely known, often because of rumors or something questionable. In this passage, rumors increase Gatsby's notoriety.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a5470154c1054d0c3e5148f9cd56f07b6630b2df91b7eecc5817238d6d9bfdc8"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-04-conception-reviewed-20260920.m4a": {
+    "speechText": "conception. Definition: An idea or mental picture of what something could be. In this passage, Gatsby creates himself from his own conception.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a0df2876cb5201faa00edd27cbbfea6daa712e29127f84ec98737c5368ea54da"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-05-bootless-reviewed-20260920.m4a": {
+    "speechText": "bootless. Definition: Useless or unable to produce a result. In this passage, the speaker's bootless cries bring no help.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "39a4c1221576c78f4c5a1ab51dcaddc0a0bacd44ccb0dee806b29647100ea488"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-05-scope-reviewed-20260920.m4a": {
+    "speechText": "scope. Definition: The range of someone's abilities or opportunities. In this passage, the speaker envies another person's scope.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "28c11cb30102588375c4dfef5fca53d0d59dc86edb7ad7c218006c71f66ec568"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-05-sullen-reviewed-20260920.m4a": {
+    "speechText": "sullen. Definition: Gloomy, dark, or seeming quietly unhappy. In this passage, sullen earth seems dark and gloomy before dawn.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "158568f921755dde0912a438b8e06260f5ff061f2b47357c42bb7a9b4ee1b8ef"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-06-prinked-reviewed-20260920.m4a": {
+    "speechText": "prinked. Definition: Dressed or adjusted their appearance with elaborate care. In this passage, the girls prinked as they prepared for the party.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "32a954716b97bdf5279cc1524cdd8c86b18cb9ec4f47856e0da6bfc33e83a1db"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-06-talisman-reviewed-20260920.m4a": {
+    "speechText": "talisman. Definition: An object believed to bring protection or good fortune; here, something emotionally protective. In this passage, her mother’s note becomes a talisman against envy.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "d5410d871c578f96401953f7c82679cd5c4a4f7bffb7e03a47eb780467082351"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-06-despondency-reviewed-20260920.m4a": {
+    "speechText": "despondency. Definition: A feeling of deep discouragement or sadness. In this passage, sharing the flowers ends Meg’s despondency.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "322d44811e007c3f0a2f830c34ec8916cae66ac9565effc74046392bd9b91cfd"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-07-visage-reviewed-20260920.m4a": {
+    "speechText": "visage. Definition: A person's face or facial appearance. In this passage, visage means the statue's shattered face.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a36b7c70a3dda8d40e104be9444de41a92d2a7d779902756b9e0ff7eed52d1ee"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-07-passions-reviewed-20260920.m4a": {
+    "speechText": "passions. Definition: Strong feelings or emotions. In this passage, the sculptor captured the ruler's passions.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a6e37d777493c7cc4582e8953c7e7d7386d111f07421dac8a60ba0c81de82e53"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-07-colossal-reviewed-20260920.m4a": {
+    "speechText": "colossal. Definition: Extremely large or immense. In this passage, colossal describes the enormous ruined statue.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "f36493d3df31a4b274be089b5c687a58d5048597e856eeaea4296adf065105af"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-08-infrastructure-reviewed-20260920.m4a": {
+    "speechText": "infrastructure. Definition: The basic systems or services that allow a community to function. In this passage, social media can serve as social infrastructure.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "8ed1526882a1f84d29fb02b7716813a7abb7d774a06a6f53f4d7d3d0bb9fc1d0"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-08-algorithm-reviewed-20260920.m4a": {
+    "speechText": "algorithm. Definition: A set of rules a computer follows to decide what to show or do. In this passage, an algorithm chooses what appears in a young person's feed.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "b4ab13ad424750a454559004bd8737ebc82db6dff20981403ec41880a03d7a71"
+  },
+  "/audio/faceplace/kokoro-heart/faceplace-08-dispositions-reviewed-20260920.m4a": {
+    "speechText": "dispositions. Definition: Usual attitudes or tendencies that shape how someone responds. In this passage, personal dispositions can affect which features are harmful.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "ca481c82ce302611afd2ca55e06fdc09be6fb38a0dcd11c01290312261bb4432"
+  }
+}

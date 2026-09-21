@@ -243,8 +243,7 @@ function footer(state) {
   const repaired = state.run === "first" ? state.progress === 100 : state.run === "secured" || state.progress === 100;
   const color = repaired ? COLORS.repair : COLORS.corruption;
   const fill = Math.round(752 * state.progress / 100);
-  const status = state.auto ? "AUTO ANSWER OVERRIDE ACTIVE" : repaired ? "SEARCH RESULTS RESTORED" : "RESULTS STILL CROWDED";
-  return `<g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="${color}">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="${color}">${state.progress}%</text><rect x="126" y="732" width="752" height="25" fill="${repaired ? "#EEF4EF" : "url(#siHatch)"}" stroke="${color}"/><rect x="126" y="732" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/><text x="878" y="786" class="si-status" text-anchor="end" fill="${color}">${status}</text></g>`;
+  return `<g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="${color}">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="${color}">${state.progress}%</text><rect x="126" y="732" width="752" height="25" fill="${repaired ? "#EEF4EF" : "url(#siHatch)"}" stroke="${color}"/><rect x="126" y="732" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 
 const lockItems = Object.freeze(["FIX THE AI","MAKE AI OPTIONAL","SHOW REAL OPTIONS","KEEP THE SEARCH"]);

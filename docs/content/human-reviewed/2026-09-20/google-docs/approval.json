@@ -1,0 +1,26 @@
+{
+  "approvedAt": "2026-09-20",
+  "approval": "User confirmed all four packets complete after human review. FacePlace passage 6 explicitly confirmed as Little Women in the current Google Doc in this release task. Editorial titles may be replaced with bibliographic titles; all spoken text, vocabulary and quick checks must remain exact.",
+  "sources": {
+    "wikiwhy": {
+      "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
+      "revisionId": "ANLCKQn35u-hmFFCNSbb1_haDwL3_i5ZSUZHVfEM7trvlCD90Tp-ty0GoQNlCo6pEcXtYgOy0JlaWayZkTT1n6JL5Sdt01UHTBaCqKiH1Co",
+      "sha256": "4c956e0202fd59a16c38ca0cd718530dbf0f3f515c499d2bd9dafa93515260ca"
+    },
+    "faceplace": {
+      "documentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
+      "revisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sha256": "a1d4bebfc01a2d08eeb55e8bc8cd342bad5e862cc46438b93f5cce9b5d27f98f"
+    },
+    "threadit": {
+      "documentId": "1Iz4lL5xR-OtDuIqc_egp8hMMyrAleXfPokHdQnval_U",
+      "revisionId": "ANLCKQmbDY9pRwOf_Y2VkSKlwHmC8RH72slyot97kfCg_nQRVaYR2cywmHnNyPUc5_QHWTH0eK7EADvohn9miclygJD_70y3brP0LI1CC_0",
+      "sha256": "3489569f347bf65803435d711cdad967cf4b5bc1949c467eb9512210c71b25bd"
+    },
+    "mycorner": {
+      "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
+      "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sha256": "cfd9cc5949915407a1b07341ef1a08838e7ead7719dd39b3ad840e88078ea7e9"
+    }
+  }
+}

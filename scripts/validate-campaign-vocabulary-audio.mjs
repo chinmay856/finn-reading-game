@@ -9,7 +9,7 @@ const cards = Object.entries(PLAYABLE_WALKTHROUGHS).flatMap(([siteId, mission]) 
   mission.passages.flatMap(({ challengingWords, id }) => challengingWords.map((card) => ({ card, id, siteId })))
 ));
 
-assert.equal(cards.length, 276, "The ten-site campaign needs three static vocabulary cards for each of 92 passages");
+assert.equal(cards.length, 273, "The ten-site campaign needs three static vocabulary cards for each of 91 passages");
 assert.equal(new Set(cards.map(({ card }) => card.audioSrc)).size, cards.length, "Campaign vocabulary audio paths must be unique");
 
 for (const { card, id, siteId } of cards) {

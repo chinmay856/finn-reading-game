@@ -31,5 +31,6 @@ export function buildVocabularySpeechText({ word, definition, sentence }) {
   if (!cleanWord || !cleanDefinition || !cleanSentence) {
     throw new Error("A vocabulary word, definition, and passage sentence are required.");
   }
-  return `${cleanWord}. Definition: ${cleanDefinition}. In this passage: ${cleanSentence}`;
+  const phrase = /^In this passage\b/iu.test(cleanSentence) ? cleanSentence : `In this passage: ${cleanSentence}`;
+  return `${cleanWord}. Definition: ${cleanDefinition}. ${phrase}`;
 }

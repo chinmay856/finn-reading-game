@@ -14,6 +14,7 @@ const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set([
 ]);
 
 function frame(directory, prefix, page) {
+  if (["viewtube", "spotty-fi", "amaze-on", "faceplace", "threadit", "searchish", "yahuh", "mycorner"].includes(directory)) return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-site-copy-v3`;
   if (directory === "wikiwhy") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-wikiwhy-repairs-v8`;
   return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
 }
@@ -32,6 +33,7 @@ function completionChinmay(heading, text) {
 
 function campaignRecords(siteId) {
   if (siteId === "wikiwhy") return WIKIWHY_HUMAN_REVIEWED_PASSAGES;
+  if (REVIEWED_GOOGLE_DOC_PASSAGES[siteId]) return REVIEWED_GOOGLE_DOC_PASSAGES[siteId];
   const base = FIRST_SIX_CANONICAL_PASSAGES[siteId] ?? [];
   const campaign = PUBLIC_DOMAIN_CAMPAIGN_PASSAGES[siteId] ?? [];
   if (!base.length) return campaign;
@@ -42,13 +44,14 @@ function campaignRecords(siteId) {
 function canonicalDeck(siteId) {
   return Object.freeze(campaignRecords(siteId).map((record, index) => {
     const correctIndex = (index + siteId.length) % 3;
-    const choices = record.comprehension.distractors.map((text, choiceIndex) => ({
+    let choices = record.comprehension.distractors.map((text, choiceIndex) => ({
       id: `${record.id}-choice-${choiceIndex + 1}`,
       text,
       correct: false,
     }));
     choices.splice(correctIndex, 0, { id: `${record.id}-choice-correct`, text: record.comprehension.correct, correct: true });
-    const sourceIntroductionLineCount = derivePassageDisplayLines({ paragraphs: [record.paragraphs[0]] }).length;
+    if (record.sourceDocumentId) choices = record.comprehension.orderedChoices.map((choice, i) => ({ ...choice, id: `${record.id}-choice-${i + 1}` }));
+    const sourceIntroductionLineCount = record.sourceDocumentId ? 1 : derivePassageDisplayLines({ paragraphs: [record.paragraphs[0]] }).length;
     return Object.freeze({
       ...record,
       lines: derivePassageDisplayLines(record),
@@ -64,7 +67,7 @@ function canonicalDeck(siteId) {
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
         audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
-          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}.m4a`
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -100,7 +103,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that clarity is not certainty. A clear answer must keep its sources, edit history, and honest uncertainty visible.",
   }),
   threadit: Object.freeze({
-    id: "threadit", name: "ThreadIt", meter: "Thread untangled", passages: threadItPassages,
+    id: "threadit", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["threadit"].map(record => record.id)), name: "ThreadIt", meter: "Thread untangled", passages: threadItPassages,
     initialFrame: frame("threadit", "threadit-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12].map((page) => frame("threadit", "threadit-anchor-v2", page))),
     phaseOneCount: 6, superFrame: frame("threadit", "threadit-anchor-v2", 8), checklistFrame: frame("threadit", "threadit-anchor-v2", 9), securedFrame: frame("threadit", "threadit-anchor-v2", 13), receiptFrame: frame("threadit", "threadit-anchor-v2", 13),
@@ -110,7 +113,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that less conflict does not mean identical opinions. I should preserve original voices, trace repeated claims to their source, and leave useful disagreement visible.",
   }),
   faceplace: Object.freeze({
-    id: "faceplace", name: "FacePlace", meter: "Honesty meter", passages: facePlacePassages,
+    id: "faceplace", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["faceplace"].map(record => record.id)), name: "FacePlace", meter: "Honesty meter", passages: facePlacePassages,
     initialFrame: frame("faceplace", "faceplace-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11].map((page) => frame("faceplace", "faceplace-anchor-v2", page))),
     phaseOneCount: 5, superFrame: frame("faceplace", "faceplace-anchor-v2", 7), checklistFrame: frame("faceplace", "faceplace-anchor-v2", 8), securedFrame: frame("faceplace", "faceplace-anchor-v2", 12), receiptFrame: frame("faceplace", "faceplace-anchor-v2", 12),
@@ -120,7 +123,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a positive experience does not require a praise-only reality. I should keep the original photo, comments, and context while letting the happy moment stay happy.",
   }),
   mycorner: Object.freeze({
-    id: "mycorner", name: "MyCorner", meter: "Identity checks", passages: myCornerPassages,
+    id: "mycorner", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["mycorner"].map(record => record.id)), name: "MyCorner", meter: "Identity checks", passages: myCornerPassages,
     initialFrame: frame("mycorner", "mycorner-anchor-v3", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 8, 9, 10, 11, 12].map((page) => frame("mycorner", "mycorner-anchor-v3", page))),
     phaseOneCount: 4, superFrame: frame("mycorner", "mycorner-anchor-v3", 6), checklistFrame: frame("mycorner", "mycorner-anchor-v3", 7), securedFrame: frame("mycorner", "mycorner-anchor-v3", 12), receiptFrame: frame("mycorner", "mycorner-anchor-v3", 12),
@@ -204,3 +207,5 @@ import { PUBLIC_DOMAIN_CAMPAIGN_PASSAGES } from "../../content/public-domain-cam
 import { WIKIWHY_HUMAN_REVIEWED_PASSAGES } from "../../content/wikiwhy-human-reviewed-passages.js";
 import { derivePassageDisplayLines } from "../../reading-companion/passage-display-lines.js";
 import { vocabularySpeechExcerpt } from "../../speech/campaign-vocabulary-speech-excerpts.js";
+
+import { REVIEWED_GOOGLE_DOC_PASSAGES } from "../../content/reviewed-google-doc-passages.js";

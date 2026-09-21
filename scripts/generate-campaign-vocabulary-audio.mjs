@@ -1,5 +1,6 @@
+import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
-import { mkdir, unlink } from "node:fs/promises";
+import { mkdir, unlink, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 
@@ -35,20 +36,30 @@ const model = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ON
 process.stdout.write("\n");
 
 let generated = 0;
+const receipts = new Map();
 for (const { card, passage, siteId } of cards) {
   const outputRoot = path.resolve(`public/audio/${siteId}/kokoro-heart`);
   await mkdir(outputRoot, { recursive: true });
   const outputPath = path.resolve(`public${card.audioSrc}`);
   if (!outputPath.startsWith(`${outputRoot}${path.sep}`)) throw new Error(`Unsafe vocabulary audio path: ${outputPath}`);
   const temporaryWavePath = outputPath.replace(/\.m4a$/u, ".generated.wav");
-  const audio = await model.generate(buildVocabularySpeechText({
+  const speechText = buildVocabularySpeechText({
     word: card.word,
     definition: card.meaning,
     sentence: card.speechSentence ?? card.sentence,
-  }), { voice, speed: 0.95 });
+  });
+  const audio = await model.generate(speechText, { voice, speed: 0.95 });
   await audio.save(temporaryWavePath);
   await execFileAsync("/usr/bin/afconvert", ["-f", "m4af", "-d", "aac", "-b", "64000", temporaryWavePath, outputPath]);
   await unlink(temporaryWavePath);
+  const receiptPath = path.join(outputRoot, "manifest.json");
+  if (!receipts.has(receiptPath)) {
+    let receipt = {};
+    try { receipt = JSON.parse(await readFile(receiptPath, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+    receipts.set(receiptPath, receipt);
+  }
+  receipts.get(receiptPath)[card.audioSrc] = { speechText, voice, speed: 0.95, sha256: createHash("sha256").update(await readFile(outputPath)).digest("hex") };
+  await writeFile(receiptPath, JSON.stringify(receipts.get(receiptPath), null, 2) + "\n");
   generated += 1;
   console.log(`Generated ${siteId}/${passage.id}/${card.word} (${generated}/${cards.length})`);
 }
