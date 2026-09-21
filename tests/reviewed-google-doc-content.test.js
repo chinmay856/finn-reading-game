@@ -10,7 +10,7 @@ const root = new URL('../docs/content/human-reviewed/2026-09-20/google-docs/', i
 const approval = JSON.parse(readFileSync(new URL('approval.json', root), 'utf8'));
 const normalize = text => text.replace(/\s+/gu, ' ').trim();
 
-for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh']) {
+for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'searchish', 'amaze-on']) {
   test(`${site}: effective content matches the approved Google Doc revision exactly`, () => {
     const raw = readFileSync(new URL(`${site}.json`, root), 'utf8');
     const doc = JSON.parse(raw);
@@ -59,4 +59,19 @@ test('Yahuh imports inline vocabulary, poem lines, approval, and replacement IDs
   assert.deepEqual(mission.replacedPassageIds, mission.passages.map(passage => passage.id));
   assert.equal(mission.passages[8].comprehension.choices.find(choice => choice.correct).text, 'Lead with verified information and explain the limits of evidence behind disputed claims.');
   assert.ok(mission.passages.every(passage => passage.challengingWords.every(card => card.audioSrc.endsWith('-reviewed-20260920.m4a'))));
+});
+
+
+test('Searchish and Amaze-On retain reviewed inline vocabulary, verse, and replacement mapping', () => {
+  const amazon = PLAYABLE_WALKTHROUGHS['amaze-on'];
+  const search = PLAYABLE_WALKTHROUGHS.searchish;
+  assert.equal(amazon.passages[3].challengingWords[0].word, 'Omnibus');
+  assert.equal(amazon.passages[3].challengingWords[0].meaning, 'a bus carrying a number of passengers.');
+  assert.equal(amazon.passages[3].challengingWords[0].speechSentence, 'In this passage, Gatsby’s car becomes an omnibus for his guests.');
+  assert.equal(amazon.passages[10].comprehension.choices.find(choice => choice.correct).text, 'It changes how we value waiting, rather than removing a temptation.');
+  for (const [mission, index] of [[search, 4], [amazon, 5]]) {
+    assert.deepEqual(mission.passages[index].lines, mission.passages[index].paragraphs.map(line => line.trim()));
+    assert.deepEqual(mission.replacedPassageIds, mission.passages.map(p => p.id));
+    assert.equal(mission.phaseOneCount, 6);
+  }
 });

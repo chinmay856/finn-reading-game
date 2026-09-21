@@ -69,7 +69,7 @@ function canonicalDeck(siteId) {
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
         audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
-          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh", "searchish", "amaze-on"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -155,7 +155,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that more watch time does not prove more enjoyment. I should preserve search intent, explain recommendations, and let the viewer choose whether another video plays.",
   }),
   "amaze-on": Object.freeze({
-    id: "amaze-on", name: "Amaze-On", meter: "Shopping control", passages: amazeOnPassages,
+    id: "amaze-on", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["amaze-on"].map(record => record.id)), name: "Amaze-On", meter: "Shopping control", passages: amazeOnPassages,
     initialFrame: frame("amaze-on", "amaze-on-anchor-v1", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14].map((page) => frame("amaze-on", "amaze-on-anchor-v1", page))),
     phaseOneCount: 6, superFrame: frame("amaze-on", "amaze-on-anchor-v1", 8), checklistFrame: frame("amaze-on", "amaze-on-anchor-v1", 9), securedFrame: frame("amaze-on", "amaze-on-anchor-v1", 15), receiptFrame: frame("amaze-on", "amaze-on-anchor-v1", 15),
@@ -165,7 +165,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that easier shopping is not automatic purchasing. I should help compare useful choices, label paid influence, and always ask before buying.",
   }),
   searchish: Object.freeze({
-    id: "searchish", name: "Search-ish", meter: "Search restored", passages: searchIshPassages,
+    id: "searchish", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["searchish"].map(record => record.id)), name: "Search-ish", meter: "Search restored", passages: searchIshPassages,
     initialFrame: frame("searchish", "searchish-anchor-v3", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 7, 10, 11, 12, 13].map((page) => frame("searchish", "searchish-anchor-v3", page))),
     phaseOneCount: 6, superFrame: frame("searchish", "searchish-anchor-v3", 8), checklistFrame: frame("searchish", "searchish-anchor-v3", 9), securedFrame: frame("searchish", "searchish-anchor-v3", 14), receiptFrame: frame("searchish", "searchish-anchor-v3", 14),
