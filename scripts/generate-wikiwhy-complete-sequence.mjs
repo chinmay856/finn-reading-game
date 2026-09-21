@@ -49,7 +49,7 @@ const lines = (items, x, y, className = "body", gap = 24) =>
 function article(version) {
   const over = version >= 7;
   const locks = over ? version - 7 : 0;
-  const fixed = (step) => over ? (step === 4 || (step === 5 ? locks >= 1 : step === 6 ? locks >= 2 : locks >= 3)) : version >= step;
+  const fixed = (step) => over ? (step === 5 ? locks >= 1 : step === 6 ? locks >= 2 : locks >= 3) : version >= step;
   const ink = on => on ? COLORS.repairDark : COLORS.corruption;
   const paper = on => on ? '#edf5ea' : '#fff0ed';
   const box = (x,y,w,h,on) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${paper(on)}" stroke="${ink(on)}" stroke-width="1.5"/>`;
@@ -72,6 +72,7 @@ function article(version) {
     ${region('vision',4,box(714,188,178,222,fixed(4))+(fixed(4)?
       text(729,212,'DOG COLOR VISION',true,14)+`<rect x="729" y="227" width="148" height="79" fill="url(#spectrumGradient)"/>`+
       text(732,330,'Blue / yellow',true,15)+text(732,352,'Easier to distinguish',true,12)+text(732,377,'Red / green',true,15)+text(732,397,'Harder to distinguish',true,12):
+      over ? `<image href="assets/wikiwhy-auto-dog-vision-v1.jpg" x="724" y="197" width="158" height="158" preserveAspectRatio="xMidYMid meet"/>`+text(728,377,'Certified dog. By AUTO.',false,12)+text(728,398,'All I see is me.',false,13):
       `<image href="assets/wikiwhy-techno-vision-hatch-v3.png" x="724" y="197" width="158" height="158" preserveAspectRatio="xMidYMid slice" filter="url(#grayscale)"/>`+text(728,377,'Only black and white.',false,13)+text(728,398,'Obviously. Look at him.',false,12)))}
     <g data-repair-region="summary">
       <rect x="714" y="430" width="178" height="180" fill="#f2f1ec" stroke="#516b80"/>

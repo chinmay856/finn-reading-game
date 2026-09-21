@@ -37,3 +37,23 @@ Article copy shows status rather than teaching instructions: SUPPORTED BY RESEAR
 Evidence: research, Wording: careful, Sources: 3 linked, and History: visible.
 Revision history shows two dated edits by fictional encyclopedia contributors,
 describing the correction and source additions. Tutorial narration matches it.
+
+## AUTO dog-vision overfix
+
+AUTO's overfix also corrupts the color-vision panel. A new illustration depicts
+AUTO in a deliberately unconvincing dog costume, with his own faces filling the
+color-test card. Red panel and caption: “Certified dog. By AUTO.” / “All I see is me.”
+It stays red through source and history locks, then returns to the identical
+accurate color-vision panel with the final wording repair.
+
+Asset: `docs/design/screens/2026-08-15/wikiwhy-inkscape-spike/assets/wikiwhy-auto-dog-vision-v1.png`.
+Generated with built-in imagegen using the original dog-with-test-card illustration
+and AUTO's learned portrait as style/identity references. The original art is preserved.
+Prompt: square cartoon encyclopedia illustration on plain cream; recognizable
+cream toaster AUTO, blue face, orange lever and Bluetooth badge, in an obviously
+fake golden dog hood with round spectacles and plush paws; tilted test card full
+of tiny identical AUTO faces. Match original dog linework and soft shading; no
+text, border, floating symbols or extra characters. Readable at 158px.
+
+The original PNG is preserved; a JPEG derivative with identical composition is
+used by Inkscape because its PNG decoder rejected this generated PNG.

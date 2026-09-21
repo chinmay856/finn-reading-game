@@ -14,7 +14,7 @@ const STATIC_VOCABULARY_AUDIO_SITE_IDS = new Set([
 ]);
 
 function frame(directory, prefix, page) {
-  if (directory === "wikiwhy") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-wikiwhy-repairs-v6`;
+  if (directory === "wikiwhy") return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=20260920-wikiwhy-repairs-v7`;
   return `/walkthroughs/${directory}/${prefix}_p${page}.png?v=${WALKTHROUGH_ASSET_VERSION}`;
 }
 

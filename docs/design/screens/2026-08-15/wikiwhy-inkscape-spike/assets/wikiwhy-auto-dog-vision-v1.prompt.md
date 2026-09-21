@@ -1,0 +1,7 @@
+# AUTO dog-vision illustration
+
+Mode: built-in imagegen. Reference 1: wikiwhy-techno-vision-hatch-v3.png (style and composition). Reference 2: public/walkthroughs/endgame/portraits/auto-learned-v1.png (AUTO identity).
+
+Final prompt:
+
+Use case: illustration-story. Create one square game illustration, no text or border. Match the clean dark cartoon outlines, soft flat shading and warm plain cream background of reference 1, a small encyclopedia dog-vision illustration. New subject: AUTO, the cream toaster-shaped robot with dark screen, blue smiling face, orange lever and Bluetooth badge from reference 2, wearing an obviously fake golden floppy-eared dog hood and small plush dog paws. His robot face and toaster body remain clearly visible; the disguise is comically unconvincing. He proudly poses as a dog-vision expert beside a small tilted color-test board like reference 1, but every spot on the board is an identical tiny blue AUTO face instead of colored dots. Round spectacles on the dog hood echo reference 1. Funny and confidently helpful, not sinister. Frame robot and board together centrally, large and readable at 158px square, modest margins, complete ears visible. No extra characters, no neon orbits, sparkles, checkmark, logos beyond existing Bluetooth badge, UI, written labels or captions. Background plain warm cream matching reference 1. Preserve recognizable AUTO identity.

@@ -31,3 +31,14 @@ test('View source is crossed out only while sources are corrupted',()=>{
  for(const id of ['initial','repair-1','repair-4','super-corrupt','locks-open']) assert.match(regions(id)['source-tab'],/× View source/);
  for(const id of ['repair-5','repair-6','lock-1','lock-2','lock-3']) assert.doesNotMatch(regions(id)['source-tab'],/× View source/);
 });
+
+test('AUTO dog impersonation stays corrupted until the final wording repair',()=>{
+ for(const id of ['super-corrupt','locks-open','lock-1','lock-2']) {
+  const vision=regions(id).vision;
+  assert.match(vision,/data-repaired="false"/);
+  assert.match(vision,/wikiwhy-auto-dog-vision-v1.jpg/);
+  assert.doesNotMatch(vision,/DOG COLOR VISION/);
+ }
+ assert.equal(regions('lock-3').vision,regions('repair-6').vision);
+ assert.match(regions('initial').vision,/wikiwhy-techno-vision-hatch-v3.png/);
+});
