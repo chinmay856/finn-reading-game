@@ -22,13 +22,15 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
   try {
     for (const [node] of siblings) node.inert = true;
     await Promise.allSettled([frame.decode(), rig.querySelector('img').decode()]);
-    stage.append(scene);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) rig.classList.add('reduced-motion');
+    // Hide the incoming artwork before insertion, including its first paint.
+    if (!reduced) frame.setAttribute('style', 'clip-path:inset(18px 524px 882px 106px)');
+    stage.append(scene);
     animations.push(frame.animate(reduced ? [{ opacity: 0 }, { opacity: 1 }] : [
       { clipPath: 'inset(18px 524px 882px 106px)' },
       { clipPath: 'inset(18px 524px 57px 106px)' },
-    ], { duration: AUTO_OVERFIX_DURATION, fill: 'forwards', easing: 'linear' }));
+    ], { duration: AUTO_OVERFIX_DURATION, fill: 'both', easing: 'linear' }));
     if (!reduced) animations.push(rig.animate([
       { left: '140px', top: '30px' },
       { left: '640px', top: '160px' },
@@ -36,7 +38,7 @@ export async function playAutoOverfixTransition({ stage, source, siteName }) {
       { left: '640px', top: '475px' },
       // Leave room for the full 230px cutout, its bob, and the caption below.
       { left: '350px', top: '520px' },
-    ], { duration: AUTO_OVERFIX_DURATION, fill: 'forwards', easing: 'ease-in-out' }));
+    ], { duration: AUTO_OVERFIX_DURATION, fill: 'both', easing: 'ease-in-out' }));
     await Promise.all(animations.map(animation => animation.finished));
   } finally {
     for (const animation of animations) animation.cancel();
