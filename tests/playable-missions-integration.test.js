@@ -57,9 +57,7 @@ test("comprehension, troubleshooting retention, retry, skip, and reflection cont
   assert.match(html, /id="skipReading"/u);
   assert.match(html, /NO SPEECH RESULT RECORDED/u);
   assert.doesNotMatch(html, />Accuracy</u);
-  assert.match(script, /entry\.properNoun === false/u);
-  assert.match(script, /normalizedPassage\.includes\(sourceSentence\)/u);
-  assert.match(script, /\.slice\(0, 3\)/u);
+  assert.match(script, /const words = visibleVocabulary\(passage\(\)\)/u);
   assert.match(script, /its definition, and how it appears in this passage/u);
   assert.match(script, /wordAudio\.src = entry\.audioSrc/u);
   assert.match(script, /function preloadVocabularyAudio\(cards\)/u);

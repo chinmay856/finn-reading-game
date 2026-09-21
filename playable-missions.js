@@ -19,6 +19,7 @@ import {
   submitMissionReflection,
 } from "./apps/internet-recovery/mission-sequence-state.js";
 import { ReadingAttemptController } from "./reading-companion/reading-attempt-controller.js";
+import { visibleVocabulary } from "./reading-companion/visible-vocabulary.js";
 import { resolveStreamingGuideGate, streamingGuideGateMessage } from "./reading-companion/streaming-guide-gate.js";
 import { deleteLatestDiagnosticRun, saveLatestDiagnosticRun } from "./reading-playtest-diagnostics-store.js";
 import { LocalWhisperRecognizer } from "./speech/local-whisper-recognizer.js";
@@ -956,13 +957,7 @@ async function answerQuestion(choice, selectedButton) {
 }
 
 function renderWordHelp() {
-  const normalizedPassage = passage().lines.join(" ").replace(/\s+/gu, " ").trim();
-  const words = passage().challengingWords.filter((entry) => {
-    const sourceSentence = String(entry.sentence ?? "").replace(/\s+/gu, " ").trim();
-    return entry.properNoun === false
-      && Boolean(sourceSentence)
-      && (Boolean(passage().sourceDocumentId) || normalizedPassage.includes(sourceSentence));
-  }).slice(0, 3);
+  const words = visibleVocabulary(passage());
   $("wordHelp").hidden = words.length === 0;
   $("wordCards").replaceChildren(...words.map((entry) => {
     const card = document.createElement("article");
