@@ -14,6 +14,11 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
     "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
     "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
     "sha256": "cfd9cc5949915407a1b07341ef1a08838e7ead7719dd39b3ad840e88078ea7e9"
+  },
+  "yahuh": {
+    "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+    "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+    "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
   }
 };
 export const REVIEWED_GOOGLE_DOC_PASSAGES = {
@@ -2558,6 +2563,844 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "distractors": [
           "A familiar voice establishes identity, but another call helps decide how much to send.",
           "A second call lets the caller repeat the same details, which is enough to confirm the emergency."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    }
+  ],
+  "yahuh": [
+    {
+      "id": "yahuh-01",
+      "title": "Peoples and Creatures of the Moon",
+      "reviewedTitle": "The Great Moon Hoax — A newspaper invents a discovery",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from the Library of Congress essay Peoples and Creatures of the Moon, describing a newspaper hoax from 1835.",
+        "In 1835 the New York Sun published six articles describing the discovery of various species of creatures inhabiting the moon. Allegedly written by Dr. Andrew Grant, the stories claimed to report on recent discoveries from the prolific astronomer John Herschel. The articles were in fact written by Richard Locke, a reporter working for the New York Sun. In the articles, Herschel is alleged to have observed creatures that look like bison, goats, unicorns, and tail-less beavers in forests on the moon.",
+        "The most stunning find, however, was the discovery of human-bat creatures who had constructed temples on the moon.",
+        "These stories brought considerable attention to the New York Sun. People around the world were interested in learning about the inhabitants of the moon.",
+        "Several weeks after publication these stories were dismissed as “The great moon hoax.” However, if the public had responded differently it might just as well have become “the great moon satire.” The believability of the stories in their time speaks to ideas about the possibility of life on the moon in the nineteenth century."
+      ],
+      "displayLines": [
+        "An excerpt from the Library of Congress essay Peoples and Creatures of the Moon, describing a newspaper hoax from 1835.",
+        "In 1835 the New York Sun published six articles describing the discovery of various species of creatures inhabiting the moon.",
+        "Allegedly written by Dr. Andrew Grant, the stories claimed to report on recent discoveries from the prolific astronomer John Herschel.",
+        "The articles were in fact written by Richard Locke, a reporter working for the New York Sun.",
+        "In the articles, Herschel is alleged to have observed creatures that look like bison, goats, unicorns, and tail-less beavers in forests on the moon.",
+        "The most stunning find, however, was the discovery of human-bat creatures who had constructed temples on the moon.",
+        "These stories brought considerable attention to the New York Sun.",
+        "People around the world were interested in learning about the inhabitants of the moon.",
+        "Several weeks after publication these stories were dismissed as “The great moon hoax.”",
+        "However, if the public had responded differently it might just as well have become “the great moon satire.”",
+        "The believability of the stories in their time speaks to ideas about the possibility of life on the moon in the nineteenth century."
+      ],
+      "spokenWordCount": 197,
+      "source": {
+        "label": "The Great Moon Hoax — A newspaper invents a discovery",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Reveal the stories beneath the oversized headlines.",
+      "vocabulary": [
+        {
+          "word": "prolific",
+          "definition": "Producing a large amount of work or many results.",
+          "sentence": "In this passage, the stories borrowed the authority of a prolific astronomer.",
+          "playbackPhrase": "In this passage, the stories borrowed the authority of a prolific astronomer.",
+          "properNoun": false
+        },
+        {
+          "word": "inhabitants",
+          "definition": "People or creatures that live in a particular place.",
+          "sentence": "In this passage, readers wanted to learn about the moon’s supposed inhabitants.",
+          "playbackPhrase": "In this passage, readers wanted to learn about the moon’s supposed inhabitants.",
+          "properNoun": false
+        },
+        {
+          "word": "satire",
+          "definition": "Writing that uses humor or exaggeration to expose foolishness or criticize ideas.",
+          "sentence": "In this passage, the author contrasts a deceptive hoax with possible satire.",
+          "playbackPhrase": "In this passage, the author contrasts a deceptive hoax with possible satire.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What made the source of the Moon stories misleading?",
+        "orderedChoices": [
+          {
+            "text": "They presented a reporter’s inventions as discoveries associated with an astronomer.",
+            "correct": true
+          },
+          {
+            "text": "They reported an astronomer’s observations but confused the animals he described.",
+            "correct": false
+          },
+          {
+            "text": "They described genuine discoveries but concealed which newspaper first reported them.",
+            "correct": false
+          }
+        ],
+        "correct": "They presented a reporter’s inventions as discoveries associated with an astronomer.",
+        "distractors": [
+          "They reported an astronomer’s observations but confused the animals he described.",
+          "They described genuine discoveries but concealed which newspaper first reported them."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-02",
+      "title": "Public Opinion",
+      "reviewedTitle": "Public Opinion — The world and the picture in our heads",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from Public Opinion by Walter Lippmann. He describes an isolated community learning late that war has begun.",
+        "There is an island in the ocean where in 1914 a few Englishmen, Frenchmen, and Germans lived. No cable reaches that island, and the British mail steamer comes but once in sixty days. In September it had not yet come, and the islanders were still talking about the latest newspaper which told about the approaching trial of Madame Caillaux for the shooting of Gaston Calmette. It was, therefore, with more than usual eagerness that the whole colony assembled at the quay on a day in mid-September to hear from the captain what the verdict had been. They learned that for over six weeks now those of them who were English and those of them who were French had been fighting in behalf of the sanctity of treaties against those of them who were Germans. For six strange weeks they had acted as if they were friends, when in fact they were enemies.",
+        "But their plight was not so different from that of most of the population of Europe. They had been mistaken for six weeks, on the continent the interval may have been only six days or six hours. There was an interval. There was a moment when the picture of Europe on which men were conducting their business as usual, did not in any way correspond to the Europe which was about to make a jumble of their lives. There was a time for each man when he was still adjusted to an environment that no longer existed. All over the world as late as July 25th men were making goods that they would not be able to ship, buying goods they would not be able to import, careers were being planned, enterprises contemplated, hopes and expectations entertained, all in the belief that the world as known was the world as it was. Men were writing books describing that world. They trusted the picture in their heads."
+      ],
+      "displayLines": [
+        "An excerpt from Public Opinion by Walter Lippmann. He describes an isolated community learning late that war has begun.",
+        "There is an island in the ocean where in 1914 a few Englishmen, Frenchmen, and Germans lived.",
+        "No cable reaches that island, and the British mail steamer comes but once in sixty days.",
+        "In September it had not yet come, and the islanders were still talking about the latest newspaper which told about the approaching trial of Madame Caillaux for the shooting of Gaston Calmette.",
+        "It was, therefore, with more than usual eagerness that the whole colony assembled at the quay on a day in mid-September to hear from the captain what the verdict had been.",
+        "They learned that for over six weeks now those of them who were English and those of them who were French had been fighting in behalf of the sanctity of treaties against those of them who were Germans.",
+        "For six strange weeks they had acted as if they were friends, when in fact they were enemies.",
+        "But their plight was not so different from that of most of the population of Europe.",
+        "They had been mistaken for six weeks, on the continent the interval may have been only six days or six hours.",
+        "There was an interval.",
+        "There was a moment when the picture of Europe on which men were conducting their business as usual, did not in any way correspond to the Europe which was about to make a jumble of their lives.",
+        "There was a time for each man when he was still adjusted to an environment that no longer existed.",
+        "All over the world as late as July 25th men were making goods that they would not be able to ship, buying goods they would not be able to import, careers were being planned, enterprises contemplated, hopes and expectations entertained, all in the belief that the world as known was the world as it was.",
+        "Men were writing books describing that world.",
+        "They trusted the picture in their heads."
+      ],
+      "spokenWordCount": 337,
+      "source": {
+        "label": "Public Opinion — The world and the picture in our heads",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Restore the supporting sources for each story.",
+      "vocabulary": [
+        {
+          "word": "quay",
+          "definition": "A platform beside water where ships load or unload.",
+          "sentence": "In this passage, the islanders gather at the quay for news.",
+          "playbackPhrase": "In this passage, the islanders gather at the quay for news.",
+          "properNoun": false
+        },
+        {
+          "word": "plight",
+          "definition": "A difficult or unfortunate situation.",
+          "sentence": "In this passage, the islanders’ plight resembles a wider problem.",
+          "playbackPhrase": "In this passage, the islanders’ plight resembles a wider problem.",
+          "properNoun": false
+        },
+        {
+          "word": "contemplated",
+          "definition": "Considered or planned.",
+          "sentence": "In this passage, people contemplated enterprises using an outdated picture of the world.",
+          "playbackPhrase": "In this passage, people contemplated enterprises using an outdated picture of the world.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Lippmann compare the islanders with people in Europe?",
+        "orderedChoices": [
+          {
+            "text": "Both had to wait the same length of time for important news.",
+            "correct": false
+          },
+          {
+            "text": "Both could act on a picture of the world that events had already overtaken.",
+            "correct": true
+          },
+          {
+            "text": "Both understood the situation but postponed changing their everyday plans.",
+            "correct": false
+          }
+        ],
+        "correct": "Both could act on a picture of the world that events had already overtaken.",
+        "distractors": [
+          "Both had to wait the same length of time for important news.",
+          "Both understood the situation but postponed changing their everyday plans."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-03",
+      "title": "Pinocchio",
+      "reviewedTitle": "Pinocchio — A lie grows",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from Pinocchio by Carlo Collodi. The Fairy asks the puppet what happened to his gold pieces.",
+        "“And the four pieces—where have you put them?” asked the Fairy.",
+        "“I have lost them!” said Pinocchio, but he was telling a lie, for he had them in his pocket.",
+        "He had scarcely told the lie when his nose, which was already long, grew at once two inches longer.",
+        "“And where did you lose them?”",
+        "“In the wood near here.”",
+        "At this second lie his nose went on growing.",
+        "“If you have lost them in the wood near here,” said the Fairy, “we will look for them and we shall find them: because everything that is lost in that wood is always found.”",
+        "“Ah! now I remember all about it,” replied the puppet, getting quite confused; “I didn't lose the four gold pieces, I swallowed them whilst I was drinking your medicine.”",
+        "At this lie his nose grew to such an extraordinary length that poor Pinocchio could not move in any direction. If he turned to one side he struck his nose against the bed or the window-panes, if he turned to the other he struck it against the walls or the door, if he raised his head a little he ran the risk of sticking it into one of the Fairy's eyes.",
+        "And the Fairy looked at him and laughed.",
+        "“What are you laughing at?” asked the puppet, very confused and anxious at finding his nose growing so prodigiously.",
+        "“I am laughing at the lie you have told.”",
+        "“And how can you possibly know that I have told a lie?”",
+        "“Lies, my dear boy, are found out immediately, because they are of two sorts. There are lies that have short legs, and lies that have long noses. Your lie, as it happens, is one of those that have a long nose.”",
+        "Pinocchio, not knowing where to hide himself for shame, tried to run out of the room; but he did not succeed, for his nose had increased so much that it could no longer pass through the door."
+      ],
+      "displayLines": [
+        "An excerpt from Pinocchio by Carlo Collodi. The Fairy asks the puppet what happened to his gold pieces.",
+        "“And the four pieces—where have you put them?”",
+        "asked the Fairy.",
+        "“I have lost them!”",
+        "said Pinocchio, but he was telling a lie, for he had them in his pocket.",
+        "He had scarcely told the lie when his nose, which was already long, grew at once two inches longer.",
+        "“And where did you lose them?”",
+        "“In the wood near here.”",
+        "At this second lie his nose went on growing.",
+        "“If you have lost them in the wood near here,” said the Fairy, “we will look for them and we shall find them: because everything that is lost in that wood is always found.”",
+        "“Ah!",
+        "now I remember all about it,” replied the puppet, getting quite confused; “I didn't lose the four gold pieces, I swallowed them whilst I was drinking your medicine.”",
+        "At this lie his nose grew to such an extraordinary length that poor Pinocchio could not move in any direction.",
+        "If he turned to one side he struck his nose against the bed or the window-panes, if he turned to the other he struck it against the walls or the door, if he raised his head a little he ran the risk of sticking it into one of the Fairy's eyes.",
+        "And the Fairy looked at him and laughed.",
+        "“What are you laughing at?”",
+        "asked the puppet, very confused and anxious at finding his nose growing so prodigiously.",
+        "“I am laughing at the lie you have told.”",
+        "“And how can you possibly know that I have told a lie?”",
+        "“Lies, my dear boy, are found out immediately, because they are of two sorts.",
+        "There are lies that have short legs, and lies that have long noses.",
+        "Your lie, as it happens, is one of those that have a long nose.”",
+        "Pinocchio, not knowing where to hide himself for shame, tried to run out of the room; but he did not succeed, for his nose had increased so much that it could no longer pass through the door."
+      ],
+      "spokenWordCount": 347,
+      "source": {
+        "label": "Pinocchio — A lie grows",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Restore image captions so the pictures have context.",
+      "vocabulary": [
+        {
+          "word": "scarcely",
+          "definition": "Barely; almost not.",
+          "sentence": "In this passage, Pinocchio has scarcely spoken when his nose grows.",
+          "playbackPhrase": "In this passage, Pinocchio has scarcely spoken when his nose grows.",
+          "properNoun": false
+        },
+        {
+          "word": "extraordinary",
+          "definition": "Far beyond what is usual or ordinary.",
+          "sentence": "In this passage, his nose reaches an extraordinary length.",
+          "playbackPhrase": "In this passage, his nose reaches an extraordinary length.",
+          "properNoun": false
+        },
+        {
+          "word": "prodigiously",
+          "definition": "To an enormous or remarkable degree.",
+          "sentence": "In this passage, Pinocchio's nose grows prodigiously as he lies.",
+          "playbackPhrase": "In this passage, Pinocchio's nose grows prodigiously as he lies.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Pinocchio change his story from losing the coins to swallowing them?",
+        "orderedChoices": [
+          {
+            "text": "The Fairy's offer to search would expose his first explanation, so he invents another.",
+            "correct": true
+          },
+          {
+            "text": "The Fairy reminds him about the medicine, helping him remember what happened.",
+            "correct": false
+          },
+          {
+            "text": "His growing nose makes him think that the missing coins must be inside his body.",
+            "correct": false
+          }
+        ],
+        "correct": "The Fairy's offer to search would expose his first explanation, so he invents another.",
+        "distractors": [
+          "The Fairy reminds him about the medicine, helping him remember what happened.",
+          "His growing nose makes him think that the missing coins must be inside his body."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-04",
+      "title": "Apology for Printers",
+      "reviewedTitle": "Apology for Printers — Publishing is not endorsing",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Excerpts from “Apology for Printers” by Benjamin Franklin. Here, “apology” means a defense of his work, not an expression of regret.",
+        "Printers are educated in the belief that when men differ in opinion, both sides ought equally to have the advantage of being heard by the public; and that when truth and error have fair play, the former is always an overmatch for the latter. Hence they cheerfully serve all contending writers that pay them well, without regarding on which side they are of the question in dispute.",
+        "Being thus continually employed in serving all parties, printers naturally acquire a vast unconcernedness as to the right or wrong opinions contained in what they print, regarding it only as the matter of their daily labour. They print things full of spleen and animosity, with the utmost calmness and indifference, and without the least ill-will to the persons reflected on, who nevertheless unjustly think the printer as much their enemy as the author, and join both together in their resentment.",
+        "That it is unreasonable to imagine printers approve of everything they print and to censure them on any particular thing accordingly, since in the way of their business they print such great variety of things opposite and contradictory. It is likewise as unreasonable what some assert, that printers ought not to print anything but what they approve, since if all of that business should make such a resolution, and abide by it, an end would thereby be put to free writing, and the world would afterwards have nothing to read but what happened to be the opinions of printers.",
+        "Later, Franklin describes limits he places on his own work.",
+        "I myself have constantly refused to print anything that might countenance vice or promote immorality; though by complying in such cases with the corrupt taste of the majority, I might have got much money."
+      ],
+      "displayLines": [
+        "Excerpts from “Apology for Printers” by Benjamin Franklin. Here, “apology” means a defense of his work, not an expression of regret.",
+        "Printers are educated in the belief that when men differ in opinion, both sides ought equally to have the advantage of being heard by the public; and that when truth and error have fair play, the former is always an overmatch for the latter.",
+        "Hence they cheerfully serve all contending writers that pay them well, without regarding on which side they are of the question in dispute.",
+        "Being thus continually employed in serving all parties, printers naturally acquire a vast unconcernedness as to the right or wrong opinions contained in what they print, regarding it only as the matter of their daily labour.",
+        "They print things full of spleen and animosity, with the utmost calmness and indifference, and without the least ill-will to the persons reflected on, who nevertheless unjustly think the printer as much their enemy as the author, and join both together in their resentment.",
+        "That it is unreasonable to imagine printers approve of everything they print and to censure them on any particular thing accordingly, since in the way of their business they print such great variety of things opposite and contradictory.",
+        "It is likewise as unreasonable what some assert, that printers ought not to print anything but what they approve, since if all of that business should make such a resolution, and abide by it, an end would thereby be put to free writing, and the world would afterwards have nothing to read but what happened to be the opinions of printers.",
+        "Later, Franklin describes limits he places on his own work.",
+        "I myself have constantly refused to print anything that might countenance vice or promote immorality; though by complying in such cases with the corrupt taste of the majority, I might have got much money."
+      ],
+      "spokenWordCount": 311,
+      "source": {
+        "label": "Apology for Printers — Publishing is not endorsing",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Restore the authors’ bylines.",
+      "vocabulary": [
+        {
+          "word": "contending",
+          "definition": "Arguing against one another.",
+          "sentence": "In this passage, printers publish contending writers.",
+          "playbackPhrase": "In this passage, printers publish contending writers.",
+          "properNoun": false
+        },
+        {
+          "word": "animosity",
+          "definition": "Strong hostility or resentment.",
+          "sentence": "In this passage, a printer may publish animosity without sharing it.",
+          "playbackPhrase": "In this passage, a printer may publish animosity without sharing it.",
+          "properNoun": false
+        },
+        {
+          "word": "countenance",
+          "definition": "Approve of or give support to.",
+          "sentence": "In this passage, Franklin refuses work that might countenance vice.",
+          "playbackPhrase": "In this passage, Franklin refuses work that might countenance vice.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Which distinction best describes Franklin’s position?",
+        "orderedChoices": [
+          {
+            "text": "Printers should endorse every paying writer but refuse unpaid writers.",
+            "correct": false
+          },
+          {
+            "text": "Printers should publish only their own opinions so readers know who is responsible.",
+            "correct": false
+          },
+          {
+            "text": "Printers may publish views they disagree with while still setting limits on what they print.",
+            "correct": true
+          }
+        ],
+        "correct": "Printers may publish views they disagree with while still setting limits on what they print.",
+        "distractors": [
+          "Printers should endorse every paying writer but refuse unpaid writers.",
+          "Printers should publish only their own opinions so readers know who is responsible."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-05",
+      "title": "How Reliable Are Weather Forecasts?",
+      "reviewedTitle": "How Reliable Are Weather Forecasts?",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “How Reliable Are Weather Forecasts?” published by NOAA. The passage explains how weather models use observations from different satellites.",
+        "Meteorologists use computer programs called weather models to make forecasts. Since we can’t collect data from the future, models have to use estimates and assumptions to predict future weather. The atmosphere is changing all the time, so those estimates are less reliable the further you get into the future.",
+        "Some of the information needed to make a weather forecast comes from environmental satellites. NOAA, the National Oceanic and Atmospheric Administration, operates three types of environmental satellites that monitor Earth’s weather:",
+        "NOAA’s Geostationary Environmental Operational Satellite-R (GOES-R) series satellites orbit approximately 22,000 miles above Earth and they provide a picture of what the weather is like right now. “Geostationary” means that the satellites orbit at the same rate that the Earth rotates. This means they can collect near-continuous images over the same area. Because they focus on one spot, they can provide up-to-the-minute information about severe weather.",
+        "This information helps forecasters understand how quickly a storm, such as a hurricane, is growing and moving.",
+        "Satellites as part of NOAA’s Joint Polar Satellite System (JPSS) orbit approximately 500 miles above Earth. They zip around our planet from pole to pole 14 times per day. Because they orbit while the Earth is rotating below, these satellites can see every part of Earth twice each day. Polar orbiting satellites can monitor the entire Earth’s atmosphere, clouds and oceans at high resolution.",
+        "By watching these global weather patterns, polar orbiting satellites can help meteorologists accurately predict long-term forecasts—up to 7 days in the future."
+      ],
+      "displayLines": [
+        "An excerpt from “How Reliable Are Weather Forecasts?” published by NOAA. The passage explains how weather models use observations from different satellites.",
+        "Meteorologists use computer programs called weather models to make forecasts.",
+        "Since we can’t collect data from the future, models have to use estimates and assumptions to predict future weather.",
+        "The atmosphere is changing all the time, so those estimates are less reliable the further you get into the future.",
+        "Some of the information needed to make a weather forecast comes from environmental satellites.",
+        "NOAA, the National Oceanic and Atmospheric Administration, operates three types of environmental satellites that monitor Earth’s weather:",
+        "NOAA’s Geostationary Environmental Operational Satellite-R (GOES-R) series satellites orbit approximately 22,000 miles above Earth and they provide a picture of what the weather is like right now.",
+        "“Geostationary” means that the satellites orbit at the same rate that the Earth rotates.",
+        "This means they can collect near-continuous images over the same area.",
+        "Because they focus on one spot, they can provide up-to-the-minute information about severe weather.",
+        "This information helps forecasters understand how quickly a storm, such as a hurricane, is growing and moving.",
+        "Satellites as part of NOAA’s Joint Polar Satellite System (JPSS) orbit approximately 500 miles above Earth.",
+        "They zip around our planet from pole to pole 14 times per day.",
+        "Because they orbit while the Earth is rotating below, these satellites can see every part of Earth twice each day.",
+        "Polar orbiting satellites can monitor the entire Earth’s atmosphere, clouds and oceans at high resolution.",
+        "By watching these global weather patterns, polar orbiting satellites can help meteorologists accurately predict long-term forecasts—up to 7 days in the future."
+      ],
+      "spokenWordCount": 271,
+      "source": {
+        "label": "How Reliable Are Weather Forecasts?",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Make the pictures match the reporting.",
+      "vocabulary": [
+        {
+          "word": "assumptions",
+          "definition": "Ideas accepted as a starting point for reasoning.",
+          "sentence": "In this passage, weather models use assumptions about future conditions.",
+          "playbackPhrase": "In this passage, weather models use assumptions about future conditions.",
+          "properNoun": false
+        },
+        {
+          "word": "geostationary",
+          "definition": "Orbiting so as to stay above the same area of Earth.",
+          "sentence": "In this passage, a geostationary satellite repeatedly watches the same region.",
+          "playbackPhrase": "In this passage, a geostationary satellite repeatedly watches the same region.",
+          "properNoun": false
+        },
+        {
+          "word": "resolution",
+          "definition": "The level of detail a measurement or image can show.",
+          "sentence": "In this passage, high resolution lets satellites show detailed weather patterns.",
+          "playbackPhrase": "In this passage, high resolution lets satellites show detailed weather patterns.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What different views do the two satellite types provide?",
+        "orderedChoices": [
+          {
+            "text": "One repeatedly watches the same area; the other surveys the planet as Earth rotates.",
+            "correct": true
+          },
+          {
+            "text": "One travels from storm to storm; the other stays over a chosen polar region.",
+            "correct": false
+          },
+          {
+            "text": "Both watch the same fixed area, but from different distances above Earth.",
+            "correct": false
+          }
+        ],
+        "correct": "One repeatedly watches the same area; the other surveys the planet as Earth rotates.",
+        "distractors": [
+          "One travels from storm to storm; the other stays over a chosen polar region.",
+          "Both watch the same fixed area, but from different distances above Earth."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-06",
+      "title": "The War of the Worlds",
+      "reviewedTitle": "The War of the Worlds — An optimistic dispatch",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Excerpts from The War of the Worlds by H. G. Wells. During a fictional Martian invasion, the narrator’s brother buys a newspaper in London.",
+        "In Wellington Street my brother met a couple of sturdy roughs who had just been rushed out of Fleet Street with still-wet newspapers and staring placards. “Dreadful catastrophe!” they bawled one to the other down Wellington Street. “Fighting at Weybridge! Full description! Repulse of the Martians! London in Danger!” He had to give threepence for a copy of that paper.",
+        "Then it was, and then only, that he realised something of the full power and terror of these monsters. He learned that they were not merely a handful of small sluggish creatures, but that they were minds swaying vast mechanical bodies; and that they could move swiftly and smite with such power that even the mightiest guns could not stand against them.",
+        "They were described as “vast spiderlike machines, nearly a hundred feet high, capable of the speed of an express train, and able to shoot out a beam of intense heat.” Masked batteries, chiefly of field guns, had been planted in the country about Horsell Common, and especially between the Woking district and London. Five of the machines had been seen moving towards the Thames, and one, by a happy chance, had been destroyed. In the other cases the shells had missed, and the batteries had been at once annihilated by the Heat-Rays. Heavy losses of soldiers were mentioned, but the tone of the dispatch was optimistic.",
+        "Later, the narrator describes how the report appeared in print.",
+        "This was printed in enormous type on paper so fresh that it was still wet, and there had been no time to add a word of comment. It was curious, my brother said, to see how ruthlessly the usual contents of the paper had been hacked and taken out to give this place."
+      ],
+      "displayLines": [
+        "Excerpts from The War of the Worlds by H. G. Wells. During a fictional Martian invasion, the narrator’s brother buys a newspaper in London.",
+        "In Wellington Street my brother met a couple of sturdy roughs who had just been rushed out of Fleet Street with still-wet newspapers and staring placards.",
+        "“Dreadful catastrophe!”",
+        "they bawled one to the other down Wellington Street.",
+        "“Fighting at Weybridge!",
+        "Full description!",
+        "Repulse of the Martians!",
+        "London in Danger!”",
+        "He had to give threepence for a copy of that paper.",
+        "Then it was, and then only, that he realised something of the full power and terror of these monsters.",
+        "He learned that they were not merely a handful of small sluggish creatures, but that they were minds swaying vast mechanical bodies; and that they could move swiftly and smite with such power that even the mightiest guns could not stand against them.",
+        "They were described as “vast spiderlike machines, nearly a hundred feet high, capable of the speed of an express train, and able to shoot out a beam of intense heat.”",
+        "Masked batteries, chiefly of field guns, had been planted in the country about Horsell Common, and especially between the Woking district and London.",
+        "Five of the machines had been seen moving towards the Thames, and one, by a happy chance, had been destroyed.",
+        "In the other cases the shells had missed, and the batteries had been at once annihilated by the Heat-Rays.",
+        "Heavy losses of soldiers were mentioned, but the tone of the dispatch was optimistic.",
+        "Later, the narrator describes how the report appeared in print.",
+        "This was printed in enormous type on paper so fresh that it was still wet, and there had been no time to add a word of comment.",
+        "It was curious, my brother said, to see how ruthlessly the usual contents of the paper had been hacked and taken out to give this place."
+      ],
+      "spokenWordCount": 315,
+      "source": {
+        "label": "The War of the Worlds — An optimistic dispatch",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Replace the sensational headlines with accurate summaries.",
+      "vocabulary": [
+        {
+          "word": "placards",
+          "definition": "Large printed notices displayed in public.",
+          "sentence": "In this passage, the sellers carry placards announcing the invasion.",
+          "playbackPhrase": "In this passage, the sellers carry placards announcing the invasion.",
+          "properNoun": false
+        },
+        {
+          "word": "dispatch",
+          "definition": "A report sent from the scene of an event.",
+          "sentence": "In this passage, the dispatch sounds optimistic despite heavy losses.",
+          "playbackPhrase": "In this passage, the dispatch sounds optimistic despite heavy losses.",
+          "properNoun": false
+        },
+        {
+          "word": "ruthlessly",
+          "definition": "Without pity or concern for what is sacrificed.",
+          "sentence": "In this passage, the newspaper ruthlessly removes its usual contents.",
+          "playbackPhrase": "In this passage, the newspaper ruthlessly removes its usual contents.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What makes the newspaper’s optimism questionable?",
+        "orderedChoices": [
+          {
+            "text": "The report describes serious losses even while presenting a hopeful tone.",
+            "correct": true
+          },
+          {
+            "text": "The report announces a victory without describing the machines’ destructive power.",
+            "correct": false
+          },
+          {
+            "text": "The report describes losses but gives readers no sign of a hopeful interpretation.",
+            "correct": false
+          }
+        ],
+        "correct": "The report describes serious losses even while presenting a hopeful tone.",
+        "distractors": [
+          "The report announces a victory without describing the machines’ destructive power.",
+          "The report describes losses but gives readers no sign of a hopeful interpretation."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-07",
+      "title": "If—",
+      "reviewedTitle": "If—",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "The poem “If—” by Rudyard Kipling.",
+        "If you can keep your head when all about you ",
+        "Are losing theirs and blaming it on you; ",
+        "If you can trust yourself when all men doubt you, ",
+        "But make allowance for their doubting too; ",
+        "If you can wait and not be tired by waiting, ",
+        "Or being lied about, don’t deal in lies, ",
+        "Or being hated, don’t give way to hating, ",
+        "And yet don’t look too good, nor talk too wise;",
+        "If you can dream—and not make dreams your master; ",
+        "If you can think—and not make thoughts your aim, ",
+        "If you can meet with Triumph and Disaster ",
+        "And treat those two impostors just the same; ",
+        "If you can bear to hear the truth you’ve spoken ",
+        "Twisted by knaves to make a trap for fools, ",
+        "Or watch the things you gave your life to, broken, ",
+        "And stoop and build ‘em up with worn-out tools;",
+        "If you can make one heap of all your winnings ",
+        "And risk it on one turn of pitch-and-toss, ",
+        "And lose, and start again at your beginnings ",
+        "And never breathe a word about your loss; ",
+        "If you can force your heart and nerve and sinew ",
+        "To serve your turn long after they are gone, ",
+        "And so hold on when there is nothing in you ",
+        "Except the Will which says to them: ‘Hold on!’",
+        "If you can talk with crowds and keep your virtue, ",
+        "Or walk with Kings—nor lose the common touch, ",
+        "If neither foes nor loving friends can hurt you, ",
+        "If all men count with you, but none too much; ",
+        "If you can fill the unforgiving minute ",
+        "With sixty seconds’ worth of distance run, ",
+        "Yours is the Earth and everything that’s in it, ",
+        "And—which is more—you’ll be a Man, my son!"
+      ],
+      "displayLines": [
+        "The poem “If—” by Rudyard Kipling.",
+        "If you can keep your head when all about you ",
+        "Are losing theirs and blaming it on you; ",
+        "If you can trust yourself when all men doubt you, ",
+        "But make allowance for their doubting too; ",
+        "If you can wait and not be tired by waiting, ",
+        "Or being lied about, don’t deal in lies, ",
+        "Or being hated, don’t give way to hating, ",
+        "And yet don’t look too good, nor talk too wise;",
+        "If you can dream—and not make dreams your master; ",
+        "If you can think—and not make thoughts your aim, ",
+        "If you can meet with Triumph and Disaster ",
+        "And treat those two impostors just the same; ",
+        "If you can bear to hear the truth you’ve spoken ",
+        "Twisted by knaves to make a trap for fools, ",
+        "Or watch the things you gave your life to, broken, ",
+        "And stoop and build ‘em up with worn-out tools;",
+        "If you can make one heap of all your winnings ",
+        "And risk it on one turn of pitch-and-toss, ",
+        "And lose, and start again at your beginnings ",
+        "And never breathe a word about your loss; ",
+        "If you can force your heart and nerve and sinew ",
+        "To serve your turn long after they are gone, ",
+        "And so hold on when there is nothing in you ",
+        "Except the Will which says to them: ‘Hold on!’",
+        "If you can talk with crowds and keep your virtue, ",
+        "Or walk with Kings—nor lose the common touch, ",
+        "If neither foes nor loving friends can hurt you, ",
+        "If all men count with you, but none too much; ",
+        "If you can fill the unforgiving minute ",
+        "With sixty seconds’ worth of distance run, ",
+        "Yours is the Earth and everything that’s in it, ",
+        "And—which is more—you’ll be a Man, my son!"
+      ],
+      "spokenWordCount": 289,
+      "source": {
+        "label": "If—",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "After Auto’s overfix, bring back the accurate pictures.",
+      "vocabulary": [
+        {
+          "word": "impostors",
+          "definition": "People or things presenting a misleading appearance.",
+          "sentence": "In this passage, Triumph and Disaster are called impostors.",
+          "playbackPhrase": "In this passage, Triumph and Disaster are called impostors.",
+          "properNoun": false
+        },
+        {
+          "word": "knaves",
+          "definition": "Dishonest or deceitful people.",
+          "sentence": "In this passage, knaves twist truthful words into a trap.",
+          "playbackPhrase": "In this passage, knaves twist truthful words into a trap.",
+          "properNoun": false
+        },
+        {
+          "word": "sinew",
+          "definition": "Tough tissue joining muscle to bone; also a symbol of physical strength.",
+          "sentence": "In this passage, the speaker calls on heart, nerve, and sinew to persevere.",
+          "playbackPhrase": "In this passage, the speaker calls on heart, nerve, and sinew to persevere.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "How does the opening balance confidence with caution?",
+        "orderedChoices": [
+          {
+            "text": "Trust yourself by keeping other people’s doubts separate from your decisions.",
+            "correct": false
+          },
+          {
+            "text": "Trust yourself, but make room for the doubts others raise.",
+            "correct": true
+          },
+          {
+            "text": "Let the crowd’s confidence determine when you should trust your own judgment.",
+            "correct": false
+          }
+        ],
+        "correct": "Trust yourself, but make room for the doubts others raise.",
+        "distractors": [
+          "Trust yourself by keeping other people’s doubts separate from your decisions.",
+          "Let the crowd’s confidence determine when you should trust your own judgment."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-08",
+      "title": "New York Times v. Sullivan",
+      "reviewedTitle": "New York Times v. Sullivan — An error and a libel claim",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Excerpts from a U.S. Courts explanation and the Supreme Court’s 1964 decision in New York Times v. Sullivan. This case concerns criticism of a public official.",
+        "In 1960, the New York Times ran a full-page advertisement paid for by civil rights activists. The ad openly criticized the police department in the city of Montgomery, Alabama for its treatment of civil rights protestors. Most of the descriptions in the ad were accurate, but some of the statements were false. The police commissioner, L. B. Sullivan, took offense to the ad and sued the New York Times in an Alabama court. Sullivan argued that the ad had damaged his reputation, and he had been libeled.",
+        "The Alabama court ruled in favor of Sullivan, finding that the newspaper ad falsely represented the police department and Sullivan. After losing an appeal in the Supreme Court of Alabama, the New York Times took its case to the United States Supreme Court arguing that the ad was not meant to hurt Sullivan’s reputation and was protected under the First Amendment.",
+        "The Supreme Court ruled for the newspaper. Its opinion explains the standard for this kind of claim.",
+        "The constitutional guarantees require, we think, a federal rule that prohibits a public official from recovering damages for a defamatory falsehood relating to his official conduct unless he proves that the statement was made with “actual malice”—that is, with knowledge that it was false or with reckless disregard of whether it was false or not."
+      ],
+      "displayLines": [
+        "Excerpts from a U.S. Courts explanation and the Supreme Court’s 1964 decision in New York Times v. Sullivan. This case concerns criticism of a public official.",
+        "In 1960, the New York Times ran a full-page advertisement paid for by civil rights activists.",
+        "The ad openly criticized the police department in the city of Montgomery, Alabama for its treatment of civil rights protestors.",
+        "Most of the descriptions in the ad were accurate, but some of the statements were false.",
+        "The police commissioner, L. B. Sullivan, took offense to the ad and sued the New York Times in an Alabama court.",
+        "Sullivan argued that the ad had damaged his reputation, and he had been libeled.",
+        "The Alabama court ruled in favor of Sullivan, finding that the newspaper ad falsely represented the police department and Sullivan.",
+        "After losing an appeal in the Supreme Court of Alabama, the New York Times took its case to the United States Supreme Court arguing that the ad was not meant to hurt Sullivan’s reputation and was protected under the First Amendment.",
+        "The Supreme Court ruled for the newspaper.",
+        "Its opinion explains the standard for this kind of claim.",
+        "The constitutional guarantees require, we think, a federal rule that prohibits a public official from recovering damages for a defamatory falsehood relating to his official conduct unless he proves that the statement was made with “actual malice”—that is, with knowledge that it was false or with reckless disregard of whether it was false or not."
+      ],
+      "spokenWordCount": 246,
+      "source": {
+        "label": "New York Times v. Sullivan — An error and a libel claim",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Restore the stories, sources, captions, and authors after the overfix.",
+      "vocabulary": [
+        {
+          "word": "libeled",
+          "definition": "Harmed by a published false statement about one’s reputation.",
+          "sentence": "In this passage, Sullivan claimed the newspaper had libeled him.",
+          "playbackPhrase": "In this passage, Sullivan claimed the newspaper had libeled him.",
+          "properNoun": false
+        },
+        {
+          "word": "appeal",
+          "definition": "A request for a higher court to review a lower court’s decision.",
+          "sentence": "In this passage, the newspaper lost an appeal in Alabama.",
+          "playbackPhrase": "In this passage, the newspaper lost an appeal in Alabama.",
+          "properNoun": false
+        },
+        {
+          "word": "malice",
+          "definition": "Legal definition here: knowledge of falsity or reckless disregard for whether a statement is false.",
+          "sentence": "In this passage, actual malice concerns what the publisher knew or recklessly disregarded.",
+          "playbackPhrase": "In this passage, actual malice concerns what the publisher knew or recklessly disregarded.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Under the quoted rule, what must a public official show beyond a false statement about official conduct?",
+        "orderedChoices": [
+          {
+            "text": "That the criticism appeared in a paid advertisement rather than a news article.",
+            "correct": false
+          },
+          {
+            "text": "That the statement harmed the official’s reputation, even if the publisher believed it.",
+            "correct": false
+          },
+          {
+            "text": "That the publisher knew it was false or recklessly disregarded whether it was false.",
+            "correct": true
+          }
+        ],
+        "correct": "That the publisher knew it was false or recklessly disregarded whether it was false.",
+        "distractors": [
+          "That the criticism appeared in a paid advertisement rather than a news article.",
+          "That the statement harmed the official’s reputation, even if the publisher believed it."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "yahuh-09",
+      "title": "Confronting Health Misinformation",
+      "reviewedTitle": "Confronting Health Misinformation — Reporting without distortion",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from the U.S. Surgeon General’s 2021 advisory, Confronting Health Misinformation. This section gives recommendations to journalists and media organizations.",
+        "Provide the public with context to avoid skewing their perceptions about ongoing debates on health topics. For example, when discussing conflicting views on an issue, give readers a sense of where the scientific community stands and how strong the available evidence is for different views. Consider questions like: How much disagreement is there among experts? Is a given explanation plausible even if it is unlikely? If evidence is not equally strong on all sides of an issue, avoid presenting it as such.",
+        "Carefully review information in preprints. Preprints are research papers published online before peer review. They can provide scientists and the public with useful information, especially in rapidly evolving situations such as a pandemic. However, because preprints have not been independently reviewed, reporters should be careful about describing findings from preprints as conclusive. If reporting on such findings, include strong caveats where appropriate, seek out expert opinions, and provide readers with context.",
+        "Use a broader range of credible sources—particularly local sources. Research shows us that people have varying levels of trust in different types of people and institutions. In addition to relying on federal and state public health authorities as sources, build relationships with local health professionals and local trusted, credible health organizations.",
+        "Consider headlines and images that inform rather than shock or provoke. Headlines are often what audiences will see and remember. If a headline is designed to fact-check a rumor, where possible, lead with the truth instead of simply repeating details of the rumor. Images are often shared on social media alongside headlines and can be easily manipulated and used out of context. Picture desk and social media editors should consider how provocative and medically inaccurate imagery can be a vehicle for misinformation."
+      ],
+      "displayLines": [
+        "An excerpt from the U.S. Surgeon General’s 2021 advisory, Confronting Health Misinformation. This section gives recommendations to journalists and media organizations.",
+        "Provide the public with context to avoid skewing their perceptions about ongoing debates on health topics.",
+        "For example, when discussing conflicting views on an issue, give readers a sense of where the scientific community stands and how strong the available evidence is for different views.",
+        "Consider questions like: How much disagreement is there among experts?",
+        "Is a given explanation plausible even if it is unlikely?",
+        "If evidence is not equally strong on all sides of an issue, avoid presenting it as such.",
+        "Carefully review information in preprints.",
+        "Preprints are research papers published online before peer review.",
+        "They can provide scientists and the public with useful information, especially in rapidly evolving situations such as a pandemic.",
+        "However, because preprints have not been independently reviewed, reporters should be careful about describing findings from preprints as conclusive.",
+        "If reporting on such findings, include strong caveats where appropriate, seek out expert opinions, and provide readers with context.",
+        "Use a broader range of credible sources—particularly local sources.",
+        "Research shows us that people have varying levels of trust in different types of people and institutions.",
+        "In addition to relying on federal and state public health authorities as sources, build relationships with local health professionals and local trusted, credible health organizations.",
+        "Consider headlines and images that inform rather than shock or provoke.",
+        "Headlines are often what audiences will see and remember.",
+        "If a headline is designed to fact-check a rumor, where possible, lead with the truth instead of simply repeating details of the rumor.",
+        "Images are often shared on social media alongside headlines and can be easily manipulated and used out of context.",
+        "Picture desk and social media editors should consider how provocative and medically inaccurate imagery can be a vehicle for misinformation."
+      ],
+      "spokenWordCount": 307,
+      "source": {
+        "label": "Confronting Health Misinformation — Reporting without distortion",
+        "url": "https://docs.google.com/document/d/1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
+      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "onScreen": "Fix the headlines and secure the restored news page.",
+      "vocabulary": [
+        {
+          "word": "skewing",
+          "definition": "Distorting something so that it gives an inaccurate impression.",
+          "sentence": "In this passage, missing context risks skewing readers’ understanding.",
+          "playbackPhrase": "In this passage, missing context risks skewing readers’ understanding.",
+          "properNoun": false
+        },
+        {
+          "word": "caveats",
+          "definition": "Warnings or qualifications that explain limits or uncertainties.",
+          "sentence": "In this passage, reporters should include caveats about unreviewed research.",
+          "playbackPhrase": "In this passage, reporters should include caveats about unreviewed research.",
+          "properNoun": false
+        },
+        {
+          "word": "provocative",
+          "definition": "Likely to stir up a strong emotional reaction.",
+          "sentence": "In this passage, provocative images can spread misleading impressions.",
+          "playbackPhrase": "In this passage, provocative images can spread misleading impressions.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Which reporting choice best follows these recommendations?",
+        "orderedChoices": [
+          {
+            "text": "Give opposing claims equal space, even when the evidence is much stronger for one.",
+            "correct": false
+          },
+          {
+            "text": "Lead with verified information and explain the limits of evidence behind disputed claims.",
+            "correct": true
+          },
+          {
+            "text": "Repeat a startling rumor in the headline, then explain why it is wrong in the article.",
+            "correct": false
+          }
+        ],
+        "correct": "Lead with verified information and explain the limits of evidence behind disputed claims.",
+        "distractors": [
+          "Give opposing claims equal space, even when the evidence is much stronger for one.",
+          "Repeat a startling rumor in the headline, then explain why it is wrong in the article."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."

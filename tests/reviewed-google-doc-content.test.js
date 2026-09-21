@@ -10,7 +10,7 @@ const root = new URL('../docs/content/human-reviewed/2026-09-20/google-docs/', i
 const approval = JSON.parse(readFileSync(new URL('approval.json', root), 'utf8'));
 const normalize = text => text.replace(/\s+/gu, ' ').trim();
 
-for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner']) {
+for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh']) {
   test(`${site}: effective content matches the approved Google Doc revision exactly`, () => {
     const raw = readFileSync(new URL(`${site}.json`, root), 'utf8');
     const doc = JSON.parse(raw);
@@ -44,4 +44,19 @@ test('explicit second-review corrections and bibliographic titles remain in the 
   assert.equal(PLAYABLE_WALKTHROUGHS.threadit.passages[0].title, 'The Fox Without a Tail');
   assert.equal(PLAYABLE_WALKTHROUGHS.mycorner.passages[3].title, 'Huckleberry Finn');
   assert.equal(PLAYABLE_WALKTHROUGHS.mycorner.passages[0].lines[0], 'An excerpt from Alice’s Adventures in Wonderland by Lewis Carroll. Alice has changed size several times and meets a Caterpillar.');
+});
+
+test('Yahuh imports inline vocabulary, poem lines, approval, and replacement IDs', () => {
+  const mission = PLAYABLE_WALKTHROUGHS.yahuh;
+  assert.equal(mission.phaseOneCount, 6);
+  assert.equal(mission.passages[0].title, 'Peoples and Creatures of the Moon');
+  assert.deepEqual(mission.passages[2].challengingWords.map(card => card.word), ['scarcely', 'extraordinary', 'prodigiously']);
+  assert.equal(mission.passages[2].challengingWords[0].meaning, 'Barely; almost not.');
+  assert.equal(mission.passages[2].challengingWords[0].speechSentence, 'In this passage, Pinocchio has scarcely spoken when his nose grows.');
+  const poem = mission.passages[6];
+  assert.equal(poem.title, 'If—');
+  assert.deepEqual(poem.lines, poem.paragraphs.map(line => line.trim()));
+  assert.deepEqual(mission.replacedPassageIds, mission.passages.map(passage => passage.id));
+  assert.equal(mission.passages[8].comprehension.choices.find(choice => choice.correct).text, 'Lead with verified information and explain the limits of evidence behind disputed claims.');
+  assert.ok(mission.passages.every(passage => passage.challengingWords.every(card => card.audioSrc.endsWith('-reviewed-20260920.m4a'))));
 });
