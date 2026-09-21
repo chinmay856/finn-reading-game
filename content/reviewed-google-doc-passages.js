@@ -17,13 +17,13 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
   },
   "yahuh": {
     "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-    "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
-    "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
+    "revisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
+    "sha256": "2a60e4bdb662edb94358d4f30968fedfdb72a7f61fe2b817c671ae1c39e66b20"
   },
   "searchish": {
     "documentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-    "revisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
-    "sha256": "a2d4f7740e5116b24235abe128cdcbafe781a8c44c823f0d61f5cc58c19dc119"
+    "revisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
+    "sha256": "554d2f313f8e9bf02b9597175dafa3df70b1fe0536e175c2fdc5fd834b8a11d5"
   },
   "amaze-on": {
     "documentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
@@ -32,13 +32,13 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
   },
   "viewtube": {
     "documentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-    "revisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
-    "sha256": "f80f0caeaaf55cabc6f0833d40bfa62b6ffa05ca3de049ce1fd23dc7fb694bce"
+    "revisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+    "sha256": "12dd9ee6f5c7f8b5e32781774dd40ef72aa95c34052ec04e591acefa1fc1ac4a"
   },
   "spotty-fi": {
     "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-    "revisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
-    "sha256": "d8c3442aff35a5e05ec4262e27c1db2f2d4cc42c9062be4926da1203967047ae"
+    "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
+    "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
   }
 };
 export const REVIEWED_GOOGLE_DOC_PASSAGES = {
@@ -2622,7 +2622,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Reveal the stories beneath the oversized headlines.",
       "vocabulary": [
         {
@@ -2706,7 +2706,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Restore the supporting sources for each story.",
       "vocabulary": [
         {
@@ -2724,10 +2724,10 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
           "properNoun": false
         },
         {
-          "word": "contemplated",
-          "definition": "Considered or planned.",
-          "sentence": "In this passage, people contemplated enterprises using an outdated picture of the world.",
-          "playbackPhrase": "In this passage, people contemplated enterprises using an outdated picture of the world.",
+          "word": "enterprises",
+          "definition": "Projects or businesses that people plan or undertake.",
+          "sentence": "In this passage, enterprises are planned without knowing that war has changed the world.",
+          "playbackPhrase": "In this passage, enterprises are planned without knowing that war has changed the world.",
           "properNoun": false
         }
       ],
@@ -2811,7 +2811,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Restore image captions so the pictures have context.",
       "vocabulary": [
         {
@@ -2892,7 +2892,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Restore the authors’ bylines.",
       "vocabulary": [
         {
@@ -2981,7 +2981,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Make the pictures match the reporting.",
       "vocabulary": [
         {
@@ -3072,7 +3072,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Replace the sensational headlines with accurate summaries.",
       "vocabulary": [
         {
@@ -3204,7 +3204,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "After Auto’s overfix, bring back the accurate pictures.",
       "vocabulary": [
         {
@@ -3286,7 +3286,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Restore the stories, sources, captions, and authors after the overfix.",
       "vocabulary": [
         {
@@ -3376,7 +3376,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "sourceRevisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
+      "sourceRevisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
       "onScreen": "Fix the headlines and secure the restored news page.",
       "vocabulary": [
         {
@@ -3463,7 +3463,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Correct the oversized AI overview.",
       "vocabulary": [
         {
@@ -3544,7 +3544,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Make the AI overview optional.",
       "vocabulary": [
         {
@@ -3648,14 +3648,14 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Restore clear advertising labels.",
       "vocabulary": [
         {
-          "word": "contemptuously",
-          "definition": "In a way that shows scorn or a lack of respect.",
-          "sentence": "In this passage, Humpty Dumpty smiles contemptuously at Alice’s confusion.",
-          "playbackPhrase": "In this passage, Humpty Dumpty smiles contemptuously at Alice’s confusion.",
+          "word": "scornful",
+          "definition": "Showing that you think someone or something deserves little respect.",
+          "sentence": "In this passage, Humpty Dumpty uses a scornful tone when talking to Alice.",
+          "playbackPhrase": "In this passage, Humpty Dumpty uses a scornful tone when talking to Alice.",
           "properNoun": false
         },
         {
@@ -3726,7 +3726,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Restore library availability and free online editions.",
       "vocabulary": [
         {
@@ -3810,7 +3810,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Restore the neighborhood bookstore and local pickup.",
       "vocabulary": [
         {
@@ -3884,7 +3884,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Rerank the useful results.",
       "vocabulary": [
         {
@@ -3971,7 +3971,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Fix Auto’s oversized answer after the over-fix.",
       "vocabulary": [
         {
@@ -4094,7 +4094,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Make AI optional instead of substituting a study guide for the book.",
       "vocabulary": [
         {
@@ -4179,7 +4179,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Show real options for obtaining the book.",
       "vocabulary": [
         {
@@ -4263,7 +4263,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "sourceRevisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
+      "sourceRevisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
       "onScreen": "Keep the search available.",
       "vocabulary": [
         {
@@ -5353,14 +5353,14 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Restore the viewer’s search.",
       "vocabulary": [
         {
-          "word": "apparatus",
-          "definition": "Equipment designed for a particular purpose.",
-          "sentence": "In this passage, the apparatus reproduces movement on a screen.",
-          "playbackPhrase": "In this passage, the apparatus reproduces movement on a screen.",
+          "word": "vaudeville",
+          "definition": "Stage entertainment made up of several short acts, such as songs, comedy, and tricks.",
+          "sentence": "In this passage, vaudeville is one kind of entertainment that makes room for movies.",
+          "playbackPhrase": "In this passage, vaudeville is one kind of entertainment that makes room for movies.",
           "properNoun": false
         },
         {
@@ -5432,7 +5432,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Remove the excessive advertisements.",
       "vocabulary": [
         {
@@ -5521,7 +5521,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Restore the views and comments.",
       "vocabulary": [
         {
@@ -5646,7 +5646,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Restore the autoplay choice.",
       "vocabulary": [
         {
@@ -5732,7 +5732,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Let the viewer select a video.",
       "vocabulary": [
         {
@@ -5821,7 +5821,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Restore search and remove excessive ads after Auto’s override.",
       "vocabulary": [
         {
@@ -5917,7 +5917,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Lock in the restored views and comments.",
       "vocabulary": [
         {
@@ -6011,7 +6011,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
+      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
       "onScreen": "Lock in autoplay permission and the viewer’s choice.",
       "vocabulary": [
         {
@@ -6129,7 +6129,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Restore contributor credits.",
       "vocabulary": [
         {
@@ -6219,7 +6219,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Restore listener choice in discovery.",
       "vocabulary": [
         {
@@ -6304,7 +6304,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Restore artist names and the creator profile.",
       "vocabulary": [
         {
@@ -6436,7 +6436,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Restore creator details and collaboration information.",
       "vocabulary": [
         {
@@ -6511,7 +6511,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Restore track titles, artwork, and playback information.",
       "vocabulary": [
         {
@@ -6529,10 +6529,10 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
           "properNoun": false
         },
         {
-          "word": "assimilated",
-          "definition": "Taken in and understood.",
-          "sentence": "In this passage, people pass on thoughts they have assimilated from others.",
-          "playbackPhrase": "In this passage, people pass on thoughts they have assimilated from others.",
+          "word": "manifestation",
+          "definition": "A visible or noticeable expression of something.",
+          "sentence": "In this passage, Tolstoy rejects the idea that art is a manifestation of mysterious beauty.",
+          "playbackPhrase": "In this passage, Tolstoy rejects the idea that art is a manifestation of mysterious beauty.",
           "properNoun": false
         }
       ],
@@ -6594,7 +6594,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "After Auto’s over-fix: show the artist.",
       "vocabulary": [
         {
@@ -6694,7 +6694,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Show the credits.",
       "vocabulary": [
         {
@@ -6782,7 +6782,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Let users choose.",
       "vocabulary": [
         {
@@ -6866,7 +6866,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Let users set the volume.",
       "vocabulary": [
         {
@@ -6956,7 +6956,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
+      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "onScreen": "Keep artists, credits, and listener controls visible.",
       "vocabulary": [
         {

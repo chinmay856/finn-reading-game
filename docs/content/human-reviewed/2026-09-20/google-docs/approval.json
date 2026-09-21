@@ -4,8 +4,8 @@
   "sources": {
     "wikiwhy": {
       "documentId": "1pRtfNeqCoI40G1lKGo2YOzL9BO0ev1qNrnZc9qfIT1Y",
-      "revisionId": "ANLCKQn35u-hmFFCNSbb1_haDwL3_i5ZSUZHVfEM7trvlCD90Tp-ty0GoQNlCo6pEcXtYgOy0JlaWayZkTT1n6JL5Sdt01UHTBaCqKiH1Co",
-      "sha256": "4c956e0202fd59a16c38ca0cd718530dbf0f3f515c499d2bd9dafa93515260ca"
+      "revisionId": "ANLCKQmrRC9__lJ4-LSAUYffqnf3gRiSeXnQ9n23r4apk-44d6ar4lXa-BghJex595GM2JbdqNsacMYrm84EY-5kU5qyjghvcwXWzhf4bS0",
+      "sha256": "7e182448729926ff90261f86fece5d9b307503d23e314d7bddfab84da24e7db0"
     },
     "faceplace": {
       "documentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
@@ -24,13 +24,13 @@
     },
     "yahuh": {
       "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
-      "revisionId": "ANLCKQnfDT7KKPegHl7QKDk_kaedalMhDUQBoNyY8gzrEQ3UeTwCxyb3nEMnnB8zJAl6CEGyboyMb31YqhgW7WFO_r3LmU19g5QOcKPRa2g",
-      "sha256": "2b5e627e20519c357dc4a4ea3ef3b597d54dc8627cc668fcbd4c4983dfdca9cd"
+      "revisionId": "ANLCKQnr1fmt84BViRqkfBTOduqBHa2Y6s3mVkDaz67eMpcbzFSlGqmBnsSyEtw4vHGClWqUep1W05mNQ7YC26EETczKmbkButUgykr1w8o",
+      "sha256": "2a60e4bdb662edb94358d4f30968fedfdb72a7f61fe2b817c671ae1c39e66b20"
     },
     "searchish": {
       "documentId": "1QhX7LN_2OpW0313eUkhCSFAgb7cSy2Hd85MteUt4JeM",
-      "revisionId": "ANLCKQnTQFMHuRjx_wff2wKqPOWFxf7eECHFX-ocwFjrYTTiyv4HfxQQAC6fWJwrdbMVBCkdvbPNySyjp3GA7RvEeoUe3nIYSuaFMakZk9I",
-      "sha256": "a2d4f7740e5116b24235abe128cdcbafe781a8c44c823f0d61f5cc58c19dc119"
+      "revisionId": "ANLCKQkHqC8BPbaAJmVhUVO4JuJL1yN3GPG_gJi2r2XJWGH7qRmlrZAgSefg1CD1cCy_fPgjknHsxfYy_03ULp8AmGkIyyL-MvmkqQh-zRg",
+      "sha256": "554d2f313f8e9bf02b9597175dafa3df70b1fe0536e175c2fdc5fd834b8a11d5"
     },
     "amaze-on": {
       "documentId": "17wNtfCOK4d2EyxyvSd5YxflemCGPZqFvM1KP3RoHdrk",
@@ -39,16 +39,17 @@
     },
     "viewtube": {
       "documentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "revisionId": "ANLCKQkMw9HxfCX60IrqLMlEY1abj7_xc9dSzBXBH4i9LD4Aj-vsxyWT1SvoFj7-h7zx8qWAbxkHpxXcl0XzisjD90_q_GGqMVQIROu3vlM",
-      "sha256": "f80f0caeaaf55cabc6f0833d40bfa62b6ffa05ca3de049ce1fd23dc7fb694bce"
+      "revisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sha256": "12dd9ee6f5c7f8b5e32781774dd40ef72aa95c34052ec04e591acefa1fc1ac4a"
     },
     "spotty-fi": {
       "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "revisionId": "ANLCKQnM16Lzx58p82IKw2rRmeJLivu9xSKvb6ouUUCWFz8k_Y8BUS0t_-0sk2VootiiU5SlC_cRlB5Gktlo_Dijt0hLHXgqTuxVpid65fs",
-      "sha256": "d8c3442aff35a5e05ec4262e27c1db2f2d4cc42c9062be4926da1203967047ae"
+      "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
+      "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
     }
   },
   "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20.",
   "searchishAmazonApproval": "User explicitly authorized publication of current Searchish, Yahoo, and Amazon Google Docs on 2026-09-20. Yahoo text rechecked unchanged; Searchish and Amazon snapshots imported without editorial rewriting.",
-  "finalPacketsApproval": "User explicitly authorized integration and production publication of the final two Google Docs, ViewTube and Spotty-Fi, on 2026-09-20."
+  "finalPacketsApproval": "User explicitly authorized integration and production publication of the final two Google Docs, ViewTube and Spotty-Fi, on 2026-09-20.",
+  "vocabularyDeduplicationApproval": "2026-09-21: User approved testimony (WikiWhy 10), scornful (Searchish 3), enterprises (Yahuh 2), vaudeville (ViewTube 1), and manifestation (Spotty-Fi 5), keeping each original word in its other passage. Google Docs updated and exact unrelated text preserved."
 }

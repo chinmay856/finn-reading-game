@@ -83,12 +83,6 @@
     "speed": 0.95,
     "sha256": "67aebfefb231f9485fe37de7f2ac7c6537881a9a77122ea7909eb7e83b40ce20"
   },
-  "/audio/spotty-fi/kokoro-heart/spotty-fi-05-assimilated-reviewed-20260920.m4a": {
-    "speechText": "assimilated. Definition: Taken in and understood. In this passage, people pass on thoughts they have assimilated from others.",
-    "voice": "af_heart",
-    "speed": 0.95,
-    "sha256": "3a138702755a66de0749ce7b5a792bb045b89cb9d1468ea514d271726fb7f9cd"
-  },
   "/audio/spotty-fi/kokoro-heart/spotty-fi-06-harmonics-reviewed-20260920.m4a": {
     "speechText": "harmonics. Definition: Higher tones that sound along with a main musical tone, giving it richness. In this passage, harmonics enrich the sound of the saxophones.",
     "voice": "af_heart",
@@ -178,5 +172,11 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "2d10c326346b54e91d8609e8383683c286facc9712e73489595a8bd7938137da"
+  },
+  "/audio/spotty-fi/kokoro-heart/spotty-fi-05-manifestation-reviewed-20260920.m4a": {
+    "speechText": "manifestation. Definition: A visible or noticeable expression of something. In this passage, Tolstoy rejects the idea that art is a manifestation of mysterious beauty.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "2133417066ebf6fabb75a1b8542f22809fa95e72e7e304e7b0f6ce8baa534cd2"
   }
 }

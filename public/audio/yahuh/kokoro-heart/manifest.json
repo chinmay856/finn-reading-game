@@ -29,12 +29,6 @@
     "speed": 0.95,
     "sha256": "64707da1fb5d9e4eb21cd1553842222bf214bb1177bf9f46aeab11acfed6dadf"
   },
-  "/audio/yahuh/kokoro-heart/yahuh-02-contemplated-reviewed-20260920.m4a": {
-    "speechText": "contemplated. Definition: Considered or planned. In this passage, people contemplated enterprises using an outdated picture of the world.",
-    "voice": "af_heart",
-    "speed": 0.95,
-    "sha256": "f236eaac688e8be87c2855d94ca986909205c3873a19b9f0639a74f3c00b7dc4"
-  },
   "/audio/yahuh/kokoro-heart/yahuh-03-scarcely-reviewed-20260920.m4a": {
     "speechText": "scarcely. Definition: Barely; almost not. In this passage, Pinocchio has scarcely spoken when his nose grows.",
     "voice": "af_heart",
@@ -160,5 +154,11 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "2070395d077bc07e1b3344618928aaea2677751772aad629d99c48c6f6fe5016"
+  },
+  "/audio/yahuh/kokoro-heart/yahuh-02-enterprises-reviewed-20260920.m4a": {
+    "speechText": "enterprises. Definition: Projects or businesses that people plan or undertake. In this passage, enterprises are planned without knowing that war has changed the world.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a90b91e3f685f01ae3e1e87ec71185b6cdd9a845fe08fbb4954b4c4527cb638b"
   }
 }

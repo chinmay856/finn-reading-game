@@ -1441,10 +1441,10 @@ const DATA = [
     },
     "vocabulary": [
       {
-        "word": "assent",
-        "definition": "To accept or agree that something is true.",
-        "sentence": "In this passage, familiar experience leads a person to assent to the report.",
-        "playbackPhrase": "In this passage, familiar experience leads a person to assent to the report.",
+        "word": "testimony",
+        "definition": "An account of what someone saw or knows.",
+        "sentence": "In this passage, testimony is the report someone gives about walking on ice.",
+        "playbackPhrase": "In this passage, testimony is the report someone gives about walking on ice.",
         "properNoun": false
       },
       {
@@ -1472,5 +1472,5 @@ function deepFreeze(value) {
   return Object.freeze(value);
 }
 
-export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "b01e4f7f641fcba01c4f441933f82290a18e8e66575e2d7df9a3dc74d788649e";
+export const WIKIWHY_HUMAN_REVIEWED_PACKET_SHA256 = "938bde249ebd12f343cd8cdbe5ff3a1f56d64228f60142f48c8fb7ec737cb57c";
 export const WIKIWHY_HUMAN_REVIEWED_PASSAGES = deepFreeze(DATA);

@@ -35,12 +35,6 @@
     "speed": 0.95,
     "sha256": "01477c06bdd48053ccfd0d6ecbf951a1030c62222665b618dc63a30c447255cd"
   },
-  "/audio/searchish/kokoro-heart/searchish-03-contemptuously-reviewed-20260920.m4a": {
-    "speechText": "contemptuously. Definition: In a way that shows scorn or a lack of respect. In this passage, Humpty Dumpty smiles contemptuously at Alice’s confusion.",
-    "voice": "af_heart",
-    "speed": 0.95,
-    "sha256": "98a437260aa25cab228c7af8cc496a884f67907528d595019716f9f2bd078df4"
-  },
   "/audio/searchish/kokoro-heart/searchish-03-temper-reviewed-20260920.m4a": {
     "speechText": "temper. Definition: A person’s usual disposition or tendency to become angry. In this passage, Humpty Dumpty imagines that verbs have a stubborn temper.",
     "voice": "af_heart",
@@ -178,5 +172,11 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "026291d385f394ebdd3d22302ed1438554d42635495a8618f19b238a237f86e0"
+  },
+  "/audio/searchish/kokoro-heart/searchish-03-scornful-reviewed-20260920.m4a": {
+    "speechText": "scornful. Definition: Showing that you think someone or something deserves little respect. In this passage, Humpty Dumpty uses a scornful tone when talking to Alice.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "aee0a328b970c3847e42b1955461712d60b6a01911db2880e42a03ef75ea9143"
   }
 }

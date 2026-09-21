@@ -1,10 +1,4 @@
 {
-  "/audio/viewtube/kokoro-heart/viewtube-01-apparatus-reviewed-20260920.m4a": {
-    "speechText": "apparatus. Definition: Equipment designed for a particular purpose. In this passage, the apparatus reproduces movement on a screen.",
-    "voice": "af_heart",
-    "speed": 0.95,
-    "sha256": "3604b4ef2a9d8039cbff215d94def28b12de33de2f0696f0fda3a9b33dab772e"
-  },
   "/audio/viewtube/kokoro-heart/viewtube-01-democratized-reviewed-20260920.m4a": {
     "speechText": "democratized. Definition: Made available to a wider range of people. In this passage, film democratized access to great performances.",
     "voice": "af_heart",
@@ -142,5 +136,11 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "c3b348e4b881d03f1fdb98177637b82cccddef8d728a3147af1bd8ccbfcfe288"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-01-vaudeville-reviewed-20260920.m4a": {
+    "speechText": "vaudeville. Definition: Stage entertainment made up of several short acts, such as songs, comedy, and tricks. In this passage, vaudeville is one kind of entertainment that makes room for movies.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "209528868d49b86a9d44daabb17f1a5b4b8d4c5a4ea928868e0d3d45ab9da4cb"
   }
 }

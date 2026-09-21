@@ -143,12 +143,6 @@
     "speed": 0.95,
     "sha256": "9233da959db31458bcd2a5af50a5361fa028000a6c098c6c256f9eca4bdab531"
   },
-  "/audio/wikiwhy/kokoro-heart/wikiwhy-10-assent-reviewed-20260920.m4a": {
-    "speechText": "assent. Definition: To accept or agree that something is true. In this passage, familiar experience leads a person to assent to the report.",
-    "voice": "af_heart",
-    "speed": 0.95,
-    "sha256": "55bf1f1e1bde12356bcb06ecad64c85107041d48167151bbd9f993c3d1c7e156"
-  },
   "/audio/wikiwhy/kokoro-heart/wikiwhy-10-relators-reviewed-20260920.m4a": {
     "speechText": "relators. Definition: People who tell or report an account. In this passage, credible relators make unfamiliar testimony easier to believe.",
     "voice": "af_heart",
@@ -160,5 +154,11 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "7542dec5a0270631220ece10b5e5ac71f013728bc0ba9954b4c08ce032748efc"
+  },
+  "/audio/wikiwhy/kokoro-heart/wikiwhy-10-testimony-reviewed-20260920.m4a": {
+    "speechText": "testimony. Definition: An account of what someone saw or knows. In this passage, testimony is the report someone gives about walking on ice.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "640a272ae21aebe59d9dcb8caf50147cab0eb1536145164ca053db43b9421b49"
   }
 }
