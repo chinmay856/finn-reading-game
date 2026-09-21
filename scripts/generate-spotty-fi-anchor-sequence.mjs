@@ -31,9 +31,9 @@ const referenceDefs = extractedReferenceDefs.replaceAll(
   'href="../wikiwhy-inkscape-spike/assets/',
 );
 const art = {
-  paper: path.relative(outputDirectory, path.join(artDirectory, "album-paper-v1.png")),
-  satellite: path.relative(outputDirectory, path.join(artDirectory, "album-satellite-v1.png")),
-  band: path.relative(outputDirectory, path.join(artDirectory, "album-band-v1.png")),
+  paper: path.relative(outputDirectory, path.join(artDirectory, "album-paper-v4.svg")),
+  satellite: path.relative(outputDirectory, path.join(artDirectory, "album-satellite-v4.png")),
+  band: path.relative(outputDirectory, path.join(artDirectory, "album-band-v4.png")),
   artist: path.relative(outputDirectory, path.join(artDirectory, "artist-portrait-v1.png")),
 };
 

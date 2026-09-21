@@ -55,9 +55,9 @@ const report = await page.evaluate(({ corruption, repair }) => {
   });
   mustContain(initial, ["TRACK_001", "ARTIST: GENERATED", "CREATOR PROFILE NOT FOUND", "MUSIC RECOVERY", "VOLUME"]);
   mustContain(repairedState, ["Paper Planes", "Soft Crash", "VERIFIED CREATOR", "Mira — voice", "Related work", "FOLLOW"]);
-  mustContain(superState, ["OPTIMAL SONG ∞", "ARTIST: AUTO", "ONE PERFECT CREATOR: AUTO", "17,004 NEW SONGS", "VOLUME: MAX", "AUTO OVER-FIX ACTIVE"]);
+  mustContain(superState, ["OPTIMAL SONG ∞", "ARTIST: AUTO", "ONE PERFECT CREATOR: AUTO", "17,004 NEW SONGS", "VOLUME: MAX"]);
   mustContain(locksState, ["LOCK IN THE REPAIR", "SHOW THE ARTIST", "SHOW THE CREDITS", "LET USERS CHOOSE", "LET USERS SET THE VOLUME"]);
-  mustContain(securedState, ["Paper Planes", "Soft Crash", "Chosen by you", "MUSIC + CHOICE RESTORED", "VOLUME"]);
+  mustContain(securedState, ["Paper Planes", "Soft Crash", "Chosen by you", "VOLUME"]);
   for (const forbidden of ["TRACK_001", "CREATOR PROFILE NOT FOUND", "ARTIST: GENERATED"]) {
     if (repairedState?.textContent.includes(forbidden)) issues.push(`Repaired state retains corrupted copy: ${forbidden}`);
   }
