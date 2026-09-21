@@ -321,7 +321,7 @@ test("standalone state remains isolated while completed campaign documents can r
   assert.match(campaignHtml, /id="diagnosticJump"/u);
   assert.match(campaignHtml, /id="skipReading"[^>]*hidden/u);
   assert.doesNotMatch(campaignHtml, /class="reader-actions"[\s\S]{0,500}id="skipReading"/u);
-  assert.match(runtime, /location\.assign\("\/playable-missions\.html\?endgame=complete"\)/u);
+  assert.match(runtime, /location\.assign\(modeUrl\("\/playable-missions\.html\?endgame=complete"\)\)/u);
   const prototypeSource = `${html}\n${runtime}\n${content}\n${stateSource}`;
   assert.match(prototypeSource, /\bAUTO\b/u);
   assert.match(prototypeSource, /\bChinmay\b/u);

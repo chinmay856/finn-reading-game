@@ -12,6 +12,11 @@
         "source": "/index.html",
         "destination": "/playable-missions.html",
         "type": 302
+      },
+      {
+        "source": "/playtest",
+        "destination": "/playable-missions.html?playtest=1",
+        "type": 302
       }
     ],
     "ignore": [

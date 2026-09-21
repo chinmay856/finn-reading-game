@@ -17,7 +17,8 @@ designed to support many future themes.
 - Current WikiWhy content and synchronization workflow: [WikiWhy current](docs/content/WIKIWHY_CURRENT.md)
 
 - Current project status: [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md)
-- Live game: <https://internet-recovery-98.web.app/>
+- Live player game: <https://internet-recovery-98.web.app/>
+- Playtester controls: <https://internet-recovery-98.web.app/playtest> (use a separate test player; saves remain on this device)
 - Legacy Firebase address: <https://finn-reading-game.web.app/>
 - Non-isolated GitHub Pages fallback: <https://chinmay856.github.io/finn-reading-game/>
 - Local speech implementation: [`docs/engine/SPEECH_TECH_RESEARCH.md`](docs/engine/SPEECH_TECH_RESEARCH.md)

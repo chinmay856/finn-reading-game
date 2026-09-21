@@ -227,7 +227,7 @@ test("manual passage scrolling disables viewport jumps without stopping guide up
 test("player login warms only Whisper behind the dial-up parody and defers the heavyweight guide", () => {
   assert.match(html, /id="dialupGate"/u);
   assert.match(html, /Dialing Progress/u);
-  assert.match(html, /Preparing the local voice model/u);
+  assert.match(html, /Preparing the reading guide/u);
   assert.match(html, /No modem sound will play/u);
   assert.match(script, /await prepareOpeningVoiceModel\(\)/u);
   assert.match(script, /await whisper\.load\(\)/u);
