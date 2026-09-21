@@ -92,12 +92,12 @@ function article(version) {
 function checklist(secured) {
   const x = 558, y = 350;
   return `<g data-overlay="act2-checklist">
-    <rect x="${x}" y="${y}" width="330" height="224" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/>
-    <rect x="${x}" y="${y}" width="330" height="48" rx="10" fill="${COLORS.repair}"/>
-    <rect x="${x}" y="${y+35}" width="330" height="13" fill="${COLORS.repair}"/>
-    <text x="${x+20}" y="${y+32}" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    <rect x="${x}" y="${y}" width="330" height="166" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/>
+    <rect x="${x}" y="${y}" width="330" height="40" rx="10" fill="${COLORS.repair}"/>
+    <rect x="${x}" y="${y+27}" width="330" height="13" fill="${COLORS.repair}"/>
+    <text x="${x+20}" y="${y+28}" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
     ${["MATCH CLAIMS TO SOURCES", "KEEP HISTORY VISIBLE", "USE CAREFUL WORDING"].map((label,i)=> {
-      const done = i < secured, rowY = y+90+i*48;
+      const done = i < secured, rowY = y+68+i*34;
       return `<rect x="${x+24}" y="${rowY-22}" width="27" height="27" rx="5" fill="${done?COLORS.repair:COLORS.corruptionSoft}" stroke="${done?COLORS.repair:COLORS.corruption}"/>
       <text x="${x+37.5}" y="${rowY-2}" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:${done?'#fff':COLORS.corruption}">${done?'✓':''}</text>
       <text x="${x+63}" y="${rowY}" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:${done?COLORS.repairDark:COLORS.corruption}">${label}</text>`;

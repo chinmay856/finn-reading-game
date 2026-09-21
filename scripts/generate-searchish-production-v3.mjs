@@ -172,8 +172,8 @@ function countLine() {
   return `<text x="131" y="153" class="si-count">About 1,240 results</text>`;
 }
 
-function viewMore(y = 648) {
-  return `<g data-module="view-more" data-purpose="persistent parody cue"><text x="510" y="${y}" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 ${y+8}l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>`;
+function viewMore(y = 677) {
+  return `<g data-module="view-more" data-purpose="persistent parody cue"><rect x="129" y="660" width="762" height="38" fill="#fff"/><line x1="129" y1="660" x2="891" y2="660" stroke="#D8DFE3"/><text x="510" y="${y}" class="si-view-more" text-anchor="middle">VIEW MORE RESULTS</text><path d="M503 ${y+8}l7 7 7-7" fill="none" stroke="#516370" stroke-width="2"/></g>`;
 }
 
 function cleanHierarchy({ search = true } = {}) {
@@ -243,13 +243,13 @@ function footer(state) {
   const repaired = state.run === "first" ? state.progress === 100 : state.run === "secured" || state.progress === 100;
   const color = repaired ? COLORS.repair : COLORS.corruption;
   const fill = Math.round(752 * state.progress / 100);
-  return `<g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="677" width="802" height="161" fill="#F7F5EE"/><line x1="109" y1="677" x2="911" y2="677" stroke="#8E9AA0"/><text x="126" y="716" class="si-meter" fill="${color}">SEARCH RECOVERY</text><text x="287" y="716" class="si-meter" fill="${color}">${state.progress}%</text><rect x="126" y="732" width="752" height="25" fill="${repaired ? "#EEF4EF" : "url(#siHatch)"}" stroke="${color}"/><rect x="126" y="732" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
+  return `<g data-module="site-meter" data-purpose="persistent parody cue"><rect x="109" y="704" width="802" height="134" fill="#F7F5EE"/><line x1="109" y1="704" x2="911" y2="704" stroke="#8E9AA0"/><text x="126" y="737" class="si-meter" fill="${color}">SEARCH RECOVERY</text><text x="287" y="737" class="si-meter" fill="${color}">${state.progress}%</text><rect x="126" y="753" width="752" height="25" fill="${repaired ? "#EEF4EF" : "url(#siHatch)"}" stroke="${color}"/><rect x="126" y="753" width="${fill}" height="25" fill="${color}" data-role="site-progress-fill" data-percent="${state.progress}"/></g>`;
 }
 
 const lockItems = Object.freeze(["FIX THE AI","MAKE AI OPTIONAL","SHOW REAL OPTIONS","KEEP THE SEARCH"]);
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-module="lock-overlay" data-purpose="repair target" data-checked="${state.checklist}"><rect x="582" y="356" width="285" height="268" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="582" y="356" width="285" height="47" rx="10" fill="${COLORS.repair}"/><rect x="582" y="390" width="285" height="13" fill="${COLORS.repair}"/><text x="602" y="388" class="si-lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item,index)=>{const checked=index<state.checklist;const y=431+index*47;return `<rect x="606" y="${y-23}" width="29" height="29" rx="5" fill="${checked?COLORS.repair:COLORS.corruptionSoft}" stroke="${checked?COLORS.repair:COLORS.corruption}"/><text x="620" y="${y-3}" class="si-lock-mark" text-anchor="middle" fill="${checked?"#fff":COLORS.corruption}">${checked?"✓":"○"}</text><text x="651" y="${y-3}" class="si-lock-label" fill="${checked?COLORS.repairDark:COLORS.corruption}">${item}</text>`;}).join("")}</g>`;
+  return `<g data-module="lock-overlay" data-purpose="repair target" data-checked="${state.checklist}"><rect x="582" y="356" width="285" height="200" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="582" y="356" width="285" height="40" rx="10" fill="${COLORS.repair}"/><rect x="582" y="383" width="285" height="13" fill="${COLORS.repair}"/><text x="602" y="384" class="si-lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item,index)=>{const checked=index<state.checklist;const y=428+index*34;return `<rect x="606" y="${y-23}" width="29" height="29" rx="5" fill="${checked?COLORS.repair:COLORS.corruptionSoft}" stroke="${checked?COLORS.repair:COLORS.corruption}"/><text x="620" y="${y-3}" class="si-lock-mark" text-anchor="middle" fill="${checked?"#fff":COLORS.corruption}">${checked?"✓":"○"}</text><text x="651" y="${y-3}" class="si-lock-label" fill="${checked?COLORS.repairDark:COLORS.corruption}">${item}</text>`;}).join("")}</g>`;
 }
 
 function companion(state) {
@@ -279,6 +279,6 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><title>Search-ish
 fs.writeFileSync(outHtml,html);
 
 for (let pageNumber=1;pageNumber<=states.length;pageNumber+=1) {
-  execFileSync("/opt/homebrew/bin/inkscape",[path.basename(outSvg),`--export-page=${pageNumber}`,"--export-area-page","--export-type=png","--export-width=1440",`--export-filename=searchish-anchor-v3_p${pageNumber}.png`],{cwd:outDir,stdio:"ignore"});
+  execFileSync("/Applications/Inkscape.app/Contents/MacOS/inkscape",[path.basename(outSvg),`--export-page=${pageNumber}`,"--export-area-page","--export-type=png","--export-width=1440",`--export-filename=searchish-anchor-v3_p${pageNumber}.png`],{cwd:outDir,stdio:"ignore"});
 }
 console.log(`Wrote ${outSvg}, ${outHtml}, and ${states.length} Search-ish production states.`);

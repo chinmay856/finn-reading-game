@@ -122,7 +122,7 @@ function fitLineToSlot(text, slot, { maxFontSize = 64, paddingX = 10, paddingY =
 function scoreHeadlinePartition(lines, slots, options = {}) {
   const individualSizes = lines.map((line, index) => fitLineToSlot(line, slots[index], options));
   const commonSize = Math.min(...individualSizes);
-  const sizes = individualSizes.map(() => commonSize);
+  const sizes = individualSizes;
   const utilization = lines.reduce((sum, line, index) => {
     const available = Math.max(1, slots[index].width - (options.paddingX ?? 10) * 2);
     return sum + Math.min(1, estimatedWidth(line, sizes[index], options.glyphFactor ?? 0.57) / available);
@@ -155,7 +155,7 @@ function renderHeadlineLayout(layout, fixed, contentKey) {
   return layout.lines.map((line, index) => {
     const slot = layout.slots[index];
     const fontSize = layout.sizes[index];
-    const baseline = slot.y + slot.height / 2 + fontSize * 0.34;
+    const baseline = slot.y + slot.height / 2 + fontSize * 0.43;
     return `<text x="${slot.x + slot.width / 2}" y="${baseline.toFixed(2)}" class="yah-dynamic-title" font-size="${fontSize.toFixed(2)}" text-anchor="middle" fill="${fixed ? "#172D40" : COLORS.corruption}" data-role="headline-line" data-content-key="${contentKey}" data-slot-x="${slot.x}" data-slot-y="${slot.y}" data-slot-width="${slot.width}" data-slot-height="${slot.height}">${line}</text>`;
   }).join(" ");
 }
@@ -218,6 +218,7 @@ function headlineWords(kind, state, compact = false) {
 }
 
 function representativeHeadlineLines(kind, state) {
+  if (headlinesFixed(state)) return storyData[kind].compactGood ?? storyData[kind].good;
   if (kind === "moon" && (state.id === "lock-pictures" || state.id === "lock-reporting")) {
     return ["MOON", "RESIGNS", "FOREVER!!!!!"];
   }
@@ -254,54 +255,53 @@ function leadHeadline(state) {
   let slotCandidates;
   if (geometryStep <= 2) {
     const bottom = [638, 520, 455][geometryStep];
-    shape = `<path d="M322 195H588V${bottom}H132V365H322Z" fill="url(#yahRedHatch)" stroke="${COLORS.corruption}" stroke-width="3"/>`;
+    shape = `<path d="M334 195H588V${bottom}H132V372H334Z" fill="url(#yahRedHatch)" stroke="${COLORS.corruption}" stroke-width="3"/>`;
     if (state.id === "lock-pictures") {
       slotCandidates = [[
-        { x: 322, y: 195, width: 266, height: 110 },
-        { x: 132, y: 340, width: 456, height: 110 },
-        { x: 132, y: 485, width: 456, height: 110 },
+        { x: 334, y: 195, width: 254, height: 165 },
+        { x: 132, y: 372, width: 456, height: 133 },
+        { x: 132, y: 505, width: 456, height: 133 },
       ]];
     } else {
-      const upper = equalVerticalSlots(322, 195, 266, 170, [2])[0];
+      const upper = equalVerticalSlots(334, 195, 254, 177, [2])[0];
       const lowerCount = geometryStep < 2 && words.length >= 4 ? 2 : 1;
-      const lower = equalVerticalSlots(132, 365, 456, bottom - 365, [lowerCount])[0];
+      const lower = equalVerticalSlots(132, 372, 456, bottom - 372, [lowerCount])[0];
       slotCandidates = [[...upper, ...lower]];
     }
   } else {
-    const x = state.id === "lock-reporting" ? 292 : step >= 5 ? 354 : 322;
-    const width = state.id === "lock-reporting" ? 296 : step >= 5 ? 234 : 266;
+    const x = state.id === "lock-reporting" ? 304 : step >= 5 ? 354 : 334;
+    const width = state.id === "lock-reporting" ? 284 : step >= 5 ? 234 : 254;
     shape = `<rect x="${x}" y="195" width="${width}" height="${height}" rx="8" fill="${fixed ? "#F0F8F1" : "url(#yahRedHatch)"}" stroke="${fixed ? COLORS.repair : COLORS.corruption}" stroke-width="3"/>`;
     slotCandidates = equalVerticalSlots(x, 195, width, height, step >= 5 ? [2, 3] : [2, 3, 4]);
   }
-  const layout = bestHeadlineLayout(words, slotCandidates, { maxFontSize: 66, paddingX: 12, paddingY: state.id === "lock-reporting" ? 5 : 7, glyphFactor: 0.62 }, representativeHeadlineLines("moon", state));
+  const layout = bestHeadlineLayout(words, slotCandidates, { maxFontSize: 66, paddingX: 12, paddingY: 4, glyphFactor: 0.68, heightFactor: 0.68 }, representativeHeadlineLines("moon", state));
   return `<g data-content-key="moon-headline" data-content-state="${fixed ? "fixed" : "corrupted"}" data-headline-height="${height}">${shape}${renderHeadlineLayout(layout, fixed, "moon-headline")}</g>`;
 }
 
 function compactHeadline(kind, state, y) {
   const fixed = headlinesFixed(state);
-  const step = visualStep(state);
+  const step = state.id === "lock-pictures" ? 0 : visualStep(state);
   const words = headlineWords(kind, state, true);
   const heights = [202, 139, 103, 82, 82, 82, 82];
   const height = heights[step];
   const split = step >= 2;
-  const expandedCompactHeadline = step >= 4;
   const x = split ? 751 : 625;
   const width = split ? 138 : 264;
   const shape = split
     ? `<rect x="${x}" y="${y + 13}" width="${width}" height="${height}" rx="7" fill="${fixed ? "#F0F8F1" : "#fff"}" stroke="${fixed ? COLORS.repair : COLORS.corruption}" stroke-width="2"/>${fixed ? "" : `<rect x="${x}" y="${y + 13}" width="${width}" height="${height}" rx="7" fill="url(#yahRedHatch)"/>`}`
-    : `<path d="M737 ${y + 13}H889V${y + 13 + height}H625V${y + 99}H737Z" fill="#fff" stroke="${COLORS.corruption}" stroke-width="2"/><path d="M737 ${y + 13}H889V${y + 13 + height}H625V${y + 99}H737Z" fill="url(#yahRedHatch)"/>`;
+    : `<path d="M749 ${y + 13}H889V${y + 13 + height}H625V${y + 107}H749Z" fill="#fff" stroke="${COLORS.corruption}" stroke-width="2"/><path d="M749 ${y + 13}H889V${y + 13 + height}H625V${y + 107}H749Z" fill="url(#yahRedHatch)"/>`;
   const slotCandidates = split
     ? equalVerticalSlots(x, y + 13, width, height, step >= 5 ? [2, 3] : [2, 3, 4])
     : [[
-      ...equalVerticalSlots(737, y + 13, 152, 86, [2])[0],
-      ...equalVerticalSlots(625, y + 99, 264, height - 86, [step === 0 ? 2 : 1])[0],
+      ...equalVerticalSlots(749, y + 13, 140, 94, [2])[0],
+      ...equalVerticalSlots(625, y + 107, 264, height - 94, [step === 0 ? 2 : 1])[0],
     ]];
   const layout = bestHeadlineLayout(words, slotCandidates, {
     maxFontSize: 32,
-    paddingX: expandedCompactHeadline ? 4 : 8,
-    paddingY: expandedCompactHeadline ? 2 : 5,
-    glyphFactor: 0.62,
-    heightFactor: expandedCompactHeadline ? 0.55 : 0.72,
+    paddingX: 10,
+    paddingY: 3,
+    glyphFactor: 0.68,
+    heightFactor: 0.68,
   }, representativeHeadlineLines(kind, state));
   return `<g data-content-key="${kind}-headline" data-content-state="${fixed ? "fixed" : "corrupted"}" data-headline-height="${height}">${shape}${renderHeadlineLayout(layout, fixed, `${kind}-headline`)}</g>`;
 }
@@ -417,7 +417,7 @@ function footer(state) {
 const lockItems = ["BRING BACK THE PICTURES", "RESTORE THE STORIES", "FIX THE HEADLINES"];
 function checklist(state) {
   if (state.checklist === undefined) return "";
-  return `<g data-lock-overlay="true"><rect x="528" y="358" width="300" height="225" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="528" y="358" width="300" height="48" rx="10" fill="${COLORS.repair}"/><rect x="528" y="393" width="300" height="13" fill="${COLORS.repair}"/><text x="548" y="390" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 429 + index * 48; return `<rect x="552" y="${y - 21}" width="28" height="28" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="566" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="590" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
+  return `<g data-lock-overlay="true"><rect x="594" y="478" width="300" height="166" rx="10" fill="#FAF8F1" stroke="${COLORS.repair}" stroke-width="3"/><rect x="594" y="478" width="300" height="40" rx="10" fill="${COLORS.repair}"/><rect x="594" y="505" width="300" height="13" fill="${COLORS.repair}"/><text x="614" y="506" class="lock-title">LOCK IN THE REPAIR</text>${lockItems.map((item, index) => { const done = index < state.checklist; const y = 546 + index * 34; return `<rect x="618" y="${y - 21}" width="28" height="28" rx="5" fill="${done ? COLORS.repair : COLORS.corruptionSoft}" stroke="${done ? COLORS.repair : COLORS.corruption}"/><text x="632" y="${y - 1}" class="lock-mark" text-anchor="middle" fill="${done ? "#fff" : COLORS.corruption}">${done ? "✓" : "○"}</text><text x="656" y="${y}" class="lock-label" fill="${done ? COLORS.repairDark : COLORS.corruption}">${item}</text>`; }).join("")}</g>`;
 }
 
 function companion(state) {

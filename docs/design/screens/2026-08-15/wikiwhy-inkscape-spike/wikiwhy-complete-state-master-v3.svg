@@ -467,17 +467,17 @@
     <rect x="962" y="568" width="200" height="15" fill="#1387b2" data-role="passage-progress-fill" data-percent="50"/>
 
     <g data-overlay="act2-checklist">
-    <rect x="558" y="350" width="330" height="224" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
-    <rect x="558" y="350" width="330" height="48" rx="10" fill="#2F8A49"/>
-    <rect x="558" y="385" width="330" height="13" fill="#2F8A49"/>
-    <text x="578" y="382" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
-    <rect x="582" y="418" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="438" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="440" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">MATCH CLAIMS TO SOURCES</text><rect x="582" y="466" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="486" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="488" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">KEEP HISTORY VISIBLE</text><rect x="582" y="514" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="534" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="536" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
+    <rect x="558" y="350" width="330" height="166" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
+    <rect x="558" y="350" width="330" height="40" rx="10" fill="#2F8A49"/>
+    <rect x="558" y="377" width="330" height="13" fill="#2F8A49"/>
+    <text x="578" y="378" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    <rect x="582" y="396" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="416" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="418" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">MATCH CLAIMS TO SOURCES</text><rect x="582" y="430" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="450" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="452" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">KEEP HISTORY VISIBLE</text><rect x="582" y="464" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="484" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="486" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
   </g>
     
   </g>
@@ -506,17 +506,17 @@
     <rect x="962" y="568" width="200" height="15" fill="#1387b2" data-role="passage-progress-fill" data-percent="50"/>
 
     <g data-overlay="act2-checklist">
-    <rect x="558" y="350" width="330" height="224" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
-    <rect x="558" y="350" width="330" height="48" rx="10" fill="#2F8A49"/>
-    <rect x="558" y="385" width="330" height="13" fill="#2F8A49"/>
-    <text x="578" y="382" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
-    <rect x="582" y="418" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="438" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="440" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="466" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="486" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="488" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">KEEP HISTORY VISIBLE</text><rect x="582" y="514" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="534" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="536" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
+    <rect x="558" y="350" width="330" height="166" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
+    <rect x="558" y="350" width="330" height="40" rx="10" fill="#2F8A49"/>
+    <rect x="558" y="377" width="330" height="13" fill="#2F8A49"/>
+    <text x="578" y="378" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    <rect x="582" y="396" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="416" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="418" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="430" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="450" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="452" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">KEEP HISTORY VISIBLE</text><rect x="582" y="464" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="484" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="486" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
   </g>
     
   </g>
@@ -545,17 +545,17 @@
     <rect x="962" y="568" width="200" height="15" fill="#1387b2" data-role="passage-progress-fill" data-percent="50"/>
 
     <g data-overlay="act2-checklist">
-    <rect x="558" y="350" width="330" height="224" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
-    <rect x="558" y="350" width="330" height="48" rx="10" fill="#2F8A49"/>
-    <rect x="558" y="385" width="330" height="13" fill="#2F8A49"/>
-    <text x="578" y="382" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
-    <rect x="582" y="418" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="438" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="440" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="466" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="486" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="488" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">KEEP HISTORY VISIBLE</text><rect x="582" y="514" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
-      <text x="595.5" y="534" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
-      <text x="621" y="536" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
+    <rect x="558" y="350" width="330" height="166" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
+    <rect x="558" y="350" width="330" height="40" rx="10" fill="#2F8A49"/>
+    <rect x="558" y="377" width="330" height="13" fill="#2F8A49"/>
+    <text x="578" y="378" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    <rect x="582" y="396" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="416" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="418" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="430" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="450" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="452" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">KEEP HISTORY VISIBLE</text><rect x="582" y="464" width="27" height="27" rx="5" fill="#F5D8D6" stroke="#C5251E"/>
+      <text x="595.5" y="484" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#C5251E"></text>
+      <text x="621" y="486" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#C5251E">USE CAREFUL WORDING</text>
   </g>
     
   </g>
@@ -584,17 +584,17 @@
     <rect x="962" y="568" width="200" height="15" fill="#1387b2" data-role="passage-progress-fill" data-percent="50"/>
 
     <g data-overlay="act2-checklist">
-    <rect x="558" y="350" width="330" height="224" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
-    <rect x="558" y="350" width="330" height="48" rx="10" fill="#2F8A49"/>
-    <rect x="558" y="385" width="330" height="13" fill="#2F8A49"/>
-    <text x="578" y="382" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
-    <rect x="582" y="418" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="438" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="440" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="466" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="486" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="488" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">KEEP HISTORY VISIBLE</text><rect x="582" y="514" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
-      <text x="595.5" y="534" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
-      <text x="621" y="536" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">USE CAREFUL WORDING</text>
+    <rect x="558" y="350" width="330" height="166" rx="10" fill="#FAF8F1" stroke="#2F8A49" stroke-width="3"/>
+    <rect x="558" y="350" width="330" height="40" rx="10" fill="#2F8A49"/>
+    <rect x="558" y="377" width="330" height="13" fill="#2F8A49"/>
+    <text x="578" y="378" style="font-family:'Chalkboard SE',sans-serif;font-size:20px;font-weight:700;fill:#fff">LOCK IN THE REPAIR</text>
+    <rect x="582" y="396" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="416" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="418" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">MATCH CLAIMS TO SOURCES</text><rect x="582" y="430" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="450" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="452" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">KEEP HISTORY VISIBLE</text><rect x="582" y="464" width="27" height="27" rx="5" fill="#2F8A49" stroke="#2F8A49"/>
+      <text x="595.5" y="484" text-anchor="middle" style="font-family:'Chalkboard SE',sans-serif;font-size:22px;fill:#fff">✓</text>
+      <text x="621" y="486" style="font-family:'Chalkboard SE',sans-serif;font-size:14px;font-weight:700;fill:#1F6034">USE CAREFUL WORDING</text>
   </g>
     
   </g>

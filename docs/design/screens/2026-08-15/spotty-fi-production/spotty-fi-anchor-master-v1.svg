@@ -166,7 +166,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -235,7 +235,7 @@
     <text x="276" y="724" class="spot-small">0%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#C5251E"/>
     <rect x="128" y="739" width="0" height="20" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -268,7 +268,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -337,7 +337,7 @@
     <text x="276" y="724" class="spot-small">20%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="104" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="20"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -370,7 +370,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -439,7 +439,7 @@
     <text x="276" y="724" class="spot-small">40%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="208" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="40"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -472,7 +472,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -542,7 +542,7 @@
     <text x="276" y="724" class="spot-small">60%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="312" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="60"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -575,7 +575,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -645,7 +645,7 @@
     <text x="276" y="724" class="spot-small">80%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="416" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="80"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -678,7 +678,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -730,7 +730,7 @@
     <text x="276" y="724" class="spot-small">100%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#2F8A49"/>
     <rect x="128" y="739" width="520" height="20" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -763,7 +763,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made by Auto</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -831,7 +831,7 @@
     <text x="276" y="724" class="spot-small">0%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#C5251E"/>
     <rect x="128" y="739" width="0" height="20" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -864,7 +864,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made by Auto</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <g transform="translate(261 198)">
@@ -932,7 +932,7 @@
     <text x="276" y="724" class="spot-small">0%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#C5251E"/>
     <rect x="128" y="739" width="0" height="20" fill="#C5251E" data-role="site-progress-fill" data-percent="0"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -944,11 +944,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="579" y="417" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="434" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="434" class="spot-check-row">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <rect x="579" y="413" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="430" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="430" class="spot-check-row">SHOW THE ARTIST</text><rect x="579" y="441" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="458" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="458" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="469" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="486" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="486" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="497" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="514" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="514" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-artist" transform="translate(11840 0)" inkscape:groupmode="layer" inkscape:label="Artist locked" data-phase="act-2-locks" data-site-progress="25" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -970,7 +970,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#C5251E" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -1022,7 +1022,7 @@
     <text x="276" y="724" class="spot-small">25%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="130" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="25"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -1034,11 +1034,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="465" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="465" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <rect x="579" y="413" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="430" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="430" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="441" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="458" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="458" class="spot-check-row">SHOW THE CREDITS</text><rect x="579" y="469" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="486" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="486" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="497" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="514" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="514" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-credits" transform="translate(13320 0)" inkscape:groupmode="layer" inkscape:label="Credits locked" data-phase="act-2-locks" data-site-progress="50" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1060,7 +1060,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#C5251E;font-size:12px" data-choice-indicator="nav">▣ Made for you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -1112,7 +1112,7 @@
     <text x="276" y="724" class="spot-small">50%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="260" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="50"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -1124,11 +1124,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="496" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="496" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <rect x="579" y="413" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="430" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="430" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="441" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="458" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="458" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="469" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="486" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="486" class="spot-check-row">LET USERS CHOOSE</text><rect x="579" y="497" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="514" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="514" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-choice" transform="translate(14800 0)" inkscape:groupmode="layer" inkscape:label="User choice locked" data-phase="act-2-locks" data-site-progress="75" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1150,7 +1150,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -1202,7 +1202,7 @@
     <text x="276" y="724" class="spot-small">75%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#A8DD19"/>
     <rect x="128" y="739" width="390" height="20" fill="#A8DD19" data-role="site-progress-fill" data-percent="75"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -1214,11 +1214,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="527" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="527" class="spot-check-row">LET USERS SET THE VOLUME</text>
+    <rect x="579" y="413" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="430" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="430" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="441" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="458" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="458" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="469" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="486" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="486" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="497" width="23" height="23" rx="4" fill="#F5D8D6" stroke="#C5251E"/><text x="590.5" y="514" class="spot-check-open" text-anchor="middle">○</text><text x="615" y="514" class="spot-check-row">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-act2-volume" transform="translate(16280 0)" inkscape:groupmode="layer" inkscape:label="Volume locked" data-phase="act-2-locks" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1240,7 +1240,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -1292,7 +1292,7 @@
     <text x="276" y="724" class="spot-small">100%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#2F8A49"/>
     <rect x="128" y="739" width="520" height="20" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
@@ -1304,11 +1304,11 @@
     <text x="964" y="326" class="reading-body">separate from reading progress.</text>
   </g>
     <rect x="962" y="568" width="200" height="15" fill="#1387B2" data-role="passage-progress-fill" data-percent="50"/>
-    <g data-overlay="act2-checklist" data-qa-box="554,364,866,560" filter="url(#windowShadow)">
-    <rect x="560" y="370" width="300" height="184" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
+    <g data-overlay="act2-checklist" data-qa-box="554,364,866,546" filter="url(#windowShadow)">
+    <rect x="560" y="370" width="300" height="170" rx="7" fill="#F8F7F0" stroke="#1F6034" stroke-width="3"/>
     <rect x="560" y="370" width="300" height="38" rx="7" fill="#2F8A49"/>
     <text x="578" y="396" class="spot-check-title">LOCK IN THE REPAIR</text>
-    <rect x="579" y="417" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="434" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="434" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="448" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="465" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="465" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="479" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="496" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="496" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="510" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="527" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="527" class="spot-check-row-fixed">LET USERS SET THE VOLUME</text>
+    <rect x="579" y="413" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="430" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="430" class="spot-check-row-fixed">SHOW THE ARTIST</text><rect x="579" y="441" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="458" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="458" class="spot-check-row-fixed">SHOW THE CREDITS</text><rect x="579" y="469" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="486" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="486" class="spot-check-row-fixed">LET USERS CHOOSE</text><rect x="579" y="497" width="23" height="23" rx="4" fill="#2F8A49" stroke="#1F6034"/><text x="590.5" y="514" class="spot-check-fixed" text-anchor="middle">✓</text><text x="615" y="514" class="spot-check-row-fixed">LET USERS SET THE VOLUME</text>
   </g>
   </g>
 <g id="page-secured" transform="translate(17760 0)" inkscape:groupmode="layer" inkscape:label="Site secured" data-phase="completion" data-site-progress="100" data-site-progress-label="MUSIC RECOVERY" data-passage-progress="50">
@@ -1330,7 +1330,7 @@
     <text x="127" y="148" class="spot-nav spot-lime">● Home</text><text x="127" y="188" class="spot-nav">○ Search</text><text x="127" y="228" class="spot-nav">▥ Library</text>
     <line x1="125" y1="251" x2="221" y2="251" stroke="#4D5753"/><text x="127" y="280" class="spot-meta">DISCOVERY</text>
     <text x="127" y="316" class="spot-nav" style="fill:#2F8A49;font-size:12px" data-choice-indicator="nav">▣ Chosen by you</text><text x="127" y="354" class="spot-nav">♫ New sounds</text><text x="127" y="392" class="spot-nav">☆ Following</text>
-    <text x="251" y="144" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
+    <text x="251" y="158" class="spot-heading">DISCOVER WHAT TO PLAY NEXT</text>
     <g data-qa-box="251,188,467,415">
     <rect x="251" y="188" width="216" height="227" rx="7" fill="#151B19" stroke="#2F8A49" stroke-width="2"/>
     <image href="../non-wikiwhy-bookends/album-paper-v1.png" x="261" y="198" width="196" height="126" preserveAspectRatio="xMidYMid slice"/>
@@ -1382,7 +1382,7 @@
     <text x="276" y="724" class="spot-small">100%</text>
     <rect x="128" y="739" width="520" height="20" rx="2" fill="#282F2C" stroke="#2F8A49"/>
     <rect x="128" y="739" width="520" height="20" fill="#2F8A49" data-role="site-progress-fill" data-percent="100"/>
-    
+
   </g>
     <g data-companion-state="reading" data-qa-box="958,78,1395,552">
     <text x="964" y="106" class="reading-body">This passage introduces one part of</text>
