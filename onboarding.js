@@ -108,7 +108,7 @@ $('introductionContinue').onclick=()=>{if(index<7){index++;renderIntro();}else {
 $('tourNext').onclick=()=>{if(index<STEPS.length-1){index++;renderTutorial();}else finishTutorial();};
 $('tourBack').onclick=()=>{if(index>0){index--;renderTutorial();}};
 $('skipSequence').onclick=()=>mode==='intro'?finishIntro():finishTutorial();
-$('replayIntroduction').onclick=()=>startIntro(false);$('replayTutorial').onclick=startTutorial;$('returnBrowser').onclick=showLauncher;$('closeMenu').onclick=closeMenu;
+$('replayIntroduction').onclick=()=>startIntro(false);$('replayTutorial').onclick=startTutorial;$('returnBrowser').onclick=showLauncher;for(const id of ['saveGame','switchProfile','newGame'])$(id).onclick=showLauncher;
 for(const b of document.querySelectorAll('.start-button')){b.setAttribute('aria-controls','startMenu');b.onclick=()=>{$('startMenu').hidden=!$('startMenu').hidden;b.setAttribute('aria-expanded',!$('startMenu').hidden);if(!$('startMenu').hidden)$('returnBrowser').focus();};}
 for(const a of document.querySelectorAll('[data-open-launcher]'))a.onclick=e=>{e.preventDefault();showLauncher();};
 for(const b of document.querySelectorAll('[data-open-documents]')){const span=el('span','desktop-shortcut');span.innerHTML=b.innerHTML;b.replaceWith(span);}
