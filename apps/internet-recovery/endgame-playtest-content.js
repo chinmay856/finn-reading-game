@@ -151,7 +151,7 @@ export const ENDGAME_SITE_FIXTURES = Object.freeze(ENDGAME_SITE_ORDER.map((id, i
     name: mission.name,
     markImage: site.markImage,
     autoFrame: `/walkthroughs/endgame/site-crops/${id}-auto-site-v1.png?v=${id === "mapguess" ? "20260920-mapguess-layout-v6" : id === "wikiwhy" ? "20260920-layout-polish-v1" : ["viewtube", "spotty-fi", "amaze-on", "faceplace", "threadit", "searchish", "yahuh", "mycorner"].includes(id) ? "20260920-layout-polish-v1" : "20260825-endgame-v2"}`,
-    recoveredFrame: `/walkthroughs/endgame/site-crops/${id}-recovered-site-v1.png?v=${id === "mapguess" ? "20260920-mapguess-layout-v6" : id === "wikiwhy" ? "20260920-layout-polish-v1" : ["viewtube", "spotty-fi", "amaze-on", "faceplace", "threadit", "searchish", "yahuh", "mycorner"].includes(id) ? "20260920-layout-polish-v1" : "20260825-endgame-v2"}`,
+    recoveredFrame: `/walkthroughs/endgame/site-crops/${id}-recovered-site-v1.png?v=${id === "spotty-fi" ? "20260921-spotty-art-v5" : id === "mapguess" ? "20260920-mapguess-layout-v6" : id === "wikiwhy" ? "20260920-layout-polish-v1" : ["viewtube", "spotty-fi", "amaze-on", "faceplace", "threadit", "searchish", "yahuh", "mycorner"].includes(id) ? "20260920-layout-polish-v1" : "20260825-endgame-v2"}`,
     superFrame: mission.superFrame,
     securedFrame: mission.securedFrame,
     savedLesson: mission.autoLesson,
