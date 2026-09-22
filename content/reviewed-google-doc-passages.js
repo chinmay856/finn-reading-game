@@ -2,8 +2,8 @@
 export const REVIEWED_GOOGLE_DOC_SOURCES = {
   "faceplace": {
     "documentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-    "revisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
-    "sha256": "a1d4bebfc01a2d08eeb55e8bc8cd342bad5e862cc46438b93f5cce9b5d27f98f"
+    "revisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
+    "sha256": "f77044bd041f4daa637c6d3cabf7cbf3bb0924ee72803e471135c55a104407e0"
   },
   "threadit": {
     "documentId": "1Iz4lL5xR-OtDuIqc_egp8hMMyrAleXfPokHdQnval_U",
@@ -32,13 +32,18 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
   },
   "viewtube": {
     "documentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-    "revisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
-    "sha256": "12dd9ee6f5c7f8b5e32781774dd40ef72aa95c34052ec04e591acefa1fc1ac4a"
+    "revisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
+    "sha256": "25ad7da882a8222cd8322e15dc56546eeb0db269892ef3034a0c582dec7e69f7"
   },
   "spotty-fi": {
     "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
     "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
     "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
+  },
+  "mapguess": {
+    "documentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+    "revisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+    "sha256": "408df51407d77fe90a52b67cd195a2c3e0528508ba7ddb3bbe1205cdaadfa1b5"
   }
 };
 export const REVIEWED_GOOGLE_DOC_PASSAGES = {
@@ -149,7 +154,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "Restore the original supportive comments instead of exaggerated praise.",
       "vocabulary": [
         {
@@ -281,7 +286,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "Zoom out to reveal the helper and show that the catch was not made alone.",
       "vocabulary": [
         {
@@ -389,7 +394,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "Expand the photo to reveal the gear and cleanup behind the catch.",
       "vocabulary": [
         {
@@ -487,7 +492,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "Reveal other fish at the lake, challenging the one-of-a-kind claim.",
       "vocabulary": [
         {
@@ -583,7 +588,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "Replace the exaggerated title and comparison-based reactions with an accurate, ordinary post.",
       "vocabulary": [
         {
@@ -639,7 +644,6 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       "reviewedTitle": "Little Women",
       "form": "human-reviewed reading",
       "paragraphs": [
-        "About 370 words, including the introduction.",
         "An excerpt from Little Women by Louisa May Alcott. At a party, Meg feels embarrassed by her old dress.",
         "No one said a word about it, but Sallie offered to do her hair, and Annie to tie her sash, and Belle, the engaged sister, praised her white arms; but, in their kindness, Meg saw only pity for her poverty, and her heart felt very heavy as she stood by herself, while the others laughed and chattered, prinked, and flew about like gauzy butterflies. The hard, bitter feeling was getting pretty bad, when the maid brought in a box of flowers.",
         "Before she could speak, Annie had the cover off, and all were exclaiming at the lovely roses, heath, and ferns within.",
@@ -651,9 +655,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "Feeling almost happy again, she laid by a few ferns and roses for herself, and quickly made up the rest in dainty bouquets for the breasts, hair, or skirts of her friends, offering them so prettily, that Clara, the elder sister, told her she was “the sweetest little thing she ever saw;” and they looked quite charmed with her small attention. Somehow the kind act finished her despondency; and, when all the rest went to show themselves to Mrs. Moffat, she saw a happy, bright-eyed face in the mirror, as she laid her ferns against her rippling hair, and fastened the roses in the dress that didn’t strike her as so very shabby now."
       ],
       "displayLines": [
-        "About 370 words, including the introduction.",
-        "An excerpt from Little Women by Louisa May Alcott.",
-        "At a party, Meg feels embarrassed by her old dress.",
+        "An excerpt from Little Women by Louisa May Alcott. At a party, Meg feels embarrassed by her old dress.",
         "No one said a word about it, but Sallie offered to do her hair, and Annie to tie her sash, and Belle, the engaged sister, praised her white arms; but, in their kindness, Meg saw only pity for her poverty, and her heart felt very heavy as she stood by herself, while the others laughed and chattered, prinked, and flew about like gauzy butterflies.",
         "The hard, bitter feeling was getting pretty bad, when the maid brought in a box of flowers.",
         "Before she could speak, Annie had the cover off, and all were exclaiming at the lovely roses, heath, and ferns within.",
@@ -669,14 +671,14 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "Feeling almost happy again, she laid by a few ferns and roses for herself, and quickly made up the rest in dainty bouquets for the breasts, hair, or skirts of her friends, offering them so prettily, that Clara, the elder sister, told her she was “the sweetest little thing she ever saw;” and they looked quite charmed with her small attention.",
         "Somehow the kind act finished her despondency; and, when all the rest went to show themselves to Mrs. Moffat, she saw a happy, bright-eyed face in the mirror, as she laid her ferns against her rippling hair, and fastened the roses in the dress that didn’t strike her as so very shabby now."
       ],
-      "spokenWordCount": 375,
+      "spokenWordCount": 369,
       "source": {
         "label": "Little Women",
         "url": "https://docs.google.com/document/d/1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI"
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "After the overfix, restore ordinary comments and the distinct album photos.",
       "vocabulary": [
         {
@@ -772,7 +774,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "After the overfix, restore the full, unfiltered original photo.",
       "vocabulary": [
         {
@@ -864,7 +866,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "sourceRevisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
+      "sourceRevisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
       "onScreen": "After the overfix, keep captions and hashtags accurate and remove the social score.",
       "vocabulary": [
         {
@@ -5353,7 +5355,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Restore the viewer’s search.",
       "vocabulary": [
         {
@@ -5432,7 +5434,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Remove the excessive advertisements.",
       "vocabulary": [
         {
@@ -5484,88 +5486,86 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
     },
     {
       "id": "viewtube-03",
-      "title": "The Mannequin Challenge",
-      "reviewedTitle": "The Mannequin Challenge — When a video becomes a shared tradition",
+      "title": "A Click Doesn’t Mean You Liked It",
+      "reviewedTitle": "A Click Doesn’t Mean You Liked It",
       "form": "human-reviewed reading",
       "paragraphs": [
-        "An excerpt from “The Library of Congress Mannequin Challenge and Emerging Traditions” by folklorist Stephanie Hall. Writing in 2016, she examines a video trend in which people pose without moving.",
-        "The Mannequin Challenge is a new trend in internet video where a group of people enact a single moment in time, remaining frozen in place while a camera pans around them and music plays. It has spread widely in a little over a month. Social media increasingly makes making and sharing of video easy to achieve and so grassroots artistic uses of this media are bound to develop. The first videos had no sound or ambient sound, then “Black Beatles” by Rae Sremmurd became popular background music. As the trend develops, other musical selections are being used. A common theme seems to be an expression of group identity, of clubs, classes, groups of friends, athletic teams, organizations, musical groups, and others: “this is who we are” summed up in a short, shareable video. Other Mannequin videos depict dramatic situations, such as responding to an emergency; or they raise awareness for causes. As we might expect, the subject matter of the videos is broadening as the trend spreads.",
-        "The Mannequin challenge might be seen as emerging from the tradition of flash mobs. Specifically, in a flash mob organized by Improv Everywhere in January 2008, a group of over 200 people took frozen poses in Grand Central Terminal among surprised travelers. Another source of inspiration may be frozen time sequences in films and television. Folklorists and those who study popular culture take an interest in emerging grassroots artistic expressions such as the Mannequin Challenge. It is a fine example of an emerging form of artistic expression in the digital age.",
-        "The Mannequin Challenge trend seems to have begun in late October 2016, with students at Edward H. White High School in Jacksonville, Florida claiming to have made the first one. But it has many antecedents, such as tableaux of the late 19th and early 20th centuries that were wildly popular as another new technology was emerging — the photograph. As early photography worked best with subjects holding still, a theatrical tableau made a good subject. An antecedent more likely to have directly influenced current generations is the children’s game of “statues” many of us played. Like the game of statues, the basic plan of people in frozen poses allows many possibilities for expression in these videos."
+        "An excerpt from “On YouTube’s recommendation system” by Cristos Goodrow.",
+        "To provide such custom curation, our recommendation system doesn’t operate off of a “recipe book” of what to do. It’s constantly evolving, learning every day from over 80 billion pieces of information we call signals. That’s why providing more transparency isn’t as simple as listing a formula for recommendations, but involves understanding all the data that feeds into our system. A number of signals build on each other to help inform our system about what you find satisfying: clicks, watchtime, survey responses, sharing, likes, and dislikes.",
+        "But we learned back in 2011 that clicking on a video doesn’t mean you actually watched it. Let’s say you were searching for highlights from that year’s Wimbledon match. You scroll through the page and click on one of the videos, which has a thumbnail and title suggesting it shows footage of the match. Instead, it’s a person in their bedroom talking about the match. Again and again you click through these videos until finally you’re recommended a video with footage of the match that you want to watch. That’s why we added in watchtime in 2012.",
+        "Your watchtime—which videos you watched and for how long—provides personalized signals to our system about what you most likely want to watch. So if our tennis fan watched 20 minutes of Wimbledon highlight clips, and only a few seconds of match analysis video, we can safely assume they found watching those highlights more valuable.",
+        "Still, not all watchtime is equal. Sometimes I’ve stayed up late, watching random videos, when I could have instead been learning a new language on YouTube or refining my cooking skills through a tutorial. We don’t want viewers regretting the videos they spend time watching and realized we needed to do even more to measure how much value you get from your time on YouTube."
       ],
       "displayLines": [
-        "An excerpt from “The Library of Congress Mannequin Challenge and Emerging Traditions” by folklorist Stephanie Hall. Writing in 2016, she examines a video trend in which people pose without moving.",
-        "The Mannequin Challenge is a new trend in internet video where a group of people enact a single moment in time, remaining frozen in place while a camera pans around them and music plays.",
-        "It has spread widely in a little over a month.",
-        "Social media increasingly makes making and sharing of video easy to achieve and so grassroots artistic uses of this media are bound to develop.",
-        "The first videos had no sound or ambient sound, then “Black Beatles” by Rae Sremmurd became popular background music.",
-        "As the trend develops, other musical selections are being used.",
-        "A common theme seems to be an expression of group identity, of clubs, classes, groups of friends, athletic teams, organizations, musical groups, and others: “this is who we are” summed up in a short, shareable video.",
-        "Other Mannequin videos depict dramatic situations, such as responding to an emergency; or they raise awareness for causes.",
-        "As we might expect, the subject matter of the videos is broadening as the trend spreads.",
-        "The Mannequin challenge might be seen as emerging from the tradition of flash mobs.",
-        "Specifically, in a flash mob organized by Improv Everywhere in January 2008, a group of over 200 people took frozen poses in Grand Central Terminal among surprised travelers.",
-        "Another source of inspiration may be frozen time sequences in films and television.",
-        "Folklorists and those who study popular culture take an interest in emerging grassroots artistic expressions such as the Mannequin Challenge.",
-        "It is a fine example of an emerging form of artistic expression in the digital age.",
-        "The Mannequin Challenge trend seems to have begun in late October 2016, with students at Edward H. White High School in Jacksonville, Florida claiming to have made the first one.",
-        "But it has many antecedents, such as tableaux of the late 19th and early 20th centuries that were wildly popular as another new technology was emerging — the photograph.",
-        "As early photography worked best with subjects holding still, a theatrical tableau made a good subject.",
-        "An antecedent more likely to have directly influenced current generations is the children’s game of “statues” many of us played.",
-        "Like the game of statues, the basic plan of people in frozen poses allows many possibilities for expression in these videos."
+        "An excerpt from “On YouTube’s recommendation system” by Cristos Goodrow.",
+        "To provide such custom curation, our recommendation system doesn’t operate off of a “recipe book” of what to do.",
+        "It’s constantly evolving, learning every day from over 80 billion pieces of information we call signals.",
+        "That’s why providing more transparency isn’t as simple as listing a formula for recommendations, but involves understanding all the data that feeds into our system.",
+        "A number of signals build on each other to help inform our system about what you find satisfying: clicks, watchtime, survey responses, sharing, likes, and dislikes.",
+        "But we learned back in 2011 that clicking on a video doesn’t mean you actually watched it.",
+        "Let’s say you were searching for highlights from that year’s Wimbledon match.",
+        "You scroll through the page and click on one of the videos, which has a thumbnail and title suggesting it shows footage of the match.",
+        "Instead, it’s a person in their bedroom talking about the match.",
+        "Again and again you click through these videos until finally you’re recommended a video with footage of the match that you want to watch.",
+        "That’s why we added in watchtime in 2012.",
+        "Your watchtime—which videos you watched and for how long—provides personalized signals to our system about what you most likely want to watch.",
+        "So if our tennis fan watched 20 minutes of Wimbledon highlight clips, and only a few seconds of match analysis video, we can safely assume they found watching those highlights more valuable.",
+        "Still, not all watchtime is equal.",
+        "Sometimes I’ve stayed up late, watching random videos, when I could have instead been learning a new language on YouTube or refining my cooking skills through a tutorial.",
+        "We don’t want viewers regretting the videos they spend time watching and realized we needed to do even more to measure how much value you get from your time on YouTube."
       ],
-      "spokenWordCount": 404,
+      "spokenWordCount": 312,
       "source": {
-        "label": "The Mannequin Challenge — When a video becomes a shared tradition",
+        "label": "A Click Doesn’t Mean You Liked It",
         "url": "https://docs.google.com/document/d/1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M"
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Restore the views and comments.",
       "vocabulary": [
         {
-          "word": "ambient",
-          "definition": "Present in the surrounding environment.",
-          "sentence": "In this passage, ambient sound comes from the scene being filmed.",
-          "playbackPhrase": "In this passage, ambient sound comes from the scene being filmed.",
+          "word": "curation",
+          "definition": "Selecting and organizing content for an audience.",
+          "sentence": "In this passage, curation means choosing which videos to recommend to each viewer.",
+          "playbackPhrase": "In this passage, curation means choosing which videos to recommend to each viewer.",
           "properNoun": false
         },
         {
-          "word": "folklorists",
-          "definition": "People who study shared traditions and cultural expressions.",
-          "sentence": "In this passage, folklorists study how a video challenge becomes a tradition.",
-          "playbackPhrase": "In this passage, folklorists study how a video challenge becomes a tradition.",
+          "word": "transparency",
+          "definition": "Openness about how something works or how decisions are made.",
+          "sentence": "In this passage, transparency means explaining how YouTube chooses its recommendations.",
+          "playbackPhrase": "In this passage, transparency means explaining how YouTube chooses its recommendations.",
           "properNoun": false
         },
         {
-          "word": "antecedents",
-          "definition": "Earlier things that came before something similar.",
-          "sentence": "In this passage, frozen theatrical poses are antecedents of the video challenge.",
-          "playbackPhrase": "In this passage, frozen theatrical poses are antecedents of the video challenge.",
+          "word": "signals",
+          "definition": "Pieces of information used as clues to make a prediction or decision.",
+          "sentence": "In this passage, clicks and watchtime are signals about what viewers might find satisfying.",
+          "playbackPhrase": "In this passage, clicks and watchtime are signals about what viewers might find satisfying.",
           "properNoun": false
         }
       ],
       "comprehension": {
-        "prompt": "Why does Hall compare the challenge with older games and performances?",
+        "prompt": "Why does the author say that watchtime alone is not enough to judge a video’s value to a viewer?",
         "orderedChoices": [
           {
-            "text": "To show how a new video trend can build on familiar forms of expression.",
+            "text": "Viewers sometimes spend time watching videos they later regret watching.",
             "correct": true
           },
           {
-            "text": "To establish that the first challenge video was filmed at Grand Central.",
+            "text": "Short videos always teach viewers more than long videos.",
             "correct": false
           },
           {
-            "text": "To explain why every version needs the same music and frozen poses.",
+            "text": "Watchtime cannot show whether viewers stayed for seconds or minutes.",
             "correct": false
           }
         ],
-        "correct": "To show how a new video trend can build on familiar forms of expression.",
+        "correct": "Viewers sometimes spend time watching videos they later regret watching.",
         "distractors": [
-          "To establish that the first challenge video was filmed at Grand Central.",
-          "To explain why every version needs the same music and frozen poses."
+          "Short videos always teach viewers more than long videos.",
+          "Watchtime cannot show whether viewers stayed for seconds or minutes."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."
@@ -5646,7 +5646,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Restore the autoplay choice.",
       "vocabulary": [
         {
@@ -5698,85 +5698,89 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
     },
     {
       "id": "viewtube-05",
-      "title": "Music video",
-      "reviewedTitle": "Music video — A song becomes a moving image",
+      "title": "Beyond Likes and Watchtime",
+      "reviewedTitle": "Beyond Likes and Watchtime",
       "form": "human-reviewed reading",
       "paragraphs": [
-        "Selected excerpts from Wikipedia’s article “Music video,” written by Wikipedia contributors.",
-        "A music video is a video that integrates a song or an album with imagery that is produced for promotional or musical artistic purposes. Modern music videos are primarily made and used as a music marketing device intended to promote the sale of music recordings. These videos are typically shown on music television and on streaming video sites like YouTube, or more rarely shown theatrically.",
-        "While musical short films were popular as soon as recorded sound was introduced to theatrical film screenings in the 1920s, promotional music videos started becoming popular into the 1960s and the music video rose to prominence in the 1980s when American TV channel MTV based its format around the medium.",
-        "Music videos use a wide range of styles and contemporary video-making techniques, including animation, live-action, documentary, and non-narrative approaches such as abstract film. Combining these styles and techniques has become more popular due to the variety for the audience. Many music videos interpret images and scenes from the song’s lyrics, while others take a more thematic approach.",
-        "Other music videos may not have any concept, being only a filmed version of the song’s live concert performance.",
-        "The article then describes changes in how music videos were made.",
-        "Two key innovations in the development of the modern music video were the development of relatively inexpensive and easy-to-use video recording and editing equipment, and the development of visual effects created with techniques such as image compositing.",
-        "The advent of high-quality color videotape recorders and portable video cameras coincided with the do-it-yourself ethos of the new wave era, enabling many pop acts to produce promotional videos quickly and cheaply, in comparison to the relatively high costs of using film."
+        "An excerpt from “On YouTube’s recommendation system” by Cristos Goodrow.",
+        "Whether it’s the latest breaking news or complex scientific studies, these topics are where the quality of information and context matter most. Someone may report that they’re very satisfied by videos that claim “the Earth is flat,” but that doesn’t mean we want to recommend this type of low-quality content.",
+        "We’re able to do this by using classifiers to identify whether a video is “authoritative” or “borderline”. These classifications rely on human evaluators who assess the quality of information in each channel or video.",
+        "To determine authoritativeness, evaluators answer a few key questions. Does the content deliver on its promise or achieve its goal? What kind of expertise is needed to achieve the video goal? What’s the reputation of the speaker in the video and the channel it’s on? What’s the main topic of the video (eg. News, Sports, History, Science, etc)? Is the content primarily meant to be satire? These answers and more determine how authoritative a video is. The higher the score, the more the video is promoted when it comes to news and information content.",
+        "To determine borderline content, evaluators assess factors that include, but aren’t limited to, whether the content is: inaccurate, misleading or deceptive; insensitive or intolerant; and harmful or with the potential to cause harm. The results are combined to give a score for how likely the video contains harmful misinformation or is borderline. Any video classified borderline is demoted in recommendations.",
+        "These human evaluations then train our system to model their decisions, and we now scale their assessments to all videos across YouTube."
       ],
       "displayLines": [
-        "Selected excerpts from Wikipedia’s article “Music video,” written by Wikipedia contributors.",
-        "A music video is a video that integrates a song or an album with imagery that is produced for promotional or musical artistic purposes.",
-        "Modern music videos are primarily made and used as a music marketing device intended to promote the sale of music recordings.",
-        "These videos are typically shown on music television and on streaming video sites like YouTube, or more rarely shown theatrically.",
-        "While musical short films were popular as soon as recorded sound was introduced to theatrical film screenings in the 1920s, promotional music videos started becoming popular into the 1960s and the music video rose to prominence in the 1980s when American TV channel MTV based its format around the medium.",
-        "Music videos use a wide range of styles and contemporary video-making techniques, including animation, live-action, documentary, and non-narrative approaches such as abstract film.",
-        "Combining these styles and techniques has become more popular due to the variety for the audience.",
-        "Many music videos interpret images and scenes from the song’s lyrics, while others take a more thematic approach.",
-        "Other music videos may not have any concept, being only a filmed version of the song’s live concert performance.",
-        "The article then describes changes in how music videos were made.",
-        "Two key innovations in the development of the modern music video were the development of relatively inexpensive and easy-to-use video recording and editing equipment, and the development of visual effects created with techniques such as image compositing.",
-        "The advent of high-quality color videotape recorders and portable video cameras coincided with the do-it-yourself ethos of the new wave era, enabling many pop acts to produce promotional videos quickly and cheaply, in comparison to the relatively high costs of using film."
+        "An excerpt from “On YouTube’s recommendation system” by Cristos Goodrow.",
+        "Whether it’s the latest breaking news or complex scientific studies, these topics are where the quality of information and context matter most.",
+        "Someone may report that they’re very satisfied by videos that claim “the Earth is flat,” but that doesn’t mean we want to recommend this type of low-quality content.",
+        "We’re able to do this by using classifiers to identify whether a video is “authoritative” or “borderline”.",
+        "These classifications rely on human evaluators who assess the quality of information in each channel or video.",
+        "To determine authoritativeness, evaluators answer a few key questions.",
+        "Does the content deliver on its promise or achieve its goal?",
+        "What kind of expertise is needed to achieve the video goal?",
+        "What’s the reputation of the speaker in the video and the channel it’s on?",
+        "What’s the main topic of the video (eg.",
+        "News, Sports, History, Science, etc)?",
+        "Is the content primarily meant to be satire?",
+        "These answers and more determine how authoritative a video is.",
+        "The higher the score, the more the video is promoted when it comes to news and information content.",
+        "To determine borderline content, evaluators assess factors that include, but aren’t limited to, whether the content is: inaccurate, misleading or deceptive; insensitive or intolerant; and harmful or with the potential to cause harm.",
+        "The results are combined to give a score for how likely the video contains harmful misinformation or is borderline.",
+        "Any video classified borderline is demoted in recommendations.",
+        "These human evaluations then train our system to model their decisions, and we now scale their assessments to all videos across YouTube."
       ],
-      "spokenWordCount": 292,
+      "spokenWordCount": 270,
       "source": {
-        "label": "Music video — A song becomes a moving image",
+        "label": "Beyond Likes and Watchtime",
         "url": "https://docs.google.com/document/d/1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M"
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Let the viewer select a video.",
       "vocabulary": [
         {
-          "word": "promotional",
-          "definition": "Intended to attract attention to something and encourage people to buy or support it.",
-          "sentence": "In this passage, promotional videos help musicians sell recordings.",
-          "playbackPhrase": "In this passage, promotional videos help musicians sell recordings.",
+          "word": "classifiers",
+          "definition": "Systems that sort information into categories based on particular characteristics.",
+          "sentence": "In this passage, classifiers help identify videos as authoritative or borderline.",
+          "playbackPhrase": "In this passage, classifiers help identify videos as authoritative or borderline.",
           "properNoun": false
         },
         {
-          "word": "abstract",
-          "definition": "Using shapes or images rather than showing a recognizable story or scene.",
-          "sentence": "In this passage, abstract films do not need to tell a story.",
-          "playbackPhrase": "In this passage, abstract films do not need to tell a story.",
+          "word": "authoritative",
+          "definition": "Credible and supported by reliable knowledge or expertise.",
+          "sentence": "In this passage, authoritative videos provide information that evaluators judge to be trustworthy.",
+          "playbackPhrase": "In this passage, authoritative videos provide information that evaluators judge to be trustworthy.",
           "properNoun": false
         },
         {
-          "word": "compositing",
-          "definition": "Combining images from different sources into one image.",
-          "sentence": "In this passage, compositing helps create visual effects.",
-          "playbackPhrase": "In this passage, compositing helps create visual effects.",
+          "word": "demoted",
+          "definition": "Moved to a lower rank or position.",
+          "sentence": "In this passage, borderline videos are demoted so the system recommends them less prominently.",
+          "playbackPhrase": "In this passage, borderline videos are demoted so the system recommends them less prominently.",
           "properNoun": false
         }
       ],
       "comprehension": {
-        "prompt": "What does the article suggest about a music video’s images?",
+        "prompt": "Why does YouTube use human evaluations in addition to viewers’ likes and watchtime?",
         "orderedChoices": [
           {
-            "text": "They can interpret the music without telling a literal story.",
+            "text": "Viewers’ enjoyment alone does not show whether a video’s information is trustworthy.",
             "correct": true
           },
           {
-            "text": "They became artistic only after musicians stopped using film.",
+            "text": "Human evaluators decide which entertainment topics every viewer should enjoy.",
             "correct": false
           },
           {
-            "text": "They mainly preserve a concert exactly as an audience saw it.",
+            "text": "A video becomes accurate once enough viewers watch and like it.",
             "correct": false
           }
         ],
-        "correct": "They can interpret the music without telling a literal story.",
+        "correct": "Viewers’ enjoyment alone does not show whether a video’s information is trustworthy.",
         "distractors": [
-          "They became artistic only after musicians stopped using film.",
-          "They mainly preserve a concert exactly as an audience saw it."
+          "Human evaluators decide which entertainment topics every viewer should enjoy.",
+          "A video becomes accurate once enough viewers watch and like it."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."
@@ -5821,7 +5825,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Restore search and remove excessive ads after Auto’s override.",
       "vocabulary": [
         {
@@ -5917,7 +5921,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Lock in the restored views and comments.",
       "vocabulary": [
         {
@@ -6011,7 +6015,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "sourceRevisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
+      "sourceRevisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
       "onScreen": "Lock in autoplay permission and the viewer’s choice.",
       "vocabulary": [
         {
@@ -7001,6 +7005,763 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "distractors": [
           "Each person who listens creates a separate version of the song.",
           "A song gains one copyright when written and another when registered."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    }
+  ],
+  "mapguess": [
+    {
+      "id": "mapguess-01",
+      "title": "Treasure Island",
+      "reviewedTitle": "Treasure Island — The map in the packet",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Selected excerpts from “Treasure Island” by Robert Louis Stevenson. Jim Hawkins watches a doctor and a squire open a packet left by a pirate.",
+        "The paper had been sealed in several places with a thimble by way of seal; the very thimble, perhaps, that I had found in the captain’s pocket. The doctor opened the seals with great care, and there fell out the map of an island, with latitude and longitude, soundings, names of hills and bays and inlets, and every particular that would be needed to bring a ship to a safe anchorage upon its shores. It was about nine miles long and five across, shaped, you might say, like a fat dragon standing up, and had two fine land-locked harbours, and a hill in the centre part marked “The Spy-glass.” There were several additions of a later date, but above all, three crosses of red ink--two on the north part of the island, one in the southwest--and beside this last, in the same red ink, and in a small, neat hand, very different from the captain’s tottery characters, these words: “Bulk of treasure here.”",
+        "After examining further directions on the back of the map, Jim describes their reaction.",
+        "That was all; but brief as it was, and to me incomprehensible, it filled the squire and Dr. Livesey with delight.",
+        "“Livesey,” said the squire, “you will give up this wretched practice at once. Tomorrow I start for Bristol. In three weeks’ time—three weeks!—two weeks—ten days—we’ll have the best ship, sir, and the choicest crew in England. Hawkins shall come as cabin-boy. You’ll make a famous cabin-boy, Hawkins. You, Livesey, are ship’s doctor; I am admiral. We’ll take Redruth, Joyce, and Hunter. We’ll have favourable winds, a quick passage, and not the least difficulty in finding the spot, and money to eat, to roll in, to play duck and drake with ever after.”",
+        "“Trelawney,” said the doctor, “I’ll go with you; and I’ll go bail for it, so will Jim, and be a credit to the undertaking. There’s only one man I’m afraid of.”",
+        "“And who’s that?” cried the squire. “Name the dog, sir!”",
+        "“You,” replied the doctor; “for you cannot hold your tongue. We are not the only men who know of this paper.”"
+      ],
+      "displayLines": [
+        "Selected excerpts from “Treasure Island” by Robert Louis Stevenson. Jim Hawkins watches a doctor and a squire open a packet left by a pirate.",
+        "The paper had been sealed in several places with a thimble by way of seal; the very thimble, perhaps, that I had found in the captain’s pocket.",
+        "The doctor opened the seals with great care, and there fell out the map of an island, with latitude and longitude, soundings, names of hills and bays and inlets, and every particular that would be needed to bring a ship to a safe anchorage upon its shores.",
+        "It was about nine miles long and five across, shaped, you might say, like a fat dragon standing up, and had two fine land-locked harbours, and a hill in the centre part marked “The Spy-glass.”",
+        "There were several additions of a later date, but above all, three crosses of red ink--two on the north part of the island, one in the southwest--and beside this last, in the same red ink, and in a small, neat hand, very different from the captain’s tottery characters, these words: “Bulk of treasure here.”",
+        "After examining further directions on the back of the map, Jim describes their reaction.",
+        "That was all; but brief as it was, and to me incomprehensible, it filled the squire and Dr. Livesey with delight.",
+        "“Livesey,” said the squire, “you will give up this wretched practice at once.",
+        "Tomorrow I start for Bristol.",
+        "In three weeks’ time—three weeks!—two weeks—ten days—we’ll have the best ship, sir, and the choicest crew in England.",
+        "Hawkins shall come as cabin-boy.",
+        "You’ll make a famous cabin-boy, Hawkins.",
+        "You, Livesey, are ship’s doctor; I am admiral.",
+        "We’ll take Redruth, Joyce, and Hunter.",
+        "We’ll have favourable winds, a quick passage, and not the least difficulty in finding the spot, and money to eat, to roll in, to play duck and drake with ever after.”",
+        "“Trelawney,” said the doctor, “I’ll go with you; and I’ll go bail for it, so will Jim, and be a credit to the undertaking.",
+        "There’s only one man I’m afraid of.”",
+        "“And who’s that?”",
+        "cried the squire.",
+        "“Name the dog, sir!”",
+        "“You,” replied the doctor; “for you cannot hold your tongue.",
+        "We are not the only men who know of this paper.”"
+      ],
+      "spokenWordCount": 376,
+      "source": {
+        "label": "Treasure Island — The map in the packet",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Opening repair — clear sponsored clutter. This adventure introduces a map with useful details and a specific destination: the basic purpose the route planner must recover. It is a broad opening connection rather than a direct lesson about advertising.",
+      "vocabulary": [
+        {
+          "word": "soundings",
+          "definition": "Measurements of how deep the water is.",
+          "sentence": "In this passage, soundings help a ship approach the island safely.",
+          "playbackPhrase": "In this passage, soundings help a ship approach the island safely.",
+          "properNoun": false
+        },
+        {
+          "word": "tottery",
+          "definition": "Shaky or unsteady.",
+          "sentence": "In this passage, the captain’s tottery handwriting differs from the neat writing on the map.",
+          "playbackPhrase": "In this passage, the captain’s tottery handwriting differs from the neat writing on the map.",
+          "properNoun": false
+        },
+        {
+          "word": "thimble",
+          "definition": "A small cap worn on a fingertip to protect it when pushing a sewing needle.",
+          "sentence": "In this passage, a thimble has been pressed into the seals on the packet.",
+          "playbackPhrase": "In this passage, a thimble has been pressed into the seals on the packet.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What does the doctor’s warning add to the squire’s excitement?",
+        "orderedChoices": [
+          {
+            "text": "Knowing the destination does not remove the danger of others learning their plan.",
+            "correct": true
+          },
+          {
+            "text": "The map cannot be useful because Jim cannot understand the directions.",
+            "correct": false
+          },
+          {
+            "text": "The doctor refuses to travel until the squire finds a different destination.",
+            "correct": false
+          }
+        ],
+        "correct": "Knowing the destination does not remove the danger of others learning their plan.",
+        "distractors": [
+          "The map cannot be useful because Jim cannot understand the directions.",
+          "The doctor refuses to travel until the squire finds a different destination."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-02",
+      "title": "The Hunting of the Snark",
+      "reviewedTitle": "The Hunting of the Snark — A perfect and absolute blank",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “The Hunting of the Snark,” a nonsense poem by Lewis Carroll. The Bellman is captain of a very unusual expedition.",
+        "He had bought a large map representing the sea,",
+        "Without the least vestige of land:",
+        "And the crew were much pleased when they found it to be",
+        "A map they could all understand.",
+        "“What’s the good of Mercator’s North Poles and Equators,",
+        "Tropics, Zones, and Meridian Lines?”",
+        "So the Bellman would cry: and the crew would reply",
+        "“They are merely conventional signs!",
+        "“Other maps are such shapes, with their islands and capes!",
+        "But we’ve got our brave Captain to thank:”",
+        "(So the crew would protest) “that he’s bought us the best—",
+        "A perfect and absolute blank!”",
+        "This was charming, no doubt; but they shortly found out",
+        "That the Captain they trusted so well",
+        "Had only one notion for crossing the ocean,",
+        "And that was to tingle his bell.",
+        "He was thoughtful and grave—but the orders he gave",
+        "Were enough to bewilder a crew.",
+        "When he cried “Steer to starboard, but keep her head larboard!”",
+        "What on earth was the helmsman to do?",
+        "Then the bowsprit got mixed with the rudder sometimes:",
+        "A thing, as the Bellman remarked,",
+        "That frequently happens in tropical climes,",
+        "When a vessel is, so to speak, “snarked.”",
+        "But the principal failing occurred in the sailing,",
+        "And the Bellman, perplexed and distressed,",
+        "Said he had hoped, at least, when the wind blew due East,",
+        "That the ship would not travel due West!"
+      ],
+      "displayLines": [
+        "An excerpt from “The Hunting of the Snark,” a nonsense poem by Lewis Carroll. The Bellman is captain of a very unusual expedition.",
+        "He had bought a large map representing the sea,",
+        "Without the least vestige of land:",
+        "And the crew were much pleased when they found it to be",
+        "A map they could all understand.",
+        "“What’s the good of Mercator’s North Poles and Equators,",
+        "Tropics, Zones, and Meridian Lines?”",
+        "So the Bellman would cry: and the crew would reply",
+        "“They are merely conventional signs!",
+        "“Other maps are such shapes, with their islands and capes!",
+        "But we’ve got our brave Captain to thank:”",
+        "(So the crew would protest) “that he’s bought us the best—",
+        "A perfect and absolute blank!”",
+        "This was charming, no doubt; but they shortly found out",
+        "That the Captain they trusted so well",
+        "Had only one notion for crossing the ocean,",
+        "And that was to tingle his bell.",
+        "He was thoughtful and grave—but the orders he gave",
+        "Were enough to bewilder a crew.",
+        "When he cried “Steer to starboard, but keep her head larboard!”",
+        "What on earth was the helmsman to do?",
+        "Then the bowsprit got mixed with the rudder sometimes:",
+        "A thing, as the Bellman remarked,",
+        "That frequently happens in tropical climes,",
+        "When a vessel is, so to speak, “snarked.”",
+        "But the principal failing occurred in the sailing,",
+        "And the Bellman, perplexed and distressed,",
+        "Said he had hoped, at least, when the wind blew due East,",
+        "That the ship would not travel due West!"
+      ],
+      "spokenWordCount": 248,
+      "source": {
+        "label": "The Hunting of the Snark — A perfect and absolute blank",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Restore useful place labels. The crew praises a map stripped of all information, making a comic contrast with the orientation that MapGuess regains when real labels return. Simplicity is useful only when the information people need survives.",
+      "vocabulary": [
+        {
+          "word": "vestige",
+          "definition": "A small remaining trace.",
+          "sentence": "In this passage, the map has not even a vestige of land.",
+          "playbackPhrase": "In this passage, the map has not even a vestige of land.",
+          "properNoun": false
+        },
+        {
+          "word": "equator",
+          "definition": "An imaginary line around the middle of Earth, halfway between the North and South Poles.",
+          "sentence": "In this passage, the crew dismisses the Equator and other reference lines shown on maps.",
+          "playbackPhrase": "In this passage, the crew dismisses the Equator and other reference lines shown on maps.",
+          "properNoun": false
+        },
+        {
+          "word": "bowsprit",
+          "definition": "A long pole projecting forward from the front of a sailing ship, used to support sails and their rigging.",
+          "sentence": "In this passage, the bowsprit absurdly gets mixed up with the rudder at the back of the ship.",
+          "playbackPhrase": "In this passage, the bowsprit absurdly gets mixed up with the rudder at the back of the ship.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "What makes the crew’s praise of the map ironic?",
+        "orderedChoices": [
+          {
+            "text": "They understand its symbols but cannot agree on a destination.",
+            "correct": false
+          },
+          {
+            "text": "They prefer a map of land even though they are sailing at sea.",
+            "correct": false
+          },
+          {
+            "text": "They like its simplicity, although it gives them no guidance.",
+            "correct": true
+          }
+        ],
+        "correct": "They like its simplicity, although it gives them no guidance.",
+        "distractors": [
+          "They understand its symbols but cannot agree on a destination.",
+          "They prefer a map of land even though they are sailing at sea."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-03",
+      "title": "Around the World in Eighty Days",
+      "reviewedTitle": "Around the World in Eighty Days — The missing day",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Around the World in Eighty Days” by Jules Verne, in George Makepeace Towle’s translation. Fogg thinks he has returned too late to win his wager, until he discovers a mistake in his count of the days.",
+        "Phileas Fogg had, without suspecting it, gained one day on his journey, and this merely because he had travelled constantly eastward; he would, on the contrary, have lost a day had he gone in the opposite direction, that is, westward. In journeying eastward he had gone towards the sun, and the days therefore diminished for him as many times four minutes as he crossed degrees in this direction. There are three hundred and sixty degrees on the circumference of the earth; and these three hundred and sixty degrees, multiplied by four minutes, gives precisely twenty-four hours—that is, the day unconsciously gained.",
+        "In other words, while Phileas Fogg, going eastward, saw the sun pass the meridian eighty times, his friends in London only saw it pass the meridian seventy-nine times. This is why they awaited him at the Reform Club on Saturday, and not Sunday, as Mr. Fogg thought. And Passepartout’s famous family watch, which had always kept London time, would have betrayed this fact, if it had marked the days as well as the hours and the minutes!",
+        "Phileas Fogg, then, had won the twenty thousand pounds; but, as he had spent nearly nineteen thousand on the way, the pecuniary gain was small. His object was, however, to be victorious, and not to win money. He divided the one thousand pounds that remained between Passepartout and the unfortunate Fix, against whom he cherished no grudge. He deducted, however, from Passepartout’s share the cost of the gas which had burned in his room for nineteen hundred and twenty hours, for the sake of regularity."
+      ],
+      "displayLines": [
+        "An excerpt from “Around the World in Eighty Days” by Jules Verne, in George Makepeace Towle’s translation. Fogg thinks he has returned too late to win his wager, until he discovers a mistake in his count of the days.",
+        "Phileas Fogg had, without suspecting it, gained one day on his journey, and this merely because he had travelled constantly eastward; he would, on the contrary, have lost a day had he gone in the opposite direction, that is, westward.",
+        "In journeying eastward he had gone towards the sun, and the days therefore diminished for him as many times four minutes as he crossed degrees in this direction.",
+        "There are three hundred and sixty degrees on the circumference of the earth; and these three hundred and sixty degrees, multiplied by four minutes, gives precisely twenty-four hours—that is, the day unconsciously gained.",
+        "In other words, while Phileas Fogg, going eastward, saw the sun pass the meridian eighty times, his friends in London only saw it pass the meridian seventy-nine times.",
+        "This is why they awaited him at the Reform Club on Saturday, and not Sunday, as Mr. Fogg thought.",
+        "And Passepartout’s famous family watch, which had always kept London time, would have betrayed this fact, if it had marked the days as well as the hours and the minutes!",
+        "Phileas Fogg, then, had won the twenty thousand pounds; but, as he had spent nearly nineteen thousand on the way, the pecuniary gain was small.",
+        "His object was, however, to be victorious, and not to win money.",
+        "He divided the one thousand pounds that remained between Passepartout and the unfortunate Fix, against whom he cherished no grudge.",
+        "He deducted, however, from Passepartout’s share the cost of the gas which had burned in his room for nineteen hundred and twenty hours, for the sake of regularity."
+      ],
+      "spokenWordCount": 302,
+      "source": {
+        "label": "Around the World in Eighty Days — The missing day",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Restore truthful arrival times. Fogg’s missing day turns on how travel time is counted. This is the natural point to distinguish an appealing arrival promise from an estimate supported by correct calculation.",
+      "vocabulary": [
+        {
+          "word": "circumference",
+          "definition": "The distance around a circle or a round object.",
+          "sentence": "In this passage, Fogg travels around the circumference of Earth, which spans 360 degrees.",
+          "playbackPhrase": "In this passage, Fogg travels around the circumference of Earth, which spans 360 degrees.",
+          "properNoun": false
+        },
+        {
+          "word": "meridian",
+          "definition": "An imaginary north-to-south line through a place on Earth.",
+          "sentence": "In this passage, counting the sun’s passages across the meridian helps explain the day difference.",
+          "playbackPhrase": "In this passage, counting the sun’s passages across the meridian helps explain the day difference.",
+          "properNoun": false
+        },
+        {
+          "word": "pecuniary",
+          "definition": "Relating to money.",
+          "sentence": "In this passage, Fogg’s pecuniary gain is small after his expenses.",
+          "playbackPhrase": "In this passage, Fogg’s pecuniary gain is small after his expenses.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why did Passepartout’s watch fail to reveal the mistake?",
+        "orderedChoices": [
+          {
+            "text": "It had stopped showing the correct time in London.",
+            "correct": false
+          },
+          {
+            "text": "It showed hours and minutes but did not mark the days.",
+            "correct": true
+          },
+          {
+            "text": "It counted days correctly but was set to the wrong city.",
+            "correct": false
+          }
+        ],
+        "correct": "It showed hours and minutes but did not mark the days.",
+        "distractors": [
+          "It had stopped showing the correct time in London.",
+          "It counted days correctly but was set to the wrong city."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-04",
+      "title": "Our National Parks",
+      "reviewedTitle": "Our National Parks — Why go outside?",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Our National Parks” by John Muir. Writing in 1901, Muir describes a growing interest in visiting and protecting wild places.",
+        "The tendency nowadays to wander in wildernesses is delightful to see. Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity; and that mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life.",
+        "Awakening from the stupefying effects of the vice of over-industry and the deadly apathy of luxury, they are trying as best they can to mix and enrich their own little ongoings with those of Nature, and to get rid of rust and disease. Briskly venturing and roaming, some are washing off sins and cobweb cares of the devil’s spinning in all-day storms on mountains; sauntering in rosiny pinewoods or in gentian meadows, brushing through chaparral, bending down and parting sweet, flowery sprays; tracing rivers to their sources, getting in touch with the nerves of Mother Earth; jumping from rock to rock, feeling the life of them, learning the songs of them, panting in whole-souled exercise, and rejoicing in deep, long-drawn breaths of pure wildness.",
+        "This is fine and natural and full of promise. So also is the growing interest in the care and preservation of forests and wild places in general, and in the half wild parks and gardens of towns. Even the scenery habit in its most artificial forms, mixed with spectacles, silliness, and kodaks; its devotees arrayed more gorgeously than scarlet tanagers, frightening the wild game with red umbrellas,—even this is encouraging, and may well be regarded as a hopeful sign of the times.",
+        "All the Western mountains are still rich in wildness, and by means of good roads are being brought nearer civilization every year. To the sane and free it will hardly seem necessary to cross the continent in search of wild beauty, however easy the way, for they find it in abundance wherever they chance to be."
+      ],
+      "displayLines": [
+        "An excerpt from “Our National Parks” by John Muir. Writing in 1901, Muir describes a growing interest in visiting and protecting wild places.",
+        "The tendency nowadays to wander in wildernesses is delightful to see.",
+        "Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity; and that mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life.",
+        "Awakening from the stupefying effects of the vice of over-industry and the deadly apathy of luxury, they are trying as best they can to mix and enrich their own little ongoings with those of Nature, and to get rid of rust and disease.",
+        "Briskly venturing and roaming, some are washing off sins and cobweb cares of the devil’s spinning in all-day storms on mountains; sauntering in rosiny pinewoods or in gentian meadows, brushing through chaparral, bending down and parting sweet, flowery sprays; tracing rivers to their sources, getting in touch with the nerves of Mother Earth; jumping from rock to rock, feeling the life of them, learning the songs of them, panting in whole-souled exercise, and rejoicing in deep, long-drawn breaths of pure wildness.",
+        "This is fine and natural and full of promise.",
+        "So also is the growing interest in the care and preservation of forests and wild places in general, and in the half wild parks and gardens of towns.",
+        "Even the scenery habit in its most artificial forms, mixed with spectacles, silliness, and kodaks; its devotees arrayed more gorgeously than scarlet tanagers, frightening the wild game with red umbrellas,—even this is encouraging, and may well be regarded as a hopeful sign of the times.",
+        "All the Western mountains are still rich in wildness, and by means of good roads are being brought nearer civilization every year.",
+        "To the sane and free it will hardly seem necessary to cross the continent in search of wild beauty, however easy the way, for they find it in abundance wherever they chance to be."
+      ],
+      "spokenWordCount": 342,
+      "source": {
+        "label": "Our National Parks — Why go outside?",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Restore the chosen library destination and make sightseeing optional. Muir celebrates the value of exploring nature. That supports an important distinction: sightseeing can be worthwhile when the traveler chooses it, without replacing the destination they asked for.",
+      "vocabulary": [
+        {
+          "word": "stupefying",
+          "definition": "Making someone dull, dazed, or unable to think clearly.",
+          "sentence": "In this passage, Muir calls excessive work stupefying.",
+          "playbackPhrase": "In this passage, Muir calls excessive work stupefying.",
+          "properNoun": false
+        },
+        {
+          "word": "chaparral",
+          "definition": "Dense growth of shrubs and small trees, especially in regions with dry summers.",
+          "sentence": "In this passage, people brush through chaparral while exploring wild places.",
+          "playbackPhrase": "In this passage, people brush through chaparral while exploring wild places.",
+          "properNoun": false
+        },
+        {
+          "word": "sauntering",
+          "definition": "Walking slowly and without hurry.",
+          "sentence": "In this passage, people are sauntering through pinewoods as they enjoy nature.",
+          "playbackPhrase": "In this passage, people are sauntering through pinewoods as they enjoy nature.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does Muir see people’s different ways of enjoying nature as a hopeful sign?",
+        "orderedChoices": [
+          {
+            "text": "It proves that distant mountains are the only places worth visiting.",
+            "correct": false
+          },
+          {
+            "text": "It replaces the need to preserve forests and gardens.",
+            "correct": false
+          },
+          {
+            "text": "It shows a growing interest in the natural world.",
+            "correct": true
+          }
+        ],
+        "correct": "It shows a growing interest in the natural world.",
+        "distractors": [
+          "It proves that distant mountains are the only places worth visiting.",
+          "It replaces the need to preserve forests and gardens."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-05",
+      "title": "Map Projections",
+      "reviewedTitle": "Map Projections — There is no best flat map",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Selected excerpts from “Map Projections,” published by the United States Geological Survey.",
+        "A map projection is used to portray all or part of the round Earth on a flat surface. This cannot be done without some distortion.",
+        "Every projection has its own set of advantages and disadvantages. There is no “best” projection.",
+        "The mapmaker must select the one best suited to the needs, reducing distortion of the most important features.",
+        "The guide then explains some of these tradeoffs.",
+        "Every flat map misrepresents the surface of the Earth in some way. No map can rival a globe in truly representing the surface of the entire Earth. However, a map or parts of a map can show one or more—but never all—of the following: True directions. True distances. True areas. True shapes.",
+        "For example, the basic Mercator projection is unique; it yields the only map on which a straight line drawn anywhere within its bounds shows a particular type of direction, but distances and areas are grossly distorted near the map’s polar regions.",
+        "On an equidistant map, distances are true only along particular lines such as those radiating from a single point selected as the center of the projection.",
+        "Shapes are more or less distorted on every equal-area map. Sizes of areas are distorted on conformal maps even though shapes of small areas are shown correctly. The degree and kinds of distortion vary with the projection used in making a map of a particular area. Some projections are suited for mapping large areas that are mainly north-south in extent, others for large areas that are mainly east-west in extent, and still others for large areas that are oblique to the Equator."
+      ],
+      "displayLines": [
+        "Selected excerpts from “Map Projections,” published by the United States Geological Survey.",
+        "A map projection is used to portray all or part of the round Earth on a flat surface.",
+        "This cannot be done without some distortion.",
+        "Every projection has its own set of advantages and disadvantages.",
+        "There is no “best” projection.",
+        "The mapmaker must select the one best suited to the needs, reducing distortion of the most important features.",
+        "The guide then explains some of these tradeoffs.",
+        "Every flat map misrepresents the surface of the Earth in some way.",
+        "No map can rival a globe in truly representing the surface of the entire Earth.",
+        "However, a map or parts of a map can show one or more—but never all—of the following: True directions.",
+        "True distances.",
+        "True areas.",
+        "True shapes.",
+        "For example, the basic Mercator projection is unique; it yields the only map on which a straight line drawn anywhere within its bounds shows a particular type of direction, but distances and areas are grossly distorted near the map’s polar regions.",
+        "On an equidistant map, distances are true only along particular lines such as those radiating from a single point selected as the center of the projection.",
+        "Shapes are more or less distorted on every equal-area map.",
+        "Sizes of areas are distorted on conformal maps even though shapes of small areas are shown correctly.",
+        "The degree and kinds of distortion vary with the projection used in making a map of a particular area.",
+        "Some projections are suited for mapping large areas that are mainly north-south in extent, others for large areas that are mainly east-west in extent, and still others for large areas that are oblique to the Equator."
+      ],
+      "spokenWordCount": 279,
+      "source": {
+        "label": "Map Projections — There is no best flat map",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "First attempt after Auto moves the library. Map projections introduce honest tradeoffs: no representation preserves everything perfectly. The passage challenges Auto’s promise of effortless perfection, while the site demonstrates a separate requirement—tradeoffs cannot justify changing the chosen destination.",
+      "vocabulary": [
+        {
+          "word": "projection",
+          "definition": "A method of representing Earth’s curved surface on a flat map.",
+          "sentence": "In this passage, each projection preserves some features better than others.",
+          "playbackPhrase": "In this passage, each projection preserves some features better than others.",
+          "properNoun": false
+        },
+        {
+          "word": "equidistant",
+          "definition": "Showing true distances along certain specified lines.",
+          "sentence": "In this passage, an equidistant map does not preserve every distance.",
+          "playbackPhrase": "In this passage, an equidistant map does not preserve every distance.",
+          "properNoun": false
+        },
+        {
+          "word": "oblique",
+          "definition": "Slanting rather than parallel or at a right angle.",
+          "sentence": "In this passage, some regions run oblique to the Equator.",
+          "playbackPhrase": "In this passage, some regions run oblique to the Equator.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why is there no single best map projection?",
+        "orderedChoices": [
+          {
+            "text": "A projection preserves some features at the expense of others.",
+            "correct": true
+          },
+          {
+            "text": "A projection is accurate only when it leaves out distances.",
+            "correct": false
+          },
+          {
+            "text": "A projection cannot show any feature of Earth accurately.",
+            "correct": false
+          }
+        ],
+        "correct": "A projection preserves some features at the expense of others.",
+        "distractors": [
+          "A projection is accurate only when it leaves out distances.",
+          "A projection cannot show any feature of Earth accurately."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-06",
+      "title": "The Road Not Taken",
+      "reviewedTitle": "The Road Not Taken",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "“The Road Not Taken,” a poem by Robert Frost.",
+        "Two roads diverged in a yellow wood,",
+        "And sorry I could not travel both",
+        "And be one traveler, long I stood",
+        "And looked down one as far as I could",
+        "To where it bent in the undergrowth;",
+        "Then took the other, as just as fair,",
+        "And having perhaps the better claim,",
+        "Because it was grassy and wanted wear;",
+        "Though as for that the passing there",
+        "Had worn them really about the same,",
+        "And both that morning equally lay",
+        "In leaves no step had trodden black.",
+        "Oh, I kept the first for another day!",
+        "Yet knowing how way leads on to way,",
+        "I doubted if I should ever come back.",
+        "I shall be telling this with a sigh",
+        "Somewhere ages and ages hence:",
+        "Two roads diverged in a wood, and I—",
+        "I took the one less traveled by,",
+        "And that has made all the difference."
+      ],
+      "displayLines": [
+        "“The Road Not Taken,” a poem by Robert Frost.",
+        "Two roads diverged in a yellow wood,",
+        "And sorry I could not travel both",
+        "And be one traveler, long I stood",
+        "And looked down one as far as I could",
+        "To where it bent in the undergrowth;",
+        "Then took the other, as just as fair,",
+        "And having perhaps the better claim,",
+        "Because it was grassy and wanted wear;",
+        "Though as for that the passing there",
+        "Had worn them really about the same,",
+        "And both that morning equally lay",
+        "In leaves no step had trodden black.",
+        "Oh, I kept the first for another day!",
+        "Yet knowing how way leads on to way,",
+        "I doubted if I should ever come back.",
+        "I shall be telling this with a sigh",
+        "Somewhere ages and ages hence:",
+        "Two roads diverged in a wood, and I—",
+        "I took the one less traveled by,",
+        "And that has made all the difference."
+      ],
+      "spokenWordCount": 153,
+      "source": {
+        "label": "The Road Not Taken",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Second attempt to hold the destination fixed. The speaker’s imagined future account differs from his earlier description of the roads. This invites attention to the gap between a reassuring story and observed evidence, without reducing the poem to a navigation rule. Its shorter, reflective form separates the denser nonfiction readings.",
+      "vocabulary": [
+        {
+          "word": "diverged",
+          "definition": "Separated and went in different directions.",
+          "sentence": "In this passage, two roads diverged in the woods.",
+          "playbackPhrase": "In this passage, two roads diverged in the woods.",
+          "properNoun": false
+        },
+        {
+          "word": "wanted",
+          "definition": "Lacked or needed something.",
+          "sentence": "In this passage, the grassy road “wanted wear”: it seemed to need more use by travelers.",
+          "playbackPhrase": "In this passage, the grassy road “wanted wear”: it seemed to need more use by travelers.",
+          "properNoun": false
+        },
+        {
+          "word": "trodden",
+          "definition": "Pressed or worn by people walking.",
+          "sentence": "In this passage, neither road’s leaves have been trodden black that morning.",
+          "playbackPhrase": "In this passage, neither road’s leaves have been trodden black that morning.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Which earlier detail makes us question the speaker’s later claim that he took the road “less traveled by”?",
+        "orderedChoices": [
+          {
+            "text": "He first describes the roads as worn about the same.",
+            "correct": true
+          },
+          {
+            "text": "He discovers that both roads lead to the same place.",
+            "correct": false
+          },
+          {
+            "text": "He returns later and finds that the first road is closed.",
+            "correct": false
+          }
+        ],
+        "correct": "He first describes the roads as worn about the same.",
+        "distractors": [
+          "He discovers that both roads lead to the same place.",
+          "He returns later and finds that the first road is closed."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-07",
+      "title": "Life on the Mississippi",
+      "reviewedTitle": "Life on the Mississippi — Reading the river",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "An excerpt from “Life on the Mississippi” by Mark Twain. Learning to pilot a steamboat has taught Twain to read signs on the river’s surface.",
+        "The face of the water, in time, became a wonderful book—a book that was a dead language to the uneducated passenger, but which told its mind to me without reserve, delivering its most cherished secrets as clearly as if it uttered them with a voice. And it was not a book to be read once and thrown aside, for it had a new story to tell every day. Throughout the long twelve hundred miles there was never a page that was void of interest, never one that you could leave unread without loss, never one that you would want to skip, thinking you could find higher enjoyment in some other thing.",
+        "There never was so wonderful a book written by man; never one whose interest was so absorbing, so unflagging, so sparkingly renewed with every reperusal. The passenger who could not read it was charmed with a peculiar sort of faint dimple on its surface (on the rare occasions when he did not overlook it altogether); but to the pilot that was an italicized passage; indeed, it was more than that, it was a legend of the largest capitals, with a string of shouting exclamation points at the end of it; for it meant that a wreck or a rock was buried there that could tear the life out of the strongest vessel that ever floated. It is the faintest and simplest expression the water ever makes, and the most hideous to a pilot’s eye.",
+        "In truth, the passenger who could not read this book saw nothing but all manner of pretty pictures in it painted by the sun and shaded by the clouds, whereas to the trained eye these were not pictures at all, but the grimmest and most dead-earnest of reading-matter."
+      ],
+      "displayLines": [
+        "An excerpt from “Life on the Mississippi” by Mark Twain. Learning to pilot a steamboat has taught Twain to read signs on the river’s surface.",
+        "The face of the water, in time, became a wonderful book—a book that was a dead language to the uneducated passenger, but which told its mind to me without reserve, delivering its most cherished secrets as clearly as if it uttered them with a voice.",
+        "And it was not a book to be read once and thrown aside, for it had a new story to tell every day.",
+        "Throughout the long twelve hundred miles there was never a page that was void of interest, never one that you could leave unread without loss, never one that you would want to skip, thinking you could find higher enjoyment in some other thing.",
+        "There never was so wonderful a book written by man; never one whose interest was so absorbing, so unflagging, so sparkingly renewed with every reperusal.",
+        "The passenger who could not read it was charmed with a peculiar sort of faint dimple on its surface (on the rare occasions when he did not overlook it altogether); but to the pilot that was an italicized passage; indeed, it was more than that, it was a legend of the largest capitals, with a string of shouting exclamation points at the end of it; for it meant that a wreck or a rock was buried there that could tear the life out of the strongest vessel that ever floated.",
+        "It is the faintest and simplest expression the water ever makes, and the most hideous to a pilot’s eye.",
+        "In truth, the passenger who could not read this book saw nothing but all manner of pretty pictures in it painted by the sun and shaded by the clouds, whereas to the trained eye these were not pictures at all, but the grimmest and most dead-earnest of reading-matter."
+      ],
+      "spokenWordCount": 318,
+      "source": {
+        "label": "Life on the Mississippi — Reading the river",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Third attempt to hold the destination fixed. Twain distinguishes a pleasing surface from the physical evidence a trained pilot can read. As the library moves again, the passage reinforces the need to interpret real conditions rather than trust appearances.",
+      "vocabulary": [
+        {
+          "word": "void",
+          "definition": "Completely lacking something.",
+          "sentence": "In this passage, no part of the river is void of interest.",
+          "playbackPhrase": "In this passage, no part of the river is void of interest.",
+          "properNoun": false
+        },
+        {
+          "word": "reperusal",
+          "definition": "A second or repeated reading.",
+          "sentence": "In this passage, every reperusal of the river reveals something worth noticing.",
+          "playbackPhrase": "In this passage, every reperusal of the river reveals something worth noticing.",
+          "properNoun": false
+        },
+        {
+          "word": "grimmest",
+          "definition": "Most alarming or frighteningly serious.",
+          "sentence": "In this passage, the river’s signs are the grimmest reading because they can warn a pilot of deadly dangers.",
+          "playbackPhrase": "In this passage, the river’s signs are the grimmest reading because they can warn a pilot of deadly dangers.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "Why does the pilot react differently to a faint dimple on the water?",
+        "orderedChoices": [
+          {
+            "text": "He sees a warning of a hidden obstacle where the passenger sees beauty.",
+            "correct": true
+          },
+          {
+            "text": "He thinks the passenger has already read the river’s warning.",
+            "correct": false
+          },
+          {
+            "text": "He knows that an attractive surface means the water is safe.",
+            "correct": false
+          }
+        ],
+        "correct": "He sees a warning of a hidden obstacle where the passenger sees beauty.",
+        "distractors": [
+          "He thinks the passenger has already read the river’s warning.",
+          "He knows that an attractive surface means the water is safe."
+        ],
+        "correctFeedback": "Yes. That answer is supported by the passage.",
+        "tryAgainFeedback": "Take another look at the passage, then choose again."
+      }
+    },
+    {
+      "id": "mapguess-08",
+      "title": "GPS Accuracy",
+      "reviewedTitle": "GPS Accuracy — A position is not a map",
+      "form": "human-reviewed reading",
+      "paragraphs": [
+        "Selected excerpts from “GPS Accuracy,” published on GPS.gov.",
+        "How accurate is GPS?",
+        "It depends. GPS satellites broadcast their signals in space with a certain accuracy, but what you receive depends on additional factors, including satellite geometry, signal blockage, atmospheric conditions, and receiver design features and quality.",
+        "For example, GPS-enabled smartphones are typically accurate to within a 4.9-meter radius under open sky. However, their accuracy worsens near buildings, bridges, and trees.",
+        "High-end users boost GPS accuracy with dual-frequency receivers or augmentation systems, or both. These can enable real-time positioning within a few centimeters, and long-term measurements at the millimeter level.",
+        "Why does GPS sometimes show me in the wrong place?",
+        "Many things can degrade GPS positioning accuracy. Common causes include satellite signal blockage due to buildings, bridges, trees, and so on; indoor or underground use; signals reflected off buildings or walls, called “multipath.”",
+        "Far less common causes may include radio interference or jamming; major solar storms; satellite maintenance or maneuvers creating temporary gaps in coverage; improperly designed devices that do not comply with GPS Interface Specifications.",
+        "In many cases, a device’s GPS hardware is working fine, but its mapping software is faulty. For example, users are often misled by incorrectly drawn maps; mislabeled businesses and other points of interest; missing roads, buildings, communities, and so on; incorrectly estimated street addresses.",
+        "The U.S. government cannot correct mapping errors in consumer devices.",
+        "The accuracy commitments do not apply to GPS devices, but rather to the signals transmitted in space."
+      ],
+      "displayLines": [
+        "Selected excerpts from “GPS Accuracy,” published on GPS.gov.",
+        "How accurate is GPS?",
+        "It depends.",
+        "GPS satellites broadcast their signals in space with a certain accuracy, but what you receive depends on additional factors, including satellite geometry, signal blockage, atmospheric conditions, and receiver design features and quality.",
+        "For example, GPS-enabled smartphones are typically accurate to within a 4.9-meter radius under open sky.",
+        "However, their accuracy worsens near buildings, bridges, and trees.",
+        "High-end users boost GPS accuracy with dual-frequency receivers or augmentation systems, or both.",
+        "These can enable real-time positioning within a few centimeters, and long-term measurements at the millimeter level.",
+        "Why does GPS sometimes show me in the wrong place?",
+        "Many things can degrade GPS positioning accuracy.",
+        "Common causes include satellite signal blockage due to buildings, bridges, trees, and so on; indoor or underground use; signals reflected off buildings or walls, called “multipath.”",
+        "Far less common causes may include radio interference or jamming; major solar storms; satellite maintenance or maneuvers creating temporary gaps in coverage; improperly designed devices that do not comply with GPS Interface Specifications.",
+        "In many cases, a device’s GPS hardware is working fine, but its mapping software is faulty.",
+        "For example, users are often misled by incorrectly drawn maps; mislabeled businesses and other points of interest; missing roads, buildings, communities, and so on; incorrectly estimated street addresses.",
+        "The U.S. government cannot correct mapping errors in consumer devices.",
+        "The accuracy commitments do not apply to GPS devices, but rather to the signals transmitted in space."
+      ],
+      "spokenWordCount": 246,
+      "source": {
+        "label": "GPS Accuracy — A position is not a map",
+        "url": "https://docs.google.com/document/d/10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U"
+      },
+      "reviewStatus": "human-approved-2026-09-20",
+      "sourceDocumentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "sourceRevisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "onScreen": "Final destination lock. GPS positioning can work while map information is wrong. This makes the strongest closing distinction: arriving at a displayed pin is not enough unless it represents the actual library. The destination must stay fixed while the route is calculated honestly.",
+      "vocabulary": [
+        {
+          "word": "augmentation",
+          "definition": "An addition that improves or increases something.",
+          "sentence": "In this passage, augmentation systems improve the accuracy of a position.",
+          "playbackPhrase": "In this passage, augmentation systems improve the accuracy of a position.",
+          "properNoun": false
+        },
+        {
+          "word": "degrade",
+          "definition": "Make something less accurate or effective.",
+          "sentence": "In this passage, blocked signals can degrade GPS accuracy.",
+          "playbackPhrase": "In this passage, blocked signals can degrade GPS accuracy.",
+          "properNoun": false
+        },
+        {
+          "word": "comply",
+          "definition": "Act according to a rule or requirement.",
+          "sentence": "In this passage, poorly designed devices may not comply with GPS specifications.",
+          "playbackPhrase": "In this passage, poorly designed devices may not comply with GPS specifications.",
+          "properNoun": false
+        }
+      ],
+      "comprehension": {
+        "prompt": "A device shows a shop on the wrong street. Which explanation does the article allow?",
+        "orderedChoices": [
+          {
+            "text": "The satellite signal may work correctly while the map’s information is wrong.",
+            "correct": true
+          },
+          {
+            "text": "A wrong street label proves that all nearby satellite signals are blocked.",
+            "correct": false
+          },
+          {
+            "text": "The government’s signal guarantee also guarantees every business label.",
+            "correct": false
+          }
+        ],
+        "correct": "The satellite signal may work correctly while the map’s information is wrong.",
+        "distractors": [
+          "A wrong street label proves that all nearby satellite signals are blocked.",
+          "The government’s signal guarantee also guarantees every business label."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."

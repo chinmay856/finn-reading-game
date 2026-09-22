@@ -4,17 +4,21 @@ import { derivePassageDisplayLines } from '../../reading-companion/passage-displ
 export function parseReviewedGoogleDoc(siteId, doc) {
   const sections = [];
   for (const paragraph of doc.paragraphs) {
-    if (/^Passage \d+(?: candidate)?(?::| —)/u.test(paragraph.text)) sections.push([]);
+    if (/^Passage \d+(?: candidate)?(?::| —)/u.test(paragraph.text)
+      || (siteId === 'mapguess' && /^\d+\. /u.test(paragraph.text))) sections.push([]);
     if (sections.length) sections.at(-1).push(paragraph.text);
   }
-  assert.equal(sections.length, ({ faceplace: 8, viewtube: 8, 'spotty-fi': 10, searchish: 10, 'amaze-on': 11 }[siteId] ?? 9));
+  assert.equal(sections.length, ({ faceplace: 8, viewtube: 8, 'spotty-fi': 10, searchish: 10, 'amaze-on': 11, mapguess: 8 }[siteId] ?? 9));
   return sections.map((section, index) => {
     const number = index + 1;
-    assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?(?::| —)`));
-    const reviewedTitle = section[0].replace(/^Passage \d+(?: candidate)?(?::| —) /u, '');
+    if (siteId === 'mapguess') assert.match(section[0], new RegExp(`^${number}\\. `));
+    else assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?(?::| —)`));
+    const reviewedTitle = siteId === 'mapguess'
+      ? section[0].replace(/^\d+\. /u, '')
+      : section[0].replace(/^Passage \d+(?: candidate)?(?::| —) /u, '');
     // Editorial descriptions remain in provenance, never in the spoken text.
     const title = siteId === 'yahuh' && number === 1 ? 'Peoples and Creatures of the Moon' : reviewedTitle.replace(/ — (?!Part \d+$).*$/u, '');
-    const start = section.findIndex(text => ['Exact complete spoken passage', 'Exact spoken passage'].includes(text)) + 1;
+    const start = section.findIndex(text => ['Exact complete spoken passage', 'Exact spoken passage', 'Exact spoken reading'].includes(text)) + 1;
     const vocabularyStart = section.indexOf('Vocabulary');
     const checkStart = section.indexOf('Quick check');
     assert.ok(start > 0 && vocabularyStart > start && checkStart > vocabularyStart);
@@ -54,14 +58,15 @@ export function parseReviewedGoogleDoc(siteId, doc) {
     }
     assert.equal(vocabulary.length, 3);
     const check = section.slice(checkStart + 1);
-    const correctLetter = check.find(text => /^Correct answer: /u.test(text))?.match(/^Correct answer: ([ABC])/u)?.[1];
+    const correctLetter = check.find(text => /^(?:Correct answer|Answer): /u.test(text))?.match(/^(?:Correct answer|Answer): ([ABC])/u)?.[1];
     const orderedChoices = check.slice(1).flatMap(text => {
       const match = text.match(/^([ABC])( — Correct)?[.:] (.*)$/u);
       return match ? [{ text: match[3], correct: Boolean(match[2]) || match[1] === correctLetter }] : [];
     });
     assert.equal(orderedChoices.length, 3);
     assert.equal(orderedChoices.filter(choice => choice.correct).length, 1);
-    const verse = /^(?:Oh, Humanity|I Hear America Singing|The Solitary Reaper|Twelfth Night|There is no frigate like a book|The World Is Too Much With Us|If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody)/u.test(title);
+    const verse = /^(?:Oh, Humanity|I Hear America Singing|The Solitary Reaper|Twelfth Night|There is no frigate like a book|The World Is Too Much With Us|If—|Romeo and Juliet|The Fish|Sonnet 29|Ozymandias|We Wear the Mask|Much Madness|I’m Nobody|The Hunting of the Snark|The Road Not Taken)/u.test(title)
+      || (siteId === 'mapguess' && (number === 2 || number === 6));
     const displayLines = verse ? [...paragraphs] : [paragraphs[0], ...paragraphs.slice(1).flatMap(paragraph => {
       const lines = derivePassageDisplayLines({ paragraphs: [paragraph] });
       return lines.some(line => /[,;—–]["'’”)]*$/u.test(line)) ? [paragraph] : lines;
@@ -70,10 +75,10 @@ export function parseReviewedGoogleDoc(siteId, doc) {
       id: `${siteId}-${String(number).padStart(2, '0')}`, title, reviewedTitle,
       form: 'human-reviewed reading', paragraphs, displayLines,
       spokenWordCount: paragraphs.join(' ').split(/\s+/u).filter(Boolean).length,
-      source: { label: reviewedTitle, url: doc.document_url },
-      reviewStatus: ['yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi'].includes(siteId) ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
+      source: { label: reviewedTitle, url: doc.document_url ?? `https://docs.google.com/document/d/${doc.documentId}` },
+      reviewStatus: ['yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi', 'mapguess'].includes(siteId) ? 'human-approved-2026-09-20' : 'second-human-approved-2026-09-20',
       sourceDocumentId: doc.documentId, sourceRevisionId: doc.revisionId,
-      onScreen: section.find(text => /^(?:On screen|On the website): /u.test(text))?.replace(/^(?:On screen|On the website): /u, '') ?? '',
+      onScreen: section.find(text => /^(?:On screen|On the website|Site connection): /u.test(text))?.replace(/^(?:On screen|On the website|Site connection): /u, '') ?? '',
       vocabulary,
       comprehension: {
         prompt: check[0].replace(/^Exact question: /u, ''), orderedChoices,
