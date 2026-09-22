@@ -562,5 +562,8 @@ textarea {
 /* Shell navigation remains available during mission dialogue and AUTO pauses. */
 .mission-taskbar { z-index: 30; }
 .desktop-shortcuts { z-index: 30; }
+/* Raise the shortcuts themselves, not their full-height opaque backdrop. */
+.mission-shortcuts { z-index: auto; }
+.mission-shortcuts > * { position: relative; z-index: 30; }
 .start-menu { z-index: 31; }
 .corruption-pause { pointer-events: none; }
