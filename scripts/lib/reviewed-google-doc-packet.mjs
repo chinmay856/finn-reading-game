@@ -1,6 +1,14 @@
 import assert from 'node:assert/strict';
 import { derivePassageDisplayLines } from '../../reading-companion/passage-display-lines.js';
 
+// A reviewed Doc may renumber headings after a passage is removed. Runtime
+// passage IDs are content identities, so retain the original IDs (and their
+// vocabulary/audio paths) while parsing the shortened packet.
+const STABLE_PASSAGE_IDS = Object.freeze({
+  mycorner: Object.freeze([1, 2, 3, 4, 5, 6, 7, 9]),
+  'spotty-fi': Object.freeze([1, 3, 4, 5, 6, 7, 8, 9, 10]),
+});
+
 export function parseReviewedGoogleDoc(siteId, doc) {
   const sections = [];
   for (const paragraph of doc.paragraphs) {
@@ -8,11 +16,15 @@ export function parseReviewedGoogleDoc(siteId, doc) {
       || (siteId === 'mapguess' && /^\d+\. /u.test(paragraph.text))) sections.push([]);
     if (sections.length) sections.at(-1).push(paragraph.text);
   }
-  assert.equal(sections.length, ({ faceplace: 8, viewtube: 8, 'spotty-fi': 10, searchish: 10, 'amaze-on': 11, mapguess: 8 }[siteId] ?? 9));
+  assert.equal(sections.length, ({ faceplace: 8, viewtube: 8, mycorner: 8, 'spotty-fi': 9, searchish: 10, 'amaze-on': 11, mapguess: 8 }[siteId] ?? 9));
   return sections.map((section, index) => {
     const number = index + 1;
+    const passageNumber = STABLE_PASSAGE_IDS[siteId]?.[index] ?? number;
     if (siteId === 'mapguess') assert.match(section[0], new RegExp(`^${number}\\. `));
-    else assert.match(section[0], new RegExp(`^Passage ${number}(?: candidate)?(?::| —)`));
+    else {
+      const heading = section[0].match(/^Passage (\d+)(?: candidate)?(?::| —)/u);
+      assert.ok(heading && [number, passageNumber].includes(Number(heading[1])));
+    }
     const reviewedTitle = siteId === 'mapguess'
       ? section[0].replace(/^\d+\. /u, '')
       : section[0].replace(/^Passage \d+(?: candidate)?(?::| —) /u, '');
@@ -72,7 +84,7 @@ export function parseReviewedGoogleDoc(siteId, doc) {
       return lines.some(line => /[,;—–]["'’”)]*$/u.test(line)) ? [paragraph] : lines;
     })];
     return {
-      id: `${siteId}-${String(number).padStart(2, '0')}`, title, reviewedTitle,
+      id: `${siteId}-${String(passageNumber).padStart(2, '0')}`, title, reviewedTitle,
       form: 'human-reviewed reading', paragraphs, displayLines,
       spokenWordCount: paragraphs.join(' ').split(/\s+/u).filter(Boolean).length,
       source: { label: reviewedTitle, url: doc.document_url ?? `https://docs.google.com/document/d/${doc.documentId}` },

@@ -9,10 +9,10 @@ const expectations = Object.freeze({
   wikiwhy: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 13, 14, 15], secured: "_p7.png" }),
   threadit: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12], secured: "_p13.png" }),
   faceplace: Object.freeze({ count: 8, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11], secured: "_p12.png" }),
-  mycorner: Object.freeze({ count: 9, first: 4, pages: [2, 3, 4, 5, 8, 9, 10, 11, 12], secured: "_p12.png" }),
+  mycorner: Object.freeze({ count: 8, first: 4, pages: [2, 3, 4, 5, 8, 9, 10, 11], secured: "_p12.png" }),
   yahuh: Object.freeze({ count: 9, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12], secured: "_p13.png" }),
   viewtube: Object.freeze({ count: 8, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11], secured: "_p12.png" }),
-  "spotty-fi": Object.freeze({ count: 10, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11, 12, 13], secured: "_p13.png" }),
+  "spotty-fi": Object.freeze({ count: 9, first: 5, pages: [2, 3, 4, 5, 6, 9, 10, 11, 12], secured: "_p13.png" }),
   "amaze-on": Object.freeze({ count: 11, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14], secured: "_p15.png" }),
   searchish: Object.freeze({ count: 10, first: 6, pages: [2, 3, 4, 5, 6, 7, 10, 11, 12, 13], secured: "_p14.png" }),
   mapguess: Object.freeze({ count: 8, first: 4, pages: [2, 3, 4, 5, 8, 10, 12, 14], secured: "_p15.png" }),
@@ -87,11 +87,14 @@ test("MyCorner preserves the reviewed twelve-state identity-check sequence", () 
   const mission = PLAYABLE_WALKTHROUGHS.mycorner;
   assert.deepEqual(
     mission.repairFrames.map((source) => Number(assetPath(source).match(/_p(\d+)\.png$/u)?.[1])),
-    [2, 3, 4, 5, 8, 9, 10, 11, 12],
+    [2, 3, 4, 5, 8, 9, 10, 11],
   );
   assert.equal(assetPath(mission.superFrame).endsWith("_p6.png"), true);
   assert.equal(assetPath(mission.checklistFrame).endsWith("_p7.png"), true);
-  assert.equal(mission.passages.every(({ id }, index) => id === `mycorner-${String(index + 1).padStart(2, "0")}`), true);
+  assert.deepEqual(mission.passages.map(({ id }) => id), [
+    "mycorner-01", "mycorner-02", "mycorner-03", "mycorner-04", "mycorner-05",
+    "mycorner-06", "mycorner-07", "mycorner-09",
+  ]);
   assert.equal(mission.passages.flatMap(({ challengingWords }) => challengingWords).every(({ audioSrc }) => audioSrc?.startsWith("/audio/mycorner/kokoro-heart/")), true);
 });
 

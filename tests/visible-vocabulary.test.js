@@ -3,7 +3,7 @@ import test from "node:test";
 import { visibleVocabulary } from "../reading-companion/visible-vocabulary.js";
 import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkthroughs.js";
 
-test("all 273 reviewed campaign vocabulary cards remain visible without rewriting them", () => {
+test("all 267 reviewed campaign vocabulary cards remain visible without rewriting them", () => {
   let count = 0;
   for (const mission of Object.values(PLAYABLE_WALKTHROUGHS)) {
     for (const passage of mission.passages) {
@@ -13,7 +13,7 @@ test("all 273 reviewed campaign vocabulary cards remain visible without rewritin
       count += cards.length;
     }
   }
-  assert.equal(count, 273);
+  assert.equal(count, 267);
 });
 
 test("unreviewed contextual sentences stay filtered; empty and proper-noun cards stay hidden", () => {

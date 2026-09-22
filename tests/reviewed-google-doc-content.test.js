@@ -79,15 +79,32 @@ test('Searchish and Amaze-On retain reviewed inline vocabulary, verse, and repla
 
 test('final packets preserve colon answer keys, vocabulary playback, verse, and save migration IDs', () => {
   const video = PLAYABLE_WALKTHROUGHS.viewtube;
+  const profile = PLAYABLE_WALKTHROUGHS.mycorner;
   const music = PLAYABLE_WALKTHROUGHS['spotty-fi'];
   assert.equal(video.passages[0].comprehension.choices.find(choice => choice.correct).text, 'Performances reached more people cheaply but lacked voices, color, and depth.');
   assert.equal(video.passages[1].challengingWords[0].speechSentence, 'In this passage, temperance keeps powerful acting from becoming excessive.');
-  assert.equal(music.passages[2].title, 'The Gramophone');
-  for (const index of [0, 1, 3, 6]) assert.deepEqual(music.passages[index].lines, music.passages[index].paragraphs.map(line => line.trim()));
-  for (const mission of [video, music]) {
-    assert.deepEqual(mission.replacedPassageIds, mission.passages.map(p => p.id));
-    assert.equal(mission.phaseOneCount, 5);
-  }
+  assert.equal(music.passages[1].title, 'The Gramophone');
+  for (const index of [0, 2, 5]) assert.deepEqual(music.passages[index].lines, music.passages[index].paragraphs.map(line => line.trim()));
+  assert.deepEqual(video.replacedPassageIds, video.passages.map(p => p.id));
+  assert.equal(video.phaseOneCount, 5);
+  assert.deepEqual(music.replacedPassageIds, []);
+  assert.equal(music.phaseOneCount, 5);
+  assert.deepEqual(profile.passages.map(({ id }) => id), [
+    'mycorner-01', 'mycorner-02', 'mycorner-03', 'mycorner-04',
+    'mycorner-05', 'mycorner-06', 'mycorner-07', 'mycorner-09',
+  ]);
+  assert.deepEqual(music.passages.map(({ id }) => id), [
+    'spotty-fi-01', 'spotty-fi-03', 'spotty-fi-04', 'spotty-fi-05',
+    'spotty-fi-06', 'spotty-fi-07', 'spotty-fi-08', 'spotty-fi-09', 'spotty-fi-10',
+  ]);
+  assert.deepEqual(profile.demotedPassageIds, ['mycorner-08']);
+  assert.deepEqual(music.demotedPassageIds, ['spotty-fi-02']);
+  assert.equal(profile.passages.length, 8);
+  assert.equal(music.passages.length, 9);
+  assert.equal(profile.repairFrames.length, 8);
+  assert.equal(music.repairFrames.length, 9);
+  assert.equal(profile.securedFrame, '/walkthroughs/mycorner/mycorner-anchor-v3_p12.png?v=20260920-layout-polish-v1');
+  assert.equal(music.securedFrame, '/walkthroughs/spotty-fi/spotty-fi-anchor-v1_p13.png?v=20260921-spotty-art-v5');
 });
 
 test('MapGuess imports the exact final Treasure Island sentence and replacement IDs', () => {

@@ -17,5 +17,5 @@ for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'se
     count += 1;
   }
 }
-assert.equal(count, 273);
-console.log('Verified all 273 reviewed vocabulary recordings against their exact synthesis text and audio hashes.');
+assert.equal(count, 267);
+console.log('Verified all 267 reviewed vocabulary recordings against their exact synthesis text and audio hashes.');

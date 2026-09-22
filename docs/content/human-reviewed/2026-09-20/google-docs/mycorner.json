@@ -1,8 +1,8 @@
 {
   "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
   "title": "MyCorner — Human Review Packet",
-  "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
-  "tabId": null,
+  "revisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
+  "tabId": "t.0",
   "paragraphs": [
     {
       "text": "MyCorner Human-Reviewed Content Packet",
@@ -1733,409 +1733,209 @@
       "isListItem": false
     },
     {
-      "text": "Passage 8: I’m Nobody! Who are you?",
+      "text": "Passage 8: Scammers Use Fake Emergencies To Steal Your Money",
       "startIndex": 17367,
-      "endIndex": 17402,
+      "endIndex": 17427,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Pause before ever sending money.",
-      "startIndex": 17403,
-      "endIndex": 17446,
+      "text": "On screen: Pause before ever sending money and reveal the secured profile.",
+      "startIndex": 17428,
+      "endIndex": 17502,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 17447,
-      "endIndex": 17476,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "The poem “I’m Nobody! Who are you?” by Emily Dickinson.",
-      "startIndex": 17477,
+      "startIndex": 17503,
       "endIndex": 17532,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "I’m nobody! Who are you?",
-      "startIndex": 17533,
-      "endIndex": 17557,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Are you nobody, too?",
-      "startIndex": 17558,
-      "endIndex": 17578,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Then there’s a pair of us—don’t tell!",
-      "startIndex": 17579,
-      "endIndex": 17616,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "They’d banish us, you know.",
-      "startIndex": 17617,
-      "endIndex": 17644,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "How dreary to be somebody!",
-      "startIndex": 17645,
-      "endIndex": 17671,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "How public, like a frog",
-      "startIndex": 17672,
-      "endIndex": 17695,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "To tell your name the livelong day",
-      "startIndex": 17696,
-      "endIndex": 17730,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "To an admiring bog!",
-      "startIndex": 17731,
-      "endIndex": 17750,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Vocabulary",
-      "startIndex": 17751,
-      "endIndex": 17761,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "banish — Send someone away or exclude them.",
-      "startIndex": 17762,
-      "endIndex": 17805,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the speaker jokes that others would banish the pair.”",
-      "startIndex": 17806,
-      "endIndex": 17877,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "dreary — Dull, tiresome, or depressing.",
-      "startIndex": 17878,
-      "endIndex": 17917,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the speaker finds public importance dreary.”",
-      "startIndex": 17918,
-      "endIndex": 17980,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "bog — An area of wet, spongy ground.",
-      "startIndex": 17981,
-      "endIndex": 18017,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the frog announces itself to an admiring bog.”",
-      "startIndex": 18018,
-      "endIndex": 18082,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Quick check",
-      "startIndex": 18083,
-      "endIndex": 18094,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "Why does the speaker compare being “somebody” to a frog?",
-      "startIndex": 18095,
-      "endIndex": 18151,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "A. Both need solitude before they can find a companion.",
-      "startIndex": 18152,
-      "endIndex": 18207,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "B. Both keep announcing themselves to an audience.",
-      "startIndex": 18208,
-      "endIndex": 18258,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "C. Both conceal their names to avoid being excluded.",
-      "startIndex": 18259,
-      "endIndex": 18311,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Correct answer: B.",
-      "startIndex": 18312,
-      "endIndex": 18330,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Passage 9: Scammers Use Fake Emergencies To Steal Your Money",
-      "startIndex": 18331,
-      "endIndex": 18391,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_1",
-      "isListItem": false
-    },
-    {
-      "text": "On screen: Complete the checks and reveal the secured profile.",
-      "startIndex": 18392,
-      "endIndex": 18454,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Exact complete spoken passage",
-      "startIndex": 18455,
-      "endIndex": 18484,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from “Scammers Use Fake Emergencies To Steal Your Money,” published by the Federal Trade Commission.",
-      "startIndex": 18485,
-      "endIndex": 18596,
+      "startIndex": 17533,
+      "endIndex": 17644,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "The scammer may already know a lot about you or the person they’re pretending to be. They may know your name, where you live, and other information they could have found on social media sites or by hacking a family member’s email. And sometimes they simply guess.",
-      "startIndex": 18597,
-      "endIndex": 18860,
+      "startIndex": 17645,
+      "endIndex": 17908,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "But they always say you have to pay right away by wiring money through a company like Western Union or MoneyGram, sending cryptocurrency, using a payment app, or by putting money on a gift card and then giving them the numbers on the back. Here are other tactics scammers use in fake emergency scams:",
-      "startIndex": 18861,
-      "endIndex": 19161,
+      "startIndex": 17909,
+      "endIndex": 18209,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Scammers might pretend to be an “authority figure,” like a fake lawyer, police officer, or doctor working with your family member. It makes them sound more convincing, and they hope it scares you.",
-      "startIndex": 19162,
-      "endIndex": 19358,
+      "startIndex": 18210,
+      "endIndex": 18406,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Some scammers use artificial intelligence to clone your loved one’s voice. With a short audio clip — maybe from content posted online — and a voice-cloning program, a scammer could call you and sound just like your family member.",
-      "startIndex": 19359,
-      "endIndex": 19588,
+      "startIndex": 18407,
+      "endIndex": 18636,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Later, the guidance explains how to check the story.",
-      "startIndex": 19589,
-      "endIndex": 19641,
+      "startIndex": 18637,
+      "endIndex": 18689,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "If someone calls or sends a message claiming to be a family member or a friend desperate for money, don’t trust the voice on the line — even if it sounds like your family member or friend. Scammers are good at faking it. Here’s what to do to verify the person’s identity:",
-      "startIndex": 19642,
-      "endIndex": 19913,
+      "startIndex": 18690,
+      "endIndex": 18961,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Resist the pressure to react and send money immediately. Hang up — or tell the person you’ll call them right back.",
-      "startIndex": 19914,
-      "endIndex": 20028,
+      "startIndex": 18962,
+      "endIndex": 19076,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Use a phone number you know is right to call or message the family member or friend who (supposedly) contacted you. Ask them if they’re really in trouble.",
-      "startIndex": 20029,
-      "endIndex": 20183,
+      "startIndex": 19077,
+      "endIndex": 19231,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Call someone else in your family or circle of friends, even if the caller said to keep it a secret — or sounds like a loved one. Do that especially if you can’t reach the friend or family member who’s supposed to be in trouble.",
-      "startIndex": 20184,
-      "endIndex": 20411,
+      "startIndex": 19232,
+      "endIndex": 19459,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 20412,
-      "endIndex": 20422,
+      "startIndex": 19460,
+      "endIndex": 19470,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "tactics — Methods used to achieve a particular aim.",
-      "startIndex": 20423,
-      "endIndex": 20474,
+      "startIndex": 19471,
+      "endIndex": 19522,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, scammers use tactics designed to make a false emergency convincing.”",
-      "startIndex": 20475,
-      "endIndex": 20561,
+      "startIndex": 19523,
+      "endIndex": 19609,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "clone — Make a close copy of something.",
-      "startIndex": 20562,
-      "endIndex": 20601,
+      "startIndex": 19610,
+      "endIndex": 19649,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, a scammer can clone a familiar voice from a recording.”",
-      "startIndex": 20602,
-      "endIndex": 20675,
+      "startIndex": 19650,
+      "endIndex": 19723,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "verify — Check whether something is true or genuine.",
-      "startIndex": 20676,
-      "endIndex": 20728,
+      "startIndex": 19724,
+      "endIndex": 19776,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, a known phone number helps you verify the caller’s story.”",
-      "startIndex": 20729,
-      "endIndex": 20805,
+      "startIndex": 19777,
+      "endIndex": 19853,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 20806,
-      "endIndex": 20817,
+      "startIndex": 19854,
+      "endIndex": 19865,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Why call a number you already know rather than rely on the incoming call?",
-      "startIndex": 20818,
-      "endIndex": 20891,
+      "startIndex": 19866,
+      "endIndex": 19939,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. A familiar voice establishes identity, but another call helps decide how much to send.",
-      "startIndex": 20892,
-      "endIndex": 20981,
+      "startIndex": 19940,
+      "endIndex": 20029,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. A separate contact route helps check a story that familiar details and a copied voice can make convincing.",
-      "startIndex": 20982,
-      "endIndex": 21091,
+      "startIndex": 20030,
+      "endIndex": 20139,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. A second call lets the caller repeat the same details, which is enough to confirm the emergency.",
-      "startIndex": 21092,
-      "endIndex": 21191,
+      "startIndex": 20140,
+      "endIndex": 20239,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: B.",
-      "startIndex": 21192,
-      "endIndex": 21210,
+      "startIndex": 20240,
+      "endIndex": 20258,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
