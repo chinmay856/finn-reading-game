@@ -9,8 +9,8 @@
     },
     "faceplace": {
       "documentId": "1vo3MGFWCRhl-Ay46ELmvzcv5YD3SFA7reazr74B-wFI",
-      "revisionId": "ANLCKQkIPcYIcH1-4w6DXhAfrbFlMCdB6709vMe1HVEAhlQoZA4vdqbfJaGcFXDZoonYVBeTugF7nruIqLv9v-u5DKk1u3DCd9dyVO0VO0Q",
-      "sha256": "a1d4bebfc01a2d08eeb55e8bc8cd342bad5e862cc46438b93f5cce9b5d27f98f"
+      "revisionId": "ANLCKQkwj2XrmvC_Icgj2ldPRKEHoAAIRpNBAfB8J6-Hptl1VrJUz9ZF3XdF05__QnO_ZXSvaNKnJY8buFkjpBoZBwoqJ34JWdnqg_DO8E0",
+      "sha256": "f77044bd041f4daa637c6d3cabf7cbf3bb0924ee72803e471135c55a104407e0"
     },
     "threadit": {
       "documentId": "1Iz4lL5xR-OtDuIqc_egp8hMMyrAleXfPokHdQnval_U",
@@ -39,17 +39,25 @@
     },
     "viewtube": {
       "documentId": "1RWgqQIF5RNuxlxZE64eTndm1jBAXT2fhoK7hYqEjf6M",
-      "revisionId": "ANLCKQmo45NyHNFZr8OvCzK9GAN0UAsYPnzz4Eil1v6EVIkTBeO40RkacYlWprTrjClIQV4p_SkkK_495MStgakM1hJnULUMX7xeJ9S43PU",
-      "sha256": "12dd9ee6f5c7f8b5e32781774dd40ef72aa95c34052ec04e591acefa1fc1ac4a"
+      "revisionId": "ANLCKQnK80jso-MRjcyrvvNRQbtkhXmy6HxyklKSg6IT-cyvi7J9hv5Yf68paG7X894a8ytg6bZWTPjvlZt_H39Mk8uHgQU2LU_2SZwwAbs",
+      "sha256": "25ad7da882a8222cd8322e15dc56546eeb0db269892ef3034a0c582dec7e69f7"
     },
     "spotty-fi": {
       "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
       "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
       "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
+    },
+    "mapguess": {
+      "documentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
+      "revisionId": "ANLCKQld5WKpQmixZQ44zfLboan3qpvUk4CVihRNFxFoM8RMd0-u9lC4DsihbE58tRXSWrejj9fn4EhciM_X-ZQyNx5BCG6UiR65F3G4YHk",
+      "sha256": "408df51407d77fe90a52b67cd195a2c3e0528508ba7ddb3bbe1205cdaadfa1b5"
     }
   },
   "yahuhApproval": "User explicitly approved the linked Yahuh human review packet for implementation on 2026-09-20.",
   "searchishAmazonApproval": "User explicitly authorized publication of current Searchish, Yahoo, and Amazon Google Docs on 2026-09-20. Yahoo text rechecked unchanged; Searchish and Amazon snapshots imported without editorial rewriting.",
   "finalPacketsApproval": "User explicitly authorized integration and production publication of the final two Google Docs, ViewTube and Spotty-Fi, on 2026-09-20.",
-  "vocabularyDeduplicationApproval": "2026-09-21: User approved testimony (WikiWhy 10), scornful (Searchish 3), enterprises (Yahuh 2), vaudeville (ViewTube 1), and manifestation (Spotty-Fi 5), keeping each original word in its other passage. Google Docs updated and exact unrelated text preserved."
+  "mapguessApproval": "User explicitly authorized exact import of the MapGuess Google Doc packet on 2026-09-21. Preserve the pending FacePlace note and import all eight selected readings, vocabulary, quick checks, and site connections unchanged.",
+  "vocabularyDeduplicationApproval": "2026-09-21: User approved testimony (WikiWhy 10), scornful (Searchish 3), enterprises (Yahuh 2), vaudeville (ViewTube 1), and manifestation (Spotty-Fi 5), keeping each original word in its other passage. Google Docs updated and exact unrelated text preserved.",
+  "faceplaceEditorialNoteCorrection": "User authorized removal of the Little Women word-count note from exact spoken text and Google Doc. Every other paragraph verified unchanged.",
+  "currentDocsAuthority": "2026-09-21: User confirmed all current Google Docs are the source of truth and authorized both ViewTube replacements; flag only anomalies such as editorial notes in spoken text."
 }

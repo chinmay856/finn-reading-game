@@ -1,0 +1,146 @@
+{
+  "/audio/mapguess/kokoro-heart/mapguess-01-soundings-reviewed-20260920.m4a": {
+    "speechText": "soundings. Definition: Measurements of how deep the water is. In this passage, soundings help a ship approach the island safely.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "1d2742f00b94b27441543a4889d2bdc9686bf6621c6e7df0e24aadc7d4580d69"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-01-tottery-reviewed-20260920.m4a": {
+    "speechText": "tottery. Definition: Shaky or unsteady. In this passage, the captain’s tottery handwriting differs from the neat writing on the map.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "81524c5d9a37e171c8b6123643e5472e88a42e4fd00bbaa4ec1be50a5b7cc83c"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-01-thimble-reviewed-20260920.m4a": {
+    "speechText": "thimble. Definition: A small cap worn on a fingertip to protect it when pushing a sewing needle. In this passage, a thimble has been pressed into the seals on the packet.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "b8195e13969f03a42877535bea723037e0628e22823bc55312f897334195830e"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-02-vestige-reviewed-20260920.m4a": {
+    "speechText": "vestige. Definition: A small remaining trace. In this passage, the map has not even a vestige of land.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "59b0996129b1c6f2e2de1f7da1cc3c4c35547a1397044a6c194f4f44fc4c017f"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-02-equator-reviewed-20260920.m4a": {
+    "speechText": "equator. Definition: An imaginary line around the middle of Earth, halfway between the North and South Poles. In this passage, the crew dismisses the Equator and other reference lines shown on maps.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "fcdf4704a3f72c5222abc6eeb42ed7b69d0873e920b6d3cec3de516eb6211122"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-02-bowsprit-reviewed-20260920.m4a": {
+    "speechText": "bowsprit. Definition: A long pole projecting forward from the front of a sailing ship, used to support sails and their rigging. In this passage, the bowsprit absurdly gets mixed up with the rudder at the back of the ship.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "8aded49f93758c646de54a3116cb9a2b10d93bbc2fb7d84d94b02c83590dbc86"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-03-circumference-reviewed-20260920.m4a": {
+    "speechText": "circumference. Definition: The distance around a circle or a round object. In this passage, Fogg travels around the circumference of Earth, which spans 360 degrees.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "e54d20e19683c2a8e4bedc01c316dd462f9236dead3fe4bff9e4bfd17bc5284b"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-03-meridian-reviewed-20260920.m4a": {
+    "speechText": "meridian. Definition: An imaginary north-to-south line through a place on Earth. In this passage, counting the sun’s passages across the meridian helps explain the day difference.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "44470d53ae45f9c41443ae980b61e8cd8611c720a8210530173e26300eba0019"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-03-pecuniary-reviewed-20260920.m4a": {
+    "speechText": "pecuniary. Definition: Relating to money. In this passage, Fogg’s pecuniary gain is small after his expenses.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "46bd6330ac68679e91277373d3fb041a2ce8bb13ca953cea3bd48363dd18aad3"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-04-stupefying-reviewed-20260920.m4a": {
+    "speechText": "stupefying. Definition: Making someone dull, dazed, or unable to think clearly. In this passage, Muir calls excessive work stupefying.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "df1f2d154ca8b0160c79dcb8ff139d134958d0154d92e3eead41580a2c20b795"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-04-chaparral-reviewed-20260920.m4a": {
+    "speechText": "chaparral. Definition: Dense growth of shrubs and small trees, especially in regions with dry summers. In this passage, people brush through chaparral while exploring wild places.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "2a5b4f81d1437f8ce17458603c53ccc432e4b76fd351f06636c3022955c697a2"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-04-sauntering-reviewed-20260920.m4a": {
+    "speechText": "sauntering. Definition: Walking slowly and without hurry. In this passage, people are sauntering through pinewoods as they enjoy nature.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "4c09fd7af403de1d68a9780451d3f96a5f7e05cf70f84f790ad325ca5c34fd3c"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-05-projection-reviewed-20260920.m4a": {
+    "speechText": "projection. Definition: A method of representing Earth’s curved surface on a flat map. In this passage, each projection preserves some features better than others.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a10e6b5590eb33b7a2eb7372f86c05ece0203eca7791e785dd29149f2baf3209"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-05-equidistant-reviewed-20260920.m4a": {
+    "speechText": "equidistant. Definition: Showing true distances along certain specified lines. In this passage, an equidistant map does not preserve every distance.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "35af13c2114b7a99d062645026d3c3bc8511d30b7b69f10a912b91e7b8e3e2df"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-05-oblique-reviewed-20260920.m4a": {
+    "speechText": "oblique. Definition: Slanting rather than parallel or at a right angle. In this passage, some regions run oblique to the Equator.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "373a1b3c3d04ef9bbd5f7b68f22927bfd4e989cf454fd3bf8ef7b4a87328b845"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-06-diverged-reviewed-20260920.m4a": {
+    "speechText": "diverged. Definition: Separated and went in different directions. In this passage, two roads diverged in the woods.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "d171197a76e6c9fe0712e86704febd19134f0107fc7210cf4e3f0b02f301ff6c"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-06-wanted-reviewed-20260920.m4a": {
+    "speechText": "wanted. Definition: Lacked or needed something. In this passage, the grassy road “wanted wear”: it seemed to need more use by travelers.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "1dc70eb498a4e153a55225853ea999269e8c33a829cbe4091a2a410e3d53423d"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-06-trodden-reviewed-20260920.m4a": {
+    "speechText": "trodden. Definition: Pressed or worn by people walking. In this passage, neither road’s leaves have been trodden black that morning.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "b88b02258c80809c654c734e5a699134b1110ca91734b7536bb13a1bf4da6e1d"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-07-void-reviewed-20260920.m4a": {
+    "speechText": "void. Definition: Completely lacking something. In this passage, no part of the river is void of interest.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "7da9dadcb6cab11f375509ee8f40653cc746e9ec5a9fcb3cb86aaa6ac33b8a84"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-07-reperusal-reviewed-20260920.m4a": {
+    "speechText": "reperusal. Definition: A second or repeated reading. In this passage, every reperusal of the river reveals something worth noticing.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "301f27b9af0168f2a283193bc03615f3830966e5542b83beaa4e5451aefa6ce6"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-07-grimmest-reviewed-20260920.m4a": {
+    "speechText": "grimmest. Definition: Most alarming or frighteningly serious. In this passage, the river’s signs are the grimmest reading because they can warn a pilot of deadly dangers.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "373d92df426d5bef1ff2d7e622a856aaf75e6d24bff2a07b2f61c24647695480"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-08-augmentation-reviewed-20260920.m4a": {
+    "speechText": "augmentation. Definition: An addition that improves or increases something. In this passage, augmentation systems improve the accuracy of a position.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "de588bf0d3157e7be79ba510ac3e63fd397a7968885afaf295edeb660beeefd4"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-08-degrade-reviewed-20260920.m4a": {
+    "speechText": "degrade. Definition: Make something less accurate or effective. In this passage, blocked signals can degrade GPS accuracy.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "a0a05cd80a09d3d6e04c7e6264023652c1406c4c61ab13d4137570349cb09c09"
+  },
+  "/audio/mapguess/kokoro-heart/mapguess-08-comply-reviewed-20260920.m4a": {
+    "speechText": "comply. Definition: Act according to a rule or requirement. In this passage, poorly designed devices may not comply with GPS specifications.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "dec755521bb5278c7d2b8aaa489816a26ebb0754f3d43b6ece53ad91d57c61ae"
+  }
+}

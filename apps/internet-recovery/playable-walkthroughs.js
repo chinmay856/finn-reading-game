@@ -69,7 +69,7 @@ function canonicalDeck(siteId) {
       }),
       challengingWords: Object.freeze(record.vocabulary.map((entry) => Object.freeze({
         audioSrc: STATIC_VOCABULARY_AUDIO_SITE_IDS.has(siteId)
-          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh", "searchish", "amaze-on", "viewtube", "spotty-fi"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
+          ? `/audio/${siteId}/kokoro-heart/${record.id}-${entry.word.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "")}${["wikiwhy", "faceplace", "threadit", "mycorner", "yahuh", "searchish", "amaze-on", "viewtube", "spotty-fi", "mapguess"].includes(siteId) ? "-reviewed-20260920" : ""}.m4a`
           : undefined,
         word: entry.word,
         meaning: entry.definition,
@@ -145,7 +145,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a headline should summarize a story, not replace it. I should keep the reporting, sources, captions, and authors visible so readers can understand and check what happened.",
   }),
   viewtube: Object.freeze({
-    id: "viewtube", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["viewtube"].map(record => record.id)), name: "ViewTube", meter: "Viewer control", passages: viewTubePassages,
+    id: "viewtube", contentVersion: "2026-09-21-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["viewtube"].map(record => record.id)), name: "ViewTube", meter: "Viewer control", passages: viewTubePassages,
     initialFrame: frame("viewtube", "viewtube-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11].map((page) => frame("viewtube", "viewtube-anchor-v2", page))),
     phaseOneCount: 5, superFrame: frame("viewtube", "viewtube-anchor-v2", 7), checklistFrame: frame("viewtube", "viewtube-anchor-v2", 8), securedFrame: frame("viewtube", "viewtube-anchor-v2", 12), receiptFrame: frame("viewtube", "viewtube-anchor-v2", 12),
@@ -185,7 +185,7 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that easier discovery is not generated sameness. I should keep artists and credits visible, suggest rather than choose, and leave the queue and volume with the listener.",
   }),
   mapguess: Object.freeze({
-    id: "mapguess", name: "MapGuess", meter: "Destination lock", passages: mapGuessPassages,
+    id: "mapguess", contentVersion: "2026-09-21-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES.mapguess.map(record => record.id)), name: "MapGuess", meter: "Destination lock", passages: mapGuessPassages,
     initialFrame: frame("mapguess", "mapguess-anchor-v2", 1),
     repairFrames: Object.freeze([2, 3, 4, 5, 8, 10, 12, 14].map((page) => frame("mapguess", "mapguess-anchor-v2", page))),
     phaseOneCount: 4, superFrame: frame("mapguess", "mapguess-anchor-v2", 6), checklistFrame: frame("mapguess", "mapguess-anchor-v2", 7), securedFrame: frame("mapguess", "mapguess-anchor-v2", 15), receiptFrame: frame("mapguess", "mapguess-anchor-v2", 15),

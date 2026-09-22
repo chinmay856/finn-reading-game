@@ -10,7 +10,7 @@ const root = new URL('../docs/content/human-reviewed/2026-09-20/google-docs/', i
 const approval = JSON.parse(readFileSync(new URL('approval.json', root), 'utf8'));
 const normalize = text => text.replace(/\s+/gu, ' ').trim();
 
-for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi']) {
+for (const site of ['wikiwhy', 'faceplace', 'threadit', 'mycorner', 'yahuh', 'searchish', 'amaze-on', 'viewtube', 'spotty-fi', 'mapguess']) {
   test(`${site}: effective content matches the approved Google Doc revision exactly`, () => {
     const raw = readFileSync(new URL(`${site}.json`, root), 'utf8');
     const doc = JSON.parse(raw);
@@ -88,4 +88,25 @@ test('final packets preserve colon answer keys, vocabulary playback, verse, and 
     assert.deepEqual(mission.replacedPassageIds, mission.passages.map(p => p.id));
     assert.equal(mission.phaseOneCount, 5);
   }
+});
+
+test('MapGuess imports the exact final Treasure Island sentence and replacement IDs', () => {
+  const mission = PLAYABLE_WALKTHROUGHS.mapguess;
+  assert.equal(mission.contentVersion, '2026-09-21-reviewed-docs');
+  assert.deepEqual(mission.replacedPassageIds, mission.passages.map(passage => passage.id));
+  assert.equal(mission.passages.length, 8);
+  assert.equal(mission.passages[0].paragraphs.at(-1), '“You,” replied the doctor; “for you cannot hold your tongue. We are not the only men who know of this paper.”');
+  assert.equal(mission.passages[0].challengingWords[0].speechSentence, 'In this passage, soundings help a ship approach the island safely.');
+  assert.equal(mission.passages[0].comprehension.choices.find(choice => choice.correct).text, 'Knowing the destination does not remove the danger of others learning their plan.');
+  assert.ok(mission.passages.every(passage => passage.challengingWords.every(card => card.audioSrc.endsWith('-reviewed-20260920.m4a'))));
+});
+
+
+test('ViewTube follows the current Google Doc order including both replacements', () => {
+  const mission = PLAYABLE_WALKTHROUGHS.viewtube;
+  assert.equal(mission.contentVersion, '2026-09-21-reviewed-docs');
+  assert.deepEqual(mission.passages.map(p => p.title), [
+    'The Photoplay', 'Hamlet', 'A Click Doesn’t Mean You Liked It', 'Fahrenheit 451',
+    'Beyond Likes and Watchtime', '1984', 'Heads Up', 'Mindfulness for Your Health',
+  ]);
 });

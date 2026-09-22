@@ -142,5 +142,41 @@
     "voice": "af_heart",
     "speed": 0.95,
     "sha256": "209528868d49b86a9d44daabb17f1a5b4b8d4c5a4ea928868e0d3d45ab9da4cb"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-03-curation-reviewed-20260920.m4a": {
+    "speechText": "curation. Definition: Selecting and organizing content for an audience. In this passage, curation means choosing which videos to recommend to each viewer.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "d9f0f98a4dc6d87788991e82447089d5d847cd6547a247bb3d6e54ff9a396633"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-03-transparency-reviewed-20260920.m4a": {
+    "speechText": "transparency. Definition: Openness about how something works or how decisions are made. In this passage, transparency means explaining how YouTube chooses its recommendations.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "0d4bdccc1743c98026f75c17a53550429304e66954d0b7ce8d3ce5002c474c63"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-03-signals-reviewed-20260920.m4a": {
+    "speechText": "signals. Definition: Pieces of information used as clues to make a prediction or decision. In this passage, clicks and watchtime are signals about what viewers might find satisfying.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "7b56946c850912b7d9a706b941771c1b6ded05d1978f2122aa0920993c7b79f0"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-05-classifiers-reviewed-20260920.m4a": {
+    "speechText": "classifiers. Definition: Systems that sort information into categories based on particular characteristics. In this passage, classifiers help identify videos as authoritative or borderline.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "fdb59e3b88eaa8ff492cfb4e5d47c26efe9a8295f827b5b4b2866be82db93777"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-05-authoritative-reviewed-20260920.m4a": {
+    "speechText": "authoritative. Definition: Credible and supported by reliable knowledge or expertise. In this passage, authoritative videos provide information that evaluators judge to be trustworthy.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "af203e4ad74f80cea4f85c7c826e3b9f584740bc1dd69715c51633d1116abaac"
+  },
+  "/audio/viewtube/kokoro-heart/viewtube-05-demoted-reviewed-20260920.m4a": {
+    "speechText": "demoted. Definition: Moved to a lower rank or position. In this passage, borderline videos are demoted so the system recommends them less prominently.",
+    "voice": "af_heart",
+    "speed": 0.95,
+    "sha256": "77e0bdd378f40482cdaa45f545fc51c75ebb375edaa54443e10c82d5411b5e97"
   }
 }
