@@ -32,9 +32,9 @@ const referenceDefs = extractedReferenceDefs.replaceAll(
 );
 const art = {
   paper: path.relative(outputDirectory, path.join(artDirectory, "album-paper-v4.svg")),
-  satellite: path.relative(outputDirectory, path.join(artDirectory, "album-satellite-v4.png")),
+  satellite: path.relative(outputDirectory, path.join(artDirectory, "album-satellite-v5.png")),
   band: path.relative(outputDirectory, path.join(artDirectory, "album-band-v4.png")),
-  artist: path.relative(outputDirectory, path.join(artDirectory, "artist-portrait-v1.png")),
+  artist: path.relative(outputDirectory, path.join(artDirectory, "artist-portrait-v2.png")),
 };
 
 const states = [
