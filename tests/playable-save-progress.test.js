@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createMissionSequenceState, skipMissionPassage, submitMissionReflection } from "../apps/internet-recovery/mission-sequence-state.js";
+import { acceptMissionReading, acknowledgeMissionMidpoint, createMissionSequenceState, recordMissionComprehension, skipMissionPassage, submitMissionReflection } from "../apps/internet-recovery/mission-sequence-state.js";
+import { PLAYABLE_WALKTHROUGHS } from "../apps/internet-recovery/playable-walkthroughs.js";
 import {
   ensurePlayableProgressProfile,
   launcherMissionProgress,
@@ -26,6 +27,11 @@ function advance(state, count) {
     if (next.phase === "midpoint-required") next = { ...next, phase: "lock-sequence" };
   }
   return next;
+}
+
+function readPassage(state, passageId) {
+  const accepted = acceptMissionReading(state, { passageId }).state;
+  return recordMissionComprehension(accepted, { passageId, correct: true }).state;
 }
 
 test("first-run progress resumes from the canonical save lane", () => {
@@ -94,6 +100,20 @@ test("restarting a replay clears its prior checkpoint", () => {
   assert.equal(restorePlayableMissionSequence(save, mission, { replay: true }), null);
 });
 
+test("shortened MyCorner sequence reaches final reflection and completion", () => {
+  const playable = PLAYABLE_WALKTHROUGHS.mycorner;
+  let state = createMissionSequenceState({ phaseOneCount: playable.phaseOneCount, totalPassages: playable.passages.length });
+  for (const passage of playable.passages) {
+    if (state.phase === "midpoint-required") state = acknowledgeMissionMidpoint(state).state;
+    state = readPassage(state, passage.id);
+  }
+  assert.equal(state.index, 8);
+  assert.equal(state.phase, "reflection-required");
+  const completed = submitMissionReflection(state, { reflection: "Keep identity checks and pause before money." }).state;
+  assert.equal(completed.phase, "completed");
+  assert.equal(completed.receipt.completedPassageCount, 8);
+});
+
 test("a saved sequence survives a reviewed passage demotion", () => {
   const revisedMission = Object.freeze({
     id: "wikiwhy",
@@ -135,6 +155,42 @@ test("a saved sequence survives a reviewed passage demotion", () => {
     "wikiwhy-06", "wikiwhy-07", "wikiwhy-08", "wikiwhy-09",
   ]);
   assert.equal(restored.completedPassageIds.includes("wikiwhy-04"), false);
+});
+
+test("demotion migration keeps a retained pending reading and does not repeat midpoint", () => {
+  const mycorner = Object.freeze({
+    id: "mycorner",
+    passages: Object.freeze([1, 2, 3, 4, 5, 6, 7, 9].map(number => Object.freeze({ id: `mycorner-${String(number).padStart(2, "0")}` }))),
+    demotedPassageIds: Object.freeze(["mycorner-08"]),
+    legacyPassageCounts: Object.freeze([9]),
+    phaseOneCount: 4,
+  });
+  const spotty = Object.freeze({
+    id: "spotty-fi",
+    passages: Object.freeze([1, 3, 4, 5, 6, 7, 8, 9, 10].map(number => Object.freeze({ id: `spotty-fi-${String(number).padStart(2, "0")}` }))),
+    demotedPassageIds: Object.freeze(["spotty-fi-02"]),
+    legacyPassageCounts: Object.freeze([10]),
+    phaseOneCount: 5,
+  });
+  const save = profile();
+  save.missions.mycorner = { sequence: {
+    completedPassageIds: Array.from({ length: 8 }, (_, i) => `mycorner-${String(i + 1).padStart(2, "0")}`),
+    skippedPassageIds: [], pendingPassageId: "mycorner-09", index: 8, frame: 8,
+    phase: "lock-sequence", phaseOneCount: 4, totalPassages: 9, version: 2,
+  } };
+  save.missions["spotty-fi"] = { sequence: {
+    completedPassageIds: ["spotty-fi-01", "spotty-fi-02", "spotty-fi-03", "spotty-fi-04", "spotty-fi-05", "spotty-fi-06"],
+    skippedPassageIds: [], pendingPassageId: "spotty-fi-07", index: 6, frame: 6,
+    phase: "lock-sequence", phaseOneCount: 5, totalPassages: 10, version: 2,
+  } };
+
+  const restoredMyCorner = restorePlayableMissionSequence(save, mycorner);
+  assert.equal(restoredMyCorner.pendingPassageId, "mycorner-09");
+  assert.equal(restoredMyCorner.index, 7);
+  const restoredSpotty = restorePlayableMissionSequence(save, spotty);
+  assert.equal(restoredSpotty.index, 5);
+  assert.equal(restoredSpotty.pendingPassageId, "spotty-fi-07");
+  assert.equal(restoredSpotty.phase, "lock-sequence");
 });
 
 

@@ -125,9 +125,9 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a positive experience does not require a praise-only reality. I should keep the original photo, comments, and context while letting the happy moment stay happy.",
   }),
   mycorner: Object.freeze({
-    id: "mycorner", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["mycorner"].map(record => record.id)), name: "MyCorner", meter: "Identity checks", passages: myCornerPassages,
+    id: "mycorner", contentVersion: "2026-09-21-reviewed-docs-v2", replacedPassageIds: Object.freeze([]), demotedPassageIds: Object.freeze(["mycorner-08"]), legacyPassageCounts: Object.freeze([9]), name: "MyCorner", meter: "Identity checks", passages: myCornerPassages,
     initialFrame: frame("mycorner", "mycorner-anchor-v3", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 8, 9, 10, 11, 12].map((page) => frame("mycorner", "mycorner-anchor-v3", page))),
+    repairFrames: Object.freeze([2, 3, 4, 5, 8, 9, 10, 11].map((page) => frame("mycorner", "mycorner-anchor-v3", page))),
     phaseOneCount: 4, superFrame: frame("mycorner", "mycorner-anchor-v3", 6), checklistFrame: frame("mycorner", "mycorner-anchor-v3", 7), securedFrame: frame("mycorner", "mycorner-anchor-v3", 12), receiptFrame: frame("mycorner", "mycorner-anchor-v3", 12),
     midpoint: midpoint("I CLEANED UP THE PROFILES!", "I asked AUTO to help with the profiles in the background. I told him to tidy the details so people could tell who they were talking to.", "PROFILE CLARITY COMPLETE", "MISSING DETAILS GENERATED\n\nCONFLICTS REMOVED\n\nEVERY PROFILE NOW LOOKS EXACTLY LIKE WHO IT SAYS IT IS\n\nIDENTITY VERIFIED BY CONSISTENCY", "MATCHING DETAILS AREN'T IDENTITY PROOF", "AUTO made the profile look consistent without checking who controls it. Let's check the person, keep the real account history, contact the person using details you already trust, and pause before ever sending money."),
     completionChinmay: completionChinmay("I CONFUSED CONSISTENCY WITH PROOF", "I asked AUTO to fill in confusing profiles, and he made invented details look trustworthy. I should have required identity checks before polishing anything."),
@@ -175,9 +175,9 @@ export const PLAYABLE_WALKTHROUGHS = Object.freeze({
     autoLesson: "I learned that a faster answer should not replace the search. I should keep AI accurate and optional, label paid results, show real options, and leave the original query editable.",
   }),
   "spotty-fi": Object.freeze({
-    id: "spotty-fi", contentVersion: "2026-09-20-reviewed-docs", replacedPassageIds: Object.freeze(REVIEWED_GOOGLE_DOC_PASSAGES["spotty-fi"].map(record => record.id)), name: "Spotty-Fi", meter: "Music recovery", passages: spottyFiPassages,
+    id: "spotty-fi", contentVersion: "2026-09-21-reviewed-docs-v2", replacedPassageIds: Object.freeze([]), demotedPassageIds: Object.freeze(["spotty-fi-02"]), legacyPassageCounts: Object.freeze([10]), name: "Spotty-Fi", meter: "Music recovery", passages: spottyFiPassages,
     initialFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 1),
-    repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11, 12, 13].map((page) => frame("spotty-fi", "spotty-fi-anchor-v1", page))),
+    repairFrames: Object.freeze([2, 3, 4, 5, 6, 9, 10, 11, 12].map((page) => frame("spotty-fi", "spotty-fi-anchor-v1", page))),
     phaseOneCount: 5, superFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 7), checklistFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 8), securedFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 13), receiptFrame: frame("spotty-fi", "spotty-fi-anchor-v1", 13),
     midpoint: midpoint("I SIMPLIFIED MUSIC DISCOVERY!", "I’ve been trying to make music discovery easier too. I told AUTO to simplify it and make sure everyone always has something good to hear.", "INFINITE DISCOVERY ENABLED", "PERFECT MUSIC GENERATED\n\nARTISTS AND CREDITS REMOVED AS EXTRA DETAILS\n\nQUEUE CHOSEN AUTOMATICALLY\n\nVOLUME SET FOR MAXIMUM ENJOYMENT", "THERE'S NOBODY LEFT TO DISCOVER", "AUTO made discovery simpler by removing the creators and the listener's choices. Let's restore the artists, credits, queue controls, and volume control."),
     completionChinmay: completionChinmay("I MADE DISCOVERY SOUND LIKE CONTROL", "I wanted people to find something good, but I didn't say that the artist and listener still matter. I should have asked AUTO to suggest—not generate, choose, or set the volume."),

@@ -19,8 +19,8 @@
     },
     "mycorner": {
       "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
-      "sha256": "cfd9cc5949915407a1b07341ef1a08838e7ead7719dd39b3ad840e88078ea7e9"
+      "revisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
+      "sha256": "2fb7a478ef33a6b21fcfe53b80c2c6ec2ab4404daa263f3aeb70b5689fe487ef"
     },
     "yahuh": {
       "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
@@ -44,8 +44,8 @@
     },
     "spotty-fi": {
       "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
+      "revisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "sha256": "f89763e81fdafd49130c762f5d01f9d80911d42127fee52323e9f73b893f1398"
     },
     "mapguess": {
       "documentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
@@ -59,5 +59,6 @@
   "mapguessApproval": "User explicitly authorized exact import of the MapGuess Google Doc packet on 2026-09-21. Preserve the pending FacePlace note and import all eight selected readings, vocabulary, quick checks, and site connections unchanged.",
   "vocabularyDeduplicationApproval": "2026-09-21: User approved testimony (WikiWhy 10), scornful (Searchish 3), enterprises (Yahuh 2), vaudeville (ViewTube 1), and manifestation (Spotty-Fi 5), keeping each original word in its other passage. Google Docs updated and exact unrelated text preserved.",
   "faceplaceEditorialNoteCorrection": "User authorized removal of the Little Women word-count note from exact spoken text and Google Doc. Every other paragraph verified unchanged.",
-  "currentDocsAuthority": "2026-09-21: User confirmed all current Google Docs are the source of truth and authorized both ViewTube replacements; flag only anomalies such as editorial notes in spoken text."
+  "currentDocsAuthority": "2026-09-21: User confirmed all current Google Docs are the source of truth and authorized both ViewTube replacements; flag only anomalies such as editorial notes in spoken text.",
+  "removedExtraReadings": "2026-09-21: User removed MyCorner passage 8 (I’m Nobody! Who are you?) and Spotty-Fi passage 2 (I Hear America Singing). Retain every other reading in relative order with unchanged spoken text, vocabulary, and checks. Renumber Doc headings and update on-screen repair notes. Final reading completes final repair; no extra sealing passage."
 }

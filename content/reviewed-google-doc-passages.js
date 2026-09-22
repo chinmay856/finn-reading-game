@@ -12,8 +12,8 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
   },
   "mycorner": {
     "documentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-    "revisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
-    "sha256": "cfd9cc5949915407a1b07341ef1a08838e7ead7719dd39b3ad840e88078ea7e9"
+    "revisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
+    "sha256": "2fb7a478ef33a6b21fcfe53b80c2c6ec2ab4404daa263f3aeb70b5689fe487ef"
   },
   "yahuh": {
     "documentId": "1O7ViD5rVpD4imEn6CiWKyG6u2xiW7l_hwd3n3HfTWAE",
@@ -37,8 +37,8 @@ export const REVIEWED_GOOGLE_DOC_SOURCES = {
   },
   "spotty-fi": {
     "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-    "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-    "sha256": "069a25e53ba7ada398924d208be89e5daf3137df81c9d1c40f778552cd3ac154"
+    "revisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+    "sha256": "f89763e81fdafd49130c762f5d01f9d80911d42127fee52323e9f73b893f1398"
   },
   "mapguess": {
     "documentId": "10psVqssDAHfoSdgoMZ0kaAeQ73a3yfkH9xX7IPYo21U",
@@ -1731,7 +1731,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Restore song, contact methods, and Profile Details.",
       "vocabulary": [
         {
@@ -1829,7 +1829,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Restore Latest Bulletins and history.",
       "vocabulary": [
         {
@@ -1975,7 +1975,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Restore Profile Blurbs.",
       "vocabulary": [
         {
@@ -2068,7 +2068,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Restore the known profile.",
       "vocabulary": [
         {
@@ -2164,7 +2164,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "First reading after Auto’s enhancement: check the person.",
       "vocabulary": [
         {
@@ -2262,7 +2262,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Check account history.",
       "vocabulary": [
         {
@@ -2360,7 +2360,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
       "onScreen": "Verify another way.",
       "vocabulary": [
         {
@@ -2405,90 +2405,6 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
         "distractors": [
           "The new claimant wrote all the letters, so his identity is settled.",
           "The two different letter collections prove that neither claimant can be genuine."
-        ],
-        "correctFeedback": "Yes. That answer is supported by the passage.",
-        "tryAgainFeedback": "Take another look at the passage, then choose again."
-      }
-    },
-    {
-      "id": "mycorner-08",
-      "title": "I’m Nobody! Who are you?",
-      "reviewedTitle": "I’m Nobody! Who are you?",
-      "form": "human-reviewed reading",
-      "paragraphs": [
-        "The poem “I’m Nobody! Who are you?” by Emily Dickinson.",
-        "I’m nobody! Who are you?",
-        "Are you nobody, too?",
-        "Then there’s a pair of us—don’t tell!",
-        "They’d banish us, you know.",
-        "How dreary to be somebody!",
-        "How public, like a frog",
-        "To tell your name the livelong day",
-        "To an admiring bog!"
-      ],
-      "displayLines": [
-        "The poem “I’m Nobody! Who are you?” by Emily Dickinson.",
-        "I’m nobody! Who are you?",
-        "Are you nobody, too?",
-        "Then there’s a pair of us—don’t tell!",
-        "They’d banish us, you know.",
-        "How dreary to be somebody!",
-        "How public, like a frog",
-        "To tell your name the livelong day",
-        "To an admiring bog!"
-      ],
-      "spokenWordCount": 52,
-      "source": {
-        "label": "I’m Nobody! Who are you?",
-        "url": "https://docs.google.com/document/d/1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0"
-      },
-      "reviewStatus": "second-human-approved-2026-09-20",
-      "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
-      "onScreen": "Pause before ever sending money.",
-      "vocabulary": [
-        {
-          "word": "banish",
-          "definition": "Send someone away or exclude them.",
-          "sentence": "In this passage, the speaker jokes that others would banish the pair.",
-          "playbackPhrase": "In this passage, the speaker jokes that others would banish the pair.",
-          "properNoun": false
-        },
-        {
-          "word": "dreary",
-          "definition": "Dull, tiresome, or depressing.",
-          "sentence": "In this passage, the speaker finds public importance dreary.",
-          "playbackPhrase": "In this passage, the speaker finds public importance dreary.",
-          "properNoun": false
-        },
-        {
-          "word": "bog",
-          "definition": "An area of wet, spongy ground.",
-          "sentence": "In this passage, the frog announces itself to an admiring bog.",
-          "playbackPhrase": "In this passage, the frog announces itself to an admiring bog.",
-          "properNoun": false
-        }
-      ],
-      "comprehension": {
-        "prompt": "Why does the speaker compare being “somebody” to a frog?",
-        "orderedChoices": [
-          {
-            "text": "Both need solitude before they can find a companion.",
-            "correct": false
-          },
-          {
-            "text": "Both keep announcing themselves to an audience.",
-            "correct": true
-          },
-          {
-            "text": "Both conceal their names to avoid being excluded.",
-            "correct": false
-          }
-        ],
-        "correct": "Both keep announcing themselves to an audience.",
-        "distractors": [
-          "Both need solitude before they can find a companion.",
-          "Both conceal their names to avoid being excluded."
         ],
         "correctFeedback": "Yes. That answer is supported by the passage.",
         "tryAgainFeedback": "Take another look at the passage, then choose again."
@@ -2540,8 +2456,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "second-human-approved-2026-09-20",
       "sourceDocumentId": "1ReBySeltb9EJ1uYaLnhUmM7L36v2rlvATnxto_BUCR0",
-      "sourceRevisionId": "ANLCKQlnVERzTjJ806903gONoiFYdJz58gdRfKhqMda2o4c5ISs9DDMh4K9eCSWE3BWp8alw9Gx2RX0jhWM15UYM9kPnWLNiWivT347GPew",
-      "onScreen": "Complete the checks and reveal the secured profile.",
+      "sourceRevisionId": "ANLCKQmwlEhUC_uFVXxkn-_GScCzod6xT3nLZsPDioohKVshNcZecgW2PnrM3PpNZnOrj_QcQKL-gcKepPjZS25fyRYpbcMrJ1nt5O_4jTo",
+      "onScreen": "Pause before ever sending money and reveal the secured profile.",
       "vocabulary": [
         {
           "word": "tactics",
@@ -6133,7 +6049,7 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
       "onScreen": "Restore contributor credits.",
       "vocabulary": [
         {
@@ -6184,96 +6100,6 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       }
     },
     {
-      "id": "spotty-fi-02",
-      "title": "I Hear America Singing",
-      "reviewedTitle": "I Hear America Singing",
-      "form": "human-reviewed reading",
-      "paragraphs": [
-        "“I Hear America Singing,” a poem by Walt Whitman.",
-        "I hear America singing, the varied carols I hear,",
-        "Those of mechanics, each one singing his as it should be blithe and strong,",
-        "The carpenter singing his as he measures his plank or beam,",
-        "The mason singing his as he makes ready for work, or leaves off work,",
-        "The boatman singing what belongs to him in his boat, the deckhand singing on the steamboat deck,",
-        "The shoemaker singing as he sits on his bench, the hatter singing as he stands,",
-        "The wood-cutter’s song, the ploughboy’s on his way in the morning, or at noon intermission or at sundown,",
-        "The delicious singing of the mother, or of the young wife at work, or of the girl sewing or washing,",
-        "Each singing what belongs to him or her and to none else,",
-        "The day what belongs to the day—at night the party of young fellows, robust, friendly,",
-        "Singing with open mouths their strong melodious songs."
-      ],
-      "displayLines": [
-        "“I Hear America Singing,” a poem by Walt Whitman.",
-        "I hear America singing, the varied carols I hear,",
-        "Those of mechanics, each one singing his as it should be blithe and strong,",
-        "The carpenter singing his as he measures his plank or beam,",
-        "The mason singing his as he makes ready for work, or leaves off work,",
-        "The boatman singing what belongs to him in his boat, the deckhand singing on the steamboat deck,",
-        "The shoemaker singing as he sits on his bench, the hatter singing as he stands,",
-        "The wood-cutter’s song, the ploughboy’s on his way in the morning, or at noon intermission or at sundown,",
-        "The delicious singing of the mother, or of the young wife at work, or of the girl sewing or washing,",
-        "Each singing what belongs to him or her and to none else,",
-        "The day what belongs to the day—at night the party of young fellows, robust, friendly,",
-        "Singing with open mouths their strong melodious songs."
-      ],
-      "spokenWordCount": 162,
-      "source": {
-        "label": "I Hear America Singing",
-        "url": "https://docs.google.com/document/d/1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8"
-      },
-      "reviewStatus": "human-approved-2026-09-20",
-      "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Restore listener choice in discovery.",
-      "vocabulary": [
-        {
-          "word": "blithe",
-          "definition": "Cheerful and carefree.",
-          "sentence": "In this passage, the mechanics’ singing is blithe and strong.",
-          "playbackPhrase": "In this passage, the mechanics’ singing is blithe and strong.",
-          "properNoun": false
-        },
-        {
-          "word": "intermission",
-          "definition": "A pause between periods of activity.",
-          "sentence": "In this passage, the ploughboy has an intermission at noon.",
-          "playbackPhrase": "In this passage, the ploughboy has an intermission at noon.",
-          "properNoun": false
-        },
-        {
-          "word": "robust",
-          "definition": "Strong and full of energy.",
-          "sentence": "In this passage, the robust young men sing together at night.",
-          "playbackPhrase": "In this passage, the robust young men sing together at night.",
-          "properNoun": false
-        }
-      ],
-      "comprehension": {
-        "prompt": "How does the poem connect the singers?",
-        "orderedChoices": [
-          {
-            "text": "They perform the same song despite doing different jobs.",
-            "correct": false
-          },
-          {
-            "text": "Their different songs become part of a shared picture of America.",
-            "correct": true
-          },
-          {
-            "text": "They leave their work behind before their singing can begin.",
-            "correct": false
-          }
-        ],
-        "correct": "Their different songs become part of a shared picture of America.",
-        "distractors": [
-          "They perform the same song despite doing different jobs.",
-          "They leave their work behind before their singing can begin."
-        ],
-        "correctFeedback": "Yes. That answer is supported by the passage.",
-        "tryAgainFeedback": "Take another look at the passage, then choose again."
-      }
-    },
-    {
       "id": "spotty-fi-03",
       "title": "The Gramophone",
       "reviewedTitle": "The Gramophone — Making a recording repeatable",
@@ -6308,8 +6134,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Restore artist names and the creator profile.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Restore listener choice in discovery.",
       "vocabulary": [
         {
           "word": "electroplated",
@@ -6440,8 +6266,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Restore creator details and collaboration information.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Restore artist names and the creator profile.",
       "vocabulary": [
         {
           "word": "melancholy",
@@ -6515,8 +6341,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Restore track titles, artwork, and playback information.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Restore creator details and collaboration information.",
       "vocabulary": [
         {
           "word": "evoke",
@@ -6598,8 +6424,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "After Auto’s over-fix: show the artist.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Restore track titles, artwork, and playback information.",
       "vocabulary": [
         {
           "word": "harmonics",
@@ -6698,8 +6524,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Show the credits.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "After AUTO’s over-fix: show the artist.",
       "vocabulary": [
         {
           "word": "surfeiting",
@@ -6786,8 +6612,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Let users choose.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Show the credits.",
       "vocabulary": [
         {
           "word": "immediate",
@@ -6870,8 +6696,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Let users set the volume.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Let users choose.",
       "vocabulary": [
         {
           "word": "astuteness",
@@ -6960,8 +6786,8 @@ export const REVIEWED_GOOGLE_DOC_PASSAGES = {
       },
       "reviewStatus": "human-approved-2026-09-20",
       "sourceDocumentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
-      "sourceRevisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
-      "onScreen": "Keep artists, credits, and listener controls visible.",
+      "sourceRevisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
+      "onScreen": "Let users set the volume.",
       "vocabulary": [
         {
           "word": "tangible",

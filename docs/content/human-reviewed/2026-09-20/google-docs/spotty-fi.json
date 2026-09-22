@@ -1,7 +1,7 @@
 {
   "documentId": "1YhgPIFiAKMCvrNgMuqVyG8ZN4oO5wtvhxgGHj-oHdH8",
   "title": "Spotty-Fi — Human Review Packet",
-  "revisionId": "ANLCKQnzJnMrzCPwW8NexN-tKMcpBx3b1YzPmRzq3HIlqcltFTvFKkLTgD_zrfK2coYdLB6TnGIYDI2xU1ORWaGSQdeA-hKnMQV0Z1y3JzM",
+  "revisionId": "ANLCKQmJlBMgOSr3KFJuQpa99KG_e6ssHkrw8MYTCqVrKcDopFqyNC6_R9Sz8xMsewVzh0-pABc-XCwbB1_w-l9t1NWpOv1iVDLOR9vZv8M",
   "tabId": "t.0",
   "paragraphs": [
     {
@@ -341,1913 +341,1689 @@
       "isListItem": false
     },
     {
-      "text": "Passage 2 — I Hear America Singing",
+      "text": "Passage 2 — The Gramophone — Making a recording repeatable",
       "startIndex": 2084,
-      "endIndex": 2118,
+      "endIndex": 2142,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
       "text": "On screen: Restore listener choice in discovery.",
-      "startIndex": 2119,
-      "endIndex": 2167,
+      "startIndex": 2143,
+      "endIndex": 2191,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 2168,
-      "endIndex": 2197,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "“I Hear America Singing,” a poem by Walt Whitman.",
-      "startIndex": 2198,
-      "endIndex": 2247,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "I hear America singing, the varied carols I hear,",
-      "startIndex": 2248,
-      "endIndex": 2297,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Those of mechanics, each one singing his as it should be blithe and strong,",
-      "startIndex": 2298,
-      "endIndex": 2373,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The carpenter singing his as he measures his plank or beam,",
-      "startIndex": 2374,
-      "endIndex": 2433,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The mason singing his as he makes ready for work, or leaves off work,",
-      "startIndex": 2434,
-      "endIndex": 2503,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The boatman singing what belongs to him in his boat, the deckhand singing on the steamboat deck,",
-      "startIndex": 2504,
-      "endIndex": 2600,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The shoemaker singing as he sits on his bench, the hatter singing as he stands,",
-      "startIndex": 2601,
-      "endIndex": 2680,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The wood-cutter’s song, the ploughboy’s on his way in the morning, or at noon intermission or at sundown,",
-      "startIndex": 2681,
-      "endIndex": 2786,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The delicious singing of the mother, or of the young wife at work, or of the girl sewing or washing,",
-      "startIndex": 2787,
-      "endIndex": 2887,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Each singing what belongs to him or her and to none else,",
-      "startIndex": 2888,
-      "endIndex": 2945,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "The day what belongs to the day—at night the party of young fellows, robust, friendly,",
-      "startIndex": 2946,
-      "endIndex": 3032,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Singing with open mouths their strong melodious songs.",
-      "startIndex": 3033,
-      "endIndex": 3087,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Vocabulary",
-      "startIndex": 3088,
-      "endIndex": 3098,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "blithe — Cheerful and carefree.",
-      "startIndex": 3099,
-      "endIndex": 3130,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the mechanics’ singing is blithe and strong.”",
-      "startIndex": 3131,
-      "endIndex": 3194,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "intermission — A pause between periods of activity.",
-      "startIndex": 3195,
-      "endIndex": 3246,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the ploughboy has an intermission at noon.”",
-      "startIndex": 3247,
-      "endIndex": 3308,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "robust — Strong and full of energy.",
-      "startIndex": 3309,
-      "endIndex": 3344,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "“In this passage, the robust young men sing together at night.”",
-      "startIndex": 3345,
-      "endIndex": 3408,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Quick check",
-      "startIndex": 3409,
-      "endIndex": 3420,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_2",
-      "isListItem": false
-    },
-    {
-      "text": "How does the poem connect the singers?",
-      "startIndex": 3421,
-      "endIndex": 3459,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "A. They perform the same song despite doing different jobs.",
-      "startIndex": 3460,
-      "endIndex": 3519,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "B. Their different songs become part of a shared picture of America.",
-      "startIndex": 3520,
-      "endIndex": 3588,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "C. They leave their work behind before their singing can begin.",
-      "startIndex": 3589,
-      "endIndex": 3652,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Correct answer: B.",
-      "startIndex": 3653,
-      "endIndex": 3671,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Passage 3 — The Gramophone — Making a recording repeatable",
-      "startIndex": 3672,
-      "endIndex": 3730,
-      "tabId": "t.0",
-      "namedStyleType": "HEADING_1",
-      "isListItem": false
-    },
-    {
-      "text": "On screen: Restore artist names and the creator profile.",
-      "startIndex": 3731,
-      "endIndex": 3787,
-      "tabId": "t.0",
-      "namedStyleType": "NORMAL_TEXT",
-      "isListItem": false
-    },
-    {
-      "text": "Exact complete spoken passage",
-      "startIndex": 3788,
-      "endIndex": 3817,
+      "startIndex": 2192,
+      "endIndex": 2221,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from the Library of Congress essay “The Gramophone.” Inventor Emile Berliner is trying to make copies of a master record that people can play repeatedly.",
-      "startIndex": 3818,
-      "endIndex": 3982,
+      "startIndex": 2222,
+      "endIndex": 2386,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "The next problem facing the inventor was finding a method for reproducing the master zinc record. First it had to be electroplated. The result was a metal reverse, or negative, record whose grooves would project outward instead of inward. This negative could then be used to stamp positive copies in a substance that would hold the impression exactly.",
-      "startIndex": 3983,
-      "endIndex": 4334,
+      "startIndex": 2387,
+      "endIndex": 2738,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Berliner tried numerous substances, including plaster of Paris and sealing wax, with poor results. Finally it occurred to him that a new substance on the market called celluloid might be the answer. He contacted the inventor of celluloid, J. W. Hyatt, who felt certain that he could provide exact duplicates of Berliner’s records.",
-      "startIndex": 4335,
-      "endIndex": 4665,
+      "startIndex": 2739,
+      "endIndex": 3069,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "At first it indeed seemed that celluloid would be very successful, but it soon became clear that the material could not withstand the pressure of repeated playings using big, hard steel needles under the full weight of the tone arm and horn. Berliner had to abandon celluloid. Early celluloid Berliner discs are very rare.",
-      "startIndex": 4666,
-      "endIndex": 4988,
+      "startIndex": 3070,
+      "endIndex": 3392,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Next he began contacting manufacturers of hard rubber items. It is not known which company he employed, but it is known that he had been in contact with the India Rubber Comb Company of Newark, New Jersey. Warming the rubber made it possible to stamp copies of a zinc negative.",
-      "startIndex": 4989,
-      "endIndex": 5266,
+      "startIndex": 3393,
+      "endIndex": 3670,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 5267,
-      "endIndex": 5277,
+      "startIndex": 3671,
+      "endIndex": 3681,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "electroplated — Coated with metal using an electric current.",
-      "startIndex": 5278,
-      "endIndex": 5338,
+      "startIndex": 3682,
+      "endIndex": 3742,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, the master record is electroplated to make a metal reverse.”",
-      "startIndex": 5339,
-      "endIndex": 5417,
+      "startIndex": 3743,
+      "endIndex": 3821,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "duplicates — Exact copies.",
-      "startIndex": 5418,
-      "endIndex": 5444,
+      "startIndex": 3822,
+      "endIndex": 3848,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Berliner needs duplicates that preserve the original grooves.”",
-      "startIndex": 5445,
-      "endIndex": 5525,
+      "startIndex": 3849,
+      "endIndex": 3929,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "withstand — Resist something without being damaged.",
-      "startIndex": 5526,
-      "endIndex": 5577,
+      "startIndex": 3930,
+      "endIndex": 3981,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, celluloid cannot withstand repeated playing.”",
-      "startIndex": 5578,
-      "endIndex": 5641,
+      "startIndex": 3982,
+      "endIndex": 4045,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 5642,
-      "endIndex": 5653,
+      "startIndex": 4046,
+      "endIndex": 4057,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Why does Berliner abandon celluloid?",
-      "startIndex": 5654,
-      "endIndex": 5690,
+      "startIndex": 4058,
+      "endIndex": 4094,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. It cannot be formed into a copy of the record’s grooves.",
-      "startIndex": 5691,
-      "endIndex": 5750,
+      "startIndex": 4095,
+      "endIndex": 4154,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. It reproduces the grooves but does not survive repeated playing.",
-      "startIndex": 5751,
-      "endIndex": 5818,
+      "startIndex": 4155,
+      "endIndex": 4222,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. It makes records that are too rare to sell at a profit.",
-      "startIndex": 5819,
-      "endIndex": 5877,
+      "startIndex": 4223,
+      "endIndex": 4281,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: B.",
-      "startIndex": 5878,
-      "endIndex": 5896,
+      "startIndex": 4282,
+      "endIndex": 4300,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 4 — The Solitary Reaper",
-      "startIndex": 5897,
-      "endIndex": 5928,
+      "text": "Passage 3 — The Solitary Reaper",
+      "startIndex": 4301,
+      "endIndex": 4332,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Restore creator details and collaboration information.",
-      "startIndex": 5929,
-      "endIndex": 5994,
+      "text": "On screen: Restore artist names and the creator profile.",
+      "startIndex": 4333,
+      "endIndex": 4389,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 5995,
-      "endIndex": 6024,
+      "startIndex": 4390,
+      "endIndex": 4419,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "“The Solitary Reaper,” a poem by William Wordsworth.",
-      "startIndex": 6025,
-      "endIndex": 6077,
+      "startIndex": 4420,
+      "endIndex": 4472,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Behold her, single in the field,",
-      "startIndex": 6078,
-      "endIndex": 6110,
+      "startIndex": 4473,
+      "endIndex": 4505,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Yon solitary Highland Lass!",
-      "startIndex": 6111,
-      "endIndex": 6138,
+      "startIndex": 4506,
+      "endIndex": 4533,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Reaping and singing by herself;",
-      "startIndex": 6139,
-      "endIndex": 6170,
+      "startIndex": 4534,
+      "endIndex": 4565,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Stop here, or gently pass!",
-      "startIndex": 6171,
-      "endIndex": 6197,
+      "startIndex": 4566,
+      "endIndex": 4592,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Alone she cuts and binds the grain,",
-      "startIndex": 6198,
-      "endIndex": 6233,
+      "startIndex": 4593,
+      "endIndex": 4628,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "And sings a melancholy strain;",
-      "startIndex": 6234,
-      "endIndex": 6264,
+      "startIndex": 4629,
+      "endIndex": 4659,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "O listen! for the Vale profound",
-      "startIndex": 6265,
-      "endIndex": 6296,
+      "startIndex": 4660,
+      "endIndex": 4691,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Is overflowing with the sound.",
-      "startIndex": 6297,
-      "endIndex": 6327,
+      "startIndex": 4692,
+      "endIndex": 4722,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "No Nightingale did ever chaunt",
-      "startIndex": 6328,
-      "endIndex": 6358,
+      "startIndex": 4723,
+      "endIndex": 4753,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "More welcome notes to weary bands",
-      "startIndex": 6359,
-      "endIndex": 6392,
+      "startIndex": 4754,
+      "endIndex": 4787,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Of travellers in some shady haunt,",
-      "startIndex": 6393,
-      "endIndex": 6427,
+      "startIndex": 4788,
+      "endIndex": 4822,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Among Arabian sands:",
-      "startIndex": 6428,
-      "endIndex": 6448,
+      "startIndex": 4823,
+      "endIndex": 4843,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A voice so thrilling ne’er was heard",
-      "startIndex": 6449,
-      "endIndex": 6485,
+      "startIndex": 4844,
+      "endIndex": 4880,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "In spring-time from the Cuckoo-bird,",
-      "startIndex": 6486,
-      "endIndex": 6522,
+      "startIndex": 4881,
+      "endIndex": 4917,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Breaking the silence of the seas",
-      "startIndex": 6523,
-      "endIndex": 6555,
+      "startIndex": 4918,
+      "endIndex": 4950,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Among the farthest Hebrides.",
-      "startIndex": 6556,
-      "endIndex": 6584,
+      "startIndex": 4951,
+      "endIndex": 4979,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Will no one tell me what she sings?—",
-      "startIndex": 6585,
-      "endIndex": 6621,
+      "startIndex": 4980,
+      "endIndex": 5016,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Perhaps the plaintive numbers flow",
-      "startIndex": 6622,
-      "endIndex": 6656,
+      "startIndex": 5017,
+      "endIndex": 5051,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "For old, unhappy, far-off things,",
-      "startIndex": 6657,
-      "endIndex": 6690,
+      "startIndex": 5052,
+      "endIndex": 5085,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "And battles long ago:",
-      "startIndex": 6691,
-      "endIndex": 6712,
+      "startIndex": 5086,
+      "endIndex": 5107,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Or is it some more humble lay,",
-      "startIndex": 6713,
-      "endIndex": 6743,
+      "startIndex": 5108,
+      "endIndex": 5138,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Familiar matter of to-day?",
-      "startIndex": 6744,
-      "endIndex": 6770,
+      "startIndex": 5139,
+      "endIndex": 5165,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Some natural sorrow, loss, or pain,",
-      "startIndex": 6771,
-      "endIndex": 6806,
+      "startIndex": 5166,
+      "endIndex": 5201,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "That has been, and may be again?",
-      "startIndex": 6807,
-      "endIndex": 6839,
+      "startIndex": 5202,
+      "endIndex": 5234,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Whate’er the theme, the Maiden sang",
-      "startIndex": 6840,
-      "endIndex": 6875,
+      "startIndex": 5235,
+      "endIndex": 5270,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "As if her song could have no ending;",
-      "startIndex": 6876,
-      "endIndex": 6912,
+      "startIndex": 5271,
+      "endIndex": 5307,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "I saw her singing at her work,",
-      "startIndex": 6913,
-      "endIndex": 6943,
+      "startIndex": 5308,
+      "endIndex": 5338,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "And o’er the sickle bending;—",
-      "startIndex": 6944,
-      "endIndex": 6973,
+      "startIndex": 5339,
+      "endIndex": 5368,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "I listened, motionless and still;",
-      "startIndex": 6974,
-      "endIndex": 7007,
+      "startIndex": 5369,
+      "endIndex": 5402,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "And, as I mounted up the hill,",
-      "startIndex": 7008,
-      "endIndex": 7038,
+      "startIndex": 5403,
+      "endIndex": 5433,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "The music in my heart I bore,",
-      "startIndex": 7039,
-      "endIndex": 7068,
+      "startIndex": 5434,
+      "endIndex": 5463,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Long after it was heard no more.",
-      "startIndex": 7069,
-      "endIndex": 7101,
+      "startIndex": 5464,
+      "endIndex": 5496,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 7102,
-      "endIndex": 7112,
+      "startIndex": 5497,
+      "endIndex": 5507,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "melancholy — Quietly sad or thoughtful.",
-      "startIndex": 7113,
-      "endIndex": 7152,
+      "startIndex": 5508,
+      "endIndex": 5547,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, the reaper sings a melancholy tune.”",
-      "startIndex": 7153,
-      "endIndex": 7207,
+      "startIndex": 5548,
+      "endIndex": 5602,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "plaintive — Sounding sorrowful or full of longing.",
-      "startIndex": 7208,
-      "endIndex": 7258,
+      "startIndex": 5603,
+      "endIndex": 5653,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, the song’s plaintive sound makes the listener wonder about its story.”",
-      "startIndex": 7259,
-      "endIndex": 7347,
+      "startIndex": 5654,
+      "endIndex": 5742,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "sickle — A hand tool with a curved blade for cutting crops.",
-      "startIndex": 7348,
-      "endIndex": 7407,
+      "startIndex": 5743,
+      "endIndex": 5802,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, the singer bends over her sickle as she works.”",
-      "startIndex": 7408,
-      "endIndex": 7473,
+      "startIndex": 5803,
+      "endIndex": 5868,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 7474,
-      "endIndex": 7485,
+      "startIndex": 5869,
+      "endIndex": 5880,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "What does the speaker know by the end?",
-      "startIndex": 7486,
-      "endIndex": 7524,
+      "startIndex": 5881,
+      "endIndex": 5919,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. The song describes a battle that happened long ago.",
-      "startIndex": 7525,
-      "endIndex": 7579,
+      "startIndex": 5920,
+      "endIndex": 5974,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. The song remains with him, though he does not know its subject.",
-      "startIndex": 7580,
-      "endIndex": 7646,
+      "startIndex": 5975,
+      "endIndex": 6041,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. The singer chose an old song to comfort passing travelers.",
-      "startIndex": 7647,
-      "endIndex": 7708,
+      "startIndex": 6042,
+      "endIndex": 6103,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: B.",
-      "startIndex": 7709,
-      "endIndex": 7727,
+      "startIndex": 6104,
+      "endIndex": 6122,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 5 — What Is Art? — Passing a feeling to another person",
-      "startIndex": 7728,
-      "endIndex": 7790,
+      "text": "Passage 4 — What Is Art? — Passing a feeling to another person",
+      "startIndex": 6123,
+      "endIndex": 6185,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Restore track titles, artwork, and playback information.",
-      "startIndex": 7791,
-      "endIndex": 7858,
+      "text": "On screen: Restore creator details and collaboration information.",
+      "startIndex": 6186,
+      "endIndex": 6251,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 7859,
-      "endIndex": 7888,
+      "startIndex": 6252,
+      "endIndex": 6281,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from “What Is Art?” by Leo Tolstoy, translated by Aylmer Maude. Tolstoy offers his own definition of art.",
-      "startIndex": 7889,
-      "endIndex": 8005,
+      "startIndex": 6282,
+      "endIndex": 6398,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "To evoke in oneself a feeling one has once experienced, and having evoked it in oneself then, by means of movements, lines, colours, sounds, or forms expressed in words, so to transmit that feeling that others may experience the same feeling—this is the activity of art. Art is a human activity, consisting in this, that one man consciously, by means of certain external signs, hands on to others feelings he has lived through, and that other people are infected by these feelings, and also experience them.",
-      "startIndex": 8006,
-      "endIndex": 8513,
+      "startIndex": 6399,
+      "endIndex": 6906,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Art is not, as the metaphysicians say, the manifestation of some mysterious Idea of beauty, or God; it is not, as the aesthetic physiologists say, a game in which man lets off his excess of stored-up energy; it is not the expression of man’s emotions by external signs; it is not the production of pleasing objects; and, above all, it is not pleasure; but it is a means of union among men, joining them together in the same feelings, and indispensable for the life and progress towards well-being of individuals and of humanity.",
-      "startIndex": 8514,
-      "endIndex": 9042,
+      "startIndex": 6907,
+      "endIndex": 7435,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "As, thanks to man’s capacity to express thoughts by words, every man may know all that has been done for him in the realms of thought by all humanity before his day, and can, in the present, thanks to this capacity to understand the thoughts of others, become a sharer in their activity, and can himself hand on to his contemporaries and descendants the thoughts he has assimilated from others, as well as those which have arisen within himself; so, thanks to man’s capacity to be infected with the feelings of others by means of art, all that is being lived through by his contemporaries is accessible to him, as well as the feelings experienced by men thousands of years ago, and he has also the possibility of transmitting his own feelings to others.",
-      "startIndex": 9043,
-      "endIndex": 9796,
+      "startIndex": 7436,
+      "endIndex": 8189,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 9797,
-      "endIndex": 9807,
+      "startIndex": 8190,
+      "endIndex": 8200,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "evoke — Bring a feeling or memory to mind.",
-      "startIndex": 9808,
-      "endIndex": 9850,
+      "startIndex": 8201,
+      "endIndex": 8243,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, an artist first tries to evoke a feeling.”",
-      "startIndex": 9851,
-      "endIndex": 9911,
+      "startIndex": 8244,
+      "endIndex": 8304,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "indispensable — Too important to do without.",
-      "startIndex": 9912,
-      "endIndex": 9956,
+      "startIndex": 8305,
+      "endIndex": 8349,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Tolstoy calls shared feeling indispensable to human life.”",
-      "startIndex": 9957,
-      "endIndex": 10033,
+      "startIndex": 8350,
+      "endIndex": 8426,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "manifestation — A visible or noticeable expression of something.",
-      "startIndex": 10034,
-      "endIndex": 10098,
+      "startIndex": 8427,
+      "endIndex": 8491,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Tolstoy rejects the idea that art is a manifestation of mysterious beauty.”",
-      "startIndex": 10099,
-      "endIndex": 10192,
+      "startIndex": 8492,
+      "endIndex": 8585,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 10193,
-      "endIndex": 10204,
+      "startIndex": 8586,
+      "endIndex": 8597,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "What distinguishes art in Tolstoy’s definition?",
-      "startIndex": 10205,
-      "endIndex": 10252,
+      "startIndex": 8598,
+      "endIndex": 8645,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. It communicates a feeling so that another person can experience it.",
-      "startIndex": 10253,
-      "endIndex": 10323,
+      "startIndex": 8646,
+      "endIndex": 8716,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. It produces pleasure by giving people beautifully made objects.",
-      "startIndex": 10324,
-      "endIndex": 10390,
+      "startIndex": 8717,
+      "endIndex": 8783,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. It shows an emotion through a sign, whether or not anyone shares the feeling.",
-      "startIndex": 10391,
-      "endIndex": 10471,
+      "startIndex": 8784,
+      "endIndex": 8864,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: A.",
-      "startIndex": 10472,
-      "endIndex": 10490,
+      "startIndex": 8865,
+      "endIndex": 8883,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 6 — Brave New World — Westminster Abbey Cabaret",
-      "startIndex": 10491,
-      "endIndex": 10546,
+      "text": "Passage 5 — Brave New World — Westminster Abbey Cabaret",
+      "startIndex": 8884,
+      "endIndex": 8939,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: After Auto’s over-fix: show the artist.",
-      "startIndex": 10547,
-      "endIndex": 10597,
+      "text": "On screen: Restore track titles, artwork, and playback information.",
+      "startIndex": 8940,
+      "endIndex": 9007,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 10598,
-      "endIndex": 10627,
+      "startIndex": 9008,
+      "endIndex": 9037,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from “Brave New World” by Aldous Huxley. Lenina and Henry visit a huge dance hall where music, colored light, and scent surround the dancers. They have also taken soma, a drug used in their society to produce happiness and escape unpleasant feelings.",
-      "startIndex": 10628,
-      "endIndex": 10889,
+      "startIndex": 9038,
+      "endIndex": 9299,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "They entered. The air seemed hot and somehow breathless with the scent of ambergris and sandalwood. On the domed ceiling of the hall, the colour organ had momentarily painted a tropical sunset. The Sixteen Sexophonists were playing an old favourite: \"There ain't no Bottle in all the world like that dear little Bottle of mine.\" Four hundred couples were five-stepping round the polished floor. Lenina and Henry were soon the four hundred and first.",
-      "startIndex": 10890,
-      "endIndex": 11339,
+      "startIndex": 9300,
+      "endIndex": 9749,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "The saxophones wailed like melodious cats under the moon, moaned in the alto and tenor registers as though the little death were upon them. Rich with a wealth of harmonics, their tremulous chorus mounted towards a climax, louder and ever louder–until at last, with a wave of his hand, the conductor let loose the final shattering note of ether-music and blew the sixteen merely human blowers clean out of existence. Thunder in A flat major.",
-      "startIndex": 11340,
-      "endIndex": 11780,
+      "startIndex": 9750,
+      "endIndex": 10190,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "And then, in all but silence, in all but darkness, there followed a gradual deturgescence, a diminuendo sliding gradually, through quarter tones, down, down to a faintly whispered dominant chord that lingered on (while the five-four rhythms still pulsed below) charging the darkened seconds with an intense expectancy. And at last expectancy was fulfilled. There was a sudden explosive sunrise, and simultaneously, the Sixteen burst into song:",
-      "startIndex": 11781,
-      "endIndex": 12224,
+      "startIndex": 10191,
+      "endIndex": 10634,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 12225,
-      "endIndex": 12235,
+      "startIndex": 10635,
+      "endIndex": 10645,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "harmonics — Higher tones that sound along with a main musical tone, giving it richness.",
-      "startIndex": 12236,
-      "endIndex": 12323,
+      "startIndex": 10646,
+      "endIndex": 10733,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, harmonics enrich the sound of the saxophones.”",
-      "startIndex": 12324,
-      "endIndex": 12388,
+      "startIndex": 10734,
+      "endIndex": 10798,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "diminuendo — A gradual decrease in the loudness of music.",
-      "startIndex": 12389,
-      "endIndex": 12446,
+      "startIndex": 10799,
+      "endIndex": 10856,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, a diminuendo brings the music down to a faint chord.”",
-      "startIndex": 12447,
-      "endIndex": 12518,
+      "startIndex": 10857,
+      "endIndex": 10928,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "expectancy — The feeling that something is about to happen.",
-      "startIndex": 12519,
-      "endIndex": 12578,
+      "startIndex": 10929,
+      "endIndex": 10988,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, the quiet music fills the darkened room with expectancy.”",
-      "startIndex": 12579,
-      "endIndex": 12654,
+      "startIndex": 10989,
+      "endIndex": 11064,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 12655,
-      "endIndex": 12666,
+      "startIndex": 11065,
+      "endIndex": 11076,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "How does the music build anticipation before the performers burst into song?",
-      "startIndex": 12667,
-      "endIndex": 12743,
+      "startIndex": 11077,
+      "endIndex": 11153,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. It becomes quiet after a loud climax, leaving the dancers waiting for what comes next.",
-      "startIndex": 12744,
-      "endIndex": 12833,
+      "startIndex": 11154,
+      "endIndex": 11243,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. It repeats the same tune at the same volume until the dancers recognize it.",
-      "startIndex": 12834,
-      "endIndex": 12912,
+      "startIndex": 11244,
+      "endIndex": 11322,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. It stops completely while the conductor explains the next song.",
-      "startIndex": 12913,
-      "endIndex": 12979,
+      "startIndex": 11323,
+      "endIndex": 11389,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: A.",
-      "startIndex": 12980,
-      "endIndex": 12998,
+      "startIndex": 11390,
+      "endIndex": 11408,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 7 — Twelfth Night — If music be the food of love",
-      "startIndex": 12999,
-      "endIndex": 13055,
+      "text": "Passage 6 — Twelfth Night — If music be the food of love",
+      "startIndex": 11409,
+      "endIndex": 11465,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Show the credits.",
-      "startIndex": 13056,
-      "endIndex": 13084,
+      "text": "On screen: After AUTO’s over-fix: show the artist.",
+      "startIndex": 11466,
+      "endIndex": 11516,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 13085,
-      "endIndex": 13114,
+      "startIndex": 11517,
+      "endIndex": 11546,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from “Twelfth Night” by William Shakespeare. Duke Orsino, unhappy in love, asks his musicians to play.",
-      "startIndex": 13115,
-      "endIndex": 13228,
+      "startIndex": 11547,
+      "endIndex": 11660,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Orsino:",
-      "startIndex": 13229,
-      "endIndex": 13236,
+      "startIndex": 11661,
+      "endIndex": 11668,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "If music be the food of love, play on,",
-      "startIndex": 13237,
-      "endIndex": 13275,
+      "startIndex": 11669,
+      "endIndex": 11707,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Give me excess of it; that, surfeiting,",
-      "startIndex": 13276,
-      "endIndex": 13315,
+      "startIndex": 11708,
+      "endIndex": 11747,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "The appetite may sicken and so die.",
-      "startIndex": 13316,
-      "endIndex": 13351,
+      "startIndex": 11748,
+      "endIndex": 11783,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "That strain again, it had a dying fall;",
-      "startIndex": 13352,
-      "endIndex": 13391,
+      "startIndex": 11784,
+      "endIndex": 11823,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "O, it came o’er my ear like the sweet sound",
-      "startIndex": 13392,
-      "endIndex": 13435,
+      "startIndex": 11824,
+      "endIndex": 11867,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "That breathes upon a bank of violets,",
-      "startIndex": 13436,
-      "endIndex": 13473,
+      "startIndex": 11868,
+      "endIndex": 11905,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Stealing and giving odour. Enough; no more;",
-      "startIndex": 13474,
-      "endIndex": 13517,
+      "startIndex": 11906,
+      "endIndex": 11949,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "’Tis not so sweet now as it was before.",
-      "startIndex": 13518,
-      "endIndex": 13557,
+      "startIndex": 11950,
+      "endIndex": 11989,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "O spirit of love, how quick and fresh art thou,",
-      "startIndex": 13558,
-      "endIndex": 13605,
+      "startIndex": 11990,
+      "endIndex": 12037,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "That notwithstanding thy capacity",
-      "startIndex": 13606,
-      "endIndex": 13639,
+      "startIndex": 12038,
+      "endIndex": 12071,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Receiveth as the sea, nought enters there,",
-      "startIndex": 13640,
-      "endIndex": 13682,
+      "startIndex": 12072,
+      "endIndex": 12114,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Of what validity and pitch soever,",
-      "startIndex": 13683,
-      "endIndex": 13717,
+      "startIndex": 12115,
+      "endIndex": 12149,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "But falls into abatement and low price",
-      "startIndex": 13718,
-      "endIndex": 13756,
+      "startIndex": 12150,
+      "endIndex": 12188,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Even in a minute! So full of shapes is fancy,",
-      "startIndex": 13757,
-      "endIndex": 13802,
+      "startIndex": 12189,
+      "endIndex": 12234,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "That it alone is high fantastical.",
-      "startIndex": 13803,
-      "endIndex": 13837,
+      "startIndex": 12235,
+      "endIndex": 12269,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 13838,
-      "endIndex": 13848,
+      "startIndex": 12270,
+      "endIndex": 12280,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "surfeiting — Having so much of something that you no longer want it.",
-      "startIndex": 13849,
-      "endIndex": 13917,
+      "startIndex": 12281,
+      "endIndex": 12349,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Orsino hopes surfeiting on music will end his appetite for love.”",
-      "startIndex": 13918,
-      "endIndex": 14001,
+      "startIndex": 12350,
+      "endIndex": 12433,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "abatement — A reduction in strength or amount.",
-      "startIndex": 14002,
-      "endIndex": 14048,
+      "startIndex": 12434,
+      "endIndex": 12480,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, love quickly brings valued things into abatement.”",
-      "startIndex": 14049,
-      "endIndex": 14117,
+      "startIndex": 12481,
+      "endIndex": 12549,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "fancy — The imagination.",
-      "startIndex": 14118,
-      "endIndex": 14142,
+      "startIndex": 12550,
+      "endIndex": 12574,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, fancy keeps inventing new shapes for love.”",
-      "startIndex": 14143,
-      "endIndex": 14204,
+      "startIndex": 12575,
+      "endIndex": 12636,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 14205,
-      "endIndex": 14216,
+      "startIndex": 12637,
+      "endIndex": 12648,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Why does Orsino first ask for excessive music?",
-      "startIndex": 14217,
-      "endIndex": 14263,
+      "startIndex": 12649,
+      "endIndex": 12695,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. He hopes too much of it will wear out his appetite for love.",
-      "startIndex": 14264,
-      "endIndex": 14327,
+      "startIndex": 12696,
+      "endIndex": 12759,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. He wants the musicians to discover a tune he has never heard.",
-      "startIndex": 14328,
-      "endIndex": 14392,
+      "startIndex": 12760,
+      "endIndex": 12824,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. He believes that enjoying one tune will make him want it forever.",
-      "startIndex": 14393,
-      "endIndex": 14461,
+      "startIndex": 12825,
+      "endIndex": 12893,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: A.",
-      "startIndex": 14462,
-      "endIndex": 14480,
+      "startIndex": 12894,
+      "endIndex": 12912,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 8 — Noise-Induced Hearing Loss — Loudness and time",
-      "startIndex": 14481,
-      "endIndex": 14539,
+      "text": "Passage 7 — Noise-Induced Hearing Loss — Loudness and time",
+      "startIndex": 12913,
+      "endIndex": 12971,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Let users choose.",
-      "startIndex": 14540,
-      "endIndex": 14568,
+      "text": "On screen: Show the credits.",
+      "startIndex": 12972,
+      "endIndex": 13000,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 14569,
-      "endIndex": 14598,
+      "startIndex": 13001,
+      "endIndex": 13030,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Selected excerpts from “Noise-Induced Hearing Loss,” published by the National Institute on Deafness and Other Communication Disorders.",
-      "startIndex": 14599,
-      "endIndex": 14734,
+      "startIndex": 13031,
+      "endIndex": 13166,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Every day, we experience sound in our environment, such as the sounds from television and radio, household appliances, and traffic. Normally, these sounds are at safe levels that don’t damage our hearing. But sounds can be harmful when they are too loud, even for a brief time, or when they are both loud and long-lasting. These sounds can damage sensitive structures in the inner ear and cause noise-induced hearing loss.",
-      "startIndex": 14735,
-      "endIndex": 15157,
+      "startIndex": 13167,
+      "endIndex": 13589,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Noise-induced hearing loss can be immediate or it can take a long time to be noticeable. It can be temporary or permanent, and it can affect one ear or both ears. Even if you can’t tell that you are damaging your hearing, you could have trouble hearing in the future, such as not being able to understand other people when they talk, especially on the phone or in a noisy room. Regardless of how it might affect you, one thing is certain: noise-induced hearing loss is something you can prevent.",
-      "startIndex": 15158,
-      "endIndex": 15653,
+      "startIndex": 13590,
+      "endIndex": 14085,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Later, the article explains how exposure affects risk.",
-      "startIndex": 15654,
-      "endIndex": 15708,
+      "startIndex": 14086,
+      "endIndex": 14140,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Sound is measured in units called decibels. Sounds at or below 70 A-weighted decibels, even after long exposure, are unlikely to cause hearing loss. However, long or repeated exposure to sounds at or above 85 A-weighted decibels can cause hearing loss. The louder the sound, the shorter the amount of time it takes for noise-induced hearing loss to happen.",
-      "startIndex": 15709,
-      "endIndex": 16065,
+      "startIndex": 14141,
+      "endIndex": 14497,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Your distance from the source of the sound and the length of time you are exposed to the sound are also important factors in protecting your hearing. A good rule of thumb is to avoid noises that are too loud, too close, or last too long.",
-      "startIndex": 16066,
-      "endIndex": 16303,
+      "startIndex": 14498,
+      "endIndex": 14735,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 16304,
-      "endIndex": 16314,
+      "startIndex": 14736,
+      "endIndex": 14746,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "immediate — Happening without delay.",
-      "startIndex": 16315,
-      "endIndex": 16351,
+      "startIndex": 14747,
+      "endIndex": 14783,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, hearing damage can be immediate rather than gradual.”",
-      "startIndex": 16352,
-      "endIndex": 16423,
+      "startIndex": 14784,
+      "endIndex": 14855,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "decibels — Units used to measure sound level.",
-      "startIndex": 16424,
-      "endIndex": 16469,
+      "startIndex": 14856,
+      "endIndex": 14901,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, decibels describe how loud a sound is.”",
-      "startIndex": 16470,
-      "endIndex": 16527,
+      "startIndex": 14902,
+      "endIndex": 14959,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "exposed — Placed in contact with something that can affect you.",
-      "startIndex": 16528,
-      "endIndex": 16591,
+      "startIndex": 14960,
+      "endIndex": 15023,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, time exposed to sound affects hearing risk.”",
-      "startIndex": 16592,
-      "endIndex": 16654,
+      "startIndex": 15024,
+      "endIndex": 15086,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 16655,
-      "endIndex": 16666,
+      "startIndex": 15087,
+      "endIndex": 15098,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Which statement follows from the article?",
-      "startIndex": 16667,
-      "endIndex": 16708,
+      "startIndex": 15099,
+      "endIndex": 15140,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. A sound is safe whenever damage is not immediately noticeable.",
-      "startIndex": 16709,
-      "endIndex": 16774,
+      "startIndex": 15141,
+      "endIndex": 15206,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. Hearing risk depends only on the distance from a speaker.",
-      "startIndex": 16775,
-      "endIndex": 16835,
+      "startIndex": 15207,
+      "endIndex": 15267,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. Sound level and exposure time both affect the risk of damage.",
-      "startIndex": 16836,
-      "endIndex": 16900,
+      "startIndex": 15268,
+      "endIndex": 15332,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: C.",
-      "startIndex": 16901,
-      "endIndex": 16919,
+      "startIndex": 15333,
+      "endIndex": 15351,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 9 — Sherlock Holmes: The Red-Headed League — An afternoon of music",
-      "startIndex": 16920,
-      "endIndex": 16994,
+      "text": "Passage 8 — Sherlock Holmes: The Red-Headed League — An afternoon of music",
+      "startIndex": 15352,
+      "endIndex": 15426,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Let users set the volume.",
-      "startIndex": 16995,
-      "endIndex": 17031,
+      "text": "On screen: Let users choose.",
+      "startIndex": 15427,
+      "endIndex": 15455,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 17032,
-      "endIndex": 17061,
+      "startIndex": 15456,
+      "endIndex": 15485,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "An excerpt from “The Red-Headed League” by Arthur Conan Doyle. Watson describes Sherlock Holmes at a concert during a criminal investigation.",
-      "startIndex": 17062,
-      "endIndex": 17203,
+      "startIndex": 15486,
+      "endIndex": 15627,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "My friend was an enthusiastic musician, being himself not only a very capable performer but a composer of no ordinary merit. All the afternoon he sat in the stalls wrapped in the most perfect happiness, gently waving his long, thin fingers in time to the music, while his gently smiling face and his languid, dreamy eyes were as unlike those of Holmes the sleuth-hound, Holmes the relentless, keen-witted, ready-handed criminal agent, as it was possible to conceive.",
-      "startIndex": 17204,
-      "endIndex": 17670,
+      "startIndex": 15628,
+      "endIndex": 16094,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "In his singular character the dual nature alternately asserted itself, and his extreme exactness and astuteness represented, as I have often thought, the reaction against the poetic and contemplative mood which occasionally predominated in him. The swing of his nature took him from extreme languor to devouring energy; and, as I knew well, he was never so truly formidable as when, for days on end, he had been lounging in his armchair amid his improvisations and his black-letter editions.",
-      "startIndex": 17671,
-      "endIndex": 18162,
+      "startIndex": 16095,
+      "endIndex": 16586,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Then it was that the lust of the chase would suddenly come upon him, and that his brilliant reasoning power would rise to the level of intuition, until those who were unacquainted with his methods would look askance at him as on a man whose knowledge was not that of other mortals. When I saw him that afternoon so enwrapped in the music at St. James’s Hall I felt that an evil time might be coming upon those whom he had set himself to hunt down.",
-      "startIndex": 18163,
-      "endIndex": 18610,
+      "startIndex": 16587,
+      "endIndex": 17034,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Holmes: “You want to go home, no doubt, Doctor,” he remarked as we emerged.",
-      "startIndex": 18611,
-      "endIndex": 18686,
+      "startIndex": 17035,
+      "endIndex": 17110,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Watson: “Yes, it would be as well.”",
-      "startIndex": 18687,
-      "endIndex": 18722,
+      "startIndex": 17111,
+      "endIndex": 17146,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Holmes: “And I have some business to do which will take some hours. This business at Coburg Square is serious.”",
-      "startIndex": 18723,
-      "endIndex": 18834,
+      "startIndex": 17147,
+      "endIndex": 17258,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 18835,
-      "endIndex": 18845,
+      "startIndex": 17259,
+      "endIndex": 17269,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "astuteness — The ability to notice and understand things shrewdly.",
-      "startIndex": 18846,
-      "endIndex": 18912,
+      "startIndex": 17270,
+      "endIndex": 17336,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Holmes’s astuteness contrasts with his dreamy mood.”",
-      "startIndex": 18913,
-      "endIndex": 18983,
+      "startIndex": 17337,
+      "endIndex": 17407,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "improvisations — Music made up while it is being performed.",
-      "startIndex": 18984,
-      "endIndex": 19043,
+      "startIndex": 17408,
+      "endIndex": 17467,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, Holmes spends quiet days with his improvisations.”",
-      "startIndex": 19044,
-      "endIndex": 19112,
+      "startIndex": 17468,
+      "endIndex": 17536,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "askance — With suspicion or doubt.",
-      "startIndex": 19113,
-      "endIndex": 19147,
+      "startIndex": 17537,
+      "endIndex": 17571,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, people look askance at Holmes’s surprising knowledge.”",
-      "startIndex": 19148,
-      "endIndex": 19220,
+      "startIndex": 17572,
+      "endIndex": 17644,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 19221,
-      "endIndex": 19232,
+      "startIndex": 17645,
+      "endIndex": 17656,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Why does Watson think the criminals may soon be in trouble?",
-      "startIndex": 19233,
-      "endIndex": 19292,
+      "startIndex": 17657,
+      "endIndex": 17716,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. Holmes has given up the concert to work without a break.",
-      "startIndex": 19293,
-      "endIndex": 19352,
+      "startIndex": 17717,
+      "endIndex": 17776,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. Watson has heard Holmes reveal his entire plan during the music.",
-      "startIndex": 19353,
-      "endIndex": 19420,
+      "startIndex": 17777,
+      "endIndex": 17844,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. Watson knows that Holmes’s relaxed moods can precede intense reasoning.",
-      "startIndex": 19421,
-      "endIndex": 19495,
+      "startIndex": 17845,
+      "endIndex": 17919,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: C.",
-      "startIndex": 19496,
-      "endIndex": 19514,
+      "startIndex": 17920,
+      "endIndex": 17938,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
-      "text": "Passage 10 — What Musicians Should Know about Copyright",
-      "startIndex": 19515,
-      "endIndex": 19570,
+      "text": "Passage 9 — What Musicians Should Know about Copyright",
+      "startIndex": 17939,
+      "endIndex": 17993,
       "tabId": "t.0",
       "namedStyleType": "HEADING_1",
       "isListItem": false
     },
     {
-      "text": "On screen: Keep artists, credits, and listener controls visible.",
-      "startIndex": 19571,
-      "endIndex": 19635,
+      "text": "On screen: Let users set the volume.",
+      "startIndex": 17994,
+      "endIndex": 18030,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Exact complete spoken passage",
-      "startIndex": 19636,
-      "endIndex": 19665,
+      "startIndex": 18031,
+      "endIndex": 18060,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Selected excerpts from “What Musicians Should Know about Copyright,” published by the United States Copyright Office.",
-      "startIndex": 19666,
-      "endIndex": 19783,
+      "startIndex": 18061,
+      "endIndex": 18178,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "First, you should know that copyright protection exists from the moment an original work is “fixed” in a tangible medium. For example, fixation occurs when a song is recorded in an audio file or when a musical work is notated in sheet music or a digital file. You don’t need to do anything else for your work to be protected by copyright. As the owner of your music, copyright gives you the right to make and sell copies, distribute those copies, make new works based on your work, and, with some limitations explained below, publicly perform or display the work.",
-      "startIndex": 19784,
-      "endIndex": 20347,
+      "startIndex": 18179,
+      "endIndex": 18742,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "When you record a song, you may be creating two works that are protected by copyright: a musical work and a sound recording. A sound recording and the music, lyrics, words, or other content included in the recording are separate copyright-protected works. These works are subject to different rules and are commonly owned and licensed separately.",
-      "startIndex": 20348,
-      "endIndex": 20694,
+      "startIndex": 18743,
+      "endIndex": 19089,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A musical work is a song’s underlying composition along with any accompanying lyrics. Musical works are usually created by a songwriter or composer.",
-      "startIndex": 20695,
-      "endIndex": 20843,
+      "startIndex": 19090,
+      "endIndex": 19238,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A sound recording is a series of musical, spoken, or other sounds fixed in a recording medium, such as a CD or digital file, called a “phonorecord.” Sound recordings can be created by the recording’s performer, the producer, or others. Note that there is no public display right for sound recordings and the public performance right is limited to “digital audio transmissions,” for example, digital streaming.",
-      "startIndex": 20844,
-      "endIndex": 21253,
+      "startIndex": 19239,
+      "endIndex": 19648,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Later, the guide turns to using someone else’s work.",
-      "startIndex": 21254,
-      "endIndex": 21306,
+      "startIndex": 19649,
+      "endIndex": 19701,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Being inspired by other works is intrinsic to the creative process. Musicians often use other works to create new compositions, public performances, and recordings. It’s important not to assume that you can freely use other works.",
-      "startIndex": 21307,
-      "endIndex": 21537,
+      "startIndex": 19702,
+      "endIndex": 19932,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Vocabulary",
-      "startIndex": 21538,
-      "endIndex": 21548,
+      "startIndex": 19933,
+      "endIndex": 19943,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "tangible — Having a definite form that can be recorded or stored.",
-      "startIndex": 21549,
-      "endIndex": 21614,
+      "startIndex": 19944,
+      "endIndex": 20009,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, a digital file is a tangible medium for a song.”",
-      "startIndex": 21615,
-      "endIndex": 21681,
+      "startIndex": 20010,
+      "endIndex": 20076,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "composition — A piece of music as written, rather than one particular recording.",
-      "startIndex": 21682,
-      "endIndex": 21762,
+      "startIndex": 20077,
+      "endIndex": 20157,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, a composition can be separate from its recorded performance.”",
-      "startIndex": 21763,
-      "endIndex": 21842,
+      "startIndex": 20158,
+      "endIndex": 20237,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "intrinsic — An essential or natural part of something.",
-      "startIndex": 21843,
-      "endIndex": 21897,
+      "startIndex": 20238,
+      "endIndex": 20292,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "“In this passage, inspiration from other works is intrinsic to creating music.”",
-      "startIndex": 21898,
-      "endIndex": 21977,
+      "startIndex": 20293,
+      "endIndex": 20372,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Quick check",
-      "startIndex": 21978,
-      "endIndex": 21989,
+      "startIndex": 20373,
+      "endIndex": 20384,
       "tabId": "t.0",
       "namedStyleType": "HEADING_2",
       "isListItem": false
     },
     {
       "text": "Why might one recorded song involve two separate copyrights?",
-      "startIndex": 21990,
-      "endIndex": 22050,
+      "startIndex": 20385,
+      "endIndex": 20445,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "A. The song’s composition and its recorded performance are different works.",
-      "startIndex": 22051,
-      "endIndex": 22126,
+      "startIndex": 20446,
+      "endIndex": 20521,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "B. Each person who listens creates a separate version of the song.",
-      "startIndex": 22127,
-      "endIndex": 22193,
+      "startIndex": 20522,
+      "endIndex": 20588,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "C. A song gains one copyright when written and another when registered.",
-      "startIndex": 22194,
-      "endIndex": 22265,
+      "startIndex": 20589,
+      "endIndex": 20660,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false
     },
     {
       "text": "Correct answer: A.",
-      "startIndex": 22266,
-      "endIndex": 22284,
+      "startIndex": 20661,
+      "endIndex": 20679,
       "tabId": "t.0",
       "namedStyleType": "NORMAL_TEXT",
       "isListItem": false

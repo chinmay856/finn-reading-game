@@ -44,7 +44,7 @@ function migrateSequenceAfterPassageDemotion(sequence, mission) {
     : index >= totalPassages
       ? "reflection-required"
       : index === mission.phaseOneCount
-        ? "midpoint-required"
+        ? (sequence.phase === "lock-sequence" ? "lock-sequence" : "midpoint-required")
         : index < mission.phaseOneCount
           ? "phase-one"
           : "lock-sequence";
