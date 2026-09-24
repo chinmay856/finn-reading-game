@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Reading viewport policy browser check</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    #viewport { box-sizing: border-box; width: 440px; height: 300px; overflow-y: auto; border: 2px solid #173968; padding-top: 30px; }
+    .line { box-sizing: border-box; height: 58px; margin: 0 12px 8px; padding: 12px; background: #eef2ec; }
+    .line.active { background: #fff1b8; border-left: 4px solid #a76610; }
+    pre { max-width: 700px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Reading viewport policy browser check</h1>
+  <div id="viewport" aria-label="Synthetic reading viewport"></div>
+  <pre id="report">running</pre>
+  <script type="module">
+    import { anchoredScrollTop, lineAtReadingAnchor, reconcileManualLine } from "./viewport-policy.js";
+
+    const anchorOffset = 18;
+    const viewport = document.querySelector("#viewport");
+    const lines = Array.from({ length: 7 }, (_, index) => {
+      const line = document.createElement("div");
+      line.className = "line";
+      line.textContent = `Authored line ${index + 1}`;
+      viewport.append(line);
+      return line;
+    });
+    const geometry = () => lines.map((line) => ({ height: line.offsetHeight + 8, offsetTop: line.offsetTop - viewport.offsetTop }));
+    const position = (lineIndex) => {
+      const line = lines[lineIndex];
+      viewport.scrollTop = anchoredScrollTop({
+        anchorOffset,
+        lineOffsetTop: line.offsetTop - viewport.offsetTop,
+        maximumScrollTop: viewport.scrollHeight - viewport.clientHeight,
+      });
+      lines.forEach((candidate, index) => candidate.classList.toggle("active", index === lineIndex));
+      return Math.round(line.getBoundingClientRect().top - viewport.getBoundingClientRect().top);
+    };
+
+    const firstTop = position(0);
+    const middleTop = position(2);
+    const finalTop = position(6);
+    viewport.scrollTop = 150;
+    const manualLineAtAnchor = lineAtReadingAnchor({ anchorOffset, lines: geometry(), scrollTop: viewport.scrollTop });
+    const report = {
+      firstTop,
+      middleTop,
+      finalTop,
+      manualLineAtAnchor,
+      manualVisibleLine: reconcileManualLine({ currentVisibleLineIndex: 0, lineAtAnchor: manualLineAtAnchor }),
+      scoringPositionChanged: false,
+      passed: firstTop <= 32 && middleTop <= 32 && finalTop > 180 && manualLineAtAnchor >= 2,
+    };
+    document.querySelector("#report").textContent = JSON.stringify(report, null, 2);
+    document.body.dataset.complete = "true";
+  </script>
+</body>
+</html>
